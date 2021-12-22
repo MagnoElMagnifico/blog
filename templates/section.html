@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 
-{# This is the index of the test section #}
-{# Title of the section/blog is defined in test/_index.md #}
-
 {% block head %}
 <title>{{ section.title }} - {{ title }}</title>
 <style>
@@ -21,7 +18,6 @@
 {% endblock head %}
 
 {% block content %}
-
 <h1 class="main-title">{{ section.title }}</h1>
 <p>{{ section.description }}</p>
 
@@ -33,5 +29,4 @@
     <hr>
 </div>
 {% endfor %}
-
 {% endblock content %}

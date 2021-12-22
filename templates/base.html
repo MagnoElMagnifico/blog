@@ -1,5 +1,5 @@
-{# Base of every page #}
 {% set title = "Blog test" %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,15 +14,12 @@
 </head>
 
 <body>
-    <!-- <header>
-        {% block header %} {% endblock %}
-    </header> -->
+    <!-- <header>{% block header %} {% endblock %}</header> -->
     {% block before_content %} {% endblock %}
     <div class="content">
         {% block content %} {% endblock %}
     </div>
-    <!-- <div class="end">
-    </div> -->
+    <!-- <div class="end"></div> -->
 </body>
 
 </html>

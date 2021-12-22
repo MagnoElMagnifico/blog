@@ -1,6 +1,6 @@
 const desiredFPS = 20;
 
-const clearColor = "#0001";//"#21212130";
+const clearColor = "#0001"; // "#21212130";
 const fontColor = "#f00d";
 const fontSize = 30;
 
@@ -51,7 +51,7 @@ function render() {
         ctx.font = `${fontSize}px Consolas`;
         // TODO: Improve the performance by avoiding rendering chars out of the view port
         // TODO: Use different colors, rhythms, patterns, etc
-        ctx.fillText(randomChar, (i-colsOffset)*30, (currentRow+1)*30);
+        ctx.fillText(randomChar, (i-colsOffset)*fontSize, (currentRow+1)*fontSize);
     }
 }
 resize();
