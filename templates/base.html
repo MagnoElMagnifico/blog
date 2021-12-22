@@ -1,0 +1,28 @@
+{# Base of every page #}
+{% set title = "Blog test" %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="/styles/base.css">
+    {# TODO: Icon #}
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+    <!-- <header>
+        {% block header %} {% endblock %}
+    </header> -->
+    {% block before_content %} {% endblock %}
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    <!-- <div class="end">
+    </div> -->
+</body>
+
+</html>

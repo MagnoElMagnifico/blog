@@ -1,0 +1,18 @@
+base_url = "https://example.com"
+
+title = "Magno Blog"
+description = "My notes and other stuff about my programming projects"
+default_language = "en" # "es"
+
+# theme = ""
+# output_dir = "public"
+
+compile_sass = false
+build_search_index = false
+minify_html = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "ayu-dark"
+
+[extra]

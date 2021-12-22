@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{# This is the index of the test section #}
+{# Title of the section/blog is defined in test/_index.md #}
+
+{% block head %}
+<title>{{ section.title }} - {{ title }}</title>
+<style>
+    @media screen and (min-width: 600px) {
+        .post {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 14px;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+
+<h1 class="main-title">{{ section.title }}</h1>
+<p>{{ section.description }}</p>
+
+{% for page in section.pages %}
+<div class="post">
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <h3>{{ page.date }}</h3>
+    <p>{{ page.description }}</p>
+    <hr>
+</div>
+{% endfor %}
+
+{% endblock content %}

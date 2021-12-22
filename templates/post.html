@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>{{ page.title }} - {{ title }}</title>
+<style>
+    pre {
+        /* FIXME?: Scaling text when rezising */
+        padding: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
+        border-radius: 10px;
+    }
+</style>
+{% endblock head %}
+
+{% block header %}
+<h1 class="header-content"><a href="/">Blog</a></h1>
+<h2 class="header-content"><a href="..">Back</a></h2>
+{% endblock header %}
+
+{% block content %}
+<h1 class="main-title">{{ page.title }}</h1>
+<h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
+<h2 class="details">Word count: {{ page.word_count }}</h2>
+{{ page.content | safe }}
+{% endblock content %}
