@@ -10,7 +10,7 @@ canvas {
     transform: translate(0%, -50%);
 }
 
-@media only screen and (max-height: 400px) {
+@media screen and (max-height: 400px) {
     canvas {
         height: 400px;
         width: 100vw;
@@ -23,13 +23,13 @@ canvas {
 }
 
 /* TODO: This is not working with smaller values for no reason */
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     #start {
         margin-left: 10%;
         margin-right: 10%;
     }
 }
-@media only screen and (min-width: 1000px) {
+@media screen and (min-width: 1000px) {
     #start {
         margin-left: 30%;
         margin-right: 30%;
