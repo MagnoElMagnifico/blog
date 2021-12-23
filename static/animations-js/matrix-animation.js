@@ -6,18 +6,24 @@ const fontSize = 30;
 
 const firstChar = 913;
 const lastChar = 1023;
+const numberChars = lastChar - firstChar;
 
 (() => {
 const canvas = document.getElementById("matrix-animation");
 const ctx = canvas.getContext("2d");
 
+let counter = 0;
+let lastTime = 0;
+
 addEventListener("resize", resize);
 function resize() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight
+    canvas.height = window.innerHeight;
+    if (window.innerHeight < 400) {
+        canvas.height = 400;
+    }
 }
 
-let lastTime = 0;
 function loop(currentTime) {
     const deltaTime = currentTime - lastTime;
     const fps = 1000 / deltaTime;
@@ -32,8 +38,6 @@ function loop(currentTime) {
     requestAnimationFrame(loop);
 }
 
-const numberChars = lastChar - firstChar;
-let counter = 0;
 function render() {
     ctx.fillStyle = clearColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
