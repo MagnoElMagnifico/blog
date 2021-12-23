@@ -1,7 +1,12 @@
 +++
 title = "Lorem Ipsum"
 date = 2021-12-17
-description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis."
+
+description = """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim ut tellus
+elementum sagittis vitae et leo duis. Odio tempor orci dapibus ultrices in
+iaculis."""
+
 weight = 1
 +++
 
