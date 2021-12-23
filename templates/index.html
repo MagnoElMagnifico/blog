@@ -2,57 +2,7 @@
 
 {% block head %}
 <title>{{ title }}</title>
-<style>
-    canvas {
-        height: 100vh;
-        width: 100vw;
-    }
-
-    #start {
-        text-align: center;
-        position: absolute;
-        top: 50vh;
-        transform: translate(0%, -50%);
-    }
-
-    @media only screen and (max-height: 400px) {
-        canvas {
-            height: 400px;
-            width: 100vw;
-        }
-
-        #start {
-            top: 40px;
-            transform: none;
-        }
-    }
-
-    /* TODO: This is not working with smaller values for no reason */
-    @media only screen and (max-width: 1000px) {
-        #start {
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-    }
-    @media only screen and (min-width: 1000px) {
-        #start {
-            margin-left: 30%;
-            margin-right: 30%;
-        }
-    }
-
-    #blog-logo {
-        border-radius: 100%;
-        width: 25vw;
-        margin: 0;
-        transform: none;
-    }
-
-    #blog-title {
-        font-size: 50px;
-        margin-top: 10px;
-    }
-</style>
+<link rel="stylesheet" href="/styles/index.css">
 {% endblock head %}
 
 {% block before_content %}
