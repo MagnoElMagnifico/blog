@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Not found - {{ config.title }}</title>
+<style>
+    #not-found {
+        margin: 30vh 0 30vh 0;
+        text-align: center;
+    }
+    #not-found h2 {
+        margin: 0 0 10px 0;
+    }
+</style>
+{% endblock %}
+
+{% block before_content %}
+<div id="not-found">
+    <h1 class="main-title">404</h1>
+    <h2>There is nothing to see here</h2>
+    <a href="{{ config.base_url }}">Go back</a>
+</div>
+{%endblock%}
