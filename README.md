@@ -1,5 +1,7 @@
 TODO: Header in page
 TODO: End of the page
+TODO: CSS Transitions / Animations
+TODO?: Shorten CSS files
 
 FUTURE: Career
 
