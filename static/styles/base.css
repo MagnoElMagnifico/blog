@@ -6,13 +6,13 @@ html, body {
     margin: 0;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
     .content {
         margin-left: 10%;
         margin-right: 5%;
     }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1150px) {
     .content {
         margin-left: 10%;
         margin-right: 30%;
