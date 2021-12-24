@@ -83,12 +83,12 @@ canvas {
 #recent-title {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    margin-bottom: 10px;
+    margin: 0;
 }
 #categories-title {
     grid-column: 2 / span 2;
     grid-row: 1 / span 1;
-    margin: 0 0 10px 20px;
+    margin: 0 0 0 20px;
 }
 #recent {
     grid-column: 1 / span 1;
