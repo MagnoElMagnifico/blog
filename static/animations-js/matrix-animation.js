@@ -1,15 +1,16 @@
 // Config values
 // -------------
-const clearColor = "#00000005";
-const fontColor = ["#f11", "#0f0"];
+const clearColor = "#00000007";
+const fontColor = ["#0f0"];//["#f00", "#0f0"];
 const fontSize = 20;
 
 const marginLeft = 50;
 const marginRight = 100;
 const ident = fontSize * 4;
 
-const firstChar = 913;
-const lastChar = 1023;
+// UTF-16BE - Normal - Japanese - Greek
+const firstChar = 48;// 12032; // 913;
+const lastChar = 112;// 12245;  // 1023;
 const numberChars = lastChar - firstChar;
 
 (() => {
@@ -27,6 +28,10 @@ const numberChars = lastChar - firstChar;
         if (window.innerHeight < 400) {
             canvas.height = 400;
         }
+        // Render a background to avoid seeing the background of the page
+        // and not the canvas one
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     function loop(currentTime) {
