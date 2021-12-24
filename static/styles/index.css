@@ -95,6 +95,7 @@ canvas {
 /* Blog */
 #blog {
     display: grid;
+    margin-bottom: 20px;
 }
 
 #recent-title {
