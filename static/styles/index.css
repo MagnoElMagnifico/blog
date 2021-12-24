@@ -1,3 +1,4 @@
+/* Animation and title */
 canvas {
     height: 100vh;
     width: 100vw;
@@ -46,4 +47,23 @@ canvas {
 #blog-title {
     font-size: 50px;
     margin-top: 10px;
+}
+
+/* Content */
+#about-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#about-img {
+    flex-grow: 0;
+    width: 10vw;
+    object-fit: scale-down; /* or cover */
+    margin-left: 0;
+    margin-right: 20px;
+    transform: none;
+}
+
+#about-text {
+    flex-grow: 2;
 }

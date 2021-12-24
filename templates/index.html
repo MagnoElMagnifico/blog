@@ -10,31 +10,36 @@
 <div id="start">
     <img src="/test/lorem-ipsum/img.jpg" id="blog-logo" />
     <h1 id="blog-title">{{ title }}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, modi cumque commodi numquam veniam quas
-        soluta minima deleniti, quam tenetur, sint molestias! Deleniti quidem modi eius distinctio, harum aspernatur
-        perferendis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, modi
+        cumque commodi numquam veniam quas soluta minima deleniti, quam tenetur, sint
+        molestias! Deleniti quidem modi eius distinctio, harum aspernatur perferendis.</p>
 </div>
 {% endblock before_content %}
 
 {% block content %}
+
 <div id="about">
-    {# TODO: Use a markdown file for this (or a shortcode?) #}
     <h2>About</h2>
-    <img src="/test/lorem-ipsum/img.jpg" class="left-img" />
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-        vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-        ultricies mi quis hendrerit dolor. Cursus euismod
-        quis viverra nibh cras pulvinar.
-    </p>
-    <p>
-        Cras fermentum odio eu feugiat pretium. Metus aliquam eleifend mi in
-        nulla posuere sollicitudin aliquam ultrices. Aliquam sem fringilla ut morbi. Et
-        egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Urna duis
-        convallis convallis tellus id interdum. Molestie at elementum eu facilisis sed
-        odio morbi. Dui faucibus in ornare quam viverra orci sagittis. Bibendum ut
-        tristique et egestas quis.</p>
+    <div id="about-content">
+        <img src="/test/lorem-ipsum/img.jpg" id="about-img" />
+        <div id="about-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
+                vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
+                ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.
+            </p>
+            <p>
+                Cras fermentum odio eu feugiat pretium. Metus aliquam eleifend mi in
+                nulla posuere sollicitudin aliquam ultrices. Aliquam sem fringilla ut morbi. Et
+                egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Urna duis
+                convallis convallis tellus id interdum. Molestie at elementum eu facilisis sed
+                odio morbi. Dui faucibus in ornare quam viverra orci sagittis.</p>
+        </div>
+    </div>
 </div>
+
+
+
 <div id="portfolio">
     <p style="background-color: red;">TODO</p>
 </div>
