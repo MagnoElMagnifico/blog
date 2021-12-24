@@ -1,8 +1,7 @@
 TODO: Use a color palette
 TODO: Header in page
-TODO: End of the page
+TODO: Improve the end of the page on sections
 TODO: CSS Transitions / Animations
-TODO?: Shorten CSS files
 
 FUTURE: Career
 

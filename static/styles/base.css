@@ -5,24 +5,20 @@ html, body {
     overflow-x: hidden;
     margin: 0;
 }
-
 @media screen and (max-width: 1150px) {
     .content {
-        margin-left: 10%;
-        margin-right: 5%;
+        margin: 0 5% 0 5%;
     }
 }
 @media screen and (min-width: 1150px) {
     .content {
-        margin-left: 10%;
-        margin-right: 30%;
+        margin: 0 30% 0 10%;
     }
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Audiowide";
-    margin-bottom: 0px;
-    margin-top: 30px;
+    margin: 30px 0 0 0;
 }
 .main-title {
     font-size: 5rem;
@@ -36,7 +32,6 @@ p {
     text-align: justify;
     font-size: 14px;
 }
-
 a {
     color: orange;
     text-decoration: none;
@@ -45,17 +40,6 @@ a:hover {
     color: red;
 }
 
-/* header {
-    background-color: red;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-.header-content {
-    display: inline;
-    background-color: green;
-    margin-left: 10%;
-} */
-
 img {
     /*
         TODO: Make this variable depending on the image:
@@ -63,21 +47,21 @@ img {
     */
     width: 50vw;
     padding: 10px;
-    border-color: orange;
-    border-style: solid;
-    border-width: 5px;
-    margin-left: 50%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    border: 5px solid orange;
+    margin: 15px 0 15px 50%;
     transform: translate(-50%, 0%);
 }
-
 img.left-img {
     margin-left: 0;
     transform: none;
 }
 
-/* .end {
-    background-color: red;
-    height: 100%;
-} */
+.end {
+    margin-top: 50px;
+    padding: 10px 10vw 10px 10vw;
+    color: black;
+    background-color: orange;
+}
+#copyright {
+    margin-top: 0;
+}

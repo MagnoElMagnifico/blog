@@ -9,8 +9,7 @@
             margin-right: 10%;
         }
     }
-
-    h3 {
+    #date {
         margin: 0;
         font-size: 14px;
     }
@@ -24,7 +23,7 @@
 {% for page in section.pages %}
 <div class="post">
     <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
-    <h3>{{ page.date }}</h3>
+    <h3 id="date">{{ page.date }}</h3>
     <p>{{ page.description }}</p>
     <hr>
 </div>
