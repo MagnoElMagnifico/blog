@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-<title>{{ title }}</title>
+<title>{{ config.title }}</title>
 <link rel="stylesheet" href="/styles/index.css">
 {% endblock head %}
 
@@ -9,10 +9,8 @@
 <canvas id="matrix-animation"></canvas>
 <div id="start">
     <img src="/test/lorem-ipsum/img.jpg" id="blog-logo" />
-    <h1 class="main-title">{{ title }}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, modi
-        cumque commodi numquam veniam quas soluta minima deleniti, quam tenetur, sint
-        molestias! Deleniti quidem modi eius distinctio, harum aspernatur perferendis.</p>
+    <h1 id="blog-title">{{ config.title }}</h1>
+    <p id="blog-description">{{ config.description }}</p>
 </div>
 {% endblock before_content %}
 
