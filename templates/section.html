@@ -3,6 +3,9 @@
 {% block head %}
 <title>{{ section.title }} - {{ config.title }}</title>
 <style>
+    .post {
+        border-bottom: 2px solid var(--border-color);
+    }
     @media screen and (min-width: 600px) {
         .post {
             margin: 0 10% 0 10%;
@@ -18,13 +21,13 @@
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
 <p>{{ section.description }}</p>
+{{ section.content | safe }}
 
 {% for page in section.pages %}
 <div class="post">
     <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
     <h3 id="date">{{ page.date }}</h3>
     <p>{{ page.description }}</p>
-    <hr>
 </div>
 {% endfor %}
 {% endblock content %}
