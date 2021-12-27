@@ -15,55 +15,24 @@
 {% endblock before_content %}
 
 {% block content %}
-<h2>About</h2>
+<h2>About me</h2>
 <div id="about">
     <img src="/test/lorem-ipsum/img.jpg" id="about-img" />
-    <div id="about-text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.
-        </p>
-        <p>
-            Cras fermentum odio eu feugiat pretium. Metus aliquam eleifend mi in
-            nulla posuere sollicitudin aliquam ultrices. Aliquam sem fringilla ut morbi. Et
-            egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Urna duis
-            convallis convallis tellus id interdum. Molestie at elementum eu facilisis sed
-            odio morbi. Dui faucibus in ornare quam viverra orci sagittis.
-        </p><p>
-            TODO: Social Media</p>
+    <div>
+        <p>{{ config.extra.about }}</p>
+        <p>TODO: Social Media</p>
     </div>
 </div>
 <h2>Portfolio</h2>
 <div id="portfolio">
-    <div class="proyect">
-        <h3>Proyect title 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
+    {% for project in config.extra.projects %}
+    <div class="project">
+        <a href="{{ project.1 }}">
+            <h3>{{ project.0 }}</h3>
+            <p>{{ project.2 }}</p>
+        </a>
     </div>
-    <div class="proyect">
-        <h3>Proyect title 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
-    </div>
-    <div class="proyect">
-        <h3>Proyect title 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
-    </div>
-    <div class="proyect">
-        <h3>Proyect title 4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
-    </div>
+    {% endfor %}
 </div>
 <div id="blog">
     <h2 id="recent-title">Recent posts</h2>
@@ -76,11 +45,12 @@
     </div>
     <h2 id="categories-title">Categories</h2>
     <div id="categories">
-        <h3>Category title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
+        <ul>
+            {% for category in section.subsections %}
+            {% set category_title = category | trim_end_matches(pat="/_index.md") %}
+            <li><a href="/{{ category_title }}">{{ category_title | title }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 <script src="/animations-js/matrix-animation.js"></script>

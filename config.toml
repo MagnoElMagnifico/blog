@@ -17,3 +17,34 @@ highlight_theme = "ayu-dark"
 
 [extra]
 author = "Magno El Magnífico"
+about = """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
+vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
+ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.
+"""
+
+projects = [
+    ["Project test 1", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 2", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 3", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 4", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+]

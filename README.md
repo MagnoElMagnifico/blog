@@ -1,4 +1,3 @@
-TODO: Use a color palette
 TODO: Header in page
 TODO: Improve the end of the page on sections
 TODO: CSS Transitions / Animations
