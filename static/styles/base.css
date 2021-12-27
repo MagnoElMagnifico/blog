@@ -48,8 +48,14 @@ strong {
 }
 p code {
     background-color: var(--code-background-color);
-    border-radius: 15%;
+    border-radius: 5px;
     padding: 0 2px 0 2px;
+}
+blockquote {
+    background-color: var(--blockquote-background-color);
+    border-radius: 7px;
+    padding: 20px;
+    border-left: 2px solid var(--border-color);
 }
 
 img {
