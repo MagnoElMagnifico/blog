@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {# TODO: Icon #}
     {% block head %} {% endblock %}
 </head>
@@ -20,6 +21,13 @@
     <footer>
         <h3>{{ config.title }}</h3>
         <p id="copyright">&#169;2021 - {{ config.extra.author }}</p>
+        <div class="social-media">
+            <a class="fa fa-youtube" href="https://www.example.com" style="background-color: red;"></a>
+            <a class="fa fa-instagram" href="https://www.example.com" style="background-color: purple;"></a>
+            <a class="fa fa-linkedin" href="https://www.example.com" style="background-color: lightblue;"></a>
+            <a class="fa fa-github" href="https://www.example.com" style="background-color: grey;"></a>
+            <a class="fa fa-reddit" href="https://www.example.com" style="background-color: orange;"></a>
+        </div>
         <!-- TODO?: Adress (https://www.w3schools.com/TAgs/tag_address.asp) -->
     </footer>
 </body>
