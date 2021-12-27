@@ -47,16 +47,12 @@ canvas {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-items:center;
 }
 #about-img {
-    flex-grow: 0;
-    width: 10vw;
-    object-fit: scale-down; /* or cover */
+    width: 15%;
     margin: 0 20px 0 0;
     transform: none;
-}
-#about-text {
-    flex-grow: 2;
 }
 
 /* Portfolio */

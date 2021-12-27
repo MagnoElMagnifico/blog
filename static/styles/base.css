@@ -42,9 +42,7 @@ a {
 a:hover {
     color: var(--link-hover-color);
 }
-a:visited {
-    color: var(--link-visited-color);
-}
+
 strong {
     color: var(--bold-color);
 }
@@ -64,6 +62,7 @@ img {
     border: 5px solid var(--border-color);
     margin: 15px 0 15px 50%;
     transform: translate(-50%, 0%);
+    object-fit: scale-down; /* or cover */
 }
 
 footer {
