@@ -5,6 +5,16 @@ canvas {
     height: 100vh;
     width: 100vw;
 }
+@media screen and (max-height: 400px) {
+    canvas {
+        height: 400px;
+    }
+    #start {
+        top: 40px;
+        transform: translate(-50%, 0);
+    }
+}
+
 #start {
     padding: 20px;
     border-radius: 10%;
@@ -15,16 +25,6 @@ canvas {
     left: 50vw;
     width: max-content;
     transform: translate(-50%, -50%);
-}
-
-@media screen and (max-height: 400px) {
-    canvas {
-        height: 400px;
-    }
-    #start {
-        top: 40px;
-        transform: translate(-50%, 0);
-    }
 }
 
 /* Title */
@@ -48,6 +48,9 @@ canvas {
     display: flex;
     justify-content: space-between;
     align-items:center;
+}
+#about p {
+    text-indent: var(--indent);
 }
 #about-img {
     width: 15%;

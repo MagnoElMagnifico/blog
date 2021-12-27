@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: var(--details-size);
 }
 
-p {
+p, li {
     text-align: justify;
     font-size: var(--content-size);
 }
@@ -56,6 +56,7 @@ blockquote {
     border-radius: 7px;
     padding: 20px;
     border-left: 2px solid var(--border-color);
+    text-indent: var(--indent);
 }
 
 img {
@@ -76,7 +77,25 @@ footer {
     padding: 10px 10vw 10px 10vw;
     color: var(--footer-font-color);
     background-color: var(--footer-background-color);
+    text-align: center;
 }
 #copyright {
     margin-top: 0;
+    text-align: center;
+}
+
+.social-media {
+    text-align: center;
+}
+.social-media a {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 2.5px 0 2.5px;
+    width: 40px;
+    height: 16px;
+}
+
+.social-media a:hover {
+    opacity: 0.7;
 }
