@@ -3,24 +3,29 @@
 {% block head %}
 <title>Not found - {{ config.title }}</title>
 <style>
-    html, body {
+    html,
+    body {
         height: 100%;
     }
+
     footer {
         position: absolute;
         right: 0;
         bottom: 0;
         left: 0;
     }
+
     @media screen and (max-height: 500px) {
         footer {
             display: none;
         }
     }
+
     #not-found {
         margin: 30vmin 0 30vmin 0;
         text-align: center;
     }
+
     #not-found h2 {
         margin: 0 0 10px 0;
     }
