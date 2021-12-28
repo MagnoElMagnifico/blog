@@ -5,8 +5,9 @@
     --title-font: "Audiowide";
 
     --title-color: #8f8;
-    --main-title-size: 5rem;
-    --details-size: 1rem;
+    --blog-title-size: 35px;
+    --main-title-size: 50px;
+    --details-size: 15px;
     --content-size: 14px;
     --indent: 20px;
 
@@ -23,7 +24,6 @@
 
     --presentation-background-color: #0009;
     --logo-min-width: 100px;
-    --blog-title-size: 3rem;
 
     --project-background-color: #000;
     --project-hover-background-color: #111;
