@@ -3,8 +3,22 @@
 {% block head %}
 <title>Not found - {{ config.title }}</title>
 <style>
+    html, body {
+        height: 100%;
+    }
+    footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    @media screen and (max-height: 500px) {
+        footer {
+            display: none;
+        }
+    }
     #not-found {
-        margin: 30vh 0 30vh 0;
+        margin: 30vmin 0 30vmin 0;
         text-align: center;
     }
     #not-found h2 {
@@ -12,7 +26,6 @@
     }
 </style>
 {% endblock %}
-
 {% block before_content %}
 <div id="not-found">
     <h1 class="main-title">404</h1>
