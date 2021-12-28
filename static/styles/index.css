@@ -15,6 +15,11 @@ canvas {
     }
 }
 
+@keyframes intro {
+    from { opacity: 0; top: 10vh; }
+    to { opacity: 100%; top: 50vh;}
+}
+
 #start {
     padding: 20px;
     border-radius: 10%;
@@ -25,6 +30,7 @@ canvas {
     left: 50vw;
     width: max-content;
     transform: translate(-50%, -50%);
+    animation: intro 1.5s ease-out;
 }
 
 /* Title */

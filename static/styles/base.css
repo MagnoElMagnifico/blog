@@ -74,10 +74,11 @@ img {
 
 footer {
     margin-top: 50px;
-    padding: 10px 10vw 10px 10vw;
+    padding: 1px 10vw 10px 10vw;
     color: var(--footer-font-color);
     background-color: var(--footer-background-color);
     text-align: center;
+   
 }
 #copyright {
     margin-top: 0;
