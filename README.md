@@ -6,7 +6,7 @@ TODO?: Improve how the page scales on mobiles
 WHEN ADDING CONTENT
 LATER: Add proper social media links
 LATER: Projects
-LATER:
+LATER: Make multilingual (for now in Spanish)
 
 FUTURE: Career
 
