@@ -12,14 +12,11 @@
 {% macro categories(cat) %}
 {% set delta_saturation = cat | length %}
 {% if delta_saturation > 0 %}
+{% set delta_saturation = 360 / delta_saturation %}
 <div class="box-list">
-    {% set delta_saturation = 360 / delta_saturation %}
-    {% set counter = 0 %}
-
     {% for category in cat %}
         {% set path = category | trim_end_matches(pat = "/_index.md") %}
-        <a href="/{{ path }}" style="background-color: hsl({{ counter * delta_saturation }}, 100%, 50%);">{{ path | title }}</a>
-        {% set_global counter = counter + 1 %}
+        <a href="/{{ path }}" style="background-color: hsl({{ loop.index0 * delta_saturation }}, 100%, 50%);">{{ path | title }}</a>
     {% endfor %}
 </div>
 {% endif %}
