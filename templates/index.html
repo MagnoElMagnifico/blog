@@ -20,16 +20,10 @@
     <img src="/logo.png" id="about-img" />
     <div>
         <p>{{ config.extra.about }}</p>
-        <div class="social-media">
-            <a class="fa fa-envelope" href="mailto:marcosgranja317@gmail.com" style="background-color: blue;"></a>
-            <a class="fa fa-youtube" href="https://www.example.com" style="background-color: red;"></a>
-            <a class="fa fa-instagram" href="https://www.example.com" style="background-color: purple;"></a>
-            <a class="fa fa-linkedin" href="https://www.example.com" style="background-color: lightblue;"></a>
-            <a class="fa fa-github" href="https://www.example.com" style="background-color: grey;"></a>
-            <a class="fa fa-reddit" href="https://www.example.com" style="background-color: orange;"></a>
-        </div>
+        {{ macros::social_media() }}
     </div>
 </div>
+
 <h2>Portfolio</h2>
 <div id="portfolio">
     {% for project in config.extra.projects %}
@@ -41,24 +35,23 @@
     </div>
     {% endfor %}
 </div>
+
 <div id="blog">
-    <h2 id="recent-title">Recent posts</h2>
-    <div id="recent">
+    <h2>Categories</h2>
+    {# Until we have more categories, use some random placeholders #}
+    {# macros::categories(cat=section.subsections) #}
+    {{ macros::categories(cat=["test", "Lorem Ipsum", "404", "Magno"]) }}
+
+    <!--TODO -->
+    <h2>Recent posts</h2>
+    <div>
         <h3>Post title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
             vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
             ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
     </div>
-    <h2 id="categories-title">Categories</h2>
-    <div id="categories">
-        <ul>
-            {% for category in section.subsections %}
-            {% set category_title = category | trim_end_matches(pat="/_index.md") %}
-            <li><a href="/{{ category_title }}">{{ category_title | title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
 </div>
+
 <script src="/animations-js/matrix-animation.js"></script>
 {% endblock content %}

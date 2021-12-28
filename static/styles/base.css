@@ -78,17 +78,17 @@ footer {
     color: var(--footer-font-color);
     background-color: var(--footer-background-color);
     text-align: center;
-   
 }
 #copyright {
     margin-top: 0;
     text-align: center;
 }
 
-.social-media {
+.box-list {
     text-align: center;
+    margin: 20px 0 20px 0;
 }
-.social-media a {
+.box-list a {
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -96,7 +96,6 @@ footer {
     width: 40px;
     height: 16px;
 }
-
-.social-media a:hover {
+.box-list a:hover {
     opacity: 0.7;
 }
