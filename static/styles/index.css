@@ -1,5 +1,3 @@
-@import "config.css";
-
 /* Animation */
 canvas {
     height: 100vh;
@@ -90,6 +88,7 @@ canvas {
 /* Blog */
 #blog {
     display: grid;
+    grid-template-columns: 60%;
 }
 #recent-title {
     grid-column: 1 / span 1;
@@ -97,7 +96,7 @@ canvas {
     margin: 0;
 }
 #categories-title {
-    grid-column: 2 / span 2;
+    grid-column: 2 / span 1;
     grid-row: 1 / span 1;
     margin: 0 0 0 20px;
 }
