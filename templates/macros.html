@@ -21,9 +21,11 @@
 {% endmacro %}
 
 {% macro categories(cat) %}
+{% if cat | length > 0 %}
 <div class="box-list">
     {{ macros::color_list(list=cat) }}
 </div>
+{% endif %}
 {% endmacro %}
 
 {% macro header(list) %}
@@ -33,10 +35,10 @@
 </header>
 {% endmacro %}
 
-{% macro preview_page(page, show_cat=false) %}
+{% macro preview_page(page, show_cat=true) %}
 <div class="post">
     {% set oversection = get_section(path=page.ancestors | last) %}
-    <h2><a href="{{ page.permalink | safe }}">{{ page.title }} - {{ oversection.title }}</a></h2>
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}{% if show_cat and oversection.title %} - {{ oversection.title }}{% endif %}</a></h2>
     <h3 class="date">{{ page.date }}</h3>
     <p>{{ page.description }}</p>
 </div>

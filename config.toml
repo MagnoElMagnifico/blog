@@ -24,6 +24,7 @@ incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
 vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
 ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.
 """
+about_img = "/logo.png"
 
 header_sections = ["test", "lorem ipsum", "404", "Magno"]
 

@@ -16,10 +16,10 @@
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
 {{ macros::categories(cat=section.subsections) }}
-<p>{{ section.description }}</p>
+{% if section.description %}<p>{{ section.description }}</p>{% endif %}
 {{ section.content | safe }}
 
 {% for page in section.pages %}
-{{ macros::preview_page(page=page, show_cat=true) }}
+    {{ macros::preview_page(page=page, show_cat=false) }}
 {% endfor %}
 {% endblock content %}
