@@ -24,6 +24,10 @@
 </style>
 {% endblock head %}
 
+{% block before_content %}
+{{ macros::header(list=["test", "cum", "tremendo"]) }}
+{% endblock before_content %}
+
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
 {{ macros::categories(cat=section.subsections) }}

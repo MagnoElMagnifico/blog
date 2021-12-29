@@ -21,6 +21,10 @@
 <h2 class="header-content"><a href="..">Back</a></h2>
 {% endblock header %}
 
+{% block before_content %}
+{{ macros::header(list=["test", "cum", "lorem ipsum"]) }}
+{% endblock before_content %}
+
 {% block content %}
 <h1 class="main-title">{{ page.title }}</h1>
 <h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>

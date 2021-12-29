@@ -72,6 +72,35 @@ img {
     object-fit: scale-down; /* or cover */
 }
 
+header {
+    background-color: var(--footer-background-color);
+    padding: 5px 0 5px 0;
+}
+header img {
+    border-radius: 100%;
+    width: 50px;
+    transform: none;
+    margin: 0;
+}
+header img:hover {
+    transform: scale(1.03, 1.03);
+}
+
+.box-list {
+    text-align: center;
+}
+.box-list a {
+    vertical-align: middle;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 2.5px 20px 2.5px;
+    min-width: 40px;
+}
+.box-list a:hover {
+    opacity: 0.7;
+}
+
 footer {
     margin-top: 50px;
     padding: 1px 10vw 10px 10vw;
@@ -82,20 +111,4 @@ footer {
 #copyright {
     margin-top: 0;
     text-align: center;
-}
-
-.box-list {
-    text-align: center;
-    margin: 20px 0 20px 0;
-}
-.box-list a {
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0 2.5px 0 2.5px;
-    width: 40px;
-    height: 16px;
-}
-.box-list a:hover {
-    opacity: 0.7;
 }
