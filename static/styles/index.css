@@ -83,3 +83,7 @@ canvas {
 .project p {
     color: var(--font-color);
 }
+
+#blog p {
+    text-indent: var(--indent);
+}
