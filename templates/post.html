@@ -22,7 +22,7 @@
 {% endblock header %}
 
 {% block before_content %}
-{{ macros::header(list=["test", "cum", "lorem ipsum"]) }}
+{{ macros::header(list=config.extra.header_sections) }}
 {% endblock before_content %}
 
 {% block content %}

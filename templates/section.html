@@ -25,7 +25,7 @@
 {% endblock head %}
 
 {% block before_content %}
-{{ macros::header(list=["test", "cum", "tremendo"]) }}
+{{ macros::header(list=config.extra.header_sections) }}
 {% endblock before_content %}
 
 {% block content %}
