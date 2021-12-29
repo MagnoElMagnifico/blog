@@ -39,14 +39,17 @@
 <div id="blog">
     {{ macros::categories(cat=section.subsections) }}
 
-    <!-- TODO: Currently showing everything, just show the recent posts -->
+    {# TODO: Currently showing everything, just show the recent posts #}
     <h2>Recent posts</h2>
     {% for subsection_path in section.subsections %}
         {% set subsection = get_section(path=subsection_path) %}
 
-        <h3><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></h3>
-        <p>{{ subsection.description }}</p>
-        {{ subsection.content | safe }}
+        {# Redundant #}
+        {#
+            <h3><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></h3>
+            <p>{{ subsection.description }}</p>
+            {{ subsection.content | safe }}
+        #}
 
         {% for subpage in subsection.pages %}
             {{ macros::preview_page(page=subpage) }}
