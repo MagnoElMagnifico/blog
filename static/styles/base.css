@@ -100,6 +100,8 @@ header img:hover {
 
 .box-list {
     text-align: center;
+}
+header.box-list {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
