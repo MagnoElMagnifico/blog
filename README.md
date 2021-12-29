@@ -1,9 +1,19 @@
-TODO: Header in page
+Improvements:
+TODO: Overlapping boxes when shrinking
+TODO: Remove empty HTML tags
 TODO: Improve the end of the page on sections
-TODO: CSS Transitions / Animations
 TODO?: Improve how the page scales on mobiles
 
-WHEN ADDING CONTENT
+New features:
+TODO: Table of contents
+TODO: Default values in base.html
+TODO: Description HTML tags
+TODO: CSS Transitions / Animations
+TODO: Robots.txt
+TODO?: Taxonomies -> Pagination -> Feed
+TODO?: Sitemap
+
+When adding content:
 LATER: Add proper social media links
 LATER: Projects
 LATER: Make multilingual (for now in Spanish)
