@@ -100,13 +100,16 @@ header img:hover {
 
 .box-list {
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .box-list a {
     vertical-align: middle;
     color: white;
     padding: 10px;
     border-radius: 5px;
-    margin: 20px 2.5px 20px 2.5px;
+    margin: 2.5px;
     min-width: 40px;
 }
 .box-list a:hover {

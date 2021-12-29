@@ -1,5 +1,4 @@
 Improvements:
-TODO: Overlapping boxes when shrinking
 TODO: Improve the footer in shorter pages
 TODO?: Improve how the page scales on mobiles
 
