@@ -37,20 +37,21 @@
 </div>
 
 <div id="blog">
-    <h2>Categories</h2>
-    {# Until we have more categories, use some random placeholders #}
-    {# macros::categories(cat=section.subsections) #}
-    {{ macros::categories(cat=["test", "Lorem Ipsum", "404", "Magno"]) }}
+    {{ macros::categories(cat=section.subsections) }}
 
-    <!--TODO -->
+    <!-- TODO: Currently showing everything, just show the recent posts -->
     <h2>Recent posts</h2>
-    <div>
-        <h3>Post title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
-            vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
-            ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.</p>
-    </div>
+    {% for subsection_path in section.subsections %}
+        {% set subsection = get_section(path=subsection_path) %}
+
+        <h3><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></h3>
+        <p>{{ subsection.description }}</p>
+        {{ subsection.content | safe }}
+
+        {% for subpage in subsection.pages %}
+            {{ macros::preview_page(page=subpage) }}
+        {% endfor %}
+    {% endfor %}
 </div>
 
 <script src="/animations-js/matrix-animation.js"></script>

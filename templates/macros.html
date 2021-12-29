@@ -32,3 +32,11 @@
     {{ macros::color_list(list=list) }}
 </header>
 {% endmacro %}
+
+{% macro preview_page(page, show_cat=false) %}
+<div class="post">
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <h3 class="date">{{ page.date }}</h3>
+    <p>{{ page.description }}</p>
+</div>
+{% endmacro %}

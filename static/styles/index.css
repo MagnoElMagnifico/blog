@@ -84,6 +84,9 @@ canvas {
     color: var(--font-color);
 }
 
+#blog {
+    padding-top: 20px;
+}
 #blog p {
     text-indent: var(--indent);
 }

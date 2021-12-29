@@ -71,6 +71,19 @@ img {
     object-fit: scale-down; /* or cover */
 }
 
+.post {
+    border-bottom: 2px solid var(--border-color);
+}
+@media screen and (min-width: 600px) {
+    .post {
+        margin: 0 10% 0 10%;
+    }
+}
+.date {
+    margin: 0;
+    font-size: 14px;
+}
+
 header {
     background-color: var(--footer-background-color);
     padding: 5px 0 5px 0;

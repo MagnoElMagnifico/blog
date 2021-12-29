@@ -6,21 +6,6 @@
     p {
         text-indent: var(--indent);
     }
-
-    .post {
-        border-bottom: 2px solid var(--border-color);
-    }
-
-    @media screen and (min-width: 600px) {
-        .post {
-            margin: 0 10% 0 10%;
-        }
-    }
-
-    #date {
-        margin: 0;
-        font-size: 14px;
-    }
 </style>
 {% endblock head %}
 
@@ -35,10 +20,6 @@
 {{ section.content | safe }}
 
 {% for page in section.pages %}
-<div class="post">
-    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
-    <h3 id="date">{{ page.date }}</h3>
-    <p>{{ page.description }}</p>
-</div>
+{{ macros::preview_page(page=page, show_cat=true) }}
 {% endfor %}
 {% endblock content %}
