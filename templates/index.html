@@ -11,7 +11,7 @@
 <div id="start">
     <img src="/logo.png" id="blog-logo" />
     <h1 id="blog-title">{{ config.title }}</h1>
-    <p id="blog-description">{{ config.description }}</p>
+    {% if config.description %}<p id="blog-description">{{ config.description }}</p>{% endif %}
 </div>
 {% endblock before_content %}
 
@@ -34,18 +34,13 @@
 
     {# TODO: Currently showing everything, just show the recent posts #}
     <h2>Recent posts</h2>
+
     {% for subpage in section.pages %}
         {{ macros::preview_page(page=subpage) }}
     {% endfor %}
+
     {% for subsection_path in section.subsections %}
         {% set subsection = get_section(path=subsection_path) %}
-
-        {# Redundant #}
-        {#
-            <h3><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></h3>
-            <p>{{ subsection.description }}</p>
-            {{ subsection.content | safe }}
-        #}
 
         {% for subpage in subsection.pages %}
             {{ macros::preview_page(page=subpage) }}

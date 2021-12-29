@@ -16,7 +16,9 @@
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
 {{ macros::categories(cat=section.subsections) }}
-{% if section.description %}<p>{{ section.description }}</p>{% endif %}
+{% if section.description %}
+    <p>{{ section.description }}</p>
+{% endif %}
 {{ section.content | safe }}
 
 {% for page in section.pages %}
