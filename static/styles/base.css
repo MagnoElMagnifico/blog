@@ -20,20 +20,20 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--title-font);
-    margin: 30px 0 0 0;
     color: var(--title-color);
+    margin: 30px 0 0 0;
 }
 .main-title {
     font-size: var(--main-title-size);
 }
 .details {
-    margin-top: 0;
     font-size: var(--details-size);
+    margin-top: 0;
 }
 
 p, li {
-    text-align: justify;
     font-size: var(--content-size);
+    text-align: justify;
 }
 a {
     color: var(--link-color);
@@ -56,7 +56,6 @@ blockquote {
     border-radius: 7px;
     padding: 20px;
     border-left: 2px solid var(--border-color);
-    text-indent: var(--indent);
 }
 
 img {
@@ -77,10 +76,10 @@ header {
     padding: 5px 0 5px 0;
 }
 header img {
+    margin: 0;
     border-radius: 100%;
     width: 50px;
     transform: none;
-    margin: 0;
 }
 header img:hover {
     transform: scale(1.03, 1.03);
@@ -102,13 +101,13 @@ header img:hover {
 }
 
 footer {
+    background-color: var(--footer-background-color);
+    color: var(--footer-font-color);
+    text-align: center;
     margin-top: 50px;
     padding: 1px 10vw 10px 10vw;
-    color: var(--footer-font-color);
-    background-color: var(--footer-background-color);
-    text-align: center;
 }
 #copyright {
-    margin-top: 0;
     text-align: center;
+    margin-top: 0;
 }
