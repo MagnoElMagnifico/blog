@@ -1,11 +1,13 @@
 base_url = "https://example.com"
 
-title = "Magno Blog"
-description = "My notes and other stuff about my programming projects"
+title = "Test Blog"
+# My notes and other stuff about my programming projects
+description = """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""
 default_language = "en" # "es"
-
-# theme = ""
-# output_dir = "public"
 
 compile_sass = false
 build_search_index = false

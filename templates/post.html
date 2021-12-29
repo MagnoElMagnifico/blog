@@ -16,11 +16,6 @@
 </style>
 {% endblock head %}
 
-{% block header %}
-<h1 class="header-content"><a href="/">Blog</a></h1>
-<h2 class="header-content"><a href="..">Back</a></h2>
-{% endblock header %}
-
 {% block before_content %}
 {{ macros::header(list=config.extra.header_sections) }}
 {% endblock before_content %}
