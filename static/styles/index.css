@@ -1,0 +1,92 @@
+/* Animation */
+canvas {
+    height: 100vh;
+    width: 100vw;
+}
+@media screen and (max-height: 400px) {
+    canvas {
+        height: 400px;
+    }
+    #start {
+        top: 40px;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes intro {
+    from { opacity: 0; top: 10vh; }
+    to { opacity: 100%; top: 50vh;}
+}
+
+#start {
+    background-color: var(--presentation-background-color);
+    text-align: center;
+    border-radius: 10%;
+    padding: 20px;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    animation: intro 1.5s ease-out;
+}
+
+/* Title */
+#blog-logo {
+    border-radius: 100%;
+    width: 15vmin;
+    min-width: var(--logo-min-width);
+    margin: 0;
+    transform: none;
+}
+#blog-title {
+    font-size: var(--blog-title-size);
+}
+#blog-description {
+    max-width: 50vmin;
+}
+
+/* Content - About */
+#about {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#about p {
+    text-indent: var(--indent);
+}
+#about-img {
+    width: 15%;
+    margin: 0 20px 0 0;
+    transform: none;
+}
+
+/* Portfolio */
+#portfolio {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.project {
+    flex-grow: 1;
+    background-color: var(--project-background-color);
+    margin: 0 20px 20px 0;
+    border-radius: 10px;
+    padding: 10px;
+    width: 250px;
+}
+.project:hover {
+    background-color: var(--project-hover-background-color);
+    transform: scale(1.03, 1.03);
+}
+.project p {
+    color: var(--font-color);
+}
+
+#blog {
+    padding-top: 20px;
+}
+#blog p {
+    text-indent: var(--indent);
+}

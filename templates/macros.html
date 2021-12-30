@@ -1,0 +1,45 @@
+{% macro social_media() %}
+<div class="box-list">
+    <a class="fa fa-envelope" href="mailto:marcosgranja317@gmail.com" style="background-color: blue;"></a>
+    <a class="fa fa-youtube" href="https://www.example.com" style="background-color: red;"></a>
+    <a class="fa fa-instagram" href="https://www.example.com" style="background-color: purple;"></a>
+    <a class="fa fa-linkedin" href="https://www.example.com" style="background-color: lightblue;"></a>
+    <a class="fa fa-github" href="https://www.example.com" style="background-color: grey;"></a>
+    <a class="fa fa-reddit" href="https://www.example.com" style="background-color: orange;"></a>
+</div>
+{% endmacro %}
+
+{% macro color_list(list) %}
+{% set delta_saturation = list | length %}
+{% if delta_saturation > 0 %}
+    {% set delta_saturation = 360 / delta_saturation %}
+    {% for element in list %}
+        {% set path = element | trim_end_matches(pat="/_index.md") %}
+        <a href="/{{ path }}" style="background-color: hsl({{ loop.index0 * delta_saturation }}, 100%, 50%);">{{ path | title }}</a>
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+{% macro categories(cat) %}
+{% if cat | length > 0 %}
+<div class="box-list">
+    {{ macros::color_list(list=cat) }}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro header(list) %}
+<header class="box-list">
+    <a href="/"><img src="/logo.png"></a>
+    {{ macros::color_list(list=list) }}
+</header>
+{% endmacro %}
+
+{% macro preview_page(page, show_cat=true) %}
+<div class="post">
+    {% set oversection = get_section(path=page.ancestors | last) %}
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}{% if show_cat and oversection.title %} - {{ oversection.title }}{% endif %}</a></h2>
+    <h3 class="date">{{ page.date }}</h3>
+    <p>{{ page.description }}</p>
+</div>
+{% endmacro %}

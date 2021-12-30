@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% import "index-macros.html" as index_macros %}
+
+{% block head %}
+<title>{{ config.title }}</title>
+<link rel="stylesheet" href="/styles/index.css">
+{% endblock head %}
+
+{% block before_content %}
+<canvas id="matrix-animation"></canvas>
+<div id="start">
+    <img src="/logo.png" id="blog-logo" />
+    <h1 id="blog-title">{{ config.title }}</h1>
+    {% if config.description %}<p id="blog-description">{{ config.description }}</p>{% endif %}
+</div>
+{% endblock before_content %}
+
+{% block content %}
+{% if config.extra.about and config.extra.about_img %}
+    {{ index_macros::generate_about(about=config.extra.about, about_img=config.extra.about_img) }}
+{% elif section.extra.about and section.extra.about_img %}
+    {{ index_macros::generate_about(about=section.extra.about, about_img=section.extra.about_img) }}
+{% endif %}
+
+{% if config.extra.projects %}
+    {{ index_macros::generate_projects(projects=config.extra.projects) }}
+{% elif section.extra.projects %}
+    {{ index_macros::generate_projects(projects=section.extra.projects) }}
+{% endif %}
+
+{% if section.pages or section.subsections %}
+<div id="blog">
+    {{ macros::categories(cat=section.subsections) }}
+
+    {# TODO: Currently showing everything, just show the recent posts #}
+    <h2>Recent posts</h2>
+
+    {% for subpage in section.pages %}
+        {{ macros::preview_page(page=subpage) }}
+    {% endfor %}
+
+    {% for subsection_path in section.subsections %}
+        {% set subsection = get_section(path=subsection_path) %}
+
+        {% for subpage in subsection.pages %}
+            {{ macros::preview_page(page=subpage) }}
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<script src="/animations-js/matrix-animation.js"></script>
+{% endblock content %}

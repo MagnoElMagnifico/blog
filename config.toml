@@ -1,0 +1,55 @@
+base_url = "https://example.com"
+
+title = "Test Blog"
+# My notes and other stuff about my programming projects
+description = """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""
+default_language = "en" # "es"
+
+compile_sass = false
+build_search_index = false
+minify_html = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "ayu-dark"
+
+[extra]
+author = "Magno El Magnífico"
+about = """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Enim ut tellus elementum sagittis
+vitae et leo duis. Odio tempor orci dapibus ultrices in iaculis. Massa massa
+ultricies mi quis hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar.
+"""
+about_img = "/logo.png"
+
+header_sections = ["test", "lorem ipsum", "404", "Magno"]
+
+projects = [
+    ["Project test 1", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 2", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 3", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+
+    ["Project test 4", "https://www.example.com", """Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Enim ut tellus elementum sagittis vitae et leo duis.
+    Odio tempor orci dapibus ultrices in iaculis. Massa massa ultricies mi quis
+    hendrerit dolor. Cursus euismod quis viverra nibh cras pulvinar."""],
+]

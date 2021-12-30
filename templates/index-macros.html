@@ -1,0 +1,24 @@
+{% macro generate_about(about, about_img) %}
+<h2>About me</h2>
+<div id="about">
+    <img src="{{ about_img }}" id="about-img" />
+    <div>
+        <p>{{ about }}</p>
+        {{ macros::social_media() }}
+    </div>
+</div>
+{% endmacro %}
+
+{% macro generate_projects(projects) %}
+<h2>Portfolio</h2>
+<div id="portfolio">
+    {% for project in projects %}
+    <div class="project">
+        <a href="{{ project.1 }}">
+            <h3>{{ project.0 }}</h3>
+            <p>{{ project.2 }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endmacro %}

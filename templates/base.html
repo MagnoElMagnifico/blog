@@ -1,0 +1,29 @@
+{% import "macros.html" as macros %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/logo.png">
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+    {% block before_content %} {% endblock %}
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    <footer>
+        <h3>{{ config.title }}</h3>
+        <p id="copyright">&#169;2021{% if now() | date(format="%Y") != "2021" %}-{{ now() | date(format="%Y") }}{% endif %} {{ config.extra.author }}</p>
+        {{ macros::social_media() }}
+    </footer>
+</body>
+
+</html>
