@@ -1,20 +1,30 @@
-# Improvements:
-+ TODO: Improve the footer in shorter pages
-+ TODO?: Improve how the page scales on mobiles
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status)](https://app.netlify.com/sites/magnoblog/deploys)
 
-# New features:
-+ TODO: Table of contents
-+ TODO: Default values in base.html
-+ TODO: Description HTML tags
-+ TODO: CSS Transitions / Animations
-+ TODO: Robots.txt
-+ TODO?: Taxonomies -> Pagination -> Feed
-+ TODO?: Sitemap
+# Magno Blog
+This is the code for [my personal website](https://magnoblog.netlify.com) hosted
+in [Netlify](https://netlify.com) using the [Zola](https://www.getzola.org).
+static site generator.
 
-# When adding content:
-+ LATER: Add proper social media links
-+ LATER: Projects
-+ LATER: Make multilingual (for now in Spanish)
+The HTML, CSS and JS were all created by me, I am not using a _theme_.
+
+# TODOs
+## Improvements:
++ Improve the footer in shorter pages
++ Improve how the page looks on mobiles
+
+## New features:
++ Table of contents
++ Default values in base.html
++ Description HTML tags
++ CSS Transitions / Animations
++ Robots.txt
++ Taxonomies -> Pagination -> Feed
++ Sitemap
+
+## When adding content:
++ Add proper social media links
++ Projects
++ Make multilingual (for now in Spanish)
 
 # Links
 + [Tera Lang docs](https://tera.netlify.app/docs/)

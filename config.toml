@@ -1,6 +1,6 @@
-base_url = "https://example.com"
+base_url = "https://magnoblog.netlify.app"
 
-title = "Test Blog"
+title = "Magno Blog"
 # My notes and other stuff about my programming projects
 description = """Lorem ipsum dolor sit amet,
     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
