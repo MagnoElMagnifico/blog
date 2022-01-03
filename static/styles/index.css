@@ -1,92 +1,212 @@
-/* Animation */
-canvas {
+/* Not necesary because it is imported on the base.css */
+/* @import "config.css"; */
+
+/*
+===========================================================
+    Common style
+===========================================================
+*/
+
+h1 {
+    margin: 30px 0 20px 0 !important;
+    text-align: center;
+}
+
+/* Presentation */
+canvas { /* TODO: fixed height when too short */
     height: 100vh;
     width: 100vw;
 }
-@media screen and (max-height: 400px) {
+
+#start {
+    background-color: var(--presentation-background-color);
+    text-align: center;
+    /* Barely noticeable */
+    border-radius: 10%;
+    padding: 20px;
+    /* Position */
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    /* Animation */
+    animation: intro 1.5s ease-out;
+}
+
+@keyframes intro {
+    from { opacity: 0;    top: 10vh; }
+    to   { opacity: 100%; top: 50vh; }
+}
+
+@media only screen and (max-height: 400px) {
     canvas {
         height: 400px;
     }
+
     #start {
         top: 40px;
         transform: translate(-50%, 0);
     }
 }
 
-@keyframes intro {
-    from { opacity: 0; top: 10vh; }
-    to { opacity: 100%; top: 50vh;}
-}
-
-#start {
-    background-color: var(--presentation-background-color);
-    text-align: center;
-    border-radius: 10%;
-    padding: 20px;
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-    animation: intro 1.5s ease-out;
-}
-
-/* Title */
 #blog-logo {
     border-radius: 100%;
-    width: 15vmin;
-    min-width: var(--logo-min-width);
+    /* Reset centering */
     margin: 0;
     transform: none;
 }
-#blog-title {
-    font-size: var(--blog-title-size);
-}
-#blog-description {
-    max-width: 50vmin;
-}
 
-/* Content - About */
-#about {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-#about p {
-    text-indent: var(--indent);
-}
-#about-img {
-    width: 15%;
-    margin: 0 20px 0 0;
-    transform: none;
-}
-
-/* Portfolio */
-#portfolio {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 .project {
-    flex-grow: 1;
     background-color: var(--project-background-color);
+    flex-grow: 1;
     margin: 0 20px 20px 0;
     border-radius: 10px;
     padding: 10px;
-    width: 250px;
 }
+
 .project:hover {
     background-color: var(--project-hover-background-color);
     transform: scale(1.03, 1.03);
 }
+
 .project p {
+    /* Show as text, not as a link */
     color: var(--font-color);
 }
 
-#blog {
-    padding-top: 20px;
+/*
+===========================================================
+    Sizes for specific devices
+===========================================================
+*/
+/* Smaal devices - portrait */
+@media only screen
+and (max-device-width: 600px)
+and (orientation: portrait) {
+    h1 {
+        font-size: 60px;
+    }
+
+    /* Presentation */
+    #start {
+        width: 80vw;
+    }
+
+    #blog-logo {
+        padding: 15px;
+        border: 10px solid var(--border-color);
+        width: 170px;
+    }
+
+    #blog-title {
+        font-size: 80px;
+    }
+
+    #blog-description {
+        font-size: 35px;
+    }
+
+    /* About */
+    #about-img {
+        width: 40vmin;
+        margin-left: 50%;
+    }
+
+    /* Porfolio */
+    .project {
+        padding: 1px 30px 1px 30px;
+    }
 }
-#blog p {
-    text-indent: var(--indent);
+
+/* Medium size devices and small space in Desktop */
+@media only screen
+and (min-device-width: 600px)
+and (max-device-width: 1100px),
+
+only screen
+and (min-device-width: 1100px)
+and (max-width: 1100px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    /* Presentation */
+    #start {
+        width: 65vw;
+    }
+
+    #blog-logo {
+        padding: 10px;
+        border: 5px solid var(--border-color);
+        width: 110px;
+    }
+
+    #blog-title {
+        font-size: 45px;
+    }
+
+    #blog-description {
+        font-size: 17px;
+    }
+
+    /* About */
+    #about-img {
+        width: 25vmin;
+        margin: 0 0 0 50%;
+    }
+
+    /* Porfolio */
+    .project h3 {
+        margin: 15px 0 -30px 0;
+    }
+}
+
+/* Desktops with lots of space */
+@media only screen
+and (min-device-width: 1100px)
+and (min-width: 1100px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    /* Presentation */
+    #start {
+        width: 40vw;
+    }
+
+    #blog-logo {
+        padding: 6px;
+        border: 4px solid var(--border-color);
+        width: 100px;
+    }
+
+    #blog-title {
+        font-size: 35px;
+    }
+
+    /* About */
+    #about {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #about-img {
+        width: 15vmin;
+        margin: 0 20px 0 0;
+        transform: none;
+    }
+
+    /* Porfolio */
+    #portfolio {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .project {
+        padding: 1px 30px 1px 30px;
+        width: 250px;
+    }
 }

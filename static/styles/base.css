@@ -1,44 +1,45 @@
 @import "config.css";
 
+/*
+===========================================================
+    Common style
+===========================================================
+*/
+
 html, body {
-    color: var(--font-color);
     background-color: var(--background-color);
+    color: var(--font-color);
     font-family: var(--content-font);
     overflow-x: hidden;
     margin: 0;
 }
-@media screen and (max-width: 1150px) {
-    .content {
-        margin: 0 5% 0 5%;
-    }
-}
-@media screen and (min-width: 1150px) {
-    .content {
-        margin: 0 30% 0 10%;
-    }
+
+/* Main text */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--title-color);
+    font-family: var(--title-font);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--title-font);
-    color: var(--title-color);
-    margin: 30px 0 0 0;
-}
-.main-title {
-    font-size: var(--main-title-size);
-}
 .details {
-    font-size: var(--details-size);
-    margin-top: 0;
+    font-size: 15px;
+    margin: 0 !important;
 }
 
 p, li {
-    font-size: var(--content-size);
+    font-size: 15px;
     text-align: justify;
 }
+
+.no-indent {
+    text-indent: 0 !important;
+}
+
+/* Basic text elements */
 a {
     color: var(--link-color);
     text-decoration: none;
 }
+
 a:hover {
     color: var(--link-hover-color);
 }
@@ -46,86 +47,324 @@ a:hover {
 strong {
     color: var(--bold-color);
 }
+
 p code {
     background-color: var(--code-background-color);
-    border-radius: 5px;
-    padding: 0 2px 0 2px;
+    border-radius: 4px;
+    padding: 0 4px;
 }
+
+pre {
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 10px;
+    white-space: pre-wrap;
+}
+
 blockquote {
     background-color: var(--blockquote-background-color);
-    border-radius: 7px;
-    padding: 20px;
-    border-left: 2px solid var(--border-color);
 }
 
 img {
-    /*
-        TODO: Make this variable depending on the image:
-        Creating a zola's shortcode to generate a img given a width
-    */
-    width: 50vw;
-    padding: 10px;
-    border: 5px solid var(--border-color);
-    margin: 15px 0 15px 50%;
-    transform: translate(-50%, 0%);
-    object-fit: scale-down; /* or cover */
+    object-fit: scale-down;
+    /* Center */
+    margin: 15px 0 15px 45%; /* Center by adding margin to the left (minus the .content margin) and then translate */
+    transform: translate(-50%, 0);
 }
 
-.post {
-    border-bottom: 2px solid var(--border-color);
-}
-@media screen and (min-width: 600px) {
-    .post {
-        margin: 0 10% 0 10%;
-    }
-}
-.date {
-    margin: 0;
-    font-size: 14px;
-}
+/*
+-----------------------------------------------------------
+    Blog elements
+-----------------------------------------------------------
+*/
 
+/* Header */
 header {
-    background-color: var(--footer-background-color);
-    padding: 5px 0 5px 0;
+    background-color: var(--hf-background-color);
+    padding: 5px 0;
+    overflow: hidden;
 }
+
 header img {
-    margin: 0;
     border-radius: 100%;
-    width: 50px;
+    /* Reset centering */
+    margin: 0;
     transform: none;
 }
+
 header img:hover {
     transform: scale(1.03, 1.03);
 }
 
+header.box-list {
+    /* Hide elements when space is too short */
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Box list */
 .box-list {
     text-align: center;
 }
-header.box-list {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
+
 .box-list a {
-    vertical-align: middle;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+    color: var(--box-list-color);
+    vertical-align: middle; /* Center boxes in the header */
     margin: 2.5px;
-    min-width: 40px;
-}
-.box-list a:hover {
-    opacity: 0.7;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-footer {
-    background-color: var(--footer-background-color);
-    color: var(--footer-font-color);
-    text-align: center;
-    margin-top: 50px;
-    padding: 1px 10vw 10px 10vw;
+.box-list a:hover {
+    opacity: 0.7;
+    /* TODO?: transform: scale(1.03, 1.03); */
 }
+
+/* Post */
+.post h2 {
+    margin: 0 !important;
+}
+
+.date {
+    font-size: 13px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--hf-background-color);
+    color: var(--hf-font-color);
+    text-align: center;
+    padding: 1px 0 10px 0; /* Use the margin of the title */
+}
+
 #copyright {
     text-align: center;
-    margin-top: 0;
+    margin-top: -1em; /* Close to the title */
+}
+
+/*
+===========================================================
+    Sizes for specific devices
+===========================================================
+*/
+/* Small devices - portrait */
+@media only screen
+and (max-device-width: 600px)
+and (orientation: portrait) {
+    /*
+    -------------------------------------------------------
+        Basic text elements
+    -------------------------------------------------------
+    */
+    .content {
+        margin: 0 5% 0 5%;
+    }
+
+    .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+        margin: 50px 0 -40px 0;
+    }
+
+    .main-title {
+        font-size: 100px;
+        margin: 30px 0 0 0 !important;
+    }
+
+    p {
+        text-indent: 40px;
+        margin: 40px 0;
+    }
+
+    pre {
+        padding: 20px;
+    }
+
+    blockquote {
+        border-left: 5px solid var(--border-color);
+        border-radius: 10px;
+        padding: 1px 40px;
+    }
+
+    img {
+        width: 75vmin;
+        padding: 10px;
+        border: 5px solid var(--border-color);
+    }
+
+    /*
+    -------------------------------------------------------
+        Blog elements
+    -------------------------------------------------------
+    */
+    header img {
+        width: 80px;
+    }
+
+    .post {
+        border-bottom: 5px solid var(--border-color);
+    }
+
+    .date {
+        margin: 0 0 -30px 0 !important;
+    }
+
+    .box-list a {
+        font-size: 35px;
+        min-width: 75px; /* For the icons */
+    }
+
+    footer {
+        margin-top: 50px;
+    }
+}
+
+/* Medium size devices and small space in Desktop */
+@media only screen
+and (min-device-width: 600px)
+and (max-device-width: 1100px),
+
+only screen
+and (min-device-width: 1100px)
+and (max-width: 1100px) {
+    /*
+    -------------------------------------------------------
+        Basic text elements
+    -------------------------------------------------------
+    */
+    .content {
+        margin: 0 10% 0 10%;
+    }
+
+    .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+        margin: 50px 0 -30px 0;
+    }
+
+    .main-title { /* = pequeno */
+        font-size: 100px;
+        margin: 30px 0 0 0 !important; /* = desktop */
+    }
+
+    p {
+        text-indent: 30px; /* desktop */
+        margin: 30px 0;
+    }
+
+    pre {
+        padding: 15px; /* = desktop */
+    }
+
+    blockquote {
+        border-left: 4px solid var(--border-color);
+        border-radius: 8px; /* = desktop */
+        padding: 1px 30px; /* = desktop */
+    }
+
+    img {
+        width: 80vmin;
+        padding: 6px;
+        border: 3px solid var(--border-color);
+    }
+
+    /*
+    -------------------------------------------------------
+        Blog elements
+    -------------------------------------------------------
+    */
+    header img { /* = desktop */
+        width: 55px;
+    }
+
+    .post {
+        border-bottom: 4px solid var(--border-color);
+    }
+
+    .date {
+        margin: 0 0 -30px 0 !important;
+    }
+
+    .box-list a {
+        font-size: 20px;
+        min-width: 60px; /* For the icons */
+    }
+
+    footer {
+        margin-top: 50px; /* = pequeno */
+    }
+}
+
+/* Override previus style for the Desktop */
+/* @media only screen
+and (min-device-width: 1100px)
+and (max-width: 1100px) {
+    .box-list a {
+        font-size: 15px !important;
+        min-width: 45px !important;
+    }
+} */
+
+/* Desktops with lots of space */
+@media only screen
+and (min-device-width: 1100px)
+and (min-width: 1100px) {
+    .content {
+        margin: 0 0 0 10%;
+        width: 800px
+    }
+
+    .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+        margin: 30px 0 -17px 0;
+    }
+
+    .main-title {
+        font-size: 80px;
+        margin: 30px 0 0 0 !important;
+    }
+
+    p {
+        text-indent: 30px;
+        margin: 17px 0;
+    }
+
+    pre {
+        padding: 15px;
+    }
+
+    blockquote {
+        border-left: 3.5px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1px 30px;
+    }
+
+    img {
+        width: 75vmin;
+        padding: 5px;
+        border: 3.5px solid var(--border-color);
+    }
+
+    /*
+    -------------------------------------------------------
+        Blog elements
+    -------------------------------------------------------
+    */
+    header img {
+        width: 55px;
+    }
+
+    .post {
+        border-bottom: 3.5px solid var(--border-color);
+        margin: 0 7% 0 7%;
+    }
+
+    .date {
+        margin: 0 0 -17px 0 !important;
+    }
+
+    .box-list a {
+        font-size: 15px;
+        min-width: 45px; /* For the icons */
+    }
+
+    footer {
+        margin-top: 40px;
+    }
 }

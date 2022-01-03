@@ -12,7 +12,11 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 + Improve the footer in shorter pages
 + Improve how the page looks on mobiles
 
+## Code:
++ Reduce the duplicates in CSS
+
 ## New features:
++ Add Russian chars to the animation (?)
 + Table of contents
 + Default values in base.html
 + Description HTML tags
@@ -30,3 +34,4 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 + [Tera Lang docs](https://tera.netlify.app/docs/)
 + [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
 + [Icons from Google](https://fonts.google.com/icons)
++ [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
