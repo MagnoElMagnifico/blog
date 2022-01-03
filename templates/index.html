@@ -11,7 +11,7 @@
 <div id="start">
     <img src="/logo.png" id="blog-logo" />
     <h1 id="blog-title">{{ config.title }}</h1>
-    {% if config.description %}<p id="blog-description">{{ config.description }}</p>{% endif %}
+    {% if config.description %}<p id="blog-description" class="no-indent">{{ config.description }}</p>{% endif %}
 </div>
 {% endblock before_content %}
 
@@ -33,7 +33,7 @@
     {{ macros::categories(cat=section.subsections) }}
 
     {# TODO: Currently showing everything, just show the recent posts #}
-    <h2>Recent posts</h2>
+    <h1>Recent posts</h1>
 
     {% for subpage in section.pages %}
         {{ macros::preview_page(page=subpage) }}
