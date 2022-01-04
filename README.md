@@ -10,7 +10,7 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 # TODOs
 ## Improvements:
 + Improve the footer in shorter pages
-+ Improve how the page looks on mobiles
++ The main element of a list (with a sublist) applies margin
 
 ## Code:
 + Reduce the duplicates in CSS
