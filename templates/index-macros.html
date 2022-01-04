@@ -1,5 +1,5 @@
 {% macro generate_about(about, about_img) %}
-<h1>About me</h1>
+<h1>whoami</h1>
 <div id="about">
     <img src="{{ about_img }}" id="about-img" />
     <div>
@@ -10,7 +10,7 @@
 {% endmacro %}
 
 {% macro generate_projects(projects) %}
-<h1>Portfolio</h1>
+<h1>ls -l</h1>
 <div id="portfolio">
     {% for project in projects %}
     <div class="project">
@@ -21,4 +21,18 @@
     </div>
     {% endfor %}
 </div>
+{% endmacro %}
+
+{# TODO: Currently showing everything, just show the recent posts #}
+{% macro generate_pages(sec, show_subsections=true) %}
+{% for subpage in sec.pages %}
+    {{ macros::preview_page(page=subpage) }}
+{% endfor %}
+
+{% if show_subsections %}
+    {% for subsection_path in sec.subsections %}
+        {% set subsection = get_section(path=subsection_path) %}
+        {{ index_macros::generate_pages(sec=subsection) }}
+    {% endfor %}
+{% endif %}
 {% endmacro %}

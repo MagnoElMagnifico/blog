@@ -10,7 +10,11 @@
 
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
-{{ macros::categories(cat=section.subsections) }}
+
+<div class="box-list" style="margin: 20px 0;">
+    {{ macros::color_list(list=section.subsections) }}
+</div>
+
 {% if section.description %}
     <p>{{ section.description }}</p>
 {% endif %}
