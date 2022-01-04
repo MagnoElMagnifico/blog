@@ -38,6 +38,11 @@ ul, ol {
     margin-top: 0;
 }
 
+ul p, ol p {
+    margin: 0;
+    text-indent: 0;
+}
+
 .no-indent {
     text-indent: 0 !important;
 }
