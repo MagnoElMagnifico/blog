@@ -81,8 +81,7 @@ canvas { /* TODO: fixed height when too short */
 */
 /* Smaal devices - portrait */
 @media only screen
-and (max-device-width: 600px)
-and (orientation: portrait) {
+and (max-device-width: 600px) {
     h1 {
         font-size: 60px;
     }

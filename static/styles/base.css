@@ -20,6 +20,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--title-font);
 }
 
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+
 .details {
     font-size: 15px;
     margin: 0 !important;
@@ -28,6 +32,10 @@ h1, h2, h3, h4, h5, h6 {
 p, li {
     font-size: 15px;
     text-align: justify;
+}
+
+ul, ol {
+    margin-top: 0;
 }
 
 .no-indent {
@@ -48,7 +56,7 @@ strong {
     color: var(--bold-color);
 }
 
-p code {
+p code, li code {
     background-color: var(--code-background-color);
     border-radius: 4px;
     padding: 0 4px;
@@ -127,6 +135,7 @@ header.box-list {
 }
 
 .date {
+    margin: 0 !important;
     font-size: 13px;
 }
 
@@ -150,8 +159,7 @@ footer {
 */
 /* Small devices - portrait */
 @media only screen
-and (max-device-width: 600px)
-and (orientation: portrait) {
+and (max-device-width: 600px) {
     /*
     -------------------------------------------------------
         Basic text elements
@@ -162,7 +170,7 @@ and (orientation: portrait) {
     }
 
     .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-        margin: 50px 0 -40px 0;
+        margin: 50px 0 0 0;
     }
 
     .main-title {
@@ -172,7 +180,7 @@ and (orientation: portrait) {
 
     p {
         text-indent: 40px;
-        margin: 40px 0;
+        margin: 0 0 40px 0;
     }
 
     pre {
@@ -201,11 +209,12 @@ and (orientation: portrait) {
     }
 
     .post {
+        margin: 50px 0 0 0;
         border-bottom: 5px solid var(--border-color);
     }
 
-    .date {
-        margin: 0 0 -30px 0 !important;
+    .box-list {
+        margin: 30px 0;
     }
 
     .box-list a {
@@ -236,17 +245,17 @@ and (max-width: 1100px) {
     }
 
     .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-        margin: 50px 0 -30px 0;
+        margin: 50px 0 0 0;
     }
 
     .main-title { /* = pequeno */
-        font-size: 100px;
+        font-size: 50px;
         margin: 30px 0 0 0 !important; /* = desktop */
     }
 
     p {
         text-indent: 30px; /* desktop */
-        margin: 30px 0;
+        margin: 0 0 30px 0;
     }
 
     pre {
@@ -275,11 +284,12 @@ and (max-width: 1100px) {
     }
 
     .post {
+        margin: 40px 0 0 0;
         border-bottom: 4px solid var(--border-color);
     }
 
-    .date {
-        margin: 0 0 -30px 0 !important;
+    .box-list {
+        margin: 15px 0;
     }
 
     .box-list a {
@@ -292,16 +302,6 @@ and (max-width: 1100px) {
     }
 }
 
-/* Override previus style for the Desktop */
-/* @media only screen
-and (min-device-width: 1100px)
-and (max-width: 1100px) {
-    .box-list a {
-        font-size: 15px !important;
-        min-width: 45px !important;
-    }
-} */
-
 /* Desktops with lots of space */
 @media only screen
 and (min-device-width: 1100px)
@@ -312,17 +312,17 @@ and (min-width: 1100px) {
     }
 
     .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-        margin: 30px 0 -17px 0;
+        margin: 30px 0 0 0;
     }
 
     .main-title {
-        font-size: 80px;
+        font-size: 50px;
         margin: 30px 0 0 0 !important;
     }
 
     p {
         text-indent: 30px;
-        margin: 17px 0;
+        margin: 0 0 17px 0;
     }
 
     pre {
@@ -352,11 +352,7 @@ and (min-width: 1100px) {
 
     .post {
         border-bottom: 3.5px solid var(--border-color);
-        margin: 0 7% 0 7%;
-    }
-
-    .date {
-        margin: 0 0 -17px 0 !important;
+        margin: 30px 7% 30px 7%;
     }
 
     .box-list a {

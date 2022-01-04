@@ -22,7 +22,7 @@ footer {
     margin: 0 0 10px 0;
 }
 
-@media screen and (max-height: 500px) {
+@media only screen and (max-height: 500px) {
     footer {
         top: 400px;
     }
