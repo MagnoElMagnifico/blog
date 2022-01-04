@@ -1,3 +1,9 @@
++++
+title = "Listas y Iteradores"
+date = 2022-01-04
+weight = 10
++++
+
 # Colecciones
 Estas se guardan en la `heap`, por lo que pueden crecer. Otro detalle es que los
 vectores borrarán todo el contenido, incluidos sus elementos.

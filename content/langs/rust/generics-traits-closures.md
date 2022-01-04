@@ -1,3 +1,9 @@
++++
+title = "Generics, traits y closures"
+date = 2022-01-04
+weight = 10
++++
+
 # Generics
 Usa varios tipos de datos en uno solo.
 

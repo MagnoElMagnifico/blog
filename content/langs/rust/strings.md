@@ -1,3 +1,9 @@
++++
+title = "Strings"
+date = 2022-01-04
+weight = 10
++++
+
 # Strings
 Un String es una colección/secuencia de `char`s (valores escalares) codificados
 en Unicode (en concreto UTF-8 de 1-4 bytes, siguiendo las reglas Unicode, por

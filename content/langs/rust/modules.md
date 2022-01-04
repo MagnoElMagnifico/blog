@@ -1,3 +1,9 @@
++++
+title = "Módulos"
+date = 2022-01-04
+weight = 10
++++
+
 # Rust module system
 
 + **Paquetes**: Una característica de cargo que te permite compilar, testear y

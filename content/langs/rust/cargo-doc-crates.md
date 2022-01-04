@@ -1,3 +1,9 @@
++++
+title = "Documentación, Cargo y Crates"
+date = 2022-01-04
+weight = 10
++++
+
 # Cargo
 + `cargo check`: Muestra los errores de compilación sin compilar
 + `cargo build --release`

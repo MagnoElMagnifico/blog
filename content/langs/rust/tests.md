@@ -1,3 +1,9 @@
++++
+title = "Testing"
+date = 2022-01-04
+weight = 10
++++
+
 # Unit tests en Rust
 
 > Nota: Los tests solo sirven para las librerías, no para los binarios, por eso

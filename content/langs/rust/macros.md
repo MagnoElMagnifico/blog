@@ -1,3 +1,9 @@
++++
+title = "Macros"
+date = 2022-01-04
+weight = 10
++++
+
 [rocket](https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/)
 [doc](https://doc.rust-lang.org/book/ch19-06-macros.html)
 

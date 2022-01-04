@@ -1,3 +1,9 @@
++++
+title = "WASM"
+date = 2022-01-04
+weight = 10
++++
+
 # Rust y WebAssembly
 
 ## Sin nada
