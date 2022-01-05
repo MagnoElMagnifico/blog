@@ -52,7 +52,7 @@ weight: 0
             throw `Error loading ${path}: instance is undefined`;
         }
     }
-ñ
+
     function main() {
         const wasm = load_wasm("./target/wasm32-unknown-unknown/debug/<nombre>.wasm")
         console.log(wasm.double(2)); // Se imprimirá 2
