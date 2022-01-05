@@ -20,27 +20,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--title-font);
 }
 
-h1 { font-size: 24px; }
-h2 { font-size: 20px; }
-h3 { font-size: 16px; }
-
-.details {
-    font-size: 15px;
-    margin: 0 !important;
-}
-
 p, li {
     font-size: 15px;
     text-align: justify;
-}
-
-ul, ol {
-    margin-top: 0;
-}
-
-ul p, ol p {
-    margin: 0;
-    text-indent: 0;
 }
 
 .no-indent {
@@ -67,19 +49,8 @@ p code, li code {
     padding: 0 4px;
 }
 
-pre {
-    margin-left: 5%;
-    margin-right: 5%;
-    border-radius: 10px;
-    white-space: pre-wrap;
-}
-
-blockquote {
-    background-color: var(--blockquote-background-color);
-}
-
 img {
-    object-fit: scale-down;
+    object-fit: contain;
     /* Center */
     margin: 15px 0 15px 45%; /* Center by adding margin to the left (minus the .content margin) and then translate */
     transform: translate(-50%, 0);
@@ -114,6 +85,7 @@ header.box-list {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+    margin: 0;
 }
 
 /* Box list */
@@ -149,12 +121,17 @@ footer {
     background-color: var(--hf-background-color);
     color: var(--hf-font-color);
     text-align: center;
-    padding: 1px 0 10px 0; /* Use the margin of the title */
+    padding: 10px 0 1px 0; /* Use the margin of the title */
+    width: 100vw;
+}
+
+#author {
+    margin: 0;
 }
 
 #copyright {
     text-align: center;
-    margin-top: -1em; /* Close to the title */
+    margin: 0 0 10px 0;
 }
 
 /*
@@ -186,16 +163,6 @@ and (max-device-width: 600px) {
     p {
         text-indent: 40px;
         margin: 0 0 40px 0;
-    }
-
-    pre {
-        padding: 20px;
-    }
-
-    blockquote {
-        border-left: 5px solid var(--border-color);
-        border-radius: 10px;
-        padding: 1px 40px;
     }
 
     img {
@@ -263,16 +230,6 @@ and (max-width: 1100px) {
         margin: 0 0 30px 0;
     }
 
-    pre {
-        padding: 15px; /* = desktop */
-    }
-
-    blockquote {
-        border-left: 4px solid var(--border-color);
-        border-radius: 8px; /* = desktop */
-        padding: 1px 30px; /* = desktop */
-    }
-
     img {
         width: 80vmin;
         padding: 6px;
@@ -328,16 +285,6 @@ and (min-width: 1100px) {
     p {
         text-indent: 30px;
         margin: 0 0 17px 0;
-    }
-
-    pre {
-        padding: 15px;
-    }
-
-    blockquote {
-        border-left: 3.5px solid var(--border-color);
-        border-radius: 8px;
-        padding: 1px 30px;
     }
 
     img {
