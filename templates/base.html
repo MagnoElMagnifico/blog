@@ -20,7 +20,7 @@
         {% block content %} {% endblock %}
     </div>
     <footer>
-        <h3>{{ config.title }}</h3>
+        <h3 id="author">{{ config.title }}</h3>
         <p id="copyright">&#169;2021{% if now() | date(format="%Y") != "2021" %}-{{ now() | date(format="%Y") }}{% endif %} {{ config.extra.author }}</p>
         {{ macros::social_media() }}
     </footer>
