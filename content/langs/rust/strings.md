@@ -6,14 +6,14 @@ weight: 10
 
 # Strings
 Un String es una colección/secuencia de `char`s (valores escalares) codificados
-en Unicode (en concreto UTF-8 de 1-4 bytes, siguiendo las reglas Unicode, por
-que es compatible con ASCII), y Rust se encarga de que sea UTF-8 válido.
+en Unicode (en concreto UTF-8 de 1-4 bytes, siguiendo las reglas Unicode, porque
+es compatible con ASCII), y Rust se encarga de que sea UTF-8 válido.
 
-Los Strings no están terminados en un caracter nulo (`\0`), ya que pueden
+Los Strings no están terminados en un carácter nulo (`\0`), ya que pueden
 contener estos caracteres.
 
 Los Strings pueden ser representados como bytes (`&[u8]`), escalares (`char`,
-un caracter separado y único de Unicode) o _grapheme clusters_ (lo que nosostros
+un carácter separado y único de Unicode) o _grapheme clusters_ (lo que nosotros
 llamamos letras):
 + `bytes()`: devuelve un iterador del String como bytes
 + `chars()`: devuelve un iterador del String como `char`
@@ -72,7 +72,7 @@ Aquí estamos creando una referencia a un trozo del String, no al String entero:
 ![](https://doc.rust-lang.org/book/img/trpl04-06.svg)
 
 El tipo de dato de un String slice se escribe `&str`, y si declaramos un String
-literal de las siguiente forma, también será de tipo `&str`:
+literal de la siguiente forma, también será de tipo `&str`:
 
 ```rs
 let s = "Hello World";
@@ -108,7 +108,7 @@ let s = "hola\
         como estas?";
 ```
 
-Además de eso, se ignoran los espacios antes del primer caracter. Output:
+Además de eso, se ignoran los espacios antes del primer carácter. Output:
 
 ```
 holaque talcomo estas?
