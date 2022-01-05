@@ -14,9 +14,9 @@
 <div id="portfolio">
     {% for project in projects %}
     <div class="project">
-        <a href="{{ project.1 }}">
-            <h3>{{ project.0 }}</h3>
-            <p class="no-indent">{{ project.2 }}</p>
+        <a href="{{ project.link }}">
+            <h3>{{ project.name }}</h3>
+            <p class="no-indent">{{ project.description }}</p>
         </a>
     </div>
     {% endfor %}
