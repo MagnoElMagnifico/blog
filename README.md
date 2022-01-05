@@ -10,7 +10,9 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 # TODOs
 ## Improvements:
 + Improve the footer in shorter pages
-+ The main element of a list (with a sublist) applies margin
++ Diferent sized imgs
++ `code tags` inside `blockquotes`
++ `br`
 
 ## Code:
 + Reduce the duplicates in CSS
@@ -35,3 +37,4 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 + [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
 + [Icons from Google](https://fonts.google.com/icons)
 + [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
++ Ojo con la [abuela](https://caderek.github.io/gramma/)
