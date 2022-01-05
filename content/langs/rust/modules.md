@@ -1,8 +1,8 @@
-+++
-title = "Módulos"
-date = 2022-01-04
-weight = 10
-+++
+---
+title: Módulos
+date: 2022-01-04
+weight: 10
+---
 
 # Rust module system
 

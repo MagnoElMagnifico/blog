@@ -1,8 +1,8 @@
-+++
-title = "Errores en Rust"
-date = 2022-01-03
-weight = 3
-+++
+---
+title: Errores en Rust
+date: 2022-01-03
+weight: 3
+---
 
 # Errores irrecuperables
 Para crear errores que paren completamente la ejecución del programa usamos el

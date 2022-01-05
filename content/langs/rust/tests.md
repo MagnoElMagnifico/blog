@@ -1,8 +1,8 @@
-+++
-title = "Testing"
-date = 2022-01-04
-weight = 10
-+++
+---
+title: Testing
+date: 2022-01-04
+weight: 10
+---
 
 # Unit tests en Rust
 

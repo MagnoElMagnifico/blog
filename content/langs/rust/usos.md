@@ -1,11 +1,12 @@
-+++
-title = "Rust y sus usos"
-description = """En este post veremos los principales usos de Rust, el lenguaje
-de programación de sistemas de memoria segura; así como lo que también puedes
-hacer con este lenguaje pero que quizá sea mejor hacer con otro."""
-date = 2022-01-03
-weight = 1
-+++
+---
+title: Rust y sus usos
+description: >-
+  En este post veremos los principales usos de Rust, el lenguaje
+  de programación de sistemas de memoria segura; así como lo que también puedes
+  hacer con este lenguaje pero que quizá sea mejor hacer con otro.
+date: 2022-01-03
+weight: 1
+---
 
 Rust es un lenguaje de programación de sistemas (_system programming language_),
 lo que da mucho control sobre los recursos del sistema: memoria, etc. Es decir,

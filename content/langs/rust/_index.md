@@ -1,9 +1,9 @@
-+++
-title = "Rust"
-page_template = "post.html"
-template = "section.html"
-sort_by = "weight"
-+++
+---
+title: Rust
+page_template: post.html
+template: section.html
+sort_by: weight
+---
 
 Mis apuntes sobre Rust.
 

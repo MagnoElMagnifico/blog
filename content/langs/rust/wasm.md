@@ -1,8 +1,8 @@
-+++
-title = "WASM"
-date = 2022-01-04
-weight = 10
-+++
+---
+title: WASM
+date: 2022-01-04
+weight: 0
+---
 
 # Rust y WebAssembly
 

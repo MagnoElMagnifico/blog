@@ -1,8 +1,8 @@
-+++
-title = "Strings"
-date = 2022-01-04
-weight = 10
-+++
+---
+title: Strings
+date: 2022-01-04
+weight: 10
+---
 
 # Strings
 Un String es una colección/secuencia de `char`s (valores escalares) codificados
