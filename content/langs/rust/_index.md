@@ -11,9 +11,8 @@ Mis apuntes sobre Rust.
 + [La librería estándar](https://doc.rust-lang.org/std/)
 + [El libro de Rust](https://doc.rust-lang.org/book/)
 + Rust [playground](https://play.rust-lang.org/)
-+ Rust [cheatsheet](https://cheats.rs/)
++ Rust [cheatsheet](https://cheats.rs/) (¡Este es un muy buen recurso!)
 + Rust [cheatsheet](https://letsgetrusty.com/wp-content/uploads/2021/10/LGR-Cheat-Sheet.pdf)
-(¡Este es un muy buen recurso!)
 (del canal [Let's Get Rusty](https://www.youtube.com/c/LetsGetRusty))
 
 # Tutoriales
