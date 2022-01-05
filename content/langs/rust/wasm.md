@@ -9,8 +9,8 @@ weight: 0
 ## Sin nada
 1. Añadir _wasm_ al compilador:
 
-    ```
-    rustup component add wasm32-unknown-unknown
+    ```sh
+    $ rustup component add wasm32-unknown-unknown
     ```
 
 2. _Cargo.toml_
@@ -36,8 +36,8 @@ weight: 0
 
 4. Compilar:
 
-    ```
-    cargo build --target wasm32-unknow-unknown
+    ```sh
+    $ cargo build --target wasm32-unknow-unknown
     ```
 
 5. Script que cargará y ejecutará la función:
@@ -52,7 +52,7 @@ weight: 0
             throw `Error loading ${path}: instance is undefined`;
         }
     }
-
+ñ
     function main() {
         const wasm = load_wasm("./target/wasm32-unknown-unknown/debug/<nombre>.wasm")
         console.log(wasm.double(2)); // Se imprimirá 2
@@ -61,8 +61,8 @@ weight: 0
 
 6. La página web se tendrá que mostrar en un servidor por temas de seguridad:
 
-    ```
-    python -m http.server
+    ```sh
+    $ python -m http.server
     ```
 
 ## Con WASM-PACK y WASM-BINDGEN

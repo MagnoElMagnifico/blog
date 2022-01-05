@@ -33,7 +33,7 @@ Entonces:
 + Pero, al querer crear más crates binarios (como ejemplos de uso para una
 librería), debemos almacenarlos en la carpeta `src/bin`. Si no tenemos un
 `crate root` binario, debemos especificar qué ejecutable deseamos usar:
-```
+```sh
 $ cargo run --bin <nombre>
 ```
 
@@ -134,10 +134,10 @@ use base::path::*;
 Después de añadir un paquete a nuestro archivo Cargo.toml, y para poder usar sus
 funciones, usamos `use`:
 
-´´´
+```toml
 [dependencies]
 pkg_name = "*"
-´´´
+```
 
 ```rs
 use pkg_name::some::path;
