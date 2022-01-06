@@ -156,7 +156,7 @@ and (max-width: 1100px) {
 
     /* Porfolio */
     .project h3 {
-        margin: 15px 0 -30px 0;
+        margin: 15px 0 0 0;
     }
 }
 
