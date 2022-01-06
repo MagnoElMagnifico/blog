@@ -62,6 +62,7 @@
 {% macro toc(page) %}
 {% if page.toc %}
 <div class="toc">
+    <h1>Contenidos</h1>
     <ul>
         {{ macros::hx(previous_h=page.toc) }}
     </ul>
