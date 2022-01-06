@@ -13,7 +13,7 @@ extra:
 
     projects:
         -
-            name: Vision (OLC Jam)
+            name: Vision (OLC CodeJam)
             link: https://github.com/MagnoElMagnifico/vision-codejam2021
             description: >-
               Vision is a 2D platformer game "similar" to Cat Mario or Trap Adventure. There are
