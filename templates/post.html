@@ -15,5 +15,8 @@
     <h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
 {% endif %}
 <h2 class="details">Word count: {{ page.word_count }} ({{ page.reading_time }}mins)</h2>
+
+{{ macros::toc(page=page) }}
+
 {{ page.content | safe }}
 {% endblock content %}

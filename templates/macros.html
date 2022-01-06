@@ -15,7 +15,7 @@
     {% set delta_saturation = 360 / delta_saturation %}
     {% for element in list %}
         {% set path = element | trim_end_matches(pat="/_index.md") %}
-        <a href="/{{ path }}" style="background-color: hsl({{ loop.index0 * delta_saturation }}, 100%, 50%);">{{ path | title }}</a>
+        <a href="/{{ path }}" style="background-color: hsl({{ loop.index0 * delta_saturation }}, 100%, 40%);">{{ path | title }}</a>
     {% endfor %}
 {% endif %}
 {% endmacro %}
@@ -42,4 +42,29 @@
     <h3 class="date">{{ page.date }}</h3>
     <p>{{ page.description }}</p>
 </div>
+{% endmacro %}
+
+{% macro hx(previous_h) %}
+{% for hx in previous_h %}
+    {% if hx.title %}
+        <li>
+            <a href="{{ hx.permalink | safe }}">{{ hx.title }}</a>
+            {% if hx.children %}
+                <ul>
+                    {{ macros::hx(previous_h=hx.children) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+{% macro toc(page) %}
+{% if page.toc %}
+<div class="toc">
+    <ul>
+        {{ macros::hx(previous_h=page.toc) }}
+    </ul>
+</div>
+{% endif %}
 {% endmacro %}
