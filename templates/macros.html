@@ -44,27 +44,27 @@
 </div>
 {% endmacro %}
 
-{% macro hx(previous_h) %}
+{% macro hx(previous_h, max_level) %}
 {% for hx in previous_h %}
-    {% if hx.title %}
-        <li>
-            <a href="{{ hx.permalink | safe }}">{{ hx.title }}</a>
-            {% if hx.children %}
-                <ul>
-                    {{ macros::hx(previous_h=hx.children) }}
-                </ul>
-            {% endif %}
-        </li>
-    {% endif %}
-{% endfor %}
+    {% if max_level > hx.level and hx.title %}
+            <li>
+                <a href="{{ hx.permalink | safe }}">{{ hx.title }}</a>
+                {% if hx.children %}
+                    <ul>
+                        {{ macros::hx(previous_h=hx.children, max_level=max_level) }}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
 {% endmacro %}
 
-{% macro toc(page) %}
-{% if page.toc and page.extra.use_toc %}
+{% macro toc(page, max_level) %}
+{% if page.toc %}
 <div class="toc">
     <h1>Contenidos</h1>
     <ul>
-        {{ macros::hx(previous_h=page.toc) }}
+        {{ macros::hx(previous_h=page.toc, max_level=max_level) }}
     </ul>
 </div>
 {% endif %}
