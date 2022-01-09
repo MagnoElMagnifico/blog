@@ -8,12 +8,11 @@
 */
 
 h1 {
-    margin: 30px 0 20px 0 !important;
     text-align: center;
 }
 
 /* Presentation */
-canvas { /* TODO: fixed height when too short */
+canvas {
     height: 100vh;
     width: 100vw;
 }
@@ -59,7 +58,6 @@ canvas { /* TODO: fixed height when too short */
 .project {
     background-color: var(--project-background-color);
     flex-grow: 1;
-    margin: 0 20px 20px 0;
     border-radius: 10px;
     padding: 10px;
 }
@@ -74,6 +72,10 @@ canvas { /* TODO: fixed height when too short */
     color: var(--font-color);
 }
 
+#blog .box-list {
+    overflow-x: clip;
+}
+
 /*
 ===========================================================
     Sizes for specific devices
@@ -83,7 +85,8 @@ canvas { /* TODO: fixed height when too short */
 @media only screen
 and (max-device-width: 600px) {
     h1 {
-        font-size: 60px;
+        font-size: 70px;
+        margin: 50px 0 40px 0 !important;
     }
 
     /* Presentation */
@@ -107,7 +110,7 @@ and (max-device-width: 600px) {
 
     /* About */
     #about-img {
-        width: 40vmin;
+        width: 25vmin;
         margin-left: 50%;
     }
 
@@ -126,7 +129,8 @@ only screen
 and (min-device-width: 1100px)
 and (max-width: 1100px) {
     h1 {
-        font-size: 40px;
+        font-size: 45px;
+        margin: 50px 0 30px 0 !important;
     }
 
     /* Presentation */
@@ -150,7 +154,7 @@ and (max-width: 1100px) {
 
     /* About */
     #about-img {
-        width: 25vmin;
+        width: 20vmin;
         margin: 0 0 0 50%;
     }
 
@@ -165,7 +169,8 @@ and (max-width: 1100px) {
 and (min-device-width: 1100px)
 and (min-width: 1100px) {
     h1 {
-        font-size: 25px;
+        font-size: 40px;
+        margin: 40px 0 20px 0 !important;
     }
 
     /* Presentation */
@@ -191,7 +196,7 @@ and (min-width: 1100px) {
     }
 
     #about-img {
-        width: 15vmin;
+        width: 20vmin;
         margin: 0 20px 0 0;
         transform: none;
     }
@@ -200,12 +205,16 @@ and (min-width: 1100px) {
     #portfolio {
         display: flex;
         justify-content: space-evenly;
-        margin-bottom: 20px;
         flex-wrap: wrap;
     }
 
     .project {
         padding: 1px 30px 1px 30px;
         width: 250px;
+    }
+
+    /* Blog */
+    #blog .box-list {
+        margin-top: 30px;
     }
 }
