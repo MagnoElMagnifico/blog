@@ -2,6 +2,9 @@
 
 {% block head %}
 <title>{{ section.title }} - {{ config.title }}</title>
+{% if section.description %}
+    <description>{{ section.description }}</description>
+{% endif %}
 {% endblock head %}
 
 {% block before_content %}

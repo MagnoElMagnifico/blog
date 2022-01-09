@@ -4,6 +4,9 @@
 {% block head %}
 <title>{{ config.title }}</title>
 <link rel="stylesheet" href="/styles/index.css">
+{% if section.description %}
+    <description>{{ section.description }}</description>
+{% endif %}
 {% endblock head %}
 
 {% block before_content %}

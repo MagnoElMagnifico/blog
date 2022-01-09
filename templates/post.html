@@ -3,6 +3,9 @@
 {% block head %}
 <title>{{ page.title }} - {{ config.title }}</title>
 <link rel="stylesheet" href="/styles/post.css">
+{% if section.description %}
+    <description>{{ section.description }}</description>
+{% endif %}
 {% endblock head %}
 
 {% block before_content %}
