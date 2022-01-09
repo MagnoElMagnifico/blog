@@ -31,7 +31,7 @@
 {% if section.pages or section.subsections %}
 <div id="blog">
     {{ macros::categories(cat=config.extra.header_sections) }}
-    <h1>Recent posts</h1>
+    <h1>git log</h1>
     {{ index_macros::generate_pages(sec=section) }}
 </div>
 {% endif %}

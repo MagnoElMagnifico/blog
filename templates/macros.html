@@ -60,7 +60,7 @@
 {% endmacro %}
 
 {% macro toc(page) %}
-{% if page.toc %}
+{% if page.toc and page.extra.use_toc %}
 <div class="toc">
     <h1>Contenidos</h1>
     <ul>
