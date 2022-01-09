@@ -11,10 +11,12 @@
 
 {% block content %}
 <h1 class="main-title">{{ page.title }}</h1>
-{% if page.date %}
-    <h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
+{% if page.extra.show_details %}
+    {% if page.date %}
+        <h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
+    {% endif %}
+    <h2 class="details">Word count: {{ page.word_count }} ({{ page.reading_time }}mins)</h2>
 {% endif %}
-<h2 class="details">Word count: {{ page.word_count }} ({{ page.reading_time }}mins)</h2>
 
 {{ macros::toc(page=page) }}
 
