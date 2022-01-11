@@ -161,7 +161,6 @@ and (max-device-width: 600px) {
     }
 
     p {
-        text-indent: 40px;
         margin: 0 0 40px 0;
     }
 
@@ -226,7 +225,6 @@ and (max-width: 1100px) {
     }
 
     p {
-        text-indent: 30px; /* desktop */
         margin: 0 0 30px 0;
     }
 
@@ -283,7 +281,6 @@ and (min-width: 1100px) {
     }
 
     p {
-        text-indent: 30px;
         margin: 0 0 17px 0;
     }
 
