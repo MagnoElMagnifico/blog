@@ -14,16 +14,26 @@
 
 {% block content %}
 <h1 class="main-title">{{ page.title }}</h1>
-{% if page.extra.show_details %}
-    {% if page.date %}
-        <h2 class="details">Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
-    {% endif %}
-    <h2 class="details" id="last-details">Word count: {{ page.word_count }}</h2>
-{% endif %}
-
-{% if page.extra.show_toc %}
-    {{ macros::toc(page=page, max_level=3)}}
-{% endif %}
-
+{{ macros::info(page=page, max_level=3)}}
 {{ page.content | safe }}
 {% endblock content %}
+
+{% block scripts %}
+<script>
+    var coll = document.getElementsByClassName("bu-colap");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+{% endblock scripts %}

@@ -1,26 +1,73 @@
 /*
 ===========================================================
-    Common style
+Common style
 ===========================================================
 */
+
+/* Titles */
 h1 { font-size: 24px; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; }
 
-.details {
-    font-size: 15px;
+/* Information */
+.info {
+    display: none;
+    overflow: hidden;
+    background-color: var(--info-background);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* Center */
+    margin-left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.info h2 {
     margin: 0 !important;
 }
 
+.bu-colap {
+    cursor: pointer;
+    color: var(--font-color);
+    background-color: var(--blockquote-background-color);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    /* Center */
+    margin-left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.bu-colap-active, .bu-colap:hover {
+    opacity: 0.7;
+}
+
+.bu-colap:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin: 0;
+    /* Center */
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+}
+
+.bu-colap-active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* Text Elements */
 ul, ol {
     margin-top: 0;
 }
 
 ul p, ol p {
     margin: 0;
-    text-indent: 0;
 }
 
+/* Code */
 pre code {
     background-color: inherit;
     border-radius: 0;
@@ -35,6 +82,13 @@ pre {
     text-align: left;
 }
 
+code {
+    background-color: var(--code-background-color);
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+/* Quotes */
 blockquote {
     background-color: var(--blockquote-background-color);
 }
@@ -43,10 +97,23 @@ blockquote p {
     margin: 0;
 }
 
+blockquote code, blockquote blockquote {
+    background-color: var(--background-color);
+}
+
+/* Divisors */
+hr {
+    margin-top: 0;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
+    margin-top: 0;
 }
 
 th, td {
@@ -55,19 +122,26 @@ th, td {
 }
 
 th {
-    background-color: black;
+    background-color: var(--table-header);
     border-bottom: 5px solid white;
     border-top: none;
 }
 
-tr:nth-child(even) {
-    background-color: red;
-}
-
+/* Coloring rows */
 tr:nth-child(odd) {
-    background-color: green;
+    background-color: var(--table-color-1);
 }
 
+tr:nth-child(even) {
+    background-color: var(--table-color-2);
+}
+
+/* Hovering */
+tr:hover {
+    opacity: 0.7;
+}
+
+/* Rounded borders */
 th:first-of-type {
     border-top-left-radius: 10px;
 }
@@ -84,14 +158,41 @@ tr:last-of-type td:last-of-type {
     border-bottom-right-radius: 10px;
 }
 
+/* Others */
+/* input[checked][type="checkbox"] {
+    TODO: https://moderncss.dev/pure-css-custom-checkbox-style/
+    appearance: none;
+    background-color: var(--blockquote-background-color);
+    width: 12.8px;
+    height: 12.8px;
+    transform: translateY( 0.075em);
+    margin: 3px;
+    border-radius: 3px;
+} */
+
 /*
 ===========================================================
-    Sizes for specific devices
+Sizes for specific devices
 ===========================================================
 */
 /* Small devices - portrait */
 @media only screen
 and (max-device-width: 600px) {
+    .info {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .info h2 {
+        font-size: 17px;
+    }
+
+    .bu-colap {
+        margin-top: 0;
+        width: 100%;
+        font-size: 30px;
+    }
+
     pre {
         padding: 20px;
     }
@@ -100,6 +201,16 @@ and (max-device-width: 600px) {
         border-left: 5px solid var(--border-color);
         border-radius: 10px;
         padding: 40px;
+    }
+
+    hr {
+        margin-bottom: 40px;
+        border-top: 10px solid var(--border-color);
+        width: 100%;
+    }
+
+    table {
+        margin-bottom: 40px;
     }
 }
 
@@ -111,6 +222,21 @@ and (max-device-width: 1100px),
 only screen
 and (min-device-width: 1100px)
 and (max-width: 1100px) {
+    .info {
+        padding: 20px;
+        width: 60%;
+    }
+
+    .info h2 {
+        font-size: 17px;
+    }
+
+    .bu-colap {
+        margin-top: 10px;
+        width: 70%;
+        font-size: 20px;
+    }
+
     pre {
         padding: 15px; /* = desktop */
     }
@@ -121,12 +247,36 @@ and (max-width: 1100px) {
         padding: 30px; /* = desktop */
     }
 
+    hr {
+        margin-bottom: 30px;
+        border-top: 7px solid var(--border-color);
+        width: 80%;
+    }
 
+    table {
+        margin-bottom: 30px;
+    }
 }
+
 /* Desktops with lots of space */
 @media only screen
 and (min-device-width: 1100px)
 and (min-width: 1100px) {
+    .info {
+        padding: 20px;
+        width: 50%;
+    }
+
+    .info h2 {
+        font-size: 15px;
+    }
+
+    .bu-colap {
+        margin-top: 15px;
+        width: 60%;
+        font-size: 15px;
+    }
+
     pre {
         padding: 15px;
     }
@@ -135,5 +285,19 @@ and (min-width: 1100px) {
         border-left: 3.5px solid var(--border-color);
         border-radius: 8px;
         padding: 30px;
+    }
+
+    hr {
+        margin-bottom: 17px;
+        border-top: 5px solid var(--border-color);
+        width: 80%;
+    }
+
+    table {
+        margin-bottom: 17px;
+    }
+
+    th, td {
+        padding: 7px;
     }
 }

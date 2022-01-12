@@ -59,13 +59,25 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro toc(page, max_level) %}
-{% if page.toc %}
-<div class="toc">
-    <h1>Contenidos</h1>
+{% macro info(page, max_level) %}
+{% set possible_toc = page.toc and page.extra.show_toc %}
+{% if possible_toc or page.extra.show_details %}
+<button class="bu-colap">Información</button>
+<div class="info">
+    {% if page.extra.show_details %}
+        {% if page.date %}
+            <h2>Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
+        {% endif %}
+        <h2>Word count: {{ page.word_count }}</h2>
+    {% endif %}
+
+    {% if possible_toc %}
+    <hr style="margin: 15px 0; width: 100%;">
+    <h2>Contenidos:</h2>
     <ul>
         {{ macros::hx(previous_h=page.toc, max_level=max_level) }}
     </ul>
+    {% endif %}
 </div>
 {% endif %}
 {% endmacro %}

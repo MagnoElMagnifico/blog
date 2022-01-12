@@ -12,8 +12,6 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 - Improve the footer in shorter pages
 - Diferent sized imgs
 
-- Missing styles
-    - Details and ToC
 - In the categories bar, add a view for the subcategories when the list is too
   large.
 - Table scaling in small devices
