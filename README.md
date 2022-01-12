@@ -9,32 +9,38 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 
 # TODOs
 ## Improvements:
-+ Improve the footer in shorter pages
-+ Diferent sized imgs
-+ `code tags` inside `blockquotes`
-+ `br`
+- Improve the footer in shorter pages
+- Diferent sized imgs
+
+- Missing styles
+    - Details and ToC
+- In the categories bar, add a view for the subcategories when the list is too
+  large.
+- Table scaling in small devices
 
 ## Code:
-+ Reduce the duplicates in CSS
+- Reduce the duplicates in CSS
 
 ## New features:
-+ Add Russian chars to the animation (?)
-+ Table of contents
-+ Default values in base.html
-+ Description HTML tags
-+ CSS Transitions / Animations
-+ Robots.txt
-+ Taxonomies -> Pagination -> Feed
-+ Sitemap
+- Add Russian chars to the animation (?)
+- Table of contents
+- Default values in base.html
+- Description HTML tags
+- CSS Transitions / Animations
+- Robots.txt
+- Taxonomies -> Pagination -> Feed
+- Sitemap
 
 ## When adding content:
-+ Add proper social media links
-+ Projects
-+ Make multilingual (for now in Spanish)
+- Add proper social media links
+- Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
+  to pass it to `.md`.
+- Projects
+- Make multilingual (for now in Spanish)
 
 # Links
-+ [Tera Lang docs](https://tera.netlify.app/docs/)
-+ [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
-+ [Icons from Google](https://fonts.google.com/icons)
-+ [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
-+ Ojo con la [abuela](https://caderek.github.io/gramma/)
+- [Tera Lang docs](https://tera.netlify.app/docs/)
+- [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
+- [Icons from Google](https://fonts.google.com/icons)
+- [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
+- Ojo con la [abuela](https://caderek.github.io/gramma/)
