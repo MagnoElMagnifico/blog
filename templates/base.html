@@ -24,6 +24,8 @@
         <p id="copyright">&#169;2021{% if now() | date(format="%Y") != "2021" %}-{{ now() | date(format="%Y") }}{% endif %} {{ config.extra.author }}</p>
         {{ macros::social_media() }}
     </footer>
+
+    {% block scripts %} {% endblock %}
 </body>
 
 </html>
