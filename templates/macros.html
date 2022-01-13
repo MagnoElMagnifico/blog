@@ -66,18 +66,37 @@
 <div class="info">
     {% if page.extra.show_details %}
         {% if page.date %}
-            <h2>Posted: {{ page.date }} {% if page.updated %} - Updated: {{ page.updated }}{% endif %}</h2>
+            <h2>Posted: {{ page.date }}</h2>
+        {% endif %}
+        {% if page.updated %}
+            <h2>Updated: {{ page.updated }}</h2>
         {% endif %}
         <h2>Word count: {{ page.word_count }}</h2>
+        <h2>Reading time: {{ page.reading_time }}mins</h2>
+    {% endif %}
+
+    {% if page.extra.ref_links %}
+        <hr style="margin: 15px 0; width: 100%;">
+        <h2>Reference links:</h2>
+        <ul>
+            {% for link in page.extra.ref_links %}
+                <li><a href="{{ link.link }}">{{ link.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if page.extra.ref_link %}
+        <hr style="margin: 15px 0; width: 100%;">
+        <h2 style="display: inline;">Reference link: </h2>
+        <a style="display: inline;" href="{{ page.extra.ref_link.link }}"> {{ page.extra.ref_link.name }}</a>
     {% endif %}
 
     {% if possible_toc %}
-    <hr style="margin: 15px 0; width: 100%;">
-    <h2>Contenidos:</h2>
-    <ul>
-        {{ macros::hx(previous_h=page.toc, max_level=max_level) }}
-    </ul>
-    {% endif %}
+        <hr style="margin: 15px 0; width: 100%;">
+        <h2>Contenidos:</h2>
+        <ul>
+            {{ macros::hx(previous_h=page.toc, max_level=max_level) }}
+        </ul>
+{% endif %}
 </div>
 {% endif %}
 {% endmacro %}
