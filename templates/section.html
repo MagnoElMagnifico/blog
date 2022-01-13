@@ -8,15 +8,12 @@
 {% endblock head %}
 
 {% block before_content %}
-{{ macros::header(list=config.extra.header_sections) }}
+{{ macros::header(list=config.extra.header_sections, logo=config.extra.logo) }}
 {% endblock before_content %}
 
 {% block content %}
 <h1 class="main-title">{{ section.title }}</h1>
-
-<div class="box-list" style="margin: 20px 0;">
-    {{ macros::color_list(list=section.subsections) }}
-</div>
+{{ macros::categories(cat=section.subsections, style="margin: 20px 0;") }}
 
 {% if section.description %}
     <p>{{ section.description }}</p>

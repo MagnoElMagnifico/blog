@@ -9,29 +9,45 @@
 </div>
 {% endmacro %}
 
-{% macro color_list(list) %}
+{% macro box(el, hue) %}
+{% set path = el | trim_end_matches(pat="/_index.md") %}
+<a href="/{{ path }}" style="background-color: hsl({{ hue }}, 100%, 40%);">{{ path | title }}</a>
+{% endmacro %}
+
+{% macro header_content(list) %}
 {% set delta_saturation = list | length %}
 {% if delta_saturation > 0 %}
     {% set delta_saturation = 360 / delta_saturation %}
     {% for element in list %}
-        {% set path = element | trim_end_matches(pat="/_index.md") %}
-        <a href="/{{ path }}" style="background-color: hsl({{ loop.index0 * delta_saturation }}, 100%, 40%);">{{ path | title }}</a>
+
+        {% if element is string %}
+            {{ macros::box(el=element, hue=loop.index0 * delta_saturation) }}
+
+        {% else %}
+            <span class="dropdown">
+                {{ macros::box(el=element.0, hue=loop.index0 * delta_saturation) }}
+                <div class="dropdown-content">{{ macros::header_content(list=element | slice(start=1)) }}</div>
+            </span>
+        {% endif %}
+
     {% endfor %}
 {% endif %}
 {% endmacro %}
 
-{% macro categories(cat) %}
+{# Renders the list of categories passed #}
+{% macro categories(cat, style="") %}
 {% if cat | length > 0 %}
-<div class="box-list">
-    {{ macros::color_list(list=cat) }}
+<div class="box-list" style="{{ style }}">
+    {{ macros::header_content(list=cat) }}
 </div>
 {% endif %}
 {% endmacro %}
 
-{% macro header(list) %}
+{# The same as categories(), but adds a logo #}
+{% macro header(list, logo) %}
 <header class="box-list">
-    <a href="/"><img src="/logo.png"></a>
-    {{ macros::color_list(list=list) }}
+    <a href="/"><img src="{{ logo }}"></a>
+    {{ macros::header_content(list=list) }}
 </header>
 {% endmacro %}
 
