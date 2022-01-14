@@ -178,6 +178,11 @@ tr:last-of-type td:last-of-type {
     border-radius: 3px;
 } */
 
+canvas {
+    margin: 30px 0 30px 50%;
+    transform: translateX(-50%);
+}
+
 /*
 ===========================================================
 Sizes for specific devices
