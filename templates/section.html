@@ -3,7 +3,7 @@
 {% block head %}
 <title>{{ section.title }} - {{ config.title }}</title>
 {% if section.description %}
-    <description>{{ section.description }}</description>
+    <meta name="description" content="{{ section.description }}">
 {% endif %}
 {% endblock head %}
 

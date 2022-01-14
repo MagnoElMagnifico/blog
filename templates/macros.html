@@ -46,7 +46,7 @@
 {# The same as categories(), but adds a logo #}
 {% macro header(list, logo) %}
 <header class="box-list">
-    <a href="/"><img src="{{ logo }}"></a>
+    <a id="header-img-link" href="/"><img src="{{ logo }}"></a>
     {{ macros::header_content(list=list) }}
 </header>
 {% endmacro %}

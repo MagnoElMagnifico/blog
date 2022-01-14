@@ -5,7 +5,7 @@
 <title>{{ config.title }}</title>
 <link rel="stylesheet" href="/styles/index.css">
 {% if section.description %}
-    <description>{{ section.description }}</description>
+    <meta name="description" content="{{ section.description }}">
 {% endif %}
 {% endblock head %}
 
