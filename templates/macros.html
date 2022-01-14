@@ -55,7 +55,9 @@
 <div class="post">
     {% set oversection = get_section(path=page.ancestors | last) %}
     <h2><a href="{{ page.permalink | safe }}">{{ page.title }}{% if show_cat and oversection.title %} - {{ oversection.title }}{% endif %}</a></h2>
-    <h3 class="date">{{ page.date }}</h3>
+    {% if page.date %}
+        <h3 class="date">{{ page.date }}</h3>
+    {% endif %}
     <p>{{ page.description }}</p>
 </div>
 {% endmacro %}
