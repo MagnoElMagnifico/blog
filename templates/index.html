@@ -15,9 +15,9 @@
     <img src="/logo.png" id="blog-logo" />
     <h1 id="blog-title">{{ config.title }}</h1>
     {% if config.description %}
-        <p id="blog-description" class="no-indent">{{ config.description }}</p>
+        <p id="blog-description">{{ config.description }}</p>
     {% elif section.description %}
-        <p id="blog-description" class="no-indent">{{ section.description }}</p>
+        <p id="blog-description">{{ section.description }}</p>
     {% endif %}
 </div>
 {% endblock before_content %}

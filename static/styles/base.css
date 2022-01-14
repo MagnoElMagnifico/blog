@@ -20,6 +20,15 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--title-font);
 }
 
+h1+h1,
+h1+h2, h2+h2,
+h2+h3, h3+h3,
+h3+h4, h4+h4,
+h4+h5, h5+h5,
+h5+h6, h6+h6 {
+    margin-top: 0 !important;
+}
+
 p, li {
     font-size: 15px;
     text-align: justify;
@@ -27,10 +36,6 @@ p, li {
 
 li > p {
     margin: 0;
-}
-
-.no-indent {
-    text-indent: 0 !important;
 }
 
 /* Basic text elements */
