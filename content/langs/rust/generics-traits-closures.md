@@ -1,6 +1,5 @@
 ---
 title: Generics, traits y closures
-date: 2022-01-04
 weight: 10
 ---
 

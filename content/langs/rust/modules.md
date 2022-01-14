@@ -1,6 +1,5 @@
 ---
 title: Módulos
-date: 2022-01-04
 weight: 10
 ---
 

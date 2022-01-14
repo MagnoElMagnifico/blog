@@ -1,6 +1,5 @@
 ---
 title: Testing
-date: 2022-01-04
 weight: 10
 ---
 

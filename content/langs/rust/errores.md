@@ -1,6 +1,5 @@
 ---
 title: Errores en Rust
-date: 2022-01-03
 weight: 3
 ---
 

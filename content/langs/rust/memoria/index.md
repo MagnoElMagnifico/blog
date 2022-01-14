@@ -1,10 +1,9 @@
 ---
 title: Memoria
-description: >-
-  Un resumen del sistema de ownership y borrowing, tipos de
-  memoria (Stack y Heap), lifetimes, Smart Pointers y otros detalles importantes
-  para entender cómo funciona Rust gestiona la memoria a diferencia de C o C++.
-date: 2022-01-03
+# description: >-
+#   Un resumen del sistema de ownership y borrowing, tipos de
+#   memoria (Stack y Heap), lifetimes, Smart Pointers y otros detalles importantes
+#   para entender cómo funciona Rust gestiona la memoria a diferencia de C o C++.
 weight: 2
 ---
 

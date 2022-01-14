@@ -1,6 +1,5 @@
 ---
 title: WASM
-date: 2022-01-04
 weight: 0
 ---
 

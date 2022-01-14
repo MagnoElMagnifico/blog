@@ -1,6 +1,5 @@
 ---
 title: Documentación, Cargo y Crates
-date: 2022-01-04
 weight: 2
 ---
 

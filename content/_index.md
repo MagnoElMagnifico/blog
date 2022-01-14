@@ -1,14 +1,14 @@
 ---
 title: Magno Blog
-description_TODO: TODO
+description: >-
+    Mis notas, apuntes y demás sobre mis proyectos de programación.
 
 page_template: post.html
 template: index.html
 sort_by: weight
 
 extra:
-    # My notes and other stuff about my programming projects
-    about_TODO: TODO
+    # about: >-
     about_img: /logo.png
 
     projects:
@@ -16,8 +16,9 @@ extra:
             name: Vision (OLC CodeJam)
             link: https://github.com/MagnoElMagnifico/vision-codejam2021
             description: >-
-              Vision is a 2D platformer game "similar" to Cat Mario or Trap Adventure. There are
-              lots of hiddens traps along the levels and you can only avoid then. However, unlike
-              those games were you necessarily will die to discover the traps, you have the ability
-              to see the next future
+                Vision es un juego de plataformas en 2D "similar" a Cat Mario o
+                Trap Adventure. Hay muchas trampas ocultas a lo largo de los
+                niveles y sólo puedes evitarlas. Sin embargo, a diferencia de
+                esos juegos en los que necesariamente morirás para descubrir las
+                trampas, tienes la capacidad de de ver el futuro próximo.
 ---
