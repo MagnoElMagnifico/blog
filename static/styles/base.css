@@ -25,6 +25,10 @@ p, li {
     text-align: justify;
 }
 
+li > p {
+    margin: 0;
+}
+
 .no-indent {
     text-indent: 0 !important;
 }
@@ -70,13 +74,18 @@ header {
 
 header img {
     border-radius: 100%;
+    transition: 0.5s;
     /* Reset centering */
     margin: 0;
     transform: none;
 }
 
 header img:hover {
-    transform: scale(1.03, 1.03);
+    transform: scale(1.1, 1.1);
+}
+
+#header-img-link {
+    box-shadow: none;
 }
 
 .dropdown:hover .dropdown-content {
@@ -120,8 +129,7 @@ header img:hover {
 .box-list a:hover {
     /* TODO */
     transform: scale(1.03);
-    box-shadow: 0 0 5px #ffee10;
-    text-shadow: 0 0 5px #ffee10;
+    box-shadow: 0 0 10px #ffee10;
 }
 
 /* Post */
