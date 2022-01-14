@@ -8,11 +8,7 @@ static site generator.
 The HTML, CSS and JS were all created by me, I am not using a _theme_.
 
 # TODOs
-- In the categories bar, add a view for the subcategories when the list is too
-  large.
-  - Position the subcategory right
-- Improving hovering effects
-  - Header img hovering
+- Position the subcategory right in the header dropdown
 
 ## When adding content:
 - Add proper social media links
