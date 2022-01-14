@@ -13,4 +13,9 @@ highlight_theme = "ayu-dark"
 
 [extra]
 author = "Magno El Magnífico"
-header_sections = ["langs", "langs/rust", "404"]
+logo = "/logo.png"
+
+header_sections = ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/!prog",
+#    ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/cs", "langs/!prog"],
+    "linux", "tools"
+]
