@@ -118,7 +118,7 @@ and (max-device-width: 600px) {
     /* About */
     #about-img {
         width: 25vmin;
-        margin-left: 50%;
+        margin: 0 0 40px 50%;
     }
 
     /* Porfolio */
@@ -162,7 +162,7 @@ and (max-width: 1100px) {
     /* About */
     #about-img {
         width: 20vmin;
-        margin: 0 0 0 50%;
+        margin: 0 0 30px 50%;
     }
 
     /* Porfolio */
