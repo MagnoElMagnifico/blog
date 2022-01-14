@@ -16,6 +16,7 @@ h3 { font-size: 16px; }
     background-color: var(--info-background);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    margin-bottom: 30px;
     /* Center */
     margin-left: 50%;
     transform: translate(-50%, 0%);
@@ -26,9 +27,11 @@ h3 { font-size: 16px; }
 }
 
 .bu-colap {
+    transition: 0.25s;
     cursor: pointer;
     color: var(--font-color);
     background-color: var(--blockquote-background-color);
+    margin-bottom: 30px;
     border: none;
     border-radius: 10px;
     padding: 10px;
@@ -37,8 +40,9 @@ h3 { font-size: 16px; }
     transform: translate(-50%, 0%);
 }
 
-.bu-colap-active, .bu-colap:hover {
+.bu-colap:hover {
     opacity: 0.7;
+    box-shadow: 5px 5px 10px #000;
 }
 
 .bu-colap:after {
@@ -54,7 +58,11 @@ h3 { font-size: 16px; }
     transform: translateY(-50%);
 }
 
-.bu-colap-active:after {
+.bu-colap.active {
+    margin-bottom: 0;
+}
+
+.bu-colap.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
