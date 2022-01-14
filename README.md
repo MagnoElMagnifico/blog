@@ -18,10 +18,7 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 
 ## Improvements:
 - Improve the footer in shorter pages
-- Diferent sized imgs
-
 - Table scaling in small devices
-- Remove margin to hx when they are subsequent.
 
 ## Code:
 - Reduce the duplicates in CSS
@@ -29,6 +26,7 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 ## New features:
 - Add Russian chars to the animation (?)
 - CSS Transitions / Animations
+- Diferent sized imgs
 - Robots.txt
 - Taxonomies -> Pagination -> Feed
 - Sitemap
