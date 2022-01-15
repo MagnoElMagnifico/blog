@@ -22,3 +22,4 @@ añadir:
 1. Mejora en el estilo de la página para móviles.
 2. Añadido contenido de [mi repositorio de apuntes](https://github.com/MagnoElMagnifico/apuntes).
 3. Añadido información a algunos posts.
+4. Mejoradas las animaciones y los efectos al interactuar con el usuario.
