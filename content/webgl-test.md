@@ -3,7 +3,7 @@ title: Prueba de WebGl y de canvas en el blog
 weight: 2
 ---
 
-<!-- TODO: Mover a projects -->
+<!-- TODO: Move to projects -->
 
 <canvas id="canvas" height="600" width="600"></canvas>
 <script>
