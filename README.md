@@ -11,10 +11,8 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 - Position the subcategory right in the header dropdown
 
 ## When adding content:
-- Add proper social media links
 - Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
   to pass it to `.md`.
-- Projects
 
 ## Improvements:
 - Improve the footer in shorter pages
@@ -26,6 +24,10 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 ## New features:
 - Add Russian chars to the animation (?)
 - CSS Transitions / Animations
+  - Blog description: <https://codepen.io/kazed972/pen/bQOQGR>
+  - Matrix: <https://codepen.io/syropian/pen/bLzAi>
+  - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
+  - Glitch: <https://codepen.io/elisabethdiang/pen/WNbBxXq>
 - Diferent sized imgs
 - Robots.txt
 - Taxonomies -> Pagination -> Feed
