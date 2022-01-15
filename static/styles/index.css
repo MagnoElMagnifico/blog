@@ -60,6 +60,10 @@ canvas {
     transform: none;
 }
 
+#blog-description {
+    text-align: center;
+}
+
 .project {
     background-color: var(--project-background-color);
     flex-grow: 1;
