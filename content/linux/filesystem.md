@@ -90,6 +90,9 @@ es posible que el programa guarde copias de seguridad regularmente, por si
 ocurre un error, se va la luz u otros inconvenientes. Luego podrás recuperar
 esos datos.
 
+> Algo que es raro, es que si reinicias el ordenador, es probable que se borre.
+> Por lo tanto, si te peta el ordenador, ¿cómo recuperas los datos?
+
 ## `proc`
 `proc` de _procedures_. Contiene información de todos los procesos que se están
 ejecutando en el momento, que principalmente son pseudo-archivos (no son
@@ -109,25 +112,7 @@ generalmente sirve para guardar datos al iniciar la máquina.
 Es la carpeta para interactuar con el kernel, y es similar al directorio `/run`.
 
 # Binarios y configuración
-## `bin`, `sbin` y `libXX`
-Estas carpetas se conservan por algunos programas que utilizan estas
-direcciones, por eso en distribuciones actuales de Linux, son solamente enlaces
-simbólicos a `/usr/bin`, `/usr/sbin` y `/usr/libXX/`; cuyo propósito es el mismo.
-
-Esto hace que el sistema sea más compatible con Unix y se simplifica la
-jerarquía de carpetas: anteriormente era necesario diferenciar los programas a
-nivel de equipo o usuario y esencial o no esencial.
-
-## `etc`
-Finalmente se ha confirmado que el nombre de esta carpeta quiere decir
-_etcétera_. Aquí es donde se guardas todas las configuraciones del tus
-programas, en general, a nivel de todo el sistema, no de un solo usuario.
-
-Por ejemplo, allí podrás encontrar información sobre el _package manager_ `apt`:
-en esta carpeta se guarda la lista de los repositorios, paquetes instalados y
-sus archivos de configuración.
-
-# `usr`
+## `bin` y `sbin`
 `bin/` es la forma corta de _binaries_, que quiere decir archivos binarios o
 programas. Por ese motivo, aquí se guardan los programas esenciales y más
 básicos. Por ejemplo, podrás encontrar los ejecutables de los comandos:
@@ -138,6 +123,9 @@ básicos. Por ejemplo, podrás encontrar los ejecutables de los comandos:
 - `ps`
 - ...
 
+> **Nota**: En WSL Ubuntu y Kali Linux, este es un [_soft link_](@/linux/links.md)
+> a `/usr/bin/`
+
 Por otro lado, `sbin/` también almacena programas, pero estos son mucho más
 sensibles, ya que se tratan de los ejecutables del administrador
 (_system admin_). Estos archivos están restringidos al super-usuario y no pueden
@@ -145,6 +133,16 @@ ser utilizados por otros.
 
 Sin embargo, en estas carpetas no se suelen instalar otros programas del
 usuario.
+
+## `etc`
+Finalmente se ha confirmado que el nombre de esta carpeta quiere decir
+_etcétera_. Aquí es donde se guardas todas las configuraciones del tus
+programas, en general, a nivel de todo el sistema, no de un solo usuario.
+
+Por ejemplo, allí podrás encontrar información sobre el _package manager_ `apt`:
+en esta carpeta se guarda la lista de los repositorios, paquetes instalados y
+sus archivos de configuración.
+
 ## `lib`
 En este directorio se guardan las librerías de desarrollo y para compilar tú
 mismo los programas. Suelen usar estas librerías los ejecutables de `bin` y
@@ -155,7 +153,10 @@ Significa _opcional_. Aquí es donde se instala software manualmente e incluso
 los programas que has hecho tú mismo.
 <!-- TODO: Completar un poco más -->
 
-
+## `var`
+Este es el directorio _variable_, contiene carpetas y archivos dedicados a
+guardar datos que suelen aumentar en tamaño, como _logs_ de sistema, _caché_ y
+demás.
 
 # Usuarios
 ## `root`
