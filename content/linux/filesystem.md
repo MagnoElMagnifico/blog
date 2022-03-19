@@ -1,8 +1,8 @@
 ---
 title: Estructura directorios
 weight: 3
+date: 2022-03-19
 
-# draft: true
 extra:
     max_level: 5
     show_toc: true
