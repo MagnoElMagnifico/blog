@@ -4,6 +4,7 @@ weight: 3
 
 # draft: true
 extra:
+    max_level: 5
     show_toc: true
     show_info: true
     ref_link:
@@ -13,8 +14,8 @@ extra:
 [1]: https://youtu.be/HbgzrKJvDRw
 [2]: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 
-El sistema de archivos de Linux es diferente Windows, y seguramente este sea uno
-de los temas más fundamentales que un usuario experto debería conocer.
+El sistema de archivos de Linux es diferente a Windows, y seguramente este sea
+uno de los temas más fundamentales que un usuario experto debería conocer.
 
 Antes de Windows, Linux y los otros sistemas modernos que se conocen hoy en día;
 existía DOS (Disk Operating System). Era únicamente CLI, sin GUIs. Sin embargo,
@@ -49,6 +50,115 @@ Linux, ya que evolucionaron desde el mismo lugar: Unix.
 > Otra nota, no todas las distribuciones Linux siguen este patrón, pueden haber
 > pequeñas variaciones. Pero por lo general, esto se cumple.
 
+# Usuarios
+## `root`
+Esta es la `/home/` del usuario _root_. Puedes guardar archivos sin ningún
+problema, mientras seas el usuario _root_: `sudo su`.
+
+## `home`
+> Nota: para escribir más rápido la carpeta del usuario `/home/magno/` (por
+> ejemplo) usa `~`.
+
+Aquí dentro cada usuario tiene su propia carpeta. Allí puede guardar sus
+documentos y otros, como la carpeta personal de Windows. Paralelamente, podremos
+encontrar carpetas y archivos de configuración del usuario (`.config/` y
+`.local/`; configuración del escritorio y temas `.themes`, `.fonts`, `.icons`;
+aunque otros lo guardan en `home/<user>/` directamente), que normalmente están
+ocultos (empiezan por `.`). Estos también guardan caché.
+
+Puede que sea una buena idea también colocar esta carpeta en una nueva partición
+de disco, por si ocurre algo con el sistema principal, tus documentos
+importantes estén seguros. De la misma forma, puede ser buena idea montar un
+sistema de copias de seguridad.
+
+## `usr`
+En veriones de Unix anteriores aquí se almacenaban las carpetas de los usuarios,
+al igual que ahora sucede con `home`. Pero actualmente su uso ha disminuido a
+solamente "programas usables por el usuario y otros datos": contiene binarios
+del sistema, documentación, librerías, archivos de cabezera...
+
+En esta carpeta se almacena la mayoría del contenido, por lo tanto es una de las
+más importantes. En su interior podemos encontrar los sub-directorios
+de los apartados siguientes.
+
+
+### `bin`, `sbin` y `libXX`
+`bin` es la forma corta de _binaries_, que quiere decir archivos binarios o
+programas. Por ejemplo, podrás encontrar los ejecutables de los comandos:
+
+- `ls`
+- `cat`
+- `kill`
+- `ps`
+- ...
+
+Por otro lado, `sbin` también almacena programas, pero estos son mucho más
+sensibles, ya que se tratan de los ejecutables del administrador
+(_system admin_). Estos archivos están restringidos al super-usuario y no pueden
+ser utilizados por otros.
+
+> `path` guarda alguna de estas direcciones para saber donde buscar los
+> programas del terminal. Usa `which` para conocer su carpeta concreta de un
+> comando.
+
+Finalmente; `lib`, `lib32`, `lib64` y otras variantes son directorios en los que
+se almacenan las librerías de determinados programas. Estos son otros archivos
+binarios que añaden funcionalidad a algunas aplicaciones.
+
+### `local`
+El motivo de hacer esta separación es el de tener otro directorio `usr` que se
+pueda montar en solo lectura en algún otro lugar. Sin embargo, hoy en día, solo
+se usa para guardar programas de terceros o autocompilados.
+
+### `share`
+Esta carpeta contiene archivos _compartibles_ y archivos independientes de la
+arquitectura de sofware: documentación, iconos, fuentes, imágenes de fondo...
+
+Sin embargo, no está pensada para compartir con otros sistemas operativos.
+Cualquier programa o paquete que contenga o necesite datos que no tengan que
+ser modificados también se pueden guardar aquí (o en `/usr/local/share`).
+
+Algunas subcarpetas importantes:
+
+- `/usr/share/doc`: documentación de algunos programas
+- `/usr/share/man`: documentación para el programa _man_
+- `/usr/share/info`: más documentación (hoy no se usa tanto)
+
+### Otros
+- `games`: archivos de juegos online
+
+- Código fuente
+    - `include`: archivos de cabecera necesarios para compilar (`.h`, `.hpp`)
+    - `include/<paquete>`: archivos de cabecera de determinado programa
+    - `src`: los archivos de código fuente de linux (`/usr/src/linux`), archivos
+    de cabecera, documentación (`usr/src/Documentation`) y configuración
+    (`/usr/src/.config`).
+
+# Binarios y configuración
+
+## `bin`, `sbin` y `libXX`
+Estas carpetas se conservan por algunos programas que todavía utilizan estas
+direcciones, por eso en distribuciones actuales de Linux, son solamente enlaces
+simbólicos a `/usr/bin`, `/usr/sbin` y `/usr/libXX/`; cuyo propósito es el mismo.
+
+Esto hace que el sistema sea más compatible con Unix y se simplifica la
+jerarquía de carpetas: anteriormente era necesario diferenciar los programas a
+nivel de equipo o usuario y esencial o no esencial.
+
+## `etc`
+Finalmente se ha confirmado que el nombre de esta carpeta quiere decir
+_etcétera_. Aquí es donde se guardas todas las configuraciones del tus
+programas, en general, a nivel de todo el sistema, no de un solo usuario.
+
+Por ejemplo, allí podrás encontrar información sobre el _package manager_ `apt`:
+en esta carpeta se guarda la lista de los repositorios, paquetes instalados y
+sus archivos de configuración.
+
+## `opt`
+Significa _opcional_. Aquí es donde se instala software manualmente e incluso
+los programas que has hecho tú mismo.
+<!-- TODO: Completar un poco más -->
+
 # Sistema
 ## `boot`
 Aquí se guardan los archivos que necesita el sistema operativo para encenderse
@@ -76,7 +186,7 @@ _media_.
 
 Por lo tanto, el USB que insertes estará en
 `/media/<usuario>/<nombre del dispositivo>`. Pero Si quieres montar algo
-manualmente, déjalo en `/mnt/`
+manualmente con el comando `mount`, déjalo en `/mnt/`
 
 ## `var`
 Este es el directorio _variable_, contiene carpetas y archivos dedicados a
@@ -89,9 +199,6 @@ sesión. Por ejemplo, si estás escribiendo un archivo en un programa de ofimát
 es posible que el programa guarde copias de seguridad regularmente, por si
 ocurre un error, se va la luz u otros inconvenientes. Luego podrás recuperar
 esos datos.
-
-> Algo que es raro, es que si reinicias el ordenador, es probable que se borre.
-> Por lo tanto, si te peta el ordenador, ¿cómo recuperas los datos?
 
 ## `proc`
 `proc` de _procedures_. Contiene información de todos los procesos que se están
@@ -111,130 +218,31 @@ generalmente sirve para guardar datos al iniciar la máquina.
 ## `sys`
 Es la carpeta para interactuar con el kernel, y es similar al directorio `/run`.
 
-# Binarios y configuración
-## `bin` y `sbin`
-`bin/` es la forma corta de _binaries_, que quiere decir archivos binarios o
-programas. Por ese motivo, aquí se guardan los programas esenciales y más
-básicos. Por ejemplo, podrás encontrar los ejecutables de los comandos:
-
-- `ls`
-- `cat`
-- `kill`
-- `ps`
-- ...
-
-> **Nota**: En WSL Ubuntu y Kali Linux, este es un [_soft link_](@/linux/links.md)
-> a `/usr/bin/`
-
-Por otro lado, `sbin/` también almacena programas, pero estos son mucho más
-sensibles, ya que se tratan de los ejecutables del administrador
-(_system admin_). Estos archivos están restringidos al super-usuario y no pueden
-ser utilizados por otros.
-
-Sin embargo, en estas carpetas no se suelen instalar otros programas del
-usuario.
-
-## `etc`
-Finalmente se ha confirmado que el nombre de esta carpeta quiere decir
-_etcétera_. Aquí es donde se guardas todas las configuraciones del tus
-programas, en general, a nivel de todo el sistema, no de un solo usuario.
-
-Por ejemplo, allí podrás encontrar información sobre el _package manager_ `apt`:
-en esta carpeta se guarda la lista de los repositorios, paquetes instalados y
-sus archivos de configuración.
-
-## `lib`
-En este directorio se guardan las librerías de desarrollo y para compilar tú
-mismo los programas. Suelen usar estas librerías los ejecutables de `bin` y
-`sbin`, pero no es complemente necesario.
-
-## `opt`
-Significa _opcional_. Aquí es donde se instala software manualmente e incluso
-los programas que has hecho tú mismo.
-<!-- TODO: Completar un poco más -->
-
-## `var`
-Este es el directorio _variable_, contiene carpetas y archivos dedicados a
-guardar datos que suelen aumentar en tamaño, como _logs_ de sistema, _caché_ y
-demás.
-
-# Usuarios
-## `root`
-Esta es la `/home/` del usuario _root_. Puedes guardar archivos sin ningún
-problema, mientras seas el usuario _root_: `sudo su`.
-
-## `usr`
-Esta es la carpeta del usuario, donde él instalará sus propias aplicaciones, que
-son no esenciales para el sistema. En su interior podemos encontrar los
-sub-directorios siguientes (con las mismas funciones ya comentadas):
-
-- Ejecutables de aplicación
-    - `bin`
-    - `sbin`
-    - `local`: Programas instalados/compilados desde código fuente: `local/bin`
-    `local/sbin`
-    - `share`: Programas más grandes: `share/bin` `share/sbin`
-    - `games`
-    - `lib`
-    - `lib32`
-    - `lib64`
-- Código fuente
-    - `include`: para `.h`/`.hpp` de C/C++
-    - `src`
-
-No siempre todos los programas se instalan aquí, así que es posible que tengas
-que mirar en otros lugares.
-
-> `path` guarda alguna de estas direcciones para saber donde buscar los
-> programas del terminal. Usa `which` para conocer su carpeta concreta de un
-> comando.
-
-## `home`
-> Nota: para escribir más rápido la carpeta del usuario `/home/magno/` (por
-> ejemplo) usa `~`.
-
-Aquí dentro cada usuario tiene su propia carpeta. Allí puede guardar sus
-documentos y otros, como la carpeta personal de Windows. Paralelamente, podremos
-encontrar carpetas y archivos de configuración del usuario (`.config/` y
-`.local/`; configuración del escritorio y temas `.themes`, `.fonts`, `.icons`;
-aunque otros lo guardan en `home/<user>/` directamente), que normalmente están
-ocultos (empiezan por `.`). Estos también guardan caché.
-
-Puede que sea una buena idea también colocar esta carpeta en una nueva partición
-de disco, por si ocurre algo con el sistema principal, tus documentos
-importantes estén seguros. De la misma forma, puede ser buena idea montar un
-sistema de copias de seguridad.
-
 # Resumen
 - `/`: root, la base de todo
 
-- `dev` (DEVice files): drivers/hardware
-- `boot`: archivos necesarios para iniciar el ordenador
-- `sbin`: ejecutables del sistema (solo administrador)
-- `bin`: ejecutables básicos &#8594; `ls`, `curl`
-- `lib`: librerías compartidas &#8594; `.so`, `.a`
+- Usuarios
+    - `root`
+    - `home`: carpetas de usuarios (atajo: `~`)
+        - `.config` o otro dotfile: configuración del usuario
+    - `usr`:
+        - `bin`: ejecutables básicos &#8594; `ls`, `curl`
+        - `sbin`: ejecutables del sistema (solo administrador)
+        - `lib`: librerías compartidas &#8594; `.so`, `.a`
+        - `local`: carpeta `usr` alternativa con datos no esenciales y
+        programas locales.
+        - `share`: archivos independientes de la plataforma, datos de
+        aplicationes, etc.
 
-- `etc`: archivos de configuración a nivel de sistema
+- Binarios y configuración
+    - `bin` `sbin` `libXX` &#8594; `usr`
+    - `etc`: archivos de configuración a nivel de sistema
+    - `opt` (OPTional): software instalado manualmente, addons o plugins
 
-- `usr`:
-    - `lib`: librerías compartidas del usuario &#8594; `.so`, `.a`
-    - `bin`: binarios del usuario (no esenciales para el SO: Apps)
-    - `local/bin`: binarios compilados por el usuario
-    - `.config` o otro dotfile: configuración del usuario
-- `home`: carpetas de usuarios (atajo: `~`)
-
-- `opt` (OPTional): addons, plugins, programas propios
-- `var`: variables del sistema operativo (logs, cache)
-- `tmp`: información temporal, se borra al apagar
-- `proc` `run`: carpeta imaginaria, se encarga de gestionar procesos
-
-<!--
-etc - Registry, Local Machine
-boot - The boot partition
-bin and sbin - Windows and system32
-lib - system32
-opt and some bin - Program Files
-dev and proc has no corresponding windows directories
-home and root - Users
-media, mnt and cdrom - drive letters assigned by windows, but ntfs allows you to mount a partition to a folder like in linux
--->
+- Sistema
+    - `boot`: archivos necesarios para iniciar el ordenador
+    - `dev` (DEVice files): hardware
+    - `media` y `mnt`: estructuras de ficheros externas, USBs
+    - `var` (VARiable): variables del sistema operativo (logs, cache)
+    - `tmp` (TeMPoral): información temporal, se borra al apagar
+    - `proc`, `run` y `sys`: carpetas imaginarias, se encargan de gestionar procesos

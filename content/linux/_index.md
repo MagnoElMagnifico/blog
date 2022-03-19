@@ -18,7 +18,7 @@ y muchas otras utilidades que ahora mismo no puedo recordar. Ese es el poder del
 código libre: puedes cambiar el código fuente de tu SO como quieras para hacerlo
 a tu gusto y no estar restringido por parámetros de una empresa multinacional.
 
-Por no decir que es mucho más cómodo, su esctructura de ficheros, manejo de
+Por no decir que es mucho más cómodo, su estructura de ficheros, manejo de
 paquetes y programas instalados es muy sencilla; y el poder supremo que otorga
 la terminal.
 
