@@ -67,7 +67,7 @@
 
 {% macro hx(previous_h, max_level) %}
 {% for hx in previous_h %}
-    {% if max_level > hx.level and hx.title %}
+    {% if max_level >= hx.level and hx.title %}
             <li>
                 <a href="{{ hx.permalink | safe }}">{{ hx.title }}</a>
                 {% if hx.children %}
