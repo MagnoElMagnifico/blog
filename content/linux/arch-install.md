@@ -184,7 +184,7 @@ archivos. Existen múltiples formatos con diferentes capacidades como los
 siguientes:
 - [NTFS][14] (_New Technology File System_) para sistemas Windows
 - [FAT][15], FAT32 (_File Allocation Table_)
-- EXT2, EXT3, EXT4
+- EXT2, EXT3, EXT4 <!-- TODO -->
 - Btrfs
 - ReiserFS, Reiser4
 - ...
@@ -232,8 +232,8 @@ directorio `/dev/sda`, `/dev/nvme0n1` o `/dev/mmcblk0`.
 <!-- TODO: Sistema encriptado, etc -->
 
 ```sh
-fdisk -l  # Listamos todos los discos disponibles
-lsblk     # Alternativa
+fdisk -l    # Listamos todos los discos disponibles
+lsblk       # Alternativa
             # Los que contengan "room", "loop" o "airoot" puedes ignorarlos
 ```
 
@@ -317,8 +317,28 @@ lsblk   # Comprobación
 En este punto hemos creado el esquema y ahora debemos formatear las particiones
 con su tipo adecuado, proceso también llamado crear el sistema de ficheros.
 
-La partición EFI debe de ser _FAT32_:
+```sh
+# La partición EFI debe de ser FAT32
+mkfs.fat -F32 /dev/<disco>1
+
+# La partición Linux Swap
+mkswap /dev/<disco>2
+<!-- TODO: Ponerlo en mount? -->
+swapon /dev/<disco>2          # Activar la partición como Swap
+
+# La partición para root
+mksf.ext4 /dev/sda3
+```
+
+## Montar las particiones
+<!-- TODO: Explicación -->
 
 ```sh
-mkfs.fat -F32 /dev/<disco><nº-partición>
+mount /dev/<disco>3 /mnt
+```
+
+# Instalando cosas
+
+```sh
+pacstrap
 ```
