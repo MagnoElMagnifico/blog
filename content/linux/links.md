@@ -47,7 +47,7 @@ A diferencia de los _hard links_, estos sí tiene su propio inodo.
 Para crear un _hard link_ se usa simplemente el siguiente comando:
 
 ```sh
-$ ln ORIGINAL LINK
+ln ORIGINAL LINK
 ```
 
 Un _enlace simbólico_ también se crea con el comando `ln`, pero con una _flag_
@@ -60,7 +60,7 @@ ln -s ORIGINAL LINK
 Y se borrarían como un archivo completamente normal:
 
 ```sh
-$ rm LINK
+rm LINK
 ```
 
 # ¿Cómo diferenciar los dos tipos?

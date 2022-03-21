@@ -232,8 +232,8 @@ directorio `/dev/sda`, `/dev/nvme0n1` o `/dev/mmcblk0`.
 <!-- TODO: Sistema encriptado, etc -->
 
 ```sh
-$ fdisk -l  # Listamos todos los discos disponibles
-$ lsblk     # Alternativa
+fdisk -l  # Listamos todos los discos disponibles
+lsblk     # Alternativa
             # Los que contengan "room", "loop" o "airoot" puedes ignorarlos
 ```
 
@@ -242,7 +242,7 @@ Podemos manipular las particiones de disco con [muchas herramientas diferentes][
 utilizar `gdisk`, muy similar a `fdisk`, pero ya orientado a GPT.
 
 ```sh
-$ gdisk /dev/<disco>
+gdisk /dev/<disco>
 
 # Partición para boot (EFI)
 Command (? for help): n     # Nueva partición
@@ -268,13 +268,13 @@ Last sector (...):          # Default (el resto del espacio disponible)
 # Guardar los cambios
 Command (? for help): w     # Escribe los datos en disco
 
-$ lsblk     # Comprobación
+lsblk     # Comprobación
 ```
 
 Forma alternativa (muy similar) usando `fdisk`:
 
 ```sh
-$ fdisk /dev/<disco>
+fdisk /dev/<disco>
 
 Command (m for help): g     # Crear una tabla GPT
 
@@ -310,7 +310,7 @@ Partition type or alias (type L to list all): 19  # Código para la partición S
 
 Command (m for help): w     # Escribe los cambios en disco
 
-$ lsblk   # Comprobación
+lsblk   # Comprobación
 ```
 
 ## Formatear las particiones

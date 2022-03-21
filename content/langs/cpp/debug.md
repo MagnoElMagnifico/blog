@@ -14,7 +14,7 @@ información sobre el código.
 Usa el comando `gdb`:
 
 ```sh
-$ gdb <executable>
+gdb <executable>
 ```
 
 ## Algunos Comandos

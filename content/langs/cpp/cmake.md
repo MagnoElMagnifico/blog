@@ -57,15 +57,15 @@ carpeta específica para guardar los archivos generados automáticamente por _CM
 Normalmente, a esta carpeta se la llama `build`.
 
 ```sh
-$ mkdir build
+mkdir build
 ```
 
 Ahora, podemos realizar la misma operación (la configuración de _CMake_ o la generación del
 _Makefile_ ) de diferentes formas, usando cualquiera de estos comandos:
 
 ```sh
-$ cmake <dirección_del_cmakelists> (desde build)
-$ cmake -S <dirección_del_CMakeLists> -B <dirección_donde_compilar>
+cmake <dirección_del_cmakelists> (desde build)
+cmake -S <dirección_del_CMakeLists> -B <dirección_donde_compilar>
 ```
 
 En algunos casos, da un error porque no conoce o no tenemos instalado el Make por defecto
@@ -78,7 +78,7 @@ Una vez generado el Makefile, podemos utilizarlo como de costumbre o llamar a CM
 que lo haga por nosotros:
 
 ```sh
-$ cmake --build <dirección_donde_compilar>
+cmake --build <dirección_donde_compilar>
 ```
 
 # Comentarios
@@ -86,7 +86,7 @@ Podemos hacer comentarios para clarificar nuestro código CMake. Creo que solo p
 una línea:
 
 ```cmake
-# Esto es un comentario
+Esto es un comentario
 ```
 
 # Mostrar mensajes

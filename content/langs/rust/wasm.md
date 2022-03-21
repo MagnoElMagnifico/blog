@@ -9,7 +9,7 @@ weight: 0
 1. Añadir _wasm_ al compilador:
 
     ```sh
-    $ rustup component add wasm32-unknown-unknown
+    rustup component add wasm32-unknown-unknown
     ```
 
 2. _Cargo.toml_
@@ -36,7 +36,7 @@ weight: 0
 4. Compilar:
 
     ```sh
-    $ cargo build --target wasm32-unknow-unknown
+    cargo build --target wasm32-unknow-unknown
     ```
 
 5. Script que cargará y ejecutará la función:
@@ -61,7 +61,7 @@ weight: 0
 6. La página web se tendrá que mostrar en un servidor por temas de seguridad:
 
     ```sh
-    $ python -m http.server
+    python -m http.server
     ```
 
 ## Con WASM-PACK y WASM-BINDGEN

@@ -17,7 +17,7 @@ Para C o C++ se escribe g++ y el nombre del `.c` o `.cpp` en cuestión, se puede
 añadir el parámetro `-o` para darle un nombre de salida.
 
 ```sh
-$ g++ Nombre.cpp -o Salida.exe
+g++ Nombre.cpp -o Salida.exe
 ```
 
 Podemos usar cabeceras (de extensión `.h` o `.cpp`) añadiendolas en el código
@@ -45,7 +45,7 @@ Para compilar la librería, simplemente la compilamos como un programa normal de
 C++, solo que su salida tendrá la extensión `.dll`:
 
 ```sh
-$ g++ Libreria.h -o Libreria.dll
+g++ Libreria.h -o Libreria.dll
 ```
 
 # Dynamic library
@@ -56,7 +56,7 @@ diferentes.
 Compilar libreria:
 
 ```sh
-$ g++ -shared <sourcefiles>.cpp -o <libraryname>.dll/so
+g++ -shared <sourcefiles>.cpp -o <libraryname>.dll/so
 ```
 
 # Static library
@@ -65,17 +65,17 @@ Hacen un programa más manejable, un solo archivo.
 1. Compilar a `.o`
 
 ```sh
-$ g++ -c <sourcefiles>.cpp
+g++ -c <sourcefiles>.cpp
 ```
 
 2. Añadir a una libreria
 
 ```sh
-$ ar rvs <final-libraryname>.lib/a <sourcefiles>.o
+ar rvs <final-libraryname>.lib/a <sourcefiles>.o
 ```
 
 # Link
 ```sh
-$ g++ <filename>.cpp -L<librarypath> -l<libraryname>
-$ g++ <filename>.cpp <libraryname>.<libraryextension>
+g++ <filename>.cpp -L<librarypath> -l<libraryname>
+g++ <filename>.cpp <libraryname>.<libraryextension>
 ```

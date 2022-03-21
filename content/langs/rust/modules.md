@@ -33,7 +33,7 @@ Entonces:
 librería), debemos almacenarlos en la carpeta `src/bin`. Si no tenemos un
 `crate root` binario, debemos especificar qué ejecutable deseamos usar:
 ```sh
-$ cargo run --bin <nombre>
+cargo run --bin <nombre>
 ```
 
 Al usar `cargo new <nombre>`, estamos creando un paquete llamado `<nombre>` (lo
