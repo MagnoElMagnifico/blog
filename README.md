@@ -20,6 +20,7 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 - Improve the footer in shorter pages
 - Table scaling in small devices
 
+- Is the changelog necessary?
 - Improve descriptions
 - Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
   to pass it to `.md`.
