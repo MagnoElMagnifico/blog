@@ -1,3 +1,5 @@
+# General config for Zola and all the blog
+
 base_url = "https://magnoblog.netlify.app"
 
 title = "Magno Blog"
@@ -15,7 +17,7 @@ highlight_theme = "ayu-dark"
 author = "Magno El Magnífico"
 logo = "/logo.png"
 
+# TODO: Handle this automaticly
 header_sections = ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/!prog",
-#    ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/cs", "langs/!prog"],
     "linux", "tools"
 ]

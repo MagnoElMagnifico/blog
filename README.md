@@ -8,18 +8,21 @@ static site generator.
 The HTML, CSS and JS were all created by me, I am not using a _theme_.
 
 # TODOs
-- Position the subcategory right in the header dropdown
+- Only show the recent blog posts, not all the content in the entry page (index.html)
+  - Gather all the blog posts in a list, sort it by date and get the 5-10 first
 
-## When adding content:
-- Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
-  to pass it to `.md`.
+- Crear una cabezera para moverme entre categorías.
+  - Leer el nombre de las subcarpetas/subsections
+  - Generarla desde base.html? Todas las páginas del blog deberían tener la cabecera, al igual que el footer
 
-## Improvements:
+- Test if the description show up
+- Review mobile styles
 - Improve the footer in shorter pages
 - Table scaling in small devices
 
-## Code:
-- Reduce the duplicates in CSS
+- Improve descriptions
+- Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
+  to pass it to `.md`.
 
 ## New features:
 - Add Russian chars to the animation (?)
@@ -39,4 +42,3 @@ The HTML, CSS and JS were all created by me, I am not using a _theme_.
 - [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
 - [Icons from Google](https://fonts.google.com/icons)
 - [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
-- Ojo con la [abuela](https://caderek.github.io/gramma/)
