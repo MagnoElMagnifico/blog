@@ -22,6 +22,16 @@ Configura el email y usuario necesarios para git
 + `git config --global user.username "user"`
 + `git config --global user.email "email"`
 
+Para conectarte a github y hacer un `git push`, debes añadir tu usuario y
+contraseña. Sin embargo, con la actualización de Github de Julio de 2020
+(entra en vigor a partir del 13 de Agosto de 2021), no debes introducir
+tu contraseña real, sino un _Personal Access Tolken_ (PAT) que puedes
+generar desde tu cuenta en `Settings > Developer settings > Personal access tokens > Generate new token`
+Debes introducir un nombre descriptivo, su fecha máxima de validez y los
+permisos que le quieras aportar. Finalmente pulsa en `Generate token.`
+y úsalo en lugar de tu contraseña. De esta forma resulta mucho más seguro
+y puedes controlar mejor los permisos.
+
 + `git pull` : actualiza el repositorio
 + `git clone <url>` : copiar repositorio
 + `git push --tags` : subir las tags a repositorio remoto
