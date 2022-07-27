@@ -12,14 +12,14 @@ extra:
 
 > **Nota**: La mejor forma para aprender Vim es practicándolo, no intentes
 > memorizar todos los comandos de golpe, sino incorpóralos progresivamente y
-> ve usándolos y mecanizándolos poco a poco.
+> ve mecanizándolos poco a poco.
 
 # Porqué Vim
-1. Ligero
-2. Super personalizable
-3. Ergonómico / con los atajos de teclado puedes trabajar muy rápido y cómodo
-4. Muy poderoso: infinidad de opciones que no tendrás en otros editores
-5. Escalable: puedes editar un simple archivo de 50 líneas o todo un proyecto
+1. **Ligero**
+2. **Super personalizable**
+3. **Ergonómico**, con los atajos de teclado puedes trabajar muy rápido y cómodo
+4. **Muy poderoso**: infinidad de opciones que no tendrás en otros editores
+5. **Escalable**: puedes editar un simple archivo de 50 líneas o todo un proyecto
   con miles de archivos.
 
 # Niveles de poder en Vim
@@ -32,11 +32,11 @@ No sé, pero creo que es curioso e interesante mencionarlos:
 5. No usar el modo visual
 
 # La ayuda de Vim
-Otra increible característica de Vim es su maravillosa documentación y manual
+Otra increíble característica de Vim es su maravillosa documentación y manual
 de ayuda. De forma offline y sin salir del editor, puedes buscar lo que 
 necesites saber gracias al comando `:help` o `:h`.
 
-En la documentación habrá unas etiquetas que funcionarán como enlaces en una
+En la documentación habrá unas **etiquetas** que funcionarán como enlaces en una
 página web. Estas están entre `|`, pero se esconden cuando el resaltado de
 sintaxis está activado. Para seguir el enlace usa `<C-]>` (o buscar ayuda 
 sobre donde está el cursor) y para regresar `<C-o>`.
@@ -46,7 +46,7 @@ del comando `:help` con `<C-d>`, que te mostrará todas las etiquetas
 relacionadas.
 
 Para navegar más rápido entre las distintas secciones de la documentación, usa
-`gO` para mostrar la tabla de contenidos, y usa enter para moverte a cada
+`gO` para mostrar la **tabla de contenidos**, y usa enter para moverte a cada
 una de ellas.
 
 ## Consejos de búsqueda
@@ -76,26 +76,37 @@ todos los resultados en una ventana aparte con `:cwindow` o `:copen`.
 - `:helpg foo@es`: buscar la ayuda en español
 
 ## Estructura de la ayuda
+La ayuda de Vim consiste en dos partes:
+
+- **Manual de usuario**, que se debería leer como un libro; ya que introduce
+  progresivamente los diferentes conceptos del editor, de sencillo a complejo.
+  Está orientado a las tareas a realizar.
+
+- La **referencia**, donde se explica todo Vim detalladamente; comandos,
+  configuración, como funciona, etc.
+
+En lugar de leer tanto texto al comenzar (¡aburridooo!), puedes usar la guia
+interactiva que proporciona Vim: el _Vim Tutor_. Es un tutorial de unos 30
+minutos que te enseñará lo más básico. Ejecútalo con `:Tutor`.
+
 La página principal de la ayuda está en `help.txt`, a la que puedes acceder
 simplemente con el comando `:help`, `:h` o `:help help.txt`. Esta es el índice
 para el resto de elementos de la ayuda, ya que contiene todos los enlaces a los
 demás archivos, incluyendo (al final de todo) la documentación de cada plugin a
-mayores que instales.
-
-Por un lado estan los manuales del usuario, que sería bastante recomendable
-leerlos. Contienen información de como empezar a usar el editor de una forma
-más progresiva, en lugar de tener que acceder a la referencia por elementos 
-aislados.
+mayores que instales. Encontrarás un link a la página y su tema principal.
 
 En la página `index.txt` se muestran todos los comandos (por defecto) del 
 editor, con una breve descripción y un link para más información. Es buena 
 idea consultar esta página cuando creas tu configuración y cambias los atajos,
-ya que podrías estar inhabilitando otros comandos útiles.
+ya que podrías estar inhabilitando otros comandos útiles. Si no quieres ver
+absolutamente todos, y que habrá algunos que en tu vida usarás, ve a
+`quickref.txt`.
 
-Mi página favorita de la ayuda es `quickref.txt`.
+En el apartado de `key-notation`, puedes obtener más información de como Vim
+representa las diferentes teclas que puedes usar para los comandos.
 
 # Entendiendo la edición modal
-Vim es un editor modal, lo que quiere decir que existen diferentes modos de
+Vim es un **editor modal**, lo que quiere decir que existen diferentes modos de
 funcionamiento y comportamiento dependiendo en qué modo te encuentres.
 
 El modo _normal_ donde pasarás la mayor parte del tiempo ya que aquí están
@@ -107,7 +118,7 @@ Ahora podrás escribir texto como en otros editores. Para regresar al modo norma
 usa la tecla _Escape_ (`<Esc>`).
 
 El modo _visual_ se inicia al hacer una selección de texto, permitiéndote operar
-con él. Este modo selecciona caracter por caracter, pero existen los modos
+con él. Este modo selecciona carácter por carácter, pero existen los modos
 _visual line_, que selecciona líneas enteras, y _visual block_, selección en bloque
 o por columnas. A partir de estas selecciones, podemos hacer cambios solamente en
 el texto seleccionado con otros comandos.
@@ -119,9 +130,8 @@ propio editor, sin necesidad de cerrarlo. Para salir al modo normal, presiona
 <!-- TODO --> 
 _command_
 _select_
-_operator pending_
 
-En todos estes modos (excepto el _normal mode_) se te indicará en cual de ellos te
+En todos estos modos (excepto el _normal mode_) se te indicará en cual de ellos te
 encuentras abajo de todo de la pantalla. En el caso del _command line mode_, estarás
 escribiendo en ese espacio.
 
@@ -132,88 +142,185 @@ escribiendo en ese espacio.
 
 Realmente, los comandos en Vim pueden entenderse como un lenguaje por sí mismo,
 así que cuando empieces a pensar en este lenguaje, podrás entender mucho mejor
-el editor.
+el editor. Se diferencian en operadores, movimientos/nombres y modificadores
+(hay quien les llama preposiciones). Combinándolos podrás crear las frases de
+este lenguaje para describir los cambios que quieras en tu archivo de texto.
 
-Verbos: acciones
+> Para leer sobre estos en la ayuda de Vim busca `:h motion` `:h operador`
+> `:h aw` (continua leyendo las siguientes entradas en este último),
+> recomendable en este orden.
+
+**Operadores**: son los verbos del lenguaje de Vim, realizan acciones; y estos
+dependen del modo en el que te encuentres.
+- `c`: cambiar (_change_), es decir, borrar e iniciar _insert mode_
 - `d`: borrar (_delete_)
-- `c`: cambiar (_change_)
 - `y`: copiar (_yank_)
-- `v`: seleccionar (_visual mode_)
+- `p`: pegar (_paste_)
 
-<!-- TODO: Algunos de estos no son completamente precisos --> 
-Nombres / Sustantivos: objetos a los que realizar las acciones
+**Movimientos / Nombres**: estos se pueden usar tanto como para mover el cursor,
+como ser los objetos a los que realizar las acciones. Por ejemplo, puedo moverme
+una palabra y entonces considera un _movimiento_. En cambio puedo usar un 
+operador para borrar y combinarlo con un movimiento de palabra. En este caso,
+yo lo considero un _nombre_, ya que está describiendo dónde el operador tiene
+que actuar. Pero ojo, no todos los operadores necesitan un nombre, pero sí la
+mayoría de ellos.
+
+- `h j k l`: carácter a la izquierda, abajo, arriba, a la derecha. De esta
+  forma no tienes que mover los dedos del teclado hacia las flechas. Para
+  recordarlo piensa la `j` como una flecha hacia abajo, y `h`-`l` están a la
+  derecha-izquierda respectivamente.
 - `w`: palabra (_word_)
-- `s (`: frase (_sentence_)
-- `p {`: párrafo (_paragraph_)
-- `t`: etiqueta de HTML o XML
-- `b`: bloque de código
-Los nombres también se pueden usar para moverte entre ellos. Más información
-en los ejemplos.
+- `0 $`: inicio, fin de línea; similares a `<Home> <End>`
+- `f<char> F<char>`: hasta encontrar el carácter dado avanzando, retrocediendo (_find_)
+- `t<char> f<char>`: hasta el carácter dado y se detiene antes avanzando, retrocediendo (_'til_)
 
-Modificadores: entre los verbos y los nombres (opcional)
-  - `i`: interno
-  - `a`: alrededor
-  - `<número>` para repetir la acción
-  - `f<char>`: hasta encontrar el caracter dado (_find_)
-  - `t<char>`: hasta el caracter dado, para antes de él (_'til_)
-  - `/<patrón>`: realizar una búsqueda global de varios caracteres, pudiendo usar regex
+También, por norma general, al no haber ningún nombre para la línea; se repite
+el mismo operador para aplicarlo en la línea actual. Además, la versión en
+mayúscula del operador es sinónimo de combinarlo con `$`: `D`=`d$`, `C`=`c$`...
+
+> **Nota**: Todos los movimientos son nombres, pero no todos los nombres son
+> movimientos.
+
+**Modificadores** (opcional)
+- `<número>` para repetir la acción. Se puede aplicar tanto a operadores como a movimientos y nombres.
+- `i`: interno (_inner_)
+- `a`: un (_a_); por ejemplo: `caw` _change a word_ (cambia una palabra). A
+  diferencia de `i`, que solo afecta al nombre; `a` incluye el espacio
+  que lo separa del siguiente.
+
+> Estes dos últimos solo se pueden aplicar a nombres.
 
 ## Construyendo frases (con ejemplos)
-Al combinar `<verbo>[<modificador>]<nombre>` podemos hacer prácticamente 
-cualquier acción en un solo comando muy rápidamente, y para movernos entre
-el código simplemente usando los nombres: `[<modificador>]<nombre>`.
-
 Borrar dos palabras:
-
 ```
 d2w / 2dw
 ```
 
-Cambiar (es decir, borrar y entrar en _insert mode_) la frase en la que se
+Cambiar (es decir, borrar y entrar en _insert mode_) la palabra en la que se
 encuentra el cursor:
-
 ```
-cis
+ciw
 ```
 
-Y de forma similar sucede para movernos, por ejemplo avanzar dos párrafos:
-
+Y de forma similar sucede para movernos, por ejemplo bajar 10 líneas:
 ```
-2}
+10j
+```
+
+Como no tenemos un modificador de línea, se repite la acción (**ojo**: ¡`dj`
+borra dos líneas!):
+```
+dd ---> borra la línea actual
+yy ---> copia la línea actual
+cc ---> cambia la línea actual: la borra y entra en insert mode
 ```
 
 Los modificadores también se pueden añadir al _insert mode_:
-
 ```
 3ihola ---> holaholahola
 ```
 
-# Más verbos
+# Entrar al modo _insert_
+- `i a`: antes, después del cursor
+- `I A`: principio, final de la línea
+- `o O`: nueva línea debajo, arriba
+- `ea`: insertar después de palabra
 
-Mayúsculas y minúsculas
+# Operadores
+Reemplazar:
+- `r<nuevo_char>`: remplazar el carácter debajo del cursor y volver al modo normal (_replace_)
+- `c<nombre>`: cambiar (_change_), es decir, borrar y entrar en _insert mode_.
+
+Eliminar texto, o más bien, cortarlo; ya que todo lo que borremos se almacenará:
+- `x`: carácter (_exterminate_)
+- `d<nombre>`: eliminar (_delete_)
+
+Copiar y pegar:
+- `y<nombre>`: copiar (_yank_)
+- `p P`: pegar antes, después (_paste_)
+
+Formatear texto:
+- `J`: juntar con la línea siguiente (_join_)
+- `<< >>`: identar
+- `gq gw`: formatear el texto, sin mover el cursor
+<!-- TODO: ¿Con qué se formatea? --> 
+
+Mayúsculas y minúsculas:
 - `g~`: cambiar de mayúsculas a minúsculas y viceversa
 - `gU`: cambiar todo a mayúsculas
 - `gu`: cambiar todo a minúsculas
 - _visual_ `U`: cambiar todo a mayúsculas
 - _visual_ `u`: cambiar todo a minúsculas
 
-Formateado de texto
+## Seleccionar
+- `v<nombre>`: iniciar modo _visual_ (operador)
+- `V`: iniciar modo _visual line_
+- `<C-v>`: iniciar modo _visual block_
+
+- `gv`: recuperar el modo visual anterior
+- `o O`: moverse al otro lado de la selección (solo modo visual)
+- `u U`: minúsculas, mayúsculas
 - `< >`: identar
-- `gq gw`: formatear el texto, sin mover el cursor
 
-# Movimiento avanzado
+<!-- TODO: Explicar operadores en este modo --> 
+- `y`: copiar
+- `x d`: cortar
 
-- `[<char> ]<char>`: moverse al anterior, siguiente <char> sin pareja (siendo
-  <char> `(`, `[` o `{`)
+# Movimientos y nombres 
+- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
+- `<C-u> <C-d>`: moverse media pantalla (Up - Down)
+- `zz`: centrar cursor en la pantalla
 
-- `[( [{`
+- `{ }`: avanzar, retroceder un párrafo (entre líneas vacías)
+
+Estos son movimientos relacionados con las **palabras**. Vim separa las
+palabras con determinados caracteres, pero si quieres que sea una palabra
+estricta, es decir solamente separada por espacios (saltándose la puntuación),
+usa la versión en mayúscula.
+
+<!-- TODO: Añadir más (motion.txt) -->
+- `w`: siguiente palabra
+- `e`: final de palabra siguiente
+- `b`: principio de palabra anterior
+- `ge`: final de la palabra anterior
+
+- `s (`: frase (_sentence_). Vim separa las frases con `.`, `!` o `?` (inclusive). Una frase también termina cuando lo haga el párrafo. El modificador es obligatorio
+- `p {`: párrafo (_paragraph_). Vim separa las frases con líneas vacías o espacios en blanco. El modificador es obligatorio
+- `t`: etiqueta de HTML o XML
+- `b`: bloque de código
+
+- `w`: palabra
+- `b (`: bloque con ( )
+- `B {`: bloque con { }
+- `t`: bloque con <>
+
+Commandos para ir a:
+
+- `%`: la pareja de ( ), [ ] o { }
+- `<number>gg <number>G`: número de línea
+- `gg G`: inicio, final del archivo
+- `gd gD`: ir a la declaración local, global
+- `gf gF`: ir al archivo debajo del cursor, en determinada línea
+- `gx`: abrir URL
+
+## Buscar
+Estos comandos también funcionan como movimientos y nombres.
+- `f<char>`: en la misma línea
+- `F<char>`: en la misma línea detrás
+- `t<char>`: 1 posición antes de `char`
+- `; ,`: siguiente, anterior `char` en la búsqueda
+
+- `/<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor.
+- `?<patrón>`: igual que el anterior, pero busca hacia arriba
+- `n N`: repite la búsqueda anterior, hacia arriba
 
 ## Marcas
-sirven como una especie de marcapáginas: se colocan en determinadas posiciones
+<!-- TODO: No confundir nombres (lenguaje vim) con estos nombres, mejor llamarlos identificadores <id> -->
+Sirven como una especie de marcapáginas: se colocan en determinadas posiciones
 de un archivo, para posteriormente regresar a ellas con un simple comando.
 
 - `m<nombre>`: establece una marca en la posición del cursor
-- `&#96;<nombre> '<nombre>`: regresa a la marca, regresa al primer caracter no blanco de la línea marcada
+- `&#96;<nombre> '<nombre>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
 
 El nombre de las marcas será una letra:
 - Si es minúscula solo corresponderá al archivo actual, y se borrarán con el
@@ -230,32 +337,59 @@ Hay algunas marcas ya establecidas:
   recuerdan las posiciones en donde estuviste al cerrar Vim. `'0` es la última
   posición en el que lo cerraste, `'1` la penúltima, etc.
 
-- `'[ ']`: recuerdan el primer y último caracter de texto editado o copiado
-- `'< '>`: recuerdan el primer y último caracter de texto seleccionado
+- `'[ ']`: recuerdan el primer y último carácter de texto editado o copiado
+- `'< '>`: recuerdan el primer y último carácter de texto seleccionado
 - `''`: recuerda la posición anterior a un salto o donde se hizo `m'`
 - `'"`: recuerda la última posición del cursor antes de salir del buffer (individual para cada buffer)
 - `'^`: recuerda la última posición del cursor al salir de _insert mode_ (se usa para el comando `gi`)
 
 Con el comando `:marks` puedes listar todas las marcas actuales, y con
-`delmarks <nombre>` borrarlas (solo a-zA-Z0-9).
+`delm[arks] <nombre>` borrarlas (solo a-zA-Z0-9).
 
 Cada uno de los saltos que realices, se guardarán en la _jump list_ (cuyo
 contenido puedes ver con `:jumps`o `:ju`) y los comandos `<C-o>` y `<C-i>` te
 permitirán regresar a un salto anterior o posterior respectivamente.
 
+## Movimiento avanzado
+<!-- TODO -->
+- `[<char> ]<char>`: moverse al anterior, siguiente <char> sin pareja (siendo
+  <char> `(`, `[` o `{`)
+- `[( [{`
+
+# Buffers, ventanas y pestañas
+`:tabn :tabp`: siguiente, anterior pestaña
+`g<Tab>`: última pestaña
+
 # Otras funcionalidades
 ## Registros
-Cuando eliminamos texto, realmente no lo estamos eliminando, sino cortanto.
+Cuando eliminamos texto, realmente no lo estamos eliminando, sino cortando.
 Dicho texto queda almacenado en los registros (automáticamente nombrados del
 0 al 9, al menos que no se especifique uno manualmente), para que puedas
 volver a utilizarlo o pegarlo en otro lugar.
 
-- `"<name><acción>`: usar el registro
+Para ver el contenido de tus registros usa `:reg`
+
+- `"<nombre><acción>`: usar el registro
+- `"a-zA-Z`: registros del usuario
+
 - `""`: registro sin nombre (por defecto)
+- `"<0-9>`: historial del registro sin nombre (0 más nuevo, 9 más viejo)
+
+Registros que no guardan nada (para evitar que se sobreescriban otros registros.
+Útil para plugins):
+
 - `"_`: registro agujero negro (no se guarda)
-- `"<0-9>`: registro de copiar (0 más nuevo, 9 más viejo)
-- `".` `"%` `":` `"#`: readonly (último texto insertado, relative current path, recent command, current opened file folder)
-- `:reg`: para ver el contenido de los registros
+- `"-`: según la ayuda: 
+
+> This register contains text from commands that delete less than one line,
+> except when the command specifies a register with ["x].
+
+Registros _read-only_:
+
+- `".`: último texto insertado
+- `":`: último comando _ex_
+- `"%`: dirección relativa al archivo actual
+- `"#`: otra dirección de archivo extraña. No creo que la uses
 
 ## Desplegables
 Más información en `:help fold.txt`
@@ -264,98 +398,9 @@ Más información en `:help fold.txt`
 - `zd zD zE`: eliminar desplegable, recursivamente, todos en la ventana actual
 - `zo zO`: abrir el desplegable, recursivamente
 - `zc zC`: cerrar el desplegable, recursivamente
-- `za zA`: aternar entre abrir y cerrar el desplegable, recursivamente
-
-## Buffers, ventanas y pestañas
-`:tabn :tabp`: siguiente, anterior pestaña
-`g<Tab>`: última pestaña
-
-# Comandos Básicos
-## Mover el cursor
-- `h j k l`: izquierda, abajo, arriba, derecha. De esta forma no tienes que
-  mover los dedos del teclado hacia las flechas. Para recordarlo piensa la `j`
-  como una flecha hacia abajo, y `h`-`l` estan a la derecha-izquerda
-  respectivamente.
-
-- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
-
-- `{ }`: párrafo (entre líneas vacías)
-- `0 $`: inicio, fin de línea
-- `zz`: centrar cursor en la pantalla
-
-- En mayúscula también avanza la puntuación:
-    - `w`: siguiente palabra
-    - `e`: final de palabra siguiente
-    - `b`: principio de palabra anterior
-    - `ge`: final de la palabra anterior
-
-- Ir a:
-    - `%`: ir a la pareja de ( ), [ ] o { }
-    - `<number>gg` / `<number>G`: ir a la línea
-    - `gg G`: inicio, final del archivo
-    - `gd`: ir a la declaración
-    - `gf`: ir al archivo debajo del cursor
-    - `gF`: ir al archivo debajo del cursor en determinada línea
-    - `gx`: abrir URL
-
-- `C-u C-d`: media pantalla
-
-## Insertar
-- `i a`: antes, después del cursor
-- `I A`: principio, final de la línea
-- `o O`: nueva línea debajo, arriba
-- `ea`: insertar después de palabra
-
-## Editar
-- Reemplazar:
-    - `r`: caracter
-    - `cw`: palabra
-    - `cc`: línea
-
-- `J`: juntar con la línea siguiente
-
-- `<< >>`: identar
-
-- Copiar
-    - `yw`: hasta el principio de la palabra siguiente
-    - `yiw`: palabra
-    - `yy`: línea
-    - `y$`: hasta el final de la línea
-- Cortar
-    - `x`: caracter
-    - `dw`: hasta el principio de la palabra siguiente
-    - `diw`: palabra
-    - `dd`: línea
-    - `d$ D`: hasta el final de la línea
-- `p P`: pegar antes, después
-
-## Seleccionar
-- `v`: iniciar modo _visual_
-- `V`: iniciar modo _visual line_
-- `C-v`: iniciar modo _visual block_
-
-- `i<operator>`: selecciona todo / `a<operator>`: selecciona lo de dentro
-    - `w`: palabra
-    - `b (`: bloque con ( )
-    - `B {`: bloque con { }
-    - `t`: bloque con <>
-
-- `gv`: recuperar el modo visual anterior
-- `o O`: moverse al otro lado de la selección (solo modo visual)
-- `u U`: minúsculas, mayúsculas
-- `< >`: identar
-- `y`: copiar
-- `x d`: cortar
-
-## Buscar
-- `f<char>`: en la misma línea
-- `F<char>`: en la misma línea detras
-- `t<char>`: 1 posición antes de `char`
-- `; ,`: siguiente, anterior `char` en la búsqueda
-
+- `za zA`: alternar entre abrir y cerrar el desplegable, recursivamente
 
 # Plugins
-
 ## Netrw
 Este es un plugin que viene preinstalado en NeoVim, y permite mostrar archivos
 tanto locales como remotos a través de SSH, etc.
@@ -382,6 +427,8 @@ tanto locales como remotos a través de SSH, etc.
 - `R`: renombrar
 - `s`: cambiar orden (nombre, fecha, tamaño)
 
+-------------------------------------------------------------------------------
+
 TODO
 Sentence
 Search: * #
@@ -392,13 +439,40 @@ tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> positio
 ex mode
 ZZ ZQ
 do dp
+ga
 q: q/ q?
 textwidth=<number>
 [{ [( ]) ]} motion.txt
 <C-g>
+
 quickfix: :c...
 list commands: :l...
+
 autocommands: events
+abreviations
+
+select mode
+:map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+:map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+:map ' \`
+	" start of line
+	:cnoremap <C-A>		<Home>
+	" back one character
+	:cnoremap <C-B>		<Left>
+	" delete character under cursor
+	:cnoremap <C-D>		<Del>
+	" end of line
+	:cnoremap <C-E>		<End>
+	" forward one character
+	:cnoremap <C-F>		<Right>
+	" recall newer command-line
+	:cnoremap <C-N>		<Down>
+	" recall previous (older) command-line
+	:cnoremap <C-P>		<Up>
+	" back one word
+	:cnoremap <Esc><C-B>	<S-Left>
+	" forward one word
+	:cnoremap <Esc><C-F>	<S-Right>
 
 Check quickref.txt
 
