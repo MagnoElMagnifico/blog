@@ -1,6 +1,6 @@
 ---
 title: Vim y Neovim
-description: Un pequeño overview de las principales funcionalidades de Vim con sus comandos y mi configuración
+description: Una pequeña overview de las principales funcionalidades de Vim con sus comandos
 weight: 2
 extra:
   show_toc: true
@@ -103,7 +103,9 @@ absolutamente todos, y que habrá algunos que en tu vida usarás, ve a
 `quickref.txt`.
 
 En el apartado de `key-notation`, puedes obtener más información de como Vim
-representa las diferentes teclas que puedes usar para los comandos.
+representa las diferentes teclas que puedes usar para los comandos. En este
+post estoy usando esa notación. Para escribir teclas más rápidamente puedes
+usar (en _command mode_) `<C-v>` y la tecla deseada.
 
 # Entendiendo la edición modal
 Vim es un **editor modal**, lo que quiere decir que existen diferentes modos de
@@ -127,9 +129,13 @@ El modo _terminal_ emula una consola de comandos que puedes utilizar dentro del
 propio editor, sin necesidad de cerrarlo. Para salir al modo normal, presiona
 `<C-\><C-n>`.
 
+El modo _cmd_ o _command line mode_ es el usado cuando escribes commandos Ex `:`,
+patrones de búsqueda `/ ?` y filtros `!`.
+
 <!-- TODO --> 
 _command_
 _select_
+_replace_
 
 En todos estos modos (excepto el _normal mode_) se te indicará en cual de ellos te
 encuentras abajo de todo de la pantalla. En el caso del _command line mode_, estarás
@@ -221,10 +227,14 @@ Los modificadores también se pueden añadir al _insert mode_:
 ```
 
 # Entrar al modo _insert_
+<!-- TODO: Comandos en modo insert -->
 - `i a`: antes, después del cursor
-- `I A`: principio, final de la línea
+- `I A`: principio sin contar los espacios, final de la línea
+- `gI`: principio de la línea
 - `o O`: nueva línea debajo, arriba
 - `ea`: insertar después de palabra
+- `gi`: volver al _insert mode_ en el último lugar donde se estuvo en este
+modo (marca `'^`)
 
 # Operadores
 Reemplazar:
@@ -310,19 +320,19 @@ Estos comandos también funcionan como movimientos y nombres.
 - `t<char>`: 1 posición antes de `char`
 - `; ,`: siguiente, anterior `char` en la búsqueda
 
-- `/<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor.
-- `?<patrón>`: igual que el anterior, pero busca hacia arriba
+- `/<patrón> ?<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor hacia delante, hacia atrás
 - `n N`: repite la búsqueda anterior, hacia arriba
+- `* #`: realiza una búsqueda con `/ ?` usando como patrón la palabra debajo del cursor 
+- `g* g#`: igual que `* #` pero elimina `\< \>`, es decir, búsqueda parcial
 
 ## Marcas
-<!-- TODO: No confundir nombres (lenguaje vim) con estos nombres, mejor llamarlos identificadores <id> -->
 Sirven como una especie de marcapáginas: se colocan en determinadas posiciones
 de un archivo, para posteriormente regresar a ellas con un simple comando.
 
-- `m<nombre>`: establece una marca en la posición del cursor
-- `&#96;<nombre> '<nombre>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
+- `m<id>`: establece una marca en la posición del cursor
+- `&#96;<id> '<id>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
 
-El nombre de las marcas será una letra:
+El identificador o nombre de las marcas será una letra:
 - Si es minúscula solo corresponderá al archivo actual, y se borrarán con el
   buffer, también si borras la línea en donde está la marca.
   Se pueden usar como movimientos/nombres.
@@ -344,21 +354,36 @@ Hay algunas marcas ya establecidas:
 - `'^`: recuerda la última posición del cursor al salir de _insert mode_ (se usa para el comando `gi`)
 
 Con el comando `:marks` puedes listar todas las marcas actuales, y con
-`delm[arks] <nombre>` borrarlas (solo a-zA-Z0-9).
+`delm[arks] <id>` borrarlas (solo a-zA-Z0-9).
 
 Cada uno de los saltos que realices, se guardarán en la _jump list_ (cuyo
 contenido puedes ver con `:jumps`o `:ju`) y los comandos `<C-o>` y `<C-i>` te
 permitirán regresar a un salto anterior o posterior respectivamente.
 
 ## Movimiento avanzado
+<!-- TODO motion.txt -->
+gd gD
+[{ [( ]) ]}
+
+# Comandos Ex
 <!-- TODO -->
-- `[<char> ]<char>`: moverse al anterior, siguiente <char> sin pareja (siendo
-  <char> `(`, `[` o `{`)
-- `[( [{`
+:read
+ZZ=:wq ZQ=:q! ==> Config: ZA=:qa!
+ga=:as[cii]
+<C-g>=:f[ile] g<C-g>
+do=:diffget dp=:diffput
+quickfix: :c...
+list commands: :l...
 
 # Buffers, ventanas y pestañas
+<!-- TODO -->
+- Un _buffer_ es el texto en memoria de un archivo.
+- Una ventana es un _viewport_ de un buffer
+- Una pestaña es una colección de ventanas
+
 `:tabn :tabp`: siguiente, anterior pestaña
 `g<Tab>`: última pestaña
+tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> position after) /myself (:tabn :tabp gt gT)
 
 # Otras funcionalidades
 ## Registros
@@ -369,7 +394,7 @@ volver a utilizarlo o pegarlo en otro lugar.
 
 Para ver el contenido de tus registros usa `:reg`
 
-- `"<nombre><acción>`: usar el registro
+- `"<id><comando>`: usar el registro
 - `"a-zA-Z`: registros del usuario
 
 - `""`: registro sin nombre (por defecto)
@@ -429,50 +454,38 @@ tanto locales como remotos a través de SSH, etc.
 
 -------------------------------------------------------------------------------
 
-TODO
-Sentence
-Search: * #
-gd gD
-gv gi
-windows / buffers
-tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> position after) /myself (:tabn :tabp gt gT)
-ex mode
-ZZ ZQ
-do dp
-ga
-q: q/ q?
+<!-- CONFIG --> 
 textwidth=<number>
-[{ [( ]) ]} motion.txt
-<C-g>
-
-quickfix: :c...
-list commands: :l...
-
 autocommands: events
 abreviations
 
-select mode
+```
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 :map ' \`
-	" start of line
-	:cnoremap <C-A>		<Home>
-	" back one character
-	:cnoremap <C-B>		<Left>
-	" delete character under cursor
-	:cnoremap <C-D>		<Del>
-	" end of line
-	:cnoremap <C-E>		<End>
-	" forward one character
-	:cnoremap <C-F>		<Right>
-	" recall newer command-line
-	:cnoremap <C-N>		<Down>
-	" recall previous (older) command-line
-	:cnoremap <C-P>		<Up>
-	" back one word
-	:cnoremap <Esc><C-B>	<S-Left>
-	" forward one word
-	:cnoremap <Esc><C-F>	<S-Right>
+``` 
+
+Emacs para ex mode
+```vim
+" start of line
+:cnoremap <C-A>		<Home>
+" back one character
+:cnoremap <C-B>		<Left>
+" delete character under cursor
+:cnoremap <C-D>		<Del>
+" end of line
+:cnoremap <C-E>		<End>
+" forward one character
+:cnoremap <C-F>		<Right>
+" recall newer command-line
+:cnoremap <C-N>		<Down>
+" recall previous (older) command-line
+:cnoremap <C-P>		<Up>
+" back one word
+:cnoremap <Esc><C-B>	<S-Left>
+" forward one word
+:cnoremap <Esc><C-F>	<S-Right>
+```
 
 Check quickref.txt
 
@@ -487,6 +500,3 @@ vim-airline !lua (?)
 vim-polyglot (?)
 terminal-execute (?)
 
-A buffer is the in-memory text of a file.
-A window is a viewport on a buffer.
-A tab page is a collection of windows.
