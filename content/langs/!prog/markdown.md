@@ -1,5 +1,6 @@
 ---
-title: Guía rápida de cómo escribir Markdown
+title: Markdown
+description: Guía rápida de cómo escribir Markdown
 weight: 3
 
 extra:
@@ -10,26 +11,26 @@ extra:
 **Guía rápida** de como escribir en **Markdown**.
 
 **Markdown está basado en HTML**, así que cualquier archivo HTML es Markdown
-válido, eso significa que podemos usar elementos HTML en Markdown como, por
-ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún así
-si creas un elemento HTML en tu archivo Markdown no podrás usar sintaxis
+válido, lo que significa que podemos usar elementos HTML en su interior. Por
+ejemplo, si se usa un comentario, el texto no aparecerá en el documento final.
+Sin embargo, dentro de un elemento HTML no podrás continuar usando sintaxis
 Markdown dentro de él.
 
-La implementación de Markdown cambia de acuerdo al parseador (el programa que
+La implementación de Markdown cambia de acuerdo al _parser_ (el programa que
 transforma el Markdown a HTML). Esta guía servirá para clarificar cuales
-características son universales y cuales son específicas de cada parseador.
+características son universales y cuales son específicas de cada uno.
 
 ## Estilo y caracteres
 - *Cursiva*: Uso de `*` o `_` alrededor de la palabra.
 - **Negrita**: Uso de `**` o `__` alrededor de la palabra.
-- ***Ambos estilos***: Uso de `***`, `*__` o `**_` alrededor de la palabra.
+- ***Ambos estilos***: Uso de `***`, `___`, `*__`, `**_` y demás variantes alrededor de la palabra.
 - `Código`: Uso de \` alrededor de la palabra.
-- ~~Tachado~~: Uso de `~~` alrededor de la palabra (solo para GitHub Flavored Markdown).
-- Caracteres especiales: Uso de \\ antes del caracter.
+- ~~Tachado~~: Uso de `~~` alrededor de la palabra.
+- Caracteres especiales: Uso de \\ antes del carácter.
 - Salto de `<br>`: Uso de `---` o `***` (se admite con espacios en el medio).
 
 ### Otros caracteres especiales
-Markdown, al poder escribir HTML, podemos usar la sintáxis propia de este para
+Markdown, al poder escribir HTML, podemos usar la sintaxis propia de este para
 insertar más caracteres. A continuación hay algunos ejemplos:
 
 - Flecha derecha (`&#8594;`): &#8594;
@@ -48,25 +49,25 @@ correspondientes codificaciones y formato).
     :
     :
 
-    [link]: https://www.google.com
-    [1]: https://www.google.com
+    [link]: https://www.example.com
+    [1]: https://www.example.com
     ```
 
 - Si no queremos que cambie el texto, simplemente lo situamos entre `<>`.
-- Se le puede añadir una targetita de información entre los paréntesis con `""`.
-- También funciona con rutas relativas a otros archivos (Ej:
-  `/documentation/LICENSE.md`).
+- Se le puede añadir una tarjetita de información entre los paréntesis con `""`.
+- También funciona con rutas relativas a otros archivos (e.g.: `/documentation/LICENSE.md`).
 - Incluso podemos poner enlaces en el mismo documento, en lugar de dar una
   dirección escribimos un `ID` (precedido de un `#`) que referencie a otra parte
   del documento donde incluimos una etiqueta `<a id= ""></a>`.
 
 ### Imágenes o GIFs
-- Con este mismo método de los enlaces, podemos añadir imágenes a nuestro
-  documento, simplemente añadiendo `!` delante.
+Con este mismo método de los enlaces, tanto usando URLs como direcciones a
+archivos, podemos añadir imágenes a nuestro documento, simplemente añadiendo
+`!` delante.
 
 ## Párrafos
 ### Títulos
-- Uso de `#` tantas veces como pequeño sea el texto. Es decir:
+- Uso de `#` tantas veces como pequeño sea el título. Es decir:
     - `#`: `<h1>`
     - `##`: `<h2>`
     - `###`: `<h3>`
@@ -74,6 +75,14 @@ correspondientes codificaciones y formato).
     - ...
 - Uso de `=` a modo de subrayado para títulos grandes y `-` para títulos más
   pequeños.
+
+```md
+Ejemplo de título
+=================
+
+Ejemplo de subtítulo
+--------------------
+``` 
 
 ### Nuevo párrafo:
 - **Doble ENTER**: El simple se ignora, y si añades más de 2 también.
@@ -110,6 +119,9 @@ Solamente disponible en GitHub Flavored Markdown.
 
 ## Ejemplos ##
 > **Nota**: Mejor ver esta sección en el [repositorio](https://github.com/MagnoElMagnifico/blog)
+
+
+
 <!-- Esto es un comentario que no aparecerá en el resultado final -->
 Texto normal
 
@@ -127,7 +139,7 @@ __*Vaya, otra vez*__
 
 ~~¿Por qué estoy tachado?~~
 
-Aquí algunos carateres raros: \` \* \\ \_
+Aquí algunos caracteres raros: \` \* \\ \_
 
 <br>
 
