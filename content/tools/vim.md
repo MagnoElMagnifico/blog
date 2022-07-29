@@ -116,14 +116,29 @@ los principales comandos de movimiento y sirve de transición hacia los otros
 modos. Toda tecla que pulses se tomará como un comando, no para escribir texto.
 
 Para hacer esto último, debes acceder al modo _insert_ presionando la tecla `i`.
-Ahora podrás escribir texto como en otros editores. Para regresar al modo normal
-usa la tecla _Escape_ (`<Esc>`).
+Ahora podrás escribir texto como en otros editores. 
 
-El modo _visual_ se inicia al hacer una selección de texto, permitiéndote operar
-con él. Este modo selecciona carácter por carácter, pero existen los modos
-_visual line_, que selecciona líneas enteras, y _visual block_, selección en bloque
-o por columnas. A partir de estas selecciones, podemos hacer cambios solamente en
-el texto seleccionado con otros comandos.
+También existe el _replace mode_, al que se accede con `R`, y hace exactamente
+lo que dice: reemplazar el carácter actual por el nuevo que escribas.
+
+El modo _visual_ se inicia al hacer una selección de texto con `v`,
+permitiéndote operar con él. Este modo selecciona carácter por carácter, pero
+existen los modos _visual line_ (`V`), que selecciona líneas enteras, y _visual_
+_block_ (`<C-v>`), selección en bloque o por columnas. A partir de estas
+selecciones, podemos hacer cambios solamente en el texto seleccionado con otros
+comandos.
+
+Paralelamente existe el _select mode_ (accesible con `gh gH g<C-h>`
+-_go highlight_-, y con `<C-g>` alternas a/desde _visual mode_), muy similar al
+_visual mode_, pero en cambio se comporta de forma similar a los programas de
+edición de texto de Windows: seleccionas texto y al comenzar a escribir se
+sustituye el texto.
+
+> **Nota**: al sustituir el texto seleccionado al comenzar a escribir algo, 
+> `h j k l` dejan de funcionar y solo puedes usar las flechas del teclado. Si
+> configuras las flechas a otras acciones, este modo resulta inútil. Además, se
+> puede simular su funcionamiento desde _visual mode_, por lo que no es un modo
+> esencial.
 
 El modo _terminal_ emula una consola de comandos que puedes utilizar dentro del
 propio editor, sin necesidad de cerrarlo. Para salir al modo normal, presiona
@@ -132,16 +147,19 @@ propio editor, sin necesidad de cerrarlo. Para salir al modo normal, presiona
 El modo _cmd_ o _command line mode_ es el usado cuando escribes commandos Ex `:`,
 patrones de búsqueda `/ ?` y filtros `!`.
 
-<!-- TODO --> 
-_command_
-_select_
-_replace_
+En todos estos modos (excepto el _normal mode_) se te indicará en cual de ellos
+te encuentras abajo de todo de la pantalla. En el caso del _command line mode_,
+estarás escribiendo en ese espacio. Y para regresar al modo normal usa la tecla
+_Escape_ (`<Esc>`) (excepto en _terminal mode_).
 
-En todos estos modos (excepto el _normal mode_) se te indicará en cual de ellos te
-encuentras abajo de todo de la pantalla. En el caso del _command line mode_, estarás
-escribiendo en ese espacio.
+Para describir en qué modo se está ejecutando determinado comando, se añade `<char>_` antes de la notación de las teclas:
+- `i_`: _insert_
+- `v_`: _visual_
+- `c_`: _command_
+- ~~`n_`~~: _normal_, no hay
+- ~~`t_`~~: _terminal_, no hay
 
-# Vim como un lenguaje
+# Vim como lenguaje
 
 > A partir de ahora, los comandos que aparecen listados se ejecutarán desde el 
 > modo _normal_ a menos que se diga lo contrario.
@@ -176,7 +194,7 @@ mayoría de ellos.
   recordarlo piensa la `j` como una flecha hacia abajo, y `h`-`l` están a la
   derecha-izquierda respectivamente.
 - `w`: palabra (_word_)
-- `0 $`: inicio, fin de línea; similares a `<Home> <End>`
+- `0 ^ $`: inicio, primer carácter no blanco, fin de línea; similares a `<Home> <End>`
 - `f<char> F<char>`: hasta encontrar el carácter dado avanzando, retrocediendo (_find_)
 - `t<char> f<char>`: hasta el carácter dado y se detiene antes avanzando, retrocediendo (_'til_)
 
@@ -226,8 +244,8 @@ Los modificadores también se pueden añadir al _insert mode_:
 3ihola ---> holaholahola
 ```
 
-# Entrar al modo _insert_
-<!-- TODO: Comandos en modo insert -->
+# _Insert mode_
+Entrar al _insert mode_:
 - `i a`: antes, después del cursor
 - `I A`: principio sin contar los espacios, final de la línea
 - `gI`: principio de la línea
@@ -236,10 +254,46 @@ Los modificadores también se pueden añadir al _insert mode_:
 - `gi`: volver al _insert mode_ en el último lugar donde se estuvo en este
 modo (marca `'^`)
 
+## Comandos especiales en _insert mode_
+- `<C-o>`: permite ejecutar un comando en _normal mode_ para después regresar a _insert mode_
+- `<C-k>`: insertar un dígrafo, es decir, tildes. E.g: `<C-k>~n` = `ñ`, `<C-k>'a` = `á`
+- `<C-t> <C-d>`: identar
+
+Insertar texto ya insertado:
+- `<C-e> <C-y>`: insertar carácter abajo, arriba del cursor
+- `<C-a> <C-@>`: inserta el texto previamente insertado, y vuelve a _normal mode_
+
+El comando `<C-x>` activa un _submodo_ dentro del _insert mode_, permitiendo
+realizar más acciones, normalmente relacionadas con el autocompletado. Esos
+comandos se tratarán en su respectivo apartado, pero `<C-x><C-e> <C-x><C-y>` se
+puede usar para mover la ventana una línea hacia abajo, arriba; teniendo en
+cuenta que el cursor no puede salir de la ventana ni desplazarse.
+
+Operaciones con registros: 
+- `<C-r><id>`: insertar el contenido del registro dado
+- El registro `=` es especial, ya que te permite ejecutar expresiones de
+  VimScript: operaciones aritméticas, leer variables de entorno, registros y
+  condicionales con el operador ternario de C (`:h 41.3`)
+- `<C-r><C-r><id>`: inserta contenido del registro
+
+Borrar:
+- `<C-w>`: borrar la palabra anterior (`bw`)
+- `<C-u>`: borrar hasta el principio de línea (`d0`)
+
+Curiosidades dentro de _insert mode_:
+- `<Tab>` = `<C-i>`
+- `<Enter>` = `<NL>` = `<CR>` = `<C-j>` = `<C-m>`
+
 # Operadores
+- `u <C-r>`: deshacer y rehacer (los cambios se guardan en la _changelist_, que la puedes ver con `:changes`)
+- `g, g;`: ir a la primera, última posición de dicha lista
+- `.`: repite el último comando realizado
+
 Reemplazar:
 - `r<nuevo_char>`: remplazar el carácter debajo del cursor y volver al modo normal (_replace_)
 - `c<nombre>`: cambiar (_change_), es decir, borrar y entrar en _insert mode_.
+- `s` = `cl`, pensado para usar como `<número>s`
+- `S` = `cc`
 
 Eliminar texto, o más bien, cortarlo; ya que todo lo que borremos se almacenará:
 - `x`: carácter (_exterminate_)
@@ -253,7 +307,12 @@ Formatear texto:
 - `J`: juntar con la línea siguiente (_join_)
 - `<< >>`: identar
 - `gq gw`: formatear el texto, sin mover el cursor
-<!-- TODO: ¿Con qué se formatea? --> 
+
+El formateado del último comando se hace utilizando el contenido de las
+opciones `'formatexp'` (expresión) y `'formatprg'` (programa externo). En en
+caso de que ambas opciones estén vacías, el formateado se realizará con un
+programa interno de Vim, teniendo en cuenta `'textwidth'` y `'formatoptions`
+(ver `:h fo-table`).
 
 Mayúsculas y minúsculas:
 - `g~`: cambiar de mayúsculas a minúsculas y viceversa
@@ -263,55 +322,109 @@ Mayúsculas y minúsculas:
 - _visual_ `u`: cambiar todo a minúsculas
 
 ## Seleccionar
-- `v<nombre>`: iniciar modo _visual_ (operador)
+- `v<nombre>`: iniciar modo _visual_
 - `V`: iniciar modo _visual line_
 - `<C-v>`: iniciar modo _visual block_
 
 - `gv`: recuperar el modo visual anterior
 - `o O`: moverse al otro lado de la selección (solo modo visual)
-- `u U`: minúsculas, mayúsculas
-- `< >`: identar
 
-<!-- TODO: Explicar operadores en este modo --> 
-- `y`: copiar
+Los operadores funcionan diferente en este modo: en lugar de requerir un
+nombre, se tomarán los caracteres marcados como el propio nombre de la
+operación.
+
+- `u U ~`: minúsculas, mayúsculas, alternar
 - `x d`: cortar
+- `c`: cambiar
+- `y`: copiar
+- `< >`: identar
+- `gq`: formatear
 
 # Movimientos y nombres 
-- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
-- `<C-u> <C-d>`: moverse media pantalla (Up - Down)
-- `zz`: centrar cursor en la pantalla
+Aparte de los movimientos ya comentados (a continuación, para recordar),
+existen muchos otros.
 
-- `{ }`: avanzar, retroceder un párrafo (entre líneas vacías)
+- `h j k l`
+- `w`
+- `0 ^ $`
+- `f<char> F<char>`
+- `t<char> f<char>`
+
+> `<C-g> g<C-g>`: muestra tu posición en el archivo actual
+ 
+Movimientos de _scroll_, es decir, que mueven el contenido de la ventana y no
+el cursor (el cursor debe de estar siempre en la ventana, así como consecuencia
+del movimiento también es posible que se ajuste para que continue dentro). Al
+no ser movimientos del cursor no se pueden usar como nombres y combinar con
+operadores.
+
+- `zz`: centrar cursor en la pantalla
+- `<C-e> <C-y>`: moverse una línea abajo, arriba (_extra lines_, _???_)
+- `<C-d> <C-u>`: moverse media pantalla (_Down_, _Up_)
+- `<C-f> <C-b>`: moverse una pantalla abajo, arriba (_forward_, _backwards_)
+
+Moverse cuando hay líneas cortadas (es decir, `wrap=false`):
+- `z<Right> zl z<Left> zh`: mover la pantalla a la derecha, izquierda una columna/carácter
+- `zL zH`: mover media pantalla a la derecha, izquierda
+
+Más en `scroll.txt`.
+
+También, cuando hay líneas cortadas, podemos movernos cómodamente:
+- `gj gk`: bajar, subir una línea visible y no real (línea cortada vs línea real del archivo)
+- `g0 g^ g$`: igual que con los comandos anteriores pero yendo al principio, primer carácter no blanco y final de línea
+
+Commandos para ir a:
+
+- `<number>gg <number>G`: número de línea
+- `gg G`: inicio, final del archivo
+- `gf gF`: ir al archivo debajo del cursor, en determinada línea (usa la variable `'path'` para buscar los archivos)
+- `gx`: abrir URL
+
+¡Más comandos!:
+- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
+- `+ -`: bajar, subir una línea; pero poniendo el cursor en el primer carácter no blanco
 
 Estos son movimientos relacionados con las **palabras**. Vim separa las
 palabras con determinados caracteres, pero si quieres que sea una palabra
 estricta, es decir solamente separada por espacios (saltándose la puntuación),
 usa la versión en mayúscula.
 
-<!-- TODO: Añadir más (motion.txt) -->
 - `w`: siguiente palabra
 - `e`: final de palabra siguiente
 - `b`: principio de palabra anterior
 - `ge`: final de la palabra anterior
 
-- `s (`: frase (_sentence_). Vim separa las frases con `.`, `!` o `?` (inclusive). Una frase también termina cuando lo haga el párrafo. El modificador es obligatorio
+> **Nota**: aquí solo `w` es un nombre y movimiento, el resto solo movimientos.
+> Piénsalo, no tiene sentido dirigirte al final de una palabra, sino a la
+> palabra en sí misma.
+
+<!-- TODO: Añadir más (motion.txt forced-motion) -->
+MOVIMIENTO Y NOMBRE, SIN MODIFICADOR
+( ) { }
+
+NOMBRES EXCLUSIVOS + MODIFICADOR
+s
+p
+[]
+()b: entre (...), relacionado con [(
+<>: entre <...>
+t: entre etiquetas <xxx>...</xxx>
+{}B: {...}, relacionado con [{
+"<char>'<char>\`<char>: entre "..." '...' `...`
+
+- `%`: la pareja de ( ), [ ] o { }
+[{ [( ]) ]}
+
+- `s (`: . frase (_sentence_). Vim separa las frases con `.`, `!` o `?` (inclusive). Una frase también termina cuando lo haga el párrafo. El modificador es obligatorio
 - `p {`: párrafo (_paragraph_). Vim separa las frases con líneas vacías o espacios en blanco. El modificador es obligatorio
 - `t`: etiqueta de HTML o XML
 - `b`: bloque de código
 
-- `w`: palabra
 - `b (`: bloque con ( )
 - `B {`: bloque con { }
 - `t`: bloque con <>
 
-Commandos para ir a:
-
-- `%`: la pareja de ( ), [ ] o { }
-- `<number>gg <number>G`: número de línea
-- `gg G`: inicio, final del archivo
 - `gd gD`: ir a la declaración local, global
-- `gf gF`: ir al archivo debajo del cursor, en determinada línea
-- `gx`: abrir URL
 
 ## Buscar
 Estos comandos también funcionan como movimientos y nombres.
@@ -360,13 +473,19 @@ Cada uno de los saltos que realices, se guardarán en la _jump list_ (cuyo
 contenido puedes ver con `:jumps`o `:ju`) y los comandos `<C-o>` y `<C-i>` te
 permitirán regresar a un salto anterior o posterior respectivamente.
 
-## Movimiento avanzado
-<!-- TODO motion.txt -->
-gd gD
-[{ [( ]) ]}
+Los movimientos de siguientes comandos se añadirán a la lista:
+`gg G { } ( ) [{ ]} [[ ]] H M L % :tag <C-t> <C-]>`
+
+> **TODO**: Yo personalmente uso mucho los movimientos de `{ }`, y es muy
+> molesto que esos también se consideren saltos, ya que me llena la lista con
+> saltos inútiles cuando realmente quería conservar otro salto; como ir al
+> principio del archivo, búsqueda, etc.
+> 
+> Supongo que hasta encontrar una solución usaré `<C-d> <C-u>`
 
 # Comandos Ex
 <!-- TODO -->
+:checkhealth
 :read
 ZZ=:wq ZQ=:q! ==> Config: ZA=:qa!
 ga=:as[cii]
@@ -374,6 +493,9 @@ ga=:as[cii]
 do=:diffget dp=:diffput
 quickfix: :c...
 list commands: :l...
+
+## Sustituir
+<!-- TODO -->
 
 # Buffers, ventanas y pestañas
 <!-- TODO -->
@@ -385,7 +507,12 @@ list commands: :l...
 `g<Tab>`: última pestaña
 tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> position after) /myself (:tabn :tabp gt gT)
 
+`mksession mks`
+
 # Otras funcionalidades
+## Patrones de búsqueda y sustitución
+<!-- TODO -->
+
 ## Registros
 Cuando eliminamos texto, realmente no lo estamos eliminando, sino cortando.
 Dicho texto queda almacenado en los registros (automáticamente nombrados del
@@ -425,6 +552,15 @@ Más información en `:help fold.txt`
 - `zc zC`: cerrar el desplegable, recursivamente
 - `za zA`: alternar entre abrir y cerrar el desplegable, recursivamente
 
+## Macros
+<!-- TODO -->
+
+## Autocompletado
+<!-- TODO: h ins-completion wildmenu wildchar-->
+
+## Corrección de ortografía
+<!-- TODO -->
+
 # Plugins
 ## Netrw
 Este es un plugin que viene preinstalado en NeoVim, y permite mostrar archivos
@@ -458,6 +594,8 @@ tanto locales como remotos a través de SSH, etc.
 textwidth=<number>
 autocommands: events
 abreviations
+ejecutar comandos dependiendo del tipo de archivo:
+  md: spell check, textwidht, special mappings?
 
 ```
 :map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
