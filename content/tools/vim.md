@@ -577,16 +577,82 @@ list commands: :l...
 
 # Buffers, ventanas y pestañas
 
-<!-- TODO -->
-- Un _buffer_ es el texto en memoria de un archivo.
+- Un _buffer_ es el texto cargado en la memoria de un archivo.
 - Una ventana es un _viewport_ de un buffer
 - Una pestaña es una colección de ventanas
+
+<!-- TODO -->
+`mksession mks`
+
+## Buffers
+Puedes listar los _buffers_ activos con el comando `:buffers`: el primer número
+es su _id_, luego están los estados en los que se encuentra y el archivo al que
+corresponde.
+
+Un _buffer_ puede tener estar en los siguientes estados:
+
+| Estado     | ¿Cargado en memoria? | ¿Aparece en una ventana? | `:buffers` muestra... |
+| :--------: | :------------------: | :-----------------------:| :-------------------: |
+| _active_   | Sí                   | Sí                       | `a`                   |
+| _hidden_   | Sí                   | No                       | `h`                   |
+| _inactive_ | No                   | No                       | ` `                   |
+
+También hay otros tipos de indicadores, aparte de los del estado, y pueden
+aparecer varios de ellos juntos:
+
+- `u`: _unlisted_, solo aparece cuando se ejecuta `:buffers!`
+- `%`: buffer actual
+- `#`: buffer alternativo, al que se puede cambiar con `<C-^>` o `:e #`
+- `+`: buffer modificado
+- `-`: `'modificable'=false`
+- `=`: solo lectura
+- `R`: terminal ejecutando una tarea
+- `F`: terminal ha terminado la tarea
+- `?`: terminal sin tarea
+- `x`: errores de lectura
+
+Puedes usar los comandos `:bn[ext]` y `:bp[revious]` para moverte entre los
+distintos buffers cargados en la memoria; o directamente ir al que quieras de
+la lista con `:b[buffer]`, pero deberás aportar su _id_ o nombre. Hay más
+comandos que puedes usar en la ayuda: `:h buffer-list`.
+
+<!-- TODO -->
+sb sbn sbp 
+br[ewind] = bf[irst] (go to first) sbr sbf
+bl (last) sbl
+bm (modified) sbm
+bdelete (unload unlist) bwipeout (really delete) bun[load] (memory freed, listed)
+ball (edit all)
+
++cmd ?
+quickfix.txt: forma rápida de editar-compilar-editar
+
+Tipos especiales de buffers, que se consiguen combinando sus estados:
+
+- _quickfix_: se usa para contener la lista de errores o de contenidos (ver `:h cwindow` y `:h lwindow`)
+- _help_: contiene los manuales de ayuda
+- _terminal_: el contenido no se puede cambiar o leer hasta que el trabajo termine
+- _directory_: contenido de una carpeta, usado por plugins (`buftype=nowrite; bufhidden=delete; noswapfile`)
+- _scratch_: texto que no se guarda y puede ser descartado; hay que borrarlo explícitamente (`buftype=nofile; bufhidden=hide; noswapfile`)
+- _unlisted_: no aparece en la lista de buffers (`nobuflisted`)
+
+## Ventanas
+
+<!-- TODO -->
+No hay una forma de listar las ventanas activas, pero no es necesario, ya que
+se ven a simple vista.
+
+Existen dos tipos de ventanas: _split_ es una ventana que aparece en horizontal
+respecto a otra; y _vertical split_ que es una ventana que aparece en vertical.
+
+## Pestañas
+
+<!-- TODO -->
+La pestañas aparecerán listadas en la parte superior.
 
 `:tabn :tabp`: siguiente, anterior pestaña
 `g<Tab>`: última pestaña
 tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> position after) /myself (:tabn :tabp gt gT)
-
-`mksession mks`
 
 # Otras funcionalidades
 
