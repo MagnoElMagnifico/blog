@@ -15,6 +15,7 @@ extra:
 > ve mecanizándolos poco a poco.
 
 # Porqué Vim
+
 1. **Ligero**
 2. **Super personalizable**
 3. **Ergonómico**, con los atajos de teclado puedes trabajar muy rápido y cómodo
@@ -23,6 +24,7 @@ extra:
   con miles de archivos.
 
 # Niveles de poder en Vim
+
 No sé, pero creo que es curioso e interesante mencionarlos:
 
 1. No saber Vim
@@ -32,6 +34,7 @@ No sé, pero creo que es curioso e interesante mencionarlos:
 5. No usar el modo visual
 
 # La ayuda de Vim
+
 Otra increíble característica de Vim es su maravillosa documentación y manual
 de ayuda. De forma offline y sin salir del editor, puedes buscar lo que 
 necesites saber gracias al comando `:help` o `:h`.
@@ -50,6 +53,7 @@ Para navegar más rápido entre las distintas secciones de la documentación, us
 una de ellas.
 
 ## Consejos de búsqueda
+
 - `'foo'`: opción de configuración del editor (también puedes mirar en `options.txt`
   o en `option-list` para una breve descripción de todas ellas).
 - `foo`: comando a buscar para modo _normal_ (o una _tag_ directamente, si no encuentra nada)
@@ -76,6 +80,7 @@ todos los resultados en una ventana aparte con `:cwindow` o `:copen`.
 - `:helpg foo@es`: buscar la ayuda en español
 
 ## Estructura de la ayuda
+
 La ayuda de Vim consiste en dos partes:
 
 - **Manual de usuario**, que se debería leer como un libro; ya que introduce
@@ -108,6 +113,7 @@ post estoy usando esa notación. Para escribir teclas más rápidamente puedes
 usar (en _command mode_) `<C-v>` y la tecla deseada.
 
 # Entendiendo la edición modal
+
 Vim es un **editor modal**, lo que quiere decir que existen diferentes modos de
 funcionamiento y comportamiento dependiendo en qué modo te encuentres.
 
@@ -214,7 +220,19 @@ mayúscula del operador es sinónimo de combinarlo con `$`: `D`=`d$`, `C`=`c$`..
 
 > Estes dos últimos solo se pueden aplicar a nombres.
 
+**Bonus**: 
+- Vim también ofrece la posibilidad de forzar con `v V <C-v>` a forma de
+  modificador, para que un nombre se interprete carácter por carácter, línea a
+  línea, o en forma de bloque; a diferencia de su forma normal. Por ejemplo:
+
+```
+dj  ---> borra 2 líneas
+dvj ---> borra desde el cursor hasta el carácter de debajo
+d<C-v>j ---> igual que antes pero incluyendo el carácter inicial
+```
+
 ## Construyendo frases (con ejemplos)
+
 Borrar dos palabras:
 ```
 d2w / 2dw
@@ -245,6 +263,7 @@ Los modificadores también se pueden añadir al _insert mode_:
 ```
 
 # _Insert mode_
+
 Entrar al _insert mode_:
 - `i a`: antes, después del cursor
 - `I A`: principio sin contar los espacios, final de la línea
@@ -255,6 +274,7 @@ Entrar al _insert mode_:
 modo (marca `'^`)
 
 ## Comandos especiales en _insert mode_
+
 - `<C-o>`: permite ejecutar un comando en _normal mode_ para después regresar a _insert mode_
 - `<C-k>`: insertar un dígrafo, es decir, tildes. E.g: `<C-k>~n` = `ñ`, `<C-k>'a` = `á`
 - `<C-t> <C-d>`: identar
@@ -285,6 +305,7 @@ Curiosidades dentro de _insert mode_:
 - `<Enter>` = `<NL>` = `<CR>` = `<C-j>` = `<C-m>`
 
 # Operadores
+
 - `u <C-r>`: deshacer y rehacer (los cambios se guardan en la _changelist_, que la puedes ver con `:changes`)
 - `g, g;`: ir a la primera, última posición de dicha lista
 - `.`: repite el último comando realizado
@@ -322,6 +343,7 @@ Mayúsculas y minúsculas:
 - _visual_ `u`: cambiar todo a minúsculas
 
 ## Seleccionar
+
 - `v<nombre>`: iniciar modo _visual_
 - `V`: iniciar modo _visual line_
 - `<C-v>`: iniciar modo _visual block_
@@ -341,6 +363,7 @@ operación.
 - `gq`: formatear
 
 # Movimientos y nombres 
+
 Aparte de los movimientos ya comentados (a continuación, para recordar),
 existen muchos otros.
 
@@ -352,6 +375,95 @@ existen muchos otros.
 
 > `<C-g> g<C-g>`: muestra tu posición en el archivo actual
  
+¡Más comandos!:
+- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
+- `+ -`: bajar, subir una línea; pero poniendo el cursor en el primer carácter no blanco
+
+## Movimientos que también pueden ser nombres
+
+En primer lugar encontramos los movimientos relacionados con las
+**palabras**. Vim separa las palabras con determinados caracteres, pero si
+quieres que sea una palabra estricta, es decir solamente separada por espacios
+(saltándose la puntuación), usa la versión en mayúscula.
+
+- `w`: siguiente palabra (único de esta lista que puede llevar los modificadores `i a`)
+- `e`: final de palabra siguiente
+- `b`: principio de palabra anterior
+- `ge`: final de la palabra anterior
+
+Después, puedes desplazarte entre diferentes frases con `( )`. Vim las separa
+con `.`, `!` o `?` (inclusive). Una frase también termina cuando lo haga el
+párrafo.
+
+```
+Esto es una frase. ¡Y esto es otra frase para Vim!
+Esto es
+otro
+ejemplo.
+```
+
+Para moverte entre párrafos usa `{ }`, y estos se consideran pedazos de texto
+separados por líneas en blanco (o con caracteres en blanco). También puedes 
+interpretarlo como hacer un salto hasta la siguiente línea vacía.
+
+```
+¡Hola! Este es un ejemplo
+de párrafo según Vim.
+
+Y este es otro párrafo
+de ejemplo, para que veas
+como debes separarlos.
+```
+
+Por último, si te quieres desplazar entre bloques de paréntesis o llaves,
+puedes usar `[( ])` y `[{ ]}` respectivamente. Ten en cuenta que irá a por el
+paréntesis o llave que no esté cerrado. Mira este ejemplo:
+
+```c
+int main() { // bloque 1
+  ...
+  { // bloque 2
+    ...
+  }
+  ...
+}
+```
+
+Si te encuentras dentro del bloque 2 y realizas `[{`, el cursor se desplazará a
+la llave que tiene el comentario y dice ser el bloque 2. En cambio, si estás
+fuera del bloque 2 pero en dentro del bloque 1, se moverá entre las llaves de
+la primera y última línea.
+
+Estos últimos movimientos, `( ) { } [{ ...`,  pueden usarse también como nombres, siempre y 
+cuando no se usen con los modificadores `i a`, ya que se confundirían con los
+siguientes.
+
+## Nombres exclusivos con modificador
+
+Es decir, nombres que no pueden ser movimientos; y dado que se confunden con
+los movimientos normales, y por lo tanto deben ir acompañados siempre de un
+modificador: `i a`.
+
+- `s`: frase (_sentence_). Equivalente al movimiento con `( )`
+- `p`: párrafo (_paragraph_). Equivalente al movimiento con `{ }`
+
+- `( ) b`: paréntesis (_brackets_). Equivalente al movimiento con `[( ])`
+- `{ } B`: llaves (_curly brackets_). Equivalente al movimiento con `[{ ]}`
+- `[ ]`: corchetes (_square brackets_)
+- `< >`: entre signos de `<` y `>` (_angular brackets_)
+- `t`: entre etiquetas de XML/HTML (_tag_) (`<xxx>...</xxx>`)
+- \` `" '`: entre comillas simples, dobles, o tildes graves
+
+Para esclarecer un poco estos últimos, puede que sea necesario ver algunos ejemplos:
+
+- `dip`: borra el párrafo actual
+- `d}`: borra hasta el final del párrafo
+- `di{` o `diB`: borra el contenido entre `{ }`
+- `di"`: borra el interior de las comillas
+- `da"`: borra el contenido de las comillas, estas inclusive
+
+## Movimientos de Scroll
+
 Movimientos de _scroll_, es decir, que mueven el contenido de la ventana y no
 el cursor (el cursor debe de estar siempre en la ventana, así como consecuencia
 del movimiento también es posible que se ajuste para que continue dentro). Al
@@ -369,81 +481,45 @@ Moverse cuando hay líneas cortadas (es decir, `wrap=false`):
 
 Más en `scroll.txt`.
 
-También, cuando hay líneas cortadas, podemos movernos cómodamente:
+También, cuando hay líneas que no aparecen completas horizontalmente en la
+ventana, podemos movernos cómodamente:
+
 - `gj gk`: bajar, subir una línea visible y no real (línea cortada vs línea real del archivo)
 - `g0 g^ g$`: igual que con los comandos anteriores pero yendo al principio, primer carácter no blanco y final de línea
 
-Commandos para ir a:
+## Ir a
 
+- `%`: la pareja de ( ), [ ], { }, /* */, o incluso #if #elif #else #endif...
 - `<number>gg <number>G`: número de línea
 - `gg G`: inicio, final del archivo
 - `gf gF`: ir al archivo debajo del cursor, en determinada línea (usa la variable `'path'` para buscar los archivos)
 - `gx`: abrir URL
 
-¡Más comandos!:
-- `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
-- `+ -`: bajar, subir una línea; pero poniendo el cursor en el primer carácter no blanco
-
-Estos son movimientos relacionados con las **palabras**. Vim separa las
-palabras con determinados caracteres, pero si quieres que sea una palabra
-estricta, es decir solamente separada por espacios (saltándose la puntuación),
-usa la versión en mayúscula.
-
-- `w`: siguiente palabra
-- `e`: final de palabra siguiente
-- `b`: principio de palabra anterior
-- `ge`: final de la palabra anterior
-
-> **Nota**: aquí solo `w` es un nombre y movimiento, el resto solo movimientos.
-> Piénsalo, no tiene sentido dirigirte al final de una palabra, sino a la
-> palabra en sí misma.
-
-<!-- TODO: Añadir más (motion.txt forced-motion) -->
-MOVIMIENTO Y NOMBRE, SIN MODIFICADOR
-( ) { }
-
-NOMBRES EXCLUSIVOS + MODIFICADOR
-s
-p
-[]
-()b: entre (...), relacionado con [(
-<>: entre <...>
-t: entre etiquetas <xxx>...</xxx>
-{}B: {...}, relacionado con [{
-"<char>'<char>\`<char>: entre "..." '...' `...`
-
-- `%`: la pareja de ( ), [ ] o { }
-[{ [( ]) ]}
-
-- `s (`: . frase (_sentence_). Vim separa las frases con `.`, `!` o `?` (inclusive). Una frase también termina cuando lo haga el párrafo. El modificador es obligatorio
-- `p {`: párrafo (_paragraph_). Vim separa las frases con líneas vacías o espacios en blanco. El modificador es obligatorio
-- `t`: etiqueta de HTML o XML
-- `b`: bloque de código
-
-- `b (`: bloque con ( )
-- `B {`: bloque con { }
-- `t`: bloque con <>
-
 - `gd gD`: ir a la declaración local, global
 
 ## Buscar
+
 Estos comandos también funcionan como movimientos y nombres.
+
+Buscan en la misma línea:
 - `f<char>`: en la misma línea
 - `F<char>`: en la misma línea detrás
 - `t<char>`: 1 posición antes de `char`
 - `; ,`: siguiente, anterior `char` en la búsqueda
 
+Multilínea:
 - `/<patrón> ?<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor hacia delante, hacia atrás
 - `n N`: repite la búsqueda anterior, hacia arriba
 - `* #`: realiza una búsqueda con `/ ?` usando como patrón la palabra debajo del cursor 
 - `g* g#`: igual que `* #` pero elimina `\< \>`, es decir, búsqueda parcial
 
 ## Marcas
+
 Sirven como una especie de marcapáginas: se colocan en determinadas posiciones
 de un archivo, para posteriormente regresar a ellas con un simple comando.
 
 - `m<id>`: establece una marca en la posición del cursor
-- `&#96;<id> '<id>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
+- \``<id> '<id>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
 
 El identificador o nombre de las marcas será una letra:
 - Si es minúscula solo corresponderá al archivo actual, y se borrarán con el
@@ -484,6 +560,7 @@ Los movimientos de siguientes comandos se añadirán a la lista:
 > Supongo que hasta encontrar una solución usaré `<C-d> <C-u>`
 
 # Comandos Ex
+
 <!-- TODO -->
 :checkhealth
 :read
@@ -495,9 +572,11 @@ quickfix: :c...
 list commands: :l...
 
 ## Sustituir
+
 <!-- TODO -->
 
 # Buffers, ventanas y pestañas
+
 <!-- TODO -->
 - Un _buffer_ es el texto en memoria de un archivo.
 - Una ventana es un _viewport_ de un buffer
@@ -510,10 +589,13 @@ tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> positio
 `mksession mks`
 
 # Otras funcionalidades
+
 ## Patrones de búsqueda y sustitución
+
 <!-- TODO -->
 
 ## Registros
+
 Cuando eliminamos texto, realmente no lo estamos eliminando, sino cortando.
 Dicho texto queda almacenado en los registros (automáticamente nombrados del
 0 al 9, al menos que no se especifique uno manualmente), para que puedas
@@ -544,6 +626,7 @@ Registros _read-only_:
 - `"#`: otra dirección de archivo extraña. No creo que la uses
 
 ## Desplegables
+
 Más información en `:help fold.txt`
 
 - `zf`: crear un desplegable en función de un movimiento/nombre o líneas seleccionadas en _visual mode_
@@ -553,16 +636,21 @@ Más información en `:help fold.txt`
 - `za zA`: alternar entre abrir y cerrar el desplegable, recursivamente
 
 ## Macros
+
 <!-- TODO -->
 
 ## Autocompletado
+
 <!-- TODO: h ins-completion wildmenu wildchar-->
 
 ## Corrección de ortografía
+
 <!-- TODO -->
 
 # Plugins
+
 ## Netrw
+
 Este es un plugin que viene preinstalado en NeoVim, y permite mostrar archivos
 tanto locales como remotos a través de SSH, etc.
 
