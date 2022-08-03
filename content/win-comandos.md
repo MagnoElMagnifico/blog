@@ -66,7 +66,7 @@ Redirigen la salida de un comando a otro)
   * `echo “hola” > test.txt`: escribe `hola` en un archivo llamado `test.txt`
   * `echo “hola” >> test.txt`: añade `hola` a un archivo llamado `test.tx`t
 
-# Archivos ejectables
+# Archivos ejecutables
 Podemos extraer todo esto de los comandos a programas ejecutables simplemente
 escribiendo los comandos en una línea nueva de un archivo `.sh` (Unix) o `.bat`
 (Windows)

@@ -1,7 +1,6 @@
 ---
 title: JavaScript Rendering
 weight: 6
-date: 2023-06-13
 ---
 
 # Canvas

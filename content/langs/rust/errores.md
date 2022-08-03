@@ -65,7 +65,7 @@ pequeña descripción del error.
 
 Para simplificar más, y en el caso de estar escribiendo una función que puede
 dar un error o no, podemos simplemente propagarlo, que sería devolverlo para que
-el que use esta función se encarge del error. Podemos devolver el error
+el que use esta función se encargue del error. Podemos devolver el error
 manualmente o usar el operador `?`:
 
 ```rs

@@ -15,12 +15,14 @@ de datos, compiladores, redes de bajo nivel...
 ¿Qué se puede hacer con Rust?
 
 # CLI (Command Line Interface)
+
 Son aquellas programas que se ejecutan en una consola, sin interfaces gráficas.
 
 Estas, al ser más sencillas que otras, son mejores para comenzar. Es
 recomendable buscar algo que te sea útil e intentar implementarlo.
 
 # Web assembly
+
 Gracias a Web Assembly, podemos usar lenguajes como Rust, C/C++ y otros para
 obtener rendimiento extra, casi a nivel nativo, a la vez que JavaScript.
 
@@ -29,10 +31,11 @@ requieran ese rendimiento, como procesamiento de imágenes, audio, juegos,
 operaciones matemáticas complejas, físicas, etc; pero no sencillas operaciones
 que simplemente se solucionarían con JavaScript.
 
-# Applicaciones de servidor
+# Aplicaciones de servidor
+
 Rust también permite crear servidores eficientes, robustos y escalables. Con
 frameworks ya listos para producción como [Rocket](https://rocket.rs/) o
-[Actiz](https://actix.rs/); drivers nativos a Bases de Datos como:
+[Actix](https://actix.rs/); drivers nativos a Bases de Datos como:
 
 + [MongoDB](https://www.mongodb.com/es)
 + [SQLite](https://www.sqlite.org/index.html)
@@ -43,11 +46,13 @@ El ecosistema es bastante maduro, por lo que encontrarás todas las
 funcionalidades básicas necesarias, pero no hay ningún framework que destaque.
 
 # Embedded systems
-Programar aplicaciones eficientes para relojes inteligentes, chips, Rasberry Pi,
+
+Programar aplicaciones eficientes para relojes inteligentes, chips, Raspberry Pi,
 etc; aquellos dispositivos centrados en determinadas tareas, normalmente forman
 parte de un sistema más grande.
 
 # Otras aplicaciones
+
 Estas otras opciones, Rust todavía no puede competir con otras opciones más
 establecidas.
 
@@ -56,6 +61,7 @@ igualmente la comunidad ha conseguido crear algunos juegos.
 + GUI: Hay algunas librerías que se podrían usar, pero todavía están muy verdes.
 
 # Aplicaciones que no se deberían hacer con Rust
+
 Básicamente cualquier cosa que no necesite de un rendimiento extremo, porque hay
 opciones mucho más sencillas que utilizar un lenguaje de programación de tan
 bajo nivel. Hazte un favor a ti mismo y usa algo más fácil.

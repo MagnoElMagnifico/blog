@@ -72,10 +72,10 @@ importantes estén seguros. De la misma forma, puede ser buena idea montar un
 sistema de copias de seguridad.
 
 ## `usr`
-En veriones de Unix anteriores aquí se almacenaban las carpetas de los usuarios,
+En versiones de Unix anteriores aquí se almacenaban las carpetas de los usuarios,
 al igual que ahora sucede con `home`. Pero actualmente su uso ha disminuido a
-solamente "programas usables por el usuario y otros datos": contiene binarios
-del sistema, documentación, librerías, archivos de cabezera...
+solamente "programas que puede usar el usuario y otros datos": contiene binarios
+del sistema, documentación, librerías, archivos de cabecera...
 
 En esta carpeta se almacena la mayoría del contenido, por lo tanto es una de las
 más importantes. En su interior podemos encontrar los sub-directorios
@@ -111,8 +111,9 @@ pueda montar en solo lectura en algún otro lugar. Sin embargo, hoy en día, sol
 se usa para guardar programas de terceros o autocompilados.
 
 ### `share`
-Esta carpeta contiene archivos _compartibles_ y archivos independientes de la
-arquitectura de sofware: documentación, iconos, fuentes, imágenes de fondo...
+Esta carpeta contiene archivos que se pueden compartir y archivos independientes
+de la arquitectura de software: documentación, iconos, fuentes, imágenes de
+fondo...
 
 Sin embargo, no está pensada para compartir con otros sistemas operativos.
 Cualquier programa o paquete que contenga o necesite datos que no tengan que
@@ -130,7 +131,7 @@ Algunas subcarpetas importantes:
 - Código fuente
     - `include`: archivos de cabecera necesarios para compilar (`.h`, `.hpp`)
     - `include/<paquete>`: archivos de cabecera de determinado programa
-    - `src`: los archivos de código fuente de linux (`/usr/src/linux`), archivos
+    - `src`: los archivos de código fuente de Linux (`/usr/src/linux`), archivos
     de cabecera, documentación (`usr/src/Documentation`) y configuración
     (`/usr/src/.config`).
 

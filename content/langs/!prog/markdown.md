@@ -23,7 +23,8 @@ características son universales y cuales son específicas de cada uno.
 ## Estilo y caracteres
 - *Cursiva*: Uso de `*` o `_` alrededor de la palabra.
 - **Negrita**: Uso de `**` o `__` alrededor de la palabra.
-- ***Ambos estilos***: Uso de `***`, `___`, `*__`, `**_` y demás variantes alrededor de la palabra.
+- ***Ambos estilos***: Uso de `***`, `___`, `*__`, `**_` y demás variantes
+  alrededor de la palabra.
 - `Código`: Uso de \` alrededor de la palabra.
 - ~~Tachado~~: Uso de `~~` alrededor de la palabra.
 - Caracteres especiales: Uso de \\ antes del carácter.
@@ -55,7 +56,8 @@ correspondientes codificaciones y formato).
 
 - Si no queremos que cambie el texto, simplemente lo situamos entre `<>`.
 - Se le puede añadir una tarjetita de información entre los paréntesis con `""`.
-- También funciona con rutas relativas a otros archivos (e.g.: `/documentation/LICENSE.md`).
+- También funciona con rutas relativas a otros archivos (e.g.:
+  `/documentation/LICENSE.md`).
 - Incluso podemos poner enlaces en el mismo documento, en lugar de dar una
   dirección escribimos un `ID` (precedido de un `#`) que referencie a otra parte
   del documento donde incluimos una etiqueta `<a id= ""></a>`.

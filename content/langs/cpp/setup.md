@@ -20,14 +20,14 @@ añadir el parámetro `-o` para darle un nombre de salida.
 g++ Nombre.cpp -o Salida.exe
 ```
 
-Podemos usar cabeceras (de extensión `.h` o `.cpp`) añadiendolas en el código
+Podemos usar cabeceras (de extensión `.h` o `.cpp`) añadiéndolas en el código
 simplemente:
 
 ```cpp
 #include "Libreria.h"
 ```
 
-Ahora para ejecutar, compilamos el programa principal como de constumbre, y se
+Ahora para ejecutar, compilamos el programa principal como de costumbre, y se
 generará un `.exe` completamente independiente del archivo `.h`/`.cpp` (pero no
 en el caso de un `.dll`, dado que se necesita para el compilador).
 
@@ -49,11 +49,11 @@ g++ Libreria.h -o Libreria.dll
 ```
 
 # Dynamic library
-Se linkean al iniciar el programa, haciendo que el `.exe` sea más pequeño.
+Se enlazan al iniciar el programa, haciendo que el `.exe` sea más pequeño.
 Además, se pueden actualizar sin tener que recompilar y usar para programas
 diferentes.
 
-Compilar libreria:
+Compilar librería:
 
 ```sh
 g++ -shared <sourcefiles>.cpp -o <libraryname>.dll/so
@@ -68,7 +68,7 @@ Hacen un programa más manejable, un solo archivo.
 g++ -c <sourcefiles>.cpp
 ```
 
-2. Añadir a una libreria
+2. Añadir a una librería
 
 ```sh
 ar rvs <final-libraryname>.lib/a <sourcefiles>.o

@@ -1,10 +1,7 @@
 ---
 title: Raspberry Pi
-page_template: post.html
-template: section.html
-sort_by: weight
-
 draft: true
+weight: 4
 ---
 
 [imager]: https://www.raspberrypi.com/software/
@@ -27,15 +24,15 @@ El modelo que yo tengo es: [`Raspberry Pi 3 Model B`][model].
 - Micro USB de 2.5A.
 
 Se necesita:
-- Una targeta Micro SD con Raspberry Pi OS instalado (de al menos 8GB).
-    - Para instalar el SO, necesitarás también un adaptador para la targeta SD.
+- Una tarjeta Micro SD con Raspberry Pi OS instalado (de al menos 8GB).
+    - Para instalar el SO, necesitarás también un adaptador para la tarjeta SD.
 - Fuente de alimentación y cable Micro USB de 2.1 A.
 
 Para usar como un ordenador:
 - TV o monitor y cable HDMI.
 - Teclado y ratón
 
-# Setup de la targeta SD
+# Setup de la tarjeta SD
 1. Descargar un SO: la opción más fácil es usar Raspberry Pi OS (con
 [Raspberry Pi Imager]), pero también
 puedes instalar otro compatible con el hardware (aunque seguramente esto limite

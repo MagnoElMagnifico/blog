@@ -1,8 +1,8 @@
 ---
 title: Bash
 weight: 5
+draft: true
 date: 2022-06-13
-# draft: true
 extra:
     max_level: 2
     # show_toc: true

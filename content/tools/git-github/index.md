@@ -22,10 +22,10 @@ Configura el email y usuario necesarios para git
 + `git config --global user.username "user"`
 + `git config --global user.email "email"`
 
-Para conectarte a github y hacer un `git push`, debes añadir tu usuario y
-contraseña. Sin embargo, con la actualización de Github de Julio de 2020
+Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
+contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020
 (entra en vigor a partir del 13 de Agosto de 2021), no debes introducir
-tu contraseña real, sino un _Personal Access Tolken_ (PAT) que puedes
+tu contraseña real, sino un _Personal Access Token_ (PAT) que puedes
 generar desde tu cuenta en `Settings > Developer settings > Personal access tokens > Generate new token`
 Debes introducir un nombre descriptivo, su fecha máxima de validez y los
 permisos que le quieras aportar. Finalmente pulsa en `Generate token.`
@@ -41,7 +41,7 @@ y puedes controlar mejor los permisos.
 
 ## Reset
 + `git reset --reset [--hard] <code>` : vuelve a un estado anterior borrando los commits posteriores
-+ `git revert <code> && git add .` && `git revert --continue` : Crea un nuevo commit que cambia el reposotorio a un estado anterior por medio de un merge
++ `git revert <code> && git add .` && `git revert --continue` : Crea un nuevo commit que cambia el repositorio a un estado anterior por medio de un merge
 
 ## Ramas
 + `git branch <nombre>` : crear una rama
@@ -51,13 +51,13 @@ y puedes controlar mejor los permisos.
 + `git merche <nombrerama>` : desde la rama master/main se une con la rama dada
 + `git branch -d <nombrerama>` : borra la rama
 
-- _Fork_: clona el repositorio (repositorio publico) en github a otra cuenta
+- _Fork_: clona el repositorio (repositorio publico) en GitHub a otra cuenta
 - _Pull request_: petición para juntar el fork con el proyecto inicial
 
 ## Sub módulos (repositorio dentro de otro)
-+ `git submodule add <url>` : añade un submodulo
-+ `git submodule init` : inicia el submodulo tras clonar el repositorio original
-+ `git submodule update` : actualiza (clona) los submodulos inciados
++ `git submodule add <url>` : añade un submódulo
++ `git submodule init` : inicia el submódulo tras clonar el repositorio original
++ `git submodule update` : actualiza (clona) los submódulos iniciados
 
 ## Info
 + `git status -s` : muestra el estado de los archivos en la carpeta del proyecto
@@ -79,8 +79,8 @@ Dentro de un repositorio, tenemos varias pestañas disponibles. Aparte de la
 pestaña del código (`code`), existen otras como `Issues`, `Pull requests`,
 `Actions`... La pestaña `Issues` se usa para reportar bugs o pedir nuevas
 funcionalidades, por lo que siempre es buena idea pasarse por ahí para intentar
-solucionar algún problema. Tambien puedes buscar [`Issues`](https://github.com/issues)
-en todo github directamente.
+solucionar algún problema. También puedes buscar [`Issues`](https://github.com/issues)
+en todo GitHub directamente.
 
 Estos `Issues` tienen diferentes etiquetas indicando el tipo de problema. Al
 estar empezando, puede que sea buena idea buscar por `good first issue`, ya que
@@ -92,7 +92,7 @@ algunos contribuyentes han propuesto. Para que esta solución se acepte, uno de
 los dueños del repositorio deberá revisar tus cambios comprobando que todo sea
 correcto antes de juntarlo con el proyecto.
 
-Las acciones diponibles en un repositorio es observar (`watch`, se te notificará
+Las acciones disponibles en un repositorio es observar (`watch`, se te notificará
 de los recientes cambios del repositorio), indicar que te gusta (`start`) y
 hacer un `Fork`, que sería editar tu propia versión del proyecto. Esto último es
 exactamente lo que queremos.

@@ -1,5 +1,6 @@
 ---
 title: Atajos de teclado para bash
+draft: true
 weight: 9
 ---
 

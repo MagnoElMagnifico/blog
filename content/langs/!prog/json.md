@@ -16,7 +16,8 @@ sintaxis hace que sea sencillo de leer y escribir.
 + Es independiente de cualquier lenguaje.
 
 Ahora miremos a su sintaxis, que es básicamente son **parejas de valores**: un
-valor clave y un dato. La única condición es que deben ir entre comillas dobles ("):
+valor clave y un dato. La única condición es que deben ir entre comillas dobles
+("):
 
 ```json
 {

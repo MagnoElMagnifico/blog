@@ -49,7 +49,7 @@ puntero; pero sigue siendo necesaria por el hecho de almacenar datos de tamaño
 variable, pero en caso contrario, se debería evitar su uso.
 
 # Ownership and borrowing
-Hay varias formas de manegar la memoria:
+Hay varias formas de manejar la memoria:
 
 + Garbage collector:
   * **Pros**:
@@ -198,7 +198,7 @@ Todas las referencias en Rust tienen un lifetime, que es el scope por la cual la
 referencia es válida. Pero la mayoría del tiempo son implícitas por el
 compilador.
 
-Las refencias deben de ser siempre válidas, si tenermos una referencia a un
+Las referencias deben de ser siempre válidas, si tenemos una referencia a un
 valor borrado el compilador lo sabrá y dará un error. Esto se comprueba con el
 `borrow checker`.
 

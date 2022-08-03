@@ -8,7 +8,8 @@ extra:
 ---
 
 # GDB
-El compilar, es recomendable añadir la opción `-g` para que se guarde
+
+Al compilar, es recomendable añadir la opción `-g` para que se guarde
 información sobre el código.
 
 Usa el comando `gdb`:
@@ -18,12 +19,13 @@ gdb <executable>
 ```
 
 ## Algunos Comandos
+
 + `help [comando]`: mostrar ayuda sobre el comando
 + `file <dirección>`: abre un programa
 + `run`: inicia el programa
 + `q`: salir
 
-+ `b <archivo>:<línea>`: breakpoint (un punto donde se detentrá el programa)
++ `b <archivo>:<línea>`: breakpoint (un punto donde se detendrá el programa)
 + `info break`: muestra info sobre los breakpoints
 + `next` o `n`: avanza
 + `print <expresión>` o `p <expresión>`: imprime información

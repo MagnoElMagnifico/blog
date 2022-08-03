@@ -7,7 +7,7 @@ weight: 10
 [doc](https://doc.rust-lang.org/book/ch19-06-macros.html)
 
 # Proceso de compilación de Rust
-La primera etada es la tokenización, donde se convierte el texto en símbolos
+La primera etapa es la tokenización, donde se convierte el texto en símbolos
 (unidades indivisibles del lenguaje, son como las palabras de Rust). Algunos
 ejemplos de tokens:
 
@@ -47,7 +47,7 @@ Una vez hecho eso, es cuando los macros se procesan.
 
 # Macros
 Las macros permiten escribir código que escriba otro código, lo que se llama
-`metaprogramming`, es decir, definiremos una especie de función que se ejecutará
+_metaprogramming_, es decir, definiremos una especie de función que se ejecutará
 y como resultado modificará nuestro archivo de código fuente.
 
 Las macros son similares a las funciones, pero sin el coste extra en la hora de
@@ -103,7 +103,7 @@ macro_rules! <macro_name> {
 }
 ```
 
-También podemos pasarle a un macro un número indetermidado de argumentos, `*` se
+También podemos pasarle a un macro un número indeterminado de argumentos, `*` se
 usa para 0 o más y `+` para 0 o 1. La parte que se repite debe ir entre `$()`
 luego una coma y `*`/`+`.
 
@@ -132,8 +132,8 @@ Estos son los símbolos que representan los valores precedidos de `$`:
 + `ty`: tipo
 + `ident`: identificador
 + `path`: una dirección, por ejemplo `::mem::replace`
-+ `meta`: lo que va detro de `#[...]` `#![...]`
-+ `tt`: a sigle token tree
++ `meta`: lo que va dentro de `#[...]` `#![...]`
++ `tt`: a single token tree
 + `vis`: `pub` (?)
 
 # Macros procedurales

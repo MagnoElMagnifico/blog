@@ -1,6 +1,4 @@
 ---
-# TODO: Inodos en Filesystem
-
 title: Archivos de link
 weight: 2
 
