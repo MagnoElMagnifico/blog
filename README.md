@@ -1,23 +1,21 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status)](https://app.netlify.com/sites/magnoblog/deploys)
 
 # Magno Blog
-This is the code for [my personal website](https://magnoblog.netlify.com) hosted
-in [Netlify](https://netlify.com) using the [Zola](https://www.getzola.org).
-static site generator.
+Este es el código de [mi web personal](https://magnoblog.netlify.com), publicada 
+en los servidores de [Netlify](https://netlify.com) utilizando el generador de
+sitios estáticos [Zola](https://www.getzola.org).
 
-The HTML, CSS and JS were all created by me, I am not using a _theme_.
+El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 
 # TODOs
 
 ## Posts
 
-- Current: content/tools/vim.md content/tools/nvim-config.md
+- Actual: content/tools/vim.md content/tools/nvim-config.md
 
 General:
-- ¿Es el changelog necesario?
-- Improve descriptions
-- Render `.odt` files to `.pdf` and then use the [converter](https://pdf2md.morethan.io)
-  to pass it to `.md`
+- Mejorar descripciones
+- Convertir los archivos `.pdf` a `.md` con el [convertidor](https://pdf2md.morethan.io)
 
 Drafts: 
 - !prog/{html, css}
@@ -73,36 +71,37 @@ Mover + convertir todos los nombres a español?
 
 - Usar más imágenes
 - Añadir descripciones y fechas
-- Separar los títulos con `#` del texto
+- Separar del texto los títulos con `#`
 
-- Only show the recent blog posts, not all the content in the entry page (index.html)
-  - Gather all the blog posts in a list, sort it by date and get the 5-10 first
+- Mostrar solo los posts recientes, no todo el contenido en la página de entrada
+  (`index.html`). Una opción es crear una lista que almacene todos los posts,
+  ordenarla según la fecha/fecha de actualización y coger los 5-10 primeros.
 
 - Crear una cabecera para moverme entre categorías.
   - Leer el nombre de las subcarpetas/subsections
-  - Generarla desde base.html? Todas las páginas del blog deberían tener la cabecera, al igual que el footer
+  - Generarla desde base.html? Todas las páginas del blog deberían tener la
+    cabecera, al igual que el footer
 
-Blog style:
-- Test if the description show up
-- Review mobile styles
-- Improve the footer in shorter pages
-- Table scaling in small devices
+Blog CSS:
+- Probar si aparecen las descripciones en las previsualizaciones de los links
+- Revisar la página desde el móvil
+- Mejorar el _footer_ en las páginas cortar
+- Escalar las tablas en dispositivos pequeños
 
-## New features:
-- Add Russian chars to the animation (?)
-- CSS Transitions / Animations
-  - Blog description: <https://codepen.io/kazed972/pen/bQOQGR>
+## Nuevas características
+- Añadir caracteres Rusos a la animación de entrada
+- Transiciones / animaciones CSS
+  - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>
   - Matrix: <https://codepen.io/syropian/pen/bLzAi>
   - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
   - Glitch: <https://codepen.io/elisabethdiang/pen/WNbBxXq>
-- Different sized imgs
+- Imágenes de diferentes tamaños
 - Robots.txt
 - Taxonomies -> Pagination -> Feed
 - Sitemap
-- Make multilingual (for now in Spanish)
 
 # Links
 - [Tera Lang docs](https://tera.netlify.app/docs/)
 - [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
-- [Icons from Google](https://fonts.google.com/icons)
+- [Iconos de Google](https://fonts.google.com/icons)
 - [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
