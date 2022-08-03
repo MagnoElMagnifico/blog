@@ -2,6 +2,8 @@
 title: Tipos de archivos
 weight: 1
 
+draft: true
+
 extra:
     show_toc: true
     show_info: true

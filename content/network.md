@@ -1,3 +1,8 @@
+---
+title: Redes
+weight: 1
+draft: true
+---
 <!-- TODO ->
 
 En casa tienes varios dispositivos conectados entre si (network), y pueden compartir datos (imprimir, ver video, internet...). Estos estan conectados a un switch, por cable o inalambrico (wifi).
