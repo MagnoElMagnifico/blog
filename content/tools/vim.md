@@ -561,7 +561,10 @@ Los movimientos de siguientes comandos se añadirán a la lista:
 
 # Comandos Ex
 
-<!-- TODO -->
+<!-- TODO 
+ranges
+autocompletado
+ventan
 :checkhealth
 :read
 ZZ=:wq ZQ=:q! ==> Config: ZA=:qa!
@@ -570,6 +573,7 @@ ga=:as[cii]
 do=:diffget dp=:diffput
 quickfix: :c...
 list commands: :l...
+-->
 
 ## Sustituir
 
@@ -581,8 +585,7 @@ list commands: :l...
 - Una ventana es un _viewport_ de un buffer
 - Una pestaña es una colección de ventanas
 
-<!-- TODO -->
-`mksession mks`
+<!-- TODO: `mksession mks` -->
 
 ## Buffers
 Puedes listar los _buffers_ activos con el comando `:buffers`: el primer número
@@ -616,7 +619,7 @@ distintos buffers cargados en la memoria; o directamente ir al que quieras de
 la lista con `:b[buffer]`, pero deberás aportar su _id_ o nombre. Hay más
 comandos que puedes usar en la ayuda: `:h buffer-list`.
 
-<!-- TODO -->
+<!-- TODO 
 sb sbn sbp 
 br[ewind] = bf[irst] (go to first) sbr sbf
 bl (last) sbl
@@ -626,6 +629,7 @@ ball (edit all)
 
 +cmd ?
 quickfix.txt: forma rápida de editar-compilar-editar
+-->
 
 Tipos especiales de buffers, que se consiguen combinando sus estados:
 
@@ -742,47 +746,32 @@ tanto locales como remotos a través de SSH, etc.
 - `R`: renombrar
 - `s`: cambiar orden (nombre, fecha, tamaño)
 
--------------------------------------------------------------------------------
-
-<!-- CONFIG --> 
+<!-- CONFIG
 textwidth=<number>
 autocommands: events
 abreviations
 ejecutar comandos dependiendo del tipo de archivo:
-  md: spell check, textwidht, special mappings?
+  - md: spell check, textwidht, formating, special mappings?
+  - rs: rustfmt, build cmd, test cmd, load lsp...
 
-```
-:map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+:map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y> " 16
 :map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
-:map ' \`
-``` 
+:map ' `
 
 Emacs para ex mode
-```vim
-" start of line
-:cnoremap <C-A>		<Home>
-" back one character
-:cnoremap <C-B>		<Left>
-" delete character under cursor
-:cnoremap <C-D>		<Del>
-" end of line
-:cnoremap <C-E>		<End>
-" forward one character
-:cnoremap <C-F>		<Right>
-" recall newer command-line
-:cnoremap <C-N>		<Down>
-" recall previous (older) command-line
-:cnoremap <C-P>		<Up>
-" back one word
-:cnoremap <Esc><C-B>	<S-Left>
-" forward one word
-:cnoremap <Esc><C-F>	<S-Right>
-```
+:cnoremap <C-A>	<Home>         " start of line
+:cnoremap <C-B>	<Left>         " back one character
+:cnoremap <C-D>	<Del>          " delete character under cursor
+:cnoremap <C-E>	<End>          " end of line
+:cnoremap <C-F>	<Right>        " forward one character
+:cnoremap <C-N>	<Down>         " recall newer command-line
+:cnoremap <C-P>	<Up>           " recall previous (older) command-line
+:cnoremap <Esc><C-B> <S-Left>  " back one word
+:cnoremap <Esc><C-F> <S-Right> " forward one word
 
 Check quickref.txt
 
-syntax highlighting -> treesitter.txt -> tree-sitter
-LSP -> lsp.txt -> nvim-lspconfig lua
+LSP -> lsp.txt -> nvim-lspconfig luasyntax highlighting -> treesitter.txt -> tree-sitter
 diagnostic
 vim-surround !lua -> nvim-surround surround.nvim
 vim-commentary !lua
@@ -792,3 +781,4 @@ vim-airline !lua (?)
 vim-polyglot (?)
 terminal-execute (?)
 
+-->
