@@ -195,14 +195,14 @@ yo lo considero un _nombre_, ya que está describiendo dónde el operador tiene
 que actuar. Pero ojo, no todos los operadores necesitan un nombre, pero sí la
 mayoría de ellos.
 
-- `h j k l`: carácter a la izquierda, abajo, arriba, a la derecha. De esta
-  forma no tienes que mover los dedos del teclado hacia las flechas. Para
-  recordarlo piensa la `j` como una flecha hacia abajo, y `h`-`l` están a la
+- `h j k l`: carácter a la izquierda/abajo/arriba/derecha. De esta forma no
+  tienes que mover los dedos del teclado hacia las flechas. Para recordarlo
+  piensa la `j` como una flecha hacia abajo, y `h`-`l` están a la
   derecha-izquierda respectivamente.
 - `w`: palabra (_word_)
-- `0 ^ $`: inicio, primer carácter no blanco, fin de línea; similares a `<Home> <End>`
-- `f<char> F<char>`: hasta encontrar el carácter dado avanzando, retrocediendo (_find_)
-- `t<char> f<char>`: hasta el carácter dado y se detiene antes avanzando, retrocediendo (_'til_)
+- `0 ^ $`: inicio/primer carácter no blanco/fin de línea; similares a `<Home> <End>`
+- `f<char> F<char>`: hasta encontrar el carácter dado avanzando/retrocediendo (_find_)
+- `t<char> f<char>`: hasta el carácter dado y se detiene antes avanzando/retrocediendo (_'til_)
 
 También, por norma general, al no haber ningún nombre para la línea; se repite
 el mismo operador para aplicarlo en la línea actual. Además, la versión en
@@ -265,10 +265,10 @@ Los modificadores también se pueden añadir al _insert mode_:
 # _Insert mode_
 
 Entrar al _insert mode_:
-- `i a`: antes, después del cursor
-- `I A`: principio sin contar los espacios, final de la línea
+- `i a`: antes/después del cursor
+- `I A`: principio/final de la línea sin contar los espacios
 - `gI`: principio de la línea
-- `o O`: nueva línea debajo, arriba
+- `o O`: nueva línea debajo/arriba
 - `ea`: insertar después de palabra
 - `gi`: volver al _insert mode_ en el último lugar donde se estuvo en este
 modo (marca `'^`)
@@ -280,8 +280,8 @@ modo (marca `'^`)
 - `<C-t> <C-d>`: identar
 
 Insertar texto ya insertado:
-- `<C-e> <C-y>`: insertar carácter abajo, arriba del cursor
-- `<C-a> <C-@>`: inserta el texto previamente insertado, y vuelve a _normal mode_
+- `<C-e> <C-y>`: insertar carácter abajo/arriba del cursor
+- `<C-a> <C-@>`: inserta el texto previamente insertado/y vuelve a _normal mode_
 
 El comando `<C-x>` activa un _submodo_ dentro del _insert mode_, permitiendo
 realizar más acciones, normalmente relacionadas con el autocompletado. Esos
@@ -306,8 +306,8 @@ Curiosidades dentro de _insert mode_:
 
 # Operadores
 
-- `u <C-r>`: deshacer y rehacer (los cambios se guardan en la _changelist_, que la puedes ver con `:changes`)
-- `g, g;`: ir a la primera, última posición de dicha lista
+- `u <C-r>`: deshacer/rehacer (los cambios se guardan en la _changelist_, que la puedes ver con `:changes`)
+- `g, g;`: ir a la primera/última posición de dicha lista
 - `.`: repite el último comando realizado
 
 Reemplazar:
@@ -322,12 +322,12 @@ Eliminar texto, o más bien, cortarlo; ya que todo lo que borremos se almacenar�
 
 Copiar y pegar:
 - `y<nombre>`: copiar (_yank_)
-- `p P`: pegar antes, después (_paste_)
+- `p P`: pegar antes/después (_paste_)
 
 Formatear texto:
 - `J`: juntar con la línea siguiente (_join_)
 - `<< >>`: identar
-- `gq gw`: formatear el texto, sin mover el cursor
+- `gq gw`: formatear el texto/sin mover el cursor
 
 El formateado del último comando se hace utilizando el contenido de las
 opciones `'formatexp'` (expresión) y `'formatprg'` (programa externo). En en
@@ -355,7 +355,7 @@ Los operadores funcionan diferente en este modo: en lugar de requerir un
 nombre, se tomarán los caracteres marcados como el propio nombre de la
 operación.
 
-- `u U ~`: minúsculas, mayúsculas, alternar
+- `u U ~`: minúsculas/mayúsculas/alternar
 - `x d`: cortar
 - `c`: cambiar
 - `y`: copiar
@@ -471,31 +471,31 @@ no ser movimientos del cursor no se pueden usar como nombres y combinar con
 operadores.
 
 - `zz`: centrar cursor en la pantalla
-- `<C-e> <C-y>`: moverse una línea abajo, arriba (_extra lines_, _???_)
-- `<C-d> <C-u>`: moverse media pantalla (_Down_, _Up_)
-- `<C-f> <C-b>`: moverse una pantalla abajo, arriba (_forward_, _backwards_)
+- `<C-e> <C-y>`: moverse una línea abajo/arriba (_extra lines_/_???_)
+- `<C-d> <C-u>`: moverse media pantalla (_Down_/_Up_)
+- `<C-f> <C-b>`: moverse una pantalla abajo/arriba (_forward_/_backwards_)
 
 Moverse cuando hay líneas cortadas (es decir, `wrap=false`):
-- `z<Right> zl z<Left> zh`: mover la pantalla a la derecha, izquierda una columna/carácter
-- `zL zH`: mover media pantalla a la derecha, izquierda
+- `z<Right> zl z<Left> zh`: mover la pantalla a la derecha/izquierda una columna/carácter
+- `zL zH`: mover media pantalla a la derecha/izquierda
 
 Más en `scroll.txt`.
 
 También, cuando hay líneas que no aparecen completas horizontalmente en la
 ventana, podemos movernos cómodamente:
 
-- `gj gk`: bajar, subir una línea visible y no real (línea cortada vs línea real del archivo)
-- `g0 g^ g$`: igual que con los comandos anteriores pero yendo al principio, primer carácter no blanco y final de línea
+- `gj gk`: bajar/subir una línea visible y no real (línea cortada vs línea real del archivo)
+- `g0 g^ g$`: igual que con los comandos anteriores pero yendo al principio/primer carácter no blanco/final de línea
 
 ## Ir a
 
 - `%`: la pareja de ( ), [ ], { }, /* */, o incluso #if #elif #else #endif...
 - `<number>gg <number>G`: número de línea
-- `gg G`: inicio, final del archivo
-- `gf gF`: ir al archivo debajo del cursor, en determinada línea (usa la variable `'path'` para buscar los archivos)
+- `gg G`: inicio/final del archivo
+- `gf gF`: ir al archivo debajo del cursor/en determinada línea (usa la variable `'path'` para buscar los archivos)
 - `gx`: abrir URL
 
-- `gd gD`: ir a la declaración local, global
+- `gd gD`: ir a la declaración local/global
 
 ## Buscar
 
@@ -505,11 +505,11 @@ Buscan en la misma línea:
 - `f<char>`: en la misma línea
 - `F<char>`: en la misma línea detrás
 - `t<char>`: 1 posición antes de `char`
-- `; ,`: siguiente, anterior `char` en la búsqueda
+- `; ,`: siguiente/anterior `char` en la búsqueda
 
 Multilínea:
 - `/<patrón> ?<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor hacia delante, hacia atrás
-- `n N`: repite la búsqueda anterior, hacia arriba
+- `n N`: repite la búsqueda anterior/al revés 
 - `* #`: realiza una búsqueda con `/ ?` usando como patrón la palabra debajo del cursor 
 - `g* g#`: igual que `* #` pero elimina `\< \>`, es decir, búsqueda parcial
 
@@ -519,7 +519,7 @@ Sirven como una especie de marcapáginas: se colocan en determinadas posiciones
 de un archivo, para posteriormente regresar a ellas con un simple comando.
 
 - `m<id>`: establece una marca en la posición del cursor
-- \``<id> '<id>`: regresa a la marca, regresa al primer carácter no blanco de la línea marcada
+- \``<id> '<id>`: regresa a la marca/regresa al primer carácter no blanco de la línea marcada
 
 El identificador o nombre de las marcas será una letra:
 - Si es minúscula solo corresponderá al archivo actual, y se borrarán con el
@@ -575,19 +575,19 @@ quickfix: :c...
 list commands: :l...
 -->
 
-## Sustituir
-
-<!-- TODO -->
-
 # Buffers, ventanas y pestañas
 
 - Un _buffer_ es el texto cargado en la memoria de un archivo.
-- Una ventana es un _viewport_ de un buffer
+- Una ventana es un _viewport_ (representación gráfica) de un buffer
 - Una pestaña es una colección de ventanas
 
-<!-- TODO: `mksession mks` -->
+Si quieres conservar la configuración actual de buffers, ventanas, opciones...
+Puedes usar el comando `:mks[ession] [<nombre-archivo>]`, que crea un archivo de
+VimScript que vuelve a configurar el editor. Cárgalo con `:source
+<nombre-archivo>`.
 
 ## Buffers
+
 Puedes listar los _buffers_ activos con el comando `:buffers`: el primer número
 es su _id_, luego están los estados en los que se encuentra y el archivo al que
 corresponde.
@@ -614,6 +614,15 @@ aparecer varios de ellos juntos:
 - `?`: terminal sin tarea
 - `x`: errores de lectura
 
+Tipos especiales de buffers, que se consiguen combinando sus estados:
+
+- _quickfix_: se usa para contener la lista de errores o de contenidos (ver `:h cwindow` y `:h lwindow`)
+- _help_: contiene los manuales de ayuda
+- _terminal_: el contenido no se puede cambiar o leer hasta que el trabajo termine
+- _directory_: contenido de una carpeta, usado por plugins (`buftype=nowrite; bufhidden=delete; noswapfile`)
+- _scratch_: texto que no se guarda y puede ser descartado; hay que borrarlo explícitamente (`buftype=nofile; bufhidden=hide; noswapfile`)
+- _unlisted_: no aparece en la lista de buffers (`nobuflisted`)
+
 Puedes usar los comandos `:bn[ext]` y `:bp[revious]` para moverte entre los
 distintos buffers cargados en la memoria; o directamente ir al que quieras de
 la lista con `:b[buffer]`, pero deberás aportar su _id_ o nombre. Hay más
@@ -631,38 +640,117 @@ ball (edit all)
 quickfix.txt: forma rápida de editar-compilar-editar
 -->
 
-Tipos especiales de buffers, que se consiguen combinando sus estados:
-
-- _quickfix_: se usa para contener la lista de errores o de contenidos (ver `:h cwindow` y `:h lwindow`)
-- _help_: contiene los manuales de ayuda
-- _terminal_: el contenido no se puede cambiar o leer hasta que el trabajo termine
-- _directory_: contenido de una carpeta, usado por plugins (`buftype=nowrite; bufhidden=delete; noswapfile`)
-- _scratch_: texto que no se guarda y puede ser descartado; hay que borrarlo explícitamente (`buftype=nofile; bufhidden=hide; noswapfile`)
-- _unlisted_: no aparece en la lista de buffers (`nobuflisted`)
-
 ## Ventanas
 
-<!-- TODO -->
 No hay una forma de listar las ventanas activas, pero no es necesario, ya que
 se ven a simple vista.
 
 Existen dos tipos de ventanas: _split_ es una ventana que aparece en horizontal
 respecto a otra; y _vertical split_ que es una ventana que aparece en vertical.
 
+> Estos comandos se ejecutan desde el _normal mode_, precedidos por `<C-w>`
+
+Abrir y cerrar ventanas
+- `s`: abrir nueva ventana horizontalmente (_split_)
+- `v`: abrir nueva ventana verticalmente (_vertical split_)
+- `n`: abrir una nueva ventana horizontalmente con un nuevo archivo (_new_)
+- `q c`: cerrar ventana (_quit_, _close_) (con `q`, si es la última, cierra Vim)
+- `o`: cerrar todas las ventanas menos la actual (_only_)
+
+Moverse entre ventanas
+- `<Left> <Down> <Up> <Right>`: moverse a la ventana inmediatamente a la izquierda/abajo/arriba/derecha
+- `h j k l` = `<Left> <Down> <Up> <Right>` 
+- `t b`: moverse a la ventana más arriba a la izquierda/abajo a la derecha (_top-left_, _bottom-right_)
+- `p`: moverse a la última ventana visitada (_previous_)
+- `P`: moverse a la ventana de previsualización (_preview_)
+- `w W`: moverse a la ventana siguiente _counterclockwise_/_clockwise_
+
+Mover ventanas
+- `r R`: rotar ventanas hacia abajo/derecha arriba/izquierda
+- `x:` cambiar (exchange) por la siguiente
+- `H J K L`: mover a la izquierda/abajo/arriba/derecha lo máximo posible
+- `T`: mover a una nueva pestaña
+
+Cambiar de tamaño
+- `=`: mismo tamaño
+- `- +`: más alta/baja
+- `< >`: más ancha/delgada
+
+Comandos Ex para las ventanas
+- `winc <argumento>` = `<C-w><argumento>`
+
+- `:vs[plit] [<archivo>]` = `<C-w>v`
+- `:sp[plit] [<archivo>]` = `<C-w>s`
+- `:n[ew] [<archivo>]` = `<C-w>n`
+- `:vne[w] [<archivo>]`: abrir una nueva ventana verticalmente con un nuevo archivo 
+- `:sv[iew] [<archivo>]`: _split_ de solo lectura
+- `:sf[ind] [<archivo>]`: _split_ del archivo, buscado como en el comando `:f[ind]`
+
 ## Pestañas
 
-<!-- TODO -->
 La pestañas aparecerán listadas en la parte superior.
 
-`:tabn :tabp`: siguiente, anterior pestaña
-`g<Tab>`: última pestaña
-tabs: open (:tab :tabe :tabf), close (:tabc), move them (:tabm [+-]<num> position after) /myself (:tabn :tabp gt gT)
+Moverse entre pestañas:
+- `gt :tabn` `gT :tabp`: siguiente/anterior pestaña
+- `<C-Tab> g<Tab>`: alternar entre las últimas pestañas visitadas
+
+Abrir y cerrar pestañas:
+- `:tab <comando>`: abre una nueva pestaña ejecutando el comando dado
+- `:tabn[ew] :tabe[dit] <archivo>`: edita en una nueva pestaña el archivo dado
+- `:tabf[ind] <archivo>`: encuentra el archivo dado (como con `:find`) y lo edita en una nueva pestaña
+- `:tabc[lose]`: cierra la pestaña
+- `:tabo[nly]`: cierra todas las pestañas menos la actual
+
+Mover pestañas con `:tabm [+-]<num>`.
 
 # Otras funcionalidades
 
-## Patrones de búsqueda y sustitución
+## Rangos
 
 <!-- TODO -->
+
+## Patrones de búsqueda
+
+`magic`: algunos caracteres dentro de un patrón se toman literalmente; pero si
+se preceden con una barra invertida (`\`), actúan como caracteres especiales con
+un significado diferente (**TODO**: regex).
+
+Por ejemplo: `a` se refiere al carácter `a`, mientras que `\a` se refiere a
+cualquier carácter alfanumérico.
+Otros casos: `.` se refiere a cualquier carácter, mientras que `\.`, se refiere
+a un `.` literalmente.
+
+\m = magic
+\M = nomagic
+
+\v todos los caracteres ASCII menos 0-9a-zA-Z y _ tienen valor especial (_very magic_)
+\V solo los caracteres precedidos de `\` tienen significado especial (_very nomagic_)
+
+
+<!-- TODO: pattern-overview -->
+
+smartcase
+| pattern |	matches             |
+| :-----: | :-----------------: |
+| word    | word, Word, WORD... |
+| Word    | Word                |
+| WORD    | WORD                |
+| WoRd    | WoRd                |
+
+## Sustituir
+
+El comando `:s` permite sustituir texto usando patrones. Aquí está una versión
+completa de todas sus funciones:
+
+```
+[<rango>]s[ubstitude]/<patrón-a-buscar>/<string-con-la-que-sustituir>/[<opciones>]
+```
+
+<!-- TODO: :s_flags sub-replace-special pattern-delimiter cmd-ranges -->
+
+Opciones:
+- `\c`: _ignore case_
+- `\C`: _match case_
 
 ## Registros
 
@@ -711,7 +799,7 @@ Más información en `:help fold.txt`
 
 ## Autocompletado
 
-<!-- TODO: h ins-completion wildmenu wildchar-->
+<!-- TODO: ins-completion wildmenu wildchar-->
 
 ## Corrección de ortografía
 
