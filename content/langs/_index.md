@@ -5,17 +5,18 @@ template: section.html
 sort_by: weight
 ---
 
-En esta subcategoría se encuentran mis apuntes sobre los lenguajes de
-programación listados encima de este párrafo.
+En esta subcategoría se encuentran mis apuntes sobre diferentes lenguajes de
+programación, que listados encima de este párrafo.
+
+# Mi tier list de lenguajes de programación
+![](./langs-tier-list.jpg)
 
 # Lenguajes populares
 A continuación aparece una lista de las páginas más conocidas para mirar la
 popularidad de algunos lenguajes de programación, tecnologías y demás historias
 relacionadas con el desarrollo de software y ordenadores en general.
 
-Debajo de cada uno de estos links, he incluido mis
-
-+ **TODO**: StackOverflow Survey 2021
++ **TODO**: StackOverflow Survey 2021 & 2022
 
 + [Stackoverflow 2020](https://insights.stackoverflow.com/survey/2020)
     - Backend: Rust
