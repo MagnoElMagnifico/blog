@@ -563,8 +563,6 @@ Los movimientos de siguientes comandos se añadirán a la lista:
 
 <!-- TODO 
 ranges
-autocompletado
-ventan
 :checkhealth
 :read
 ZZ=:wq ZQ=:q! ==> Config: ZA=:qa!
@@ -623,22 +621,32 @@ Tipos especiales de buffers, que se consiguen combinando sus estados:
 - _scratch_: texto que no se guarda y puede ser descartado; hay que borrarlo explícitamente (`buftype=nofile; bufhidden=hide; noswapfile`)
 - _unlisted_: no aparece en la lista de buffers (`nobuflisted`)
 
-Puedes usar los comandos `:bn[ext]` y `:bp[revious]` para moverte entre los
-distintos buffers cargados en la memoria; o directamente ir al que quieras de
-la lista con `:b[buffer]`, pero deberás aportar su _id_ o nombre. Hay más
-comandos que puedes usar en la ayuda: `:h buffer-list`.
+> **Nota**: estas opciones se describen con `:setlocal`: `:setlocal buftype=nofile`
 
-<!-- TODO 
-sb sbn sbp 
-br[ewind] = bf[irst] (go to first) sbr sbf
-bl (last) sbl
-bm (modified) sbm
-bdelete (unload unlist) bwipeout (really delete) bun[load] (memory freed, listed)
-ball (edit all)
+Comandos para moverse entre buffers:
+- `:b[uffer] <id>`: moverse al buffer en concreto dado el _id_
+- `:bn[ext] :bp[revious]`: moverse entre los distintos buffers de la lista (_buffer next_, _buffer previous_)
+- `:bf[irst] :bl[ast]`: moverse al primer/último buffer de la lista
+- `:bm[odified]`: moverse al buffer anterior modificado (con cambios sin guardar)
 
-+cmd ?
-quickfix.txt: forma rápida de editar-compilar-editar
--->
+Abrir en una nueva ventana horizontal:
+- `:ball`: editar todos los buffers a la vez 
+- `:sb[buffer] <id>`
+- `:sbn[ext] :sbp[revious]`
+- `:sbf[irst] :sbl[ast]`
+- `:sbm[odified]`
+: igual que los comandos del apartado anterior, pero se abre en una nueva ventana (_split buffer ..._)
+
+Borrar buffers:
+- `:bdel[ete] [<id>]`: elimina el buffer actual (si no se le ha dado el _id_)
+  de memoria y la lista de buffers 
+- `:bw[ipeout] [<id>]`: igual que el comando anterior, pero realmente borra el
+  buffer, todas las marcas relacionadas, etc. No usar a menos que sepas lo que
+  haces.
+
+Hay más comandos que puedes usar en la ayuda: `:h buffer-list`.
+
+<!-- TODO quickfix.txt: forma rápida de editar-compilar-editar -->
 
 ## Ventanas
 
