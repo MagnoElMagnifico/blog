@@ -18,7 +18,6 @@ General:
 - Convertir los archivos `.pdf` a `.md` con el [convertidor](https://pdf2md.morethan.io)
 
 Drafts: 
-- !prog/{html, css}
 - c/general
 - cpp/{basico, opengl}
 - cs
@@ -30,9 +29,12 @@ Drafts:
 - linux/bash 
 - linux/files
 - linux/raspberry
-- tools/package-managers (choco, apt, pacman)
 - network
+
+- windows/config [siguiente]
+- tools/package-managers (choco, apt, pacman)
 - powershell
+- !prog/{html, css, regex}
 - ...
 
 Expandir, pero decente:
