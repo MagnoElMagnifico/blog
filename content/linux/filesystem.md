@@ -231,14 +231,14 @@ Es la carpeta para interactuar con el kernel, y es similar al directorio `/run`.
         - `sbin`: ejecutables del sistema (solo administrador)
         - `lib`: librerías compartidas &#8594; `.so`, `.a`
         - `local`: carpeta `usr` alternativa con datos no esenciales y
-        programas locales.
+        programas compilados localmente, sin usar un _package manager_.
         - `share`: archivos independientes de la plataforma, datos de
         aplicationes, etc.
 
 - Binarios y configuración
     - `bin` `sbin` `libXX` &#8594; `usr`
     - `etc`: archivos de configuración a nivel de sistema
-    - `opt` (OPTional): software instalado manualmente, addons o plugins
+    - `opt` (OPTional): software instalado manualmente o plugins
 
 - Sistema
     - `boot`: archivos necesarios para iniciar el ordenador
@@ -247,3 +247,46 @@ Es la carpeta para interactuar con el kernel, y es similar al directorio `/run`.
     - `var` (VARiable): variables del sistema operativo (logs, cache)
     - `tmp` (TeMPoral): información temporal, se borra al apagar
     - `proc`, `run` y `sys`: carpetas imaginarias, se encargan de gestionar procesos
+
+# Comparación con Windows
+
+<!-- TODO:
+No hay información en ningún sitio sobre esto.
+Windows se da ya por hecho, que realmente nadie sabe usarlo.
+https://en.wikipedia.org/wiki/Directory_structure
+
+Carpetas virtuales, This PC, Quick Access, Libraries
+
+libraries = lista de lugares donde el usuario guarda archivos que las
+aplicaciones pueden encontrar y mostrar los datos (... que?)
+this pc = %userprofile% ?
+%userprofile% = C:/Users/<usuario>
+%appdata% = %userprofile%/appdata
+%programdata% = C:/ProgramData
+-->
+
+En Windows, cada dispositivo conectado es una unidad de ficheros diferente,
+empezando por la letra `C`, que es donde está Windows instalado.
+
+En `C:`
+- `PerfLogs`: logs de _performance_, pero vacío por defecto
+- `Program Files`: carpeta de instalación de programas
+- `Program Files (x86)`: carpeta de instalación de programas de 32 bits
+- `Program Data`: configuración y datos de los programas a nivel de sistema
+- `Windows`: lugar de instalación de Windows
+  - `System` `System32` `SysWOW64`: guardan los _DLL_ de Windows API
+  - `WinSxS`: _Windows component store_
+
+- `Users`: carpetas de los usuarios. Además de esas existen `Default`
+  (escondido), `Public`, `Default User` (puntero a `Default`), `All Users`
+  (puntero a `Program Data`)
+
+  - `Public`: espacio para que los usuarios del sistema compartan archivos
+    suyos, no programas. (opción en el Explorador de Archivos: Compartir con
+    <usuario>). Tambien se abre en la red local. 
+
+  - `<usuario>/AppData` `%appdata%`: configuración de aplicaciones por usuario.
+    - `Local` `LocalLow`
+    - `Roaming`: se utiliza para _networking based logins for roaming profiles_.
+      Los datos se sincronizarán por red.
+
