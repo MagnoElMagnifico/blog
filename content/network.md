@@ -3,7 +3,22 @@ title: Redes
 weight: 1
 draft: true
 ---
-<!-- TODO ->
+
+<!-- TODO
+**What is a cloud platform?** A cloud platform refers to the operating system and hardware of a server in an Internet-based data center. It allows software and hardware products to co-exist remotely and at scale.
+
+**So, how do cloud platforms work?** Enterprises rent access to compute services, such as servers, databases, storage, analytics, networking, software, and intelligence. Therefore, the enterprises don’t have to set up and own data centers or computing infrastructure. They simply pay for what they use.
+
+**Types of Cloud Platforms**
+There are several types of cloud platforms. Not a single one works for everyone. There are several models, types, and services available to help meet the varying needs of users. They include:
+
+- **Public Cloud**: Public cloud platforms are third-party providers that deliver computing resources over the Internet. Examples include Amazon Web Services (AWS), Google Cloud Platform, Alibaba, Microsoft Azure, and IBM Bluemix.
+- **Private Cloud**: A private cloud platform is exclusive to a single organization. It’s usually in an on-site data center or hosted by a third-party service provider.
+- **Hybrid Cloud**: This is a combination of public and private cloud platforms. Data and applications move seamlessly between the two. This gives the organization greater flexibility and helps optimize infrastructure, security, and compliance.
+-->
+
+
+<!-- TODO
 
 En casa tienes varios dispositivos conectados entre si (network), y pueden compartir datos (imprimir, ver video, internet...). Estos estan conectados a un switch, por cable o inalambrico (wifi).
 El receptor y emisor deben entenderse entre si (hablar el mismo idioma), esto estan determinados por los protocolos (TCP, HTTPS...)
