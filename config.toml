@@ -15,9 +15,9 @@ highlight_theme = "ayu-dark"
 
 [extra]
 author = "Magno El Magnífico"
-logo = "/logo.png"
+logo = "/logo.svg"
 
-# TODO: Handle this automaticly
+# TODO: Handle this automatically
 header_sections = ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/!prog",
     "linux", "tools"
 ]

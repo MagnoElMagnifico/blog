@@ -9,7 +9,7 @@ sort_by: weight
 
 extra:
     # about: >-
-    about_img: /logo.png
+    # about_img: /logo.svg
 
     projects:
         -
@@ -22,11 +22,4 @@ extra:
                 niveles y sólo puedes evitarlas. Sin embargo, a diferencia de
                 esos juegos en los que necesariamente morirás para descubrir las
                 trampas, tienes la capacidad de de ver el futuro próximo.
-        # TODO
-        # -
-        #     name: Magno Blog
-        #     link: https://github.com/MagnoElMagnifico/blog
-        #     state: En desarrollo
-        #     description: >-
-        #         Este mismo blog, que todavía está en desarrollo.
 ---

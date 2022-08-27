@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="140" height="140" version="1.1" viewBox="0 0 37.042 37.042" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <radialGradient id="radialGradient953" cx="15.875" cy="15.875" r="15.875" gradientTransform="matrix(-9.743e-8 1.1734 -1.1734 -1.3683e-7 37.148 -.10614)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ddd" offset="0"/>
+   <stop stop-color="#242424" offset=".79899"/>
+   <stop stop-color="#1f1f1f" stop-opacity="0" offset="1"/>
+  </radialGradient>
+ </defs>
+ <rect width="37.042" height="37.042" fill="url(#radialGradient953)"/>
+ <g stroke-linecap="round">
+  <path transform="matrix(.81643 0 0 .81643 12.904 12.634)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" stroke-width=".99995"/>
+  <g stroke-width=".99995">
+   <path transform="matrix(.6605 0 0 .6605 13.977 7.144)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" fill="#0ef"/>
+   <path transform="matrix(.6605 0 0 .6605 19.706 17.066)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" fill="#0f5"/>
+   <path transform="matrix(.6605 0 0 .6605 8.2487 17.066)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" fill="#f05" style="mix-blend-mode:normal"/>
+  </g>
+  <g>
+   <path transform="matrix(.6605 0 0 .6605 13.977 13.759)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" fill="none" stroke="#000" stroke-width=".80116"/>
+   <path transform="matrix(1.321 0 0 1.321 9.4334 8.9965)" d="m6.8792 17.224-8.6728-5.0072-2e-7 -10.014 8.6728-5.0072 8.6728 5.0072v10.014z" fill="none" stroke="#000" stroke-width=".34049"/>
+   <text transform="skewY(30)" x="13.437365" y="13.356484" fill="#000000" font-family="Consolas" font-size="1.6686px" font-weight="bold" stroke-width=".083431" xml:space="preserve"><tspan x="13.437365" y="13.356484" fill="#000000" font-family="Consolas" font-size="1.6686px" font-weight="bold" stroke-width=".083431">Magno</tspan></text>
+  </g>
+  <g transform="translate(2.6458 2.6458)" fill="none" stroke="#000" stroke-width=".26458">
+   <path d="m10.147 12.568 5.7284 3.3073 5.7284-3.3073"/>
+   <path d="m15.875 22.49 2e-6 -6.6146"/>
+  </g>
+ </g>
+</svg>
