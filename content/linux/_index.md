@@ -39,4 +39,4 @@ Este es un mapa de la evolución del algunas de las distribuciones más conocida
         - [XDG Official](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables)
         - [XDG Arch Wiki](https://wiki.archlinux.org/title/XDG_Base_Directory)
 - [Bash](https://learnxinyminutes.com/docs/bash/)
-- [Archivos](@/linux/files.md)
+- [Archivos](@linux/files.md)

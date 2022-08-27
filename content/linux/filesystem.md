@@ -177,7 +177,7 @@ saber con qué dispositivos cuenta tu ordenador. Por ejemplo, un disco sería
 `sda` y una partición `sda1`, `sda2`...
 
 También por este motivo, es aquí donde más aparecen los diferentes tipos de
-archivos (ver [tipos de archivos](@/linux/files.md)).
+archivos (ver [tipos de archivos](@linux/files.md)).
 
 ## `media` y `mnt`
 _Media_ y _mount_ son los directorios en donde el sistema coloca los
