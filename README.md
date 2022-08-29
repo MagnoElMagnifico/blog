@@ -87,7 +87,8 @@ Mover + convertir todos los nombres a español?
 Blog CSS:
 - Probar si aparecen las descripciones en las previsualizaciones de los links
 - Revisar la página desde el móvil
-- Mejorar el _footer_ en las páginas cortar
+- Mejorar el _footer_ en las páginas cortas
+- Mejorar los divisores con `-----` 
 - Escalar las tablas en dispositivos pequeños
 
 ## Nuevas características
