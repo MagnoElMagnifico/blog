@@ -61,11 +61,14 @@ tmux list-sessions
 > **El comando más importante**: la ayuda:
 > 
 > - `<prefijo> ?`
-> - `tmux lis-keys`
+> - `tmux list-keys`
 > - `:list-keys`
 > 
 > Y a mayores, información sobre todas las sesiones, ventanas, paneles, etc:
 > `tmux info`.
+
+> Alternativamente, existe la ayuda en _manpages_: `man tmux` o
+> [online](https://www.man7.org/linux/man-pages/man1/tmux.1.html)
 
 ## Comandos de teclado
 
@@ -107,6 +110,7 @@ Paneles:
 
 Fuente: [tmux cheat sheet](https://tmuxcheatsheet.com)
 
+
 ## Argumentos de línea de comandos
 
 - `tmux` `tmux new/new-session`: nueva sesión
@@ -132,7 +136,7 @@ Fuente: [tmux cheat sheet](https://tmuxcheatsheet.com)
 > corriendo en el fondo. ¿Si reiniciamos el ordenador, se irá todo a tomar por
 > saco?
 
-# Modo comandos
+## Comandos
 
 Este modo es muy similar, por no decir igual, al de Vim. Realizan diversas
 acciones y son muy similares a los argumentos de línea de comandos. También, se
@@ -142,16 +146,65 @@ ejecutarán al iniciarse (igual que Vim, vamos).
 - `:new`: nueva sesión
 - `:new -s <nombre>`: nueva sesión dado el nombre
 - `:attach -d`: separar todas las ventanas de la sesión excepto la actual
-- `:swap-window -s 2 -t 1`: reordena las ventanas; en este caso: 2 origen (_**s**source_) y 1
+- `:swap-window -s 2 -t 1`: reordena las ventanas; en este caso: 2 origen (_**s**ource_) y 1
   destino (_des**t**ination_)
 - `:swap-window -t -1`: reordena la ventana actual; en este caso: posición
   anterior
 - `:setw synchronize-panes`: activa la sincronización de paneles, es decir,
   envía el mismo comando a todos los paneles
 
+# Modos
+
+Por defecto, tmux permite interactuar con la terminal activa, pero también
+existen varios modos en los que poder operar.
+
+- _Copy mode_ o modo copiar: permite seleccionar contenido de la ventana y
+  guardarlo en un buffer, para posteriormente pegarlo.
+
+- _View mode_: similar al anterior, pero se inicia cuando un comando genera
+  _output_ (como por ejemplo `list-keys`)
+
+- _Choose mode_: permite escoger entre varias opciones, usado en
+  `choose_buffer`, `choose-client` y `choose-tree`.
+
+## Modo copiar
+
+Los siguientes atajos son los del modo Vim, actívalos con `setw -g mode-keys vi`.
+
+- `<prefijo> [`: entrar al modo copiar
+- `<prefijo> ]`: pegar contenido del buffer
+
+Comandos del modo copiar: 
+
+- `<espacio>`: comenzar selección
+- `<Esc>`: limpiar selección
+- `q`: salir o cancelar (_**q**uit_)
+- `v`: cambiar a rectángulo
+- `V`: seleccionar línea
+------------------------------------------------------------
+- `h j k l`: mover el cursor 
+- `0 $`: inicio/fin de línea (?)
+- `H M L`: mover cursor arriba/medio/abajo en la pantalla (_**h**igh_ &
+  _**m**edium_ & _**l**ow_)
+- `<C-u> <C-d>`: desplazar pantalla arriba/abajo (_**u**p_ & _**d**own_)
+- `f F t T`: saltar a carácter (_**f**ind_ & _'**t**il_)
+
+Y demás comandos de movimiento como `w W e E b B <C-f> <C-b> / ? n N ...` también
+funcionan. Lista completa en `man tmux` sección _WINDOWS AND PANES_.
+
+tmux, como Vim, mantiene una lista llamada _paste buffers_, cada uno llamado
+automáticamente (`buffer0001`, `buffer0002`... hasta `buffer-limit`) o
+manualmente. Estos últimos se crean con `:set-buffer` o `:load-buffer`, o
+puedes renombrarlos con `:set-buffer -n`. Para usarlos, usa el comando
+`paste-buffer`. Estos no tienen límite.
+
 # Configuración
 
 > **TODO**
+
+Al igual que en Vim, se pueden cambiar los atajos de teclado, asignando una
+tecla a cada comando con la sentencia `bind[-key]`. También hay opciones de
+configuración que se pueden editar con `set`.
 
 - `set -g prefix C-s`: cambiar el prefijo
 - `set -g <opción>`: establece una opción para todas las sesiones
