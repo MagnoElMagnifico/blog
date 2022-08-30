@@ -13,7 +13,7 @@ Primero, debemos crear un `HTML5 Canvas` con
 
 Y lo obtenermos desde JavaScript por su `id`, además de obtener el `ctx`:
 
-```jsx
+```js
 const canvas = document.getElementById("...");
 const ctx = canvas.getContext("2d"); // También se puede usar OpenGL
 
@@ -22,7 +22,7 @@ const ctx = canvas.getContext("2d"); // También se puede usar OpenGL
 
 Para comenzar a dibujar cosas en el canvas tenemos que iniciar una forma:
 
-```jsx
+```js
 ctx.beginPath();
 ctx.closePath();
 
@@ -78,7 +78,7 @@ A la hora de dibujar, los pasos son los siguientes:
 
 Para evitar estar definiendo constantemente los colores, podemos usar:
 
-```jsx
+```js
 ctx.save(); // Guarda la configuración actual
 ctx.restore(); // Carga la configuración guardada
 ```
