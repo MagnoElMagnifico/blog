@@ -43,7 +43,7 @@ sistemas Unix/Linux fueron mejorarado, estos se abstrayeron a software. Por lo
 tanto estos también se pueden llamar **emuladores de terminal** y
 **pseudo-terminales**.
 
-Para dejarlo más claro está, algunos ejemplos son [Windows Terminal] o
+Para dejarlo más claro, algunos ejemplos son [Windows Terminal] o
 [Alacritty]. 
 
 [Windows Terminal]: https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701
@@ -57,10 +57,82 @@ bajo nivel con el Sistema Operativo. Los sistemas Linux actuales ofrecen
 _consolas virtuales_, a las que puedes acceder con `Alt + F1` o `Alt + Ctrl +
 F1`, siendo cada tecla de función una consola distinta.
 
-# Bashrc
+# Archivos que ejecuta Bash
 
-<!-- TODO:
-https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html -->
+Fuente: [GNU Manual]
+
+Primero debemos definir qué es una sesión de shell interactiva y no interactiva.
+
+Una shell interactiva es aquella que se inició sin argumentos de línea de
+comandos, es decir, sin el parámetro `-c`. El input y el output están
+conectadas a una terminal (determinado por `isatty`). Generalmente lee y escribe
+a la terminal del usuario. Una shell no interactiva será aquella que no cumpla
+estas condiciones. [Manual].
+
+Mejor con ejemplos:
+
+- La _bash_ normal es interactiva: puedes escoger el comando anterior con las
+  flechas, escribir en esta y tienes un prompt.
+
+- Un script no es interactivo, un usuario no tiene interación con los comandos
+  que se están ejecutando.
+
+- Si un hacker consigue ejecutar enviar un archivo que permita ejecutar un
+  comando, podría crear un script así:
+
+```py
+while True:
+    command = input('> ')
+    payload = 'http..../pwded.php?cmd=bash -c "' + command + '"'
+    # Enviar payload
+    print(response)
+```
+
+Con esto consigue enviar comandos con un "prompt" pero no es una sesión
+interactiva, solo está ejecutando comandos aislados y imprimimiendo la
+respuesta, haciendo que sea similar a una consola, pero no lo es (no tienes una
+shell). Si cambias de directorio, en el siguiente comando, sigues en el mismo.
+
+Entonces, en sesiones interactivas _login_ ejecuta por este orden:
+
+1. `/etc/profile` si existe
+2. `~/.bash_profile` si existe
+3. `~/.bash_login` si existe
+4. `~/.profile` si existe
+
+Se puede evitar con el argumento `--noprofile`
+
+Al cerrar sesión (con `exit`) se ejecuta `~/.bash_logout`
+
+Para una shell interactiva _non-login_: `~/.bashrc` si existe. Se puede evitar
+con el argumento `--norc` o cambiar el archivo con `--rcfile <archivo>`. Muchas
+veces aparecerá el siguiente código en los _profiles_ para ejecutar tambiés la
+configuración de las _non-login_ de `.bashrc`:
+
+```bash
+if [ -f ~/.bashrc ] # Si .bashrc existe ...
+then
+    . ~/.bashrc # ... ejecútalo
+fi
+```
+
+Para una sesión no interactiva se comporta de esta forma (aunque este código no
+está escrito en ningún script):
+
+```bash
+if [ -n "$BASH_ENV" ] # Comprueba si existe $BASH_ENV
+then
+    . "$BASH_ENV" # En tal caso, ejecuta el script en su dirección
+fi
+```
+
+Finalmente, si bash se invoca con el comando `sh`, se intentará imitar el
+comportamiento de dicha shell, pero manteniendo estándares POSIX.
+
+[Manual]: https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html
+[GNU Manual]: https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
+
+# Bash config
 
 El archivo `.bashrc` está situado en la carpeta del usuario y oculto por
 defecto. La plantilla para todos los nuevos usuarios se copia desde
@@ -129,13 +201,6 @@ Ejemplo:
 LS_COLORS=$LS_COLORS:'di=0;35:' # Concatena el valor al resto de la variable
 export LS_COLORS
 ```
-
-# _Bash profile_ y _profile_
-
-Si `.bashrc` se ejecuta para shells interactivas, `.profile` o `.bash_profile`
-tienen el mismo uso.
-
-<!-- TODO: dudoso -->
  
 # Atajos de teclado estándar para terminal
 
