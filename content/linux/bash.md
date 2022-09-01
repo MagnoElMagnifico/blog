@@ -266,6 +266,8 @@ alias cp="cp -i"    # Pide confirmación antes de sobreescribir
 Recuerda que también es posible añadir estos alias a su propio archivo:
 `~/.bash_aliases`.
 
+> **Nota**: Si se te lía, puedes usar `unalias -a` para eliminar todos los alias
+
 ## Path
 
 También es común modificar la variable _PATH_ en esta configuración, y poder
