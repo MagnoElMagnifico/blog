@@ -1,5 +1,7 @@
 ---
 title: Setup
+description: Guía de como instalar C++ con MinGW en Windows. También se aportan algunas directrices de compilación de librerías así como su importación.
+date: 2021-07-30
 weight: 1
 
 extra:

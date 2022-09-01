@@ -1,6 +1,8 @@
 ---
 title: JavaScript Rendering
-weight: 6
+description: Lista de funciones y pequeño tutorial de cómo renderizar en un canvas de HTML5 con JavaScript
+weight: 3
+date: 2022-06-24
 ---
 
 # Canvas

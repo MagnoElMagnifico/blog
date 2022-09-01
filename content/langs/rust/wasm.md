@@ -1,6 +1,8 @@
 ---
 title: WASM
+description: Breve guía por pasos de cómo compilar Rust para Web Assembly (WASM)
 weight: 0
+date: 2021-07-30
 ---
 
 # Rust y WebAssembly

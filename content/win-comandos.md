@@ -1,16 +1,22 @@
 ---
-title: Comandos Windows
-weight: 3
+title: Algunos comandos de Windows
+description: >
+    Algunos comandos de CMD.exe básicos, atajos de teclado y funciones
+    especiales como tuberías.
+date: 2021-07-30
+weight: 1 # Mover de content? Network tendrá carpeta propia y será el único que quede
 
 extra:
     show_toc: true
     show_details: true
+    show_info: false
 ---
 
 # Atajos
 + `WIN + R`: ejecutar (cmd - notepad - dxdiag - mspaint - explorer).
 + `WIN + E`: bibliotecas.
 + `WIN + G`: grabar con XBox Game Bar.
+<!-- TODO: Añadir más -->
 
 # Tipos de comandos
 + **Internos**: son aquellos que están dentro del propio CMD.exe, y se cargan a

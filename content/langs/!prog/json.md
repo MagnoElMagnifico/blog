@@ -4,6 +4,7 @@ description: >-
     Breve descripción de la sintaxis de JSON, uso y posibles tipos que
     almacena.
 weight: 1
+date: 2021-07-30
 ---
 
 JSON (_JavaScript Object Notation_) se utiliza para transferir información

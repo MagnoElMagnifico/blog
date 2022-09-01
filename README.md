@@ -14,16 +14,21 @@ El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 
 General:
 
-- Mejorar descripciones
 - Usar más imágenes
+
+Mover + convertir todos los nombres a español?
+- c/SOs -> content/SOs/{Linux, Windows} (?)
+- rust/usos -> rust/\_index (?)
+- javascript -> javascript-render
+- python-setup -> python-setup-libs
+
 - Añadir descripciones y fechas
-- Separar del texto los títulos con `#`
 
 -----------------------------------------------------------
 
 Drafts: 
 
-- !prog: HTML, CSS, Regex
+- !prog: HTML, CSS, Regex, YAML
 - C: General
 - C++: básico, OpenGL
 - C#
@@ -62,15 +67,6 @@ TODOs sin importancia
 - Linux: filesystem (comparación con Windows, inodos?)
 - Tools: \_index (???)
 - Tools: git-github (expandir: aprender más git)
-
------------------------------------------------------------
-
-Mover + convertir todos los nombres a español?
-
-- c/SOs -> content/SOs/{Linux, Windows} (?)
-- rust/usos -> rust/\_index (?)
-- javascript -> javascript-render
-- python-setup -> python-setup-libs
 
 ## Mejoras
 
