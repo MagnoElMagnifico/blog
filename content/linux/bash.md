@@ -268,6 +268,34 @@ Recuerda que también es posible añadir estos alias a su propio archivo:
 
 > **Nota**: Si se te lía, puedes usar `unalias -a` para eliminar todos los alias
 
+## Shopt
+
+El comando `shopt` puede usarse para cambiar cualquiera de está opciones con el
+parámetro `-s`:
+
+- `autocd`: muevete entre directorios sin necesidad de escribir cd
+- `cdspell`: se corrigen errores en el nombre de un archivo que el usuario
+  escribiera mal
+- `dirspell`: bash intenta correguir errores de escritura en nombres de archivos
+  durante el completado
+- `checkwinsize`: después de cada comando, comprueba que el tamaño en líneas
+  y columnas es correcto; y si no, lo cambia
+- `cmdhist`: bash intentará guardar en la misma entrada del historial, un 
+  un comando de multilínea. Esto permite editarlos facilmente
+- `histappend`: se añade el histórico al archivo descrito en `HISTFILE`
+
+Puedes listar todas las opciones con `shopt -p`, y las actualmente configuradas
+con `shopt -s`.
+
+Más información: [ComputerHope](https://www.computerhope.com/unix/bash/shopt.htm)
+
+## Bind
+
+También es posible cambiar los atajos de teclado, gracias al comando `bind`.
+Puedes encontrar más información en [Computer Hope].
+
+[Computer Hope]: https://www.computerhope.com/unix/bash/bind.htm
+
 ## Path
 
 También es común modificar la variable _PATH_ en esta configuración, y poder
