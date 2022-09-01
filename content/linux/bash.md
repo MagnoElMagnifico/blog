@@ -57,66 +57,74 @@ bajo nivel con el Sistema Operativo. Los sistemas Linux actuales ofrecen
 _consolas virtuales_, a las que puedes acceder con `Alt + F1` o `Alt + Ctrl +
 F1`, siendo cada tecla de función una consola distinta.
 
-# Archivos que ejecuta Bash
+# Prompt
 
-Fuente: [GNU Manual]
+Un _command prompt_ es un campo de entrada para comandos del usuario, y en bash
+suele tener este aspecto (aunque es personalizable):
 
-Primero debemos definir qué es una sesión de shell interactiva y no interactiva.
-
-Una shell interactiva es aquella que se inició sin argumentos de línea de
-comandos, es decir, sin el parámetro `-c`. El input y el output están
-conectadas a una terminal (determinado por `isatty`). Generalmente lee y escribe
-a la terminal del usuario. Una shell no interactiva será aquella que no cumpla
-estas condiciones. [Manual].
-
-Mejor con ejemplos:
-
-- La _bash_ normal es interactiva: puedes escoger el comando anterior con las
-  flechas, escribir en esta y tienes un prompt.
-
-- Un script no es interactivo, un usuario no tiene interación con los comandos
-  que se están ejecutando.
-
-- Si un hacker consigue ejecutar enviar un archivo que permita ejecutar un
-  comando, podría crear un script así:
-
-```py
-while True:
-    command = input('> ')
-    payload = 'http..../pwded.php?cmd=bash -c "' + command + '"'
-    # Enviar payload
-    print(response)
+```
+<username>@<hostname>:~$ 
 ```
 
-Con esto consigue enviar comandos con un "prompt" pero no es una sesión
-interactiva, solo está ejecutando comandos aislados y imprimimiendo la
-respuesta, haciendo que sea similar a una consola, pero no lo es (no tienes una
-shell). Si cambias de directorio, en el siguiente comando, sigues en el mismo.
+El `~` representa el directorio actual, así que si haces `cd
+blog/content/linux/` por ejemplo, cambiará a:
 
-Entonces, en sesiones interactivas _login_ ejecuta por este orden:
+```
+<username>@<hostname>:~/blog/content/linux$ 
+```
 
-1. `/etc/profile` si existe
+Y en caso de ser _root_:
+
+```
+root@<hostname>:~/blog/content/linux#
+```
+
+# Archivos que ejecuta Bash
+
+Bash diferencia entre varias posibilidades cuando una instancia suya es creada.
+Por una parte distingue entre **interactiva** y **no interactiva** (si el
+usuario tiene un prompt y envía input directamente a Bash; o bien en un script,
+donde el usuario no tiene interacción) y entre _**login**_ y _**non-login**_
+(cuando un usuario inicia una sesión en bash via terminal, SSH, etc; o cuando
+desde una shell se inicia otra). Este último se puede comprobar con `echo $0`,
+si devuelve `-bash` será _login_, y `bash` si es _non-login_.
+
+Entonces, en sesiones **interactivas _login_** ejecuta por este orden:
+
+1. `/etc/profile` si existe, y este script ejecuta `/etc/profile.d/*.sh`
 2. `~/.bash_profile` si existe
 3. `~/.bash_login` si existe
-4. `~/.profile` si existe
-
-Se puede evitar con el argumento `--noprofile`
-
-Al cerrar sesión (con `exit`) se ejecuta `~/.bash_logout`
-
-Para una shell interactiva _non-login_: `~/.bashrc` si existe. Se puede evitar
-con el argumento `--norc` o cambiar el archivo con `--rcfile <archivo>`. Muchas
-veces aparecerá el siguiente código en los _profiles_ para ejecutar tambiés la
-configuración de las _non-login_ de `.bashrc`:
+4. `~/.profile` si existe, y este script generalmente ejecuta `~/.bashrc`
 
 ```bash
+# ~/.profile
 if [ -f ~/.bashrc ] # Si .bashrc existe ...
 then
     . ~/.bashrc # ... ejecútalo
 fi
 ```
 
-Para una sesión no interactiva se comporta de esta forma (aunque este código no
+Además, por si todo esto fuese poco, normalmente `~/.bashrc` puede llegar a
+ejecutar `~/.bash_aliases`, únicamente dedicado a definiciones de
+[alias](#alias). <!-- TODO: bash_completion -->
+
+Se puede evitar la ejecución de todos estos scripts con el argumento
+`--noprofile`.
+
+Al cerrar sesión (con `exit`) se ejecuta `~/.bash_logout`.
+
+-----------------------------------------------------------
+
+Para una shell **interactiva _non-login_**:
+
+1. `~/.bashrc` si existe.
+
+Se puede evitar
+con el argumento `--norc` o cambiar el archivo con `--rcfile <archivo>`.
+
+-----------------------------------------------------------
+
+Para una sesión **no interactiva** se comporta de esta forma (aunque este código no
 está escrito en ningún script):
 
 ```bash
@@ -126,43 +134,149 @@ then
 fi
 ```
 
+-----------------------------------------------------------
+
 Finalmente, si bash se invoca con el comando `sh`, se intentará imitar el
 comportamiento de dicha shell, pero manteniendo estándares POSIX.
+
+> **Conclusión**: De una forma u otra, los scripts por defecto de `.profile`
+> acabarán ejecutando finalmente `.bashrc`, así que yo simplemente colocaría mi
+> configuración allí dejando los demás por defecto (que generalmente residen en
+> `/etc/skel/`, por si los quieres recuperar).
+
+**Fuente**: [GNU Manual] y el [Manual] sobre bash.
 
 [Manual]: https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html
 [GNU Manual]: https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
 
 # Bash config
 
-El archivo `.bashrc` está situado en la carpeta del usuario y oculto por
-defecto. La plantilla para todos los nuevos usuarios se copia desde
-`/etc/skel/.bashrc`. Contiene código escrito en _bash_ que se ejecuta cada vez
-que el usuario propietario del archivo inicia sesión, lo que permite establecer
-una configuración para esta.
+Como ya he mencionado antes, la configuración de Bash se puede almacenar en el
+archivo `~/.bashrc`, que está oculto por defecto.
 
-> **Nota**: Se ejecuta con la condición de que inicie sesión de forma
-> interactiva, es decir, accediendo a al shell de comandos puramente y no
-> ejecutando un único comando como en `bash -c "pwd"`.
-> 
-> Para comprobarlo, si tienes un alias en tu `.bashrc`, por ejemplo:
-> 
-> ```bash
-> alias ll="ls -l"
-> ```
->
-> Y lo ejecutas con bash de forma no interactiva:
-> ```bash
-> bash -c "ll"
-> ```
-> 
-> Dará un error, ya que dicho alias no existe, no se ha ejecutado el archivo de
-> configuración.
+Para recargar dicha configuración, puedes simplemente volver a ejecutar el
+script:
+
+```bash
+. ~/.bashrc
+# o bien
+source ~/.bashrc
+```
 
 ## Bash Prompt
 
-`PS1`
+El prompt se controla usando variables de Bash:
+
+- `PS0`: se muestra en shells interactivas después de leer un comando y antes de
+  ejectuarlo.
+- `PS1`: prompt primario, por defecto `\s-\v\$`
+- `PS2`: prompt secundario, por defecto `> `
+- `PS3`: prompt para el comando `select`, ejemplo:
+- `PS4`: se muestra antes de que un comando muestre _execution trace_, por
+  defecto `+`.
+
+```bash
+PS3="Enter a number: "
+
+select character in Sheldon Leonard Penny Howard Raj
+do
+    echo "Selected character: $character"
+    echo "Selected number: $REPLY"
+done
+```
+
+Modificando la variable `PS1`, podrás modificar tu prompt.
+
+- `\u`: nombre de usuario
+- `\H`: nombre del ordenador completo
+- `\h`: nombre del ordenador hasta el primer `.`
+- `\l`: nombre base de la terminal (?)
+- `\s`: nombre de la shell
+- `\$`: (UID == 0)? `#` : `$`. Es decir, si eres _root_, `#`, sino `$`.
+-----------------------------------------------------------
+- `\w`: dirección completa del directorio actual (`$HOME` = `~`)
+- `\W`: directorio actual (`$HOME` = `~`)
+-----------------------------------------------------------
+- `\A`: hora actual (24h HH:MM)
+- `\@`: hora actual (12h am/pm)
+- `\t`: hora actual (24h HH:MM:SS)
+- `\T`: hora actual (12h HH:MM:SS)
+- `\d`: fecha con día de la semana, nombre del mes y día (e.g.: `Tue May 26`)
+- `\D{<formato>}: fecha con el formato dado. Se formatea con `strftime`.
+-----------------------------------------------------------
+- `\j`: número de trabajos de la shell actual
+- `\#`: número de comando
+- `\!`: número de comando en el historial
+-----------------------------------------------------------
+- `\\` = `\`
+- `\a`: sonido de campana (ASCII)
+- `\n`: nueva línea
+- `\r`: retorno de carro
+- `\nnn`: carácter en formato octal
+- `\e`: carácter especial de ASCII
+- `\[`: secuencia de caracteres no imprimibles
+- `\]`: fin de secuencia de caracteres no imprimibles
+-----------------------------------------------------------
+- `\V`: versión de bash completa (e.g.: 2.0.0)
+- `\v`: versión de bash (e.g.: 2.0)
+
+Colores (uso `\e[<colornum>m...\e[m`): 
+
+|          | Fondo | Letra |
+| :------: | :---: | :---: |
+| Negro    | 40    | 30    | 
+| Rojo     | 41    | 31    | 
+| Verde    | 42    | 32    | 
+| Amarillo | 43    | 33    | 
+| Azul     | 44    | 34    | 
+| Violeta  | 45    | 35    | 
+| Cian     | 46    | 36    | 
+| Blanco   | 47    | 37    | 
+
+Ejemplo:
+
+```bash
+export PS1="\e[46m\u@\h:\w\e[m\$ " # en cian: <usuario>@<hostname>:~$ 
+```
 
 ## Alias
+
+Un alias es tal y como suena, darle un _nickname_ a un comando que utilizas
+mucho, como por ejemplo `ls -lh`.
+
+```bash
+# sintáxis: alias <aliasname>="<comando>"
+alias ll="ls -lh"
+```
+
+Otros alias comunes son:
+
+```bash
+alias   ..="cd .."
+alias  ...="cd ../.."
+alias ....="cd ../../.."
+alias   .4="cd ../../../.."
+alias   .5="cd ../../../../.."
+
+alias la="ls -lah"
+alias rm="rm -i"    # Pide confirmación antes de borrar
+alias cp="cp -i"    # Pide confirmación antes de sobreescribir
+```
+
+Recuerda que también es posible añadir estos alias a su propio archivo:
+`~/.bash_aliases`.
+
+## Path
+
+También es común modificar la variable _PATH_ en esta configuración, y poder
+ejecutar programas de directorios personalizados:
+
+```bash
+export PATH=$PATH:<new/path>
+```
+
+> **Nota**: Ojo con modificar esta variable, ya que podrías eliminar todo el
+> contenido y no podrías ejecutar nada.
 
 ## Colores de ls
 
