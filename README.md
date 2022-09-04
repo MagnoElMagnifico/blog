@@ -8,6 +8,45 @@ sitios estáticos [Zola](https://www.getzola.org).
 
 El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 
+# Estructura
+
+```
+                                              ┌───────────────────┐             ┌──────────┐
+                                              │ base.html         ╠═════════════╣ base.css │
+                                              ├───────────────────┤             └────┬┬┬───┘
+                                              │ » head            │                  │││
+                                              │    ├─ CSS         │                  │││
+                                              │    ├─ metadata    │                  │││
+                                              │    └─ fonts       │                  │││
+                                           ╔══╣░»░body░░░░░░░░░░░░│                  │││
+                                           ║  │ » footer          │                  │││
+                                           ║  │  └─ .social_media │                  │││
+                                           ║  │ » scripts         │                  │││
+                                           ║  └───────────────────┘                  │││
+                                           ║                                         │││
+           ╔═════════════════════╦═════════╩═════════╦════════════════════╗          │││
+           ║                     ║                   ║                    ║          │││
+┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐│││
+│ index.html          │  │ section.html   │  │ post.html     │  │ 404.html          ││││
+├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤│││
+│ » #animation #start │┌─┤ » .header      ├──┤ » .header     ├──┤ » .header         ├┘││
+│    └─ animation.js  ││ │ » .main-title  ├──┤ » .main-title ├┐ │ » #not-found      │ ││
+│ » #about            ││ │ » .subsections │  │ » .info       │└─┤    └─ .main-title ├─┘│
+│    └─ .social_media ││ │ » .explanation │  │ » article     │  └─────────╦─────────┘  │
+│ » #portfolio        ││┌┤ » .entries     ├┐ └───────╦───────┘            ║            │
+│    ├─ .project      │││└───────╦────────┘└─────────║────────────────────║────────────┘
+│    ├─ .project      │││        ║                   ║                    ║           
+│    └─ ...           │││        ╚═════════╦═════════╝                    ║           
+│ » #blog             │││                  ║                              ║           
+│    ├─ .header       ├┘│                  ║                              ║           
+│    └─ .entries      ├─┘                  ║                              ║           
+└──────────╦──────────┘                    ║                              ║         
+           ║                               ║                              ║
+     ┌─────╩─────┐                    ┌────╩─────┐                   ┌────╩────┐
+     │ index.css │                    │ post.css │                   │ 404.css │ -> Por el footer
+     └───────────┘                    └──────────┘                   └─────────┘
+```
+
 # TODOs
 
 ## Posts
@@ -15,6 +54,7 @@ El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 General:
 
 - Usar más imágenes
+- Usar más etiquetas `<meta>`: palabras clave...
 
 Mover + convertir todos los nombres a español?
 - c/SOs -> content/SOs/{Linux, Windows} (?)
