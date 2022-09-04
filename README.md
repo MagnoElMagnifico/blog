@@ -32,19 +32,26 @@ El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 │ » #animation #start │┌─┤ » .header      ├──┤ » .header     ├──┤ » .header         ├┘││
 │    └─ animation.js  ││ │ » .main-title  ├──┤ » .main-title ├┐ │ » #not-found      │ ││
 │ » #about            ││ │ » .subsections │  │ » .info       │└─┤    └─ .main-title ├─┘│
-│    └─ .social_media ││ │ » .explanation │  │ » article     │  └─────────╦─────────┘  │
+│    └─ .social_media ││ │ » article      │  │ » article     │  └─────────╦─────────┘  │
 │ » #portfolio        ││┌┤ » .entries     ├┐ └───────╦───────┘            ║            │
 │    ├─ .project      │││└───────╦────────┘└─────────║────────────────────║────────────┘
-│    ├─ .project      │││        ║                   ║                    ║           
-│    └─ ...           │││        ╚═════════╦═════════╝                    ║           
-│ » #blog             │││                  ║                              ║           
-│    ├─ .header       ├┘│                  ║                              ║           
-│    └─ .entries      ├─┘                  ║                              ║           
-└──────────╦──────────┘                    ║                              ║         
+│    ├─ .project      │││        ║                   ║                    ║
+│    └─ ...           │││        ╚═════════╦═════════╝                    ║
+│ » #blog             │││                  ║                              ║
+│    ├─ .header       ├┘│                  ║                              ║
+│    └─ .entries      ├─┘                  ║                              ║
+└──────────╦──────────┘                    ║                              ║
            ║                               ║                              ║
-     ┌─────╩─────┐                    ┌────╩─────┐                   ┌────╩────┐
-     │ index.css │                    │ post.css │                   │ 404.css │ -> Por el footer
-     └───────────┘                    └──────────┘                   └─────────┘
+     ┌─────╩─────┐                   ┌─────╩─────┐                   ┌────╩─────┐
+     │ index.css │                   │ post.css  │                   │ 404.css  │
+     └───────────┘                   ├───────────┤                   ├──────────┤
+                                     │ (article) │                   │ » footer │
+                                     │ » p       │                   └──────────┘
+                                     │ » .info   │
+                                     │ » code    │
+                                     │ » table   │
+                                     │ » quote   │
+                                     └───────────┘
 ```
 
 # TODOs
