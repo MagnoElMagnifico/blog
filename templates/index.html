@@ -1,46 +1,75 @@
 {% extends "base.html" %}
-{% import "index-macros.html" as index_macros %}
+
+
 
 {% block head %}
-<title>{{ config.title }}</title>
-<link rel="stylesheet" href="/styles/index.css">
-{% if section.description %}
-    <meta name="description" content="{{ section.description }}">
-{% endif %}
-{% endblock head %}
+    <title>{{ config.title }}</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    {% if section.description %}
+        <meta name="description" content="{{ section.description }}">
+    {% endif %}
+{% endblock %}
+
+
 
 {% block before_content %}
-<canvas id="matrix-animation"></canvas>
-<div id="start">
-    <img src="/logo.png" id="blog-logo" />
-    <h1 id="blog-title">{{ config.title }}</h1>
-    {% if config.description %}
-        <p id="blog-description">{{ config.description }}</p>
-    {% elif section.description %}
-        <p id="blog-description">{{ section.description }}</p>
-    {% endif %}
-</div>
-{% endblock before_content %}
+    {### ANIMATION ###}
+    <canvas id="animation"></canvas>
+    <div id="start">
+        <img src="{{ config.extra.logo }}" id="blog-logo" />
+        <h1 id="blog-title">{{ config.title }}</h1>
+        {% if section.description %}
+            <p id="blog-description">{{ section.description }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
 
 {% block content %}
-{% if section.extra.about and section.extra.about_img %}
-    {{ index_macros::generate_about(about=section.extra.about, about_img=section.extra.about_img) }}
-{% endif %}
+    {### ABOUT ###}
+    {% if section.extra.about and section.extra.about_img %}
+        <h1>whoami</h1>
+        <div id="about">
+            <img src="{{ section.extra.about_img }}" id="about-img" />
+            <div>
+                <p>{{ section.extra.about }}</p>
+                {{ macros::social_media() }}
+            </div>
+        </div>
+    {% endif %}
 
-{% if section.extra.projects %}
-    {{ index_macros::generate_projects(projects=section.extra.projects) }}
-{% endif %}
 
-{% if section.pages or section.subsections %}
-<div id="blog">
-    <h1>git log</h1>
-    {{ macros::categories(cat=config.extra.header_sections) }}
-    {{ index_macros::generate_pages(sec=section) }}
-</div>
-{% endif %}
+    {### PORTFOLIO ###}
+    {% if section.extra.projects %}
+        <h1>ls -lhA ~/proyectos</h1>
+        <div id="portfolio">
+            {% for project in section.extra.projects %}
 
-{% endblock content %}
+                <div class="project">
+                    <a href="{{ project.link }}">
+                        <h3>{{ project.name }}</h3>
+                        <p>{{ project.description }}</p>
+                    </a>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    {### BLOG ###}
+    {% if section.pages or section.subsections %}
+        <h1>git log -n 10</h1>
+        <div id="blog">
+            {{ macros::categories(cat=config.extra.header_sections) }}
+            {# TODO: {{ index_macros::generate_pages(sec=section) }} #}
+        </div>
+    {% endif %}
+{% endblock %}
+
+
 
 {% block scripts %}
-<script src="/js/matrix-animation.js"></script>
-{% endblock scripts %}
+    <script src="/js/matrix-animation.js"></script>
+{% endblock %}

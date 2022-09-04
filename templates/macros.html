@@ -1,78 +1,90 @@
+{# NOTE: _-prefixed macros are private #} 
+
+{### SOCIAL MEDIA ###}
 {% macro social_media() %}
-<div class="box-list">
-    <a class="fa fa-envelope" href="mailto:marcosgranja317@gmail.com" style="background-color: #BB001B;"></a>
-    <a class="fa fa-linkedin" href="https://www.linkedin.com/in/magno-el-magnífico-7b3a58205/" style="background-color: #0077b5;"></a>
-    <a class="fa fa-twitter" href="https://twitter.com/_MagnoMagnifico" style="background-color: #1da1f2;"></a>
-    <a class="fa fa-github" href="https://github.com/MagnoElMagnifico" style="background-color: #111;"></a>
-    <a class="fa fa-youtube" href="https://www.youtube.com/channel/UCM_L8nAc0UPtJWxNnqXKwEw" style="background-color: red;"></a>
-    <a class="fa fa-twitch" href="https://www.twitch.tv/magnoelmagnifico" style="background-color: #6441a5;"></a>
-    <!-- <a class="fa fa-instagram" href="https://www.instagram.com/magnoelmagnifico/" style="background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);;"></a>
-    <a class="fa fa-reddit" href="https://www.reddit.com/user/MagnoGG" style="background-color: #FF4301;"></a> -->
+    <div class="box-list">
+        <a class="fa fa-envelope" href="mailto:marcosgranja317@gmail.com"                          style="background-color: #BB001B;"></a>
+        <a class="fa fa-linkedin" href="https://www.linkedin.com/in/magno-el-magnífico-7b3a58205/" style="background-color: #0077b5;"></a>
+        <a class="fa fa-twitter"  href="https://twitter.com/_MagnoMagnifico"                       style="background-color: #1da1f2;"></a>
+        <a class="fa fa-github"   href="https://github.com/MagnoElMagnifico"                       style="background-color: #111111;"></a>
+        <a class="fa fa-youtube"  href="https://www.youtube.com/channel/UCM_L8nAc0UPtJWxNnqXKwEw"  style="background-color: #ff0000;"></a>
+        <a class="fa fa-twitch"   href="https://www.twitch.tv/magnoelmagnifico"                    style="background-color: #6441a5;"></a>
 
-</div>
+        {#
+            <a class="fa fa-instagram"
+               href="https://www.instagram.com/magnoelmagnifico/"
+               style="background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);">
+            </a>
+            <a class="fa fa-reddit"
+               href="https://www.reddit.com/user/MagnoGG"
+               style="background-color: #FF4301;">
+            </a>
+        #}
+    </div>
 {% endmacro %}
 
-{% macro box(el, hue) %}
-{% set path = el | trim_end_matches(pat="/_index.md") %}
-<a href="/{{ path }}" style="background-color: hsl({{ hue }}, 100%, 40%);">{{ path | title }}</a>
+
+
+{### HEADER ###}
+{% macro _box(el, hue) %}
+    {% set path = el | trim_end_matches(pat="/_index.md") %}
+    <a href="/{{ path }}" style="background-color: hsl({{ hue }}, 100%, 40%);">{{ path | title }}</a>
 {% endmacro %}
 
-{% macro header_content(list) %}
-{% set delta_saturation = list | length %}
-{% if delta_saturation > 0 %}
-    {% set delta_saturation = 360 / delta_saturation %}
-    {% for element in list %}
 
-        {% if element is string %}
-            {{ macros::box(el=element, hue=loop.index0 * delta_saturation) }}
+{% macro _header_content(list) %}
+    {% set delta_saturation = list | length %}
+    {% if delta_saturation > 0 %}
+        {% set delta_saturation = 360 / delta_saturation %}
 
-        {% else %}
-            <span class="dropdown">
-                {{ macros::box(el=element.0, hue=loop.index0 * delta_saturation) }}
-                <div class="dropdown-content">{{ macros::header_content(list=element | slice(start=1)) }}</div>
-            </span>
-        {% endif %}
-
-    {% endfor %}
-{% endif %}
+        {% for element in list %}
+              {{ macros::_box(el=element, hue=loop.index0 * delta_saturation) }}
+        {% endfor %}
+    {% endif %}
 {% endmacro %}
 
-{# Renders the list of categories passed #}
+
+{# Renders the list of categories (cat) passed #}
 {% macro categories(cat, style="") %}
-{% if cat | length > 0 %}
-<div class="box-list" style="{{ style }}">
-    {{ macros::header_content(list=cat) }}
-</div>
-{% endif %}
+    {% if cat | length > 0 %}
+        <div class="box-list" style="{{ style }}">
+            {{ macros::_header_content(list=cat) }}
+        </div>
+    {% endif %}
 {% endmacro %}
+
 
 {# The same as categories(), but adds a logo #}
 {% macro header(list, logo) %}
-<header class="box-list">
-    <a id="header-img-link" href="/"><img src="{{ logo }}"></a>
-    {{ macros::header_content(list=list) }}
-</header>
+    <header class="box-list">
+        <a id="header-img-link" href="/"><img src="{{ logo }}"></a>
+        {{ macros::_header_content(list=list) }}
+    </header>
 {% endmacro %}
 
+
+
+{### ENTRIES ###}
 {% macro preview_page(page, show_cat=true) %}
-<div class="post">
-    {% set oversection = get_section(path=page.ancestors | last) %}
-    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}{% if show_cat and oversection.title %} - {{ oversection.title }}{% endif %}</a></h2>
-    {% if page.date %}
-        <h3 class="date">{{ page.date }}</h3>
-    {% endif %}
-    <p>{{ page.description }}</p>
-</div>
+    <div class="post">
+        {% set oversection = get_section(path=page.ancestors | last) %}
+        <h2><a href="{{ page.permalink | safe }}">{{ page.title }}{% if show_cat and oversection.title %} - {{ oversection.title }}{% endif %}</a></h2>
+        {% if page.date %}<h3 class="date">{{ page.date }}</h3>{% endif %}
+        {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+    </div>
 {% endmacro %}
 
-{% macro hx(previous_h, max_level) %}
-{% for hx in previous_h %}
-    {% if max_level >= hx.level and hx.title %}
+
+
+{### INFO ###}
+{% macro _hx(previous_h, max_level) %}
+    {% for hx in previous_h %}
+        {% if max_level >= hx.level and hx.title %}
             <li>
                 <a href="{{ hx.permalink | safe }}">{{ hx.title }}</a>
                 {% if hx.children %}
                     <ul>
-                        {{ macros::hx(previous_h=hx.children, max_level=max_level) }}
+                        {{ macros::_hx(previous_h=hx.children, max_level=max_level) }}
                     </ul>
                 {% endif %}
             </li>
@@ -80,44 +92,44 @@
     {% endfor %}
 {% endmacro %}
 
+
 {% macro info(page, max_level) %}
-{% set possible_toc = page.toc and page.extra.show_toc %}
-{% if possible_toc or page.extra.show_details %}
-<button class="bu-colap">Información</button>
-<div class="info">
-    {% if page.extra.show_details %}
-        {% if page.date %}
-            <h2>Posted: {{ page.date }}</h2>
-        {% endif %}
-        {% if page.updated %}
-            <h2>Updated: {{ page.updated }}</h2>
-        {% endif %}
-        <h2>Word count: {{ page.word_count }}</h2>
-        <h2>Reading time: {{ page.reading_time }}mins</h2>
-    {% endif %}
+    {% set possible_toc = page.toc and page.extra.show_toc %}
 
-    {% if page.extra.ref_links %}
-        <hr style="margin: 15px 0; width: 100%;">
-        <h2>Reference links:</h2>
-        <ul>
-            {% for link in page.extra.ref_links %}
-                <li><a href="{{ link.link }}">{{ link.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {% if page.extra.ref_link %}
-        <hr style="margin: 15px 0; width: 100%;">
-        <h2 style="display: inline;">Reference link: </h2>
-        <a style="display: inline;" href="{{ page.extra.ref_link.link }}"> {{ page.extra.ref_link.name }}</a>
-    {% endif %}
+    {% if possible_toc or page.extra.show_details %}
+        <button class="bu-colap">Información</button>
+        <div class="info">
+            {% if page.extra.show_details %}
+                {% if page.date %}   <h2>Posted: {{ page.date }}</h2>    {% endif %}
+                {% if page.updated %}<h2>Updated: {{ page.updated }}</h2>{% endif %}
 
-    {% if possible_toc %}
-        <hr style="margin: 15px 0; width: 100%;">
-        <h2>Contenidos:</h2>
-        <ul>
-            {{ macros::hx(previous_h=page.toc, max_level=max_level) }}
-        </ul>
-{% endif %}
-</div>
-{% endif %}
+                <h2>Word count: {{ page.word_count }}</h2>
+                <h2>Reading time: {{ page.reading_time }}mins</h2>
+            {% endif %}
+
+            {% if page.extra.ref_links %}
+                <hr style="margin: 15px 0; width: 100%;">
+                <h2>Reference links:</h2>
+                <ul>
+                    {% for link in page.extra.ref_links %}
+                        <li><a href="{{ link.link }}">{{ link.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if page.extra.ref_link %}
+                <hr style="margin: 15px 0; width: 100%;">
+                <h2 style="display: inline;">Reference link: </h2>
+                <a style="display: inline;" href="{{ page.extra.ref_link.link }}"> {{ page.extra.ref_link.name }}</a>
+            {% endif %}
+
+            {% if possible_toc %}
+                <hr style="margin: 15px 0; width: 100%;">
+                <h2>Contenidos:</h2>
+                <ul>
+                    {{ macros::_hx(previous_h=page.toc, max_level=max_level) }}
+                </ul>
+        {% endif %}
+        </div>
+    {% endif %}
 {% endmacro %}
