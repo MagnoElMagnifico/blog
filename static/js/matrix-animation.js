@@ -2,14 +2,18 @@
 // -------------
 const backColor = "#000";
 const clearColor = "#00000007";
-const possibleFontColor = ["#f00", "#0f0"];
+const fontColor = ["#fff", "#f00", "#0f0", "#00f", "#ff0", "#0ff"];
 
 const fontFamily = "Fira Code";
 const fontSize = 20;
+const fontSpacing = 15;
 
 const marginLeft = 50;
 const marginRight = 100;
-const ident = fontSize * 4;
+const ident = fontSpacing * 4;
+const maxIdentLevel = 4;
+
+const linesPerSecond = 60;
 
 let firstChar;
 let lastChar;
@@ -23,96 +27,79 @@ switch(0) {//switch(random(0, 3)) {
 }
 
 (() => {
+// Returns a random integer in the range [start, end)
+function random(start, end) {
+    return Math.floor((Math.random() * (end - start) + start));
+}
 
-    class Animation {
-        constructor() {
-        }
+// Returns a random bool
+function random_bool() {
+    return random(0, 2) == 0;
+}
+
+const canvas = document.getElementById("matrix-animation");
+const ctx = canvas.getContext("2d");
+
+let counter = 0;
+let identLevel = 0;
+function renderLine() {
+    const totalChars = Math.floor((canvas.width - marginLeft - marginRight - ident*identLevel) / fontSize);
+    const totalLines = Math.floor(canvas.height / fontSize);
+    const currentLine = ++counter % totalLines+1;
+    const lineChars = random(0, totalChars);
+
+    switch (random(0, 10)) {
+        case 1: case 2: if (identLevel < maxIdentLevel) identLevel++; break;
+        case 8: case 9: if (identLevel > 0)             identLevel--; break;
+        default: break;
     }
 
-    // Returns a random integer in the range [start, end)
-    function random(start, end) {
-        return Math.floor((Math.random() * (end - start) + start));
-    }
-
-    // Returns a random bool
-    function random_bool() {
-        return random(0, 2) == 0;
-    }
-
-    function resize() {
-        // Update the canvas exactly as the CSS
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        if (window.innerHeight < 400) {
-            canvas.height = 400;
-        }
-
-        // Render a background to avoid seeing the background of the page
-        // and not the canvas one
-        ctx.fillStyle = backColor;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-    let lastTime = 0;
-    function loop(currentTime) {
-        const deltaTime = currentTime - lastTime;
-        const fps = 1000 / deltaTime;
-
-        const desiredFPS = random(1, 5);
-        const desiredDelta = 1000 / desiredFPS;
-        console.log(desiredFPS);
-
-        // Fade out effect with a color with alpha
-        ctx.fillStyle = clearColor;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Don't render or update until the desired delta has passed
-        if (desiredDelta <= deltaTime) {
-            render();
-            lastTime = currentTime;
-        }
-
-        requestAnimationFrame(loop);
-    }
-
-    let counter = 0;
-    let identlevel = 0;
-
-    const totalCols = Math.floor((canvas.width - marginLeft - marginRight - ident*identlevel) / fontSize);
-    const totalRows = Math.floor(canvas.height / fontSize);
-
-    function render() {
+    let currentFontColor = 0;
+    for (let i = 0; i <= lineChars; i++) {
         switch (random(0, 10)) {
-            case 1: case 2: if (identlevel < 3) identlevel++; break;
-            case 8: case 9: if (identlevel > 0) identlevel--; break;
+            case 1: case 2: currentFontColor++; break;
+            case 8: case 9: currentFontColor--; break;
             default: break;
         }
 
-        const currentRow = ++counter % totalRows+1;
-        const colsOffset = random(0, totalCols);
+        const randomChar = String.fromCharCode(random(firstChar, lastChar));
+        ctx.fillStyle = fontColor[currentFontColor % fontColor.length];
+        ctx.font = `${fontSize}px ${fontFamily}`;
+        ctx.fillText(randomChar, i*fontSpacing + marginLeft + ident*identLevel, currentLine*fontSize);
+    }
+}
 
-        for (let i = 0; i <= colsOffset; i++) {
-            const randomChar = String.fromCharCode(random(firstChar, lastChar));
-            ctx.fillStyle = fontColor[random(0, fontColor.length)];
-            ctx.font = `${fontSize}px ${fontFamily}`;
+let lastTime = 0;
+function loop(currentTime) {
+    const deltaTime = currentTime - lastTime;
+    const fps = 1000 / deltaTime;
+    const desiredDelta = 1000 / linesPerSecond;
 
-            ctx.fillText(randomChar, i*fontSize+marginLeft+ident*identlevel, currentRow*fontSize);
-        }
+    // Fade out effect with a color with alpha
+    ctx.fillStyle = clearColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Don't render or update until the desired delta has passed
+    if (desiredDelta <= deltaTime) {
+        renderLine();
+        lastTime = currentTime;
     }
 
-    // Init
-    // -------------------
+    requestAnimationFrame(loop);
+}
 
-    // Select up to 3 diferent colors
-    let fontColor = [];
-    for (let i = random(1, 4); i > 0; i--) {
-        fontColor.push(possibleFontColor[random(0, possibleFontColor.length)]);
-    }
+function resize() {
+    // Update the canvas exactly as the CSS
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight < 400 ? 400 : window.innerHeight;
 
-    const canvas = document.getElementById("matrix-animation");
-    const ctx = canvas.getContext("2d");
+    // Render a background to avoid seeing the background of the page
+    // and not the canvas one
+    ctx.fillStyle = backColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
-    addEventListener("resize", resize);
-    resize();
-    loop();
+addEventListener("resize", resize);
+resize();
+loop();
 })();
