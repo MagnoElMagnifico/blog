@@ -6,19 +6,20 @@ Este es el código de [mi web personal](https://magnoblog.netlify.com), publicad
 en los servidores de [Netlify](https://netlify.com) utilizando el generador de
 sitios estáticos [Zola](https://www.getzola.org).
 
-El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
+El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_. Esta es la
+estructura:
 
-# Estructura
+`p, hx, li, a, strong, img, header, footer, .entry, .main-title`
 
 ```
-                                              ┌───────────────────┐             ┌──────────┐
-                                              │ base.html         ╠═════════════╣ base.css │
-                                              ├───────────────────┤             └────┬┬┬───┘
-                                              │ » head            │                  │││
-                                              │    ├─ CSS         │                  │││
-                                              │    ├─ metadata    │                  │││
-                                              │    └─ fonts       │                  │││
-                                           ╔══╣░»░body░░░░░░░░░░░░│                  │││
+                      ┌──────────────┐        ┌───────────────────┐             ┌──────────┐
+                      │ macros.html  ╠════════╣ base.html         ╠═════════════╣ base.css │
+                      ├──────────────┤        ├───────────────────┤             └────┬┬┬───┘
+                      │ social_media │        │ » head            │                  │││
+                      │ header       │        │    ├─ CSS         │                  │││
+                      │ .entry       │        │    ├─ metadata    │                  │││
+                      │ .info        │        │    └─ fonts       │                  │││
+                      └──────────────┘     ╔══╣░»░body░░░░░░░░░░░░│                  │││
                                            ║  │ » footer          │                  │││
                                            ║  │  └─ .social_media │                  │││
                                            ║  │ » scripts         │                  │││
@@ -29,25 +30,24 @@ El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_.
 ┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐│││
 │ index.html          │  │ section.html   │  │ post.html     │  │ 404.html          ││││
 ├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤│││
-│ » #animation #start │┌─┤ » .header      ├──┤ » .header     ├──┤ » .header         ├┘││
-│    └─ animation.js  ││ │ » .main-title  ├──┤ » .main-title ├┐ │ » #not-found      │ ││
-│ » #about            ││ │ » .subsections │  │ » .info       │└─┤    └─ .main-title ├─┘│
+│ » #animation #start │┌─┤ » header       ├┬─┤ » header      ├──┤ » header          ├┘││
+│    └─ animation.js  ││ │ » .main-title  ├¦─┤ » .main-title ├┐ │ » #not-found      │ ││
+│ » #about            ││ │ » .categories  ├┘ │ » .info       │└─┤    └─ .main-title ├─┘│
 │    └─ .social_media ││ │ » article      │  │ » article     │  └─────────╦─────────┘  │
-│ » #portfolio        ││┌┤ » .entries     ├┐ └───────╦───────┘            ║            │
+│ » #portfolio        ││┌┤ » .entry       ├┐ └───────╦───────┘            ║            │
 │    ├─ .project      │││└───────╦────────┘└─────────║────────────────────║────────────┘
 │    ├─ .project      │││        ║                   ║                    ║
 │    └─ ...           │││        ╚═════════╦═════════╝                    ║
 │ » #blog             │││                  ║                              ║
-│    ├─ .header       ├┘│                  ║                              ║
-│    └─ .entries      ├─┘                  ║                              ║
+│    ├─ header        ├┘│                  ║                              ║
+│    └─ .entry        ├─┘                  ║                              ║
 └──────────╦──────────┘                    ║                              ║
            ║                               ║                              ║
      ┌─────╩─────┐                   ┌─────╩─────┐                   ┌────╩─────┐
      │ index.css │                   │ post.css  │                   │ 404.css  │
      └───────────┘                   ├───────────┤                   ├──────────┤
                                      │ (article) │                   │ » footer │
-                                     │ » p       │                   └──────────┘
-                                     │ » .info   │
+                                     │ » .info   │                   └──────────┘
                                      │ » code    │
                                      │ » table   │
                                      │ » quote   │
@@ -134,12 +134,12 @@ TODOs sin importancia
 
 ## Nuevas características
 
-- Añadir caracteres Rusos a la animación de entrada
 - Transiciones / animaciones CSS
   - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>
   - Matrix: <https://codepen.io/syropian/pen/bLzAi>
   - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
   - Glitch: <https://codepen.io/elisabethdiang/pen/WNbBxXq>
+
 - Imágenes de diferentes tamaños
 - Robots.txt
 - Taxonomies -> Pagination -> Feed
