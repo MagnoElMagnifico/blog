@@ -1,23 +1,10 @@
-# General config for Zola and all the blog
-
-base_url = "https://magnoblog.netlify.app"
-
+baseURL = "https://magnoblog.netlify.app"
+languageCode = "es"
 title = "Magno Blog"
-default_language = "es"
 
-compile_sass = false
-build_search_index = false
-minify_html = true
+#minify_html = true
+#
+#[markdown]
+#highlight_code = true
+#highlight_theme = "ayu-dark"
 
-[markdown]
-highlight_code = true
-highlight_theme = "ayu-dark"
-
-[extra]
-author = "Magno El Magnífico"
-logo = "/logo.svg"
-
-# TODO: Handle this automatically
-header_sections = ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/!prog",
-    "linux", "tools"
-]
