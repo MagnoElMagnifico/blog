@@ -37,7 +37,7 @@ function random_bool() {
     return random(0, 2) == 0;
 }
 
-const canvas = document.getElementById("matrix-animation");
+const canvas = document.getElementById("animation");
 const ctx = canvas.getContext("2d");
 
 let counter = 0;
