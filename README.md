@@ -11,48 +11,66 @@ estructura:
 
 `p, hx, li, a, strong, img, header, footer, .entry, .main-title`
 
+<!-- TODO: update to Hugo -->
 ```
                       ┌──────────────┐        ┌───────────────────┐             ┌──────────┐
-                      │ macros.html  ╠════════╣ base.html         ╠═════════════╣ base.css │
-                      ├──────────────┤        ├───────────────────┤             └────┬┬┬───┘
-                      │ social_media │        │ » head            │                  │││
-                      │ header       │        │    ├─ CSS         │                  │││
-                      │ .entry       │        │    ├─ metadata    │                  │││
-                      │ .info        │        │    └─ fonts       │                  │││
-                      └──────────────┘     ╔══╣░»░body░░░░░░░░░░░░│                  │││
-                                           ║  │ » footer          │                  │││
-                                           ║  │  └─ .social_media │                  │││
-                                           ║  │ » scripts         │                  │││
-                                           ║  └───────────────────┘                  │││
-                                           ║                                         │││
-           ╔═════════════════════╦═════════╩═════════╦════════════════════╗          │││
-           ║                     ║                   ║                    ║          │││
-┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐│││
-│ index.html          │  │ section.html   │  │ post.html     │  │ 404.html          ││││
-├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤│││
-│ » #animation #start │┌─┤ » header       ├┬─┤ » header      ├──┤ » header          ├┘││
-│    └─ animation.js  ││ │ » .main-title  ├¦─┤ » .main-title ├┐ │ » #not-found      │ ││
-│ » #about            ││ │ » .categories  ├┘ │ » .info       │└─┤    └─ .main-title ├─┘│
-│    └─ .social_media ││ │ » article      │  │ » article     │  └─────────╦─────────┘  │
-│ » #portfolio        ││┌┤ » .entry       ├┐ └───────╦───────┘            ║            │
-│    ├─ .project      │││└───────╦────────┘└─────────║────────────────────║────────────┘
-│    ├─ .project      │││        ║                   ║                    ║
-│    └─ ...           │││        ╚═════════╦═════════╝                    ║
-│ » #blog             │││                  ║                              ║
-│    ├─ header        ├┘│                  ║                              ║
-│    └─ .entry        ├─┘                  ║                              ║
-└──────────╦──────────┘                    ║                              ║
-           ║                               ║                              ║
-     ┌─────╩─────┐                   ┌─────╩─────┐                   ┌────╩─────┐
-     │ index.css │                   │ post.css  │                   │ 404.css  │
-     └───────────┘                   ├───────────┤                   ├──────────┤
-                                     │ (article) │                   │ » footer │
-                                     │ » .info   │                   └──────────┘
+                      │ partials     ╠════════╣ baseof.html       ╠═════════════╣ base.css │
+                      ├──────────────┤        ├───────────────────┤             └──────────┘
+                      │ social-media │        │ » head            │                     
+                      │ page-entry   │        │    ├─ metadata    │                     
+                      └──────────────┘        │    ├─ styles      │                     
+                                              │    └─ fonts       │                     
+                                              │ » body            │                     
+                                              │    ├─ intro       │                      
+                                              │    ├─ header      │                      
+                                           ╔══╣▒▒▒▒├─ main ▒▒▒▒▒▒▒│                     
+                                           ║  │    └─ footer      │                     
+                                           ║  │ » scripts         │                     
+                                           ║  └───────────────────┘                     
+                                           ║                                            
+           ╔═════════════════════╦═════════╩═════════╦════════════════════╗             
+           ║                     ║                   ║                    ║             
+┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐   
+│ home.html           │  │ list.html      │  │ single.html   │  │ 404.html          │   
+├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤   
+│ » #animation #start │  │ » .main-title  │  │ » .main-title │  │ » #not-found      │   
+│    └─ animation.js  │  │ » article      │  │ » .toc / info │  │    └─ .main-title │
+│ » #about            │  │ » .categories  │  │ » article     │  └───────────────────┘
+│    └─ .social_media │  │ » .post        │  └───────╦───────┘                          
+│ » #portfolio        │  └───────╦────────┘          ║                                  
+│    ├─ .project      │          ║                   ║                                   
+│    ├─ .project      │          ║                   ║                     
+│    └─ ...           │          ╚═════════╦═════════╝                     
+│ » #portfolio        │                    ║                               
+│ » #blog             │                    ║                               
+│    └─ .entry        │                    ║                               
+└──────────╦──────────┘                    ║                               
+           ║                               ║                               
+     ┌─────╩─────┐                   ┌─────╩─────┐                               
+     │ home.css  │                   │article.css│                               
+     └───────────┘                   ├───────────┤                               
+                                     │ » .info   │                               
                                      │ » code    │
                                      │ » table   │
                                      │ » quote   │
                                      └───────────┘
 ```
+
+TOC a la derecha en pantallas grandes
+TOC al principio en móvil
+Tiempo de lectura? Palabras?
+Links interesantes?
+404
+list
+
+CSS Medias
+
+- Pantallas grandes
+- Pantallas móvil
+
+- 320px — 480px: móvil
+- 481px — 768px: tablet
+- 769px — 1024px: 
 
 # TODOs
 
@@ -117,14 +135,12 @@ TODOs sin importancia
 
 ## Mejoras
 
-- Mostrar solo los posts recientes, no todo el contenido en la página de entrada
-  (`index.html`). Una opción es crear una lista que almacene todos los posts,
-  ordenarla según la fecha/fecha de actualización y coger los 5-10 primeros.
-
 - Crear una cabecera para moverme entre categorías.
   - Leer el nombre de las subcarpetas/subsections
   - Generarla desde base.html? Todas las páginas del blog deberían tener la
     cabecera, al igual que el footer
+
+- index.html: añadir botón para listar todo
 
 - Probar si aparecen las descripciones en las previsualizaciones de los links
 - Revisar la página desde el móvil

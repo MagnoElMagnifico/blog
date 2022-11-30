@@ -1,0 +1,66 @@
+{{ define "styles" }}
+    <link rel="stylesheet" href="/styles/index.css">
+{{ end }}
+
+
+{{ define "intro" }}
+    <canvas id="animation"></canvas>
+    <div id="start">
+        <!-- Assuming params.logo and site.title always exist -->
+        <img src="{{ .Site.Params.logo }}" id="blog-logo" />
+        <h1 id="blog-title">{{ .Site.Title }}</h1>
+        {{ with .Site.Params.description }}
+            <p id="blog-description">{{ . }}</p>
+        {{ end }}
+    </div>
+{{ end }}
+
+
+{{ define "main" }}
+    <!-- ABOUT -->
+    {{ if .Site.Author.about }}
+        <h1>whoami</h1>
+        <div id="about">
+            <img src="{{ .Site.Author.img }}" id="about-img" />
+            <div>
+                <p>{{ .Site.Author.bio }}</p>
+                {{ partial "social-media" . }}
+            </div>
+        </div>
+    {{ end }}
+
+    <!-- PORTFOLIO -->
+    {{ with .Site.Data.projects }}
+        <h1>ls -lhA ~/proyectos</h1>
+        <div id="portfolio">
+            {{ range . }}
+
+                <div class="project">
+                    <a href="{{ .link }}">
+                        <h3>{{ .name }}</h3>
+                        <p>{{ .description }}</p>
+                    </a>
+                </div>
+
+            {{ end }}
+        </div>
+    {{ end }}
+
+    <!-- BLOG -->
+    {{ $pages := where (sort .Site.AllPages "Date" "desc") ".Kind" "page" }}
+    <h1>git log -n {{ .Site.Params.index_pages }}</h1>
+    <h3>Páginas totales: {{ len $pages }}</h3>
+    <div id="blog">
+        {{ range $index, $page := $pages }}
+            {{ if lt $index .Site.Params.index_pages }}
+                <!-- TODO?: Updated date -->
+                {{ partial "page-entry" $page }}
+            {{ end }}
+        {{ end }}
+    </div>
+{{ end }}
+
+
+{{ define "scripts" }}
+    <script src="/js/animation.js"></script>
+{{ end }}

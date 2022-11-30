@@ -2,6 +2,24 @@ baseURL = "https://magnoblog.netlify.app"
 languageCode = "es"
 title = "Magno Blog"
 
+[markup.tableOfContents]
+startLevel = 0
+endLevel = 100
+ordered = true
+
+[author]
+name = "Magno El Magnífico"
+
+about = true
+img = "/logo.svg"
+bio = "test bio"
+
+[params]
+logo = "/logo.svg"
+icon = "/logo.svg"
+description = "Mis notas, apuntes y demás sobre mis proyectos de programación."
+index_pages = 5
+
 #minify_html = true
 #
 #[markdown]

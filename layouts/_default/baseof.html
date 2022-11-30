@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+    {{/* Metadata */}}
+    <meta charset="utf-8">
+    {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.icon }}<link rel="icon" href="{{ . }}">{{ end }}
+
+    <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ block "description" . }}
+      {{- with .Description }}{{ . }}{{ end -}}
+    {{ end }}">
+
+    {{/* Styles */}}
+    <link rel="stylesheet" href="/styles/base.css">
+    {{/* TODO?: pass a list of .css fles to add styles */}}
+    {{ block "styles" . }}{{ end }}
+
+    {{/* Fonts */}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    {{/* Just used by index.html to put a canvas */}}
+    {{ block "intro" . }}{{ end }}
+
+    {{/* TODO: header */}}
+
+    {{/* Main section: extend with all the content */}}
+    <main>{{ block "main" . }}{{ end }}</main>
+
+    <footer>
+        <h3 id="author">{{ .Site.Title }}</h3>
+        <p id="copyright">2021-{{ now.Year }} {{ .Site.Author.name }}</p>
+        {{ partial "social-media" . }}
+    </footer>
+
+    {{ block "scripts" . }}{{ end }}
+</body>
+
+</html>
