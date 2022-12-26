@@ -1,0 +1,8 @@
+{{ define "main" }}
+    <h1 class="main-title">{{ .Title }}</h1>
+    <p>Número total de páginas: {{ len .Site.RegularPages }}</p>
+
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+        {{ partial "page-entry" . }}
+    {{ end }}
+{{ end }}

@@ -1,10 +1,8 @@
 ---
 title: XML
+description: Lenguaje de marcado para guardar información.
 weight: 2
-
-extra:
-    show_details: true
-    show_toc: true
+date: 2021-07-15
 ---
 
 Lenguaje de marcado para guardar información.

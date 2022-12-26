@@ -6,7 +6,7 @@
     {{/* Metadata */}}
     <meta charset="utf-8">
     {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.icon }}<link rel="icon" href="{{ . }}">{{ end }}
+    {{ with .Site.Params.logo }}<link rel="icon" href="{{ . }}">{{ end }}
 
     <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ block "description" . }}
@@ -15,21 +15,27 @@
 
     {{/* Styles */}}
     <link rel="stylesheet" href="/styles/base.css">
-    {{/* TODO?: pass a list of .css fles to add styles */}}
+    <link rel="stylesheet" media="{{ .Site.Params.mobile_query }}" href="/styles/base-mobile.css">
+    <link rel="stylesheet" media="{{ .Site.Params.desktop_query }}" href="/styles/base-desktop.css">
+
     {{ block "styles" . }}{{ end }}
 
     {{/* Fonts */}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu">               {{/* Text */}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide">            {{/* Headings */}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600">   {{/* Code */}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,400"> {{/* Italics */}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {{/* Icons */}}
 </head>
 
 <body>
     {{/* Just used by index.html to put a canvas */}}
     {{ block "intro" . }}{{ end }}
 
-    {{/* TODO: header */}}
+    <header>
+        <a id="home-link" href="/"><img src="{{ .Site.Params.logo }}"/></a>
+        {{ partial "span-sections" .Site.Sections }}
+    </header>
 
     {{/* Main section: extend with all the content */}}
     <main>{{ block "main" . }}{{ end }}</main>

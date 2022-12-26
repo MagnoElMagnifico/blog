@@ -1,12 +1,7 @@
 ---
 title: C# Básico
 weight: 2
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 # Características

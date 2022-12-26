@@ -1,0 +1,16 @@
+{{/* Range over sections */}}
+{{ range .ByTitle }}
+    {{/* If there is any subsections, then create a dropdown */}}
+    {{ if .Sections }}
+        <nav>
+            <a class="dropdown-trigger" href="{{ .Permalink }}">{{ .Title }}</a>
+            <nav class="dropdown-content">
+            {{ range .Sections.ByTitle }}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+            </nav>
+        </nav>
+    {{ else }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ end }}
+{{ end }}

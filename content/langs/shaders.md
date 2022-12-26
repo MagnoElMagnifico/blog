@@ -1,12 +1,7 @@
 ---
 title: Shaders
 weight: 3
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 - Posición del pixel actual `gl_FragCoord` Lo mejor es normalizarlo (0.0 → 1.0) → `gl_FragCoord.xy / u_resolution`

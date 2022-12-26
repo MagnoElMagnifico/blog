@@ -1,12 +1,7 @@
 ---
 title: Setup
 weight: 1
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 El instalador ya lo trae Windows, aunque es posible que no sea su última versión:

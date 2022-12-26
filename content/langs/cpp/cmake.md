@@ -1,10 +1,7 @@
 ---
 title: CMake
 weight: 3
-
-extra:
-    show_details: true
-    show_toc: true
+date: 2021-08-05
 ---
 
 # Introducción

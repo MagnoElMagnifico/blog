@@ -1,12 +1,7 @@
 ---
 title: POO en C#
 weight: 3
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 ## Y ALGUNAS CONVENCIONES A SEGUIR

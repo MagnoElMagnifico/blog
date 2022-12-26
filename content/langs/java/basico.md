@@ -1,12 +1,7 @@
 ---
 title: Java Básico
 weight: 1
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 

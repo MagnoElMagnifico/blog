@@ -1,12 +1,7 @@
 ---
 title: General
 weight: 1
-
 draft: true
-
-extra:
-    show_details: true
-    show_toc: true
 ---
 
 # Links

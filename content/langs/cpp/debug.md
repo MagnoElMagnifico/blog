@@ -1,10 +1,7 @@
 ---
 title: Debugging en C++
 weight: 2
-
-extra:
-    show_toc: true
-    show_details: true
+draft: true
 ---
 
 # GDB

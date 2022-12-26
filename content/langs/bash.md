@@ -3,10 +3,6 @@ title: Bash
 weight: 5
 draft: true
 date: 2022-06-13
-extra:
-    max_level: 2
-    # show_toc: true
-    # show_info: true
 ---
 
 conectar a un server: ssh [HOST] -p [PUERTO]

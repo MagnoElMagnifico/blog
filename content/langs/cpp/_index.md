@@ -1,8 +1,5 @@
 ---
 title: C++
-template_page: post.html
-template: section.html
-sort_by: weight
 ---
 
 De la [Wikipedia](https://es.wikipedia.org/wiki/C%2B%2B):

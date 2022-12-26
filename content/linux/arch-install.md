@@ -3,10 +3,6 @@ title: Instalación de Arch Linux
 weight: 4
 # date: TODO
 draft: true
-extra:
-    max_level: 2
-    show_toc: true
-    show_info: true
 ---
 [1]: https://es.wikipedia.org/wiki/Arch_Linux
 

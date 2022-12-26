@@ -9,9 +9,6 @@ sitios estáticos [Zola](https://www.getzola.org).
 El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_. Esta es la
 estructura:
 
-`p, hx, li, a, strong, img, header, footer, .entry, .main-title`
-
-<!-- TODO: update to Hugo -->
 ```
                       ┌──────────────┐        ┌───────────────────┐             ┌──────────┐
                       │ partials     ╠════════╣ baseof.html       ╠═════════════╣ base.css │
@@ -58,19 +55,14 @@ estructura:
 
 TOC a la derecha en pantallas grandes
 TOC al principio en móvil
-Tiempo de lectura? Palabras?
-Links interesantes?
-404
-list
 
 CSS Medias
 
-- Pantallas grandes
-- Pantallas móvil
-
-- 320px — 480px: móvil
-- 481px — 768px: tablet
-- 769px — 1024px: 
+-  320px —  480px: móvil
+-  481px —  768px: tablet
+-  769px — 1024px: portátil
+- 1025px - 1200px: escritorio
+- 1201px - infinito: TV
 
 # TODOs
 
@@ -78,8 +70,9 @@ CSS Medias
 
 General:
 
-- Usar más imágenes
+- Usar más imágenes: onclick="window.open(this.src)" https://gohugo.io/templates/render-hooks/ (imagenes con link)
 - Usar más etiquetas `<meta>`: palabras clave...
+los header separados del texto, respetar los parrafos
 
 Mover + convertir todos los nombres a español?
 - c/SOs -> content/SOs/{Linux, Windows} (?)
@@ -149,6 +142,8 @@ TODOs sin importancia
 - Escalar las tablas en dispositivos pequeños
 
 ## Nuevas características
+
+- imagen con link para verla o hacer clic para ampliar
 
 - Transiciones / animaciones CSS
   - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>

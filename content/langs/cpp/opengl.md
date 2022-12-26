@@ -1,12 +1,7 @@
 ---
 title: OpenGL
 weight: 5
-
 draft: true
-
-extra:
-    show_details: true
-    show_toc: true
 ---
 
 [1]: https://www.youtube.com/watch?v=W3gAzLwfIP0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=1

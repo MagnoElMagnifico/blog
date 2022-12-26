@@ -1,11 +1,8 @@
 ---
 title: Markdown
 description: Guía rápida de cómo escribir Markdown
+date: 2021-06-10
 weight: 3
-
-extra:
-    show_details: true
-    show_toc: true
 ---
 
 **Guía rápida** de como escribir en **Markdown**.

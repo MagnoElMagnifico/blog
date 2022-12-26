@@ -5,6 +5,7 @@ description: >
     especiales como tuberías.
 date: 2021-07-30
 weight: 1 # Mover de content? Network tendrá carpeta propia y será el único que quede
+draft: true
 
 extra:
     show_toc: true

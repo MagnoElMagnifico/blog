@@ -1,7 +1,3 @@
-{{ define "styles" }}
-    <link rel="stylesheet" href="/styles/post.css">
-{{ end }}
-
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
 
@@ -10,28 +6,9 @@
     <article>
       {{ .Content }}
     </article>
-{{ end }}
 
-
-
-{{ define "scripts" }}
-<script>
-    console.log('LUL');
-    // TODO: Useless now:
-    var coll = document.getElementsByClassName("bu-colap");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-
-            if (content.style.display === "define") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "define";
-            }
-        });
-    }
-</script>
+    <div class="prev-next">
+      {{ with .NextInSection }}<a class="link-button" style="background-color: #c33" href="{{ .Permalink }}">Anterior: {{ .Title }}</a>{{ end }}
+      {{ with .PrevInSection }}<a class="link-button" style="background-color: #5d5" href="{{ .Permalink }}">Siguiente: {{ .Title }}</a>{{ end }}
+    </div>
 {{ end }}

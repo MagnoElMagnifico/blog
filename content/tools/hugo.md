@@ -28,6 +28,9 @@ plantillas:
 - Plantillas de un única página
 - etc
 
+https://discourse.gohugo.io/t/see-which-template-is-used-by-hugo/9983
+https://discourse.gohugo.io/t/my-experiences-with-hugos-template-lookup-order/9959
+
 Además, si tu objetivo no es crear una página web, sino simplemente crear
 contenido; existen muchos [temas] gratis y _Open Source_ a tu disposición para que
 utilices como plantillas. Sin embargo, como eso consiste solamente en leer las

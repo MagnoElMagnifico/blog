@@ -1,12 +1,7 @@
 ---
 title: SOs para C
 weight: 0
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 ### Sistemas Operativos

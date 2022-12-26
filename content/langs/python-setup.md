@@ -3,10 +3,6 @@ title: Python Setup
 description: Breve explicación de como ejecutar programas Python e importar librerías
 weight: 4
 date: 2021-07-30
-
-extra:
-    show_details: true
-    show_info: true
 ---
 
 

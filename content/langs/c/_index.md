@@ -1,8 +1,5 @@
 ---
 title: C Lang
-post_template: post.html
-template: section.html
-sort_by: weight
 ---
 
 C es un lenguaje de programación (considerado como uno de lo más importantes en
