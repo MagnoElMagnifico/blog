@@ -18,7 +18,7 @@ weight: 2
 - `cargo doc --open`: Abre la documentación en el navegador.
 - `cargo install`: Instala en `user/.cargo/bin` un ejecutable, no sirven libs.
   Con esto podemos hacer "plugins" para cargo, si se llama `cargo-something`
-  ejecutariamos `cargo something`.
+  ejecutaríamos `cargo something`.
 - `cargo login aaa bbb`: son los token de [crates.io].
 - `cargo publish`: Antes de debe hacer un commit; y, aparte de los valores por
   defecto de `Cargo.toml`, debemos añadir una descripción y una licencia. Otra
@@ -192,12 +192,12 @@ pub use direction;
   - Usa un archivo de configuración.
   - Funciones de control de tiempo, FPS...
   - Para Windows y Linux (puede que funcione en Mac).
-  - No tiene: físicas, animación, GUI, manego de assets, AI, ECS, Networking.
+  - No tiene: físicas, animación, GUI, manejo de assets, AI, ECS, Networking.
 
 - [`macroquad`](https//crates.io/crates/macroquad)
   ([docs](https://docs.rs/macroquad/lastest)):
   sencillo (inspirado por Raylib)
   - Multiplataforma (incluso para WASM y Android/iOS con un comando)
   - Renderizado 2D eficiente
-  - GUI inmediata incluída
+  - GUI inmediata incluida
   - Mínimas dependencias: se compila en 16s

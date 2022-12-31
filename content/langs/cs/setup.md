@@ -1,12 +1,7 @@
 ---
 title: Setup
 weight: 1
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 El instalador ya lo trae Windows, aunque es posible que no sea su última versión:
@@ -21,7 +16,7 @@ versión libre multiplataforma de `.NET Core` para actualizarlo.
 El comando para compilar a `.exe`:
 
 ```sh
-$ csc NombreDelArchivo.cs
+csc NombreDelArchivo.cs
 ```
 
 Para que funcione, como mínimo debe existir una clase pública que lleve un

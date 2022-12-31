@@ -1,21 +1,33 @@
-base_url = "https://magnoblog.netlify.app"
-
+baseURL = "https://magnoblog.netlify.app"
+languageCode = "es"
 title = "Magno Blog"
-default_language = "es"
 
-compile_sass = false
-build_search_index = false
-minify_html = true
+[author]
+# Footer and about (home.html)
+name = "Magno El Magnífico"
 
-[markdown]
-highlight_code = true
-highlight_theme = "ayu-dark"
+[params]
+# Blog logo (start:home.html), header, and icon on the tab
+logo = "/logo.svg"
 
-[extra]
-author = "Magno El Magnífico"
-logo = "/logo.png"
+# Media selectors for the *-mobile.css and *-desktop.css 
+desktop_query = "(min-width: 800px) or (min-device-width: 800px)" 
+mobile_query  = "(max-width: 800px) or (max-device-width: 800px)" 
 
-header_sections = ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/!prog",
-#    ["langs", "langs/rust", "langs/c", "langs/cpp", "langs/cs", "langs/!prog"],
-    "linux", "tools"
-]
+[markup.highlight]
+# https://xyproto.github.io/splash/docs/all.html
+# "dracula", "fruity", "paraiso-dark", "rrt", "solarized-dark256", "vim"
+style = "dracula"
+
+tabWidth = 4
+# Create links for each line of code
+anchorLineNos = true 
+guessSyntax = true
+
+lineNos = true 
+lineNumbersInTable = false
+
+[markup.tableOfContents]
+startLevel = 0
+endLevel = 100
+ordered = true

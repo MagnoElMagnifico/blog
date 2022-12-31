@@ -91,4 +91,4 @@ Tipos de closures como traits:
 + `FnOnce`: toma ownership de las variables de su entorno. Solo se puede llamar
 una vez, porque al tomar ownership luego se borran (`move || {}`).
 + `FnMut`: mutably  borrow value
-+ `Fn`: inmutamily borrow value
++ `Fn`: immutably borrow value

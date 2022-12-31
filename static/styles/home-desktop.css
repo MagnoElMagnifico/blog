@@ -1,0 +1,36 @@
+/* Presentation */
+#start {
+    width: 60vw;
+}
+
+#blog-logo {
+    padding: 0.2rem;
+    border: 4px solid var(--border-color);
+    width: 8rem;
+    min-width: 5rem;
+}
+
+#blog-title       { font-size: 2rem; }
+#blog-description { font-size: 1rem; }
+
+/* About */
+#about {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#about-img {
+    width: 20vmin;
+    min-width: 7rem;
+    margin: 0 2rem 0 0;
+    transform: none;
+}
+
+/* Porfolio */
+.project {
+    padding: 1rem;
+    min-width: 100px;
+}
+
+.project img { width: 80%; }

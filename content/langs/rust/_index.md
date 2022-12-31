@@ -1,8 +1,6 @@
 ---
 title: Rust
-page_template: post.html
-template: section.html
-sort_by: weight
+draft: true
 ---
 
 Mis apuntes sobre Rust.

@@ -7,7 +7,7 @@ weight: 10
 
 + **Paquetes**: Una característica de cargo que te permite compilar, testear y
 compartir crates.
-+ **`Crates`**: El árbol de mòdulos que crea una librería o ejecutable.
++ **`Crates`**: El árbol de módulos que crea una librería o ejecutable.
 + **Módulos y `use`**: Te permite controlar la organización, scope, privacidad
 en las direcciones, etc.
 + **Direcciones**: Una forma de nombrar cada elemento, como un `struct`,
@@ -32,8 +32,9 @@ Entonces:
 + Pero, al querer crear más crates binarios (como ejemplos de uso para una
 librería), debemos almacenarlos en la carpeta `src/bin`. Si no tenemos un
 `crate root` binario, debemos especificar qué ejecutable deseamos usar:
+
 ```sh
-$ cargo run --bin <nombre>
+cargo run --bin <nombre>
 ```
 
 Al usar `cargo new <nombre>`, estamos creando un paquete llamado `<nombre>` (lo
@@ -58,6 +59,7 @@ mod example {
 ```
 
 Module tree:
+
 ```
 crate
 └─ example
@@ -110,8 +112,7 @@ use a::very_long_and_verbose_direction as dir;
 dir::foo();
 ```
 
-[Re-exportando nombres con `pub use`]
-(https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#re-exporting-names-with-pub-use)
+[Re-exportando nombres con `pub use`](https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#re-exporting-names-with-pub-use)
 
 Podemos también agrupar numerosos uses que tengan el mismo prefijo:
 
@@ -167,7 +168,7 @@ src
 └─ other.rs
 ```
 
-Para llamar la función `foo` en `other.rs`, dentro de `main.rs` escribiriamos:
+Para llamar la función `foo` en `other.rs`, dentro de `main.rs` escribiríamos:
 
 ```rs
 mod other;
@@ -209,7 +210,7 @@ src
 ```
 
 En este caso, es necesario disponer de un archivo `mod.rs` que se cargará al
-usar `module`, ya que como veiamos antes, las carpetas son también módulos y
+usar `module`, ya que como veíamos antes, las carpetas son también módulos y
 `mod.rs` es donde se guarda su código.
 
 En `src/main.rs`:

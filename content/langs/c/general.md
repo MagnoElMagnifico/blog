@@ -1,12 +1,7 @@
 ---
 title: General
 weight: 1
-
 draft: true
-
-extra:
-    show_details: true
-    show_toc: true
 ---
 
 # Links
@@ -111,3 +106,126 @@ ORGANIZACION
 STD
 · Streams
 · Archivos
+
+fflush(stdin);//Vacía ns q vaina de q se llenan los strings solos
+
+Podemos usar un dato genérico:
+template <class nombreTipo>
+nombreTipo funcion()
+
+Nodo * lista = NULL;
+añadir(Nodo *& lista, int n){
+   Nodo * nuevoNodo = new Nodo();
+   nuevoNodo->elemento=n;
+   Nodo * aux = lista;
+   Nodo * aux2;
+   while ((lista != NULL) && (aux->elemento > n)){
+      aux2 = aux;
+      aux = aux->siguiente;
+   }
+   if (lista == aux){
+      lista = nuevoNodo;
+     }else{
+        aux2->siguiente=nuevoNodo;
+     }
+     nuevoNodo->siguiente= aux;
+}
+mostrar(Nodo*lista){
+    Nodo * actual = new Nodo ();
+    actual = lista;
+    while (actual != NULL){
+       cout << actual->elemento;
+       actual=actual->siguiente;
+    }
+ }
+ bool buscar(Nodo *lista, int n){
+    bool res=false;
+    Nodo * actual = new Nodo();
+    actual=lista;
+    while((actual != NULL) && (actual->elemento <= n)){
+       if (actual->elemento == n){
+          res= true;
+       }
+       actual=actual->siguiente;
+    }
+    return res;
+ }
+ borrar(Nodo*lista, int n){
+    Nodo * auxBorrar= lista;
+    Nodo * anterior= NULL;
+    while((auxBorrar != NULL)&&(auxBorrar->elemento!=n)){
+       anterior=auxBorrar;
+       auxBorrar=auxBorrar->siguiente;
+    }
+    if (auxBorrar==NULL){
+       cout << "El elemento no existe";
+    } else if (anterior==NULL){
+       lista=lista->siguiente;
+       delete auxBorrar;
+    }else{
+       anterior->siguiente=auxBorrar->siguiente;
+    }
+       delete auxBorrar;
+ }
+ borrarTodos(Nodo*pila, int & n){
+    Nodo * aux = lista;
+    n = aux->elemento;
+    lista= aux->siguiente;
+    delete aux;
+ }
+ARBOL
+Son unos nodos conectados entre si (ramas). Su nodo principal se le llama raiz y a los otros hijos. Aquellos hijos q no tienen mas hijos se les llaman hojas
+
+Nodo para arbol binario o de orden 2(dos hijos max por nodo)
+struct Nodo{
+   int dato;
+   Nodo * izq;
+   Nodo * der;
+}
+
+Longuitud de camino es la cantidad de ramas por las q hay q pasar hasta llegar a determinado nodo desde el nodo raiz.
+
+ Altura & profundidad
+Niveles=altura
+
+Nodos hermanos: están al mismo nivel y comparten un padre
+
+ARBOL BINARIO
+Es una estructura recursiva (se repite). Tiene 3 subconjuntos:
+   ~ Nodo raiz
+   ~ Subarbol derecho
+   ~ Subarbol izquierdo
+Tipos:
+   ~ Lleno: todos los nodos completos
+   ~ Completo: como el lleno, pero en la parte derecha hay menls q en la izquieda
+   ~ degenerado: solo 1 hijo cada nodo (lista)
+
+ARBOL BINARIO DE BUSQUEDA
+los datos de la izq son menores a la raiz q en la derecha
+
+INSERTAR
+struct Nodo{
+   int dato;
+   Nodo * izq;
+   Nodo * der;
+}
+Nodo * crearNodo(int n){
+   Nodo * nuevoNodo = new Nodo();
+   nuevoNodo->dato=n;
+   nuevoNodo->izq=NULL;
+   nuevoNodo->der=NULL;
+   return nuevoNodo;
+}
+void insertar(Nodo*arbol, int n){
+   if (arbol == NULL){
+       Nodo * nuevoNodo= crearNodo(n);
+      arbol=nuevoNodo;
+   }else{
+      int valorRaiz= arbol->dato;
+      if (valorRaiz > n){
+         insertar(arbol->izq, n);
+      }else{
+         insertar(arbol->der, n);
+      }
+   }
+}

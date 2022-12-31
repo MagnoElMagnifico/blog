@@ -1,10 +1,7 @@
 ---
 title: OpenGL
 weight: 5
-
-extra:
-    show_details: true
-    show_toc: true
+draft: true
 ---
 
 [1]: https://www.youtube.com/watch?v=W3gAzLwfIP0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=1
@@ -18,7 +15,7 @@ extra:
 + Un [curso][3] genial por [Victor Gordan][4].
     - [Aquí][5] el código que se muestra en el tutorial.
 
-# Introdución
+# Introducción
 OpenGL es una `API` (Application Programming Interface) para generar gráficos
 mediante el acceso a la tarjeta gráfica de nuestro ordenador. Solamente
 especifica qué es lo que puedes hacer con esas funciones, dado que es un
@@ -29,7 +26,7 @@ fabricante.
 
 Es, dentro de lo que cabe, portable a todas las plataformas. Pero por eso no es
 la mejor API, para hacer un programa muy serio, se necesitarían muchas librerías
-especifícas de cada plataforma.
+específicas de cada plataforma.
 
 Diferencia entre `Legacy` y `Modern OpenGL`: Modern permite utilizar Shaders por
 lo que es mucho más programable.
@@ -106,13 +103,13 @@ while (!glfwShouldClose(window))
 ```
 
 ## Activar modern OpenGL
-Es necesario añadir las funciones para Modern OpenGL como archivos de cabezera
+Es necesario añadir las funciones para Modern OpenGL como archivos de cabecera
 (Windows solo tiene los `.h` de la versión `1.1`). Esta acción también depende
 del SO, además son muchas de funciones para añadir.
 
 Por eso vamos a usar otra librería que genere los `.h` por nosotros, buscaría
 las funciones en los controladores y las enlazaría con los ejecutables
-correnspondientes en el momento de compilación:
+correspondientes en el momento de compilación:
 [GLEW](https://www.glew.sourceforge.net/).
 
 ```cpp
@@ -143,7 +140,7 @@ Documentación de OpenGL recomendada por TheCherno: [esta](https://www.docs.gl)
 _Buffer_: array de memoria específico de OpenGL (se guarda en `VRAM`)
 
 `glGenBuffers(n,  &id);`
-+ Crear un Buffer en la memoria de la targeta gráfica VRAM
++ Crear un Buffer en la memoria de la tarjeta gráfica VRAM
   - `n`: número de buffers para crear
   - `unsigned int* (GLuint*) id`: identificador para el Buffer
 
@@ -162,7 +159,7 @@ _Buffer_: array de memoria específico de OpenGL (se guarda en `VRAM`)
 **Los datos ahora están en la gráfica**
 
 `glDrawArrays(PRIMITIVE_TYPE, start_index, count);`
-+ `Para dibujar en la pantalla (en el bucle de renderizar)
++ Para dibujar en la pantalla (en el bucle de render)
   - `PRIMITIVE_TYPE`: `GL_TRIANGLES`
   - `start_index`: posición del primer elemento a dibujar en el Buffer seleccionado (0)
   - `count`: cuantos vértices se van a dibujar (3)
@@ -185,8 +182,8 @@ un shader por defecto.
 
 Tipos
 + `Vertex Shader`: coloca los vértices en la pantalla (se llama una vez por vertex)
-+ `Fragment (pixel) Shader`: coloca los colores (se llama una vez por píxel q va a ser rasterizado: llenar el espacio con píxeles coloreados)
-+ `...` hay y muchos más tipos, pero en general solo se pueden hacer muchas cosas con estes.
++ `Fragment (pixel) Shader`: coloca los colores (se llama una vez por pixel q va a ser rasterizado: llenar el espacio con píxeles coloreados)
++ `...` hay y muchos más tipos, pero en general solo se pueden hacer muchas cosas con estos.
 
 ```cpp
 static unsigned int CreateShader(const std::string& vertex, const std::string& fragment) {
@@ -317,7 +314,7 @@ ShaderProgramSource source = ParseShader("path");
 Todo está basado en triángulos, por lo que si intentamos hacer un cuadrado, este
 deberá ser simplificado a triángulos. Si escribimos todas las posiciones de los
 triángulos, habrá algunos que estén repetidos porque estos están juntos. Para
-eso vamos a escribir en nuestro vertex buffer las positiones únicas y luego el
+eso vamos a escribir en nuestro vertex buffer las posiciones únicas y luego el
 orden por el cual se deben leer/ejecutar.
 
 ```cpp

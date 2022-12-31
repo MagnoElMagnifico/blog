@@ -1,8 +1,5 @@
 ---
 title: C Lang
-post_template: post.html
-template: section.html
-sort_by: weight
 ---
 
 C es un lenguaje de programación (considerado como uno de lo más importantes en
@@ -28,8 +25,8 @@ usó como intermediario entre diferentes lenguajes.
 + Programación de nivel medio
 + Multiplataforma
 + Objetivos generales. No es un lenguaje para una tarea específica, pudiendo
-  programar tanto un sistema operativo (aunque se pensó para eso), una aplicación
-  o un juego.
+  programar tanto un sistema operativo (aunque se pensó para eso), una
+  aplicación o un juego.
 + Ofrece un control absoluto de todo lo que sucede en el ordenador con total
   libertad.
 + Como inconvenientes, no es un lenguaje sencillo de aprender, que requiere una

@@ -1,23 +1,24 @@
 ---
 title: JSON
-# description: >-
-#    ¿Qué es JSON? ¿Cómo se utiliza? ¿Cómo es su sintáxis?
+description: >-
+    Breve descripción de la sintaxis de JSON, uso y posibles tipos que
+    almacena.
 weight: 1
-
-extra:
-    show_details: true
+date: 2021-07-30
 ---
 
-JSON se utiliza para tranferir información entre servidores y clientes, similar
-a XML. Sin embargo, los JSON tienen algunas ventajas sobre XML.
+JSON (_JavaScript Object Notation_) se utiliza para transferir información
+entre servidores y clientes, similar a XML. Sin embargo, los JSON tienen
+algunas ventajas sobre XML.
 
 + Su estructura es estándar: su sintaxis proviene de JavaScript, por lo que su
 sintaxis hace que sea sencillo de leer y escribir.
 + Es un formato ligero.
 + Es independiente de cualquier lenguaje.
 
-Ahora miremos a su sintaxis, que es básicamente son parejas de valores: un valor
-clave y un dato. La única condición es que deben ir entre comillas dobles ("):
+Ahora miremos a su sintaxis, que es básicamente son **parejas de valores**: un
+valor clave y un dato. La única condición es que deben ir entre comillas dobles
+("):
 
 ```json
 {
@@ -37,8 +38,9 @@ No solo podemos darle cadenas de caracteres, podemos añadir números, booleanos
     "clave1" : "valor",
     "clave2" : 1,
     "clave3" : 3.4325,
-    "clave4" : true,
-    "clave5" : null
+    "clave4" : 3.9e27,
+    "clave5" : true,
+    "clave6" : null
 }
 ```
 
@@ -47,8 +49,7 @@ enumeraciones de todos estos tipos anteriores:
 
 ```json
 {
-    "objeto" :
-    {
+    "objeto" : {
         "clave1" : "valor",
         "clave2" : 1,
         "clave3" : 3.4325,

@@ -1,0 +1,35 @@
+main {
+    margin: 0 0 0 10%;
+    width: 700px;
+}
+
+/**** Basic text elements ****/
+h1, h2, h3, h4 { margin: 1.5rem 0 0.3rem 0; }
+h1 + h2, h2 + h3, h3 + h4 { margin: 0; }
+.main-title { margin: 2rem 0 0 0; font-size: 3rem; }
+p           { margin: 0 0 1rem 0; }
+
+img {
+    width: 85vmin;
+    padding: 3.5px;
+    border: 3.5px solid var(--border-color);
+}
+
+/**** Blog entries ****/
+.blog-entry {
+    margin: 1rem 0;
+    padding: 0 0 1rem 0;
+    border-bottom: 3.5px solid var(--border-color);
+}
+
+/**** Box list ****/
+.box-list a {
+    font-size: 1rem;
+    min-width: 2.5rem;
+}
+
+/**** Footer ****/
+footer {
+    margin-top: 2rem;
+}
+

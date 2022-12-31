@@ -1,0 +1,67 @@
+{{ define "styles" }}
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" media="{{ .Site.Params.desktop_query }}" href="/styles/home-desktop.css">
+    <link rel="stylesheet" media="{{ .Site.Params.mobile_query }}"  href="/styles/home-mobile.css">
+{{ end }}
+
+
+{{ define "intro" }}
+    <canvas id="animation">Animación de código</canvas>
+    <div id="start">
+        {{ with .Site.Params.logo }}<img src="{{ . }}" id="blog-logo" alt="Logo"/>{{ end }}
+        <h1 id="blog-title">{{ .Site.Title }}</h1>
+        {{ with .Site.Data.home.start.description }}
+            <p id="blog-description">{{ . | markdownify }}</p>
+        {{ end }}
+    </div>
+{{ end }}
+
+
+{{ define "main" }}
+    <!-- ABOUT -->
+    {{ if .Site.Data.home.about.show }}
+        <h1>whoami</h1>
+        <div id="about">
+            {{ with .Site.Data.home.about.img }}<img src="{{ . }}" id="about-img"/>{{ end }}
+            <div>
+                <p>{{ .Site.Data.home.about.bio | markdownify }}</p>
+                {{ partial "social-media" . }}
+            </div>
+        </div>
+    {{ end }}
+
+    <!-- PORTFOLIO -->
+    {{ with .Site.Data.home.projects }}
+        <h1>ls -lhA ~/proyectos</h1>
+        <div id="portfolio">
+            {{ range . }} {{ if .show }}
+
+                <div class="project">
+                    <h3>{{ .name }}</h3>
+                    {{ with .img }}<img src="{{ . }}"/>{{ end }}
+                    <p>{{ .description | markdownify }}</p>
+                    <a class="link-button" href="{{ .link }}">Ver</a>
+                </div>
+
+            {{ end }} {{ end }} 
+        </div>
+    {{ end }}
+
+    <!-- BLOG -->
+    {{ if .Site.Data.home.show_blog }}
+        <h1>git log -n {{ .Site.Data.home.pages }}</h1>
+        <div id="blog">
+            {{ range $index, $page := .Site.RegularPages.ByDate.Reverse }}
+                {{ if lt $index .Site.Data.home.pages }}
+                    {{ partial "page-entry" $page }}
+                {{ end }}
+            {{ end }}
+        </div>
+        <a class="link-button" href="overview">Ver {{ len .Site.RegularPages }} páginas</a>
+    {{ end }}
+{{ end }}
+
+
+{{ define "scripts" }}
+    <script src="/js/animation.js"></script>
+{{ end }}

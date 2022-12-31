@@ -1,0 +1,14 @@
+{{ define "main" }}
+    <h1 class="main-title">{{ .Title }}</h1>
+
+    {{ .TableOfContents }}
+
+    <article>
+      {{ .Content }}
+    </article>
+
+    <div class="prev-next">
+      {{ with .NextInSection }}<a class="link-button" style="background-color: #c33" href="{{ .Permalink }}">Anterior: {{ .Title }}</a>{{ end }}
+      {{ with .PrevInSection }}<a class="link-button" style="background-color: #5d5" href="{{ .Permalink }}">Siguiente: {{ .Title }}</a>{{ end }}
+    </div>
+{{ end }}

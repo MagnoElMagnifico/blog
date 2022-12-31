@@ -1,0 +1,75 @@
+h1 { text-align: center; }
+
+/* Presentation */
+canvas { height: 100vh; width: 100vw; }
+
+#start {
+    background-image: radial-gradient(circle at 50% 70%, #000f 30%, #0000 70%);
+    text-align: center;
+    /* Position */
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    /* Animation */
+    /*animation: intro 1.5s ease-out;*/
+}
+
+@keyframes intro {
+    from { opacity: 0;    top: 10vh; }
+    to   { opacity: 100%; top: 50vh; }
+}
+
+@media only screen and (max-height: 400px) {
+    canvas {
+        height: 400px;
+    }
+
+    #start {
+        top: 40px;
+        transform: translate(-50%, 0);
+    }
+}
+
+#blog-logo {
+    border-radius: 100%;
+    /*animation: floating 1s infinite alternate;*/
+    /* Reset centering */
+    margin: 0;
+    transform: none;
+}
+
+@keyframes floating {
+    from { transform: translateY(15px); }
+    to { transform: translateY(0); }
+}
+
+#blog-description {
+    text-align: center;
+    color: #fff;
+}
+
+
+/* Portfolio */
+#portfolio {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.project {
+    background-color: var(--project-background-color);
+    flex-grow: 1;
+    border-radius: 10px;
+    margin: 0.5rem;
+    box-shadow: 5px 5px 10px var(--project-shadow-color);
+}
+
+.project h3 { margin-top: 0; }
+
+
+/* Blog */
+#blog .box-list {
+    overflow-x: clip;
+}
+

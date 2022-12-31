@@ -1,10 +1,8 @@
 ---
 title: Setup
+description: Guía de como instalar C++ con MinGW en Windows. También se aportan algunas directrices de compilación de librerías así como su importación.
+date: 2021-07-30
 weight: 1
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 Se debe instalar el determinado compilador para la plataforma. Para Windows se
@@ -17,17 +15,17 @@ Para C o C++ se escribe g++ y el nombre del `.c` o `.cpp` en cuestión, se puede
 añadir el parámetro `-o` para darle un nombre de salida.
 
 ```sh
-$ g++ Nombre.cpp -o Salida.exe
+g++ Nombre.cpp -o Salida.exe
 ```
 
-Podemos usar cabeceras (de extensión `.h` o `.cpp`) añadiendolas en el código
+Podemos usar cabeceras (de extensión `.h` o `.cpp`) añadiéndolas en el código
 simplemente:
 
 ```cpp
 #include "Libreria.h"
 ```
 
-Ahora para ejecutar, compilamos el programa principal como de constumbre, y se
+Ahora para ejecutar, compilamos el programa principal como de costumbre, y se
 generará un `.exe` completamente independiente del archivo `.h`/`.cpp` (pero no
 en el caso de un `.dll`, dado que se necesita para el compilador).
 
@@ -45,18 +43,18 @@ Para compilar la librería, simplemente la compilamos como un programa normal de
 C++, solo que su salida tendrá la extensión `.dll`:
 
 ```sh
-$ g++ Libreria.h -o Libreria.dll
+g++ Libreria.h -o Libreria.dll
 ```
 
 # Dynamic library
-Se linkean al iniciar el programa, haciendo que el `.exe` sea más pequeño.
+Se enlazan al iniciar el programa, haciendo que el `.exe` sea más pequeño.
 Además, se pueden actualizar sin tener que recompilar y usar para programas
 diferentes.
 
-Compilar libreria:
+Compilar librería:
 
 ```sh
-$ g++ -shared <sourcefiles>.cpp -o <libraryname>.dll/so
+g++ -shared <sourcefiles>.cpp -o <libraryname>.dll/so
 ```
 
 # Static library
@@ -65,17 +63,17 @@ Hacen un programa más manejable, un solo archivo.
 1. Compilar a `.o`
 
 ```sh
-$ g++ -c <sourcefiles>.cpp
+g++ -c <sourcefiles>.cpp
 ```
 
-2. Añadir a una libreria
+2. Añadir a una librería
 
 ```sh
-$ ar rvs <final-libraryname>.lib/a <sourcefiles>.o
+ar rvs <final-libraryname>.lib/a <sourcefiles>.o
 ```
 
 # Link
 ```sh
-$ g++ <filename>.cpp -L<librarypath> -l<libraryname>
-$ g++ <filename>.cpp <libraryname>.<libraryextension>
+g++ <filename>.cpp -L<librarypath> -l<libraryname>
+g++ <filename>.cpp <libraryname>.<libraryextension>
 ```

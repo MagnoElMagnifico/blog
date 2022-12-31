@@ -1,9 +1,8 @@
 ---
 title: Python Setup
-weight: 2
-
-extra:
-    show_details: true
+description: Breve explicación de como ejecutar programas Python e importar librerías
+weight: 4
+date: 2021-07-30
 ---
 
 
@@ -14,7 +13,7 @@ aunque se suele guardar `AppData/Local/Programs/Python-XX`
 Para ejecutar un programa se escribe:
 
 ```sh
-$ python NombreDelArchivo.py
+python NombreDelArchivo.py
 ```
 
 O doble clic si el sistema operativo lo detecta como un programa Python (se
@@ -57,7 +56,7 @@ algunas limitaciones.
 Para compilarlo a `.pyc` se puede usar el comando:
 
 ```sh
-$ python -m compileall
+python -m compileall
 ```
 
 Los archivos se generarán en una carpeta llamada `__pycache__`. Recuerda que

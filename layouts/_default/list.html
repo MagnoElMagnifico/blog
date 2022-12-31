@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <h1 class="main-title">{{ .Title }}</h1>
+
+    {{ with .Page.Content }}
+        <article>{{ . }}</article>
+    {{ end }}
+
+    {{ if .RegularPages }}
+        <h1>Contenido</h1>
+        {{ with .Sections }}
+            <nav>{{ partial "span-sections" . }}</nav>
+        {{ end }}
+        {{ range .RegularPages.ByWeight }}
+            {{ partial "page-entry" . }}
+        {{ end }}
+    {{ end }}
+{{ end }}

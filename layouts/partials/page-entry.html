@@ -1,0 +1,5 @@
+<div class="blog-entry">
+    <h2><a href="{{ .Permalink }}">{{ .Title }} - {{ .CurrentSection.Title }}</a></h2>
+    {{ with .Date }}<h3>{{ .Format "02-01-2006" }}</h3>{{ end }}
+    {{ with .Description }}<p>{{ . | markdownify }}</p>{{ end }}
+</div>

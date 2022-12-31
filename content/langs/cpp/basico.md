@@ -1,12 +1,7 @@
 ---
 title: C++ Básico
 weight: 4
-
 draft: true
-
-extra:
-    show_toc: true
-    show_details: true
 ---
 
 # 1. Conceptos básicos
