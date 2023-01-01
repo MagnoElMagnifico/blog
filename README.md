@@ -56,9 +56,6 @@ estructura:
                                      └───────────┘
 ```
 
-- `Javascript` -> javascript-render
-- `Python-Setup` -> python-setup-libs
-
 # Mejoras
 
 - Probar si aparecen las descripciones en las previsualizaciones de los links
