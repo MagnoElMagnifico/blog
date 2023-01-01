@@ -1,4 +1,7 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status)](https://app.netlify.com/sites/magnoblog/deploys)
+[![Netlify Status][nt-status]][nt-deploy]
+
+[nt-status]: https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status
+[nt-deploy]: https://app.netlify.com/sites/magnoblog/deploys
 
 # Magno Blog
 
@@ -8,7 +11,6 @@ sitios estáticos [Hugo](https://www.gohugo.io).
 
 El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_. Esta es la
 estructura:
-
 
 <!-- TODO: Update -->
 
@@ -56,7 +58,10 @@ estructura:
                                      └───────────┘
 ```
 
+
 # Mejoras
+
+Plantillas, HTML, CSS, JS
 
 - Probar si aparecen las descripciones en las previsualizaciones de los links
 - Revisar la página desde el móvil
