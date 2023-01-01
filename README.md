@@ -9,6 +9,9 @@ sitios estáticos [Hugo](https://www.gohugo.io).
 El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_. Esta es la
 estructura:
 
+
+<!-- TODO: Update -->
+
 ```
                       ┌──────────────┐        ┌───────────────────┐             ┌──────────┐
                       │ partials     ╠════════╣ baseof.html       ╠═════════════╣ base.css │
@@ -53,34 +56,15 @@ estructura:
                                      └───────────┘
 ```
 
-TOC a la derecha en pantallas grandes
-TOC al principio en móvil
+- `Javascript` -> javascript-render
+- `Python-Setup` -> python-setup-libs
 
-CSS Medias
+# Mejoras
 
--  320px —  480px: móvil
--  481px —  768px: tablet
--  769px — 1024px: portátil
-- 1025px - 1200px: escritorio
-- 1201px - infinito: TV
-
-# TODOs
-
-## Posts
-
-General:
-
-- Usar más imágenes: onclick="window.open(this.src)" https://gohugo.io/templates/render-hooks/ (imagenes con link)
-- Usar más etiquetas `<meta>`: palabras clave...
-los header separados del texto, respetar los parrafos
-
-Mover + convertir todos los nombres a español?
-- c/SOs -> content/SOs/{Linux, Windows} (?)
-- rust/usos -> rust/\_index (?)
-- javascript -> javascript-render
-- python-setup -> python-setup-libs
-
-- Añadir descripciones y fechas
+- Probar si aparecen las descripciones en las previsualizaciones de los links
+- Revisar la página desde el móvil
+- Mejorar el _footer_ en las páginas cortas
+- Convertir todos los nombres a español?
 
 -----------------------------------------------------------
 
@@ -107,17 +91,17 @@ Expandir, pero decente:
 - Python-setup (pip en detalle)
 - Win-comandos
 - Rust:
-  \_index,
-  cargo-docs-crates (video lightsaber),
-  errores (crate LGR errores),
-  macros (derive etc),
-  wasm (testear)
+    - \_index,
+    - cargo-docs-crates (video lightsaber),
+    - errores (crate LGR errores),
+    - macros (derive etc),
+    - wasm (testear)
 
 -----------------------------------------------------------
 
 TODOs sin importancia
 
-- Cpp: cmake
+- C++: CMake
 - Rust: \_index (resolver quejas contra Rust, datos de su web, etc)
 - Rust: memoria (revisar)
 - Javascript (revisar)
@@ -126,39 +110,25 @@ TODOs sin importancia
 - Tools: \_index (???)
 - Tools: git-github (expandir: aprender más git)
 
-## Mejoras
 
-- Crear una cabecera para moverme entre categorías.
-  - Leer el nombre de las subcarpetas/subsections
-  - Generarla desde base.html? Todas las páginas del blog deberían tener la
-    cabecera, al igual que el footer
+# Nuevas características
 
-- index.html: añadir botón para listar todo
+- Imagen con link para verla o hacer clic para ampliar, de diferentes tamaños
+    - `onclick="window.open(this.src)"`
+    - Imágenes con link: <https://gohugo.io/templates/render-hooks/>
 
-- Probar si aparecen las descripciones en las previsualizaciones de los links
-- Revisar la página desde el móvil
-- Mejorar el _footer_ en las páginas cortas
-- Mejorar los divisores con `-----`
-- Escalar las tablas en dispositivos pequeños
+- Animaciones CSS
+    - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>
+    - Matrix: <https://codepen.io/syropian/pen/bLzAi>
+    - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
+    - Glitch: <https://codepen.io/elisabethdiang/pen/WNbBxXq>
 
-## Nuevas características
+- Robots.txt (?)
+- Taxonomies -> Pagination -> Feed (?)
+- Sitemap (?)
 
-- imagen con link para verla o hacer clic para ampliar
-
-- Transiciones / animaciones CSS
-  - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>
-  - Matrix: <https://codepen.io/syropian/pen/bLzAi>
-  - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
-  - Glitch: <https://codepen.io/elisabethdiang/pen/WNbBxXq>
-
-- Imágenes de diferentes tamaños
-- Robots.txt
-- Taxonomies -> Pagination -> Feed
-- Sitemap
 
 # Links
 
-- [Tera Lang docs](https://tera.netlify.app/docs/)
-- [Zola docs](https://www.getzola.org/documentation/getting-started/overview/)
 - [Iconos de Google](https://fonts.google.com/icons)
 - [CSS media sizes](https://stackoverflow.com/questions/25211090/how-to-auto-adjust-the-div-size-for-all-mobile-tablet-display-formats)
