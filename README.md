@@ -2,9 +2,9 @@
 
 # Magno Blog
 
-Este es el código de [mi web personal](https://magnoblog.netlify.com), publicada 
+Este es el código de [mi web personal](https://magnoblog.netlify.com), publicada
 en los servidores de [Netlify](https://netlify.com) utilizando el generador de
-sitios estáticos [Zola](https://www.getzola.org).
+sitios estáticos [Hugo](https://www.gohugo.io).
 
 El HTML, CSS y JS los he creado yo, no esto usando ningún _tema_. Esta es la
 estructura:
@@ -13,40 +13,40 @@ estructura:
                       ┌──────────────┐        ┌───────────────────┐             ┌──────────┐
                       │ partials     ╠════════╣ baseof.html       ╠═════════════╣ base.css │
                       ├──────────────┤        ├───────────────────┤             └──────────┘
-                      │ social-media │        │ » head            │                     
-                      │ page-entry   │        │    ├─ metadata    │                     
-                      └──────────────┘        │    ├─ styles      │                     
-                                              │    └─ fonts       │                     
-                                              │ » body            │                     
-                                              │    ├─ intro       │                      
-                                              │    ├─ header      │                      
-                                           ╔══╣▒▒▒▒├─ main ▒▒▒▒▒▒▒│                     
-                                           ║  │    └─ footer      │                     
-                                           ║  │ » scripts         │                     
-                                           ║  └───────────────────┘                     
-                                           ║                                            
-           ╔═════════════════════╦═════════╩═════════╦════════════════════╗             
-           ║                     ║                   ║                    ║             
-┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐   
-│ home.html           │  │ list.html      │  │ single.html   │  │ 404.html          │   
-├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤   
-│ » #animation #start │  │ » .main-title  │  │ » .main-title │  │ » #not-found      │   
-│    └─ animation.js  │  │ » article      │  │ » .toc / info │  │    └─ .main-title │
+                      │ social-media │        │ » head            │
+                      │ page-entry   │        │    ├─ metadata    │
+                      └──────────────┘        │    ├─ styles      │
+                                              │    └─ fonts       │
+                                              │ » body            │
+                                              │    ├─ intro       │
+                                              │    ├─ header      │
+                                           ╔══╣▒▒▒▒├─ main ▒▒▒▒▒▒▒│
+                                           ║  │    └─ footer      │
+                                           ║  │ » scripts         │
+                                           ║  └───────────────────┘
+                                           ║
+           ╔═════════════════════╦═════════╩═════════╦════════════════════╗
+           ║                     ║                   ║                    ║
+┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐
+│ home.html           │  │ list.html      │  │ single.html   │  │ 404.html          │
+├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤
+│ » #animation #start │  │ » .main-title  │  │ » .main-title │  │ » #not-found      │
+│    └─ animation.js  │  │ » article      │  │ » .toc        │  │    └─ .main-title │
 │ » #about            │  │ » .categories  │  │ » article     │  └───────────────────┘
-│    └─ .social_media │  │ » .post        │  └───────╦───────┘                          
-│ » #portfolio        │  └───────╦────────┘          ║                                  
-│    ├─ .project      │          ║                   ║                                   
-│    ├─ .project      │          ║                   ║                     
-│    └─ ...           │          ╚═════════╦═════════╝                     
-│ » #portfolio        │                    ║                               
-│ » #blog             │                    ║                               
-│    └─ .entry        │                    ║                               
-└──────────╦──────────┘                    ║                               
-           ║                               ║                               
-     ┌─────╩─────┐                   ┌─────╩─────┐                               
-     │ home.css  │                   │article.css│                               
-     └───────────┘                   ├───────────┤                               
-                                     │ » .info   │                               
+│    └─ .social_media │  │ » .post        │  └───────╦───────┘
+│ » #portfolio        │  └───────╦────────┘          ║
+│    ├─ .project      │          ║                   ║
+│    ├─ .project      │          ║                   ║
+│    └─ ...           │          ╚═════════╦═════════╝
+│ » #portfolio        │                    ║
+│ » #blog             │                    ║
+│    └─ .entry        │                    ║
+└──────────╦──────────┘                    ║
+           ║                               ║
+     ┌─────╩─────┐                   ┌─────╩─────┐
+     │ home.css  │                   │article.css│
+     └───────────┘                   ├───────────┤
+                                     │ » .info   │
                                      │ » code    │
                                      │ » table   │
                                      │ » quote   │
@@ -84,7 +84,7 @@ Mover + convertir todos los nombres a español?
 
 -----------------------------------------------------------
 
-Drafts: 
+Drafts:
 
 - !prog: HTML, CSS, Regex, YAML
 - C: General
@@ -106,7 +106,7 @@ Expandir, pero decente:
 - Langs: \_index (completar TODOs, actualizar, indicar usos para algunos _langs_)
 - Python-setup (pip en detalle)
 - Win-comandos
-- Rust: 
+- Rust:
   \_index,
   cargo-docs-crates (video lightsaber),
   errores (crate LGR errores),
@@ -138,7 +138,7 @@ TODOs sin importancia
 - Probar si aparecen las descripciones en las previsualizaciones de los links
 - Revisar la página desde el móvil
 - Mejorar el _footer_ en las páginas cortas
-- Mejorar los divisores con `-----` 
+- Mejorar los divisores con `-----`
 - Escalar las tablas en dispositivos pequeños
 
 ## Nuevas características
