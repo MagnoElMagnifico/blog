@@ -1,3 +1,9 @@
+{{ define "styles" }}
+    {{ with .Params.math }}
+        {{ partial "latex" }}
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
 
