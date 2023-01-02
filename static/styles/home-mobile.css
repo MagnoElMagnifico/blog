@@ -1,4 +1,4 @@
-/* Presentation */
+/**** Presentation ****/
 #start { width: 50vw; }
 
 #blog-logo {
@@ -11,9 +11,11 @@
 #blog-title       { font-size: 2rem; }
 #blog-description { font-size: 0.9rem; }
 
-/* About */
+
+/**** About ****/
 #about-img { width: 25vmin; min-width: 7rem; }
 
-/* Porfolio */
+
+/**** Porfolio ****/
 .project     { padding: 1rem; }
 .project img { width: 80%; }

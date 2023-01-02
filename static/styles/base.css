@@ -193,11 +193,14 @@ img {
     padding: 0.5rem 1rem;
 }
 
+
 /**** TOC ****/
 #TableOfContents {
     background-color: var(--hf-background-color);
     border-radius: var(--border-radius);
+    margin: 1rem 0;
 }
+
 
 /**** Header ****/
 header, nav {
@@ -210,7 +213,7 @@ header, nav {
     transition: var(--transition);
 }
 
-header a, nav a { padding: 1rem 1rem; }
+header a, nav a { padding: 1rem; }
 header a:hover, header nav a:hover { background-color: var(--magno-blue); }
 #home-link { padding: 0; }
 
