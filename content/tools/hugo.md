@@ -9,6 +9,10 @@ extra:
     show_details: true
 ---
 
+```bash
+hugo server --bind <ip> --baseURL http://<ip> --port 8000
+```
+
 [Hugo] es un _Static Site Generator_ (SSG) escrito en Go, lo que quiere decir
 que será solamente HTML, CSS y JavaScript: no incluye nada en el servidor. Para
 blogs (este, por ejemplo) resulta muy útil, ya que aporta herramientas para
@@ -73,7 +77,7 @@ hugo help
 - `/archetypes`: con el comando `hugo new ...` puedes crear posts nuevos de
   forma sencilla. En esta carpeta se guardan plantillas para estos posts.
 
-- `/assets`: guardan archivos que serán procesadas con _Hugo Pipes_. 
+- `/assets`: guardan archivos que serán procesadas con _Hugo Pipes_.
 
 - `/config`: configuración del sitio (`JSON`, `YAML` o `TOML`) dado que hay
   muchas [opciones] disponibles. Sitios más minimalistas y que no necesiten
@@ -100,7 +104,7 @@ hugo help
 
 [opciones]: https://gohugo.io/getting-started/configuration/#all-configuration-settings
 
-<!-- TODO: https://gohugo.io/content-management/ --> 
+<!-- TODO: https://gohugo.io/content-management/ -->
 
 # Plantillas
 
@@ -149,10 +153,10 @@ scope son las variables a las que tendra acceso el partial. si le pasas un `.` t
 
 ```
 <h1> {{.name}} </h1>
-``` 
+```
 ```
 {{ partial "name" (dict "name" "value" "name2" "value2" ... }}
-``` 
+```
 
 # a
 
