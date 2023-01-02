@@ -125,7 +125,7 @@ img {
      * Center by adding margin to the left (minus the
      * main margin) and then translate
      */
-    margin: 1rem 0 1rem 50%; 
+    margin: 1rem 0 1rem 50%;
     transform: translate(-50%, 0);
 }
 
@@ -193,6 +193,12 @@ img {
     padding: 0.5rem 1rem;
 }
 
+/**** TOC ****/
+#TableOfContents {
+    background-color: var(--hf-background-color);
+    border-radius: var(--border-radius);
+}
+
 /**** Header ****/
 header, nav {
     display: grid;
@@ -204,10 +210,8 @@ header, nav {
     transition: var(--transition);
 }
 
-nav { border-radius: var(--border-radius); }
-
 header a, nav a { padding: 1rem 1rem; }
-header a:hover, nav a:hover { background-color: var(--magno-blue); }
+header a:hover, header nav a:hover { background-color: var(--magno-blue); }
 #home-link { padding: 0; }
 
 header img {
@@ -217,7 +221,7 @@ header img {
     border-radius: 100%;
     transform: none;
 }
- 
+
 .dropdown-content {
     display: none;
     position: absolute;
