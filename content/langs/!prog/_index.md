@@ -24,3 +24,7 @@ texto llano. Fuente: [wikipedia][2]
 
 - **HTML**: TODO
 - **CSS**: TODO
+- **YAML**: TODO
+- **TOML**: TODO
+- **LaTeX**: TODO
+- **Regex**: TODO

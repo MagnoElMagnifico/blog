@@ -3,7 +3,9 @@ title: Listas y Iteradores
 weight: 10
 ---
 
+
 # Colecciones
+
 Estas se guardan en la `heap`, por lo que pueden crecer. Otro detalle es que los
 vectores borrarán todo el contenido, incluidos sus elementos.
 
@@ -27,10 +29,14 @@ for elem in &v     { ... } // Pasar por todo el contenido (lectura)
 for elem in &mut v { ... } // Lo mismo, pero también escribe: desreferencia con *
 ```
 
+
 ## Strings
+
 Consultar [aquí](strings.md).
 
+
 ## Hash map
+
 Guarda un valor relacionado con una clave mediante una función de Hash.
 
 ```rs
@@ -42,7 +48,9 @@ map.get(key); // Devuelve un Option<Some(), None>
 for (key, value) in &/*mut*/ map { ... }
 ```
 
+
 # Slices
+
 Este es un tipo de dato que no toma ownership del original. Se trata de una
 sequencia contigua de elementos de una lista: vectores, strings...
 
@@ -86,7 +94,9 @@ Los tipos de datos de otras listas que no sean Strings, se escriben por ejemplo
 así: `&[u8]`.
 
 
+
 # Iteradores
+
 Permiten pasar por una secuencia de elementos, no importa cuales sean ni como
 estén guardados, por ejemplo un array, vector, hash map...
 
@@ -116,7 +126,9 @@ for value in v.iter() {
 }
 ```
 
+
 ## Crear nuestros propios iteradores
+
 ```rs
 struct Counter {
   value: u32

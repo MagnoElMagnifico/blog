@@ -3,10 +3,12 @@ title: Generics, traits y closures
 weight: 10
 ---
 
+
 # Generics
+
 Usa varios tipos de datos en uno solo.
 
-```rs
+```rust
 fn foo<T>(a: T, b: T)    { ... }
 fn foo<T, U>(a: T, b: U) { ... }
 
@@ -19,10 +21,12 @@ impl<T> foo<T> { ... }
 // todo esto no afecta al rendimiento
 ```
 
+
 # Traits
+
 Sirven de plantillas para crear otras estructuras.
 
-```rs
+```rust
 trait trait_example {
   fn foo(); // podemos añadir una definición por defecto (se sobreescribe despues)
 }
@@ -39,22 +43,24 @@ impl trait_example for struct_example {
 Podemos pasar traits como parámetros, de esta forma, funcionan como un generic
 algo más restringido:
 
-```rs
+```rust
 fn foo(a: &(impl trait_example + other_trait)) -> impl name { ... }
 ```
 
 Hablando de generics, podemos usar esta otra sintaxis (`trait bounds`):
 
-```rs
+```rust
 fn foo<T: trait_example + other_trait>(a: T, b: T) { ... }
 fn foo<T, U> (a: T, b: U) -> char where T: trait_example, U: trait_example + other_trait { ... }
 ```
 
+
 # Closures
+
 Son funciones sin nombre que pueden guardarse, usarse como si fuesen datos,
 pasarlas como parámetros, etc.
 
-```rs
+```rust
 let closure = |params| { ... } // si es una línea se puede borrar las {}
 ```
 
@@ -62,7 +68,7 @@ No es necesario dar el tipo de dato, el compilador tomará el primer valor que s
 le pase. Además, las closures, tienen acceso a variables de una scope superior
 (entorno).
 
-```rs
+```rust
 struct<T> ??? where T: Fn(i32) -> i32
 {
   closure: T,
