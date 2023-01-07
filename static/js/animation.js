@@ -1,105 +1,251 @@
 // Config values
 // -------------
-const backColor = "#000";
-const clearColor = "#00000007";
-const fontColor = ["#fff", "#f00", "#0f0", "#00f", "#ff0", "#0ff"];
+const style = {
+    background: {
+        color: '#000',
+        clear: '#00000007',
+    },
 
-const fontFamily = "Fira Code";
-const fontSize = 20;
-const fontSpacing = 15;
+    font: {
+        family: 'Fira Code',
+        size: 100,       // % relative to canvas
+        lineHeight: 100, // % relative to fontSize
+    },
 
-const marginLeft = 50;
-const marginRight = 100;
-const ident = fontSpacing * 4;
-const maxIdentLevel = 4;
+    indent: 4, // Number of chars, relative to fontSize
+    linesPerSecond: 1000, // Limited by 60FPS of JS Canvas
 
-const linesPerSecond = 60;
+    code: {
+        text: 'abcdefghijklmnopqrstuvwxyz_',
+        comment: '// ',
 
-let firstChar;
-let lastChar;
+        listOpen: '[',
+        listClose: ']',
+        blockOpen: '{',
+        blockClose: '}',
+        string: '"',
+        endl: ';',
 
-// Select characters. UTF-16BE codes
-switch(0) {//switch(random(0, 3)) {
-    case 0: firstChar = 48;    lastChar = 112;   break; // Normal
-    case 1: firstChar = 12032; lastChar = 12245; break; // Japanese
-    case 2: firstChar = 913;   lastChar = 1023;  break; // Greek
-    default: console.error("Unreachable");
+        assign: ['=>', '=', '+=', '++=', ':='],
+        symbols: ['+', '-', '*', '/', '...', '&&', '||', '%', '?', '==', '<', '>', '>=', '<='],
+        keywords: ['let', 'if', 'for', 'while', 'class', 'return', 'function'],
+
+        colors: {
+            default: '#fff',
+            identifier: '#00f',
+            keyword: '#f0f',
+            number: '#f00',
+            string: '#0f0',
+            fun_call: '#0ff',
+            comment: '#999',
+        }
+    }
 }
 
-(() => {
-// Returns a random integer in the range [start, end)
-function random(start, end) {
-    return Math.floor((Math.random() * (end - start) + start));
-}
+class Animation {
+    constructor(style) {
+        this.style = style;
 
-// Returns a random bool
-function random_bool() {
-    return random(0, 2) == 0;
-}
+        // Loop
+        this.lastTime = 0;
 
-const canvas = document.getElementById("animation");
-const ctx = canvas.getContext("2d");
+        // Rendering
+        this.canvas = document.getElementById("animation");
+        this.ctx    = this.canvas.getContext("2d");
+        this.lineCount = 0;
+        this.indent = 0;
+        this.cursor = 0;
 
-let counter = 0;
-let identLevel = 0;
-function renderLine() {
-    const totalChars = Math.floor((canvas.width - marginLeft - marginRight - ident*identLevel) / fontSize);
-    const totalLines = Math.floor(canvas.height / fontSize);
-    const currentLine = ++counter % totalLines+1;
-    const lineChars = random(0, totalChars);
-
-    switch (random(0, 10)) {
-        case 1: case 2: if (identLevel < maxIdentLevel) identLevel++; break;
-        case 8: case 9: if (identLevel > 0)             identLevel--; break;
-        default: break;
+        // Start animation
+        addEventListener("resize", () => this.resize() );
+        this.resize();
+        this.loop();
     }
 
-    let currentFontColor = 0;
-    for (let i = 0; i <= lineChars; i++) {
-        switch (random(0, 10)) {
-            case 1: case 2: currentFontColor++; break;
-            case 8: case 9: currentFontColor--; break;
-            default: break;
+    resize() {
+        // Update the canvas exactly as the CSS
+        this.canvas.width  = window.innerWidth;
+        this.canvas.height = window.innerHeight < 400 ? 400 : window.innerHeight;
+
+        // Update variables accordingly
+        this.fontSize   = this.canvas.width * this.style.font.size / 10_000;
+        this.lineHeight = this.fontSize * this.style.font.lineHeight / 90;
+
+        this.ctx.font = `${this.fontSize}px ${this.style.font.family}`;
+
+        // Render a background to avoid seeing the background of the page
+        // and not the canvas one
+        this.ctx.fillStyle = this.style.background.color;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    //////////////// RANDOM FUNCTIONS ////////////////
+    // Returns a random integer in the range [start, end)
+    random(start, end) {
+        return Math.floor((Math.random() * (end - start) + start));
+    }
+
+    rdItem(list) {
+        return list[this.random(0, list.length)];
+    }
+
+    rdStr(start, end) {
+        let line = '';
+        for (let i = 0; i < this.random(start, end+1); i++)
+            line += this.rdItem(this.style.code.text);
+        return line;
+    }
+
+    //////////////// RENDER FUNCTIONS ////////////////
+    renderText(text, color) {
+        const measure = this.ctx.measureText(text);
+        const totalLines = Math.ceil(this.canvas.height / this.lineHeight);
+        const currentLine = (this.lineCount % totalLines) + 1;
+
+        const x = this.cursor + this.indent * this.fontSize;
+        const y = currentLine * this.lineHeight;
+
+        this.ctx.fillStyle = color;
+        this.ctx.fillText(text, x, y);
+        this.cursor += measure.width;
+    }
+
+    // Renders an expression list with the separator given and the range
+    // (start, end]
+    renderList(separator, start, end) {
+        this.renderExpression()
+        for (let i = 0; i < this.random(start, end+1); i++) {
+            this.renderText(separator, this.style.code.colors.default);
+            this.renderExpression();
+        }
+    }
+
+    // Types of expressions:
+    //   0. integer
+    //   1. float: integer.integer
+    //   2. identifier
+    //   3. 'identifier' or "identifier"
+    //   4. [expression, [, expression ...] ]
+    //   5. identifier[number]
+    //   6. expression symbol expression
+    //   7. [identifier.]identifier([expression])
+    //   8. symbol (internal use only)
+    // If undefined or other, choose randomly
+    renderExpression(type, symbol) {
+        const code = this.style.code;
+        switch (type) {
+            case 0: this.renderText(String(this.random(-99, 100)), code.colors.number); return;
+            case 1: this.renderText(String(this.random(-99, 100)) + '.' + String(this.random(0, 100)), code.colors.number); return;
+            case 2: this.renderText(this.rdStr(4, 10), code.colors.identifier); return;
+            case 3: this.renderText(code.string + this.rdStr(0, 12) + code.string, code.colors.string); return;
+
+            case 4:
+                this.renderText(code.listOpen, code.colors.default);
+                this.renderList(', ', 0, 5);
+                this.renderText(code.listClose, code.colors.default);
+                return;
+
+            case 5:
+                this.renderExpression(2); // Indentifier
+                this.renderText('[', code.colors.default);
+                this.renderExpression(0); // Integer
+                this.renderText(']', code.colors.default);
+                return;
+
+            case 6:
+                this.renderExpression();
+                this.cursor += this.fontSize / 2; // Space
+                this.renderText(this.rdItem(code.symbols), code.colors.default);
+                this.cursor += this.fontSize / 2; // Space
+                this.renderExpression();
+                return;
+
+            case 7:
+                if (this.random(0, 2)) {
+                    this.renderExpression(2); // Identifier
+                    this.renderText('.', code.colors.default);
+                }
+                this.renderText(this.rdStr(4, 10), code.colors.fun_call);
+                this.renderText('(', code.colors.default);
+                this.renderList(', ', 0, 3);
+                this.renderText(')', code.colors.default);
+                return;
+
+            default: this.renderExpression(this.random(0, 8)); return;
+        }
+    }
+
+    // Types of lines:
+    //   0. comment identifier identifier ...
+    //   1. (empty line)
+    //   2. [keyword] identifier assign expression;
+    //   3. keyword (expression) { (add indent)
+    //   4. } (end indent)
+    renderLine() {
+        const code = this.style.code;
+        this.cursor = 0;
+
+        switch (this.random(0, this.indent > 0 ? 5 : 4)) {
+
+            case 0:
+                let comment = '';
+                for (let i = 0; i < this.random(0, 10); i++)
+                    comment += ' ' + this.rdStr(3, 5);
+                this.renderText(code.comment + comment, code.colors.comment);
+                break;
+
+            case 1: break;
+
+            case 2:
+                if (this.random(0, 2)) {
+                    this.renderText(this.rdItem(code.keywords), code.colors.keyword);
+                    this.cursor += this.fontSize / 2;
+                } // Optional keyword
+                this.renderExpression(2); // Identifier
+                this.cursor += this.fontSize / 2;
+                this.renderText(this.rdItem(code.assign), code.colors.default); // Assignment
+                this.cursor += this.fontSize / 2;
+                this.renderExpression(); // Expression
+                this.renderText(code.endl, code.colors.default); // End line
+                break;
+
+            case 3:
+                this.indent++;
+                this.renderText(this.rdItem(code.keywords), code.colors.keyword); // Keyword
+                this.cursor += this.fontSize / 2;
+                this.renderText('(', code.colors.default);
+                this.renderExpression();
+                this.renderText(')', code.colors.default);
+                this.renderText(' ' + code.blockOpen, code.colors.default); // {
+                break;
+
+            case 4:
+                this.indent--;
+                this.renderText(code.blockClose, code.colors.default);
+                break;
+
+            default: console.error('Unreachable');
         }
 
-        const randomChar = String.fromCharCode(random(firstChar, lastChar));
-        ctx.fillStyle = fontColor[currentFontColor % fontColor.length];
-        ctx.font = `${fontSize}px ${fontFamily}`;
-        ctx.fillText(randomChar, i*fontSpacing + marginLeft + ident*identLevel, currentLine*fontSize);
+        this.lineCount++;
+    }
+
+    loop(currentTime) {
+        const deltaTime = currentTime - this.lastTime;
+        const desiredDelta = 1000 / this.style.linesPerSecond;
+
+        // Fade out effect with a color with alpha
+        this.ctx.fillStyle = this.style.background.clear;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Don't render or update until the desired delta has passed
+        if (desiredDelta <= deltaTime) {
+            this.renderLine();
+            this.lastTime = currentTime;
+        }
+
+        window.requestAnimationFrame( (time) => this.loop(time) );
     }
 }
 
-let lastTime = 0;
-function loop(currentTime) {
-    const deltaTime = currentTime - lastTime;
-    const fps = 1000 / deltaTime;
-    const desiredDelta = 1000 / linesPerSecond;
-
-    // Fade out effect with a color with alpha
-    ctx.fillStyle = clearColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Don't render or update until the desired delta has passed
-    if (desiredDelta <= deltaTime) {
-        renderLine();
-        lastTime = currentTime;
-    }
-
-    requestAnimationFrame(loop);
-}
-
-function resize() {
-    // Update the canvas exactly as the CSS
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight < 400 ? 400 : window.innerHeight;
-
-    // Render a background to avoid seeing the background of the page
-    // and not the canvas one
-    ctx.fillStyle = backColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-addEventListener("resize", resize);
-resize();
-loop();
-})();
+new Animation(style);
