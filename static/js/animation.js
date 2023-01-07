@@ -33,13 +33,13 @@ const style = {
         keywords: ['let', 'if', 'for', 'while', 'class', 'return', 'function'],
 
         colors: {
-            default: '#fff',
-            identifier: '#00f',
-            keyword: '#f0f',
-            number: '#f00',
-            string: '#0f0',
-            fun_call: '#0ff',
-            comment: '#999',
+            default:    '#fff', // white
+            identifier: '#0ef', // blue
+            fun_call:   '#a0f', // purple
+            keyword:    '#f05', // red
+            number:     '#f60', // orange
+            string:     '#0f5', // green
+            comment:    '#555', // grey
         }
     }
 }
@@ -199,7 +199,6 @@ class Animation {
             type = this.rdItem([0, 1, 3]);
 
         switch (type) {
-
             case 0:
                 let comment = '';
                 for (let i = 0; i < this.random(0, 10); i++)
