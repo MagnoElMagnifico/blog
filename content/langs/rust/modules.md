@@ -3,17 +3,20 @@ title: Módulos
 weight: 10
 ---
 
+
 # Rust module system
 
 + **Paquetes**: Una característica de cargo que te permite compilar, testear y
-compartir crates.
+  compartir crates.
 + **`Crates`**: El árbol de módulos que crea una librería o ejecutable.
 + **Módulos y `use`**: Te permite controlar la organización, scope, privacidad
-en las direcciones, etc.
+  en las direcciones, etc.
 + **Direcciones**: Una forma de nombrar cada elemento, como un `struct`,
-función, módulo, etc.
+  función, módulo, etc.
+
 
 ## Crates y Paquetes
+
 Un `crate` (caja) es solo una librería o un ejecutable.
 El `crate root` es el archivo de código fuente base, el que se compila por
 defecto, o el principal, digamos.
@@ -41,11 +44,13 @@ Al usar `cargo new <nombre>`, estamos creando un paquete llamado `<nombre>` (lo
 que contenga un archivo `Cargo.toml` y un directorio `src` será un paquete). Si,
 de base, contiene `src/main.rs` será binario, o `src/lib.rs` será librería.
 
+
 ## Módulos y direcciones
+
 Un módulo nos permite organizar mejor nuestro código dentro del propio crate. Se
 definen con la palabra clave `mod`:
 
-```rs
+```rust
 mod example {
   mod other_module {
     fn other_example() {
@@ -81,7 +86,7 @@ Además de usar esta dirección, los módulos y las funciones deben de ser
 públicas, dado que pueden ser únicamente para el funcionamiento interno del
 módulo. Para cambiar su privacidad se usa `pub`:
 
-```rs
+```rust
 pub mod example {
   pub fn foo() {
     todo!();
@@ -92,7 +97,7 @@ pub mod example {
 Tener que escribir estas largas direcciones para utilizar determinada dirección
 puede ser engorroso, por eso tenemos la palabra clave `use`:
 
-```rs
+```rust
 a::very::long::and::verbose::direction::foo();
 
 use a::very::long::and::verbose::direction;
@@ -105,7 +110,7 @@ foo();
 En el caso de que el último nombre sea muy grande, o prefiramos cambiarlo en
 caso de que se repitan nombres, podemos usar `as`:
 
-```rs
+```rust
 a::very_long_and_verbose_direction::foo();
 
 use a::very_long_and_verbose_direction as dir;
@@ -116,7 +121,7 @@ dir::foo();
 
 Podemos también agrupar numerosos uses que tengan el mismo prefijo:
 
-```rs
+```rust
 use base::path;
 use base::path::one::path;
 use base::path::other_path;
@@ -126,11 +131,13 @@ use base::path::{self, one::path, other_path};
 
 O incluso, si queremos usar todo su contenido público (glob operator):
 
-```rs
+```rust
 use base::path::*;
 ```
 
+
 ## Usando paquetes externos
+
 Después de añadir un paquete a nuestro archivo Cargo.toml, y para poder usar sus
 funciones, usamos `use`:
 
@@ -139,14 +146,16 @@ funciones, usamos `use`:
 pkg_name = "*"
 ```
 
-```rs
+```rust
 use pkg_name::some::path;
 fn main() {
   path::foo();
 }
 ```
 
+
 ## Varios archivos de código fuente
+
 Al parecer tenemos las siguientes reglas en cuanto al sistema de módulos de
 Rust y sus direcciones:
 
@@ -170,7 +179,7 @@ src
 
 Para llamar la función `foo` en `other.rs`, dentro de `main.rs` escribiríamos:
 
-```rs
+```rust
 mod other;
 
 fn main() {
@@ -188,7 +197,7 @@ evitar que se confundan módulos.
 Estas direcciones pueden ser tanto relativas al directorio actual, como
 absolutas (usando `crate` al principio de todo si se refiere al crate base).
 
-```rs
+```rust
 mod other;
 use other::module;
 
@@ -214,7 +223,8 @@ usar `module`, ya que como veíamos antes, las carpetas son también módulos y
 `mod.rs` es donde se guarda su código.
 
 En `src/main.rs`:
-```rs
+
+```rust
 mod module;
 
 fn main() {
@@ -223,6 +233,7 @@ fn main() {
 ```
 
 En `src/module/mod.rs`:
-```rs
+
+```rust
 pub mod other;
 ```

@@ -17,7 +17,9 @@ La implementación de Markdown cambia de acuerdo al _parser_ (el programa que
 transforma el Markdown a HTML). Esta guía servirá para clarificar cuales
 características son universales y cuales son específicas de cada uno.
 
+
 ## Estilo y caracteres
+
 - *Cursiva*: Uso de `*` o `_` alrededor de la palabra.
 - **Negrita**: Uso de `**` o `__` alrededor de la palabra.
 - ***Ambos estilos***: Uso de `***`, `___`, `*__`, `**_` y demás variantes
@@ -27,7 +29,9 @@ características son universales y cuales son específicas de cada uno.
 - Caracteres especiales: Uso de \\ antes del carácter.
 - Salto de `<br>`: Uso de `---` o `***` (se admite con espacios en el medio).
 
+
 ### Otros caracteres especiales
+
 Markdown, al poder escribir HTML, podemos usar la sintaxis propia de este para
 insertar más caracteres. A continuación hay algunos ejemplos:
 
@@ -36,7 +40,9 @@ insertar más caracteres. A continuación hay algunos ejemplos:
 [Aquí](https://unicode-table.com/es/) puedes encontrar una buena lista con sus
 correspondientes codificaciones y formato).
 
+
 ## Enlaces
+
 - Texto entre `[]` y el enlace entre `()`.
 - Cuando estos enlaces son muy largos, podemos darles una etiqueta (o incluso
   no poner nada) la que luego anidaremos con el enlace en cuestión.
@@ -59,13 +65,17 @@ correspondientes codificaciones y formato).
   dirección escribimos un `ID` (precedido de un `#`) que referencie a otra parte
   del documento donde incluimos una etiqueta `<a id= ""></a>`.
 
+
 ### Imágenes o GIFs
 Con este mismo método de los enlaces, tanto usando URLs como direcciones a
 archivos, podemos añadir imágenes a nuestro documento, simplemente añadiendo
 `!` delante.
 
+
 ## Párrafos
+
 ### Títulos
+
 - Uso de `#` tantas veces como pequeño sea el título. Es decir:
     - `#`: `<h1>`
     - `##`: `<h2>`
@@ -81,14 +91,17 @@ Ejemplo de título
 
 Ejemplo de subtítulo
 --------------------
-``` 
+```
 
 ### Nuevo párrafo:
+
 - **Doble ENTER**: El simple se ignora, y si añades más de 2 también.
 - **Poner `\` al final**: Esto separará el párrafo sin tener que darle dos veces.
 - **Etiqueta br**: salto de HTML.
 
+
 ### Listas
+
 - Uso de `-`, `+` o `*` para listas no enumeradas.
 - Uso de números (`1.`, `2.`, `3.`, ...) para listas numeradas.
 - Para hacer sublistas añadir identación (4 espacios generalmente).
@@ -96,27 +109,37 @@ Ejemplo de subtítulo
 Además, se pueden alternar con una lista no enumerada con una sublista
 desordenada y viceversa.
 
+
 ### Citas
+
 - Uso de `>` (se puede añadir `>` adicionales y crear citas anidadas).
 
+
 ### Código
+
 - Uso de `~~~` para declarar un bloque de código.
 - Uso de \`\`\` para declarar un bloque de código (GitHub Flavored Markdown).
 - Uso de identación (4 espacios generalmente).
 
+
 ### Tablas
+
 Solamente disponible en GitHub Flavored Markdown.
 
 - Los elementos se sitúan entre `|`.
 
+
 #### Estilo
+
 > Nota: se le puede añadir más guiones para separar los elementos.
 
 - Centrado: `:-:`
 - Izquierda: `:-`
 - Derecha: `-:`
 
+
 ## Ejemplos ##
+
 > **Nota**: Mejor ver esta sección en el [repositorio](https://github.com/MagnoElMagnifico/blog)
 
 

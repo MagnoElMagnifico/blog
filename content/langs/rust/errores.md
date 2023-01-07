@@ -3,16 +3,20 @@ title: Errores en Rust
 weight: 3
 ---
 
+
 # Errores irrecuperables
+
 Para crear errores que paren completamente la ejecución del programa usamos el
 macro `panic!()`. Entre los paréntesis podemos dar una pequeña descripción del
 problema, con la sintaxis del macro `format!()` (o `println!()`).
 
+
 # Errores recuperables
+
 Para otros errores donde una operación pudo acabar de forma exitosa, usamos la
 enum `Result`:
 
-```rs
+```rust
 enum Result<T, E> {
     Ok(T),
     Err(E),
@@ -24,7 +28,7 @@ fuese exitosa. Sino, se provee un error con la variante `Err`.
 
 Podemos manejar el error de la siguiente forma:
 
-```rs
+```rust
 let f = match File::open("hello.txt") {
     Ok(file) => file,
     Err(error) => match error.kind() {
@@ -43,7 +47,7 @@ Para evitar tanta expresión `match` podemos usar la función `unwrap_or_else()`
 que devuelve el valor en caso de éxito y ejecuta la función que le demos de
 parámetro en caso de error:
 
-```rs
+```rust
 let f = File::open("hello.txt").unwrap_or_else(|error| {
     if error.kind() == ErrorKind::NotFound {
         File::create("hello.txt").unwrap_or_else(|error| {
@@ -68,7 +72,7 @@ dar un error o no, podemos simplemente propagarlo, que sería devolverlo para qu
 el que use esta función se encargue del error. Podemos devolver el error
 manualmente o usar el operador `?`:
 
-```rs
+```rust
 fn foo() -> Result<(), some_error> {
     let v = function_that_might_fail()?;
     // this is equivalent to:

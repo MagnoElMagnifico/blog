@@ -8,10 +8,15 @@ date: 2021-07-15
 Lenguaje de marcado para guardar información.
 Distingue de mayúsculas de minúsculas.
 
+
 ## Comentarios
+
+
 `<!-- Este es un comentario -->`
 
+
 ## Etiquetas
+
 como es un lenguaje de marcado se utilizan etiquetas (una de apertura y otra de
 cierre) para ordenar la información. Se escribe así:
 
@@ -41,7 +46,9 @@ por lo que no se permite etiquetas en su interior (excepto `]]>`):
 <![CDATA[ ... ]]>
 ```
 
+
 ## Document Prolog - Declaración
+
 Es opcional, pero es recomendable y debe ser el primer elemento del documento.
 Los argumentos deben seguir este orden:
 
@@ -55,7 +62,9 @@ fuente externa.
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
+
 ## Atributos
+
 Especifica una propiedad que tiene un elemento, añadiendo información. Se pueden
 tener varios, pero todos deben de ser distintos. Tambiénn se usan para
 distinguir elementos con el mismo nombre.
@@ -77,7 +86,9 @@ distinguir elementos con el mismo nombre.
 <etiqueta atributo1= "valor1" atributo2= "valor2">Contenido</etiqueta>
 ```
 
+
 ## Referencias
+
 Predefinidas
 
 + `<` &#8594; `&lt;`
@@ -95,7 +106,9 @@ Si lo queremos usar en hexadecimal se añade un x delante del número
 + `'` &#8594; `&#39;` `&#x27;`
 + `"` &#8594; `&#34;` `&#x22;`
 
+
 ## Instrucciones de procesado
+
 Transmiten información a la aplicación que usará el XML, pero no forman parte de
 los datos del documento.
 
@@ -109,7 +122,9 @@ los datos del documento.
 <?xml-stylesheet href = "estilo.css" type = "text/css"?>
 ```
 
+
 ## Validación
+
 Proceso en el cual se verifica su un XML es válido: si tus contenidos estás de
 acuerdo con los elementos, atribtos definidos en el DTD (Document Type
 Declaration).
@@ -117,7 +132,9 @@ Declaration).
 + `Well-Formed XML Document` &#8594; Documento bien formado
 + `Valid XML Document`       &#8594; Documento válido
 
+
 ### DTD - Document Type Declaration
+
 Verifica el vocabulario y la validez de la estructura con las reglas de un
 leguaje XML en particular. Puede especificarse en otro documento/s
 
@@ -135,7 +152,9 @@ Se inicia con:
 <! ATTLIST nombreAtributo CDATA "" <-(default)>
 ```
 
+
 ### XSD - XML Schema Definition
+
 Se usan para validar y describir los XML. Se define usanso su nombre y el tipo:
 
 ```xml
@@ -157,12 +176,16 @@ Estos tipos se declaran detro de esta etiqueta, con una etiqueta
 </xs:element>
 ```
 
+
 ## DOM - Documento Object Model
+
 Por medio de `DOM` describimos los elementos y sus relaciones. Está basado en un
 árbol. También nos ofrece una `API` que nos permite trabajar con los nodos para
 añadir, editar o borrarlos.
 
+
 ## NameSpace
+
 XML nos permite tener namespaces, podemos agrupar lógicamente elementos.
 El namespace tiene un `URI` (Uniform Resource Identifier)
 

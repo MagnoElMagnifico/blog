@@ -4,6 +4,7 @@ description: >-
     En este post veremos los principales usos de Rust, el lenguaje
     de programación de sistemas de memoria segura; así como lo que también puedes
     hacer con este lenguaje pero que quizá sea mejor hacer con otro.
+weight: 2
 ---
 
 Mis apuntes sobre Rust.

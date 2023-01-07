@@ -12,7 +12,9 @@ weight: 2
 [glam-rs]: https://crates.io/crates/glam-rs
 [spirv-reflect]: https://crates.io/crates/spirv-reflect
 
+
 # Cargo
+
 - `cargo check`: Muestra los errores de compilación sin compilar.
 - `cargo build --release`
 - `cargo doc --open`: Abre la documentación en el navegador.
@@ -25,10 +27,11 @@ weight: 2
   cosa importante es que no se puede borrar el código de la página, pero podemos
   evitar que se use determinada versión `cargo yank --vers <version> [--undo]`.
 
+
 ## Paquetes:
+
 ```toml
 # Cargo.toml (por defecto)
-
 [profile.dev]
 opt-level = 0 # mínimo
 
@@ -62,8 +65,10 @@ members = [ "adder", "add_one" ]
 adder = { path = "../adder" }
 ```
 
+
 # Documentación y reexportación
-```rs
+
+```rust
 //! Esto es para documentar el archivo
 
 /// `markdown aquí`
@@ -82,10 +87,10 @@ pub use direction;
 # Algunos crates interesantes
 
 ## Funcionalidades
+
 - [`rand`](https://crates.io/crates/rand)
   ([docs](https://docs.rs/rand/lastest)):
   genera números aleatorios.
-
 - [`mint`](https://crates.io/crates/mint)
   ([docs](https://docs.rs/mint/lastest)):
   mates (**TODO**: Comprobar si es buena).
@@ -93,68 +98,65 @@ pub use direction;
   - `Vector2`, `Vector3` y `Vector4`
   - Cuaterniones y matrices
   - Ángulos de Euler
-
 - **TODO**: Mirar [nalgebra](https://nalgebra.org/).
 
+
 ## CLI
+
 - [`clap`](https://crates.io/crates/clap)
   ([docs](https://docs.rs/clap/lastest)):
   _Command Line Argument Parser_.
-
 - [`read_input`](https://crates.io/crates/read_input)
   ([docs](https://docs.rs/read_input/lastest)):
   gestiona el input del usuario (**TODO**: Comprobar si es buena).
-
 - [`inquire`](https://crates.io/crates/inquire)
   ([docs](https://docs.rs/inquire/lastest)):
   alternativa para input de usuario (**TODO**: Comprobar si es buena).
-
 - [`crossterm`](https://crates.io/crates/crossterm)
   ([docs](https://docs.rs/crossterm/lastest)):
   manipula la terminal (multiplataforma) (**TODO**: Comprobar si es buena).
-
 - [`colorful`](https://crates.io/crates/colorful)
   ([docs](https://docs.rs/colorful/lastest)):
   utiliza colores para el output.
 
+
 ## Audio
+
 - [`cpal`](https://crates.io/crates/cpal)
   ([docs](https://docs.rs/cpal/lastest)):
   control _low level_ para salida y entrada de audio (multiplataforma, incluso
   WASM). Diferentes _backends_: ASIO (Windows) y JACK (Linux).
-
 - [`rodio`](https://crates.io/crates/rodio)
   ([docs](https://docs.rs/rodio/lastest)):
   usa `cpal` para la reproducción de `.mp3`, `.wav`, `.flac`...
   (**TODO**: Comprobar si es buena).
 
+
 ## Gráficos y GPU
+
 - [`winit`](https://crates.io/crates/winit)
   ([docs](https://docs.rs/winit/latest/)):
   creación de ventanas multiplataforma, eventos, monitores, etc.
-
 - [`WGPU`](https://crates.io/crates/wgpu)
   ([docs](https://docs.rs/wgpu/latest/)):
   una nueva API con diferentes _backends_ (OpenGL ES, Vulkan, etc).
-
 - [`Vulkano`](https://crates.io/crates/vulkano)
   ([docs](https://docs.rs/vulkano/latest/)):
   _wrapper_ sobre la API de Vulkan.
-
 - [`Glium`](https://crates.io/crates/glium)
   ([docs](https://docs.rs/glium/latest/)):
   _wrapper_ seguro sobre la API de OpenGl (**Actualmente no está mantenido**
   **por el autor original**).
-
 - [`Raylib`](https://crates.io/crates/raylib)
   ([docs](https://docs.rs/raylib/latest/)):
   _bindings_ para la librería en C de Raylib.
-
 - [`SDL2`](https://crates.io/crates/sdl2)
   ([docs](https://docs.rs/sdl2/latest/)):
   _bindings_ para la librería en C de SDL2.
 
+
 ## Game engines
+
 - [`Bevy`](https://crates.io/crates/bevy)
   ([docs](https://docs.rs/bevy/latest/), [site](https://bevyengine.org/)):
   sencillo, modular y orientado a datos (**Todavía en desarrollo**).
@@ -168,7 +170,6 @@ pub use direction;
   - Rápido: la aplicación se ejecuta rápido, y cuando es posible, en _threads_.
   - Productivo: _hot reloading_ y tiempos de compilación cortos.
   - Sonido, escenas, ECS, GUI...
-
 - [`Piston`](https://crates.io/crates/piston)
   ([docs](https://docs.rs/piston/latest/)):
   muy modular (es una colección de librerías), y por ello también muy amplio y
@@ -178,7 +179,6 @@ pub use direction;
   - AI
   - Sonido y música
   - Network
-
 - [`ggez`](https://crates.io/crates/ggez)
   ([docs](https://docs.rs/ggez/latest/))
   - Abstracción del sistema de archivos: abrir carpetas (o `.zip`) para cargar
@@ -193,7 +193,6 @@ pub use direction;
   - Funciones de control de tiempo, FPS...
   - Para Windows y Linux (puede que funcione en Mac).
   - No tiene: físicas, animación, GUI, manejo de assets, AI, ECS, Networking.
-
 - [`macroquad`](https//crates.io/crates/macroquad)
   ([docs](https://docs.rs/macroquad/lastest)):
   sencillo (inspirado por Raylib)

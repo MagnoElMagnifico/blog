@@ -1,5 +1,6 @@
 ---
 title: C Lang
+weight: 1
 ---
 
 C es un lenguaje de programación (considerado como uno de lo más importantes en
@@ -19,16 +20,18 @@ lenguaje. Además, por este  motivo es relativamente sencillo hacer un compilado
 para C. Es muy posible escribir C a bajo nivel de abstracción; de hecho, C se
 usó como intermediario entre diferentes lenguajes.
 
+
 # Características
-+ Potente y eficiente
-+ Lenguaje estructurado: se basa en estructuras para ordenar el codigo
-+ Programación de nivel medio
-+ Multiplataforma
-+ Objetivos generales. No es un lenguaje para una tarea específica, pudiendo
+
+- Potente y eficiente
+- Lenguaje estructurado: se basa en estructuras para ordenar el codigo
+- Programación de nivel medio
+- Multiplataforma
+- Objetivos generales. No es un lenguaje para una tarea específica, pudiendo
   programar tanto un sistema operativo (aunque se pensó para eso), una
   aplicación o un juego.
-+ Ofrece un control absoluto de todo lo que sucede en el ordenador con total
+- Ofrece un control absoluto de todo lo que sucede en el ordenador con total
   libertad.
-+ Como inconvenientes, no es un lenguaje sencillo de aprender, que requiere una
+- Como inconvenientes, no es un lenguaje sencillo de aprender, que requiere una
   continua práctica y un serio seguimiento si queremos tener el control de los
   programas.
