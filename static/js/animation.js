@@ -32,13 +32,13 @@ const style = {
         keywords: ['let', 'if', 'for', 'while', 'class', 'return', 'function'],
 
         colors: {
-            default: '#fff',
-            identifier: '#00f',
-            keyword: '#f0f',
-            number: '#f00',
-            string: '#0f0',
-            fun_call: '#0ff',
-            comment: '#999',
+            default:    '#fff', // white
+            identifier: '#0ef', // blue
+            fun_call:   '#a0f', // purple
+            keyword:    '#f05', // red
+            number:     '#f60', // orange
+            string:     '#0f5', // green
+            comment:    '#555', // grey
         }
     }
 }
@@ -182,15 +182,14 @@ class Animation {
 
     // Types of lines:
     //   0. comment identifier identifier ...
-    //   1. (empty line)
-    //   2. [keyword] identifier assign expression;
-    //   3. keyword (expression) { (add indent)
-    //   4. } (end indent)
+    //   1. [keyword] identifier assign expression;
+    //   2. keyword (expression) { (add indent)
+    //   3. } (end indent)
     renderLine() {
         const code = this.style.code;
         this.cursor = 0;
 
-        switch (this.random(0, this.indent > 0 ? 5 : 4)) {
+        switch (this.random(0, this.indent > 0 ? 4 : 3)) {
 
             case 0:
                 let comment = '';
@@ -199,9 +198,7 @@ class Animation {
                 this.renderText(code.comment + comment, code.colors.comment);
                 break;
 
-            case 1: break;
-
-            case 2:
+            case 1:
                 if (this.random(0, 2)) {
                     this.renderText(this.rdItem(code.keywords), code.colors.keyword);
                     this.cursor += this.fontSize / 2;
@@ -214,7 +211,7 @@ class Animation {
                 this.renderText(code.endl, code.colors.default); // End line
                 break;
 
-            case 3:
+            case 2:
                 this.indent++;
                 this.renderText(this.rdItem(code.keywords), code.colors.keyword); // Keyword
                 this.cursor += this.fontSize / 2;
@@ -224,7 +221,7 @@ class Animation {
                 this.renderText(' ' + code.blockOpen, code.colors.default); // {
                 break;
 
-            case 4:
+            case 3:
                 this.indent--;
                 this.renderText(code.blockClose, code.colors.default);
                 break;
