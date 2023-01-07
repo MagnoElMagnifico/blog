@@ -14,7 +14,7 @@ const style = {
     },
 
     indent: 4, // Number of chars, relative to fontSize
-    maxIndent: 10,
+    maxIndent: 15,
     linesPerSecond: 1000, // Limited by 60FPS of JS Canvas
 
     code: {
@@ -191,7 +191,7 @@ class Animation {
         this.cursor = 0;
 
         let type;
-        if (this.indent > 0 && this.indent <= code.maxIndent)
+        if (this.indent > 0 && this.indent <= this.style.maxIndent)
             type = this.rdItem([0, 1, 2, 3]);
         else if (this.indent <= 0)
             type = this.rdItem([0, 1, 2]);
