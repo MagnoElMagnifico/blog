@@ -14,6 +14,7 @@ const style = {
     },
 
     indent: 4, // Number of chars, relative to fontSize
+    maxIndent: 10,
     linesPerSecond: 1000, // Limited by 60FPS of JS Canvas
 
     code: {
@@ -182,15 +183,22 @@ class Animation {
 
     // Types of lines:
     //   0. comment identifier identifier ...
-    //   1. (empty line)
-    //   2. [keyword] identifier assign expression;
-    //   3. keyword (expression) { (add indent)
-    //   4. } (end indent)
+    //   1. [keyword] identifier assign expression;
+    //   2. keyword (expression) { (add indent)
+    //   3. } (end indent)
     renderLine() {
         const code = this.style.code;
         this.cursor = 0;
 
-        switch (this.random(0, this.indent > 0 ? 5 : 4)) {
+        let type;
+        if (this.indent > 0 && this.indent <= code.maxIndent)
+            type = this.rdItem([0, 1, 2, 3]);
+        else if (this.indent <= 0)
+            type = this.rdItem([0, 1, 2]);
+        else
+            type = this.rdItem([0, 1, 3]);
+
+        switch (type) {
 
             case 0:
                 let comment = '';
@@ -199,9 +207,7 @@ class Animation {
                 this.renderText(code.comment + comment, code.colors.comment);
                 break;
 
-            case 1: break;
-
-            case 2:
+            case 1:
                 if (this.random(0, 2)) {
                     this.renderText(this.rdItem(code.keywords), code.colors.keyword);
                     this.cursor += this.fontSize / 2;
@@ -214,7 +220,7 @@ class Animation {
                 this.renderText(code.endl, code.colors.default); // End line
                 break;
 
-            case 3:
+            case 2:
                 this.indent++;
                 this.renderText(this.rdItem(code.keywords), code.colors.keyword); // Keyword
                 this.cursor += this.fontSize / 2;
@@ -224,7 +230,7 @@ class Animation {
                 this.renderText(' ' + code.blockOpen, code.colors.default); // {
                 break;
 
-            case 4:
+            case 3:
                 this.indent--;
                 this.renderText(code.blockClose, code.colors.default);
                 break;
