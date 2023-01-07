@@ -10,6 +10,7 @@ const style = {
         family: 'Fira Code',
         size: 100,       // % relative to canvas
         lineHeight: 100, // % relative to fontSize
+        mobileFactor: 3, // Scale in mobiles
     },
 
     indent: 4, // Number of chars, relative to fontSize
@@ -68,9 +69,13 @@ class Animation {
         this.canvas.height = window.innerHeight < 400 ? 400 : window.innerHeight;
 
         // Update variables accordingly
-        this.fontSize   = this.canvas.width * this.style.font.size / 10_000;
+        this.fontSize = this.canvas.width * this.style.font.size / 10_000;
+        // Scale font size on mobile
+        if (window.innerWidth < 800)
+            this.fontSize *= this.style.font.mobileFactor;
         this.lineHeight = this.fontSize * this.style.font.lineHeight / 90;
 
+        // Apply the font
         this.ctx.font = `${this.fontSize}px ${this.style.font.family}`;
 
         // Render a background to avoid seeing the background of the page
