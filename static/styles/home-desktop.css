@@ -1,4 +1,4 @@
-/* Presentation */
+/**** Presentation ****/
 #start {
     width: 60vw;
 }
@@ -13,7 +13,8 @@
 #blog-title       { font-size: 2rem; }
 #blog-description { font-size: 1rem; }
 
-/* About */
+
+/**** About ****/
 #about {
     display: flex;
     justify-content: flex-start;
@@ -27,7 +28,8 @@
     transform: none;
 }
 
-/* Porfolio */
+
+/**** Porfolio ****/
 .project {
     padding: 1rem;
     min-width: 100px;

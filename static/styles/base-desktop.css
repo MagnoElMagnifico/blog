@@ -3,6 +3,7 @@ main {
     width: 700px;
 }
 
+
 /**** Basic text elements ****/
 h1, h2, h3, h4 { margin: 1.5rem 0 0.3rem 0; }
 h1 + h2, h2 + h3, h3 + h4 { margin: 0; }
@@ -15,6 +16,7 @@ img {
     border: 3.5px solid var(--border-color);
 }
 
+
 /**** Blog entries ****/
 .blog-entry {
     margin: 1rem 0;
@@ -22,11 +24,13 @@ img {
     border-bottom: 3.5px solid var(--border-color);
 }
 
+
 /**** Box list ****/
 .box-list a {
     font-size: 1rem;
     min-width: 2.5rem;
 }
+
 
 /**** Footer ****/
 footer {

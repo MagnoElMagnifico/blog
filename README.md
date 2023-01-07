@@ -64,7 +64,6 @@ estructura:
 Plantillas, HTML, CSS, JS
 
 - Probar si aparecen las descripciones en las previsualizaciones de los links
-- Revisar la página desde el móvil
 - Mejorar el _footer_ en las páginas cortas
 - Convertir todos los nombres a español?
 
@@ -72,7 +71,6 @@ Plantillas, HTML, CSS, JS
 
 Drafts:
 
-- !prog: HTML, CSS, Regex, YAML
 - C: General
 - C++: básico, OpenGL
 - C#
@@ -120,6 +118,7 @@ TODOs sin importancia
     - Imágenes con link: <https://gohugo.io/templates/render-hooks/>
 
 - Animaciones CSS
+    - Animación de HOME: varios generaciones de código a la vez
     - Para la descripción del Blog: <https://codepen.io/kazed972/pen/bQOQGR>
     - Matrix: <https://codepen.io/syropian/pen/bLzAi>
     - Terminal: <https://codepen.io/Tbgse/pen/dYaJyJ>
