@@ -80,6 +80,7 @@ Drafts:
 - Windows: configuración, Powershell
 - Tools: nvim-config, package-managers (choco, apt, pacman)
 - Network
+- Unix
 
 -----------------------------------------------------------
 
