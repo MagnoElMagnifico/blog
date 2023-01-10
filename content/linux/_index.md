@@ -1,8 +1,5 @@
 ---
 title: Linux
-page_template: post.html
-template: section.html
-sort_by: weight
 ---
 
 GNU/Linux (sí, ese es su nombre completo), es un conjunto de Sistemas Operativos
@@ -30,7 +27,9 @@ Este es un mapa de la evolución del algunas de las distribuciones más conocida
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b5/Linux_Distribution_Timeline_21_10_2021.svg)
 
+
 # TODO:
+
 - Instalación de Arch explicada
     - Discos duros, particiones, ...
     - Programas básicos necesarios (+ programas ya instalados)

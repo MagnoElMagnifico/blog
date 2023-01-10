@@ -1,19 +1,18 @@
 ---
 title: tmux
+description: >
+    tmux, un programa de terminal que permite crear otras terminales dentro de
+    él: pestañas, divisiones. Así puedes ser mucho más productivo.
 date: 2022-08-29
 weight: 3
-
-extra:
-    show_toc: true
-    show_info: true
 ---
 
 `tmux` es un _terminal multiplexer_, un programa que permite, con una sola
 pantalla; crear, acceder y controlar varias terminales. Está basado en sesiones,
 es decir, colecciones de estas _pseudo terminales_; cada una ocupando su propia
-ventana, cuyo comportamiento recuerda un poco a Vim. 
+ventana, cuyo comportamiento recuerda un poco a Vim.
 
-Para iniciarlo: 
+Para iniciarlo:
 
 ```bash
 tmux
@@ -23,20 +22,22 @@ Y en principio seguimos teniendo una consola, a excepción de la barra
 verde informativa abajo de todo, que indica la sesión activa y que estamos en
 tmux.
 
-Para salir: 
+Para salir:
 
 ```bash
 exit
 ```
 
+
 # Vocabulario de tmux
 
-- _Sessions_ o sesiones: contiene una o más ventanas, como si fuese un _workspace_ 
+- _Sessions_ o sesiones: contiene una o más ventanas, como si fuese un _workspace_
 - _Windows_ o ventanas: contiene paneles y disposiciones de estos. Cada una se puede dividir en varios paneles
 - _Panels_ o paneles: una _pseudo terminal_ o una _terminal dentro de otra terminal_
 
 ![](https://arcolinux.com/wp-content/uploads/2020/02/tmux-installation-02.png)
 Fuente: [Arco Linux](https://arcolinux.com/everthing-you-need-to-know-about-tmux-introduction/)
+
 
 # Comandos de tmux
 
@@ -59,16 +60,17 @@ tmux list-sessions
 ```
 
 > **El comando más importante**: la ayuda:
-> 
+>
 > - `<prefijo> ?`
 > - `tmux list-keys`
 > - `:list-keys`
-> 
+>
 > Y a mayores, información sobre todas las sesiones, ventanas, paneles, etc:
 > `tmux info`.
 
 > Alternativamente, existe la ayuda en _manpages_: `man tmux` o
 > [online](https://www.man7.org/linux/man-pages/man1/tmux.1.html)
+
 
 ## Comandos de teclado
 
@@ -136,6 +138,7 @@ Fuente: [tmux cheat sheet](https://tmuxcheatsheet.com)
 > corriendo en el fondo. ¿Si reiniciamos el ordenador, se irá todo a tomar por
 > saco?
 
+
 ## Comandos
 
 Este modo es muy similar, por no decir igual, al de Vim. Realizan diversas
@@ -153,6 +156,7 @@ ejecutarán al iniciarse (igual que Vim, vamos).
 - `:setw synchronize-panes`: activa la sincronización de paneles, es decir,
   envía el mismo comando a todos los paneles
 
+
 # Modos
 
 Por defecto, tmux permite interactuar con la terminal activa, pero también
@@ -167,6 +171,7 @@ existen varios modos en los que poder operar.
 - _Choose mode_: permite escoger entre varias opciones, usado en
   `choose_buffer`, `choose-client` y `choose-tree`.
 
+
 ## Modo copiar
 
 Los siguientes atajos son los del modo Vim, actívalos con `setw -g mode-keys vi`.
@@ -174,7 +179,7 @@ Los siguientes atajos son los del modo Vim, actívalos con `setw -g mode-keys vi
 - `<prefijo> [`: entrar al modo copiar
 - `<prefijo> ]`: pegar contenido del buffer
 
-Comandos del modo copiar: 
+Comandos del modo copiar:
 
 - `<espacio>`: comenzar selección
 - `<Esc>`: limpiar selección
@@ -182,7 +187,7 @@ Comandos del modo copiar:
 - `v`: cambiar a rectángulo
 - `V`: seleccionar línea
 ------------------------------------------------------------
-- `h j k l`: mover el cursor 
+- `h j k l`: mover el cursor
 - `0 $`: inicio/fin de línea (?)
 - `H M L`: mover cursor arriba/medio/abajo en la pantalla (_**h**igh_ &
   _**m**edium_ & _**l**ow_)
@@ -197,6 +202,7 @@ automáticamente (`buffer0001`, `buffer0002`... hasta `buffer-limit`) o
 manualmente. Estos últimos se crean con `:set-buffer` o `:load-buffer`, o
 puedes renombrarlos con `:set-buffer -n`. Para usarlos, usa el comando
 `paste-buffer`. Estos no tienen límite.
+
 
 # Configuración
 

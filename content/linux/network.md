@@ -1,6 +1,8 @@
 ---
 title: Redes
 weight: 1
+description: TODO
+date: TODO
 draft: true
 ---
 

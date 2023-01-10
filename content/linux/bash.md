@@ -2,13 +2,7 @@
 title: Shell, Bash y Bashrc
 weight: 1
 date: 2022-08-31
-
-extra:
-    show_toc: true
-    show_info: true
-    ref_link:
-        name: StackOverflow Shell vs Console vs Terminal
-        link: https://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal
+description: TODO
 ---
 
 <!-- TODO: teletyper tty -->
@@ -19,7 +13,7 @@ extra:
 Una _shell_ un tipo de software que provee de una interfaz para los usuarios de
 un sistema operativo para que estos puedan interactuar con el _kernel_ y sus
 servicios. Puedes imaginarlo como una capa (concha) alrededor del kernel y sus
-servicios 
+servicios
 
 También existen _shells_ para diversos lenguajes de programación, por ejemplo,
 ejecuta `python` sin ningún argumento (sal con `exit()`).
@@ -31,6 +25,11 @@ La shell estándar que casi todos sistemas Linux modernos utilizan es _Bourne
 Again Shell_ (`bash`), que es derivada de _Bourne Shell_ (`sh`), la primera que
 apareció en Unix. Otras alternativas populares son `ZSH` y `Fish`. Y en Windows
 se usa `Powershell`.
+
+Fuente: [StackOverflow Shell vs Console vs Terminal][fuente]
+
+[fuente] https://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal
+
 
 # Terminal
 
@@ -44,10 +43,11 @@ tanto estos también se pueden llamar **emuladores de terminal** y
 **pseudo-terminales**.
 
 Para dejarlo más claro, algunos ejemplos son [Windows Terminal] o
-[Alacritty]. 
+[Alacritty].
 
 [Windows Terminal]: https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701
 [Alacritty]: https://github.com/alacritty/alacritty/
+
 
 # Consola
 
@@ -57,20 +57,21 @@ bajo nivel con el Sistema Operativo. Los sistemas Linux actuales ofrecen
 _consolas virtuales_, a las que puedes acceder con `Alt + F1` o `Alt + Ctrl +
 F1`, siendo cada tecla de función una consola distinta.
 
+
 # Prompt
 
 Un _command prompt_ es un campo de entrada para comandos del usuario, y en bash
 suele tener este aspecto (aunque es personalizable):
 
 ```
-<username>@<hostname>:~$ 
+<username>@<hostname>:~$
 ```
 
 El `~` representa el directorio actual, así que si haces `cd
 blog/content/linux/` por ejemplo, cambiará a:
 
 ```
-<username>@<hostname>:~/blog/content/linux$ 
+<username>@<hostname>:~/blog/content/linux$
 ```
 
 Y en caso de ser _root_:
@@ -78,6 +79,7 @@ Y en caso de ser _root_:
 ```
 root@<hostname>:~/blog/content/linux#
 ```
+
 
 # Archivos que ejecuta Bash
 
@@ -149,6 +151,7 @@ comportamiento de dicha shell, pero manteniendo estándares POSIX.
 [Manual]: https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html
 [GNU Manual]: https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
 
+
 # Bash config
 
 Como ya he mencionado antes, la configuración de Bash se puede almacenar en el
@@ -162,6 +165,7 @@ script:
 # o bien
 source ~/.bashrc
 ```
+
 
 ## Bash Prompt
 
@@ -220,24 +224,25 @@ Modificando la variable `PS1`, podrás modificar tu prompt.
 - `\V`: versión de bash completa (e.g.: 2.0.0)
 - `\v`: versión de bash (e.g.: 2.0)
 
-Colores (uso `\e[<colornum>m...\e[m`): 
+Colores (uso `\e[<colornum>m...\e[m`):
 
 |          | Fondo | Letra |
 | :------: | :---: | :---: |
-| Negro    | 40    | 30    | 
-| Rojo     | 41    | 31    | 
-| Verde    | 42    | 32    | 
-| Amarillo | 43    | 33    | 
-| Azul     | 44    | 34    | 
-| Violeta  | 45    | 35    | 
-| Cian     | 46    | 36    | 
-| Blanco   | 47    | 37    | 
+| Negro    | 40    | 30    |
+| Rojo     | 41    | 31    |
+| Verde    | 42    | 32    |
+| Amarillo | 43    | 33    |
+| Azul     | 44    | 34    |
+| Violeta  | 45    | 35    |
+| Cian     | 46    | 36    |
+| Blanco   | 47    | 37    |
 
 Ejemplo:
 
 ```bash
-export PS1="\e[46m\u@\h:\w\e[m\$ " # en cian: <usuario>@<hostname>:~$ 
+export PS1="\e[46m\u@\h:\w\e[m\$ " # en cian: <usuario>@<hostname>:~$
 ```
+
 
 ## Alias
 
@@ -268,6 +273,7 @@ Recuerda que también es posible añadir estos alias a su propio archivo:
 
 > **Nota**: Si se te lía, puedes usar `unalias -a` para eliminar todos los alias
 
+
 ## Shopt
 
 El comando `shopt` puede usarse para cambiar cualquiera de está opciones con el
@@ -280,7 +286,7 @@ parámetro `-s`:
   durante el completado
 - `checkwinsize`: después de cada comando, comprueba que el tamaño en líneas
   y columnas es correcto; y si no, lo cambia
-- `cmdhist`: bash intentará guardar en la misma entrada del historial, un 
+- `cmdhist`: bash intentará guardar en la misma entrada del historial, un
   un comando de multilínea. Esto permite editarlos facilmente
 - `histappend`: se añade el histórico al archivo descrito en `HISTFILE`
 
@@ -288,6 +294,7 @@ Puedes listar todas las opciones con `shopt -p`, y las actualmente configuradas
 con `shopt -s`.
 
 Más información: [ComputerHope](https://www.computerhope.com/unix/bash/shopt.htm)
+
 
 ## Bind
 
@@ -307,6 +314,7 @@ export PATH=$PATH:<new/path>
 
 > **Nota**: Ojo con modificar esta variable, ya que podrías eliminar todo el
 > contenido y no podrías ejecutar nada.
+
 
 ## Colores de ls
 
@@ -345,7 +353,8 @@ Ejemplo:
 LS_COLORS=$LS_COLORS:'di=0;35:' # Concatena el valor al resto de la variable
 export LS_COLORS
 ```
- 
+
+
 # Atajos de teclado estándar para terminal
 
 Por defecto usa los atajos de Emacs:

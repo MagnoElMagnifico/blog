@@ -1,12 +1,14 @@
 ---
 title: Package Managers
+description: TODO
 weight: 6
-date: 2022-09-28
+date: TODO
 draft: true
-
-extra:
-    show_info: true
-    ref_link:
-        name: Pacman CheatSheet
-        link: https://devhints.io/pacman
 ---
+
+
+# Links
+
+[Pacman CheatSheet][pc]
+
+[pc]: https://devhints.io/pacman

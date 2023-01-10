@@ -1,6 +1,6 @@
 ---
 title: Compilación en C
-date: 07-11-2022 12:45
+date: 2022-11-07
 draft: true
 ---
 
@@ -18,7 +18,7 @@ gcc main.c suma.o -o obj
 ### Static lib ###
 # También antes de nada: gcc -c suma.c
 # Luego usar suma.o
-gcc -static -c suma.c 
+gcc -static -c suma.c
 ar rs libsuma.a suma.o # Importante que empiece por lib
 gcc main.c -o staticlib -L$PWD -lsuma
 

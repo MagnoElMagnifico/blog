@@ -1,15 +1,15 @@
 ---
 title: Git y Github
-description: Leyenda para los comandos más básicos de git, además de una guía para contribuir a proyectos Open Source en GitHub
+description: >
+    Leyenda para los comandos más básicos de git, además de una guía para
+    contribuir a proyectos Open Source en GitHub
 weight: 1
 date: 2021-07-30
-
-extra:
-    show_toc: true
-    show_info: true
 ---
 
+
 # GIT
+
 Software para el control de versiones, guarda un registro de todos los cambios a
 unos archivos y permite trabajar más fácilmente en equipos. Creado por Linux
 Torballs (creador del Kernel de GNU/Linux), lo cual es software libre.
@@ -22,21 +22,23 @@ Se puede editar el código desde github (botón del lápiz, y guardar cambios)
 
 - `git commit -m "descripción"` : guarda los cambios con una descripción dada
 - `git commit -am "descripción"` : git add + git commit
-- `git commit --amend` : abre Vim para editar las descripciones de los commit
+- `git commit --amend` : abre `$EDITOR` para editar las descripciones de los commit
 
-Configura el email y usuario necesarios para git
+Configura el email y usuario necesarios para git:
+
 - `git config --global user.username "user"`
 - `git config --global user.email "email"`
 
 Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
-contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020
-(entra en vigor a partir del 13 de Agosto de 2021), no debes introducir
-tu contraseña real, sino un _Personal Access Token_ (PAT) que puedes
-generar desde tu cuenta en `Settings > Developer settings > Personal access tokens > Generate new token`
+contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020 , no
+debes introducir tu contraseña real, sino un _Personal Access Token_ (PAT) que
+puedes generar desde tu cuenta en `Settings > Developer settings > Personal
+access tokens > Generate new token`.
+
 Debes introducir un nombre descriptivo, su fecha máxima de validez y los
-permisos que le quieras aportar. Finalmente pulsa en `Generate token.`
-y úsalo en lugar de tu contraseña. De esta forma resulta mucho más seguro
-y puedes controlar mejor los permisos.
+permisos que le quieras aportar. Finalmente pulsa en `Generate token.` y úsalo
+en lugar de tu contraseña. De esta forma resulta mucho más seguro y puedes
+controlar mejor los permisos.
 
 - `git pull` : actualiza el repositorio
 - `git clone <url>` : copiar repositorio
@@ -45,11 +47,15 @@ y puedes controlar mejor los permisos.
 - _tag_: especifica versiones de un proyecto
 - `git tag <nametag> -m "descripción"` : crea una tag
 
+
 ## Reset
+
 - `git reset --reset [--hard] <code>` : vuelve a un estado anterior borrando los commits posteriores
 - `git revert <code> && git add .` && `git revert --continue` : Crea un nuevo commit que cambia el repositorio a un estado anterior por medio de un merge
 
+
 ## Ramas
+
 - `git branch <nombre>` : crear una rama
 - `git branch` : muestra las ramas creadas y en cuál estás
 - `git branch -a`: muestra todas las ramas
@@ -60,12 +66,16 @@ y puedes controlar mejor los permisos.
 - _Fork_: clona el repositorio (repositorio publico) en GitHub a otra cuenta
 - _Pull request_: petición para juntar el fork con el proyecto inicial
 
+
 ## Sub módulos (repositorio dentro de otro)
+
 - `git submodule add <url>` : añade un submódulo
 - `git submodule init` : inicia el submódulo tras clonar el repositorio original
 - `git submodule update` : actualiza (clona) los submódulos iniciados
 
+
 ## Info
+
 - `git status -s` : muestra el estado de los archivos en la carpeta del proyecto
 - `git diff [archivo]` : muestra todos los cambios en relación al master remoto
 - `git log [archivo]` : muestra info de los commits (usuario, fecha, código, descripción)
@@ -73,13 +83,18 @@ y puedes controlar mejor los permisos.
 - `git blame <archivo>` : muestra info de los cambios de un archivo con su código de commit, usuario, fecha, etc.
 - `git reflog` : historial del repositorio local
 
-# Contribuir a Open Source
+
+# Contribuir a Open Source en GitHub
+
 La página principal donde aparecen todos estos proyectos Open Source es en
 [GitHub](https://github.com), para ello, es necesario tener una cuenta.
 
 El siguiente paso es encontrar un proyecto al que queramos contribuir. Dentro
 de la pestaña [`Explore`](https://github.com/explore) podrás encontrar
 diferentes repositorios basados en tus intereses, populares, por categorías, etc.
+
+
+## Issues
 
 Dentro de un repositorio, tenemos varias pestañas disponibles. Aparte de la
 pestaña del código (`code`), existen otras como `Issues`, `Pull requests`,
@@ -93,10 +108,16 @@ estar empezando, puede que sea buena idea buscar por `good first issue`, ya que
 suelen ser problemas más sencillos. Pero si estamos empezando, puede que sea
 mejor arreglar algo de la documentación para coger la mecánica.
 
+
+## Pull requests
+
 La pestaña de `Pull requests` contiene posibles soluciones a estos `Issues` que
 algunos contribuyentes han propuesto. Para que esta solución se acepte, uno de
 los dueños del repositorio deberá revisar tus cambios comprobando que todo sea
 correcto antes de juntarlo con el proyecto.
+
+
+## Cómo contribuir
 
 Las acciones disponibles en un repositorio es observar (`watch`, se te notificará
 de los recientes cambios del repositorio), indicar que te gusta (`start`) y

@@ -1,7 +1,8 @@
 ---
 title: Instalación de Arch Linux
+description: TODO
+date: TODO
 weight: 4
-# date: TODO
 draft: true
 ---
 [1]: https://es.wikipedia.org/wiki/Arch_Linux

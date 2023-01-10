@@ -1,8 +1,10 @@
 ---
 title: Cuando Linux crashea
 description: Algunos consejos para cuando Linux deja de funcionar.
-date: 1-1-2023
+date: 2023-1-1
+weight: -1
 ---
+
 
 # Programa que se congela
 

@@ -1,12 +1,9 @@
 ---
 title: Tipos de archivos
 weight: 1
-
+description: TODO
+date: TODO
 draft: true
-
-extra:
-    show_toc: true
-    show_info: true
 ---
 
 [1]: https://www.howtogeek.com/448446/how-to-use-the-ls-command-on-linux/

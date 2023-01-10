@@ -1,12 +1,9 @@
 ---
 title: Hugo SSG
-description: Guía de uso de Hugo para crear una página estática.
+description: Guía de uso de Hugo para crear una página web estática fácilmente.
 date: 2022-09-05
+weight: -1
 draft: true
-
-extra:
-    show_info: true
-    show_details: true
 ---
 
 ```bash
@@ -58,6 +55,7 @@ contenido de forma automática (`--disableLiveReload`, esta opción o `--watch=f
 [Hugo]: https://gohugo.io
 [temas]: https://themes.gohugo.io
 
+
 # Instalación
 
 La instalación es muy sencilla, puedes usar un _package manager_ o bien puedes
@@ -66,11 +64,13 @@ descargar el archivo de instalación desde la página [releases de github][insta
 Fuente y más información: [Instalación de Hugo](https://gohugo.io/getting-started/installing)
 [install]: https://github.com/gohugoio/hugo/releases
 
+
 # Comandos
 
 ```
 hugo help
 ```
+
 
 # Estructura
 
@@ -106,6 +106,7 @@ hugo help
 
 <!-- TODO: https://gohugo.io/content-management/ -->
 
+
 # Plantillas
 
 Las plantillas de Go son simplemente archivos de HTML con variables y funciones,
@@ -134,6 +135,7 @@ Variables
 
 ```
 
+
 ## Partials
 
 Para evitar tener que repetir todo el HTML de una página, puedes crear
@@ -157,6 +159,7 @@ scope son las variables a las que tendra acceso el partial. si le pasas un `.` t
 ```
 {{ partial "name" (dict "name" "value" "name2" "value2" ... }}
 ```
+
 
 # a
 
@@ -191,6 +194,7 @@ Usar el bloque
 {{ end }}
 ```
 
+
 ## Taxonomias
 
 Categorias
@@ -216,6 +220,7 @@ moods: ["abc", "bcd"]
 ```
 
 exite moods o se lo invento el pibe este?
+
 
 ## config
 
@@ -249,6 +254,7 @@ foo = "bar"
 ```
 
 configuracion extra en `data`
+
 
 # frontmatter /meta data
 

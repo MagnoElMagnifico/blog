@@ -1,13 +1,10 @@
 ---
 title: Archivos de link
 weight: 2
-
-extra:
-    show_toc: true
-    show_info: true
-    ref_link:
-        name: Linux.com
-        link: https://www.linux.com/topic/desktop/understanding-linux-links/
+description: >
+    Los archivos link en Linux son muy útiles e interesantes: puedes tener el
+    mismo archivo en distintas direcciones.
+date: TODO
 ---
 
 [1]: https://www.linux.com/topic/desktop/understanding-linux-links/
@@ -28,7 +25,9 @@ Se pueden usar en los siguientes ámbitos:
 - Enlazar librerías.
 - Tener como una copia del mismo archivo en diferentes lugares.
 
+
 # Tipos de links
+
 - _Hard links_
 - _Symbolic links_
 
@@ -41,7 +40,9 @@ Los _enlaces simbólicos_ sí que pueden referirse a directorios de otros
 dispositivos, pero en el caso de eliminar el original aparecerán como _rotos_.
 A diferencia de los _hard links_, estos sí tiene su propio inodo.
 
+
 # Creación de links
+
 Para crear un _hard link_ se usa simplemente el siguiente comando:
 
 ```sh
@@ -61,7 +62,9 @@ Y se borrarían como un archivo completamente normal:
 rm LINK
 ```
 
+
 # ¿Cómo diferenciar los dos tipos?
+
 En realidad, solamente podrás diferenciar los _soft links_, porque aparecerá
 (tras un comando `ls -l`) una `l` indicando que es un enlace. Además de eso,
 después del nombre del archivo, se mostrará a que otro archivo hace referencia:
@@ -78,3 +81,9 @@ Puede que si que exista una forma de comprobarlo, pero yo todavía no lo he
 descubierto.
 
 > **Más?**: Usa `$ man ln`
+
+# Fuente
+
+[Linux.com][linux.com]
+
+[linux.com]: https://www.linux.com/topic/desktop/understanding-linux-links/

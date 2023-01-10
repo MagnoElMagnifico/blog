@@ -1,13 +1,8 @@
 ---
 title: Vim y Neovim
 description: Una pequeña overview de las principales funcionalidades de Vim con sus comandos
+date: 2022-7-26
 weight: 2
-extra:
-  show_toc: true
-  show_details: true
-  ref_link:
-    name: El último tutorial de Vim
-    link: https://danielmiessler.com/study/vim
 ---
 
 > **Nota**: La mejor forma para aprender Vim es practicándolo, no intentes
@@ -36,16 +31,16 @@ No sé, pero creo que es curioso e interesante mencionarlos:
 # La ayuda de Vim
 
 Otra increíble característica de Vim es su maravillosa documentación y manual
-de ayuda. De forma offline y sin salir del editor, puedes buscar lo que 
+de ayuda. De forma offline y sin salir del editor, puedes buscar lo que
 necesites saber gracias al comando `:help` o `:h`.
 
 En la documentación habrá unas **etiquetas** que funcionarán como enlaces en una
 página web. Estas están entre `|`, pero se esconden cuando el resaltado de
-sintaxis está activado. Para seguir el enlace usa `<C-]>` (o buscar ayuda 
+sintaxis está activado. Para seguir el enlace usa `<C-]>` (o buscar ayuda
 sobre donde está el cursor) y para regresar `<C-o>`.
 
 Si no estás seguro de lo que estás buscando, puedes autocompletar el contenido
-del comando `:help` con `<C-d>`, que te mostrará todas las etiquetas 
+del comando `:help` con `<C-d>`, que te mostrará todas las etiquetas
 relacionadas.
 
 Para navegar más rápido entre las distintas secciones de la documentación, usa
@@ -100,8 +95,8 @@ para el resto de elementos de la ayuda, ya que contiene todos los enlaces a los
 demás archivos, incluyendo (al final de todo) la documentación de cada plugin a
 mayores que instales. Encontrarás un link a la página y su tema principal.
 
-En la página `index.txt` se muestran todos los comandos (por defecto) del 
-editor, con una breve descripción y un link para más información. Es buena 
+En la página `index.txt` se muestran todos los comandos (por defecto) del
+editor, con una breve descripción y un link para más información. Es buena
 idea consultar esta página cuando creas tu configuración y cambias los atajos,
 ya que podrías estar inhabilitando otros comandos útiles. Si no quieres ver
 absolutamente todos, y que habrá algunos que en tu vida usarás, ve a
@@ -122,7 +117,7 @@ los principales comandos de movimiento y sirve de transición hacia los otros
 modos. Toda tecla que pulses se tomará como un comando, no para escribir texto.
 
 Para hacer esto último, debes acceder al modo _insert_ presionando la tecla `i`.
-Ahora podrás escribir texto como en otros editores. 
+Ahora podrás escribir texto como en otros editores.
 
 También existe el _replace mode_, al que se accede con `R`, y hace exactamente
 lo que dice: reemplazar el carácter actual por el nuevo que escribas.
@@ -140,7 +135,7 @@ _visual mode_, pero en cambio se comporta de forma similar a los programas de
 edición de texto de Windows: seleccionas texto y al comenzar a escribir se
 sustituye el texto.
 
-> **Nota**: al sustituir el texto seleccionado al comenzar a escribir algo, 
+> **Nota**: al sustituir el texto seleccionado al comenzar a escribir algo,
 > `h j k l` dejan de funcionar y solo puedes usar las flechas del teclado. Si
 > configuras las flechas a otras acciones, este modo resulta inútil. Además, se
 > puede simular su funcionamiento desde _visual mode_, por lo que no es un modo
@@ -167,7 +162,7 @@ Para describir en qué modo se está ejecutando determinado comando, se añade `
 
 # Vim como lenguaje
 
-> A partir de ahora, los comandos que aparecen listados se ejecutarán desde el 
+> A partir de ahora, los comandos que aparecen listados se ejecutarán desde el
 > modo _normal_ a menos que se diga lo contrario.
 
 Realmente, los comandos en Vim pueden entenderse como un lenguaje por sí mismo,
@@ -189,7 +184,7 @@ dependen del modo en el que te encuentres.
 
 **Movimientos / Nombres**: estos se pueden usar tanto como para mover el cursor,
 como ser los objetos a los que realizar las acciones. Por ejemplo, puedo moverme
-una palabra y entonces considera un _movimiento_. En cambio puedo usar un 
+una palabra y entonces considera un _movimiento_. En cambio puedo usar un
 operador para borrar y combinarlo con un movimiento de palabra. En este caso,
 yo lo considero un _nombre_, ya que está describiendo dónde el operador tiene
 que actuar. Pero ojo, no todos los operadores necesitan un nombre, pero sí la
@@ -220,7 +215,7 @@ mayúscula del operador es sinónimo de combinarlo con `$`: `D`=`d$`, `C`=`c$`..
 
 > Estes dos últimos solo se pueden aplicar a nombres.
 
-**Bonus**: 
+**Bonus**:
 - Vim también ofrece la posibilidad de forzar con `v V <C-v>` a forma de
   modificador, para que un nombre se interprete carácter por carácter, línea a
   línea, o en forma de bloque; a diferencia de su forma normal. Por ejemplo:
@@ -289,7 +284,7 @@ comandos se tratarán en su respectivo apartado, pero `<C-x><C-e> <C-x><C-y>` se
 puede usar para mover la ventana una línea hacia abajo, arriba; teniendo en
 cuenta que el cursor no puede salir de la ventana ni desplazarse.
 
-Operaciones con registros: 
+Operaciones con registros:
 - `<C-r><id>`: insertar el contenido del registro dado
 - El registro `=` es especial, ya que te permite ejecutar expresiones de
   VimScript: operaciones aritméticas, leer variables de entorno, registros y
@@ -362,7 +357,7 @@ operación.
 - `< >`: identar
 - `gq`: formatear
 
-# Movimientos y nombres 
+# Movimientos y nombres
 
 Aparte de los movimientos ya comentados (a continuación, para recordar),
 existen muchos otros.
@@ -374,7 +369,7 @@ existen muchos otros.
 - `t<char> f<char>`
 
 > `<C-g> g<C-g>`: muestra tu posición en el archivo actual
- 
+
 ¡Más comandos!:
 - `H M L`: arriba, centro, abajo de la pantalla (High - Medium - Low)
 - `+ -`: bajar, subir una línea; pero poniendo el cursor en el primer carácter no blanco
@@ -403,7 +398,7 @@ ejemplo.
 ```
 
 Para moverte entre párrafos usa `{ }`, y estos se consideran pedazos de texto
-separados por líneas en blanco (o con caracteres en blanco). También puedes 
+separados por líneas en blanco (o con caracteres en blanco). También puedes
 interpretarlo como hacer un salto hasta la siguiente línea vacía.
 
 ```
@@ -434,7 +429,7 @@ la llave que tiene el comentario y dice ser el bloque 2. En cambio, si estás
 fuera del bloque 2 pero en dentro del bloque 1, se moverá entre las llaves de
 la primera y última línea.
 
-Estos últimos movimientos, `( ) { } [{ ...`,  pueden usarse también como nombres, siempre y 
+Estos últimos movimientos, `( ) { } [{ ...`,  pueden usarse también como nombres, siempre y
 cuando no se usen con los modificadores `i a`, ya que se confundirían con los
 siguientes.
 
@@ -509,8 +504,8 @@ Buscan en la misma línea:
 
 Multilínea:
 - `/<patrón> ?<patrón>`: realiza una búsqueda en todo el archivo y se desplaza al primer _match_ desde el cursor hacia delante, hacia atrás
-- `n N`: repite la búsqueda anterior/al revés 
-- `* #`: realiza una búsqueda con `/ ?` usando como patrón la palabra debajo del cursor 
+- `n N`: repite la búsqueda anterior/al revés
+- `* #`: realiza una búsqueda con `/ ?` usando como patrón la palabra debajo del cursor
 - `g* g#`: igual que `* #` pero elimina `\< \>`, es decir, búsqueda parcial
 
 ## Marcas
@@ -527,12 +522,12 @@ El identificador o nombre de las marcas será una letra:
   Se pueden usar como movimientos/nombres.
 
 - Pero si es mayúscula funciona a través archivos, ya que incluyen el nombre
-  del archivo a la hora de recordar la marca. Estas se mantienen aunque se 
+  del archivo a la hora de recordar la marca. Estas se mantienen aunque se
   borre la línea de la marca o el buffer.
 
 Hay algunas marcas ya establecidas:
 
-- Las que se llaman números no se pueden establecer directamente, sino que 
+- Las que se llaman números no se pueden establecer directamente, sino que
   recuerdan las posiciones en donde estuviste al cerrar Vim. `'0` es la última
   posición en el que lo cerraste, `'1` la penúltima, etc.
 
@@ -556,12 +551,12 @@ Los movimientos de siguientes comandos se añadirán a la lista:
 > molesto que esos también se consideren saltos, ya que me llena la lista con
 > saltos inútiles cuando realmente quería conservar otro salto; como ir al
 > principio del archivo, búsqueda, etc.
-> 
+>
 > Supongo que hasta encontrar una solución usaré `<C-d> <C-u>`
 
 # Comandos Ex
 
-<!-- TODO 
+<!-- TODO
 ranges
 :checkhealth
 :read
@@ -630,7 +625,7 @@ Comandos para moverse entre buffers:
 - `:bm[odified]`: moverse al buffer anterior modificado (con cambios sin guardar)
 
 Abrir en una nueva ventana horizontal:
-- `:ball`: editar todos los buffers a la vez 
+- `:ball`: editar todos los buffers a la vez
 - `:sb[buffer] <id>`
 - `:sbn[ext] :sbp[revious]`
 - `:sbf[irst] :sbl[ast]`
@@ -639,7 +634,7 @@ Abrir en una nueva ventana horizontal:
 
 Borrar buffers:
 - `:bdel[ete] [<id>]`: elimina el buffer actual (si no se le ha dado el _id_)
-  de memoria y la lista de buffers 
+  de memoria y la lista de buffers
 - `:bw[ipeout] [<id>]`: igual que el comando anterior, pero realmente borra el
   buffer, todas las marcas relacionadas, etc. No usar a menos que sepas lo que
   haces.
@@ -667,7 +662,7 @@ Abrir y cerrar ventanas
 
 Moverse entre ventanas
 - `<Left> <Down> <Up> <Right>`: moverse a la ventana inmediatamente a la izquierda/abajo/arriba/derecha
-- `h j k l` = `<Left> <Down> <Up> <Right>` 
+- `h j k l` = `<Left> <Down> <Up> <Right>`
 - `t b`: moverse a la ventana más arriba a la izquierda/abajo a la derecha (_top-left_, _bottom-right_)
 - `p`: moverse a la última ventana visitada (_previous_)
 - `P`: moverse a la ventana de previsualización (_preview_)
@@ -690,7 +685,7 @@ Comandos Ex para las ventanas
 - `:vs[plit] [<archivo>]` = `<C-w>v`
 - `:sp[plit] [<archivo>]` = `<C-w>s`
 - `:n[ew] [<archivo>]` = `<C-w>n`
-- `:vne[w] [<archivo>]`: abrir una nueva ventana verticalmente con un nuevo archivo 
+- `:vne[w] [<archivo>]`: abrir una nueva ventana verticalmente con un nuevo archivo
 - `:sv[iew] [<archivo>]`: _split_ de solo lectura
 - `:sf[ind] [<archivo>]`: _split_ del archivo, buscado como en el comando `:f[ind]`
 
@@ -779,7 +774,7 @@ Registros que no guardan nada (para evitar que se sobreescriban otros registros.
 Útil para plugins):
 
 - `"_`: registro agujero negro (no se guarda)
-- `"-`: según la ayuda: 
+- `"-`: según la ayuda:
 
 > This register contains text from commands that delete less than one line,
 > except when the command specifies a register with ["x].
@@ -841,6 +836,13 @@ tanto locales como remotos a través de SSH, etc.
 - `d`: crear una carpeta  (da un nombre)
 - `R`: renombrar
 - `s`: cambiar orden (nombre, fecha, tamaño)
+
+
+# Referencias
+
+- [El último tutorial de Vim][utv]
+
+[utv]: https://danielmiessler.com/study/vim
 
 <!-- CONFIG
 textwidth=<number>

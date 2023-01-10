@@ -3,13 +3,6 @@ title: Awesome WM
 date: 2022-09-28
 weight: 5
 description: _Awesome_ es un _Tiling Window Manager_ centrado en el teclado, y uno de los más configurables.
-
-extra: 
-    show_toc: true
-    show_info: true
-    ref_link:
-        name: Post de DesdeLinux.net
-        link: https://blog.desdelinux.net/awesome-wm-instalacion-configuracion/
 ---
 
 Awesome en un _Window Manager_ o Gestor de Ventanas y es considerado uno de los
@@ -19,13 +12,18 @@ Sin embargo, a diferencia de Gnome, KDE y todos estos; este es un programa que
 solo se encargará de las ventanas, nada más. Awesome está pensado para usuarios
 más avanzados.
 
+Fuente: post de [DesdeLinux.net][fuente]
+
+[fuente]: https://blog.desdelinux.net/awesome-wm-instalacion-configuracion/
+
+
 # Instalación
 
 > **Nota**: Yo lo he instalado con ArcoLinux, por lo tanto, no he podido
 > comprobar esto.
 
 Deberás instalar con tu administrador de paquetes o _package manager_ los
-siguientes: 
+siguientes:
 
 - `awesome`: el propio gestor de ventanas
 - `vicious`: librería con algunos widgets para Awesome
@@ -43,6 +41,7 @@ echo "DISPLAY=<host>:1 exec awesome" >> ~/.initrc
 mkdir ~/.config/awesome
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome # Copia la configuración por defecto
 ```
+
 
 # Conocimiento básico
 
@@ -95,7 +94,7 @@ de atajos de teclado para controlar las ventanas, que normalmente comienzan por
 la tecla `super`, `mod` o la _tecla de Windows_. Aquí están algunas por defecto,
 pero como ya he comentado antes, es completamente customizable.
 
-<!-- TODO: probar correctamente --> 
+<!-- TODO: probar correctamente -->
 - `mod + s`: mostrar los atajos disponibles
 -------------------------
 - `mod + mouse1`: mover cliente con el ratón
@@ -120,10 +119,11 @@ pero como ya he comentado antes, es completamente customizable.
 - `mod + ctrl + space`: modo flotante
 - `mod + enter`: abrir una terminal
 
+
 # Configuración
 
 Modificar la configuración es bastante sencillo, ya que aparecen muchos
-comentarios explicando que hace cada cosa. Si necesitas más ayuda puedes ir a 
+comentarios explicando que hace cada cosa. Si necesitas más ayuda puedes ir a
 la [documentación oficial](https://awesomewm.org/apidoc/).
 
 ![](https://awesomewm.org/apidoc/images/AUTOGEN_awful_popup_defaultconfig.svg)

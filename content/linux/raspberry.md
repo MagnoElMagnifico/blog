@@ -1,7 +1,9 @@
 ---
-title: Raspberry Pi
-draft: true
 weight: 4
+title: Algunos comandos de Windows
+description: TODO
+date: TODO
+draft: true
 ---
 
 [imager]: https://www.raspberrypi.com/software/
