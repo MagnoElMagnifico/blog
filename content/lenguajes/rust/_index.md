@@ -5,6 +5,7 @@ description: >-
     de programación de sistemas de memoria segura; así como lo que también puedes
     hacer con este lenguaje pero que quizá sea mejor hacer con otro.
 weight: 2
+content_title: true
 ---
 
 Mis apuntes sobre Rust.

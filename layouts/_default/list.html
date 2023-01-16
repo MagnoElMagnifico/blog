@@ -6,7 +6,7 @@
     {{ end }}
 
     {{ if .RegularPages }}
-        <h1>Contenido</h1>
+        {{ if .Params.content_title }}<h1>Contenido</h1>{{ end }}
         {{ with .Sections }}
             <nav>{{ partial "span-sections" . }}</nav>
         {{ end }}
