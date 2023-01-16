@@ -22,9 +22,3 @@ publicación tanto en su forma de entrada como de salida, inspirándose en
 muchas convenciones existentes para marcar mensajes de correo electrónico usando
 texto llano. Fuente: [wikipedia][2]
 
-- **HTML**: TODO
-- **CSS**: TODO
-- **YAML**: TODO
-- **TOML**: TODO
-- **LaTeX**: TODO
-- **Regex**: TODO

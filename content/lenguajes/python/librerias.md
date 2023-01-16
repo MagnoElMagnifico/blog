@@ -3,8 +3,12 @@ title: Python Setup
 description: Breve explicación de como ejecutar programas Python e importar librerías
 weight: 4
 date: 2021-07-30
+draft: true
 ---
 
+TODO:
+- [Requirements.txt](https://realpython.com/lessons/using-requirement-files/)
+- [Mobile](https://www.monterail.com/blog/python-for-mobile-apps-is-it-a-good-choice)
 
 # Python
 Cuando se instala Python, ya se marca una opción de añadirlo a la variable `PATH`,
