@@ -2,7 +2,10 @@
     <h1 class="main-title">{{ .Title }}</h1>
     <p>Número total de páginas: {{ len .Site.RegularPages }}</p>
 
+    {{ $this_page := .Page }}
     {{ range .Site.RegularPages.ByDate.Reverse }}
-        {{ partial "page-entry" . }}
+        {{ if ne $this_page .Page }}
+            {{ partial "page-entry" . }}
+        {{ end }}
     {{ end }}
 {{ end }}
