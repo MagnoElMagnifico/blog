@@ -7,7 +7,7 @@ main {
 /**** Basic text elements ****/
 h1, h2, h3, h4 { margin: 1.5rem 0 0.3rem 0; }
 h1 + h2, h2 + h3, h3 + h4 { margin: 0; }
-.main-title { margin: 2rem 0 0 0; font-size: 3rem; }
+.main-title { margin: 2rem 0 0.5rem 0; font-size: 3rem; }
 p           { margin: 0 0 1rem 0; }
 
 img {
