@@ -1,3 +1,5 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+
 {{ define "styles" }}
     <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" media="{{ .Site.Params.desktop_query }}" href="/styles/home-desktop.css">
@@ -43,7 +45,7 @@
                     <a class="link-button" href="{{ .link }}">Ver</a>
                 </div>
 
-            {{ end }} {{ end }} 
+            {{ end }} {{ end }}
         </div>
     {{ end }}
 

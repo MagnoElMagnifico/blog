@@ -91,10 +91,12 @@ pre, code {   /* All code */
     font-size: 0.9rem;
 }
 
-p code, li > code {   /* Inline code: `` */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
+#TableOfContents code, p code, li > code {   /* Inline code: `` */
     background-color: var(--code-color);
     border-radius: var(--border-radius); /* AAAAA */
     padding: 0 4px;
+    font-size: inherit;
 }
 
 .highlight pre {   /* Code block: ``` */
@@ -115,6 +117,7 @@ blockquote {
 blockquote p { margin: 0; text-align: left; }
 blockquote code,
 blockquote blockquote,
+#TableOfContents code,
 .project code { background-color: var(--background-color); }
 
 
