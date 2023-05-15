@@ -12,3 +12,8 @@ Aprender a usar `ps`.
 
 `ps` and `grep PROCESS` can be replaced by a `pgrep PROCESS` call, and your whole
 thing can simply be replaced by `pkill PROCESS` or a `killall PROCESS`
+
+`xxd` y `od` ver hexadecimal, octal, etc
+od test.png -t u1 --endian=big
+
+head, tail, wc
