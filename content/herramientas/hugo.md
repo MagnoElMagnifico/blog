@@ -2,7 +2,8 @@
 title: Hugo SSG
 description: Guía de uso de Hugo para crear una página web estática fácilmente.
 date: 2022-09-05
-weight: -1
+updated: 2023-05-15
+weight: 5
 draft: true
 ---
 
@@ -271,3 +272,16 @@ property: value
 se pueden usar valores custom, todos los q quieras
 
 se guardan en la variable `.Params`
+
+
+# Shortcodes
+
+https://gohugo.io/templates/shortcode-templates/
+
+- `figure`
+- `highlight`
+- `gist`
+- `rel` `relref`
+- `youtube` `vimeo` `twitter` `instagram`
+
+https://gohugo.io/content-management/shortcodes/

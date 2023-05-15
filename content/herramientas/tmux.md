@@ -4,7 +4,7 @@ description: >
     tmux, un programa de terminal que permite crear otras terminales dentro de
     él: pestañas, divisiones. Así puedes ser mucho más productivo.
 date: 2022-08-29
-weight: 3
+weight: 4
 ---
 
 `tmux` es un _terminal multiplexer_, un programa que permite, con una sola

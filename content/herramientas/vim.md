@@ -2,7 +2,7 @@
 title: Vim y Neovim
 description: Una pequeña overview de las principales funcionalidades de Vim con sus comandos
 date: 2022-7-26
-weight: 2
+weight: 3
 ---
 
 > **Nota**: La mejor forma para aprender Vim es practicándolo, no intentes
