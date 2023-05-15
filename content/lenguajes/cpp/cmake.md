@@ -1,7 +1,9 @@
 ---
 title: CMake
-weight: 3
+description: >-
+    CMake es una de las _build tools_ más utilizadas para proyectos C++.
 date: 2021-08-05
+weight: 3
 ---
 
 # Introducción
