@@ -1,5 +1,6 @@
 ---
 title: Lenguaje de programación
+content_title: true
 ---
 
 En esta subcategoría se encuentran mis apuntes sobre diferentes lenguajes de

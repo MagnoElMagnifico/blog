@@ -26,5 +26,12 @@ distribuciones muy amigables al usuario novato de Linux.
 
 Este es un mapa de la evolución del algunas de las distribuciones más conocidas:
 
-![](https://upload.wikimedia.org/wikipedia/commons/b/b5/Linux_Distribution_Timeline_21_10_2021.svg)
+{{<
+  figure
+  alt  = "Timeline de distros"
+  src  = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Linux_Distribution_Timeline_Dec._2020.svg"
+  link = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Linux_Distribution_Timeline_Dec._2020.svg"
+ >}}
+
+Fuente: [Wikipedia](https://en.wikipedia.org/wiki/List_of_Linux_distributions).
 
