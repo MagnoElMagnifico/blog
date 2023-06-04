@@ -6,18 +6,13 @@ canvas { height: 100vh; width: 100vw; }
 #start {
     background-image: radial-gradient(circle at 50% 70%, #000f 30%, #0000 70%);
     text-align: center;
+    width: 80%;
+    max-width: 80ch;
     /* Position */
     position: absolute;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
-    /* Animation */
-    /*animation: intro 1.5s ease-out;*/
-}
-
-@keyframes intro {
-    from { opacity: 0;    top: 10vh; }
-    to   { opacity: 100%; top: 50vh; }
 }
 
 @media only screen and (max-height: 400px) {
@@ -33,20 +28,37 @@ canvas { height: 100vh; width: 100vw; }
 
 #blog-logo {
     border-radius: 100%;
-    /*animation: floating 1s infinite alternate;*/
-    /* Reset centering */
     margin: 0;
+    padding: 0.1rem;
+    border: 4px solid var(--border-color);
+    width: 30%;
+    max-width: 8rem;
+    min-width: 5rem;
     transform: none;
-}
-
-@keyframes floating {
-    from { transform: translateY(15px); }
-    to { transform: translateY(0); }
 }
 
 #blog-description {
     text-align: center;
     color: #fff;
+}
+
+#about-img {
+    width: 25vmin;
+    min-width: 7rem;
+}
+
+/* About Desktop */
+@media only screen and (min-width: 800px) and (min-device-width: 800px) {
+    #about {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #about-img {
+        margin: 0 2rem 0 0;
+        transform: none;
+    }
 }
 
 
@@ -62,10 +74,12 @@ canvas { height: 100vh; width: 100vw; }
     flex-grow: 1;
     border-radius: 10px;
     margin: 0.5rem;
+    padding: 1rem;
     box-shadow: 5px 5px 10px var(--project-shadow-color);
 }
 
 .project h3 { margin-top: 0; }
+.project img { width: 80% }
 
 
 /* Blog */
