@@ -7,6 +7,7 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
 
+    {{ with .CurrentSection }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
     {{ .TableOfContents }}
 
     <article>

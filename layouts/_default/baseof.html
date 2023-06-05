@@ -6,16 +6,14 @@
     {{/* Metadata */}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{/*
-        <meta name="keywords" content="...">
-        <meta name="description" content="...">
-    */}}
-    {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.logo }}<link rel="icon" href="{{ . }}">{{ end }}
 
     <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    {{ with .Site.Params.logo }}<link rel="icon" href="{{ . }}">{{ end }}
+    {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
+
+    {{ with .Keywords }}<meta name="keywords" content={{ delimit . "," }}>{{ end }}
     <meta name="description" content="{{ block "description" . }}
-      {{- with .Description }}{{ . }}{{ end -}}
+      {{- with .Description -}}{{- . -}}{{- end -}}
     {{ end }}">
 
     {{/* Styles */}}

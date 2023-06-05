@@ -1,4 +1,5 @@
 {{ define "title" }}{{ .Site.Title }}{{ end }}
+{{ define "description" }}{{ .Site.Data.home.start.description | markdownify }}{{ end }}
 
 {{ define "styles" }}
     <link rel="stylesheet" href="/styles/home.css">
