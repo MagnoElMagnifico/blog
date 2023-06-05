@@ -10,10 +10,6 @@ name = "Magno El Magnífico"
 # Blog logo (start:home.html), header, and icon on the tab
 logo = "/logo.svg"
 
-# Media selectors for the *-mobile.css and *-desktop.css
-desktop_query = "(min-width: 800px) and (min-device-width: 800px)"
-mobile_query  = "(max-width: 800px) or (max-device-width: 800px)"
-
 [markup.highlight]
 # https://xyproto.github.io/splash/docs/all.html
 # "dracula", "fruity", "paraiso-dark", "rrt", "solarized-dark256", "vim"

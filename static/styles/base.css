@@ -31,6 +31,8 @@
     /* General common */
     --border-radius: 10px;
     --transition:    0.25s;
+    --h-separation:  3rem 0 1rem 0;
+    --p-separation:  0 0 1rem 0;
 
     /* Header - Footer */
     --hf-background-color: #111;
@@ -54,22 +56,35 @@ html, body {
     background-color: var(--background-color);
     color: var(--font-color);
     font-family: var(--content-font);
-    font-size: 1rem;
-    overflow-x: hidden;
     margin: 0;
+    overflow-x: hidden;
+}
+
+main {
+    margin: 0 10vw;
+    max-width: 100ch;
 }
 
 
-/**** Basic text elements ****/
+/**** Titles ****/
+.main-title {
+    margin: var(--h-separation);
+    font-size: 3rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
     font-family: var(--title-font);
+    margin: var(--h-separation);
 }
 
-p       { text-align: justify; }
-strong  { color: var(--bold-color); }
+h1+h2, h2+h3, h3+h4 { margin-top: 0; }
+
+
+/**** General format ****/
 a       { color: var(--link-color); text-decoration: none; }
 a:hover { color: var(--link-hover-color); }
+strong  { color: var(--bold-color); }
 
 em {
     font-family: var(--italics-font);
@@ -77,30 +92,37 @@ em {
     text-decoration: none;
 }
 
-hr {
-    width: 60%;
-    margin: 0 0 1rem 0;
-    color: var(--separator-color);
-    border-radius: 100%;
+p {
+    text-align: justify;
+    margin: var(--p-separation);
+    line-height: 2.7ch;
+}
+
+li {
+    line-height: 2.7ch;
 }
 
 
 /**** Code ****/
-pre, code {   /* All code */
+/* All code */
+pre, code {
     font-family: var(--code-font);
-    font-size: 0.9rem;
 }
 
+/* Inline code: `` */
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
-#TableOfContents code, p code, li > code {   /* Inline code: `` */
+#TableOfContents code, p code, li > code, td > code {
     background-color: var(--code-color);
-    border-radius: var(--border-radius); /* AAAAA */
+    border-radius: var(--border-radius);
     padding: 0 4px;
     font-size: inherit;
 }
 
-.highlight pre {   /* Code block: ``` */
+/* Code block: ``` */
+.highlight pre {
+    font-size: 0.9rem;
     border-radius: var(--border-radius);
+    margin: var(--p-separation);
     padding: 0.7rem;
     white-space: pre-wrap;
 }
@@ -122,7 +144,7 @@ blockquote blockquote,
 
 
 /**** Images ****/
-img {
+img, svg {
     object-fit: contain;
     /*
      * Center by adding margin to the left (minus the
@@ -132,8 +154,31 @@ img {
     transform: translate(-50%, 0);
 }
 
+img {
+    width: 85vmin;
+    padding: 3.5px;
+    border: 3.5px solid var(--border-color);
+}
+
+
+/**** Text objects ****/
+hr {
+    width: 60%;
+    margin: 0 0 1rem 0;
+    color: var(--separator-color);
+    border-radius: 100%;
+}
+
+/* TODO: desplegable */
+
 
 /**** Blog entries ****/
+.blog-entry {
+    margin: 1rem 0;
+    padding: 0 0 1rem 0;
+    border-bottom: 3.5px solid var(--border-color);
+}
+
 .blog-entry h2 { margin-bottom: 0; }
 .blog-entry h3 { margin-top: 0; } /* Date */
 
@@ -151,6 +196,7 @@ img {
     margin: 0.2rem;
     border-radius: var(--border-radius);
     padding: 0.65rem;
+    min-width: 2rem;
 }
 
 .box-list a:hover {
@@ -167,7 +213,7 @@ img {
     color: var(--box-list-color);
     background-color: var(--link-button-color);
 
-    margin: 0 auto;
+    margin: 1rem auto;
     padding: 0.5rem 5rem;
     border-radius: var(--border-radius);
     max-width: 10%;
@@ -201,11 +247,12 @@ img {
 #TableOfContents {
     background-color: var(--hf-background-color);
     border-radius: var(--border-radius);
-    margin: 1rem 0;
+    margin: var(--p-separation);
 }
 
 
 /**** Header ****/
+/* TODO: refactor completamente */
 header, nav {
     display: grid;
     grid-auto-columns: max-content;
@@ -216,7 +263,7 @@ header, nav {
     transition: var(--transition);
 }
 
-header a, nav a { padding: 1rem; }
+header a, header nav a { padding: 1rem; }
 header a:hover, header nav a:hover { background-color: var(--magno-blue); }
 #home-link { padding: 0; }
 
@@ -244,6 +291,7 @@ footer {
     background-color: var(--hf-background-color);
     color: var(--hf-font-color);
     text-align: center;
+    margin-top: 2rem;
     padding: 0.5rem 0 0 0; /* Use the margin of the title */
     width: 100vw;
 }
@@ -255,7 +303,7 @@ footer {
 /**** Table ****/
 table {
     width: 100%;
-    margin: 0 0 1rem 0; /* TODO: mobile/desktop */
+    margin: var(--p-separation);
     background-color: var(--background-color);
 }
 
@@ -266,5 +314,6 @@ th {
 
 th, td   { padding: 0.75rem; }
 tr:hover { opacity: 0.7; }
-tr:nth-child(odd)  { background-color: var(--table-color-1); }
-tr:nth-child(even) { background-color: var(--table-color-2); }
+tr { background-color: var(--table-color-2); }
+/* tr:nth-child(odd)  { background-color: var(--table-color-1); } */
+/* tr:nth-child(even) { background-color: var(--table-color-2); } */

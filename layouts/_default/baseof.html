@@ -6,6 +6,10 @@
     {{/* Metadata */}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{/*
+        <meta name="keywords" content="...">
+        <meta name="description" content="...">
+    */}}
     {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
     {{ with .Site.Params.logo }}<link rel="icon" href="{{ . }}">{{ end }}
 
@@ -16,8 +20,6 @@
 
     {{/* Styles */}}
     <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" media="{{ .Site.Params.mobile_query }}" href="/styles/base-mobile.css">
-    <link rel="stylesheet" media="{{ .Site.Params.desktop_query }}" href="/styles/base-desktop.css">
 
     {{ block "styles" . }}{{ end }}
 
