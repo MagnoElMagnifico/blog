@@ -176,8 +176,9 @@ Recuerda que en algunos casos es necesario escapar las barras:
 - `title`
 - `description`
 - `keywords`
-- `weight`: peso para ordenar las diferentes páginas dentro de la sección
 - `draft`
+- `toc`: determina si muestra una tabla de contenidos
+- `weight`: peso para ordenar las diferentes páginas dentro de la sección
 - `slug`: modifica el nombre de la pagina (URL)
 - `math`: permite añadir fórmulas con LaTeX
 

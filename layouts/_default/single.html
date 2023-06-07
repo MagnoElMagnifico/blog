@@ -1,5 +1,5 @@
 {{ define "styles" }}
-    {{ with .Params.math }}
+    {{ if .Params.math }}
         {{ partial "latex" }}
     {{ end }}
 {{ end }}
@@ -8,7 +8,7 @@
     <h1 class="main-title">{{ .Title }}</h1>
 
     {{ with .CurrentSection }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
-    {{ .TableOfContents }}
+    {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
 
     <article>
       {{ .Content }}

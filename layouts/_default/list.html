@@ -1,5 +1,14 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
+    {{ if not .RegularPages }}
+        {{ with .Sections }}
+            <nav>
+                {{ range .ByTitle }}
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
+            </nav>
+        {{ end }}
+    {{ end }}
 
     {{ with .Page.Content }}
         <article>{{ . }}</article>
@@ -7,9 +16,15 @@
 
     {{ if .RegularPages }}
         {{ if .Params.content_title }}<h1>Contenido</h1>{{ end }}
+
         {{ with .Sections }}
-            <nav>{{ partial "span-sections" . }}</nav>
+            <nav>
+                {{ range .ByTitle }}
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
+            </nav>
         {{ end }}
+
         {{ range .RegularPages.ByWeight }}
             {{ partial "page-entry" . }}
         {{ end }}
