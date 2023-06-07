@@ -1,0 +1,6 @@
+<div
+    class="dropdown"
+    onclick="this.querySelector('.content').hidden = !this.querySelector('.content').hidden;">
+    <div class="show">{{ .Get 0 | markdownify }}</div>
+    <div class="content" hidden>{{ .Inner | markdownify }}</div>
+</div>

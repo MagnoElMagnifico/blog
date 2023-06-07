@@ -1,0 +1,11 @@
+<div class="block">
+    <div class="block-name"
+        {{- if and (.Get 1) (.Get 2) -}}
+            style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
+        {{- end -}}>
+        {{ .Get 0 | emojify | markdownify }}
+    </div>
+    <div class="block-content">
+        {{ .Inner | markdownify }}
+    </div>
+</div>

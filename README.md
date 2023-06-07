@@ -18,8 +18,8 @@ estructura:
                       ├──────────────┤        ├───────────────────┤             └──────────┘
                       │ social-media │        │ » head            │
                       │ page-entry   │        │    ├─ metadata    │
-                      └──────────────┘        │    ├─ styles      │
-                                              │    └─ fonts       │
+                      │ latex        │        │    ├─ styles      │
+                      └──────────────┘        │    └─ fonts       │
                                               │ » body            │
                                               │    ├─ intro       │
                                               │    ├─ header      │
@@ -33,25 +33,216 @@ estructura:
 ┌──────────╩──────────┐  ┌───────╩────────┐  ┌───────╩───────┐  ┌─────────╩─────────┐
 │ home.html           │  │ list.html      │  │ single.html   │  │ 404.html          │
 ├─────────────────────┤  ├────────────────┤  ├───────────────┤  ├───────────────────┤
-│ » #animation #start │  │ » .main-title  │  │ » .main-title │  │ » #not-found      │
-│    └─ animation.js  │  │ » article      │  │ » .toc        │  │    └─ .main-title │
-│ » #about            │  │ » .categories  │  │ » article     │  └───────────────────┘
-│    └─ .social_media │  │ » .post        │  └───────╦───────┘
-│ » #portfolio        │  └───────╦────────┘          ║
-│    ├─ .project      │          ║                   ║
-│    ├─ .project      │          ║                   ║
-│    └─ ...           │          ╚═════════╦═════════╝
-│ » #portfolio        │                    ║
-│ » #blog             │                    ║
-│    └─ .entry        │                    ║
-└──────────╦──────────┘                    ║
-           ║                               ║
-     ┌─────╩─────┐                   ┌─────╩─────┐
-     │ home.css  │                   │article.css│
-     └───────────┘                   ├───────────┤
-                                     │ » .info   │
-                                     │ » code    │
-                                     │ » table   │
-                                     │ » quote   │
-                                     └───────────┘
+│ » #animation #start │  │ » .main-title  │  │ » .main-title │  │ » custom styles   │
+│    └─ animation.js  │  │ » article      │  │ » .toc        │  │ » #not-found      │
+│ » #about            │  │ » nav          │  │ » article     │  │    └─ .main-title │
+│    └─ .social_media │  │ » .blog-entry  │  │ » .prev-next  │  └───────────────────┘
+│ » #portfolio        │  └────────────────┘  └───────────────┘
+│    ├─ .project      │
+│    ├─ .project      │
+│    └─ ...           │
+│ » #portfolio        │
+│ » #blog             │
+│    └─ .entry        │
+└──────────╦──────────┘
+           ║
+     ┌─────╩─────┐
+     │ home.css  │
+     └───────────┘
 ```
+
+# Formatos
+
+- [x] Negrita, itálica
+- [x] Uso de LaTeX para expresiones matemáticas
+- [x] Código en línea
+- [x] Código en bloque
+- [x] Citas
+- [x] Bloques: notas, observaciones, teoremas, definiciones, etc
+- [x] Enumeraciones
+- [x] Listas
+- [x] Tablas
+- [x] Desplegables
+
+## Notas sobre Markdown
+
+Combinaciones especiales que convierten caracteres ASCII a tipográficos:
+
+- `--`, `---`
+- `'`, `"`, `<<`, `>>`
+- `...`
+- Entre `::` se pueden especificar emojis, por ejemplo `:warning:` ([referencia]).
+
+[referencia]: https://www.webfx.com/tools/emoji-cheat-sheet/
+
+------------------------------------------------------------
+
+Listas con párrafos muy largos: cada punto es un párrafo, por tanto se añadirá
+un margen.
+
+```md
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+  ex, eu convallis dolor efficitur a. Lorem ipsum dolor sit amet, consectetur
+  adipiscing elit. Sed vulputate mauris non interdum posuere. Suspendisse nisl
+  tellus, ultricies nec eleifend id, suscipit in mi.
+
+- Praesent malesuada sed arcu at eleifend. Aliquam erat volutpat. Ut et mi
+  magna. Nunc quis tortor ante. Integer vitae convallis augue. Pellentesque
+  laoreet, dolor eu molestie porttitor, orci diam bibendum quam, non lacinia
+  nisl metus nec sapien.
+
+- Aliquam erat volutpat. Maecenas pellentesque convallis libero, at convallis
+  nibh mollis non. Curabitur pretium ligula eu auctor vestibulum. 
+```
+
+Listas con párrafos cortos: no añade espacio entre los puntos
+
+```md
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- Sed vulputate mauris non interdum posuere. Suspendisse nisl tellus, ultricies
+  nec eleifend id, suscipit in mi.
+- Aliquam feugiat nibh, eu convallis dolor efficitur a.
+```
+
+Para separar dos listas puedes usar un comentario vacio.
+
+------------------------------------------------------------
+
+También se pueden hacer links a modo de referencias:
+
+```md
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+ex, eu convallis dolor efficitura [^1]. Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Sed vulputate mauris non interdum posuere. Suspendisse nisl
+tellus, ultricies nec eleifend id, suscipit in mi.
+
+...
+
+[^1]: https://example.com
+```
+
+------------------------------------------------------------
+
+Especificando `goat` como resaltado de sintaxis en un bloque de código, puedes
+dibujar diagramas usando ASCII.
+
+```
++-------------------+                           ^                      .---.
+|    A Box          |__.--.__    __.-->         |      .-.             |   |
+|                   |        '--'               v     | * |<---        |   |
++-------------------+                                  '-'             |   |
+                       Round                                       *---(-. |
+  .-----------------.  .-------.    .----------.         .-------.     | | |
+ |   Mixed Rounded  | |         |  / Diagonals  \        |   |   |     | | |
+ | & Square Corners |  '--. .--'  /              \       |---+---|     '-)-'       .--------.
+ '--+------------+-'  .--. |     '-------+--------'      |   |   |       |        / Search /
+    |            |   |    | '---.        |               '-------'       |       '-+------'
+    |<---------->|   |    |      |       v                Interior                 |     ^
+    '           <---'      '----'   .-----------.              ---.     .---       v     |
+ .------------------.  Diag line    | .-------. +---.              \   /           .     |
+ |   if (a > b)     +---.      .--->| |       | |    | Curved line  \ /           / \    |
+ |   obj->fcn()     |    \    /     | '-------' |<--'                +           /   \   |
+ '------------------'     '--'      '--+--------'      .--. .--.     |  .-.     +Done?+-'
+    .---+-----.                        |   ^           |\ | | /|  .--+ |   |     \   /
+    |   |     | Join        \|/        |   | Curved    | \| |/ | |    \    |      \ /
+    |   |     +---->  o    --o--        '-'  Vertical  '--' '--'  '--  '--'        +  .---.
+ <--+---+-----'       |     /|\                                                    |  | 3 |
+                      v                             not:line    'quotes'        .-'   '---'
+  .-.             .---+--------.            /            A || B   *bold*       |        ^
+ |   |           |   Not a dot  |      <---+---<--    A dash--is not a line    v        |
+  '-'             '---------+--'          /           Nor/is this.            ---
+```
+
+## LaTeX
+
+Se utiliza [Katex] para renderizar las fórmulas: simplemente escribe código
+LaTeX entre `$`. Para bloques de ecuaciones (párrafos centrados) usa `$$`.
+Estos [símbolos] son los soportados.
+
+Recuerda que en algunos casos es necesario escapar las barras:
+
+```
+\begin{align*}
+    10x + 3y &=& 2 \\\\
+    x - 5y &=& 8   \\\\
+\end{align*}
+```
+
+[Katex]: https://katex.org
+[símbolos]: https://katex.org/docs/supported.html
+
+# Front matter
+
+- `title`
+- `description`
+- `keywords`
+- `weight`: peso para ordenar las diferentes páginas dentro de la sección
+- `draft`
+- `slug`: modifica el nombre de la pagina (URL)
+- `math`: permite añadir fórmulas con LaTeX
+
+
+# Shorcodes
+
+- `inlineHTML` (argumento de bloque): Inserta el HTML directamente en el
+  resultado.
+
+```md
+{{< inlineHML >}}
+<table>
+  <tr>
+    <td>Ejemplo 1</td>
+    <td>Ejemplo 2</td>
+  </tr>
+  <tr>
+    <td>Ejemplo 3</td>
+    <td>Ejemplo 4</td>
+  </tr>
+</table>
+{{< /inlineHML >}}
+```
+
+- `keyvalue` (argumento de bloque): crea una tabla de dos columnas: valor y
+  descripción. Una nueva fila empieza por `-` y la descripción por `:`. La
+  descripción puede ser una lista de valores (dejando la clave vacía).
+
+```md
+{{< keyvalue >}}
+- Valor: Descripción
+- Valor:
+    -: Descripción 1
+    -: Descripción 2
+    -: Descripción 3
+{{< /keyvalue >}}
+```
+
+- `color` (contenido) (color CSS): permite cambiar de color un trozo de texto.
+
+```
+{{< color "test" "var(--magno-red)" >}}
+{{< color "test" "#fca" >}}
+{{< color "test" "yellow" >}}
+```
+
+- `block` (argumento de bloque) (nombre del bloque) (color de fondo del título)
+  (color del título): crea un bloque con una cabecera y un cuerpo, perfecto
+  para resaltar detalles sin tener que usar citas.
+
+```
+{{< block "Teorema" "red" "white" >}}
+Si en un triángulo rectángulo hay catetos de longitud $a$, y $b$,, y la
+medida de la hipotenusa es $c$, entonces se cumple la siguiente relación:
+
+$$a^2 + b^2 = c^2$$
+{{< /block >}}
+```
+
+- `dropdown`(argumento de bloque) (contenido sin esconder): crea un bloque
+  clickable que muestra un contenido.
+
+```
+{{< dropdown "Haz click aquí" >}}
+Holis :)
+{{< /dropdown >}}
+```
+
