@@ -30,14 +30,22 @@
 </head>
 
 <body>
+    <button id="header-trigger" class="link-button"
+            onclick="document.querySelector('header').removeAttribute('style')">
+        <img src="{{ .Site.Params.logo }}"/>
+    </button>
+    <header style="transform:translateX(-100%)">
+        <a id="home-link" href="/"><img src="{{ .Site.Params.logo }}"/></a>
+        {{ partial "header-section" .Site.Sections }}
+        <button class="link-button"
+                onclick="this.parentNode.setAttribute('style','transform:translateX(-100%)');">
+            Cerrar
+        </button>
+    </header>
+
     {{/* Just used by index.html to put a canvas */}}
     {{ block "intro" . }}{{ end }}
 
-    <header>
-        <a id="home-link" href="/"><img src="{{ .Site.Params.logo }}"/></a>
-    </header>
-
-    {{/* Main section: extend with all the content */}}
     <main>{{ block "main" . }}{{ end }}</main>
 
     <footer>

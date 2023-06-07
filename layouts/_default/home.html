@@ -51,6 +51,13 @@
     <!-- BLOG -->
     {{ if .Site.Data.home.show_blog }}
         <h1>git log -n {{ .Site.Data.home.pages }}</h1>
+        {{ with .Sections }}
+            <nav>
+                {{ range .ByTitle }}
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
+            </nav>
+        {{ end }}
         <div id="blog">
             {{ range $index, $page := .Site.RegularPages.ByDate.Reverse }}
                 {{ if lt $index .Site.Data.home.pages }}

@@ -1,0 +1,6 @@
+{{ range .ByTitle }}
+<a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ with .Sections }}
+        <div>{{ partial "header-section" . }}</div>
+    {{ end }}
+{{ end }}
