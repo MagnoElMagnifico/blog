@@ -22,7 +22,7 @@
     --link-color:       #0ef; /* #0ce */
     --link-hover-color: #a0f; /* #05f */
     --code-color:       #000;
-    --blockquote-color: #000;
+    --block-color:      #000;
     --border-color:     #0f5; /* #afa */
     --hover-color:      #fe1; /* #fe1 */
     --separator-color:  #f05;
@@ -102,6 +102,10 @@ li {
     line-height: 2.7ch;
 }
 
+li p {
+    margin: 1rem 0 0 0;
+}
+
 
 /**** Code ****/
 /* All code */
@@ -130,7 +134,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
 
 /**** Quotes ****/
 blockquote {
-    background-color: var(--blockquote-color);
+    background-color: var(--block-color);
     padding: 1.5rem 2rem;
     border-radius: var(--border-radius);
     border-left: 4px solid var(--border-color);
@@ -141,6 +145,31 @@ blockquote code,
 blockquote blockquote,
 #TableOfContents code,
 .project code { background-color: var(--background-color); }
+
+
+/**** Blocks ****/
+.block {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    background-color: var(--block-color);
+    border-radius: var(--border-radius);
+    margin: var(--p-separation);
+}
+
+.block .block-name {
+    grid-row-start: 1;
+    padding: 1rem;
+    background-color: var(--border-color);
+    color: black;
+    /* Centering */
+    display: flex;
+    align-items: center;
+}
+
+.block .block-content {
+    grid-row-start: 1;
+    padding: 1rem;
+}
 
 
 /**** Images ****/
@@ -160,6 +189,16 @@ img {
     border: 3.5px solid var(--border-color);
 }
 
+figcaption p {
+    text-align: center;
+}
+
+figcaption p:before {
+    content: "Figura: ";
+    color: var(--title-color);
+    font-weight: bold;
+}
+
 
 /**** Text objects ****/
 hr {
@@ -169,7 +208,33 @@ hr {
     border-radius: 100%;
 }
 
-/* TODO: desplegable */
+
+/**** Desplegable ****/
+.dropdown {
+    background-color: var(--block-color);
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: var(--p-separation);
+}
+
+.dropdown .show:hover { opacity: 0.7; }
+.dropdown .show:before {
+    content: ">> ";
+    font-family: var(--code-font);
+    color: var(--title-color);
+}
+
+.dropdown .content {
+    margin-top: 1rem;
+    animation-name: show; 
+    animation-duration: 1s;
+}
+
+@keyframes show {
+  from { opacity: 0%; }
+  to   { opacity: 100% }
+}
 
 
 /**** Blog entries ****/
