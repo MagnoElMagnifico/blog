@@ -1,5 +1,5 @@
 ---
-title: Git y Github
+title: Git y GitHub
 description: >
     Leyenda para los comandos más básicos de git, además de una guía para
     contribuir a proyectos Open Source en GitHub
@@ -7,27 +7,144 @@ weight: 1
 date: 2021-07-30
 ---
 
+> Puedes encontrar un libro gratuito en PDF muy completo sobre Git en
+> [GoalKicker]. Además el propio GitHub tiene sus propias guias sobre git en
+> [Git Guides].
 
-# GIT
+[GoalKicker]: https://goalkicker.com/GitBook/
+[Git Guides]: https://github.com/git-guides/
 
-Software para el control de versiones, guarda un registro de todos los cambios a
-unos archivos y permite trabajar más fácilmente en equipos. Creado por Linux
-Torballs (creador del Kernel de GNU/Linux), lo cual es software libre.
 
-Se puede editar el código desde github (botón del lápiz, y guardar cambios)
+# Git
+
+Software por excelencia para el control de versiones, guarda un registro de
+todos los cambios a unos archivos y permite trabajar más fácilmente en equipos.
+Creado por Linux Torballs (creador del Kernel de GNU/Linux), y es software
+libre.
+
+
+## La ayuda
+
+```sh
+git help
+git help <comando>
+git <comando> --help
+```
+
+
+## Creación del repositorio
+
+En primer lugar lo que se debe hacer es crear un repositorio de git para
+iniciar el control de versiones de tu proyecto. Un repositorio es simplemente
+un lugar donde almacenar el código o los archivos en cuestión. Desde el
+directorio de dicho proyecto, ejecuta:
+
+```sh
+git init
+```
+
+Esto creará una carpeta oculta `.git`, que contiene una rama sin ningún commit.
+
+> Puedes usar `-b <nombre-rama>` para escoger un nombre de rama inicial
+> (configuración `init.defaultBranch`).
+
+Si en lugar de eso, quieres descargar otros proyectos de internet, debes
+**clonar** el repositorio. Esto depende de cada plataforma, en GitHub se hace
+de la siguiente forma:
+
+```sh
+git clone https://github.com/<username>/<repositorio>.git
+```
+
+Esto obtiene los archivos necesarios (incluyendo `.git`) y los mete en una
+carpeta con el nombre del repositorio. Puedes cambiar ese nombre con un
+parámetro adicional o seleccionando la carpeta actual con `.`.
+
+
+## Configuración del usuario
+
+Antes de añadir cambios, el sistema debe saber cómo reconocerte.
+
+> Nota: esto no tiene nada que ver con la cuenta de GitHub. Es el nombre que se
+> relacionará con los cambios que realices.
+
+Para ello ejecuta:
+
+```sh
+git config --global user.username "<usuario>"
+git config --global user.email "<email>"
+```
+
+Esto añadirá al archivo de configuración `~/.gitconfig` los datos dados, por lo
+que se aplicarán para todos los repositorios.
+
+También hay formas para hacer esta configuración local al repositorio, véase la [seccion 1.4]
+de las notas de Git.
+
+[seccion 1.4]: https://goalkicker.com/GitBook/GitNotesForProfessionals.pdf#%5B%7B%22num%22%3A843%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C658.623%2Cnull%5D
+
+
+## Realizando cambios
+
+{{< inlineHTML >}}
+<svg height="800" width="500">
+    <rect>
+</svg>
+{{< /inlineHTML >}}
+
+Inicialmente se deben añadir los cambios a una sala preli
 
 ` proyecto - git add > staging area - git commit > repositorio local `
 
-- `git init` : inicia un seguimiento de un proyecto
+- `git init`: inicia un seguimiento de un proyecto
+- `git commit -m "descripción"`: guarda los cambios con una descripción dada
+- `git commit -am "descripción"`: git add + git commit
+- `git commit --amend`: abre `$EDITOR` para editar las descripciones de los commit
 
-- `git commit -m "descripción"` : guarda los cambios con una descripción dada
-- `git commit -am "descripción"` : git add + git commit
-- `git commit --amend` : abre `$EDITOR` para editar las descripciones de los commit
 
-Configura el email y usuario necesarios para git:
+## Remotos
 
-- `git config --global user.username "user"`
-- `git config --global user.email "email"`
+Git es un sistema distribuido, donde generalmente los cambios se hacen en
+local. Para comunicarse con el resto, Git usa **remotes**. Estos son otros
+repositorios a los que puedes acceder para añadir cambios (_push_) para que los
+demás lo vean y recibir actualizaciones (_pull_) del resto de desarolladores.
+
+Puedes pensarlo básicamente como un marcador a un repositorio distinto al que
+le envias y recibes cambios.
+
+Para añadir uno usa:
+
+```sh
+git remote add <nombre> <URL>
+```
+
+<!-- TODO: origin y upstream -->
+
+Resumen de comandos:
+
+```sh
+git remote -v                 # Listar los remotos del repo
+git remote add <nombre> <URL> # Añadir remoto
+git remote set-url <nombre> <nueva-URL> # Cambia la dirección
+git remote rename <nombre> <nuevo-nombre> # Cambia el nombre del remoto
+git remote remote <nombre>    # Eliminar remoto
+```
+
+Comunicación con el remoto:
+
+```sh
+git push
+git clone
+git pull
+git fetch
+```
+
+Fuente: [StackOverflow](https://stackoverflow.com/questions/20889346/what-does-git-remote-mean)
+
+
+--------------------------------------------------------------------------------
+
+Se puede editar el código desde GitHub (botón del lápiz, y guardar cambios)
 
 Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
 contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020 , no
@@ -80,6 +197,8 @@ controlar mejor los permisos.
 - `git diff [archivo]` : muestra todos los cambios en relación al master remoto
 - `git log [archivo]` : muestra info de los commits (usuario, fecha, código, descripción)
 - `git log --oneline` : muestra info de los commits
+- `git log --decorate --oneline --graph`: muestra info de los commits más mejor
+- `git shortlog`
 - `git blame <archivo>` : muestra info de los cambios de un archivo con su código de commit, usuario, fecha, etc.
 - `git reflog` : historial del repositorio local
 
