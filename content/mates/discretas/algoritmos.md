@@ -1,5 +1,5 @@
 ---
-title: Algoritmos y Números
+title: Algoritmos
 description: >-
     Introducción al análisis de algoritmos y diferentes tipos de algoritmos.
     N vs NP.
