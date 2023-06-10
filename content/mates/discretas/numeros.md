@@ -6,8 +6,6 @@ description: >-
 date: 2023-06-07T14:54:29+02:00
 weight: 2
 math: true
-
-draft: true
 ---
 
 # Números
