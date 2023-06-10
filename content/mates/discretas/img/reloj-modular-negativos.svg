@@ -27,7 +27,7 @@
      inkscape:lockguides="false"
      showguides="true"
      inkscape:zoom="1.2844815"
-     inkscape:cx="229.66465"
+     inkscape:cx="103.15446"
      inkscape:cy="212.53712"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
@@ -108,8 +108,8 @@
          sodipodi:role="line"
          id="tspan1928"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
-         x="54.59174"
-         y="8.458703">12</tspan></text>
+         x="56"
+         y="8.458703">0</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none;stroke-dashoffset:0"
@@ -186,7 +186,7 @@
          id="tspan1928-7"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
          x="28.819317"
-         y="109.04906">7</tspan></text>
+         y="109.04906">-5</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none;stroke-dashoffset:0"
@@ -197,7 +197,7 @@
          id="tspan1928-20"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
          x="9.7298689"
-         y="88.580223">8</tspan></text>
+         y="88.580223">-4</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none;stroke-dashoffset:0"
@@ -208,7 +208,7 @@
          id="tspan1928-75"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
          x="3.3188617"
-         y="62.451618">9</tspan></text>
+         y="62.451618">-3</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none;stroke-dashoffset:0"
@@ -219,7 +219,7 @@
          id="tspan1928-28"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
          x="6.3498597"
-         y="34.912979">10</tspan></text>
+         y="34.912979">-2</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none;stroke-dashoffset:0"
@@ -230,6 +230,6 @@
          id="tspan1928-3"
          style="fill:#aaaaaa;fill-opacity:1;stroke:none;stroke-width:0.529;stroke-dasharray:none"
          x="24.818146"
-         y="15.705466">11</tspan></text>
+         y="15.705466">-1</tspan></text>
   </g>
 </svg>
