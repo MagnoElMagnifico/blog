@@ -67,9 +67,13 @@ main {
     min-height: 75vh;
 }
 
+/* "Fix" big LaTeX expressions */
+span.katex-display { overflow: scroll; }
+
 /* Margin desktop */
 @media only screen and (min-width: 800px) and (min-device-width: 800px) {
     main { margin: 0 20vw; }
+    span.katex-display { overflow: visible; }
 }
 
 
@@ -107,6 +111,7 @@ p {
 }
 
 li p { margin: 1rem 0 0 0; }
+li::marker { color: var(--magno-green); }
 
 /* TODO: refactor */
 hr {
@@ -346,6 +351,8 @@ nav:not(#TableOfContents) {
     align-items: center;
     justify-items: center;
     background-color: var(--hf-background-color);
+    overflow-x: scroll;
+    margin: var(--p-separation);
 }
 
 nav:not(#TableOfContents) a {
