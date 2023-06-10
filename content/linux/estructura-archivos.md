@@ -2,7 +2,10 @@
 title: Estructura directorios
 weight: 3
 date: 2022-03-19
-description: TODO
+description: >-
+    La estructura de archivos de Linux es bastante diferente a la de Windows,
+    y quizás un poco contraintuitiva; pero en este post se explica con detalle
+    qué es cada carpeta y qué se debería almacenar en ella.
 ---
 [1]: https://youtu.be/HbgzrKJvDRw
 [2]: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html

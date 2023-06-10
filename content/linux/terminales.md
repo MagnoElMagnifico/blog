@@ -2,7 +2,8 @@
 title: Shell, Bash y Bashrc
 weight: 1
 date: 2022-08-31
-description: TODO
+description: >-
+    Guia breve sobre Bash, diferencias con Shell, terminal, consola y prompt.
 ---
 
 <!-- TODO: teletyper tty -->
@@ -28,7 +29,7 @@ se usa `Powershell`.
 
 Fuente: [StackOverflow Shell vs Console vs Terminal][fuente]
 
-[fuente] https://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal
+[fuente]: https://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal
 
 
 # Terminal
