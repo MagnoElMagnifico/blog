@@ -183,7 +183,7 @@ Recuerda que en algunos casos es necesario escapar las barras:
 - `math`: permite añadir fórmulas con LaTeX
 
 
-# Shorcodes
+# Shortcodes
 
 - `inlineHTML` (argumento de bloque): Inserta el HTML directamente en el
   resultado.
