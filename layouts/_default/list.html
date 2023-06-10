@@ -1,5 +1,6 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
+    {{ with .Parent }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
     {{ if not .RegularPages }}
         {{ with .Sections }}
             <nav>
