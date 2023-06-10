@@ -19,9 +19,13 @@ tarea, cálculo o resolución de un problema en un tiempo finito.
 Debe tener las siguientes características:
 
 - Debe terminar en un tiempo **finito** y debe de tener un número **finito** de pasos.
+- Las instrucciones deben estar **ordenadas**, ser **claras** y **no ambiguas**.
 - Recibe unos datos de entrada (_Input_) y produce una salida (_Output_).
 - Debe ser **correcto** y **efectivo**: produce salidas correctas y cada paso se puede realizar (efectivo $\ne$ eficiente).
 - Tiene un **objetivo concreto y general**.
+
+Intuitivamente, un algoritmo de puede entender como una receta: se describen
+unas acciones ordenadamente y detalladamente para realizar una tarea.
 
 ## Pseudocódigo
 
@@ -59,6 +63,25 @@ Por ejemplo: encontrar el camino más corto.
       monedas de mayor tamaño posible y menores a la cantidad restante que hay
       que pagar.
 
+## Problemas indecidibles
+
+Alan Turing mostró que existen problemas que no se pueden resolver mediante
+algoritmos, como por ejemplo el **Problema de la Parada** o _The Halting
+Problem_:
+
+> Es posible escribir un programa de ordenador (procedimiento) que nos diga si
+> dado un programa cualquiera y un conjunto de datos de entrada, podemos decidir
+> si el programa termina, o no, su ejecución. ¿Parará alguna vez?
+
+{{<
+    youtube
+    id="S1PVPluvV9I"
+    title="8 Borrachos Pueden Revolucionar Todas las Matemáticas - QuantumFracture"
+>}}
+
+En este vídeo se explica muy bien el concepto de algoritmo y se <<demuestra>> porqué
+el problema de la parada no se puede resolver mediante algoritmos.
+
 # Big $O$, $\Omega$ y $\Theta$
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
@@ -70,7 +93,7 @@ $$
 {{< /block >}}
 
 {{< figure
-    src="../big-o-omega-theta.svg"
+    src="../img/big-o-omega-theta.svg"
     caption="Gráfico representativo del orden de complejidad"
     alt="Gráfico representativo del orden de complejidad"
 >}}
