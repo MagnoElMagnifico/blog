@@ -29,10 +29,10 @@ Se lee: _a divide a b_, _a es factor de b_, _b multiplica a a_.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{align*}
-a | b, \\, a | c \implies& a | (b+c)     \\\\
-a | b            \implies& a | (bc)      \\\\
-a | b, \\, b | c \implies& a | c         \\\\
-a | b, \\, a | c \implies& a | (mb + nc) \\\\
+a | b, \\, a | c \implies& a | (b+c)     \\
+a | b            \implies& a | (bc)      \\
+a | b, \\, b | c \implies& a | c         \\
+a | b, \\, a | c \implies& a | (mb + nc) \\
 \end{align*}
 $$
 {{< /block >}}
@@ -53,7 +53,7 @@ Esto permite crear la siguiente definición:
 {{< block "Definición" "var(--magno-blue)" "black" >}}
 $$
 \begin{align*}
-    a \text{ mod }{b} &:= a - bq \\\\
+    a \text{ mod }{b} &:= a - bq \\
     q &:= \bigg\lfloor \frac{a}{b} \bigg\rfloor
 \end{align*}
 $$
@@ -195,9 +195,9 @@ algoritmo de Euclides:
 
 $$
 \begin{align}
-166 =& \\, 414 - 1 \times 248 \\\\
-82  =& \\, 248 - 1 \times 166 \\\\
-2   =& \\, 166 - 2 \times 82  \\\\
+166 =& \\, 414 - 1 \times 248 \\
+82  =& \\, 248 - 1 \times 166 \\
+2   =& \\, 166 - 2 \times 82  \\
 0   =& \\, 82  - 2 \times 41
 \end{align}
 $$
@@ -206,9 +206,9 @@ Y ahora, simplemente se opera:
 
 $$
 \begin{align*}
-\gcd(414, 248) = 2 =& \overbrace{166 - 2 \times 82}^{(3)}\\\\
-                   =& 166 - 2 \times (\overbrace{248 - 1 \times 166}^{(2)}) = 3 \times 166 - 2 \times 248 \\\\
-                   =& 3 \times (\overbrace{414 - 1 \times 248}^{(1)}) - 2 \times 248 = 3 \times 414 - 5 \times 248 \\\\
+\gcd(414, 248) = 2 =& \overbrace{166 - 2 \times 82}^{(3)} \\
+                   =& 166 - 2 \times (\overbrace{248 - 1 \times 166}^{(2)}) = 3 \times 166 - 2 \times 248 \\
+                   =& 3 \times (\overbrace{414 - 1 \times 248}^{(1)}) - 2 \times 248 = 3 \times 414 - 5 \times 248 \\
 \end{align*}
 $$
 
@@ -294,11 +294,11 @@ a base $b$, y $a_0, \ldots, a_k$ serán sus cifras en dicha base.
 
 $$
 \begin{align*}
-                                &    a = q_0 b + r_0 \\\\
-    \text{Si } q_0 \ne 0: \quad & q_0 =  q_1 b + r_1 \\\\
-    \text{Si } q_0 \ne 0: \quad & q_1 =  q_2 b + r_2 \\\\
-    \vdots \\\\
-    \text{Si } q_i = 0: \quad & q_{i - 1} = r_i \\\\
+                                &    a = q_0 b + r_0 \\
+    \text{Si } q_0 \ne 0: \quad & q_0 =  q_1 b + r_1 \\
+    \text{Si } q_0 \ne 0: \quad & q_1 =  q_2 b + r_2 \\
+    \vdots \\
+    \text{Si } q_i = 0: \quad & q_{i - 1} = r_i \\
 \end{align*}
 $$
 
@@ -324,10 +324,10 @@ Véanse un par de ejemplos:
 $$
 \text{Criterio para 2: }
 \begin{cases}
-    10   \equiv 0 \pmod{3} \\\\
-    10^2 \equiv 0 \pmod{3} \\\\
-    10^3 \equiv 0 \pmod{3} \\\\
-    10^4 \equiv 0 \pmod{3} \\\\
+    10   \equiv 0 \pmod{3} \\
+    10^2 \equiv 0 \pmod{3} \\
+    10^3 \equiv 0 \pmod{3} \\
+    10^4 \equiv 0 \pmod{3} \\
     \vdots
 \end{cases}
 $$
@@ -345,10 +345,10 @@ Por tanto, simplemente habría que analizar la última cifra y ver si esta es pa
 $$
 \text{Criterio para 3: }
 \begin{cases}
-    10   \equiv 1 \pmod{3} \\\\
-    10^2 \equiv 1 \pmod{3} \\\\
-    10^3 \equiv 1 \pmod{3} \\\\
-    10^4 \equiv 1 \pmod{3} \\\\
+    10   \equiv 1 \pmod{3} \\
+    10^2 \equiv 1 \pmod{3} \\
+    10^3 \equiv 1 \pmod{3} \\
+    10^4 \equiv 1 \pmod{3} \\
     \vdots
 \end{cases}
 $$
@@ -372,10 +372,10 @@ entre 2 y 3.
 $$
 \text{Criterio para 11: }
 \begin{cases}
-    10   \equiv -1 \pmod{11} \\\\
-    10^2 \equiv 1 \pmod{11} \\\\
-    10^3 \equiv -1 \pmod{11} \\\\
-    10^4 \equiv 1 \pmod{11} \\\\
+    10   \equiv -1 \pmod{11} \\
+    10^2 \equiv 1 \pmod{11} \\
+    10^3 \equiv -1 \pmod{11} \\
+    10^4 \equiv 1 \pmod{11} \\
     \vdots
 \end{cases}
 $$

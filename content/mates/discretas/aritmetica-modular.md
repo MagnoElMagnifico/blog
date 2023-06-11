@@ -70,8 +70,8 @@ Otra notación puede ser $[a]_m = [b]_m$.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{align*}
-a \equiv b \pmod{m} \iff& a \text{ mod } m = b \text{ mod } m \\\\
-a \equiv b \pmod{m} \implies& \exists \\, k \in \Z \quad / \quad a = b - km \\\\
+a \equiv b \pmod{m} \iff& a \text{ mod } m = b \text{ mod } m \\
+a \equiv b \pmod{m} \implies& \exists \\, k \in \Z \quad / \quad a = b - km \\
 \end{align*}
 $$
 {{< /block >}}
@@ -86,7 +86,7 @@ La clase de restos módulo $m$ se denota con $\Z_{/m\Z}$.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{rcases}
-    a \equiv b \\\\
+    a \equiv b \\
     c \equiv d \\\\
 \end{rcases}
 \implies

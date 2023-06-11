@@ -86,8 +86,8 @@ el problema de la parada no se puede resolver mediante algoritmos.
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
 $$
-f(x) \in O(g(x))      \iff |f(x)| \le C |g(x)| \text{, si } x > k \\\\
-f(x) \in \Omega(g(x)) \iff |f(x)| \ge C |g(x)| \text{, si } x > k \\\\
+f(x) \in O(g(x))      \iff |f(x)| \le C |g(x)| \text{, si } x > k \\
+f(x) \in \Omega(g(x)) \iff |f(x)| \ge C |g(x)| \text{, si } x > k \\
 f(x) \in \Theta(g(x)) \iff f(x) \in O(g(x)) \land g(x) \in \Omega(f(x))
 $$
 {{< /block >}}
