@@ -238,6 +238,44 @@ Donde $\big[ \frac{m}{m_i} \big]^{-1}\_{m_i}$ es el inverso multiplicativo de
 $\frac{m}{m_i}$ módulo $m_i$.
 {{< /block >}}
 
+# Exponenciación modular
+
+Por ejemplo, para el criptosistema [RSA] es necesario realizar potencias con
+números grandes en aritmética modular, por ejemplo $b^e \text{ mod } n$.
+
+Utilizando la [representación de enteros], se puede obtener lo siguiente:
+
+$$
+e = \sum_{i = 0}^{k} e_i 2^i = e_0 + e_1 2 + e_2 2^2 + \ldots + e_k 2^k
+$$
+
+Y aplicando propiedades de las potencias:
+
+$$
+\begin{align*}
+    b^e &= b^e_0 \\; b^{e_1 2} \\; b^{e_2 2^2} \ldots \\; b^{e_k 2^k} = b^{2^0} \\\\
+        &= (b^{2^0})^{e_0} \\; (b^{2^1})^{e_1} \ldots \\; (b^{2^k})^{e_k}
+\end{align*}
+$$
+
+Por lo que finalmente se puede obtener el siguiente algoritmo:
+
+```py
+def mod_exp(b, e, m):
+    exp = b
+    for bit in e.bits():
+        if bit == 1:
+            exp *= exp
+            exp %= m
+    return exp
+```
+
+Lo que resulta bastante más eficiente que calcular la potencia y después el
+módulo.
+
+[representación de enteros]: {{< relref "numeros#representación-de-enteros" >}}
+[RSA]: {{< relref "criptografia#cifrado-rsa" >}}
+
 # Curiosidades
 
 {{< youtube
