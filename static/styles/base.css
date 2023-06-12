@@ -173,6 +173,9 @@ img, svg {
     transform: translate(-50%, 0);
 }
 
+/* Make diagrams bigger */
+.goat svg { min-width: 70%; }
+
 img          { width: 85vmin; }
 figcaption p { text-align: center; }
 
@@ -222,8 +225,15 @@ tr { background-color: var(--table-color-2); }
 }
 
 .block .block-content {
-    grid-row-start: 1;
+    grid-row-start: 2;
     padding: var(--block-padding);
+}
+
+/* Put side by side in Desktop  */
+@media only screen and (min-width: 800px) and (min-device-width: 800px) {
+    .block .block-content {
+        grid-row-start: 1;
+    }
 }
 
 
