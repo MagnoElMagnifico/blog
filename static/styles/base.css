@@ -159,7 +159,8 @@ blockquote p { margin: 0; text-align: left; }
 blockquote code,
 blockquote blockquote,
 #TableOfContents code,
-.project code { background-color: var(--background-color); }
+.project code,
+.block-content code { background-color: var(--background-color); }
 
 
 /**** Images ****/
@@ -208,7 +209,6 @@ tr { background-color: var(--table-color-2); }
 /**** Blocks ****/
 .block {
     display: grid;
-    grid-template-columns: auto 1fr auto;
     background-color: var(--block-color);
     border-radius: var(--border-radius);
     margin: var(--p-separation);
@@ -231,9 +231,8 @@ tr { background-color: var(--table-color-2); }
 
 /* Put side by side in Desktop  */
 @media only screen and (min-width: 800px) and (min-device-width: 800px) {
-    .block .block-content {
-        grid-row-start: 1;
-    }
+    .block { grid-template-columns: auto 1fr auto; }
+    .block .block-content { grid-row-start: 1; }
 }
 
 
