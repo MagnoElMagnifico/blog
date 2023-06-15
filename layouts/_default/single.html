@@ -6,6 +6,7 @@
 
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
 
     {{ with .Parent }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
     {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
