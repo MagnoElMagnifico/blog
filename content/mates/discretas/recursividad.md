@@ -185,7 +185,7 @@ $$
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 Sea $a_n = c_1 a_{n-1} \\;+\\; \ldots \\;+\\; c_k a_{n-k} \\;+\\; L(n)$.
 
-Si $a_n^{(p)}$ es una solución particular de la RR y si $a_n^{(h)} es una
+Si $a_n^{(p)}$ es una solución particular de la RR y si $a_n^{(h)}$ es una
 solución a la parte homogénea, entonces la solución es $$ a_n = a_n^{(p)}
 \\;+\\; a_n^{(h)}.$$
 {{< /block >}}
