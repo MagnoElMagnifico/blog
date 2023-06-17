@@ -4,6 +4,15 @@
     {{ end }}
 {{ end }}
 
+{{ define "scripts" }}
+    {{ if .Params.mermaid }}
+        <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
