@@ -181,6 +181,9 @@ Recuerda que en algunos casos es necesario escapar las barras:
 - `weight`: peso para ordenar las diferentes páginas dentro de la sección
 - `slug`: modifica el nombre de la pagina (URL)
 - `math`: permite añadir fórmulas con LaTeX
+- `mermaid`: permite añadir diagramas con [Mermaid].
+
+[Mermaid]: https://mermaid.js.org
 
 
 # Shortcodes
@@ -247,3 +250,25 @@ Holis :)
 {{< /dropdown >}}
 ```
 
+- `mermaid` (argumento de bloque): crea un diagrama [Mermaid] con el código
+  dado. En su página puedes encontrar la [sintaxis de Mermaid] y un [editor
+  visual].
+
+```
+{{< mermaid >}}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+{{< /mermaid >}}
+```
+
+[sintaxis de Mermaid]: https://mermaid.js.org/intro/
+[editor visual]: https://mermaid.live/
