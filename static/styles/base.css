@@ -113,7 +113,6 @@ p {
 li p { margin: 1rem 0 0 0; }
 li::marker { color: var(--magno-green); }
 
-/* TODO: refactor */
 hr {
     width: 60%;
     margin: var(--p-separation);
@@ -199,11 +198,8 @@ th {
     border-bottom: var(--table-header-border);
 }
 
-th, td   { padding: var(--block-padding); }
-tr:hover { opacity: 0.7; }
+th, td { padding: var(--block-padding); }
 tr { background-color: var(--table-color-2); }
-/* tr:nth-child(odd)  { background-color: var(--table-color-1); } */
-/* tr:nth-child(even) { background-color: var(--table-color-2); } */
 
 
 /**** Blocks ****/
