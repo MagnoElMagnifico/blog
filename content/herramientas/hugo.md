@@ -3,7 +3,7 @@ title: Hugo SSG
 description: Guía de uso de Hugo para crear una página web estática fácilmente.
 date: 2022-09-05
 updated: 2023-05-15
-weight: 5
+weight: 6
 draft: true
 ---
 
