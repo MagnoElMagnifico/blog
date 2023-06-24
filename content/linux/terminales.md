@@ -84,73 +84,81 @@ root@<hostname>:~/blog/content/linux#
 
 # Archivos que ejecuta Bash
 
+Consulta este [maravilloso post](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/).
+
 Bash diferencia entre varias posibilidades cuando una instancia suya es creada.
-Por una parte distingue entre **interactiva** y **no interactiva** (si el
-usuario tiene un prompt y envía input directamente a Bash; o bien en un script,
-donde el usuario no tiene interacción) y entre _**login**_ y _**non-login**_
-(cuando un usuario inicia una sesión en bash via terminal, SSH, etc; o cuando
-desde una shell se inicia otra). Este último se puede comprobar con `echo $0`,
-si devuelve `-bash` será _login_, y `bash` si es _non-login_.
+Se distingue entre:
 
-Entonces, en sesiones **interactivas _login_** ejecuta por este orden:
+- **interactiva** y **no interactiva**: si el usuario tiene un prompt y envía
+  input directamente a Bash; o bien en un script, donde el usuario no tiene
+  interacción.
+- _**login**_ y _**non-login**_: cuando un usuario inicia una sesión en bash via
+  terminal, SSH, etc; o cuando desde una shell se inicia otra.
 
-1. `/etc/profile` si existe, y este script ejecuta `/etc/profile.d/*.sh`
-2. `~/.bash_profile` si existe
-3. `~/.bash_login` si existe
-4. `~/.profile` si existe, y este script generalmente ejecuta `~/.bashrc`
+Este último se puede comprobar con `echo $0`, si devuelve `-bash` será _login_,
+y `bash` si es _non-login_.
 
-```bash
-# ~/.profile
-if [ -f ~/.bashrc ] # Si .bashrc existe ...
-then
-    . ~/.bashrc # ... ejecútalo
-fi
+{{<
+    figure
+    alt  = "Diagrama de ejecución de archivos de bash"
+    src  = "https://shreevatsa.files.wordpress.com/2008/03/bashstartupfiles1.png"
+    link = "https://shreevatsa.files.wordpress.com/2008/03/bashstartupfiles1.png"
+>}}
+
+Bash funciona de la siguiente forma. Lee las columnas hacia abajo. **Primero
+ejecuta A, luego B, entonces C, etc**. B1, B2, B3 signfica que solo ejecuta el
+primero de los que encuentre.
+
+```goat
+.----------------+-----------+-----------+------.
+|                |Interactive|Interactive|Script|
+|                |login      |non-login  |      |
++----------------+-----------+-----------+------+
+|/etc/profile    |   A       |           |      |
++----------------+-----------+-----------+------+
+|/etc/bash.bashrc|           |    A      |      |
++----------------+-----------+-----------+------+
+|~/.bashrc       |           |    B      |      |
++----------------+-----------+-----------+------+
+|~/.bash_profile |   B1      |           |      |
++----------------+-----------+-----------+------+
+|~/.bash_login   |   B2      |           |      |
++----------------+-----------+-----------+------+
+|~/.profile      |   B3      |           |      |
++----------------+-----------+-----------+------+
+|BASH_ENV        |           |           |  A   |
++----------------+-----------+-----------+------+
+|                |           |           |      |
++----------------+-----------+-----------+------+
+|                |           |           |      |
++----------------+-----------+-----------+------+
+|~/.bash_logout  |    C      |           |      |
+'----------------'-----------'-----------'------'
 ```
 
-Además, por si todo esto fuese poco, normalmente `~/.bashrc` puede llegar a
-ejecutar `~/.bash_aliases`, únicamente dedicado a definiciones de
-[alias](#alias). <!-- TODO: bash_completion -->
+Por lo que se puede concluir con:
+
+- `bash_profile` debe ser super sencillo y solamente carga `.profile` y `.bashrc`
+  en ese orden.
+
+- `profile` configuración no específica a Bash, debe ser compatible con `sh`:
+  `bash`, `zsh`, `ksh`... Esto puede ser variables del entorno (`$PATH`),
+  variables para aplicaciones gráficas y demás.
+
+- `bashrc` tiene la configuración de la shell interactiva: _prompt_, `$EDITOR`,
+  `alias`, etc. No debe imprimir nada.
 
 Se puede evitar la ejecución de todos estos scripts con el argumento
 `--noprofile`.
 
 Al cerrar sesión (con `exit`) se ejecuta `~/.bash_logout`.
 
------------------------------------------------------------
-
-Para una shell **interactiva _non-login_**:
-
-1. `~/.bashrc` si existe.
-
-Se puede evitar
-con el argumento `--norc` o cambiar el archivo con `--rcfile <archivo>`.
-
------------------------------------------------------------
-
-Para una sesión **no interactiva** se comporta de esta forma (aunque este código no
-está escrito en ningún script):
-
-```bash
-if [ -n "$BASH_ENV" ] # Comprueba si existe $BASH_ENV
-then
-    . "$BASH_ENV" # En tal caso, ejecuta el script en su dirección
-fi
-```
-
------------------------------------------------------------
-
-Finalmente, si bash se invoca con el comando `sh`, se intentará imitar el
-comportamiento de dicha shell, pero manteniendo estándares POSIX.
-
-> **Conclusión**: De una forma u otra, los scripts por defecto de `.profile`
-> acabarán ejecutando finalmente `.bashrc`, así que yo simplemente colocaría mi
-> configuración allí dejando los demás por defecto (que generalmente residen en
-> `/etc/skel/`, por si los quieres recuperar).
-
-**Fuente**: [GNU Manual] y el [Manual] sobre bash.
+**Fuente**: [GNU Manual] y el [Manual] sobre bash. Más información [en esta
+respuesta de StackOverflow].
 
 [Manual]: https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html
 [GNU Manual]: https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
+[en esta respuesta de StackOverflow]: https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
 
 
 # Bash config
