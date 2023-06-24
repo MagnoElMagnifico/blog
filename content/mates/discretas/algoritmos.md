@@ -175,11 +175,12 @@ Y también se puede analizar en distintos casos:
 Con $a > 1$.
 
 {{< keyvalue >}}
-- **Resolubles**:
-    -: **Tratables**, terminan en un tiempo razonable; como máximo polinómico.
-    -: **Intratables**, acaba en tiempo exponencial, factorial o superexponencial.
-- **Irresolubles**: No se pueden resolver mediante algoritmos.
+-% **Resolubles**:%
+- **Tratables**: terminan en un tiempo razonable; como máximo polinómico.
+- **Intratables**: acaba en tiempo exponencial, factorial o superexponencial.
+-% **Irresolubles**:% No se pueden resolver mediante algoritmos.
 {{< /keyvalue >}}
+
 
 ## P vs NP
 

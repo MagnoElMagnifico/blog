@@ -156,8 +156,9 @@ dibujar diagramas usando ASCII.
 ## LaTeX
 
 Se utiliza [Katex] para renderizar las fórmulas: simplemente escribe código
-LaTeX entre `$`. Para bloques de ecuaciones (párrafos centrados) usa `$$`.
-Estos [símbolos] son los soportados.
+LaTeX entre `$` (con la opción `math` puesta a `true` en el _front matter_).
+Para bloques de ecuaciones (párrafos centrados) usa `$$`. Estos [símbolos] son
+los soportados.
 
 Recuerda que en algunos casos es necesario escapar las barras:
 
@@ -207,16 +208,11 @@ Recuerda que en algunos casos es necesario escapar las barras:
 ```
 
 - `keyvalue` (argumento de bloque): crea una tabla de dos columnas: valor y
-  descripción. Una nueva fila empieza por `-` y la descripción por `:`. La
-  descripción puede ser una lista de valores (dejando la clave vacía).
+  descripción. Una nueva fila empieza por `-%` y la descripción por `:%`.
 
 ```md
 {{< keyvalue >}}
-- Valor: Descripción
-- Valor:
-    -: Descripción 1
-    -: Descripción 2
-    -: Descripción 3
+-% Valor :% Descripción
 {{< /keyvalue >}}
 ```
 
@@ -252,7 +248,7 @@ Holis :)
 
 - `mermaid` (argumento de bloque): crea un diagrama [Mermaid] con el código
   dado. En su página puedes encontrar la [sintaxis de Mermaid] y un [editor
-  visual].
+  visual] (la opción `mermaid` debe estar a `true` en el _front matter_).
 
 ```
 {{< mermaid >}}

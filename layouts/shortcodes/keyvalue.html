@@ -1,43 +1,20 @@
 <!-- Use Regex to fetch the keys, values and level -->
-{{ $keys   := findRE `-[\W\w]*?:` .Inner }}
-{{ $values := findRE `:[\W\w]*?(-|\z)` .Inner }}
-{{ $levels := findRE `[ \t]*-` .Inner  }}
+{{ $keys   := findRE `(-%)[\W\w]*?(:%)` .Inner }}
+{{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
 
 <table class="keyvalue">
 <!-- TODO?: añadir cabecera opcional -->
 <!-- TODO?: añadir más niveles de profundidad -->
-<!-- TODO?: añadir posibilidad de key values dentro de otros -->
 
 <!-- Go through all the values -->
 {{ range $i := seq 0 (len $values) }}
-    {{ $key   := trim (index $keys   $i) "-: \t\n" }}
-    {{ $value := trim (index $values $i) "-: \t\n" }}
-    {{ $level := trim (index $levels $i) "-:" | len }}
-
-    {{ $rowspan := newScratch }}
-    {{ if not $value }}
-        <!-- Count the necessary rows -->
-        {{ $rowspan.Set "c" 1 }}
-        {{ $rowspan.Set "end" false }}
-
-        {{ range $j := seq (add $i 1) (len $values) }}
-            {{ $next_level := trim (index $levels $j) "-:" | len }}
-
-            {{ if and (not ($rowspan.Get "end")) (gt $next_level $level) }}
-                {{ $rowspan.Add "c" 1 }}
-            {{ else }}
-                <!-- If the indent level is lower, stop adding -->
-                {{ $rowspan.Set "end" true }}
-            {{ end }}
-        {{ end }}
-    {{ end }}
+    {{ $key   := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $keys $i) }}
+    {{ $value := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $values $i) }}
+    {{/* $key   := trim (index $keys   $i) "-:% \t\n" */}}
+    {{/* $value := trim (index $values $i) "-:% \t\n" */}}
 
     <tr>
-        {{ with $key }}
-            <td {{ with $rowspan.Get "c"}}rowspan="{{ . }}"{{ end }}>
-                {{ . | markdownify }}
-            </td>
-        {{ end }}
+        {{ with $key   }}<td>{{ . | markdownify }}</td>{{ end }}
         {{ with $value }}<td>{{ . | markdownify }}</td>{{ end }}
     </tr>
 {{ end }}
