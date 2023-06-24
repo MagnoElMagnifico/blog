@@ -6,6 +6,21 @@ weight: 2
 date: 2023-06-17
 ---
 
+{{< dropdown "TODO" >}}
+Se puede editar el código desde GitHub (botón del lápiz, y guardar cambios)
+
+Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
+contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020 , no
+debes introducir tu contraseña real, sino un _Personal Access Token_ (PAT) que
+puedes generar desde tu cuenta en `Settings > Developer settings > Personal
+access tokens > Generate new token`.
+
+Debes introducir un nombre descriptivo, su fecha máxima de validez y los
+permisos que le quieras aportar. Finalmente pulsa en `Generate token.` y úsalo
+en lugar de tu contraseña. De esta forma resulta mucho más seguro y puedes
+controlar mejor los permisos.
+{{< /dropdown >}}
+
 # Contribuir a Open Source en GitHub
 
 La página principal donde aparecen todos estos proyectos Open Source es en

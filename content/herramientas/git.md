@@ -7,35 +7,41 @@ date: 2023-06-17
 mermaid: true
 ---
 
-pg 36
 {{< dropdown "TODO" >}}
-Se puede editar el código desde GitHub (botón del lápiz, y guardar cambios)
+- `git pull`
+- `git push`
+- `git remote`
+------------------------------------------------------------
+- `git branch`
+- `git merge`
+- `git checkout`
+- `git switch`
+------------------------------------------------------------
+- `git revert`
+- `git restore`
+- `git reset`
+------------------------------------------------------------
+- `git log`
+- `git diff`
+- `git grep`
+- `git show`
+- `git tag`
+------------------------------------------------------------
+- `git rebase`
+{{< /dropdown >}}
 
-Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
-contraseña. Sin embargo, con la actualización de GitHub de Julio de 2020 , no
-debes introducir tu contraseña real, sino un _Personal Access Token_ (PAT) que
-puedes generar desde tu cuenta en `Settings > Developer settings > Personal
-access tokens > Generate new token`.
+{{< dropdown "Vídeos" >}}
+- Remotes: https://youtu.be/Gg4bLk8cGNo
+- Git avanzado: https://youtu.be/qsTthZi23VE
+{{< /dropdown >}}
 
-Debes introducir un nombre descriptivo, su fecha máxima de validez y los
-permisos que le quieras aportar. Finalmente pulsa en `Generate token.` y úsalo
-en lugar de tu contraseña. De esta forma resulta mucho más seguro y puedes
-controlar mejor los permisos.
-
+{{< dropdown "TODO" >}}
 - `git pull` : actualiza el repositorio
-- `git clone url` : copiar repositorio
-- `git push --tags` : subir las tags a repositorio remoto
 
+tags
+- `git push --tags` : subir las tags a repositorio remoto
 - _tag_: especifica versiones de un proyecto
 - `git tag nametag -m "descripción"` : crea una tag
-
---------------------------------------------------------------------------------
-
-git config --global core.editor "comando"
-git config --global -e
-defaultBranch = 'main'
-core.autocrlf input (mac/linux, usan lf) true (windows, usa cr lf)
-mas git config -h
 
 ------------
 
@@ -73,6 +79,7 @@ git remote add origin url
 Ver las diferencias con otra rama y saber si se puede hacer un merge
 git diff rama
 
+---------------------------------------------------
 crea unas covenciones para tu equipo dado q depende un poco del proyecto, tamaño del equipo etc
 
 always integrating
@@ -220,19 +227,18 @@ parámetro adicional o seleccionando la carpeta actual con `.`.
 En esta sección se discutirá en detalle los comandos con los que estarás
 trabajando sobre el 80% de las veces que uses Git.
 
-{{< mermaid >}}
+{{< mermaid bg-color="white" >}}
 sequenceDiagram title: Ciclo de vida de Git
     participant Sin seguimiento
     participant Sin modificar
     participant Modificado
     participant Añadido
-rect rgb(255, 255, 255)
+
     Sin seguimiento->>Añadido: Añadir el archivo
     Sin modificar->>Modificado: Editar el archivo
     Sin modificar->>Sin seguimiento: Eliminar el archivo
     Modificado->>Añadido: Añadir el archivo
     Añadido->>Sin modificar: Commit
-end
 {{< /mermaid >}}
 
 Antes de nada, **Git debe saber qué cambios son los que quieres incluir**
@@ -282,22 +288,20 @@ seguimiento. Además recomienda algunos comandos para poder añadir los cambios.
 
 Algunas _flags_:
 
-{{< keyvalue >}}
 - `git status -s`: salida en formato corto
 - `git status -sb`: en formato corto muestra también la rama
-{{< /keyvalue >}}
 
 Y esta es la tabla con los significados de las letras:
 
 {{< keyvalue >}}
-- `M`: modificado
-- `A`: añadido
-- `D`: borrado
-- `R`: renombrado
-- `C`: copiado
-- `U`: actualizado pero no _merged_
-- `?`: sin seguimiento
-- `!`: ignorado
+-% `M`:% modificado
+-% `A`:% añadido
+-% `D`:% borrado
+-% `R`:% renombrado
+-% `C`:% copiado
+-% `U`:% actualizado pero no _merged_
+-% `?`:% sin seguimiento
+-% `!`:% ignorado
 {{< /keyvalue >}}
 
 
@@ -369,21 +373,21 @@ git add -patch
 Permite añadir los cambios uno a uno, no por archivos.
 
 {{< keyvalue >}}
-- `y` (yes): añadir el cambio
-- `n` (no): no añadir el cambio
-- `q` (quit): salir, no añade el actual ni los restantes
-- `a` (all): añade todos los restantes del archivo
-- `d` (delete): no añade todos los restantes del archivo
-- `s` (split): dividir en cambios más pequeños
-- `e` (edit): editar manualmente el cambio
-- `g` (go): seleccionar cambio al que saltar
-- `/`: buscar cambio
-- `j` `J`: dejar sin decidir, ver el siguiente
-- `k` `K`: dejar sin decidir, ver el anterior
+-% `y` (yes):% añadir el cambio
+-% `n` (no):% no añadir el cambio
+-% `q` (quit):% salir, no añade el actual ni los restantes
+-% `a` (all):% añade todos los restantes del archivo
+-% `d` (delete):% no añade todos los restantes del archivo
+-% `s` (split):% dividir en cambios más pequeños
+-% `e` (edit):% editar manualmente el cambio
+-% `g` (go):% seleccionar cambio al que saltar
+-% `/`:% buscar cambio
+-% `j` `J`:% dejar sin decidir, ver el siguiente
+-% `k` `K`:% dejar sin decidir, ver el anterior
 {{< /keyvalue >}}
 
 
-## Git commit
+## `git commit`
 
 Y finalmente para crear el commit de los cambios en el _Index_:
 
@@ -450,17 +454,43 @@ corchetes `[abc]` para seleccionar o `a` o `b` o `c`; el signo `?` para un
 caracter; y `*` para ninguno o varios caracteres.
 
 
+# Revisando el historial
+
+## `git log`
+
+```sh
+git log
+```
+
+Muestra el historial de commits hasta el momento.
+
+Tiene muchas opciones interesantes:
+
+- `git diff [archivo]` : muestra todos los cambios no añadidos
+- `git diff --staged [archivo]`: muestra los cambios añadidos
+- `git log [archivo]` : muestra info de los commits (usuario, fecha, código, descripción)
+- `git log --oneline` : muestra info de los commits
+- `git log --decorate --oneline --graph`: muestra info de los commits más mejor
+- `git log --stat`
+- `git log -p`: git log pero con un diff
+- `git shortlog`
+- `git blame archivo` : muestra info de los cambios de un archivo con su código de commit, usuario, fecha, etc.
+- `git reflog` : historial del repositorio local
+
+
 # Ramas
 
 - `git branch nombre` : crear una rama
 - `git branch` : muestra las ramas creadas y en cuál estás
 - `git branch -a`: muestra todas las ramas
-- `git checkout nombrerama` : cambia a la rama dada
+- `git switch nombrerama` : cambia a la rama dada
 - `git merche nombrerama` : desde la rama master/main se une con la rama dada
 - `git branch -d nombrerama` : borra la rama
 
 - _Fork_: clona el repositorio (repositorio publico) en GitHub a otra cuenta
 - _Pull request_: petición para juntar el fork con el proyecto inicial
+
+https://stackoverflow.com/a/70454786
 
 
 # `HEAD`
@@ -496,32 +526,12 @@ En el ejemplo anterior:
 Fuente: [Stack Overflow](https://stackoverflow.com/questions/2304087/what-is-head-in-git)
 
 
-# Info
-
-- `git status -s` : muestra el estado de los archivos en la carpeta del proyecto
-- `git diff [archivo]` : muestra todos los cambios en relación al master remoto
-- `git diff --staged [archivo]`
-- `git log [archivo]` : muestra info de los commits (usuario, fecha, código, descripción)
-- `git log --oneline` : muestra info de los commits
-- `git log --decorate --oneline --graph`: muestra info de los commits más mejor
-- `git log --stat`
-- `git shortlog`
-- `git blame archivo` : muestra info de los cambios de un archivo con su código de commit, usuario, fecha, etc.
-- `git reflog` : historial del repositorio local
-
-
 # Deshacer cambios
 
 - `git reset --reset [--hard] code` : vuelve a un estado anterior borrando los commits posteriores
 - `git revert code && git add .` && `git revert --continue` : Crea un nuevo commit que cambia el repositorio a un estado anterior por medio de un merge
 
-
-# Sub módulos (repositorio dentro de otro)
-
-- `git submodule add url` : añade un submódulo
-- `git submodule init` : inicia el submódulo tras clonar el repositorio original
-- `git submodule update` : actualiza (clona) los submódulos iniciados
-
+`git rm` elimina archivos de la _Staging Area_ y de los cambios ya guardados.
 
 
 # Remotos
@@ -563,4 +573,135 @@ git fetch
 
 Fuente: [StackOverflow](https://stackoverflow.com/questions/20889346/what-does-git-remote-mean)
 
+
+# Sub módulos (repositorio dentro de otro)
+
+- `git submodule add url` : añade un submódulo
+- `git submodule init` : inicia el submódulo tras clonar el repositorio original
+- `git submodule update` : actualiza (clona) los submódulos iniciados
+
+
+# Más comandos
+
+## `git rm`
+
+```sh
+git rm archivo
+# Equivalente a
+rm archivo
+```
+
+Simplemente elimina el archivo dado (siempre y cuando no fuese modificado ni
+añadido, lo que lo hace equivalente al comando `rm`. Pero tiene algunas opciones
+interesantes:
+
+- `--cached`: quita el archivo de la _Staging Area_ y lo deja como si fuese
+  eliminado, pero el archivo todavía está en el disco.
+- `--dry-run` `-n`: no aplica los cambios, solo muestra el efecto
+- `--force` `-f`: borra el archivo aunque tenga cambios
+- `-r`: borra recursivamente
+
+## `git mv`
+
+Git no rastrea explícitamente los cambios de nombre en los archivos, pero es lo
+suficientemente listo como para darse cuenta de cosas de este estilo:
+
+```sh
+mv README.md README.txt
+git rm README.md
+git add README.txt
+```
+
+Pero resulta más cómodo usar directamente `git mv <archivo>`.
+
+
+# Resumen
+
+{{< block "Nota" >}}
+Algunos de estos comandos incluyen el argumento `--dry-run` o `-n`, que
+realmente no aplica los cambios, pero muestra el efecto si realmente se hubiese
+realizado.
+{{< /block >}}
+
+
+{{< keyvalue title="La ayuda" >}}
+-% `git help` :% Muestra algunos subcomandos
+-% `git help <comando>` o `man git-<comando>`:% Muestra el manual del subcomando
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Creación" >}}
+-% `git init` :% Crea un nuevo repositorio en la carpeta
+-% `git init -b <rama>` :% Crea un nuevo repositorio con el nombre de la rama
+-% `git clone <link>` :% Descarga un repositorio desde el link dado
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Información" >}}
+-% `git status` :% Muestra el estado actual del repositorio
+-% `git status -s` :% Estado del repositorio en formato corto
+-% `git status -sb` :% Estado del repositorio y la rama actual en formato corto
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Cambios" >}}
+-% `git add <archivo>`             :% Prepara el archivo para crear un cambio
+-% `git add -i`                    :% Abre una consola interactiva para añadir archivos
+-% `git add -p [<archivo>]`        :% Decide qué cambios se añaden uno a uno
+-% `git commit`                    :% Guarda los cambios en el histórico y abre el editor para dar una descripción
+-% `git commit -a`                 :% Guarda los cambios de todos los archivos con seguimiento
+-% `git commit -m "<descripción>"` :% Guarda los cambios dada la descripción
+-% `git commit -t <plantilla>`     :% Guarda los cambios con la plantilla de descripción dada
+-% `git commit -p`                 :% Guarda los cambios de seleccionándolos uno a uno (como `git add -p`)
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Deshacer cambios" >}}
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Ramas" >}}
+-% `git branch <nombre-rama>` :% Crea una rama
+-% `git branch -d <nombre-rama>` :% Borra la rama
+-% `git branch` :% Muestra las ramas y en cuál estás
+-% `git branch -a` :% Muestra todas las ramas (incluyendo remotos)
+-% `git switch <nombre-rama>` :% Cambia de rama
+-% `git merge <nombre-rama>` :% Combina la rama actual con la dada
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Remotos" >}}
+{{< /keyvalue >}}
+
+{{< keyvalue title="Más comandos" >}}
+-% `git rm <archivo>`:% Elimina el archivo como con `rm archivo`
+-% `git rm --cached <archivo>`:% Hace como si se eliminase el archivo, pero
+todavía existe en disco.
+-% `git rm -f <archivo>` :% Borra el archivo aunque tenga cambios
+-% `git rm -r <directorio>` :% Borra el directorio recursivamente
+-% `git mv <archivo> <nuevo-nombre>` :% Renombra el archivo
+{{< /keyvalue >}}
+
+
+{{< keyvalue title="Configuración del usuario" >}}
+-% `git config --list` :% Muestra la configuración actual (`~/.gitconfig`)
+
+-% `git config --global -e` :% Edita la configuración actual en el editor
+
+-% `git help config` :% Muestra toda las opciones de configuración posibles
+    (busca `Variables`)
+
+-% `git config --global user.username "<usuario>` :% Almacena el nombre de
+    usuario para los commits
+
+-% `git config --global user.email "<email>"` :% Almacena el email del usuario
+    para los commits
+
+-% `git config --global core.editor "<comando-editor>"` :% Configura qué editor
+    se va a usar para editar los commits.
+
+-% `git config --global core.autocrlf <valor>` :%
+- `input`: Recomendado para Mac/Linux (usan `LF`)
+- `true`: Recomendado para Windows (usa `CR LF`)
+{{< /keyvalue >}}
 
