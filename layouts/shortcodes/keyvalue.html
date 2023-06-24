@@ -1,10 +1,23 @@
 <!-- Use Regex to fetch the keys, values and level -->
-{{ $keys   := findRE `(-%)[\W\w]*?(:%)` .Inner }}
+{{ $keys   := findRE `(-%)[\W\w]*?(:%|\z)` .Inner }}
 {{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
 
 <table class="keyvalue">
-<!-- TODO?: añadir cabecera opcional -->
 <!-- TODO?: añadir más niveles de profundidad -->
+
+<!-- Optional Header -->
+{{ with .Get "title" }}
+    <tr>
+        <th colspan="2">{{ . | markdownify }}</th>
+    <tr>
+{{ else }}
+    {{ if and (.Get "key") (.Get "value") }}
+        <tr>
+            <th>{{ .Get "key"   | markdownify }}</th>
+            <th>{{ .Get "value" | markdownify }}</th>
+        <tr>
+    {{ end }}
+{{ end }}
 
 <!-- Go through all the values -->
 {{ range $i := seq 0 (len $values) }}
