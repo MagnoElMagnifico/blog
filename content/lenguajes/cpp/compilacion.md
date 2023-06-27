@@ -233,11 +233,12 @@ Explicación:
 ```make
 # Compilador
 CXX       = g++
-CXX_FLAGS = -Wall -Wextra -Wpedantic
+CXX_FLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Werror -Weffc++ -Wconversion -Wsign-conversion
 
 # Salida
-BUILD_DIR = bin
-BUILD_EXE = exe
+BUILD_DIR  = bin
+BUILD_EXE  = exe
+BUILD_TYPE = debug
 
 # Programa principal
 SRC_DIRS  = src
@@ -249,6 +250,11 @@ INC       = $(shell find $(INC_DIRS) -wholename "*.hpp" -or -wholename "*.h")
 INC_FLAGS = $(addprefix -I,$(INC_DIRS))
 
 # Debug y Release
+ifeq ($(BUILD_TYPE), release)
+   CFLAGS += -O2 -DNDEBUG
+else
+   CFLAGS += -ggdb
+endif
 
 #### Construir el ejecutable ####
 $(BUILD_DIR)/$(BUILD_EXE): $(OBJ)

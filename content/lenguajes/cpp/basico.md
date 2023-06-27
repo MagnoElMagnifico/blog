@@ -1,608 +1,330 @@
 ---
 title: C++ Básico
-weight: 4
-draft: true
+description: >
+    Introducción al lenguaje de programación C++
+date: 2023-06-24
+weight: 3
 ---
 
-# 1. Conceptos básicos
-# 1.1. Características
-C++ es un lenguaje de programación diseñado en 1979 por Bjarne Stroustrup. La intención de su
-creación fue extender al lenguaje de programación C mecanismos que permiten la manipulación
-de objetos, que es una forma especial y más sencilla de programar. En ese sentido, desde el punto
-de vista de los lenguajes orientados a objetos, C++ es un lenguaje híbrido.
+{{< block "Recursos" >}}
+El mejor recurso para aprender a programar es sin duda
+[learncpp.com](https://www.learncpp.com) (en inglés).
+{{< /block >}}
+
+# Características
+
+C++ es un lenguaje de programación diseñado en 1979 por Bjarne Stroustrup. La
+intención de su creación fue extender al lenguaje de programación C mecanismos
+que permiten la manipulación de objetos, que es una forma especial y más
+sencilla de programar. En ese sentido, desde el punto de vista de los lenguajes
+orientados a objetos, C++ es un lenguaje híbrido.
 
 Más características:
 
 - Su sintaxis es heredada del lenguaje C.
 - Permite la Programación Orientada a Objetos (POO).
 - Permite la agrupación de instrucciones.
-- Lenguaje muy didáctico, puedes aprender muchos otros lenguajes con gran facilidad.
-- Es portátil y tiene un gran número de compiladores en diferentes plataformas y sistemas
-  operativos.
+- Lenguaje muy didáctico, puedes aprender muchos otros lenguajes con gran
+  facilidad.
+- Es portátil y tiene un gran número de compiladores en diferentes plataformas
+  y sistemas operativos.
 - Permite la separación de un programa en módulos que admiten compilación
   independiente.
-- Es un lenguaje de alto nivel, aunque también es considerado de nivel medio por su facilidad
-  de manejo de memoria.
+- Es un lenguaje de alto nivel, aunque también es considerado de nivel medio por
+  su facilidad de manejo de memoria.
 
-## 1.2. El mínimo programa C++
-El archivo de código fuente de C++ tiene como extensión _.cpp_. En su interior, el programa
-escrito en este lenguaje está compuesto de dos partes: unas librerías y la función principal. Si no
-tenemos una de las dos, el programa no funcionará.
+# El mínimo programa C++
 
-El mínimo programa C++ es el siguiente (pero como no hace nada, no se necesitan librerías en
-este caso):
+El archivo de código fuente de C++ tiene como extensión _.cpp_. En su interior,
+el programa escrito en este lenguaje está compuesto de dos partes: unas
+librerías y la función principal. Si no tenemos una de las dos, el programa no
+funcionará.
+
+El mínimo programa C++ es el siguiente (pero como no hace nada, no se necesitan
+librerías en este caso):
 
 ```cpp
 int main() {}
 ```
 
-### 1.2.1. Las librerías
+## Las librerías
 
-Una librería es una colección de funciones que podemos implementar en nuestro código para
-realizar diferentes operaciones.
+Una librería es una colección de funciones que podemos implementar en nuestro
+código para realizar diferentes operaciones.
 
-Cabe destacar que tenemos algunas librerías a nuestra disposición integradas en el propio
-lenguaje, la librería est á ndar de C++ , y dado que este lenguaje de programación es una extensión
-de C, también podemos usar las librerías de C aquí. Por lo normal sus nombres empiezan por la
-letra c (ejemplo: _cmath_ , _cstdlib_ ). Otras están disponibles en nuestro sistema operativo (tenga
-cuidado con estas, pues si intenta usar el programa en otro sistema operativo, no se encontrarán y
-saltará un error), o si no, podemos crearlas nosotros.
+Cabe destacar que tenemos algunas librerías a nuestra disposición integradas en
+el propio lenguaje, **la librería estándar de C++**, y dado que este lenguaje de
+programación es una extensión de C, también podemos usar las librerías de
+C aquí. Por lo normal sus nombres empiezan por la letra c (ejemplo: _cmath_
+, _cstdlib_ ). Otras están disponibles en nuestro sistema operativo (tenga
+cuidado con estas, pues si intenta usar el programa en otro sistema operativo,
+no se encontrarán y saltará un error), o si no, podemos crearlas nosotros.
 
-Su extensión puede ser la `.h` (pertenecientes al lenguaje C, pero también válidas aquí) o
-`.hpp`, aunque en casos raros podemos declararla como un archivo de código fuente normal
-`.cpp`.
+Su extensión puede ser la `.h` (pertenecientes al lenguaje C, pero también
+válidas aquí) o `.hpp`, aunque en casos raros podemos declararla como un archivo
+de código fuente normal `.cpp`.
 
-Para incluir una librería, usaremos las directivas de preprocesador (ver 1.3.1):
+Para incluir una librería, usaremos las [directivas de
+preprocesador](#el-preprocesador):
 
 ```cpp
-#include <_nombre_de_la_librería_.h>
+#include <librería.h>
 ```
-Aquí estaríamos incluyendo una librería llamada “_nombre_de_la_librería_.h”.
 
-La que estaremos usando con más frecuencia es la llamada _iostream_ ( _Input and Output Stream_
+Aquí estaríamos incluyendo una librería llamada `librería.h`. La que estaremos
+usando con más frecuencia es la llamada `iostream` ( _Input and Output Stream_
+o flujo de entrada y salida). Con ella podremos mostrar mensajes por consola
+y leer esta misma, entre otras cosas.
 
-o flujo de entrada y salida). Con ella podremos mostrar mensajes por consola y leer esta misma,
+Si es una librería creada por nosotros y se encuentra en nuestra carpeta donde
+tenemos nuestros archivos del programa, debemos usar las comillas dobles en
+lugar de los símbolos de mayor o menor. Además de eso, podemos importar
+librerías que se encuentren en otras carpetas indicando su dirección:
 
-entre otras cosas.
-
-Si es una librería creada por nosotros y se encuentra en nuestra carpeta donde tenemos
-
-nuestros archivos del programa, debemos usar las comillas dobles en lugar de los símbolos de
-
-mayor o menor. Además de eso, podemos importar librerías que se encuentren en otras carpetas
-
-indicando su dirección:
-
-
+```cpp
+#include "___/___.h"
 ```
-#include “___/___.h”
-```
-Tenga en cuenta que el archivo que contiene la función principal debe situarse en la carpeta
 
-principal de manera que desde ahí pueda acceder al resto de librerías.
+{{< block "Nota" >}}
+Para más información sobre esto, puede consultar el post sobre [Instalación
+y compilación de C++]({{< relref "compilacion" >}})
+{{< /block >}}
 
-##### 1.2.2. La función principal......................................................................................................
+## La función principal
 
-Incluiremos ahora la función principal. Esta es de tipo entero ( _int_ ) y debemos llamarla _main_.
+Incluiremos ahora la función principal. Esta es de tipo entero (`int`) y debemos
+llamarla `main`.
 
-```
-int main()
-{
-```
-```
+```cpp
+int main() {
+    ...
 }
 ```
-Como es de tipo entero, es aconsejable que se devuelva un valor de este mismo tipo al final de
 
-la función, para que el sistema operativo determine si el programa ha terminado exitosamente.
+Como es de tipo entero, es aconsejable que se devuelva un valor de este mismo
+tipo al final de la función, para que el sistema operativo determine si el
+programa ha terminado exitosamente. Normalmente se devuelve el número 0, que
+indica que el programa ha terminado con éxito, y 1 cuando ha surgido algún
+error. También podemos escribir `EXIT_SUCCESS` o `EXIT_FAILURE` (de la librería
+`iostream`). Recuerde además que toda sentencia de C++ debe de estar acabada en
+un punto y coma (`;`).
 
-Normalmente se devuelve el número 0, que indica que el programa ha terminado con éxito, y 1
-
-cuando ha surgido algún error. También podemos escribir _EXIT_SUCCESS_ o _EXIT_FAILURE_ (de la
-
-librería iostream). Recuerde además que toda sentencia de C++ debe de estar acabada en un
-
-punto y coma (;).
-
-```
-int main()
-{
-```
-```
-return EXIT_SUCESS;
+```cpp
+int main() {
+    return EXIT_SUCESS;
 }
 ```
-Esta es la otra alternativa de función principal, la que incluye parámetros de consola:
 
-```
+Esta es la otra alternativa de función principal, la que incluye parámetros de
+consola:
+
+```cpp
 int main (int __, char * __[]) { ... }
 ```
-#### 1.3. Código básico.......................................................................................................................
 
-Para imprimir algo en pantalla o en la consola (habiendo incluido previamente la librería
+# Sentencias y bloques
 
-_iostream_ ) escribiremos lo siguiente:
-
-```
-std::cout << “Hola Mundo” << std::endl;
-```
-Como puede ver, usamos una función llamada _cout_ dentro de un _namespace_ llamado _std_ (ver
-
-1.3.1) concatenamos (juntamos) con el operador _<<_ (significa mueve _esto_ hacia _eso_ ) con el _endl_
-
-(sería equivalente a escribir _\n_ , un salto de línea). También podemos hacerlo con una variable.
+Todas las instrucciones en C++ deben terminar en un `;` como se ha comentado
+anteriormente. Cada una de estas representa una sentencia:
 
 ```
-std::cout << “El número es ” << num << std::endl;
+sentencia1;
+sentencia2;
+sentencia3;
+...
 ```
-Para pedir datos por consola al usuario mediante la entrada estándar, debemos escribir lo
 
-siguiente:
-
+Al principio esto puede parecer un poco tonto, pero ayuda al
+[compilador](#compilar) a entender mejor el código. Además, se pueden hacer
+cosas como esta:
 
 ```
+sentencia1; sentencia2; sentencia3;
+```
+
+Si no se usasen los `;` sería muy difícil determinar donde acaba cada
+instrucción.
+
+Además de las sentencias, se disponen de bloques, que son una agrupación de
+sentencias:
+
+```
+{
+    sentencia1;
+    sentencia2;
+    sentencia3;
+}
+```
+
+Posteriormente se verá como estos pueden ser útiles, pero generalmente ayuda
+a agrupar y ordenar el código.
+
+{{< block "Nota" >}}
+No es obligatorio, pero es particularmente conveniente añadir unos espacios
+delante de cada sentencia dentro de un bloque, para que quede mucho más claro
+que estas están dentro de dicho bloque. Esto de llama **identación**.
+{{< /block >}}
+
+# Comentarios
+
+Los comentarios funcionan igual que en otros lenguajes de programación, tenemos
+dos tipos:
+
+```cpp
+// Esto es un comentario de una línea
+
+/*
+  Esto es un
+  comentario de
+  varias líneas
+*/
+```
+
+# Código básico
+
+Para imprimir algo en pantalla o en la consola (habiendo incluido previamente la
+librería `iostream`) escribiremos lo siguiente:
+
+```cpp
+std::cout << "Hola Mundo" << std::endl;
+```
+
+Como puede ver, usamos una función llamada `cout` dentro de un
+[`namespace`](#namespaces) llamado `std`, concatenamos (juntamos) los contenidos
+con el operador `<<` (significa mueve _esto_ hacia _eso_ ) con el `endl` (sería
+equivalente a escribir `\n` , un salto de línea). También podemos hacerlo con
+una variable.
+
+```cpp
+std::cout << "El número es " << num << std::endl;
+```
+
+Para pedir datos por consola al usuario mediante la entrada estándar, debemos
+escribir lo siguiente:
+
+```cpp
 std::cin >> num;
 ```
-Lo que escriba el usuario se almacenará en la variable _num_. Incluso podemos pedir dos datos
 
-separados por espacios:
+Lo que escriba el usuario se almacenará en la variable `num`. Incluso podemos
+pedir dos datos separados por espacios:
 
-```
+```cpp
 std::cin >> num1 >> num2;
-Disponemos de otros métodos de entrada:
+```
+
+Disponemos también de otros métodos de entrada menos utilizados en C++:
+
+```cpp
 cin.get()
 getline(cin, string, __)
 ```
-Tras compilar y ejecutar nuestro programa (ver 1. 3 ), podemos ver que si no abrimos el archivo
 
-desde el CMD se cierra muy rápido y no podemos apreciar el resultado del programa. Para
+Para obtener un número aleatorio debemos usar la librería `ctime` y `cstdlib`:
 
-solucionar eso, podemos usar una de estos dos métodos:
-
-1. Importar la librería _conio.h_ (solo para Windows) y usar el método _getch()_ : espera hasta que
-
-el usuario presione una tecla.
-
-2. Importar la librería _cstdlib_ (pertenece a la librería de C) y usar el método _system(const_
-
-_char[]);_ para ejecutar comandos. Existe uno para hacer una pausa: system(“pause”);
-
-Para obtener un número aleatorio debemos usar la librería _ctime_ :
-
+```cpp
+srand(time(NULL));
+int numRandom = num_min + rand() % (num_max + 1 – num_min);
 ```
-srand(time(NULL))
-numRandom = num_min + rand() % (num_max + 1 – num_min);
-```
-##### 1.3.1. Namespaces.................................................................................................................
 
-Los _namespaces_ son maneras para dividir el código y si existen variables o funciones con el
+# Namespaces
 
-mismo nombre que no se confundan entre estas dos. Podemos crearlo muy fácilmente:
+Los _namespaces_ son maneras para dividir y modularizar el código. Además, como
+ventaja, si existen variables o funciones con el mismo nombre que no se
+confundirán entre estas dos. Podemos crearlos muy fácilmente:
 
-```
-namespace _nombre_
-{
-...
+```cpp
+namespace Nombre {
+    ...
 }
 ```
-Y para acceder al interior de su código usa los dobles dos puntos (::):
 
-```
-namescape Nombre
-{
-int var = 0;
-void metodo() {std::cout << "Soy un metodo!" << std::endl;}
+Y para acceder al interior de su código usa los dobles dos puntos (`::`):
+
+```cpp
+namespace Ejemplo {
+    void foo() {
+        std::cout << "Hola Mundo!" << std::endl;
+    }
+
+    int bar = 0;
 }
-std::cout << Nombre::var << std::endl;
-Nombre::metodo();
-```
-Pero si resulta muy pesado escribirlo todo el rato, podemos hacer lo siguiente y usar el método
 
-normalmente:
-
+Ejemplo::foo();
+std::cout << Ejemplo::bar << std::endl;
 ```
-using namespace Nombre;
+Pero si resulta muy pesado escribirlo todo el rato, podemos hacer lo siguiente
+y usar el método normalmente:
+
+```cpp
+using namespace Ejemplo;
 using namespace std;
 cout << var << endl;
-metodo();
+foo();
 ```
 
 Pero tenga cuidado ahora al nombrar sus variables y métodos...
 
-#### 1.4. Compilar...............................................................................................................................
+# Compilar
 
-C++ es un lenguaje compilado, lo que significa que tenemos que pasar un proceso llamado
+{{< block "Nota" >}}
+Aquí se discutirá cómo funciona la compilación en C++ y qué etapas tiene. Para
+ver cómo compilar con comandos, revise la
+[Instalación y Compilación de C++]({{< relref "compilacion" >}}).
+{{< /block >}}
 
-compilación para ejecutar nuestro programa. Este proceso convierte nuestro código en binario
+C++ es un lenguaje compilado, lo que significa que tenemos que pasar un proceso
+llamado compilación para ejecutar nuestro programa.
 
-para que el ordenador pueda entenderlo.
+Partimos de un archivo de código fuente C++, que es simplemente un archivo de
+texto. Sin embargo, el ordenador no puede ejecutar las instrucciones
+directamente, dado que este solo entiende instrucciones máquina en binario.
 
-Para compilar un programa C++ debemos tener instalado un compilador, que dependiendo de
+Por tanto, el compilador es un traductor que convierte un archivo de texto plano
+en un binario ejecutable por el ordenador.
 
-nuestro sistema operativo se usa uno u otro. Para Windows es más usado es MinGW. Existen
-
-también compiladores online.
-
-Dado que depende de cada sistema operativo, debemos usar uno determinado en función de la
-
-plataforma a la que estemos exportando nuestros ejecutables.
-
-Con el compilador de MinGW se compila usando el comando _g++_ y el archivo a compilar.
-
-Después se generará un archivo llamado “ _a.exe_ ” que es aquel que debemos ejecutar. Podemos
-
-también cambiar el nombre usando el modificador -o en el comando:
-
-```
-g++ __.cpp -o __.exe
-```
-##### 1.4.1. El preprocesador..........................................................................................................
-
-El preprocesador es la primera fase de las 3 tradicionales fases de compilación de un programa
-
-C++:
+Exiten 3 fases de compilación tradicionales:
 
 - Preprocesado
 - Compilado
 - Enlazado
 
-El preprocesador recibe un fichero de entrada y lo transforma en uno de salida aplicando las
+## El preprocesador
 
-directivas incluidas en el fichero de entrada. Estas directivas permiten incluir código de otros
+El preprocesador recibe un fichero de entrada y lo transforma en uno de salida
+aplicando las directivas incluidas en el fichero de entrada. Estas directivas
+permiten incluir código de otros ficheros (habitualmente archivos de cabecera),
+substituir unos textos por otros (esto son las macros) y elegir si se incluye
+o no cierto código (esto es la compilación condicional).
 
-ficheros (habitualmente archivos de cabecera), substituir unos textos por otros (esto son las
+{{< block "Es decir" >}}
+El preprocesador simplemente elimina, copia y pega código C++.
+{{< /block >}}
 
-macros) y elegir si se incluye o no cierto código (esto es la compilación condicional).
+El preprocesador solo entiende las directivas de preprocesado, las que empiezan
+por `#`, y es completamente independiente del resto de la sintaxis de C++.
 
-El preprocesador solo entiende las directivas de preprocesado, las cuales empiezan por #, por lo
+El estándar de C++ define las siguientes directivas:
 
-que no entiende el lenguaje C++.
+- `include`
+- `define` `undef`
+- `if` `ifdef` `ifndef` `else` `elif` `endif`
+- `line`
+- `error`
+- `pragma`
 
-##### 1.4.2. Directivas estándar.......................................................................................................
+Para una explicación más detallada mira el post sobre [el Preprocesador].
 
-El estándar de C++ define las siguientes directivas: _define_ , _undef_ , _include_ , _if_ , _ifdef_ , _ifndef_ , _else_ ,
+[el Preprocesador]: {{< relref "preprocesador" >}}
 
-_elif_ , _endif_ , _line_ , _error_ , _pragma_
 
+# Datos
+## Variables
+## Constantes
+## Tipos de datos
+### Números
 
-```
-#define
-Sirve para declarar una macro. Un texto que será substituido por otro por el preprocesador. Por
-```
-ejemplo, el siguiente fichero:
-
-```
-#define MIMACRO 17
-int main() { return MIMACRO; }
-```
-Al ser traducido por el preprocesador se convertirá en:
-
-```
-int main() { return 17; }
-```
-Esta directiva también permite el uso de parámetros, por ejemplo:
-
-```
-#define SALUDO(nombre) \
-std::cout << "Hola " << nombre << std::endl; \
-std::cout << "Bueno adios" << std::endl;
-```
-```
-#include<iostream>
-```
-```
-int main() { SALUDO("Magno"); return 0}
-```
-En el programa anterior la macro SALUDO permite un parámetros el cual es impreso con un
-
-saludo. Si tiene varias líneas, recuerde añadir una barra invertida (\) antes de cada una de ellas.
-
-Las macros tienen diferentes problemas, considera este código de ejemplo:
-
-```
-if (_alguna_condición_)
-SALUDO("Lucas");
-```
-El código anterior se traduce como:
-
-```
-if (_alguna_condición_)
-std::cout << "Hola " << "Lucas" << std::endl;
-std::cout << "Bueno adios" << std::endl;
-Con lo que a "Lucas" se le saluda solo si se cumple la condición pero se despide siempre. Que
-```
-probablemente no es lo que quería el autor. Fíjate que aunque la última línea esté identada esta
-
-no pertenece al if, que solo sobre la primera línea, así que recuerde usar llaves en estos casos.
-
-Aunque existe una solución por si sucede eso, crear un do while que solo se ejecute una vez:
-
-```
-#define SALUDO(nombre) \
-do { \
-std::cout << "Hola " << nombre << std::endl;\
-std::cout << "Bueno adios" << std::endl; \
-} while(false);
-```
-Con esa macro puedes usar SALUDO de forma similar a una función, todo su código formará un
-
-solo bloque.
-
-Otro problema es el siguiente:
-
-
-```
-#define MIMACRO 17
-int main() { int MIMACRO = 33; return 0 ; }
-```
-No podemos utilizar MIMACRO como nombre de variable porque el preprocesador lo substituye
-
-por 17. Y 17 no es un nombre de variable válido.
-
-Usar macros como si fuesen funciones puede ser tentador puesto que el código se inserta
-
-directamente en el resultado final en vez de tener que hacer llamadas a subrutinas y retornos. El
-
-resultado es un programa más rápido y más grande. Pero no es recomendable. Perdemos entre
-
-otras cosas la seguridad de tipos ( _type safety_ ). Y con compiladores tan optimizados actuales no es
-
-necesario, son capaces de optimizar funciones de la misma forma.
-
-Es tradicional y recomendable definir las macros utilizando letras mayúsculas y separando
-
-palabras por guiones bajos.
-
-**#undef**
-
-La definición de una macro (definida con #define) dura hasta que su definición es cancelada con
-
-#undef.
-
-**#include**
-
-Esta directiva recibe como parámetro un nombre de fichero. El parámetro se puede dar entre
-
-comillas o entre símbolos <>, como ya hemos visto.
-
-La directiva lee ese fichero y lo inserta en el fichero que está procesando, en el punto en que se
-
-encontraba la directiva. Nótese que estos ficheros insertados también son preprocesados y pueden
-
-a su vez tener otros #include con lo que pude haber una cascada de código insertado.
-
-**#ifdef, #ifndef, #else, #endif**
-
-Estas cuatro directivas permiten controlar qué código va a ser compilado en función de si las
-
-macros utilizadas como parámetros están o no definidas.
-
-Por ejemplo, si pasamos el siguiente código al preprocesador:
-
-```
-#define LINUX
-int main()
-{
-#ifdef LINUX
-std::cout << "Mi SO es Linux" << std::endl;
-#else
-std::cout << "Mi So no es Linux" << std::endl;
-#endif
-#ifndef MAC
-std::cout << "No uso Macintosh" << std::endl;
-#else
-std::cout << "Sí uso Macintosh" << std::endl;
-#endif
-return 0;
-```
-
-###### }
-
-Será traducido como:
-
-```
-int main()
-{
-std::cout << "Mi SO es Linux" << std::endl;
-std::cout << "No uso Macintosh" << std::endl;
-return 0;
-}
-```
-Es posible anidar estas directivas de forma similar a como se hace con los if de C++.
-
-**#if, #elif**
-
-#if actúa como #ifdef pero comparando una macro con un valor en vez de en función de si está
-
-definida. #elif permite encadenar varias comprobaciones seguidas sin tener que anidarlas y
-
-necesitando solo un #endif al final. Por ejemplo:
-
-###### #DEFINE LINUX 1
-
-###### #DEFINE NINTENDO 2
-
-###### #DEFINE VR_VIVE 3
-
-```
-bool disparoPulsado() {
-#if SYSTEM == LINUX
-return (key[KEY_SPACE]);
-#elif SYSTEM == NINTENDO
-return buttonPressed(KEY_A);
-#elif SYSTEM == VR_VIVE
-return pushGesture();
-#else
-#error Sistema desconocido
-#endif
-}
-```
-El código anterior sería el de una hipotética función que determina si un jugador ha pulsado el
-
-botón de disparo. Debemos definir la macro SYSTEM con un valor según compilemos para Linux,
-
-Nintendo o Realidad Virtual con VIVE. Y según el valor de esa macro se llamará a un código u otro.
-
-Esto también lo podríamos haber hecho con un if normal de código de C++. Pero esto tiene un
-
-inconveniente, es muy posible que la función buttonPressed de Nintendo no exista en Linux y falle
-
-la compilación del sistema para Linux. No tiene sentido que falle la compilación por un código que
-
-no se va a usar, para eso usamos estas directivas de procesador.
-
-**#error**
-
-Esta directiva provoca que falle la compilación y el compilador emita el mensaje de error que
-
-acompaña a esta directiva.
-
-**#line**
-
-Esta es una macro que posiblemente nunca uses.
-
-
-Cuando se sigue de un número causa que el compilador trate la siguiente línea como si fuese
-
-ese número de línea en vez del número de línea que de verdad tiene. Esto afecta a los mensajes de
-
-aviso o error que emita el compilador y a la información de ayuda a depuradores pero no afecta al
-
-código generado.
-
-```
-#line 17 nombreFichero
-```
-Si además añades un nombre el compilador actuará como si el fichero que está procesando
-
-tuviese este nombre.
-
-Esta directiva es útil para programas de transformación de código. Por ejemplo, los primeros
-
-compiladores de C++ traducían el código C++ a C y después lo compilaban con un compilador
-
-normal de C. Así se ahorraban escribir el compilador entero. Pero con frecuencia una línea de C se
-
-convertía en muchas de C++. Para que el compilador de C diese los números de línea correctos en
-
-los mensajes de error usaban esta directiva.
-
-**#pragma**
-
-```
-#pragma parametros
-```
-Esta es la directiva de control dependiente de la implementación. Cada compilador puede
-
-definir sus propios pragmas con su propio significado.
-
-Un pragma común es #pragma once. Si aparece en la primera línea de un fichero indica que ese
-
-fichero solo se debe incluir una vez. Es una directiva que no existe en todos los sistemas y que no
-
-funciona bien con ficheros montados en red, hardlinks o similares.
-
-**##**
-
-## no es una directiva sino un operador de macro. Toma dos tokens distintos y los pega para
-
-formar un solo token. El token resultado puede ser un nombre de variable, de clase o cualquier
-
-otro identificador.
-
-Por ejemplo:
-
-```
-#define DECLARA_Y_ASIGNA(tipo, nombrevar, valor) \
-tipo nombrevar = valor;
-tipo original_#nombrevar = valor;
-DECLARE_AND_SET(int, area, 2 * 6);
-```
-El #define anterior se utilizaría como ayuda a la depuración. Te permite declarar y asignar una
-
-variable. Pero declarando siempre otra segunda variable que empieza por original_ y sigue con el
-
-mismo nombre y a la que se asigna el mismo valor. En tu código usarías la variable con el nombre
-
-que pusiste en la macro. Y si mientras estás depurando quieres consultar el valor original puedes
-
-consultar la otra variable que se ha declarado con la macro.
-
-
-```
-Guardas de compilación.
-Esta es una técnica muy habitual en los archivos de cabecera. Es común que un archivo de
-```
-cabecera sea utilizado por varios archivos de cabecera. Por ejemplo:
-
-```
-//Fichero persona.h
-class Persona {};
-```
-```
-//Fichero calculos.h
-#include "persona.h"
-int envejecer(Persona p, int tiempo);
-```
-```
-//Fichero impresiones.h
-#include "persona.h"
-void muestraPersona(Persona p);
-```
-```
-//Fichero main.c
-#include "calculos.h"
-#include "impresiones.h"
-/* El resto del código */
-```
-Al compilar el fichero _main.c_ vamos a tener un error:
-
-```
-error: redefinition of ‘class Persona’
-```
-Esto se debe a que _main.c_ incluye _calculos.h_ e _impresiones.h_ y cada uno de estos dos a su vez
-
-incluye a _persona.h_. Con lo que _persona.h_ ha quedado incluido dos veces y el compilador esto no
-
-lo permite.
-
-Esto podemos solucionarlo así en el fichero _persona.h_ :
-
-```
-#ifndef PERSONA_H
-#define PERSONA_H
-//Fichero persona.h
-class Persona {};
-#endif
-```
-La primera vez que se incluya el fichero la macro no estará definida por lo que el #ifndef se
-
-evaluará a cierto y todo el código se incluirá. El código incluido a su vez define la macro
-
-PERSONA_H. La siguiente vez que se incluya la macro sí está definida por lo que el #ifndef se
-
-evalua a falso y no se incluirá el código.
-
-De esta forma nos aseguramos que el código del fichero se incluye una sola vez aunque el
-
-archivo se incluya múltiples veces.
-
-### 2. Comentarios...............................................................................................................................
-
-Los comentarios funcionan igual que en otros lenguajes de programación, tenemos dos tipos:
-
-
-```
-//Esto es un comentario de una línea
-/*
-Esto es un
-comentario de
-varias líneas
-*/
-```
-### 3. Datos..........................................................................................................................................
-
-#### 3.1. Tipos de datos....................................................................................................................
+### Texto
 
 Aquí los tipos de datos primitivos que soporta C++ (de menor a mayor capacidad):
 
@@ -614,31 +336,21 @@ código ASCII)
 
 Existen algunos caracteres que no se pueden escribir, pero que un _char_ puede contener:
 
-◦ **\\** : \
-
-◦ **\’** : ‘
-
-◦ **\”** : “
-
-◦ **\n** : salto de línea
-
-◦ **\f** : salto de página
-
-◦ **\t** : tabulador
-
-◦ **\v** : tabulador vertical
-
-◦ **\b** : retroceso
-
-◦ **\r** : retorno de carro
-
-◦ **\a** : alerta
-
-◦ **\000** : carácter ASCII (000 dígitos octales)
-
-◦ **\x00** : carácter ASCII (00 dígitos hexadecimales)
-
-◦ **\0** : nulo
+{{< keyvalue >}}
+-% `\\`   :% `\`
+-% `\'`   :% `'`
+-% `\"`   :% `"`
+-% `\n`   :% salto de línea
+-% `\f`   :% salto de página
+-% `\t`   :% tabulador
+-% `\v`   :% tabulador vertical
+-% `\b`   :% retroceso
+-% `\r`   :% retorno de carro
+-% `\a`   :% alerta
+-% `\000` :% carácter ASCII (`000` dígitos octales)
+-% `\x00` :% carácter ASCII (`00` dígitos hexadecimales)
+-% `\0`   :% nulo (caracter ASCII 0)
+{{< /keyvalue >}}
 
 - Números enteros (se pueden declarar potencias con e/E): **_int_**
 - Números decimales (no es necesario el 0 antes del punto decimal (.) ): **_float_** (en la
