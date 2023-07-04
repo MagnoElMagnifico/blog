@@ -8,7 +8,7 @@
     {{ if .Params.mermaid }}
         <script type="module">
             import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-            mermaid.initialize({ startOnLoad: true });
+            mermaid.initialize({ startOnLoad: true, theme: 'dark' });
         </script>
     {{ end }}
 {{ end }}
@@ -16,8 +16,6 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
-
-    {{ with .Parent }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
     {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
 
     <article>
@@ -26,6 +24,7 @@
 
     <div class="prev-next">
       {{ with .NextInSection }}<a class="link-button" style="background-color: #c33" href="{{ .Permalink }}">Anterior: {{ .Title }}</a>{{ end }}
+      {{ with .Parent }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
       {{ with .PrevInSection }}<a class="link-button" style="background-color: #5d5" href="{{ .Permalink }}">Siguiente: {{ .Title }}</a>{{ end }}
     </div>
 {{ end }}

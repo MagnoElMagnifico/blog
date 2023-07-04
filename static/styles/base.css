@@ -329,6 +329,10 @@ tr { background-color: var(--table-color-2); }
     flex-wrap: wrap;
 }
 
+@media only screen and (min-width: 800px) and (min-device-width: 800px) {
+    .prev-next { flex-wrap: nowrap; }
+}
+
 .prev-next a {
     color: white;
     min-width: 30%;
