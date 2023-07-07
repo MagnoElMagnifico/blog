@@ -19,6 +19,9 @@ formalizada (lenguaje de programación).
 {{< block "Definición" "var(--magno-blue)" "black" >}}
 El **Código Fuente** es un conjunto de instrucciones escritas en un lenguaje de
 programación.
+
+Estas se guardan en archivos de texto plano con una extensión especial (en lugar
+de `.txt`). La extensión del código fuente de C es `.c` y el de C++ es `.cpp`.
 {{< /block >}}
 
 
