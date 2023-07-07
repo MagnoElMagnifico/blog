@@ -4,23 +4,26 @@ description: >-
     Cómo usar las directivas del preprocesador en C/C++, aquellas que comienzan
     por un `#`.
 date: 2023-06-27T01:03:57+02:00
-weight: 0 # temporal
+weight: 4
 ---
 
 # El preprocesador
 
-El preprocesador recibe un fichero de entrada y lo transforma en uno de salida
-aplicando las directivas incluidas en el fichero de entrada. Estas directivas
-permiten incluir código de otros ficheros (habitualmente archivos de cabecera),
-substituir unos textos por otros (esto son las macros) y elegir si se incluye
-o no cierto código (esto es la compilación condicional).
+El preprocesador es la primera fase de compilación del código C/C++, como ya se
+comentó en la [introducción].
+
+Este simplemente recibe un fichero de entrada y lo transforma aplicando las
+directivas que va encontrando. Estas directivas permiten incluir código de otros
+ficheros (habitualmente archivos de cabecera), substituir unos textos por otros
+(esto son las macros) y elegir si se incluye o no cierto código (esto es la
+compilación condicional).
 
 {{< block "Es decir" >}}
 El preprocesador simplemente elimina, copia y pega código.
 {{< /block >}}
 
 El preprocesador solo entiende las directivas de preprocesado, las que empiezan
-por `#`, y es completamente independiente del resto de la sintaxis de C++.
+por `#`, y es completamente independiente del resto de la sintaxis de C o de C++.
 El estándar de C/C++ define las siguientes directivas:
 
 - `include`
@@ -30,6 +33,8 @@ El estándar de C/C++ define las siguientes directivas:
 - `error`, `warning`
 - `line`
 - `pragma`
+
+[introducción]: {{< relref "introduccion#el-proceso-de-compilación-de-cc" >}}
 
 
 # `#define`
