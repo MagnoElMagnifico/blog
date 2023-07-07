@@ -361,7 +361,9 @@ Son obligatorios los siguientes comandos:
     umount     Desmontar sistemas de archivos
     uname      Mostrar información del sistema
 
-Ver más en detalle en: [comandos de Linux].
+<!-- TODO: Cuando se publique el post de comandos de Linux -->
+<!-- Ver más en detalle en: [comandos de Linux]. -->
+<!-- [comandos de Linux]: {{< relref "comandos" >}} -->
 
 Y entre otros muchos, los siguientes opcionales:
 
@@ -373,7 +375,6 @@ Y entre otros muchos, los siguientes opcionales:
     netstat   Mostrar estadísticas de red
     ping      Probar ICMP
 
-[comandos de Linux]: {{< relref "comandos" >}}
 
 ### `/usr/sbin`
 
@@ -548,10 +549,11 @@ Los drivers, el kernel y determinadas aplicaciones acuden a este directorio para
 saber con qué dispositivos cuenta tu ordenador. Por ejemplo, un disco sería
 `sda` y una partición `sda1`, `sda2`...
 
-También por este motivo, es aquí donde más aparecen los diferentes tipos de
+<!-- TODO: Cuando se publique el post de archivos en Linux -->
+<!-- También por este motivo, es aquí donde más aparecen los diferentes tipos de
 archivos (ver [tipos de archivos]).
 
-[tipos de archivos]: {{< relref "archivos" >}}
+[tipos de archivos]: {{< relref "archivos" >}} -->
 
 
 ## `/media` y `/mnt`
