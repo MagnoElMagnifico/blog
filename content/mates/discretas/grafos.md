@@ -8,7 +8,6 @@ date: 2023-07-02T19:42:42+02:00
 weight: 9
 math: true
 mermaid: true
-draft: true
 ---
 
 # Definiciones elementales
