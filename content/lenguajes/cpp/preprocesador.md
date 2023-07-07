@@ -102,7 +102,8 @@ aunque la última línea esté identada esta no pertenece al if, que solo sobre 
 primera línea, así que recuerde usar llaves en estos casos.
 
 Aunque existe una solución por si sucede eso, crear un
-[bloque]:
+bloque:
+<!-- [bloque]: -->
 
 ```cpp
 #define SALUDO(nombre) {                                 \
@@ -111,7 +112,8 @@ Aunque existe una solución por si sucede eso, crear un
         }                                                \
 ```
 
-[bloque]: {{< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}}
+<!-- TODO: Cuando se publique C++ básico -->
+<!-- [bloque]: {{< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}} -->
 
 Otro problema es el siguiente:
 

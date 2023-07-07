@@ -4,7 +4,10 @@ description: >
     Introducción al lenguaje de programación C++
 date: 2023-06-24
 weight: 3
+draft: true
 ---
+
+<!-- TODO: Pasar muchas cosas de esto a C -->
 
 {{< block "Recursos" >}}
 El mejor recurso para aprender a programar es sin duda
