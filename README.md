@@ -156,8 +156,9 @@ dibujar diagramas usando ASCII.
 ## LaTeX
 
 Se utiliza [Katex] para renderizar las fórmulas: simplemente escribe código
-LaTeX entre `$`. Para bloques de ecuaciones (párrafos centrados) usa `$$`.
-Estos [símbolos] son los soportados.
+LaTeX entre `$` (con la opción `math` puesta a `true` en el _front matter_).
+Para bloques de ecuaciones (párrafos centrados) usa `$$`. Estos [símbolos] son
+los soportados.
 
 Recuerda que en algunos casos es necesario escapar las barras:
 
@@ -181,6 +182,9 @@ Recuerda que en algunos casos es necesario escapar las barras:
 - `weight`: peso para ordenar las diferentes páginas dentro de la sección
 - `slug`: modifica el nombre de la pagina (URL)
 - `math`: permite añadir fórmulas con LaTeX
+- `mermaid`: permite añadir diagramas con [Mermaid].
+
+[Mermaid]: https://mermaid.js.org
 
 
 # Shortcodes
@@ -203,17 +207,13 @@ Recuerda que en algunos casos es necesario escapar las barras:
 {{< /inlineHML >}}
 ```
 
-- `keyvalue` (argumento de bloque): crea una tabla de dos columnas: valor y
-  descripción. Una nueva fila empieza por `-` y la descripción por `:`. La
-  descripción puede ser una lista de valores (dejando la clave vacía).
+- `keyvalue` (argumento de bloque) \[ title=(título) | key=(título de la primera columna) value=(título de la segunda columna) \]
+  crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza
+  por `-%` y la descripción por `:%`.
 
 ```md
 {{< keyvalue >}}
-- Valor: Descripción
-- Valor:
-    -: Descripción 1
-    -: Descripción 2
-    -: Descripción 3
+-% `Valor` :% Descripción
 {{< /keyvalue >}}
 ```
 
@@ -225,16 +225,16 @@ Recuerda que en algunos casos es necesario escapar las barras:
 {{< color "test" "yellow" >}}
 ```
 
-- `block` (argumento de bloque) (nombre del bloque) (color de fondo del título)
+- `block` (argumento de bloque) \[(nombre del bloque) (color de fondo del título)\]
   (color del título): crea un bloque con una cabecera y un cuerpo, perfecto
   para resaltar detalles sin tener que usar citas.
 
 ```
 {{< block "Teorema" "red" "white" >}}
-Si en un triángulo rectángulo hay catetos de longitud $a$, y $b$,, y la
+Si en un triángulo rectángulo hay catetos de longitud $a$, y $b$, y la
 medida de la hipotenusa es $c$, entonces se cumple la siguiente relación:
 
-$$a^2 + b^2 = c^2$$
+$$ a^2 + b^2 = c^2 $$
 {{< /block >}}
 ```
 
@@ -247,3 +247,43 @@ Holis :)
 {{< /dropdown >}}
 ```
 
+- `mermaid` (argumento de bloque) \[bg-color=(color CSS de fondo)\]:
+  crea un diagrama [Mermaid] con el código dado. En su página puedes encontrar
+  la [sintaxis de Mermaid] y un [editor visual] (la opción `mermaid` debe estar
+  a `true` en el _front matter_).
+
+```
+{{< mermaid >}}
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+{{< /mermaid >}}
+```
+
+Alternativamente puedes usar un bloque de código:
+```
+\`\`\`mermaid
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+\`\`\`
+```
+
+[sintaxis de Mermaid]: https://mermaid.js.org/intro/
+[editor visual]: https://mermaid.live/

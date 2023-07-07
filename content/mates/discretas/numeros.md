@@ -108,7 +108,7 @@ siendo $a$ y $b$ enteros primos positivos no nulos.
 {{< /block >}}
 
 {{< block "Lema" "var(--magno-red)" "black" >}}
-$$ p \\, | \\, (a_1 \ldots a_n) => \implies p \\, | \\, a_i \text{    (para algún i)}$$
+$$ p \\, | \\, (a_1 \ldots a_n) \implies p \\, | \\, a_i \text{    (para algún i)}$$
 siendo $p$ un número primo y $a_1, \ldots, a_n$ enteros.
 {{< /block >}}
 

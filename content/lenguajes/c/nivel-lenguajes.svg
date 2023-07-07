@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128.23061mm"
+   height="132.42282mm"
+   viewBox="0 0 128.23061 132.42282"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="nivel-lenguajes.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:lockguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid10021" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2.765606e-7,-0.0122598)">
+    <g
+       id="g14656"
+       inkscape:label="piramide"
+       transform="matrix(1.3036433,0,0,1.3036433,-81.706863,12.79386)">
+      <path
+         d="M 62.675782,75.380635 H 161.03905 V 91.774513 H 62.675782 Z"
+         style="fill:#ff0055;stroke-width:1.20433"
+         id="path14061"
+         inkscape:label="hardware"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         id="rect234"
+         style="fill:#ff6a00;fill-opacity:1;stroke-width:1.63939"
+         d="M 72.140838,58.986706 H 151.574 l 9.46505,16.393983 -98.363268,-1.08e-4 z"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="assembly" />
+      <path
+         d="M 81.605836,42.592824 H 142.109 l 9.465,16.393882 -79.433162,-2e-6 z"
+         style="fill:#ffc800;fill-opacity:1;stroke:none;stroke-width:1.63939"
+         id="path10066"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="cpp" />
+      <path
+         d="m 91.071149,26.198404 h 41.572541 l 9.46531,16.39442 -60.503164,-5.47e-4 z"
+         style="fill:#73ff00;fill-opacity:1;stroke:none;stroke-width:1.63939"
+         id="path10066-3"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="java" />
+      <path
+         d="m 100.53615,9.8045226 h 22.64254 l 9.465,16.3938814 H 91.071149 Z"
+         style="fill:#00ffee;fill-opacity:1;stroke:none;stroke-width:1.63949;stroke-dasharray:none"
+         id="path10066-3-6"
+         sodipodi:nodetypes="ccccc"
+         inkscape:label="python" />
+      <path
+         d="M 111.85742,-9.8045226 123.17869,9.8045226 H 100.53615 Z"
+         style="fill:#008cff;fill-opacity:1;stroke:none;stroke-width:1.63939"
+         id="path10066-3-7"
+         sodipodi:nodetypes="cccc"
+         inkscape:label="español" />
+    </g>
+    <g
+       id="g14648"
+       inkscape:label="texto"
+       transform="matrix(1.975098,0,0,1.975098,71.636664,82.155499)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-28.760828"
+         y="21.014776"
+         id="text14148"><tspan
+           sodipodi:role="line"
+           id="tspan14844"
+           x="-28.760828"
+           y="21.014776">Lenguaje Máquina y Hardware</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-14.696943"
+         y="10.445832"
+         id="text14568"><tspan
+           sodipodi:role="line"
+           id="tspan14566"
+           style="stroke-width:0.61363"
+           x="-14.696943"
+           y="10.445832">Ensamblador</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-13.522489"
+         y="-0.40357837"
+         id="text14572"><tspan
+           sodipodi:role="line"
+           id="tspan14570"
+           style="stroke-width:0.61363"
+           x="-13.522489"
+           y="-0.40357837">C C++ Rust</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-10.087816"
+         y="-11.528769"
+         id="text14626"><tspan
+           sodipodi:role="line"
+           id="tspan14624"
+           style="stroke-width:0.61363"
+           x="-10.087816"
+           y="-11.528769">Java C#</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-9.5013876"
+         y="-22.333582"
+         id="text14630"><tspan
+           sodipodi:role="line"
+           id="tspan14628"
+           style="stroke-width:0.61363"
+           x="-9.5013876"
+           y="-22.333582">Python</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.27249px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';display:inline;fill:#010000;fill-opacity:1;stroke:none;stroke-width:0.61363;stroke-dasharray:none;stroke-opacity:1"
+         x="-8.7607641"
+         y="-30.959076"
+         id="text14634"><tspan
+           sodipodi:role="line"
+           id="tspan14632"
+           style="stroke-width:0.61363"
+           x="-8.7607641"
+           y="-30.959076">Inglés</tspan></text>
+    </g>
+  </g>
+</svg>

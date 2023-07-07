@@ -1,8 +1,5 @@
 ---
 title: "!Prog"
-page_template: post.html
-template: section.html
-sort_by: weight
 ---
 
 [1]: https://es.wikipedia.org/wiki/Extensible_Markup_Language
