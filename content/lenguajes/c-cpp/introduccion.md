@@ -155,6 +155,32 @@ C.
 - <<Es fácil depurar lenguajes interpretados>>
 {{< /keyvalue >}}
 
+# El proceso de compilación de C/C++
+
+Un compilador o intérprete es un programa complicado, pero dado que el
+programador escribe código para pasarlo por este uno de estos, es necesario que
+los entienda, aunque en la mayoría de los casos no es necesario entrar en muchos
+detalles (está mejor explicado en el [vídeo] anterior).
+
+Ya hemos comentado que primero se compila a un código objeto, luego se añaden
+librerías, etc, etc. Ahora nos vamos a centrar en esta primera etapa: cómo el
+compilador realmente entiende el código.
+
+Esto se hace en varias fases:
+
+1. **Preprocesado**: se eliminan los [comentarios] y se procesan las directivas
+   que empiezan por `#` ([preprocesador]).
+2. **Tokenizado**: se asigna a cada símbolo y elemento del código un _token_,
+   para que sea más fácil de parsear.
+3. **Parseado**: se construye el _Abstract Syntax Tree_, que es una estructura
+   de datos que permite al compilador entender el código.
+4. **Generación de código**: finalmente se genera el código máquina y se aplican
+   optimizaciones.
+
+[vídeo]: https://www.youtube.com/watch?v=2y1IgW2T8bo
+[comentarios]: {{< relref "sintaxis-basica#comentarios" >}}
+[preprocesador]: {{< relref "preprocesador" >}}
+
 # Elementos básicos de un lenguaje de programación
 
 {{< keyvalue >}}
