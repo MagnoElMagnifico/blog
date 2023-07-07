@@ -15,7 +15,7 @@
 
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
-    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    {{ with .Description }}<p>{{ . | markdownify }}</p>{{ end }}
     {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
 
     <article>
