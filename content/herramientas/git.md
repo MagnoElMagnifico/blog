@@ -227,7 +227,7 @@ parámetro adicional o seleccionando la carpeta actual con `.`.
 En esta sección se discutirá en detalle los comandos con los que estarás
 trabajando sobre el 80% de las veces que uses Git.
 
-{{< mermaid bg-color="white" >}}
+```mermaid
 sequenceDiagram title: Ciclo de vida de Git
     participant Sin seguimiento
     participant Sin modificar
@@ -239,7 +239,7 @@ sequenceDiagram title: Ciclo de vida de Git
     Sin modificar->>Sin seguimiento: Eliminar el archivo
     Modificado->>Añadido: Añadir el archivo
     Añadido->>Sin modificar: Commit
-{{< /mermaid >}}
+```
 
 Antes de nada, **Git debe saber qué cambios son los que quieres incluir**
 y cuáles no; porque es posible que tengas muchos archivos modificados, pero solo
@@ -259,13 +259,13 @@ Git registrará dichas snapshots como un gran copy&paste; pero se pretende que
 los commits sean lo más livianos posibles: solo se almacenan los cambios entre
 commits, los **deltas**.
 
-{{< mermaid >}}
+```mermaid
 %%{init: { 'logLevel': 'debug', 'theme': 'base' } }%%
 gitGraph
     commit id: "c0"
     commit id: "c1"
     commit id: "c2"
-{{< /mermaid >}}
+```
 
 En la figura anterior se muestra una rama `main` con 3 commits.
 
@@ -409,7 +409,6 @@ Otros comandos pueden ser:
   Area_ y crea el commit en un solo comando.
 - `git commit -t plantilla`: Usa una plantilla para el mensaje de commit.
 - `git commit -p`: similar a `git add -p`.
-- `git commit --amend`: cambia el último commit de la rama por el actual
 
 
 ## _Workflow_ con Git
@@ -462,20 +461,45 @@ caracter; y `*` para ninguno o varios caracteres.
 git log
 ```
 
-Muestra el historial de commits hasta el momento.
+Muestra el historial de commits hasta el momento en orden cronológico inverso.
 
-Tiene muchas opciones interesantes:
+{{< keyvalue >}}
+-% `git log <archivo>`                   :% Muestra los cambios del archivo
+-% `git log -p`                          :% Muestra los cambios de cada commit (_diff_)
+-% `git log --relative-date`             :% Usa la fecha relativa (hace X tiempo)
+-% `git log --name-only`                 :% Muestra el nombre de los archivos modificados
+-% `git log --name-status`               :% Muestra el nombre de los archivos modificados y si fueron modificados, añadidos, etc
+-% `git log -<numero>`                   :% Muestra solo los últimos `<numero>` commits
+-% `git log --oneline`                   :% Muestra los commits solo en una línea
+-% `git log --decorate --online --graph` :% Muestra los commits usando ASCII Art
+-% `git log --stat`                      :% Muestra cuantos cambios se hicieron en el commit
+-% `git log --shortstat`                 :% Muestra cuantos cambios se hicieron en el commit de forma abreviada
+-% `git log --pretty=format:"<formato>"` :% Usa un formato dado para mostrar los commits
+-% `git shortlog`                        :% Otro comando para ver los commits
+-% `git reflog`                          :% Otro más
+{{< /keyvalue >}}
+
+Y esta es la sintaxis del formato de la opción `--pretty=format`:
+
+{{< keyvalue >}}
+-% `%H` y `%h` (abreviado) :% Hash del commit
+-% `%T` y `%t` (abreviado) :% Hash del árbol
+-% `%P` y `%p` (abreviado) :% Hashes de los commits padre
+-% `%an` :% Nombre del autor
+-% `%ae` :% Email del autor
+-% `%ad` :% Fecha de la autoría (formato `--date`)
+-% `%ar` :% Fecha de la autoría relativa (hace X tiempo)
+-% `%s`  :% Asunto
+{{< /keyvalue >}}
+
+## `git diff`
 
 - `git diff [archivo]` : muestra todos los cambios no añadidos
 - `git diff --staged [archivo]`: muestra los cambios añadidos
-- `git log [archivo]` : muestra info de los commits (usuario, fecha, código, descripción)
-- `git log --oneline` : muestra info de los commits
-- `git log --decorate --oneline --graph`: muestra info de los commits más mejor
-- `git log --stat`
-- `git log -p`: git log pero con un diff
-- `git shortlog`
-- `git blame archivo` : muestra info de los cambios de un archivo con su código de commit, usuario, fecha, etc.
-- `git reflog` : historial del repositorio local
+
+## `git blame`
+
+Permite saber quien añadió cada línea de un archivo entre otras cosas.
 
 
 # Ramas
@@ -507,7 +531,7 @@ actual.
 Puedes utilizar la sintaxis de `HEAD~` para referirte al commit previo,
 o `HEAD~2` para el anterior del anterior...
 
-{{< mermaid >}}
+```mermaid
 %%{init: { 'logLevel': 'debug', 'theme': 'base' } }%%
 gitGraph
     commit id:"c0"
@@ -515,7 +539,7 @@ gitGraph
     commit id:"c2"
     commit id:"c3"
     commit id:"HEAD" type:HIGHLIGHT
-{{< /mermaid >}}
+```
 
 En el ejemplo anterior:
 
@@ -527,6 +551,33 @@ Fuente: [Stack Overflow](https://stackoverflow.com/questions/2304087/what-is-hea
 
 
 # Deshacer cambios
+
+{{< block "Nota" >}}
+Ten en cuenta que a veces no es posible recuperar algo que hayas deshecho.
+{{< /block >}}
+
+## `git commit --amend`
+
+Creo que se entenderá mejor con un ejemplo:
+
+```sh
+git commit -m 'Añadiendo algunos cambios'
+# ¡Diablos! Se me olvidó añadir el archivo.txt
+git add archivo.txt
+git commit --amend
+```
+
+Básicamente, rehace el último commit. Por tanto, saca el último cambio y lo
+añade a la Staging Area. Luego vuelve a hacer el commit. Si la Staging Area
+estaba vacía, con esta operación simplemente se cambia la descripción. Sino,
+puedes añadir otros cambios que faltaba.
+
+## `git reset HEAD <archivo>`
+
+Permite deshacer los cambios que todavía no son commit y están en la Staging
+Area.
+
+
 
 - `git reset --reset [--hard] code` : vuelve a un estado anterior borrando los commits posteriores
 - `git revert code && git add .` && `git revert --continue` : Crea un nuevo commit que cambia el repositorio a un estado anterior por medio de un merge
@@ -547,7 +598,7 @@ le envias y recibes cambios.
 Para añadir uno usa:
 
 ```sh
-git remote add nombre> <URL
+git remote add nombre URL
 ```
 
 <!-- TODO: origin y upstream -->
@@ -637,10 +688,24 @@ realizado.
 {{< /keyvalue >}}
 
 
-{{< keyvalue title="Información" >}}
+{{< keyvalue title="`git status`" >}}
 -% `git status` :% Muestra el estado actual del repositorio
 -% `git status -s` :% Estado del repositorio en formato corto
 -% `git status -sb` :% Estado del repositorio y la rama actual en formato corto
+{{< /keyvalue >}}
+
+{{< keyvalue title="`git log`" >}}
+-% `git log <archivo>`                   :% Muestra los cambios del archivo
+-% `git log -p`                          :% Muestra los cambios de cada commit (_diff_)
+-% `git log --relative-date`             :% Usa la fecha relativa (hace X tiempo)
+-% `git log --name-only`                 :% Muestra el nombre de los archivos modificados
+-% `git log --name-status`               :% Muestra el nombre de los archivos modificados y si fueron modificados, añadidos, etc
+-% `git log -<numero>`                   :% Muestra solo los últimos `<numero>` commits
+-% `git log --oneline`                   :% Muestra los commits solo en una línea
+-% `git log --decorate --online --graph` :% Muestra los commits usando ASCII Art
+-% `git log --stat`                      :% Muestra cuantos cambios se hicieron en el commit
+-% `git log --shortstat`                 :% Muestra cuantos cambios se hicieron en el commit de forma abreviada
+-% `git log --pretty=format:"<formato>"` :% Usa un formato dado para mostrar los commits
 {{< /keyvalue >}}
 
 
