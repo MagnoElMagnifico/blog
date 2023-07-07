@@ -69,14 +69,14 @@ Se pueden agrupar, darles estilo (CSS), transformarlas...
 # Formas básicas
 
 {{< keyvalue >}}
-- `<rect>` : Rectángulo
-- `<circle>`: Círculo
-- `<ellipse>`: Elipse
-- `<line>`: Line
-- `<polyline>`: Línea poligonal
-- `<polygon>`: Polígono (línea poligonal cerrada)
-- `<path>`: "Camino"
-- `<text>`: Texto
+-% `<rect>` :% Rectángulo
+-% `<circle>`:% Círculo
+-% `<ellipse>`:% Elipse
+-% `<line>`:% Line
+-% `<polyline>`:% Línea poligonal
+-% `<polygon>`:% Polígono (línea poligonal cerrada)
+-% `<path>`:% "Camino"
+-% `<text>`:% Texto
 {{< /keyvalue >}}
 
 ```html
@@ -138,9 +138,11 @@ Existen varias formas de especificar los colores (al igual que en CSS):
     - `BB`: representan la componente verde (G).
     - `CC`: representan la componente azul (B).
     - `DD`: representan el alfa o la opacidad (A). Esta es opcional
+
 - En **decimal**: `rgb(r g b)` o `rgba(r g b a)`
     - `r`, `g`, `b`: componentes del color en decimal de 0 a 255 (ambos inclusive).
     - `a`: alfa o opacidad, que es un número de 0 a 1. Opcional, por defecto a 1.
+
 - `hsl(h s% l%)` o `hsla(h s% l% a)`: _hue_ (0 a 359), _saturation_ y _lightness_.
 - Usando [colores predeterminados]: `red`, `blue`, `orange`...
 
