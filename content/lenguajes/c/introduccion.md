@@ -74,6 +74,16 @@ programación?
 La traducción es el proceso en el que se transforma el código fuente de un
 lenguaje de programación a código máquina para que pueda ser ejecutado.
 
+A modo de curiosidad, en este vídeo se expande un poco más sobre el proceso de
+traducción (e incluso cómo el Sistema Operativo carga el binario para
+ejecutarlo).
+
+{{<
+    youtube
+    id = "2y1IgW2T8bo"
+    title = "how do computers create code?"
+>}}
+
 ## Compilación
 
 Un programa llamado **compilador** lee el código fuente, lo traduce
@@ -173,3 +183,4 @@ Nótese que están por orden de dificultad.
   que complica encontrar el error.
 
 - Los errores lógicos con los más complejos, dado que son difíciles de detectar.
+
