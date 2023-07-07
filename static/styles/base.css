@@ -59,7 +59,6 @@ html, body {
     font-family: var(--content-font);
     margin: 0;
     overflow-x: hidden;
-    line-height: 2.7ch;
 }
 
 main {
@@ -110,7 +109,7 @@ p {
     margin: var(--p-separation);
 }
 
-li p { margin: 1rem 0 0 0; }
+li p { line-height: 2.7ch; margin: 1rem 0 0 0; }
 li::marker { color: var(--magno-green); }
 
 hr {
