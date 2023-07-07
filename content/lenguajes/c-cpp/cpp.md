@@ -7,50 +7,12 @@ weight: 0 # temporal
 draft: true
 ---
 
-<!-- TODO: Pasar muchas cosas de esto a C -->
-
 {{< block "Recursos" >}}
 El mejor recurso para aprender a programar es sin duda
 [learncpp.com](https://www.learncpp.com) (en inglés).
 {{< /block >}}
 
-# Características
-
-C++ es un lenguaje de programación diseñado en 1979 por Bjarne Stroustrup. La
-intención de su creación fue extender al lenguaje de programación C mecanismos
-que permiten la manipulación de objetos, que es una forma especial y más
-sencilla de programar. En ese sentido, desde el punto de vista de los lenguajes
-orientados a objetos, C++ es un lenguaje híbrido.
-
-Más características:
-
-- Su sintaxis es heredada del lenguaje C.
-- Permite la Programación Orientada a Objetos (POO).
-- Permite la agrupación de instrucciones.
-- Lenguaje muy didáctico, puedes aprender muchos otros lenguajes con gran
-  facilidad.
-- Es portátil y tiene un gran número de compiladores en diferentes plataformas
-  y sistemas operativos.
-- Permite la separación de un programa en módulos que admiten compilación
-  independiente.
-- Es un lenguaje de alto nivel, aunque también es considerado de nivel medio por
-  su facilidad de manejo de memoria.
-
-# El mínimo programa C++
-
-El archivo de código fuente de C++ tiene como extensión _.cpp_. En su interior,
-el programa escrito en este lenguaje está compuesto de dos partes: unas
-librerías y la función principal. Si no tenemos una de las dos, el programa no
-funcionará.
-
-El mínimo programa C++ es el siguiente (pero como no hace nada, no se necesitan
-librerías en este caso):
-
-```cpp
-int main() {}
-```
-
-## Las librerías
+# Las librerías
 
 Una librería es una colección de funciones que podemos implementar en nuestro
 código para realizar diferentes operaciones.

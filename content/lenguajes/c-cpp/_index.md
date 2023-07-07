@@ -74,3 +74,17 @@ fuera de un laboratorio científico. Antes se había usado el nombre "C con
 clases". En C++, la expresión "C++" significa "incremento de C" y se refiere a
 que C++ es una extensión de C.
 
+Más características:
+
+- Su sintaxis es heredada del lenguaje C.
+- Permite la Programación Orientada a Objetos (POO).
+- Permite la agrupación de instrucciones.
+- Lenguaje muy didáctico, puedes aprender muchos otros lenguajes con gran
+  facilidad.
+- Es portátil y tiene un gran número de compiladores en diferentes plataformas
+  y sistemas operativos.
+- Permite la separación de un programa en módulos que admiten compilación
+  independiente.
+- Es un lenguaje de alto nivel, aunque también es considerado de nivel medio por
+  su facilidad de manejo de memoria.
+
