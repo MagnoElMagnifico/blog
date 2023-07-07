@@ -14,6 +14,15 @@
 {{ end }}
 
 {{ define "main" }}
+    {{ if .Site.Params.debug }}
+        <h3 style="color:var(--magno-red);">
+            [{{ .Page.Weight }}]
+            {{ if .Page.Draft }}[draft]{{ end }}
+            {{ if .Params.math }}[math]{{ end }}
+            {{ if .Params.mermaid }}[mermaid]{{ end }}
+        </h3>
+    {{ end }}
+
     <h1 class="main-title">{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . | markdownify }}</p>{{ end }}
     {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
