@@ -268,5 +268,22 @@ gitGraph
 {{< /mermaid >}}
 ```
 
+Alternativamente puedes usar un bloque de código:
+```
+\`\`\`mermaid
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+\`\`\`
+```
+
 [sintaxis de Mermaid]: https://mermaid.js.org/intro/
 [editor visual]: https://mermaid.live/
