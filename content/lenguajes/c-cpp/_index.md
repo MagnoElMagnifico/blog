@@ -1,6 +1,7 @@
 ---
 title: C/C++
 weight: 1
+content_title: true
 ---
 
 # C Lang

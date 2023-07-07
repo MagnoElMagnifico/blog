@@ -1,12 +1,12 @@
 ---
 title: Introducción
 description: >
-    Introducción a la programación.
-
+    Introducción a la programación: lenguajes de programación, nivel de
+    abstracción de un lenguaje de programación, traducción a código máquina
+    y errores en la programación.
 date: 2023-07-05T15:24:04+02:00
 weight: 1
 mermaid: true
-draft: true
 ---
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}

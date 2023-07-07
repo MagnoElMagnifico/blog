@@ -4,7 +4,7 @@ description: >-
     Cómo usar las directivas del preprocesador en C/C++, aquellas que comienzan
     por un `#`.
 date: 2023-06-27T01:03:57+02:00
-weight: 4
+weight: 0 # temporal
 ---
 
 # El preprocesador

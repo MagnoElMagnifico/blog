@@ -3,7 +3,7 @@ title: C++ Básico
 description: >
     Introducción al lenguaje de programación C++
 date: 2023-06-24
-weight: 3
+weight: 0 # temporal
 draft: true
 ---
 

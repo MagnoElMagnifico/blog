@@ -1,14 +1,14 @@
 ---
 title: Instalación y compilación
 description: >
-    Guía de como instalar C++. También se aportan algunas
+    Guía de como instalar un compilador de C/C++. También se aportan algunas
     directrices de compilación de librerías así como su importación.
 date: 2021-07-30
-weight: 1
+weight: 2
 ---
 
 {{< block "Nota" >}}
-La compilación para C y para C++ es muy similar.
+El proceso de compilación para C y C++ es prácticamente idéntico.
 {{< /block >}}
 
 # Instalación
@@ -42,7 +42,7 @@ clang.
 # Compilación básica
 
 ```sh
-gcc main.c -o compilado.exe
+gcc main.c   -o compilado.exe
 g++ main.cpp -o compilado.exe
 ```
 
@@ -91,7 +91,7 @@ complicada. Por ese motivo, se le puede indicar al compilador en qué directorio
 buscar.
 
 ```sh
-gcc -Ipaquete main.c -o compilado.exe
+gcc -Ipaquete main.c   -o compilado.exe
 g++ -Ipaquete main.cpp -o compilado.exe
 ```
 

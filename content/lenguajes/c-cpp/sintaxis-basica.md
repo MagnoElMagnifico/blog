@@ -1,12 +1,10 @@
 ---
 title: Sintaxis básica
 description: >
-    En este post se trata la sintáxis básica de C: comentarios, instrucciones
+    En este post se trata la sintáxis básica de C/C++: comentarios, instrucciones
     y bloques.
-
 date: 2023-07-07T21:17:54+02:00
-weight: 2
-
+weight: 3
 draft: true
 ---
 
