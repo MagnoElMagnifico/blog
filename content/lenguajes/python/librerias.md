@@ -1,9 +1,8 @@
 ---
-title: Python Setup
+title: Módulos en Python
 description: Breve explicación de como ejecutar programas Python e importar librerías
 weight: 4
 date: 2023-07-12
-draft: true
 ---
 
 # Instalación de Python
