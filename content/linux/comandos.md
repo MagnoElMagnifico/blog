@@ -17,3 +17,17 @@ thing can simply be replaced by `pkill PROCESS` or a `killall PROCESS`
 od test.png -t u1 --endian=big
 
 head, tail, wc
+
+copiar
+```sh
+uptime | xclip -selection clipboard
+uptime | xclip -sel clip
+uptime | xsel -ib
+```
+
+pegar
+```sh
+xclip -o -selection clipboard
+xclip -o -sel clip
+xsel -ob
+```
