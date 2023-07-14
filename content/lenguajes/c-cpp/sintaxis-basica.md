@@ -97,6 +97,8 @@ es sintáxis válida:
 sentencia1; sentencia2; sentencia3;
 ```
 
+<!-- TODO?: tipos de sentencias -->
+
 # Bloques
 
 Un bloque es una agrupación de sentencias. Serán necesarios para algunas

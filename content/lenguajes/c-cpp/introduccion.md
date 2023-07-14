@@ -184,13 +184,17 @@ Esto se hace en varias fases:
 # Elementos básicos de un lenguaje de programación
 
 {{< keyvalue >}}
--% Comentarios :% Permiten documentar programas
--% Identificadores :% Nombres simbólicos para ciertos elementos (variables,
-   funciones, tipos de datos, etc)
--% Constantes y Literales :% Datos cuyo valor no cambian durante la ejecución
-   del programa
--% Operadores :% Representan operaciones entre variables y constantes.
--% Instrucciones :% Símbolos que representan acciones de procesamiento.
+-% Comentarios                 :% Permiten documentar programas
+-% Palabras clave (_keywords_) :% Palabras reservadas por el lenguaje para
+                                  una sintaxis determinada, y que no se pueden usar como otras cosas.
+-% Identificadores             :% Nombres simbólicos para ciertos elementos (variables,
+                                  funciones, tipos de datos, etc)
+-% Expresiones                 :% Secuencia de operadores y operandos que representa un cálculo,
+                                  por ejemplo `3 + 4` o `1 + exp(x) * (1/x)`.
+-% Constantes y Literales      :% Datos cuyo valor no cambian durante la ejecución
+                                  del programa
+-% Operadores                  :% Representan operaciones entre variables y constantes.
+-% Instrucciones               :% Símbolos que representan acciones de procesamiento.
 {{< /keyvalue >}}
 
 # Errores en la programación
