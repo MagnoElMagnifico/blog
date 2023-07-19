@@ -12,8 +12,8 @@ estructuras de control, es posible modificar y manipular este orden para
 realizar tareas más complicadas.
 
 - **Control secuencial**: control por defecto, de arriba a abajo.
-- **Control selectivo**: se ejecutan solamente determinadas partes
-- **Control repetitivo**: se ejectutan las mismas instrucciones varias veces
+- **Control selectivo**: se ejecutan solamente determinadas partes.
+- **Control repetitivo**: se ejectutan las mismas instrucciones varias veces.
 
 # Selectivo
 ## `if`
@@ -61,15 +61,6 @@ if (condición) {
 } else {
     sentencia_else1;
     sentencia_else2;
-    sentencia_else3;
-}
-
-if (condición)
-    sentencia_if;
-else {
-    sentencia_else1;
-    sentencia_else2;
-    sentencia_else3;
 }
 
 // Y otras variantes
@@ -90,7 +81,7 @@ if (condición1) {
 }
 ```
 
-Y si en concreto se anida un `if` en un bloque de `else`:
+En concreto, si se anida un `if` en un bloque de `else`:
 
 ```c
 if (condición1)
@@ -102,7 +93,7 @@ else {
 }
 ```
 
-Pero normalmente se formatea de la siguiente manera:
+Aunque normalmente se formatea de la siguiente manera:
 
 ```c
 if (condición1) {
@@ -124,8 +115,6 @@ if (condición) {
     sentencia_elseif2;
 } else if (condición3) {
     sentencia_elseif3;
-} else if (condición4) {
-    sentencia_elseif4;
 } else {
     sentencia_else;
 }
@@ -174,9 +163,10 @@ Solo funcionan comparaciones de igualdad (`==`) con números enteros (`int`)
 y caracteres (`char`).
 {{< /block >}}
 
-Sin embargo, funciona un poco diferente. Cuando **se comprueba el primer `case`,
-continua con el siguiente**; lo cual es ineficiente, dado que una variable solo
-puede tener un único valor. Para evitar ese problema, se escribe:
+Sin embargo, funciona un poco diferente de lo que se esperaría. Cuando **se
+comprueba el primer `case`, continua con el siguiente**; lo cual es ineficiente,
+dado que una variable solo puede tener un único valor. Para evitar ese problema,
+se escribe:
 
 ```c
 switch (variable) {
@@ -200,7 +190,7 @@ switch (variable) {
 La instrucción `break` fuerza la salida de la estructura, evitando que se siga
 comprobando tontamente el resto de valores.
 
-El motivo por el que se ha diseñado de esta forma es lo siguiente:
+Pero tiene un sentido de ser:
 
 ```c
 char x = 'a';
@@ -260,7 +250,7 @@ Teniendo en cuenta que un bucle `while` se ejecuta siempre que la condición es
 verdadera, es posible crear algo así:
 
 ```c
-while (0)
+while (1)
     sentencia;
 ```
 
@@ -284,8 +274,7 @@ del bucle**.
 
 ## `for`
 
-Para muchos problemas será necesario del siguiente código con la siguiente
-forma:
+Para muchos problemas será necesario algo similar a esto:
 
 ```c
 int contador = 0;
@@ -296,7 +285,7 @@ while (contador < 10) {
 ```
 
 De esta forma, `sentencia` ejecutará exactamente 10 veces, con la variable
-contador almacenando en cual se encuentra.
+contador almacenando en cuál se encuentra.
 
 Por este motivo, C proporciona el bucle `for`, para acortar el código:
 
@@ -359,7 +348,7 @@ que cambia la condición, por tanto esta es constante:
 int i = 0;
 while (i < 10) {
     continue;
-    i++;
+    i++;      // Nunca se ejecuta
 }
 ```
 
