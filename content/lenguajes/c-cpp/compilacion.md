@@ -263,3 +263,8 @@ Explicación:
 - `-L<...>`: especifica la dirección de la librería a la hora de compilar.
 - `-l<...>`: especifica el nombre de la librería
 
+<!--
+TODO: exportar en DLLs
+vease ejemplo: https://github.com/SFML/SFML/blob/master/include/SFML/Config.hpp
+-->
+
