@@ -194,9 +194,16 @@ int numRandom = num_min + rand() % (num_max + 1 – num_min);
 
 # Namespaces
 
-Los _namespaces_ son maneras para dividir y modularizar el código. Además, como
-ventaja, si existen variables o funciones con el mismo nombre que no se
-confundirán entre estas dos. Podemos crearlos muy fácilmente:
+Los _namespaces_ son maneras para dividir y modularizar el código, con el
+propósito de evitar que variables / funciones con nombres iguales
+colisionen. Son bastante flexibles, pero por lo general evita crear muchos.
+
+Generalmente su uso debe ser bastante básico, si tienes un conjunto de funciones
+de ayuda de matemáticas como `add()`, `sin()`, etc; esas sí tiene sentido que
+vayan todas juntas. Además, es importante que crees un namespace para todo el
+proyecto si estás escribiendo una librería. Otros usos están desaconsejados.
+
+Podemos crearlos muy fácilmente:
 
 ```cpp
 namespace Nombre {
@@ -212,7 +219,7 @@ namespace Ejemplo {
         std::cout << "Hola Mundo!" << std::endl;
     }
 
-    int bar = 0;
+    int bar = 0; // variable global
 }
 
 Ejemplo::foo();
@@ -228,7 +235,93 @@ cout << var << endl;
 foo();
 ```
 
-Pero tenga cuidado ahora al nombrar sus variables y métodos...
+Sin embargo, con esta sentencia, se deshace lo que precisamente arreglan los
+namespaces.
+
+Dentro de un namespace, si no se especifica una dirección, el compilador primero
+busca en el namespace actual y luego fuera de él.
+
+```cpp
+void print() { /* ... */ }
+namespace Foo {
+    void print() { /* ... */ }
+    void more_print() {
+        print();   // Llama a Foo::print()
+        ::print(); // Llama al print() que no está en ningún namespace
+    }
+}
+```
+
+Es posible tener el namespace separado en distintos archivos:
+
+```cpp
+// circle.hpp
+#pragma once
+
+namespace Math {
+    constexpr double pi = 3.14;
+}
+
+// ...
+```
+
+```cpp
+// exponential.hpp
+#pragma once
+
+namespace Math {
+    constexpr double e = 2.71;
+    double exp(double);
+}
+
+// ...
+```
+
+```cpp
+// exponential.cpp
+namespace Math { // También en la implementación
+    double exp(double n) {
+        // ...
+     }
+}
+```
+
+Pero, ojo, no es posible añadir cosas a `std`.
+
+También es posible añadir namespaces dentro de otros:
+
+```cpp
+namespace Foo {
+    namespace Bar {
+        constexpr int number = 73;
+        void function();
+    }
+}
+```
+
+Para usar al contenido, simplemente `Foo::Bar::number` y `Foo::Bar::function()`.
+
+Y desde C++17 es posible declararlos de esta forma:
+
+```cpp
+namespace Foo::Bar {
+    constexpr int number = 73;
+    void function();
+}
+```
+
+Dado que gracias a esto se puede complicar mucho, es posible crear alias:
+
+```cpp
+int main() {
+    namespace Active = Foo::Bar;
+    Active::function(); // Esto es realmente Foo::Bar::function()
+} // Active termina aquí
+```
+
+Esto también es útil si posteriormente se refactoriza y se cambian los nombres
+de los namespaces, dado que en lugar de cambiarlo en todos los sitios,
+simplemente se cambiaría en `namespace Active = <nuevo>;`.
 
 # Compilar
 
