@@ -3,11 +3,10 @@ languageCode = "es"
 title = "Magno Blog"
 enableEmoji = true
 
-[author]
-# Footer and about (home.html)
-name = "Magno El Magnífico"
-
 [params]
+# Footer and about (home.html)
+author.name = "Magno El Magnífico"
+
 # Blog logo (start:home.html), header, and icon on the tab
 logo = "/logo.svg"
 
