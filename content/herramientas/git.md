@@ -497,6 +497,7 @@ Y esta es la sintaxis del formato de la opción `--pretty=format`:
 
 - `git diff [archivo]` : muestra todos los cambios no añadidos
 - `git diff --staged [archivo]`: muestra los cambios añadidos
+- `git diff --check`: muestra los archivos y líneas con conflictos
 
 ## `git blame`
 
