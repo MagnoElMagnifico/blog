@@ -190,7 +190,8 @@ Recuerda que en algunos casos es necesario escapar las barras:
 # Shortcodes
 
 - `inlineHTML` (argumento de bloque): Inserta el HTML directamente en el
-  resultado.
+  resultado (deprecated: ahora se puede usar html directamente sobre el
+  Markdown).
 
 ```md
 {{< inlineHML >}}
@@ -207,7 +208,7 @@ Recuerda que en algunos casos es necesario escapar las barras:
 {{< /inlineHML >}}
 ```
 
-- `keyvalue` (argumento de bloque) \[ title=(título) | key=(título de la primera columna) value=(título de la segunda columna) \]
+- `keyvalue` (argumento de bloque) \[ title=(título) | key=(título de la primera columna) value=(título de la segunda columna) fill=(true para rellenar el espacio horizontalmente) \]
   crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza
   por `-%` y la descripción por `:%`.
 
@@ -227,11 +228,14 @@ Recuerda que en algunos casos es necesario escapar las barras:
 
 - `block` (argumento de bloque) \[(nombre del bloque) (color de fondo del título)\]
   (color del título): crea un bloque con una cabecera y un cuerpo, perfecto
-  para resaltar detalles sin tener que usar citas.
+  para resaltar detalles sin tener que usar citas. Se pueden crear links a estos
+  bloques con `ref`, la dirección usada es el nombre en minúsculas con guiones
+  en lugar de espacios con el prefijo `block` (`Memoria Virtual` es
+  `block-memoria-virtual`).
 
 ```
 {{< block "Teorema" "red" "white" >}}
-Si en un triángulo rectángulo hay catetos de longitud $a$, y $b$, y la
+Si en un triángulo rectángulo hay catetos de longitud $a$ y $b$, y la
 medida de la hipotenusa es $c$, entonces se cumple la siguiente relación:
 
 $$ a^2 + b^2 = c^2 $$
