@@ -2,10 +2,13 @@
     <div class="block-name"
         {{- if and (.Get 1) (.Get 2) -}}
             style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
-        {{- end -}}>
+        {{- else if (.Get 1) -}}
+            style="background-color: {{ .Get 1 | safeCSS }}; color: black"
+        {{- end -}}
+        id="block-{{ trim (.Get 0 | lower | replaceRE `\s+` "-") "-" }}">
         {{ .Get 0 | emojify | markdownify }}
     </div>
-    <div class="block-content">
-        {{ .Inner | markdownify }}
+<div class="block-content">
+    {{ .Inner | .Page.RenderString }}
     </div>
 </div>
