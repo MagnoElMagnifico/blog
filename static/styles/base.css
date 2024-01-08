@@ -80,13 +80,24 @@ span.katex-display { overflow: scroll; }
 /**** Titles ****/
 .main-title {
     margin: var(--h-separation);
+    margin-bottom: 0;
     font-size: 3rem;
+}
+
+.page-stats {
+    color: var(--magno-red);
+    margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
     font-family: var(--title-font);
     margin: var(--h-separation);
+}
+
+article h1 {
+    font-size: 2em;
+    font-variant: small-caps;
 }
 
 h1+h2, h2+h3, h3+h4 { margin-top: 0; }
@@ -104,12 +115,13 @@ em {
 }
 h1 em, h2 em, h3 em, h4 em, h5 em { font-size: inherit; }
 
-p {
+p, li, .block-content {
     text-align: justify;
-    margin: var(--p-separation);
+    line-height: 2.7ch;
 }
 
-li p { line-height: 2.7ch; margin: 1rem 0 0 0; }
+p { margin: var(--p-separation); }
+li p { margin: 1rem 0 0 0; }
 li::marker { color: var(--magno-green); }
 
 hr {
@@ -123,11 +135,12 @@ hr {
 /* All code */
 pre, code {
     font-family: var(--code-font);
+    text-align: left;
 }
 
 /* Inline code: `` */
-h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
-#TableOfContents code, p code, li > code, td > code {
+code:not(.highlight pre code) {
+    color: var(--font-color);
     background-color: var(--code-color);
     border-radius: var(--border-radius);
     padding: 0 4px;
@@ -154,11 +167,18 @@ blockquote {
 
 blockquote p { margin: 0; text-align: left; }
 
+
+/**** Change background when it's already black ****/
 blockquote code,
 blockquote blockquote,
-#TableOfContents code,
 .project code,
-.block-content code { background-color: var(--background-color); }
+.project blockquote,
+.block code,
+.block blockquote,
+.content code,
+.content blockquote,
+#TableOfContents code
+{ background-color: var(--background-color) !important; }
 
 
 /**** Images ****/
@@ -187,10 +207,13 @@ figcaption p:before {
 
 /**** Table ****/
 table {
-    width: 100%;
     margin: var(--p-separation);
+    margin-left: auto;
+    margin-right: auto;
     background-color: var(--background-color);
 }
+
+table.fill { width: 100%; }
 
 th {
     background-color: var(--table-header);
@@ -216,7 +239,9 @@ tr { background-color: var(--table-color-2); }
     color: black;
     /* Centering */
     display: flex;
+    flex-flow: column;
     align-items: center;
+    justify-content: center;
 }
 
 .block .block-content {
@@ -225,9 +250,9 @@ tr { background-color: var(--table-color-2); }
 }
 
 /* Put side by side in Desktop  */
-@media only screen and (min-width: 800px) and (min-device-width: 800px) {
+@media only screen and (min-width: 1000px) and (min-device-width: 1000px) {
     .block { grid-template-columns: auto 1fr auto; }
-    .block .block-name { max-width: 10ch; text-align: center; }
+    .block .block-name { max-width: 15ch; text-align: center; }
     .block .block-content { grid-row-start: 1; }
 }
 
@@ -235,13 +260,13 @@ tr { background-color: var(--table-color-2); }
 /**** Dropdowns ****/
 .dropdown {
     background-color: var(--block-color);
-    cursor: pointer;
     padding: var(--block-padding);
     border-radius: var(--border-radius);
     margin: var(--p-separation);
     transition: transform 5s;
 }
 
+.dropdown .show       { cursor: pointer; }
 .dropdown .show:hover { opacity: 0.7; }
 .dropdown .show:before {
     content: ">> ";
@@ -251,7 +276,7 @@ tr { background-color: var(--table-color-2); }
 
 .dropdown .content {
     margin-top: 1rem;
-    animation-name: show; 
+    animation-name: show;
     animation-duration: 1s;
 }
 
@@ -300,7 +325,7 @@ tr { background-color: var(--table-color-2); }
     color: var(--box-list-color);
     background-color: var(--link-button-color);
 
-    margin: 1rem auto;
+    margin: 1rem auto 2rem auto;
     padding: 1rem 3rem;
     border: 3px solid var(--magno-green);
     border-radius: var(--border-radius);
