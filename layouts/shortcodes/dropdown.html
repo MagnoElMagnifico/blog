@@ -1,6 +1,7 @@
-<div
-    class="dropdown"
-    onclick="this.querySelector('.content').toggleAttribute('hidden');">
-    <div class="show">{{ .Get 0 | markdownify }}</div>
+<div class="dropdown">
+    <div class="show"
+         onclick="this.parentElement.querySelector('.content').toggleAttribute('hidden');">
+        {{ .Get 0 | markdownify }}
+    </div>
     <div class="content" hidden>{{ .Inner | markdownify }}</div>
 </div>
