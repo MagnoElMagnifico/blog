@@ -363,7 +363,7 @@ Son obligatorios los siguientes comandos:
 
 <!-- TODO: Cuando se publique el post de comandos de Linux -->
 <!-- Ver más en detalle en: [comandos de Linux]. -->
-<!-- [comandos de Linux]: {{< relref "comandos" >}} -->
+<!-- [comandos de Linux]: relref "comandos" >}} -->
 
 Y entre otros muchos, los siguientes opcionales:
 
