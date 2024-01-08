@@ -14,8 +14,14 @@
 {{ end }}
 
 {{ define "main" }}
+    <h1 class="main-title">{{ .Title }}</h1>
+
+    <h3 class="page-stats">
+        {{ with .Params.Date }}[date: {{ .Format "02-01-2006 15:04" }}]{{ end }}
+        [words: {{ .WordCount }}]
+    </h3>
     {{ if .Site.Params.debug }}
-        <h3 style="color:var(--magno-red);">
+        <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}
             {{ if .Params.math }}[math]{{ end }}
@@ -23,8 +29,8 @@
         </h3>
     {{ end }}
 
-    <h1 class="main-title">{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . | markdownify }}</p>{{ end }}
+
     {{ if or (not (isset .Params "toc")) (.Params.toc) }}{{ .TableOfContents }}{{ end }}
 
     <article>
