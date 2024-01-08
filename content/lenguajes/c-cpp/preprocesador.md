@@ -116,7 +116,7 @@ bloque:
 ```
 
 <!-- TODO: Cuando se publique C++ básico -->
-<!-- [bloque]: {{< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}} -->
+<!-- [bloque]: {< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}} -->
 
 Otro problema es el siguiente:
 
