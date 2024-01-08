@@ -3,13 +3,18 @@ languageCode = "es"
 title = "Magno Blog"
 enableEmoji = true
 
-[author]
-# Footer and about (home.html)
-name = "Magno El Magnífico"
-
 [params]
+# Footer and about (home.html)
+author.name = "Magno El Magnífico"
+
 # Blog logo (start:home.html), header, and icon on the tab
 logo = "/logo.svg"
+
+# When true, shows posts' weight on `page-entry.html` (easier for sorting)
+debug = false
+
+[markup.goldmark.renderer]
+unsafe = true # Allow HTML in md files
 
 [markup.highlight]
 # https://xyproto.github.io/splash/docs/all.html
@@ -17,8 +22,7 @@ logo = "/logo.svg"
 style = "dracula"
 
 tabWidth = 4
-# Create links for each line of code
-anchorLineNos = true
+anchorLineNos = true # Create links for each line of code
 guessSyntax = true
 
 lineNos = true

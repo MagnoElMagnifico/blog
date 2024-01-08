@@ -1,17 +1,21 @@
 ---
 title: Instalación y compilación
 description: >
-    Guía de como instalar C++. También se aportan algunas
+    Guía de como instalar un compilador de C/C++. También se aportan algunas
     directrices de compilación de librerías así como su importación.
 date: 2021-07-30
-weight: 1
+weight: 2
 ---
+
+{{< block "Nota" >}}
+El proceso de compilación para C y C++ es prácticamente idéntico.
+{{< /block >}}
 
 # Instalación
 
 Se debe instalar el determinado compilador para la plataforma. Si estás
 desarrollando en Windows, lo más común es instalar un editor especializado en
-C++ que ya tenga incorporado el compilador. La opción más popular y recomendada
+C/C++ que ya tenga incorporado el compilador. La opción más popular y recomendada
 de Microsoft es [Visual Studio]. Alternativamente puedes usar [`MinGW`], que
 emula el comportamiento de un compilador de Linux.
 
@@ -22,7 +26,12 @@ En Linux existen dos compiladores populares, [`gcc`] (_GNU C Compiler_)
 y [`clang`] (_C Language_). Este último es más reciente y pretende ser
 totalemente compatible con `gcc`, utilizando como backend [LLVM].
 
-El compilador de C++ de GCC y MinGW es `g++` y el de clang es `clang++`.
+El compilador de C y C++ de GCC y MinGW es `gcc` y `g++` respectivamente; y el
+de clang es `clang` y `clang++`.
+
+Para los siguientes ejemplos se usará `gcc`y `g++` (aunque las opciones
+y parámetros sean prácticamente las mismas) dado que también es compatible con
+clang.
 
 [Visual Studio]: https://visualstudio.microsoft.com/es/
 [LLVM]:          https://llvm.org/
@@ -33,11 +42,17 @@ El compilador de C++ de GCC y MinGW es `g++` y el de clang es `clang++`.
 # Compilación básica
 
 ```sh
+gcc main.c   -o compilado.exe
 g++ main.cpp -o compilado.exe
 ```
 
-Se le pasan los nombres de los archivos de código fuente (`main.cpp`) y para
-especificar el nombre del ejecutable con el parámetro `-o` (`compilado.exe`).
+Se le pasan los nombres de los archivos de código fuente (`main.cpp` o `main.c`)
+y para especificar el nombre del ejecutable con el parámetro `-o`
+(`compilado.exe`).
+
+También se puede generalizar y especificar un patrón como `*.cpp` o `src/*.cpp`.
+
+<!-- TODO?: versión de C -->
 
 # Versión de C++
 
@@ -56,11 +71,11 @@ Podemos usar cabeceras (de extensión `.h` o `.hpp`) añadiéndolas en el códig
 simplemente:
 
 ```cpp
-#include <cabecera.hpp>
-#include "cabecera.hpp"
-
 #include <cabecera.h>
 #include "cabecera.h"
+
+#include <cabecera.hpp>
+#include "cabecera.hpp"
 ```
 
 Y si tenemos la librería dentro de un paquete o subpaquete, no hay nada más que
@@ -76,6 +91,7 @@ complicada. Por ese motivo, se le puede indicar al compilador en qué directorio
 buscar.
 
 ```sh
+gcc -Ipaquete main.c   -o compilado.exe
 g++ -Ipaquete main.cpp -o compilado.exe
 ```
 
@@ -83,6 +99,7 @@ Por tanto, se puede simplemente especificar:
 
 ```cpp
 #include "cabecera.h"
+// Y variantes
 ```
 
 # Errores y Warnings
@@ -116,6 +133,7 @@ Esto se consigue con la opción `-c`, que compila y ensambla pero no llama al
 linker:
 
 ```sh
+gcc -c <src>.c
 g++ -c <src>.cpp
 ```
 
@@ -125,6 +143,7 @@ Estos archivos se pueden enviar directamente al compilador como si fuese código
 fuente normal, por ejemplo:
 
 ```sh
+gcc main.o suma.o resta.o -o mates.exe
 g++ main.o suma.o resta.o -o mates.exe
 ```
 # Crear una librería estática
@@ -138,6 +157,7 @@ Primero debemos compilar a código objeto y luego usar la herramienta `ar` para
 crear dicho `.zip`.
 
 ```sh
+gcc -c <source>.c
 g++ -c <source>.cpp
 ar sr lib<libraryname>.[lib|a] <sources>.o
 ```
@@ -159,6 +179,7 @@ recompilar y usar para programas diferentes.
 Compilar librería:
 
 ```sh
+gcc -shared <sources>.c   -o <libraryname>.[dll|so]
 g++ -shared <sources>.cpp -o <libraryname>.[dll|so]
 ```
 # Usar librerías estáticas
@@ -167,12 +188,14 @@ Simplemente se puede listar el archivo de la librería como si fuese más códig
 fuente o código objeto:
 
 ```sh
+gcc <sources> <libpath>/<library> -o <exe>
 g++ <sources> <libpath>/<library> -o <exe>
 ```
 
 Nótese que el orden es importante, lo siguiente dará un error:
 
 ```sh
+gcc <librarypath>/<library> <sources> -o <exe> # ERROR
 g++ <librarypath>/<library> <sources> -o <exe> # ERROR
 ```
 
@@ -182,6 +205,7 @@ Alternativamente se pueden usar los argumentos `-L` y `-l`:
 - `-l`: especifica el nombre de la librería
 
 ```sh
+gcc <sources> -L<librarypath> -l<libraryname> -o <exe>
 g++ <sources> -L<librarypath> -l<libraryname> -o <exe>
 ```
 
@@ -192,8 +216,12 @@ especificados un archivo de nombre `lib<xxx>.a` o `lib<xxx>.so`.
 Y nótese que esto tampoco funciona:
 
 ```sh
+gcc -L<librarypath> -l<libraryname> <sources> -o <exe> # ERROR
 g++ -L<librarypath> -l<libraryname> <sources> -o <exe> # ERROR
 ```
+
+Se puede forzar usar una librería estática (a veces se confunden por las
+dinámicas) con la opción `-static`.
 
 # Usar librerías dinámicas
 
@@ -202,10 +230,16 @@ a `dlopen()`), podemos añadirlas en tiempo de compilación. Esto resulta muy
 similar al uso de librerías estáticas:
 
 ```sh
+gcc <sources> -L<librarypath> -l<library> -o <exe>
 g++ <sources> -L<librarypath> -l<library> -o <exe>
+
+gcc <sources> <librarypath>/<library> -o <exe>
 g++ <sources> <librarypath>/<library> -o <exe>
+
 # Recuerda que estos no funcionan:
+gcc -L<librarypath> -l<library> <sources> -o <exe>
 g++ -L<librarypath> -l<library> <sources> -o <exe>
+gcc <librarypath>/<library> <sources> -o <exe>
 g++ <librarypath>/<library> <sources> -o <exe>
 ```
 
@@ -214,6 +248,9 @@ dinámica debe estar presente en el momento de ejecución, pero no hemos
 especificado donde. Eso se haría de la siguiente forma:
 
 ```sh
+gcc <sources> -Wl,-rpath,<runtime-library-path> -L<librarypath> -l<library> -o <exe>
+gcc <sources> -Wl,-rpath,<runtime-library-path> <librarypath>/<library> -o <exe>
+
 g++ <sources> -Wl,-rpath,<runtime-library-path> -L<librarypath> -l<library> -o <exe>
 g++ <sources> -Wl,-rpath,<runtime-library-path> <librarypath>/<library> -o <exe>
 ```
@@ -226,93 +263,8 @@ Explicación:
 - `-L<...>`: especifica la dirección de la librería a la hora de compilar.
 - `-l<...>`: especifica el nombre de la librería
 
-# Makefile
-
-**Estructura básica**:
-
-```make
-# Compilador
-CXX       = g++
-CXX_FLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Werror -Weffc++ -Wconversion -Wsign-conversion
-
-# Salida
-BUILD_DIR  = bin
-BUILD_EXE  = exe
-BUILD_TYPE = debug
-
-# Programa principal
-SRC_DIRS  = src
-SRC       = $(shell find $(SRC_DIRS) -wholename "*.cpp")
-OBJ       = $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(SRC))
-
-INC_DIRS  = src include
-INC       = $(shell find $(INC_DIRS) -wholename "*.hpp" -or -wholename "*.h")
-INC_FLAGS = $(addprefix -I,$(INC_DIRS))
-
-# Debug y Release
-ifeq ($(BUILD_TYPE), release)
-   CFLAGS += -O2 -DNDEBUG
-else
-   CFLAGS += -ggdb
-endif
-
-#### Construir el ejecutable ####
-$(BUILD_DIR)/$(BUILD_EXE): $(OBJ)
-    $(CXX) $(CXX_FLAGS) $(OBJ) -o $@
-
-#### Archivos objeto ####
-$(BUILD_DIR)/%.o: %.cpp $(BUILD_DIR)
-    $(CXX) $(CXX_FLAGS) -c $(INC_FLAGS) $< -o $@
-
-$(BUILD_DIR):
-      mkdir -p $@
-```
-
-Construir **librería estática**:
-
-```make
-LIB_NAME      = test
-LIB_DIR       = $(LIB_NAME)
-LIB_FILENAME  = lib$(LIB_NAME).a
-LIB_SRC       = $(shell find $(LIB_DIR) -wholename "*.cpp")
-LIB_INC       = $(shell find $(LIB_DIR) -wholename "*.hpp" -or -wholename "*.h")
-LIB_OBJ       = $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(LIB_SRC))
-LIB_INC_DIR   = $(LIB_DIR)/src $(LIB_DIR)/include
-LIB_INC_FLAGS = $(addprefix -I,$(LIB_INC_FLAGS))
-
-$(BUILD_DIR)/$(LIB_FILENAME): $(LIB_OBJ) $(BUILD_DIR)
-    ar sr $@ $(LIB_OBJ)
-
-$(BUILD_DIR)/%.o: %.cpp $(BUILD_DIR) $(LIB_INC)
-    $(CXX) $(CXX_FLAGS) -c $(LIB_INC_FLAGS) $< -o $@
-```
-
-Y para usarla habría que modificar el target del ejecutable:
-
-```make
-$(BUILD_DIR)/$(BUILD_EXE): $(OBJ) $(BUILD_DIR)/$(LIB_FILENAME)
-    $(CXX) $(CXX_FLAGS) $(OBJ) -L$(BUILD_DIR) -l$(LIB_NAME) -o $@
-```
-
-Para hacer una **librería dinámica**:
-
-```make
-LIB_NAME      = test
-LIB_DIR       = $(LIB_NAME)
-LIB_FILENAME  = lib$(LIB_NAME).a
-LIB_SRC       = $(shell find $(LIB_DIR) -wholename "*.cpp")
-LIB_INC       = $(shell find $(LIB_DIR) -wholename "*.hpp" -or -wholename "*.h")
-LIB_INC_DIR   = $(LIB_DIR)/src $(LIB_DIR)/include
-LIB_INC_FLAGS = $(addprefix -I,$(LIB_INC_FLAGS))
-
-$(BUILD_DIR)/$(LIB_FILENAME): $(LIB_SRC) $(BUILD_DIR)
-    $(CXX) $(CXX_FLAGS) -shared $(LIB_INC_FLAGS) $(LIB_SRC) -o $@
-```
-
-Por tanto el ejecutable se modifica para añadir la librería:
-
-```make
-$(BUILD_DIR)/$(BUILD_EXE): $(OBJ) $(BUILD_DIR)/$(LIB_FILENAME)
-    $(CXX) $(CXX_FLAGS) $(OBJ) -Wl,-rpath,'.' -L$(BUILD_DIR) -l$(LIB_NAME) -o $@
-```
+<!--
+TODO: exportar en DLLs
+vease ejemplo: https://github.com/SFML/SFML/blob/master/include/SFML/Config.hpp
+-->
 

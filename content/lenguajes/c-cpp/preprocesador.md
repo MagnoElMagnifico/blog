@@ -3,26 +3,28 @@ title: Preprocesador
 description: >-
     Cómo usar las directivas del preprocesador en C/C++, aquellas que comienzan
     por un `#`.
-
 date: 2023-06-27T01:03:57+02:00
 weight: 4
 ---
 
 # El preprocesador
 
-El preprocesador recibe un fichero de entrada y lo transforma en uno de salida
-aplicando las directivas incluidas en el fichero de entrada. Estas directivas
-permiten incluir código de otros ficheros (habitualmente archivos de cabecera),
-substituir unos textos por otros (esto son las macros) y elegir si se incluye
-o no cierto código (esto es la compilación condicional).
+El preprocesador es la primera fase de compilación del código C/C++, como ya se
+comentó en la [introducción].
+
+Este simplemente recibe un fichero de entrada y lo transforma aplicando las
+directivas que va encontrando. Estas directivas permiten incluir código de otros
+ficheros (habitualmente archivos de cabecera), substituir unos textos por otros
+(esto son las macros) y elegir si se incluye o no cierto código (esto es la
+compilación condicional).
 
 {{< block "Es decir" >}}
 El preprocesador simplemente elimina, copia y pega código.
 {{< /block >}}
 
 El preprocesador solo entiende las directivas de preprocesado, las que empiezan
-por `#`, y es completamente independiente del resto de la sintaxis de C++.
-El estándar de C++ define las siguientes directivas:
+por `#`, y es completamente independiente del resto de la sintaxis de C o de C++.
+El estándar de C/C++ define las siguientes directivas:
 
 - `include`
 - `define` `undef`
@@ -32,10 +34,12 @@ El estándar de C++ define las siguientes directivas:
 - `line`
 - `pragma`
 
+[introducción]: {{< relref "introduccion#el-proceso-de-compilación-de-cc" >}}
+
 
 # `#define`
 
-```cpp
+```c
 #define NOMBRE VALOR
 ```
 
@@ -47,7 +51,7 @@ y separando palabras por guiones bajos.
 Sirve para declarar una macro: **el texto será substituido por otro** por el
 preprocesador. Por ejemplo, el siguiente fichero:
 
-```cpp
+```c
 #define MIMACRO 17
 
 int main() {
@@ -56,8 +60,7 @@ int main() {
 ```
 
 Al ser traducido por el preprocesador se convertirá en:
-
-```cpp
+```c
 int main() {
     return 17;
 }
@@ -65,12 +68,12 @@ int main() {
 
 Esta directiva también **permite el uso de parámetros**, por ejemplo:
 
-```cpp
-#define SALUDO(nombre)                               \
-        std::cout << "Hola " << nombre << std::endl; \
-        std::cout << "Bueno adios" << std::endl      \
+```c
+#define SALUDO(nombre)               \
+        printf("Hola %s\n", nombre); \
+        printf("Bueno adios\n");     \
 
-#include<iostream>
+#include<stdio.h>
 
 int main() {
     SALUDO("Magno");
@@ -83,17 +86,17 @@ una de ellas.
 
 Las macros tienen diferentes problemas, considera este código de ejemplo:
 
-```cpp
+```c
 if (alguna_condición)
     SALUDO("Lucas");
 ```
 
 El código anterior se traduce como:
 
-```cpp
+```c
 if (alguna_condición)
-    std::cout << "Hola " << "Lucas" << std::endl;
-std::cout << "Bueno adios" << std::endl;
+    printf("Hola %s\n", "Lucas");
+printf("Bueno adios\n");
 ```
 
 Con lo que a `"Lucas"` se le saluda solo si se cumple la condición pero se
@@ -105,19 +108,19 @@ Aunque existe una solución por si sucede eso, crear un
 bloque:
 <!-- [bloque]: -->
 
-```cpp
-#define SALUDO(nombre) {                                 \
-            std::cout << "Hola " << nombre << std::endl; \
-            std::cout << "Bueno adios" << std::endl;     \
-        }                                                \
+```c
+#define SALUDO(nombre) {                 \
+            printf("Hola %s\n", nombre); \
+            printf("Bueno adios\n");     \
+        }                                \
 ```
 
 <!-- TODO: Cuando se publique C++ básico -->
-<!-- [bloque]: {{< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}} -->
+<!-- [bloque]: {< ref "lenguajes/cpp/basico#sentencias-y-bloques" >}} -->
 
 Otro problema es el siguiente:
 
-```cpp
+```c
 #define MIMACRO 17
 
 int main() {
@@ -155,10 +158,10 @@ Esta distinción se hace para diferencias de las cabeceras que el usuario ha
 creado (comillas) y de las librerías externas añadidas (símbolos de mayor
 y menor):
 
-```cpp
-#include <iostream>        // librería estándar
-#include <SFML/Window.hpp> // librería externa
-#include "MiJuego.hpp"     // librería interna
+```c
+#include <stdio.h>    // librería estándar
+#include <SDL2/SDL.h> // librería externa
+#include "MiJuego.h"  // librería interna
 ```
 
 **Esta directiva lee ese fichero y lo inserta en el fichero que está
@@ -175,21 +178,21 @@ función de si las macros utilizadas como parámetros están o no definidas.
 
 Por ejemplo, si pasamos el siguiente código al preprocesador:
 
-```cpp
-#include <iostream>
+```c
+#include <stdio.h>
 #define LINUX
 
 int main() {
 #ifdef LINUX
-    std::cout << "Mi SO es Linux" << std::endl;
+    printf("Mi SO es Linux\n");
 #else
-    std::cout << "Mi SO no es Linux" << std::endl;
+    printf("Mi SO no es Linux\n");
 #endif
 
 #ifndef MAC
-    std::cout << "No uso Macintosh" << std::endl;
+    printf("No uso Macintosh\n");
 #else
-    std::cout << "Sí uso Macintosh" << std::endl;
+    printf("Sí uso Macintosh\n");
 #endif
 
     return 0;
@@ -198,10 +201,10 @@ int main() {
 
 Será traducido como:
 
-```cpp
+```c
 int main() {
-    std::cout << "Mi SO es Linux" << std::endl;
-    std::cout << "No uso Macintosh" << std::endl;
+    printf("Mi SO es Linux\n");
+    printf("No uso Macintosh\n");
     return 0;
 }
 ```
@@ -216,7 +219,7 @@ C++.
 permite encadenar varias comprobaciones seguidas sin tener que anidarlas y
 necesitando solo un `#endif` al final. Por ejemplo:
 
-```cpp
+```c
 #define LINUX    1
 #define NINTENDO 2
 #define VR_VIVE  3
@@ -256,7 +259,7 @@ de error que acompaña a esta directiva.
 
 Esta es una macro que posiblemente nunca uses.
 
-```cpp
+```c
 #line 17 nombreFichero
 ```
 
@@ -278,7 +281,7 @@ mensajes de error usaban esta directiva.
 
 # `#pragma`
 
-```cpp
+```c
 #pragma parametros
 ```
 
@@ -302,7 +305,7 @@ nombre de variable, de clase o cualquier otro identificador.
 
 Por ejemplo:
 
-```cpp
+```c
 #define DECLARA_Y_ASIGNA(tipo, nombrevar, valor) \
         tipo nombrevar = valor;                  \
         tipo original_#nombrevar = valor;        \
@@ -326,24 +329,24 @@ Esta es una técnica muy habitual en los archivos de cabecera. Es común que un
 archivo de cabecera sea utilizado por varios archivos de cabecera y se termine
 copiando y pegando el mismo archivo. Por ejemplo:
 
-```cpp
+```c
 // Fichero persona.h
-class Persona {};
+typedef struct { /* ... */ } Persona;
 ```
 
-```cpp
+```c
 // Fichero calculos.h
 #include "persona.h"
 int envejecer(Persona p, int tiempo);
 ```
 
-```cpp
+```c
 // Fichero impresiones.h
 #include "persona.h"
 void muestraPersona(Persona p);
 ```
 
-```cpp
+```c
 // Fichero main.c
 #include "calculos.h"
 #include "impresiones.h"
@@ -363,22 +366,22 @@ incluido dos veces y el compilador esto no lo permite.
 
 Esto podemos solucionarlo así en el fichero `persona.h` :
 
-```cpp
+```c
 #ifndef PERSONA_H
 #define PERSONA_H
 
 // Fichero persona.h
-class Persona {};
+typedef struct {} Persona;
 
 #endif
 ```
 
 {{< dropdown "Usando `#pragma once`" >}}
-```cpp
+```c
 #pragma once
 
 // Fichero persona.h
-class Persona {};
+typedef struct {} Persona;
 ```
 {{< /dropdown >}}
 

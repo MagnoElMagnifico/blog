@@ -3,7 +3,7 @@ title: CMake
 description: >-
     CMake es una de las _build tools_ más utilizadas para proyectos C++.
 date: 2021-08-05
-weight: 2
+weight: 0 # temporal
 ---
 
 # Introducción
@@ -26,18 +26,21 @@ Esto se debe a que anteriormente se hacía todo en mayúsculas. Actualmente, por
 convención se suelen escribir los nombres de las variables en mayúsculas y las
 funciones en minúsculas. Los _strings_ entre comillas dobles (`"`).
 
+
+# `CMakeLists.txt` básico
+
 Lo que todo proyecto debe de tener (por convención principalmente porque
 igualmente funcionará si no lo incluimos) es una versión mínima de _CMake_ :
 
 ```cmake
-cmake_minimum_required(VERSION XX [FATAL_ERROR])
+cmake_minimum_required(VERSION <X.X.X> [FATAL_ERROR])
 ```
 
 Después de añadir esto, podemos declarar nuestro proyecto:
 
 ```cmake
 project(
-      <nombre>
+      <nombre del proyecto>
       [VERSION <versión>]
       [DESCRIPTION <descripción>]
       [LANGUAGES <lenguajes>]
@@ -47,15 +50,18 @@ project(
 
 - `VERSION`: Guarda la versión del proyecto y la guarda en una variable llamada
   `<nombre>_VERSION`, pero también se puede usar PROJECT_VERSION.
-- `LENGUAGES`: C/CXX (por defecto), Fortran, ASM, CUDA, CSharp, SWIFT.
+- `LANGUAGES`: C/CXX (por defecto), Fortran, ASM, CUDA, CSharp, SWIFT.
 
 Y para comenzar con un ejemplo básico, comenzaremos por un ejecutable sencillo:
 
 ```cmake
-add_executable(<nombre> [<sources>])
+add_executable(<ejecutable> [<sources>])
 ```
 
-El proceso de compilación es bastante sencillo, en recomendable en primer lugar
+
+# Compilación con CMake
+
+El proceso de compilación es bastante sencillo, en primer lugar es recomendable
 crear una carpeta específica para guardar los archivos generados automáticamente
 por _CMake_. Normalmente, a esta carpeta se la llama `build`.
 
@@ -68,7 +74,10 @@ generación del _Makefile_ ) de diferentes formas, usando cualquiera de estos
 comandos:
 
 ```sh
-cmake <dirección_del_cmakelists> # Desde build
+cmake ..            # Desde build
+cmake -S . -B build # Desde la raíz
+
+# El comando en general es:
 cmake -S <dirección_del_CMakeLists> -B <dirección_donde_compilar>
 ```
 
@@ -83,10 +92,12 @@ Una vez generado el Makefile, podemos utilizarlo como de costumbre o llamar a
 CMake para que lo haga por nosotros:
 
 ```sh
-cmake --build <dirección_donde_compilar>
+cmake --build build
 ```
 
-# Comentarios
+
+# Sintaxis básica
+## Comentarios
 
 Podemos hacer comentarios para clarificar nuestro código CMake. Creo que solo
 pueden ser de una línea:
@@ -95,89 +106,89 @@ pueden ser de una línea:
 # Esto es un comentario
 ```
 
-# Mostrar mensajes
-
-Para mostrar información al usuario, al desarrollador, etc, podemos usar lo
-siguiente:
-
-```cmake
-message([OPCIONES] <mensaje>)
-```
-
-- `FATAL_ERROR`: Informa de un error y termina la configuración
-- `SEND_ERROR`: Solo informa de un error
-- `WARNING`
-- `STATUS`: Indica el estado actual, importante para el usuario
-- `VERBOSE`: Indica el estado, pero no interesa mucho
-- `DEBUG`: Mensaje que interesa al desarrollador
-- `CHECKS`: cmake.org/cmake/help/...
-
-# Variables
+## Variables
 
 Las variables en CMake funcionan igual que en cualquier otro lenguaje de
-programación: no se pueden repetir, tienen un alcance...
+programación: no pueden haber varias con el mismo nombre, tienen un alcance...
+
+Para obtener el valor de la variable, se escribe entre llaves con un dolar
+delante: `${<nombre_variable>}`.
 
 ```cmake
 set(<nombre> <valores> [PARENT_SCOPE])
 ```
 
-`PARENT_SCOPE`: indica que el alcance de la variable es uno anterior al actual.
-Para obtener el valor de la variable, se escribe entre `${<nombre_variable>}`.
+- `PARENT_SCOPE`: indica que el alcance de la variable es uno anterior al actual.
+
 Además de esto, podemos añadirle lo siguiente para que el valor se guarde en
 caché y pueda usarse entre varios CMakeLists.txt, como una variable global.
 
 ```cmake
-set (<nombre> <valores> CACHE <tipo> "<descripción>" [FORCE])
+set(<nombre> <valores> CACHE <TIPO> "<descripción>" [FORCE])
 ```
 
 - `FORCE`: es para sobrescribir aquella variable con el mismo nombre que ya ha
   sido guardada.
-- Tipo:
-    - `BOOL`: `ON`/`OFF`
-    - `FILEPATH`: a un archivo. En CMake GUI se muestra un explorador de
-      archivos.
-    - `PATH`: igual que el anterior pero la dirección es a una carpeta.
-    - `STRING`: guarda texto.
-    - `INTERNAL`: igual que el anterior, pero esta es la que se utiliza para
-      guardar datos entre varios CMakeLists.txt. Además, no aparece en CMake
-      GUI.
 
 Como punto final, también se pueden establecer variables del entorno desde
 CMake.
 
-```sh
-set (ENV{<nombre>} [<valor>])
+```cmake
+set(ENV{<nombre>} [<valor>])
 ```
 
 Si el valor está vacío, se borra la variable del entorno.
 
-## Algunas variables que nos ofrece CMake
+{{< keyvalue title="Tipos de datos de la variables" >}}
+-% `BOOL`     :% `ON`/`OFF`
+-% `FILEPATH` :% Dirección a un archivo. En CMake GUI se muestra un explorador de archivos.
+-% `PATH`     :% igual que el anterior pero la dirección es a una carpeta.
+-% `STRING`   :% Guarda texto.
+-% `INTERNAL` :% Igual que el anterior, pero esta es la que se utiliza para guardar
+                 datos entre varios CMakeLists.txt. Además, no aparece en CMake GUI.
+{{< /keyvalue >}}
 
-- `CMAKE_SOURCE_DIR`: Path a la carpeta base de source
-- `CMAKE_CURRENT_SOURCE_DIR`: Path del CMakeLists.txt actual
-- `PROJECT_SOURCE_DIR`: source del proyecto actual
-- `CMAKE_BINARY_DIR`: Path a donde compilas
-- `CMAKE_CURRENT_BINARY_DIR`: Path actual de la compilación
-- `PROJECT_BINARY_DIR`: Path de compilación para el proyecto actual
+### Algunas variables que nos ofrece CMake
 
-## Operaciones con variables
+En la [documentación de las variables] puedes encontrar una lista exhaustiva de
+todas las variables. Estas son probablemente las más útiles.
+
+{{< keyvalue title="Paths útiles" >}}
+-% `CMAKE_SOURCE_DIR`         :% Path a la carpeta base de source
+-% `CMAKE_CURRENT_SOURCE_DIR` :% Path del CMakeLists.txt actual
+-% `PROJECT_SOURCE_DIR`       :% source del proyecto actual
+-% `CMAKE_BINARY_DIR`         :% Path a donde compilas
+-% `CMAKE_CURRENT_BINARY_DIR` :% Path actual de la compilación
+-% `PROJECT_BINARY_DIR`       :% Path de compilación para el proyecto actual
+{{< /keyvalue >}}
+
+{{< keyvalue title="Compilador y flags" >}}
+-% `CMAKE_C_COMPILER` y `CMAKE_CXX_COMPILER` :% Cambia el compilador por defecto
+-% `CMAKE_BUILD_TYPE` :% Tipo de ejecutable generado: `Debug`, `Release`, `RelWithDebInfo`, `MinSizeRel`
+-% `CMAKE_CXX_FLAGS_DEBUG` :% Flags para el compilador en configuración Debug
+-% `CMAKE_CXX_FLAGS_RELEASE` :% Flags para el compilador en la configuración Release
+-% `CMAKE_CXX_FLAGS_RELWITHDEBINFO` :% Flags para el compilador en la configuración RelWithDebInfo
+-% `CMAKE_CXX_FLAGS_MINSIZEREL` :% Flags para el compilador en la configuración MinSizeRel
+{{< /keyvalue >}}
+
+[documentación de las variables]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
+
+### Operaciones con variables
 
 Con el siguiente método podemos hacer operaciones matemáticas con variables:
 
 ```cmake
-math(EXPR <output_var> <mat_expresión> [FORMATO])
+math(EXPR <output_var> <mat_expresión> [HEXADECIMAL | DECIMAL])
 ```
 
-`FORMATO`: `HEXADECIMAL`, `DECIMAL`
+## Opciones
 
-# Opciones
-
-Existen unas "variables" booleanas (`ON`/`OFF`) especiales que podemos declarar,
-llamadas opciones. Estas son especiales porque el usuario puede modificarlas
-desde la línea de comandos o CMake GUI.
+Existen unas <<variables>> booleanas (`ON`/`OFF`) especiales que podemos
+declarar, llamadas opciones. Estas son especiales porque el usuario puede
+modificarlas desde la línea de comandos o CMake GUI.
 
 ```cmake
-option(<nombre> “<descripción>” [<valor>])
+option(<nombre> "<descripción>" [<valor>])
 ```
 
 Si no damos ningún valor, por defecto estará desactivada (OFF). El usuario puede
@@ -188,13 +199,13 @@ sobreescribiéndola:
 set(<nombre> <valor> CACHE BOOL "" FORCE)
 ```
 
-# Listas
+## Listas
 
 [CMake docs](https://cmake.org/cmake/help/latest/command/list.html)
 
-# Estructuras de control
 
-## Condicionales
+## Estructuras de control
+### Condicionales
 
 En muchos casos, es necesario tomar decisiones: si compilar esto, si unirlo con
 lo otro... Para ello tenemos la siguiente estructura:
@@ -203,7 +214,7 @@ lo otro... Para ello tenemos la siguiente estructura:
 ```cmake
 if(<condición>)
     <código>
-eleeif(<condición>) # Opcional, puede ser repetido
+elseif(<condición>) # Opcional, puede ser repetido
     <código>
 else() # Opcional
     <código>
@@ -214,16 +225,17 @@ Disponemos de los siguientes operadores para realizar las condiciones (además d
 contar con los típicos operadores lógicos AND, OR y NOT):
 
 Comprueban si existen determinados elementos:
+
 - `EXISTS "<filename>"`
 - `IS_DIRECTORY "<filename>"`
-- `COMMAND “<comando>”`
-- `TARGET “<nombre>”`
+- `COMMAND "<comando>"`
+- `TARGET "<nombre>"`
 - `DEFINED <nombre>|CACHE{<nombre>}|ENV{<nombre>}`
 - `<variable>|<string> IN_LIST <variable>`
 
 > Más información: <cmake.org/cmake/help/...>
 
-## Bucles
+### Bucles
 
 En algunos casos queremos repetir ciertas operaciones, para ello podemos usar
 estos bucles:
@@ -238,99 +250,12 @@ foreach(<elemento> IN LIST <lista>)
 ```
 
 Además de eso, podemos usar `break()` y `continue()` para controlar mejor el
-flujo. `<elemento>_<pos>?`
+flujo.
 
-# Targets
+## Macros
 
-Los _targets_ son el propósito de CMake en general: los ejecutables, librerías,
-binarios... Estos se crean con `add_executable()` y `add_library()`: (imported
-targets???)
 
-```cmake
-add_executable(<nombre> [<sources>])
-add_library(<nombre> TIPO [<sources>])
-```
-
-TIPO: `SHARED`, `STATIC`, `MODULE` (plugin cargado en tiempo de ejecución) En
-ambos casos los sources son opcionales porque podemos añadirlos de la siguiente
-forma: `target_sources(<nombre> TIPO <sources>)`
-
-- `PUBLIC`: se añaden a todo
-- `PRIVATE`: solo se añaden al _target_ , no a las dependencias
-- `INTERFACE`: solo para las dependencias
-
-## Alias
-
-Da a la libraría un `ALIAS` para ser utilizado en contextos _read-only_
-
-```cmake
-add_library(<alias_name> ALIAS <target>) # Por convención: alias::name
-```
-
-## Un truco para cargar muchos sources
-
-Cuando tenemos muchos archivos fuente, puede que no sea buena idea escribirlos
-todos a mano en CMake. Lo que podemos hacer, en cambio, es, si los tenemos
-ordenados en sus respectivas carpetas, podemos buscarlos por su extensión:
-
-```cmake
-file(GLOB <output_var> <extensiones>)
-```
-
-## Añadir los include
-
-Este es el equivalente a hacer -I en un compilador GNU:
-
-```cmake
-target_include_directories(<nombre> TIPO <include_paths>)
-```
-
-- `PUBLIC`: se añaden a todo
-- `PRIVATE`: solo se añaden al _target_ , no a las dependencias
-- `INTERFACE`: solo para las dependencias
-
-## Enlazar librerías
-
-Este es el equivalente a hacer -L -l en un compilador GNU:
-
-```cmake
-target_link_libraries(<nombre> <librerías>)
-```
-
-Las librerías que incluyamos aquí ha debido ser creada por `add_library()` o ser
-importada. Además, se le puede dar una dirección completa a un
-`.lib`/`.dll`/`.a`/`.so`
-
-# CMake a C++
-
-CMake nos ofrece la posibilidad de modificar nuestro código C++. Esto puede ser
-útil para tener en cuenta la versión del código y otros aspectos.
-
-```cmake
-configure_file(<input_file> <output_file> [COPYONLY][@ONLY])
-```
-
-Básicamente, copia el archivo de entrada (normalmente de extensión `.in`) en uno
-de salida sustituyendo el nombre de las variables (`@<var>@` o `${<var>}`) por
-su valor en el archivo de entrada. Recuerda añadir el archivo resultante al
-includepath (se genera en $ `{CMAKE_CURRENT_BINARY_DIR}`)
-
-> `COPYONLY`: solo copia el contenido de un archivo al otro, no modifica su
-> interior
-
-`@ONLY`: solo modifica aquellas variables entre `@<var>@` porque en algunos
-casos puede haber incompatibilidades.
-
-Además, las líneas como `#cmakedefine <var> ...` se remplazarán con `#define
-<var> ...` o `/* #undef <var> */` dependiendo de como actúa el valor de `<var>`
-en un if.
-
-Como punto final, si añadimos `#cmakedefine01 <var>`, se sustituirá por `#define
-<var> 0` o `#define <var> 1`
-
-<cmake.org/cmake/help/...>
-
-# Trabajar con proyectos grandes
+## Trabajar con proyectos grandes
 
 En algunos casos, nos encontraremos entre cientos y cientos de archivos para un
 mismo programa, y para manejarlos todos desde solamente un CMakeLists.txt, este
@@ -355,11 +280,249 @@ usar:
 include(<path> [OPTIONAL][RESULT_VARIABLE <var>])
 ```
 
-`OPTIONAL`: No da error al no encontrarse el archivo.
+- `OPTIONAL`: No da error al no encontrarse el archivo.
 
-Esta instrucción funciona igual que los #include de C/C++, simplemente añaden
+Esta instrucción funciona igual que los `#include` de C/C++, simplemente añaden
 código al CMakeLists.txt. Es útil cuando tienes partes comunes entre varios
 CMakeLists pero solo quieres escribir el código una vez.
+
+
+# Mostrar información
+## Mostrar el comando de compilación
+
+En muchos casos, ayuda para depurar qué comandos se están ejecutando para
+compilar. Esto se puede hacer con la opción `--verbose`.
+
+```sh
+cmake --build build --verbose
+```
+
+## Mostrar mensajes
+
+Para mostrar información al usuario, al desarrollador, etc, podemos usar lo
+siguiente:
+
+```cmake
+message([OPCIONES] <mensaje>)
+```
+
+- `FATAL_ERROR`: Informa de un error y termina la configuración
+- `SEND_ERROR`: Solo informa de un error
+- `WARNING`: Advertencia de un mal uso o posible problema
+- `STATUS`: Indica el estado actual, importante para el usuario
+- `VERBOSE`: Indica el estado, pero no interesa mucho
+- `DEBUG`: Mensaje que interesa al desarrollador
+
+
+# Configuración
+## Cambiar el compilador
+
+Por lo general, no nos suele importar qué compilador estamos usando; pero en
+algunos casos hace falta. Para configurar eso, existen las variables
+`CMAKE_C_COMPILER` y `CMAKE_CXX_COMPILER`.
+
+No se recomienda fijarlas directamente en el archivo `CMakeLists.txt` con `set`
+(en caso de que fuese necesario, es mejor hacerlo antes de la llamada
+a `project`), sino pasarlas por línea de comandos:
+
+```sh
+cmake . -B build -DCMAKE_C_COMPILER=<compiler>
+```
+
+Alternativamente, puedes usar las variables de entorno `CC` para el compilador
+de C y `CXX` para el compilador de C++.
+
+
+## Tipo de ejecutable
+
+En algunos casos, queremos configurar cómo será nuestro ejecutable: si debe de
+guardar los símbolos necesarios para usar un _debugger_ , cuanto de optimizado
+debe estar, etc.
+
+Para esto, CMake nos ofrece la posibilidad de usar la variable
+`CMAKE_BUILD_TYPE`. Los valores más típicos son los siguientes, aunque también
+es posible añadir otros personalizados (como por ejemplo `Distribution`).
+
+| Tipo             | Características                                    | Flags                               | Valor por defecto |
+|------------------|----------------------------------------------------|-------------------------------------|-------------------|
+| `Debug`          | Sin optimizaciones y con información de depuración | `CMAKE_<lang>_FLAGS_DEBUG`          | `-g`              |
+| `Release`        | Optimizado y sin _asserts_                         | `CMAKE_<lang>_FLAGS_RELEASE`        | `-O3 -DNDEBUG`    |
+| `RelWithDebInfo` | Optimizado pero con información de depuración      | `CMAKE_<lang>_FLAGS_RELWITHDEBINFO` | `-O2 -g -DNDEBUG` |
+| `MinSizeRel`     | Optimizado por tamaño del ejecutable               | `CMAKE_<lang>_FLAGS_MINSIZEREL`     | `-Os -DNDEBUG`    |
+
+Donde `<lang>` es `C` o `CXX`.
+
+{{< dropdown "Flags de optimización del compilador" >}}
+- `-O0`      : optimizado para el tiempo de compilación (default)
+- `-O1`/`-O` : optimizado para tiempo de ejecución y tamaño del binario
+- `-O2`      : `-O1` pero más rápido
+- `-O3`      : `-O2` pero más rápido
+- `-Os`      : optimizado para el tamaño del binario
+- `-g`       : guarda información para el debbugger
+{{< /dropdown >}}
+
+
+## Escoger un estándar
+
+```cmake
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+```
+
+
+# Targets
+
+Los _targets_ son el propósito de CMake en general: los ejecutables, librerías,
+binarios... Estos se crean con `add_executable()` y `add_library()`:
+
+```cmake
+add_executable(<target> [<sources>])
+add_library(<target> <SHARED | STATIC | MODULE> [<sources>])
+```
+
+- `SHARED`: librería dinámica
+- `STATIC`: librería estática
+- `MODULE`: plugin cargado en tiempo de ejecución
+
+En ambos casos los sources son opcionales porque podemos añadirlos de la
+siguiente forma:
+
+```cmake
+target_sources(<target> <PUBLIC | PRIVATE | INTERFACE> <sources>)
+```
+
+
+## Un truco para cargar muchos _sources_
+
+Cuando tenemos muchos archivos fuente, puede que no sea buena idea escribirlos
+todos a mano en CMake. Lo que podemos hacer, en cambio, es, si los tenemos
+ordenados en sus respectivas carpetas, podemos buscarlos por su extensión:
+
+```cmake
+file(GLOB <output_var> <extensiones>)
+file(GLOB_RECURSE <output_var> <extensiones>) # Lo mismo, pero recursivo
+```
+
+Más [información sobre `file`].
+
+[información sobre `file`]: https://cmake.org/cmake/help/latest/command/file.html
+
+<!-- TODO: expandir -->
+
+
+## Alias
+
+Da a la librería un `ALIAS` para ser utilizado en contextos _read-only_:
+
+```cmake
+add_library(<alias_name> ALIAS <target>) # Por convención: alias::name
+```
+
+
+## Añadir los _includes_ a un _target_
+
+Este es el equivalente a hacer `-I` en el compilador:
+
+```cmake
+target_include_directories(<target> <PUBLIC | PRIVATE | INTERFACE> <include_paths>)
+```
+
+- `PUBLIC`: se añaden a todo
+- `PRIVATE`: solo se añaden al _target_ , no a las dependencias
+- `INTERFACE`: solo para las dependencias
+
+
+## Enlazar librerías a _targets_
+
+Este es el equivalente a hacer `-l` en el compilador:
+
+```cmake
+target_link_libraries(<target> <librerías>)
+```
+
+Las librerías que incluyamos aquí ha debido ser creada por `add_library()` o ser
+importada.
+
+
+## Crear una librería estática y dinámica a la vez
+
+Para evitar compilar de nuevo la librería, en primer lugar se crea una común
+marcada como `OBJECT` y luego esta se enlazan para crear la librería estática
+y dinámica.
+
+```cmake
+add_library(<main_target>   OBJECT <sources>)
+add_library(<static_target> STATIC)
+add_library(<shared_target> SHARED)
+
+target_link_libraries(<static_target> PUBLIC <main_target>)
+target_link_libraries(<shared_target> PUBLIC <main_target>)
+```
+
+
+## Importar y exportar _targets_
+
+Para importar librerías y ejecutables ya creados como _targets_ (es decir, que
+no necesitan compilación por parte de CMake) se usa la opción `IMPORTED`.
+
+```cmake
+add_executable(<target> IMPORTED)
+add_library(<target> <SHARED | STATIC | MODULE> IMPORTED)
+```
+
+Y para decirle a CMake donde está la librería / el ejecutable se debe usar
+`set_property()` de la siguiente forma:
+
+```cmake
+set_property(TARGET <target> PROPERTY IMPORTED_LOCATION "<path>/<file>")
+```
+
+Además, si se da el caso, es posible importar distintas configuraciones de la
+mismo target:
+
+```cmake
+add_library(math STATIC IMPORTED GLOBAL)
+set_target_properties(math PROPERTIES
+  IMPORTED_LOCATION "${math_REL}"
+  IMPORTED_LOCATION_DEBUG "${math_DBG}"
+  IMPORTED_CONFIGURATIONS "RELEASE;DEBUG"
+)
+```
+
+[referencia]: https://cmake.org/cmake/help/latest/guide/importing-exporting/index.html
+
+
+## Instalar
+
+
+# CMake a código
+
+CMake nos ofrece la posibilidad de modificar nuestro código C++. Esto puede ser
+útil para tener en cuenta la versión del código y otros aspectos.
+
+```cmake
+configure_file(<input_file> <output_file> [COPYONLY][@ONLY])
+```
+
+Básicamente, copia el archivo de entrada (normalmente de extensión `.in`) en uno
+de salida sustituyendo el nombre de las variables (`@<var>@` o `${<var>}`) por
+su valor en el archivo de entrada. Recuerda añadir el archivo resultante al
+includepath (se genera en `${CMAKE_CURRENT_BINARY_DIR}`)
+
+> `COPYONLY`: solo copia el contenido de un archivo al otro, no modifica su
+> interior
+
+`@ONLY`: solo modifica aquellas variables entre `@<var>@` porque en algunos
+casos puede haber incompatibilidades.
+
+Además, las líneas como `#cmakedefine <var> ...` se remplazarán con `#define
+<var> ...` o `/* #undef <var> */` dependiendo de como actúa el valor de `<var>`
+en un if.
+
+Como punto final, si añadimos `#cmakedefine01 <var>`, se sustituirá por `#define
+<var> 0` o `#define <var> 1`
+
+<cmake.org/cmake/help/...>
 
 # Librerías
 
@@ -504,27 +667,6 @@ if (NOT EXISTS "${PROJECT_SOURCE_DIR}/...")
 endif()
 ```
 
-# Configurando más
-
-## Tipo de ejecutable
-
-En algunos casos, queremos configurar cómo será nuestro ejecutable: si debe de
-guardar los símbolos necesarios para usar un _debugger_ , cuanto de optimizado
-debe estar, etc. Para esto, cmake nos ofrece las siguientes opciones: usar la
-flag `MAKE_BUILD_TYPE=<tipo>` o bien sobrescribir este valor en la variable
-llamada `CMAKE_BUILD_TYPE`. Estas son las opciones:
-
-- Release: -O3 -DNDEBUG
-- Debug: -g
-- RelWithDebInfo: -O2 -g -DNDEBUG
-- MinSizeRel: -Os -DNDEBIG
-- -O0: optimizado para el tiempo de compilación (default)
-- -O1/-O: optimizado para tiempo de ejecución y tamaño del binario
-- -O2: -O1++
-- -O3: -O2++
-- -Os: optimizado para el tamaño del binario
-- -g: guarda información para GDB (debbugger)
-
 # Más (TODO)
 
 - Añade opciones al compilado: `target_compile_options(<target> <options>)`
@@ -535,3 +677,4 @@ llamada `CMAKE_BUILD_TYPE`. Estas son las opciones:
 - Config.cmake
 - `find_library()`
 - `find_package()` policy
+

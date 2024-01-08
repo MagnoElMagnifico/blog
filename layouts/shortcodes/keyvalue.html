@@ -2,7 +2,7 @@
 {{ $keys   := findRE `(-%)[\W\w]*?(:%|\z)` .Inner }}
 {{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
 
-<table class="keyvalue">
+<table class="keyvalue {{ if (.Get "fill") }}fill{{ end }}">
 <!-- TODO?: añadir más niveles de profundidad -->
 
 <!-- Optional Header -->
