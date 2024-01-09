@@ -288,6 +288,30 @@ Otra cuestión importante es el **manejo de errores**, que se debe llevar a cabo
 lo más cerca del hardware que sea posible: si el controlador de disco descubre
 un error de lectura, debe saber cómo manejarlo.
 
+-----------------------------------------------------------
+
+Hay que tener en cuenta también que el **kernel tiene un buffer en el que guarda
+temporalmente los datos para la E/S** mientras se realiza la operación. Sobre
+este buffer el kernel puede realizar operaciones costosas, como chequear errores
+entre otras cosas.
+
+Por tanto, para una operación de escritura en disco utilizando DMA:
+
+1. El buffer de datos inicial está en la zona de usuario.
+2. Se llama a un procedimiento estándar de C, que realiza la llamada al sistema.
+3. Se copia el buffer de la zona de usuario a la zona de kernel.
+4. El kernel procesa los datos de la manera que crea conveniente y planifica la
+   escritura en el disco, enviando comandos a la DMA y al controlador del disco.
+5. A través de la DMA, el disco accede a los datos de memoria principal
+   y realiza su trabajo.
+6. Cuando termina, la DMA lanza una interrupción a la CPU que maneja el
+   controlador de interrupciones, como ya se ha visto.
+
+Todas estas operaciones de copiado (usuario a kernel, kernel a disco) añaden un
+sobrecoste a las operaciones de E/S.
+
+-----------------------------------------------------------
+
 Comentar también las transferencias **síncronas** (bloquean el proceso) contra
 las **asíncronas** (se realizan en segundo plano y se controlan por
 interrupciones). Como hemos visto, el uso del DMA permite operaciones E/S
@@ -298,19 +322,85 @@ lo parezcan bloqueando el proceso.
 Como ya hemos visto en la [introducción], hay tres maneras fundamentales en las
 que se puede llevar a cabo la E/S:
 
-- **E/S programada**: **ocupado en espera**, la CPU chequea constantemente el
-  estado del dispositivo. La desventaja es que se pierde mucho tiempo de CPU.
+- **E/S programada**: **ocupado en espera** (síncrono), la CPU chequea
+  constantemente el estado del dispositivo. La desventaja es que se pierde mucho
+  tiempo de CPU.
 
-- **E/S por interrupciones**: después de lanzar la operación, se bloquea el proceso
-  actual y realiza un cambio de contexto a otro que esté listo. Cuando la
-  operación termine, se lanzará una interrupción para continuar con la operación.
-  Como desventaja es que se generan muchas interrupciones, y por tanto muchos
-  cambios a modo kernel.
+- **E/S por interrupciones** (asíncrono): después de lanzar la operación, se
+  bloquea el proceso actual y realiza un cambio de contexto a otro que esté listo.
+  Cuando la operación termine, se lanzará una interrupción para continuar con la
+  operación. Como desventaja es que se generan muchas interrupciones, y por tanto
+  muchos cambios a modo kernel.
 
-- **E/S por DMA**: muy similar al anterior, pero todas las interrupciones
-  y control del dispositivo las controla la DMA, por lo que se producen menos
-  interrupciones. Se necesita hardware dedicado, que normalmente es más lento que
-  la CPU.
+- **E/S por DMA** (asíncrono): muy similar al anterior, pero todas las
+  interrupciones y control del dispositivo las controla la DMA, por lo que se
+  producen menos interrupciones. Se necesita hardware dedicado, que normalmente es
+  más lento que la CPU.
+
+{{< block "Ejemplo: imprimir un buffer de datos" >}}
+
+### E/S programada
+
+Syscall para imprimir:
+
+```c
+// p: buffer del kernel
+copy_from_user(buffer, p, count);
+for (int i = 0; i < count; i++) {
+    while(*printer_status_reg != READY); // Esperar a que se prepare
+    *printer_data_register = p[i];       // Mandar el siguiente dato
+}
+return_to_user();
+```
+
+### E/S por interrupciones
+
+Syscall para imprimir:
+
+```c
+// Syscall: enviar solo el primer char
+copy_from_user(buffer, p, count);
+enable_interrupts();
+while(*printer_status_reg != READY);
+*printer_data_reg = p[0];
+scheduler(); // Cambio de contexto
+```
+
+Manejo de las interrupciones (una por char):
+
+```c
+if (count == 0) {
+    // Ya se copiaron todos los datos
+    unblock_user();
+} else {
+    // Copiar el siguiente dato
+    *printer_data_reg = p[i];
+    i++;
+    count--;
+}
+acknowledge_interrupt(); // Avisar a la controladora
+                         // de que puede seguir
+return_from_interrupt();
+```
+
+### E/S por DMA
+
+Syscall:
+
+```c
+copy_from_user(buffer, p, count);
+set_up_DMA_controller();
+sheduler();
+```
+
+Manejo de la interrupción (solo una):
+
+```c
+acknowledge_interrupt();
+unblock_user();
+return_from_interrupt();
+```
+{{< /block >}}
 
 [introducción]: {{< relref "introduccion#entradasalida" >}}
 [montar]:       {{< relref "archivos#montaje-de-sistemas-de-archivos" >}}
