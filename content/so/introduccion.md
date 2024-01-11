@@ -16,7 +16,7 @@ El sistema operativo es el software encargado de **gestionar los recursos
 hardware** del computador y de **proporcionar una interfaz amigable para su
 uso**.
 
-Escribir código para cada gestionar el disco duro, la memoria, el teclado, el
+Escribir código para gestionar el disco duro, la memoria, el teclado, el
 ratón... es una tarea sumamente complicada, y sería muy difícil para un
 programador realizar una aplicación. Gracias al Sistema Operativo, el
 programador puede utilizar los recursos que proporciona para construir más
