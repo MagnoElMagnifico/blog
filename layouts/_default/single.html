@@ -20,7 +20,7 @@
         {{ with .Params.Date }}[date: {{ .Format "02-01-2006 15:04" }}]{{ end }}
         [words: {{ .WordCount }}]
     </h3>
-    {{ if .Site.Params.debug }}
+    {{ if hugo.IsDevelopment }}
         <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}
