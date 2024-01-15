@@ -140,7 +140,6 @@ pre, code {
 
 /* Inline code: `` */
 code:not(.highlight pre code) {
-    color: var(--font-color);
     background-color: var(--code-color);
     border-radius: var(--border-radius);
     padding: 0 4px;
@@ -175,8 +174,8 @@ blockquote blockquote,
 .project blockquote,
 .block code,
 .block blockquote,
-.content code,
-.content blockquote,
+.dropdown code,
+.dropdown blockquote,
 #TableOfContents code
 { background-color: var(--background-color) !important; }
 

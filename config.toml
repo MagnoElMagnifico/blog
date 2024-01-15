@@ -10,9 +10,6 @@ author.name = "Magno El Magnífico"
 # Blog logo (start:home.html), header, and icon on the tab
 logo = "/logo.svg"
 
-# When true, shows posts' weight on `page-entry.html` (easier for sorting)
-debug = false
-
 [markup.goldmark.renderer]
 unsafe = true # Allow HTML in md files
 
