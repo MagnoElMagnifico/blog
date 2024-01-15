@@ -19,6 +19,7 @@
     <h3 class="page-stats">
         {{ with .Params.Date }}[date: {{ .Format "02-01-2006 15:04" }}]{{ end }}
         [words: {{ .WordCount }}]
+        [reading time: {{ .ReadingTime }}mins]
     </h3>
     {{ if hugo.IsDevelopment }}
         <h3 class="page-stats">
