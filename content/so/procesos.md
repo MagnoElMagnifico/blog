@@ -197,7 +197,7 @@ Las funciones de `init` son la siguientes:
 
 En Windows no existe esta jerarquía:
 
-- Cuando se crea un proceso, el «padre» recibe in manejador (_token_) para
+- Cuando se crea un proceso, el <<padre>> recibe in manejador (_token_) para
   gestionarlo.
 - Se puede pasar el token a otros procesos, lo que invalida la jerarquía.
 
@@ -485,8 +485,8 @@ regiones de memoria entre procesos.
 
 {{< block "Definición" "var(--magno-blue)" >}}
 Un hilo de ejecución es la **secuencia de instrucciones** de un programa. Son
-como procesos independientes, salvo que **comparten memoria** («proceso dentro
-de un proceso»).
+como procesos independientes, salvo que **comparten memoria** (<<proceso dentro
+de un proceso>>).
 
 Los elementos de un hilo son:
 
