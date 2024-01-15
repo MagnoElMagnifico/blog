@@ -5,7 +5,7 @@
         {{- else if (.Get 1) -}}
             style="background-color: {{ .Get 1 | safeCSS }}; color: black"
         {{- end -}}
-        id="block-{{ trim (.Get 0 | lower | replaceRE `\s+` "-") "-" }}">
+        id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}">
         {{ .Get 0 | emojify | markdownify }}
     </div>
 <div class="block-content">
