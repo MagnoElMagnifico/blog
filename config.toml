@@ -10,6 +10,18 @@ author.name = "Magno El Magnífico"
 # Blog logo (start:home.html), header, and icon on the tab
 logo = "/logo.svg"
 
+# Github repo link
+footer_content = """
+### Magno blog
+
+¿Alguna mejora, comentario o sugerencia?
+
+Abre un [Issue] en el [repositorio] del blog.
+
+[Issue]: https://github.com/MagnoElMagnifico/blog
+[repositorio]: https://github.com/MagnoElMagnifico/blog/issues
+"""
+
 [markup.goldmark.renderer]
 unsafe = true # Allow HTML in md files
 

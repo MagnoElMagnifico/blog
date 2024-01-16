@@ -470,10 +470,9 @@ footer {
     color: var(--hf-font-color);
     text-align: center;
     margin-top: 2rem;
-    padding: 0.5rem 0 0 0; /* Use the margin of the title */
+    padding: 2rem 0;
     width: 100vw;
 }
 
-#author    { margin: 0; }
-#copyright { margin: 0; text-align: center; }
+footer p, footer h1, footer h2, footer h3 { margin: 0; text-align: center; }
 

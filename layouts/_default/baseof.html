@@ -49,8 +49,8 @@
     <main>{{ block "main" . }}{{ end }}</main>
 
     <footer>
-        <h3 id="author">{{ .Site.Title }}</h3>
-        <p id="copyright">2021-{{ now.Year }} {{ .Site.Author.name }}</p>
+        {{ .Site.Params.footer_content | markdownify }}
+        <p>Última actualización: {{ now.Format "02/01/2006" }}</p>
         {{ partial "social-media" . }}
     </footer>
 

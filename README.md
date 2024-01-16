@@ -297,7 +297,6 @@ Crea un diagrama [Mermaid] con el código dado. En su página puedes encontrar l
 
 - color CSS `bg-color`: color de fondo del diagrama
 - Argumento de bloque (obligatorio)
-(argumento de bloque) \[bg-color=(color CSS de fondo)\]:
 
 ```
 {{< mermaid >}}
