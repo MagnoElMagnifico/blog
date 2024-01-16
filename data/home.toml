@@ -1,9 +1,3 @@
-# Shows the recent blog content
-show_blog = true
-
-# Number of recent pages to show
-pages = 5
-
 [start]
 description = "Mis notas, apuntes y demás sobre mis **proyectos de programación**."
 
@@ -34,3 +28,17 @@ próximo**.
 """
 link = "https://magnoelmagnifico.itch.io/vision-olc-code-jam-2021"
 img = "projects/vision.png"
+
+[blog]
+show = true
+
+# Highlighted sections
+sections = [
+    "mates/discretas",
+    "poo",
+    "so"
+]
+
+# Number of recent pages to show
+pages = 5
+
