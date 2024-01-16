@@ -89,6 +89,9 @@ span.katex-display { overflow: scroll; }
     margin-top: 0;
 }
 
+/* Wrap by the spans */
+.page-stats span { white-space: nowrap; }
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
     font-family: var(--title-font);

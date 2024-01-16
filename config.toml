@@ -2,6 +2,7 @@ baseURL = "https://magnoblog.netlify.app"
 languageCode = "es"
 title = "Magno Blog"
 enableEmoji = true
+enableGitInfo = true
 
 [params]
 # Footer and about (home.html)
