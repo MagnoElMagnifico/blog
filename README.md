@@ -291,10 +291,13 @@ Holis :)
 
 ## `mermaid`
 
+Crea un diagrama [Mermaid] con el código dado. En su página puedes encontrar la
+[sintaxis de Mermaid] y un [editor visual]. Para poder usar esto, la opción
+`mermaid` debe estar a `true` en el _front matter_.
+
+- color CSS `bg-color`: color de fondo del diagrama
+- Argumento de bloque (obligatorio)
 (argumento de bloque) \[bg-color=(color CSS de fondo)\]:
-  crea un diagrama [Mermaid] con el código dado. En su página puedes encontrar
-  la [sintaxis de Mermaid] y un [editor visual] (la opción `mermaid` debe estar
-  a `true` en el _front matter_).
 
 ```
 {{< mermaid >}}
@@ -313,21 +316,20 @@ gitGraph
 ```
 
 Alternativamente puedes usar un bloque de código:
-```
-``mermaid
-gitGraph
-    commit
-    commit
-    branch develop
-    checkout develop
-    commit
-    commit
-    checkout main
-    merge develop
-    commit
-    commit
-``
-```
+
+    ```mermaid
+    gitGraph
+        commit
+        commit
+        branch develop
+        checkout develop
+        commit
+        commit
+        checkout main
+        merge develop
+        commit
+        commit
+    ```
 
 [Fira Code]: https://github.com/tonsky/FiraCode
 [GoAT]: https://github.com/bep/goat
