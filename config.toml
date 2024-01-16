@@ -41,3 +41,7 @@ lineNumbersInTable = false
 startLevel = 0
 endLevel = 100
 ordered = true
+
+[minify]
+minifyOutput = true
+

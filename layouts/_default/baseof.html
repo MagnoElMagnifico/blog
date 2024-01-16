@@ -13,7 +13,7 @@
 
     {{ with .Keywords }}<meta name="keywords" content={{ delimit . "," }}>{{ end }}
     <meta name="description" content="{{ block "description" . }}
-      {{- with .Description -}}{{- . -}}{{- end -}}
+      {{ with .Description }}{{ . }}{{ end }}
     {{ end }}">
 
     {{/* Styles */}}
