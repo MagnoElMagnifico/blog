@@ -35,8 +35,9 @@ show = true
 # Highlighted sections
 sections = [
     "mates/discretas",
+    "so",
     "poo",
-    "so"
+    "aed"
 ]
 
 # Number of recent pages to show
