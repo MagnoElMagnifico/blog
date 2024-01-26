@@ -27,8 +27,12 @@
     {{/* $value := trim (index $values $i) "-:% \t\n" */}}
 
     <tr>
-        {{ with $key   }}<td>{{ . | markdownify }}</td>{{ end }}
-        {{ with $value }}<td>{{ . | markdownify }}</td>{{ end }}
+        {{ if $key }}
+            <td {{ if $.Get "key-header" }}class="header"{{ end }}>
+                {{ $key | markdownify }}
+            </td>
+        {{ end }}
+        {{ if $value }}<td>{{ $value | markdownify }}</td>{{ end }}
     </tr>
 {{ end }}
 </table>
