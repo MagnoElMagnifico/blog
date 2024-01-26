@@ -19,8 +19,8 @@ footer_content = """
 
 Abre un [Issue] en el [repositorio] del blog.
 
-[Issue]: https://github.com/MagnoElMagnifico/blog
-[repositorio]: https://github.com/MagnoElMagnifico/blog/issues
+[repositorio]: https://github.com/MagnoElMagnifico/blog
+[Issue]: https://github.com/MagnoElMagnifico/blog/issues
 """
 
 [markup.goldmark.renderer]
