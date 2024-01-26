@@ -229,7 +229,9 @@ Crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza por
 - Argumento de bloque (obligatorio)
 - string `title`: título de la tabla
 - string `key` `value`: título de la primera y segunda columna respectivamente.
-  No se puede combinar con `title`
+  No se puede combinar con `title`, en ese caso, se usará el valor de `title`
+- boolean `key-header` si es `true`, formatea la columna de las claves como la
+  cabecera.
 - boolean `fill`: si es `true`, la tabla rellena todo es espacio horizontal
   disponible
 
