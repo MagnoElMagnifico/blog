@@ -264,6 +264,72 @@ PascalCase. Esta es la convención de Rust.
 ver linkage
 
 # Operadores
+## Operadores aritméticos
+- Suma: ```a + b```
+- Suma y asignación: ```a += b```
+- Resta: ```a - b```
+- Resta y asignación: ```a -= b```
+- Multiplicación: ```a * b```
+- Multiplicación y asignación: ```a *= b```
+- División: ```a / b```
+- División y asignación: ```a /= b```
+- Módulo: ```a % b```
+- Módulo y asignación: ```a %= b```
+- Más unario (promoción entera): ```+a```
+- Menos unario (opuesto): ```-a```
+- Incremento prefijo: ```++a```
+- Incremento postfijo: ```a++```
+- Decremento prefijo: ```--a```
+- Decremento postfijo: ```a--```
+
+## Operadores de comparación
+- Menor que: ```a < b```
+- Mayor que: ```a > b```
+- Menor o igual que: ```a <= b```
+- Mayor que o igual que: ```a >= b```
+- Igual que: ```a == b```
+- Diferente que / No igual que: ```a != b```
+- Comparación a tres sentidos: ```a <=> b```
+
+## Operadores lógicos
+- Negación lógica (NOT): ```!a```
+- Y lógico (AND): ```a && b```
+- O lógico (OR): ```a || b```
+
+## Operadores a nivel de bit
+- Desplazamiento a la izquierda: ```a << b```
+- Asignación con desplazamiento a la izquierda: ```a <<= b```
+- Desplazamiento a la derecha: ```a >> b```
+- Asignación con desplazamiento a la derecha: ```a >>= b```
+- Complemento a uno: ```~a```
+- AND binario: ```a & b```
+- Asignación con AND binario: ```a &= b```
+- OR binario: ```a | b```
+- Asignación con OR binario: ```a |= b```
+- XOR binario: ```a ^ b```
+- Asignación con XOR binario: ```a ^= b```
+
+## Otros operadores
+- Asignación básica: `a = b`
+- Llamada a función: `a()`
+- Índice de Array: `a[b]`
+- Indirección (Desreferencia): `*a`
+- Dirección de (Referencia): `&a`
+- Miembro de puntero: `a->b`
+- Miembro: `a.b`
+- Desreferencia a miembro por puntero: `a->*b`
+- Desreferencia a miembro por objeto: `a.*b`
+- Conversión de tipo: `(tipo) a`
+- Coma: `a , b`
+- Condicional ternario: `a ? b : c`
+- Resolución de ámbito: `a::b`
+- Puntero a función miembro: `a::*b`
+- Tamaño de objeto: `sizeof (a)`, `sizeof(tipo)`
+- Identificación de tipo: `typeid(a)`, `typeid(tipo)`
+- Asignar almacenamiento: `new tipo`, `new tipo[n]`
+- Desasignar almacenamiento: `delete a`, `delete[] a`
+- Referencia por valor derecho: `&&a`
+
 ## Orden de los operadores
 ## Expresiones
 # Conversión de tipo
