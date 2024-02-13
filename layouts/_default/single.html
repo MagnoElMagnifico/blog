@@ -28,7 +28,7 @@
         <span>[reading time: {{ .ReadingTime }}min]</span>
         <span>[size: {{ .Len }} bytes]</span>
     </h3>
-    {{ if hugo.IsDevelopment }}
+    {{ if eq hugo.Environment "development" }}
         <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}

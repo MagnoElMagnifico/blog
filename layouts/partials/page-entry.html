@@ -2,7 +2,7 @@
     <h2><a href="{{ .Permalink }}">{{ .Title }} - {{ .CurrentSection.Title }}</a></h2>
     {{ with .Date }}<h3>{{ .Format "02-01-2006" }}</h3>{{ end }}
 
-    {{ if hugo.IsDevelopment }}
+    {{ if eq hugo.Environment "development" }}
         <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}
