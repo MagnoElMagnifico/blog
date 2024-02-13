@@ -597,7 +597,7 @@ Número de sectores que pasan durante el cambio de pista:
 $$ 800 \mu s \times \frac{1 \text{ sector}}{20 \mu s} = 40 \text{ sectores} $$
 {{< /block >}}
 
-## Disco físico, disco lógico y particiones
+## Disco físico y lógico
 
 {{< block "Disco físico" "var(--magno-blue)" >}}
 Un **disco físico** es un dispositivo de almacenamiento permanente. Este opera
@@ -623,57 +623,110 @@ bloque físico.
   uno puede contener a su vez su propio sistema de archivos. -->
 {{< /block >}}
 
+## Partición
+
 {{< block "Partición" "var(--magno-blue)" >}}
 Un disco físico se divide en **particiones físicas contiguas**, cada una
 asociada a un disco lógico. Estas son divisiones independientes del disco y es
 responsabilidad del administrador del sistema decidir qué contiene cada una.
 
-El caso más sencillo es que exista una única partición.
-
-Gracias a estas particiones, es posible la coexistencia varios SO en el mismo
-ordenador: una partición para cada uno (_dual boot_).
+Cada partición se comporta como un disco lógico; y como consecuencia, es posible
+la coexistencia varios SO en el mismo ordenador: una partición para cada uno
+(_dual boot_).
 {{< /block >}}
-
-- `fdisk`: esta herramienta permite crear una tabla de particiones.
-- `mkfs`: permite crear un sistema de archivos dentro de una partición.
 
 Dentro de estas particiones se almacenan los **sistemas de archivos**. Estas
 pueden tener diversos formatos, lo que implica una organización diferente dentro
-la misma. A continuación, se comenta el contenido más habitual y común que se
-puede encontrar en una partición.
+la misma.
+
+- `fdisk`: esta herramienta permite manipular particiones.
+- `mkfs`: permite crear un sistema de archivos dentro de una partición.
+
+{{< keyvalue title="Tipos de particiones" >}}
+-% Partición primaria :%
+Contiene un sistema de archivos. Este se puede identificar por su ID en la tabla
+de particiones.
+
+-% Partición extendida :%
+Un disco duro puede contener una única partición extendida, pero esta se puede
+subdividir en varias particiones lógicas.
+
+-% Partición de arranque (_boot partition_) :%
+Es una partición primaria que contiene el programa de arranque. Por ejemplo, en
+Linux, sus archivos (kernel, initrd y GRUB) se montan en `/boot`.
+
+- **BIOS Boot Partition** (BIOS BP): 
+- **EFI System Partition**: igual que la anterior, pero se carga por el firmware EFI.
+
+-% Partición del sistema :%
+Partición primaria que contiene la carpeta del Sistema Operativo (_system
+root_). En Linux se monta sobre `/`.
+{{< /keyvalue >}}
+
+Nótese que según la definición de Microsoft, la partición del sistema es la que
+contiene el programa de arranque y la partición de arranque es la que contiene
+el SO. Puede consultar todos los [IDs de las particiones].
+
+La información sobre las particiones se almacena en la **tabla de particiones**,
+que el Sistema Operativo lee antes que cualquier otra parte del disco. Existen
+varias implementaciones dependiendo del sistema:
+
+- Master Boot Record (MRB)
+- GUID Partition Table (GPT). Parte del estándar de UEFI.
+- Apple Partition Map (APM)
 
 <!-- TODO: figura 4-9 página 274 -->
 
-{{< block "Master Boot Record y el bloque de arranque" "var(--magno-blue)" >}}
-El sector 0 del disco se conoce como el _**Master Boot Record**_ (MBR) y se
-utiliza para arrancar la computadora.
+{{< block "Master Boot Record" "var(--magno-blue)" >}}
+El sector 0 del disco se conoce como el _**Master Boot Record**_ (MBR).
 
-Al final de este sector, se almacena la **tabla de particiones**, la que
+### Tabla de particiones
+
+Al final de este sector, se almacena una **tabla de particiones** que
 proporciona las direcciones de inicio y fin de cada partición. Una de ellas
 está marcada como **activa**.
 
-Cuando la BIOS se ejecuta, accede al MBR con el objetivo de localizar la
-partición activa y leer su primer bloque: el **bloque de arranque**. Este
-contiene el **programa de arranque** que carga el Sistema Operativo de esa
-partición.
+Debido a la organización de la tabla de particiones, el MBR limita el tamaño
+máximo del disco particionado a 2 TiB ($2^{32} \times 512$). Con el fin de
+superar esta limitación, se realizó una transición a _GUID Partitions Table_
+(GPT).
 
-Toda partición inicia con un bloque de arranque, aunque no contenga ningún
+### Volume Boot Record
+
+La BIOS accede al MBR y ejecuta unas instrucciones que almacena. Estas tienen
+como objetivo localizar la partición activa y leer su primer bloque: el **bloque
+de arranque** o _**Volume Boot Record**_ (VBR). Este contiene el **programa de
+arranque** que cargará el kernel del SO de esa partición.
+
+De esta forma, las instrucciones que se almacenen en el MBR serán más sencillas
+y se podrán crear programas de arranque personalizados para cada sistema. Nótese
+que toda partición inicia con un bloque de arranque, aunque no contenga ningún
 Sistema Operativo.
-{{< /block >}}
 
-{{< block "Superbloque" "var(--magno-blue)" >}}
+### Superbloque
+
 Contiene todos los parámetros clave acerca del sistema de archivos:
 
 - Número mágico del tipo de sistema de archivos
 - Número de bloques que contiene
 - Y más información administrativa clave
-{{< /block >}}
 
-A continuación puede aparecer:
+Y a continuación de este pueden aparecer:
 
 - Información sobre los bloques libres
 - Lista de inodos
 - Directorio raíz y el resto de archivos
+
+### Fuentes
+- [Master Boot Record](https://en.wikipedia.org/wiki/Master_boot_record), Wikipedia (04-02-2024 21:00)
+- [Volume Boot Record](https://en.wikipedia.org/wiki/Volume_boot_record), Wikipedia (04-02-2024 23:00)
+- [Bootloader](https://en.wikipedia.org/wiki/Bootloader), Wikipedia (04-02-2024 23:00)
+- [System Partition](https://en.wikipedia.org/wiki/System_partition_and_boot_partition), Wikipedia (04-02-2024 21:30)
+{{< /block >}}
+
+{{< block "GUID Partition Table" "var(--magno-blue)" >}}
+{{< /block >}}
+
 
 ## Implementación de archivos
 
@@ -874,4 +927,5 @@ $\implies n_b = 500 \times 10^{9} / 2^{10} = 488\,281\\,250$ bloques.
 [nociones de hardware]:             {{< relref "introduccion#disco-duro" >}}
 [procesos]:                         {{< relref "procesos#block-definición" >}}
 [tamaño del bloque]:                {{< relref "#block-bloque-de-disco" >}}
-[ArchWiki]: https://wiki.archlinux.org/title/File_permissions_and_attributes_(Espa%C3%B1ol)
+[ArchWiki]:               https://wiki.archlinux.org/title/File_permissions_and_attributes_(Espa%C3%B1ol)
+[IDs de las particiones]: https://en.wikipedia.org/wiki/Partition_type
