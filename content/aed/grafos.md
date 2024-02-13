@@ -117,7 +117,6 @@ Estructura multienlazada formada por:
 
 ## Comparativa
 
-{{< inlineHTML >}}
 <table>
     <tr>
         <th></th>
@@ -168,7 +167,6 @@ Estructura multienlazada formada por:
         <td style="text-align: center">$O(|V| + |E|)$</td>
     </tr>
 </table>
-{{< /inlineHTML >}}
 
 {{< block "Conclusión" >}}
 Usar listas de adyacencia cuando haya muchos más vértices que ejes:

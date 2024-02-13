@@ -196,7 +196,6 @@ Con $a > 1$.
   si hay un algoritmo capaz de resolver uno de estos problemas en tiempo
   polinómico, **los demás de esta categoría también**.
 
-{{< inlineHTML >}}
 <svg width="600" height="280">
   <text x="90" y="165" fill="var(--magno-red)" font-size="40">P</text>
   <circle cx="100" cy="150" r="50" fill="None" stroke="var(--magno-red)" stroke-width="5"/>
@@ -207,7 +206,6 @@ Con $a > 1$.
   <text x="210" y="100" fill="var(--magno-green)" font-size="40">NP</text>
   <rect x="10" y="50" width="570" height="170" fill="None" stroke="var(--magno-green)" stroke-width="5"/>
 </svg>
-{{< /inlineHTML >}}
 
 Ejemplos de problemas NP:
 
