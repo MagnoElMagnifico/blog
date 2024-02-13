@@ -236,26 +236,20 @@ de la siguiente forma (los `·` denotan un espacio en blanco):
 Está implementado con el tipo de fuente [Fira Code] usando ligaduras, por lo que
 si se copia y pega, el resultado será `==>`.
 
-## `inlineHTML`
+## `todo`
 
-Inserta el HTML directamente en el resultado. **Deprecated**: ahora se puede
-usar HTML directamente sobre el Markdown.
+Solo renderiza su contenido si `hugo.Environment` es `development`. Útil para
+evitar que ciertas partes de un artículo se rendericen en el blog final.
 
 - Argumento de bloque (obligatorio)
 
 ```md
-{{< inlineHML >}}
-<table>
-  <tr>
-    <td>Ejemplo 1</td>
-    <td>Ejemplo 2</td>
-  </tr>
-  <tr>
-    <td>Ejemplo 3</td>
-    <td>Ejemplo 4</td>
-  </tr>
-</table>
-{{< /inlineHML >}}
+{{< todo >}}
+# Sección sin terminar
+
+Esta sección está incompleta, y no se mostrará
+cuando se renderize el blog.
+{{< /todo >}}
 ```
 
 ## `keyvalue`
@@ -320,7 +314,7 @@ $$ a^2 + b^2 = c^2 $$
 Crea un bloque clickable que muestra un contenido previamente escondido.
 
 - string: título del bloque
-- argumento de bloque (obligatorio) (contenido sin esconder): 
+- argumento de bloque (obligatorio)
 
 ```
 {{< dropdown "Haz click aquí" >}}
@@ -379,3 +373,4 @@ Alternativamente puedes usar un bloque de código:
 [referencia]: https://www.webfx.com/tools/emoji-cheat-sheet/
 [sintaxis de Mermaid]: https://mermaid.js.org/intro/
 [símbolos]: https://katex.org/docs/supported.html
+[Fira Code]: https://github.com/tonsky/FiraCode
