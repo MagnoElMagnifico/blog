@@ -139,7 +139,7 @@ pre, code {
 }
 
 /* Inline code: `` */
-code:not(.highlight pre code) {
+code:not(pre code) {
     background-color: var(--code-color);
     border-radius: var(--border-radius);
     padding: 0 4px;

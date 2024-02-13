@@ -122,6 +122,43 @@ tellus, ultricies nec eleifend id, suscipit in mi.
 [^1]: https://example.com
 ```
 
+Hay 3 tipos de formas de representar código en el markdown. Todas ellas usan la
+fuente [Fira Code] con las ligaduras activadas, por lo que `->` se verá como una
+flecha. El primer método se utiliza para colorear el código según su lenguaje.
+Puedes añadir `{linenos=false}` para quitar los números de línea.
+
+~~~md
+
+```c {linenos=false}
+#include <stdio.h>
+
+int main() {
+  printf("Hola Mundo!\n");
+  return 0;
+}
+```
+~~~
+
+El siguiente tipo es para remarcar código dentro de un párrafo. Se cambiará el
+fondo a otro color para remarcarlo.
+
+```md
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+ex, eu convallis `dolor` efficitura. Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Sed vulputate mauris `non interdum` posuere. Suspendisse nisl
+tellus, ultricies nec `eleifend` id, suscipit in mi.
+```
+
+Y el último tipo es para usar letra monoespaciada directamente, sin que se
+cambie el fondo ni se resalte nada. Simplemente identa el texto con 4 espacios
+(si se añaden más, aparecerán el en resultado):
+
+```md
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aliquam feugiat nibh ex, eu convallis dolor efficitura.
+```
+
+
 # Diagramas
 
 Especificando `goat` como resaltado de sintaxis en un bloque de código, puedes
