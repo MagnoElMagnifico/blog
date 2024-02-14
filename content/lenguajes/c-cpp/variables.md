@@ -264,6 +264,86 @@ PascalCase. Esta es la convención de Rust.
 ver linkage
 
 # Operadores
+## Operadores aritméticos
+| Operación             | Descripción                    | Disponible en C    |
+|-----------------------|--------------------------------|--------------------|
+| `a + b`               | Suma                           | <span style="color: green;">Sí</span> |
+| `a += b`              | Suma y asignación              | <span style="color: red;">No</span> |
+| `a - b`               | Resta                          | <span style="color: green;">Sí</span> |
+| `a -= b`              | Resta y asignación             | <span style="color: green;">Sí</span> |
+| `a * b`               | Multiplicación                 | <span style="color: green;">Sí</span> |
+| `a *= b`              | Multiplicación y asignación    | <span style="color: green;">Sí</span> |
+| `a / b`               | División                       | <span style="color: green;">Sí</span> |
+| `a /= b`              | División y asignación          | <span style="color: green;">Sí</span> |
+| `a % b`               | Módulo                         | <span style="color: green;">Sí</span> |
+| `a %= b`              | Módulo y asignación            | <span style="color: green;">Sí</span> |
+| `+a`                  | Más unario (promoción entera) | <span style="color: green;">Sí</span> |
+| `-a`                  | Menos unario (opuesto)         | <span style="color: green;">Sí</span> |
+| `++a`                 | Incremento prefijo             | <span style="color: green;">Sí</span> |
+| `a++`                 | Incremento postfijo            | <span style="color: green;">Sí</span> |
+| `--a`                 | Decremento prefijo             | <span style="color: green;">Sí</span> |
+| `a--`                 | Decremento postfijo            | <span style="color: green;">Sí</span> |
+
+## Operadores de comparación
+| Operación                   | Descripción                    | Disponible en C    |
+|-----------------------------|--------------------------------|--------------------|
+| `a < b`               | Menor que                      | <span style="color: green;">Sí</span> |
+| `a > b`               | Mayor que                      | <span style="color: green;">Sí</span> |
+| `a <= b`              | Menor o igual que              | <span style="color: green;">Sí</span> |
+| `a >= b`              | Mayor o igual que              | <span style="color: green;">Sí</span> |
+| `a == b`              | Igual que                      | <span style="color: green;">Sí</span> |
+| `a != b`              | Diferente que / No igual que   | <span style="color: green;">Sí</span> |
+| `a <=> b`             | Comparación a tres sentidos    | <span style="color: red;">No</span> |
+
+
+## Operadores lógicos
+| Operación                   | Descripción            | Disponible en C    |
+|-----------------------------|------------------------|--------------------|
+| `!a`                        | Negación lógica (NOT)  | <span style="color: green;">Sí</span> |
+| `a && b`                    | Y lógico (AND)         | <span style="color: green;">Sí</span> |
+| `a \|\| b`                  | O lógico (OR)          | <span style="color: green;">Sí</span> |
+
+
+## Operadores a nivel de bit
+| Operación                         | Descripción                               | Disponible en C    |
+|-----------------------------------|-------------------------------------------|--------------------|
+| `a << b`                          | Desplazamiento a la izquierda             | <span style="color: green;">Sí</span> |
+| `a << = b`                         | Asignación con desplazamiento a la izquierda | <span style="color: green;">Sí</span> |
+| `a >> b`                          | Desplazamiento a la derecha               | <span style="color: green;">Sí</span> |
+| `a >> = b`                         | Asignación con desplazamiento a la derecha | <span style="color: green;">Sí</span> |
+| `~a`                              | Complemento a uno                         | <span style="color: green;">Sí</span> |
+| `a & b`                           | AND binario                               | <span style="color: green;">Sí</span> |
+| `a &= b`                          | Asignación con AND binario                | <span style="color: green;">Sí</span> |
+| `a \| b`                          | OR binario                                | <span style="color: green;">Sí</span> |
+| `a \|= b`                         | Asignación con OR binario                 | <span style="color: green;">Sí</span> |
+| `a ^ b`                           | XOR binario                               | <span style="color: green;">Sí</span> |
+| `a ^= b`                          | Asignación con XOR binario                | <span style="color: green;">Sí</span> |
+
+
+## Otros operadores
+| Operación                         | Descripción                               | Disponible en C    |
+|-----------------------------------|-------------------------------------------|--------------------|
+| `a = b`                           | Asignación básica                         | <span style="color: green;">Sí</span> |
+| `a()`                             | Llamada a función                         | <span style="color: green;">Sí</span> |
+| `a[b]`                            | Índice de Array                           | <span style="color: green;">Sí</span> |
+| `*a`                              | Indirección (Desreferencia)               | <span style="color: green;">Sí</span> |
+| `&a`                              | Dirección de (Referencia)                 | <span style="color: green;">Sí</span> |
+| `a->b`                            | Miembro de puntero                        | <span style="color: green;">Sí</span> |
+| `a.b`                             | Miembro                                   | <span style="color: green;">Sí</span> |
+| `a->*b`                           | Desreferencia a miembro por puntero       | <span style="color: red;">No</span> |
+| `a.*b`                            | Desreferencia a miembro por objeto        | <span style="color: red;">No</span> |
+| `(tipo) a`                        | Conversión de tipo                        | <span style="color: green;">Sí</span> |
+| `a , b`                           | Coma                                      | <span style="color: green;">Sí</span> |
+| `a ? b : c`                       | Condicional ternario                      | <span style="color: green;">Sí</span> |
+| `a::b`                            | Resolución de ámbito                     | <span style="color: red;">No</span> |
+| `a::*b`                           | Puntero a función miembro                 | <span style="color: red;">No</span> |
+| `sizeof (a)`, `sizeof(tipo)`      | Tamaño de objeto                          | <span style="color: green;">Sí</span> |
+| `typeid(a)`, `typeid(tipo)`       | Identificación de tipo                    | <span style="color: red;">No</span> |
+| `new tipo`, `new tipo[n]`         | Asignar almacenamiento                    | <span style="color: red;">No</span> |
+| `delete a`, `delete[] a`          | Desasignar almacenamiento                 | <span style="color: red;">No</span> |
+| `&&a`                             | Referencia por valor derecho              | <span style="color: red;">No</span> |
+
+
 ## Orden de los operadores
 ## Expresiones
 # Conversión de tipo
