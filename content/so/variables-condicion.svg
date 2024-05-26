@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="143.66368mm"
+   height="83.560608mm"
+   viewBox="0 0 143.66368 83.560608"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <pattern
+       xlink:href="#pattern16"
+       preserveAspectRatio="xMidYMid"
+       id="pattern20"
+       patternTransform="matrix(0.56568542,-0.56568542,0.56568542,0.56568542,0,0)"
+       x="0"
+       y="0" />
+    <pattern
+       xlink:href="#pattern16"
+       preserveAspectRatio="xMidYMid"
+       id="pattern17"
+       patternTransform="matrix(0.56568543,0.56568543,-0.56568543,0.56568543,0,0)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="pattern16"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect15" />
+
+    </pattern>
+    <pattern
+       xlink:href="#Strips1_1"
+       preserveAspectRatio="xMidYMid"
+       id="pattern14"
+       patternTransform="matrix(0.56568542,0.56568542,-0.56568542,0.56568542,0,0)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="10"
+       patternTransform="translate(0,0) scale(2,2)"
+       preserveAspectRatio="xMidYMid"
+       id="Strips1_1"
+       style="fill:#000000">
+      <rect
+   style="stroke:none"
+   x="0"
+   y="-0.5"
+   width="1"
+   height="11"
+   id="rect134" />
+
+    </pattern>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(10.804791,-6.4087777)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.218198;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect22"
+       width="143.66368"
+       height="83.560608"
+       x="-10.804791"
+       y="6.4087777" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 37.647887,81.650485 v 3.758806"
+       id="path1" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.198697;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="15.163733"
+       height="2.0368712"
+       x="30.066019"
+       y="16.906689" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="23.548958"
+       y="18.901226"
+       id="text1"><tspan
+         id="tspan1"
+         style="stroke-width:0.5"
+         x="23.548958"
+         y="18.901226">lock</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 82.964788,12.026401 V 30.763203"
+       id="path2" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="97.125641"
+       y="30.720869"
+       id="text2"><tspan
+         id="tspan2"
+         style="stroke-width:0.5"
+         x="97.125641"
+         y="30.720869">lock</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="110.66725"
+       y="38.700367"
+       id="text3"><tspan
+         id="tspan3"
+         style="stroke-width:0.5"
+         x="110.66725"
+         y="38.700367">esperando unlock</tspan></text>
+    <rect
+       style="fill:url(#pattern14);fill-opacity:1;stroke:none;stroke-width:0.523112;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3"
+       width="15.163733"
+       height="14.117958"
+       x="75.132919"
+       y="30.763203" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:0.9;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 45.229753,44.631162 H 75.132919"
+       id="path3" />
+    <rect
+       style="opacity:1;fill:url(#pattern20);fill-opacity:1;stroke:none;stroke-width:0.709333;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4"
+       width="15.163733"
+       height="25.95862"
+       x="30.066021"
+       y="44.631161" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="8.7147884"
+       y="47.234158"
+       id="text4"><tspan
+         id="tspan4"
+         style="stroke-width:0.5"
+         x="8.7147884"
+         y="47.234158"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="11.192969"
+       y="43.119366"
+       id="text5"><tspan
+         id="tspan5"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="11.192969"
+         y="43.119366">wait</tspan><tspan
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="11.19297"
+         y="48.411026"
+         id="tspan10">(libera el mutex)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="98.755318"
+       y="70.838326"
+       id="text7"><tspan
+         id="tspan7"
+         style="stroke-width:0.5"
+         x="98.755318"
+         y="70.838326">signal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="99.731102"
+       y="81.788284"
+       id="text8"><tspan
+         id="tspan8"
+         style="stroke-width:0.5"
+         x="99.731102"
+         y="81.788284">unlock</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:0.9;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 45.229753,70.58979 H 75.382919"
+       id="path8" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="10.632042"
+       y="60.480625"
+       id="text9"><tspan
+         id="tspan9"
+         style="stroke-width:0.5"
+         x="10.632042"
+         y="60.480625">esperando signal</tspan></text>
+    <rect
+       style="fill:url(#pattern17);fill-opacity:1;stroke:none;stroke-width:0.463021;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10"
+       width="15.163733"
+       height="11.060695"
+       x="30.066021"
+       y="70.58979" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-dasharray:1.5, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="9.6901274"
+       y="77.648773"
+       id="text11"><tspan
+         style="stroke-width:0.5"
+         x="9.6901274"
+         y="77.648773"
+         id="tspan12">esperando unlock</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.198697;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect20"
+       width="15.163733"
+       height="2.0368712"
+       x="75.382919"
+       y="68.719223" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:0.9;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 45.229753,81.650485 H 75.382919"
+       id="path20" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.198697;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect21"
+       width="15.163733"
+       height="2.0368712"
+       x="75.382919"
+       y="79.763611" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 37.647887,12.026401 V 44.481162"
+       id="path21" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 82.964788,44.881162 V 85.404929"
+       id="path22" />
+  </g>
+</svg>
