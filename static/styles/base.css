@@ -125,8 +125,10 @@ li p { margin: 1rem 0 0 0; }
 li::marker { color: var(--magno-green); }
 
 hr {
-    width: 60%;
+    width: 80%;
     margin: var(--p-separation);
+    margin-left: auto;
+    margin-right: auto;
     color: var(--separator-color);
 }
 
@@ -168,15 +170,15 @@ blockquote p { margin: 0; text-align: left; }
 
 
 /**** Change background when it's already black ****/
-blockquote code,
+blockquote code:not(pre code),
 blockquote blockquote,
-.project code,
+.project code:not(pre code),
 .project blockquote,
-.block code,
+.block code:not(pre code),
 .block blockquote,
-.dropdown code,
+.dropdown code:not(pre code),
 .dropdown blockquote,
-#TableOfContents code
+#TableOfContents code:not(pre code)
 { background-color: var(--background-color) !important; }
 
 
