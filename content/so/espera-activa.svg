@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="194.3255mm"
+   height="61.974461mm"
+   viewBox="0 0 194.3255 61.974459"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="espera-activa.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="3.3248982"
+     inkscape:cx="223.91663"
+     inkscape:cy="181.96046"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="DartArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="0.69999999"
+       markerHeight="0.69999999"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path6" />
+    </marker>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(15.60699,0.71954989)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.396477;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.396477, 0.396477;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect25"
+       width="194.3255"
+       height="61.974461"
+       x="-15.60699"
+       y="-0.71954989" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.548651, 1.0973;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       d="M 18.597105,33.972117 H 146.61446"
+       id="path18" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.548651, 1.0973;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       d="M 18.597105,15.264205 H 146.61446"
+       id="path17" />
+    <path
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:0.914419;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.937811;paint-order:normal"
+       d="m 18.597105,33.972115 c 0,0 18.257108,0 18.257108,0 v -18.70791 h 18.356206 v 18.70791 h 18.248929 v -18.70791 h 18.335241 v 18.70791 h 18.242321 v -18.70791 h 18.24893 v 18.70791 h 18.40831"
+       id="path9" />
+    <path
+       style="opacity:1;fill:none;stroke:#ff0055;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+       d="m 46.032315,15.264205 h 9.178104"
+       id="path10" />
+    <path
+       style="opacity:1;fill:none;stroke:#ff0055;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="M 73.459348,15.264205 H 91.794589"
+       id="path11" />
+    <path
+       style="opacity:1;fill:none;stroke:#ff0055;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:normal"
+       d="m 109.98327,15.264205 h 9.1781"
+       id="path12" />
+    <path
+       style="opacity:1;fill:none;stroke:#00eeff;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="M 58.145141,33.972117 H 73.459349"
+       id="path13" />
+    <path
+       style="opacity:1;fill:none;stroke:#00eeff;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="M 91.748128,33.972115 H 110.08337"
+       id="path14" />
+    <path
+       style="opacity:1;fill:none;stroke:#00ff55;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m 128.32237,33.972115 h 18.33524"
+       id="path15" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="67.935806"
+       y="7.0206723"
+       id="text16"><tspan
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325"
+         x="67.935806"
+         y="7.0206723">región crítica</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="68.626266"
+       y="46.806103"
+       id="text17"><tspan
+         id="tspan17"
+         x="68.626266"
+         y="46.806103"
+         style="stroke-width:2.74325">espera activa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="-11.49099"
+       y="16.76952"
+       id="text18"><tspan
+         id="tspan18"
+         x="-11.49099"
+         y="16.76952"
+         style="stroke-width:2.74325">proceso A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="-11.27423"
+       y="35.462399"
+       id="text19"><tspan
+         id="tspan19"
+         x="-11.27423"
+         y="35.462399"
+         style="stroke-width:2.74325">proceso B</tspan></text>
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="m 101.75455,45.264602 c 5.83373,0.04295 5.05493,-6.827908 5.05493,-6.827908"
+       id="path20" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="16.537464"
+       y="51.878471"
+       id="text20"><tspan
+         id="tspan20"
+         x="16.537464"
+         y="51.878471"
+         style="stroke-width:2.74325">quantum</tspan></text>
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.54865098,1.09730196;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       d="M 18.597105,33.972115 V 47.160638"
+       id="path21" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.549;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.54900002,1.09800005;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       d="M 36.885884,33.972115 V 47.160638"
+       id="path22" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="m 67.945103,45.663051 c -5.833729,0.04296 -5.054924,-6.827908 -5.054924,-6.827908"
+       id="path23" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="M 65.318699,5.4582466 C 55.465551,4.2466799 53.269753,10.690341 53.269753,10.690341"
+       id="path24" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="m 102.33663,5.378557 c 10.01253,-1.2115668 11.57081,5.391473 11.57081,5.391473"
+       id="path25" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="m 102.33663,5.378557 c 10.01253,-1.2115668 11.57081,5.391473 11.57081,5.391473"
+       id="path26" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="156.81717"
+       y="45.586033"
+       id="text26"><tspan
+         id="tspan26"
+         x="156.81717"
+         y="45.586033">entra en su</tspan><tspan
+         id="tspan27"
+         x="156.81717"
+         y="52.037758">región crítica</tspan></text>
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.548651;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow);paint-order:normal"
+       d="m 139.23207,46.360234 c -5.83372,0.04296 -5.05492,-6.827908 -5.05492,-6.827908"
+       id="path27" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.16138px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000200;fill-opacity:1;stroke:none;stroke-width:2.74325;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       x="148.24301"
+       y="25.361347"
+       id="text28"><tspan
+         id="tspan28"
+         x="148.24301"
+         y="25.361347">única CPU</tspan></text>
+  </g>
+</svg>

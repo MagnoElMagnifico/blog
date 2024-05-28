@@ -23,32 +23,153 @@ math: true
    el contador del programa.
 
 3. Se lee de una memoria ROM que contiene el programa de arranque escrito desde
-   fábrica, normalmente llamado **POST**. Este programa consta de chequeos
-   e inicializaciones para verificar que todo funciona correctamente.
+   fábrica, normalmente llamado [POST] (_Power-On Self-Test_). Este programa
+   consta de chequeos e inicializaciones para verificar que todo funciona
+   correctamente.
 
-4. Cuando termina, se salta a la **BIOS** (_Basic Input Output System_). Este,
-   realiza chequeos de Entrada/Salida: cuánta RAM hay instalada, qué
-   dispositivos están instalados...
-
-     - La BIOS dispone procedimientos para leer el teclado, escribir en la
-       pantalla y realizar operaciones básicas de E/S como por ejemplo acceder al
-       disco.
-     - La BIOS está también en la memoria ROM de la placa base del ordenador.
-     - El usuario puede cambiar la configuración de la BIOS, como por ejemplo,
-       cambiar el Sistema Operativo a usar.
-     - Esta configuración se almacena en una memoria no volátil de lectura
-       y escritura. En la figura se representa como CMOS (tipo de transistores
-       utilizados).
-
-5. Finalmente, la BIOS determina y carga el programa de arranque en la RAM desde
-   el disco duro. Se comienza a ejecutar las instrucciones del **programa de
-   arranque** desde la memoria principal.
+5. Finalmente, se carga el **programa de arranque** o _boot loader_ en la RAM
+   desde el disco duro y se ejecutan sus instrucciones.
 
 6. Este programa de arranque es el encargado de llamar al cargador, que copia el
    código del kernel del Sistema Operativo a memoria principal.
 
-7. Una vez hecho eso, será el kernel quien se encargue de todo, y mientras el
+7. Una vez hecho eso, será el kernel quien se encargue de todo. Mientras el
    ordenador siga encendido, el kernel seguirá en memoria.
+
+## BIOS
+
+{{<
+    figure
+    src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Legacy_BIOS_boot_process.png"
+    href="https://en.wikipedia.org/wiki/BIOS"
+    alt="Figura del proceso de encendido con BIOS"
+    caption="Proceso de encendido con BIOS (Wikipedia)"
+>}}
+
+En sistemas compatibles con los [IBM PC]s, la BIOS (_Basic Input/Output System_)
+se trata del [firmware] encargado de ejecutar [POST]. Su función principal
+actualmente es **inicializar el hardware**, probar los componentes (POST)
+y **cargar el programa de arranque**, el encargado de ejecutar el kernel.
+Para más detalles de cómo carga este programa, puede consultar el artículo sobre
+[archivos].
+
+Fue desarrollado por IBM para los [IBM PC]s, y alguna compañías hicieron
+ingeniería inversa con el fin de crear sistemas compatibles. La interfaz
+original, debido a su gran popularidad en la época, sirve de estándar de facto.
+
+Originalmente, la BIOS se almacenada en una memoria **ROM** escrita de fábrica.
+Con el fin de poder actualizar el [firmware], ahora se suelen utilizar
+**memorias flash**. Nótese que estas actualizaciones son cruciales, dado que si
+falla dejando la memoria corrupta, no se podrá encender el sistema ([brick]). La
+configuración se guarda en una memoria no volátil (CMOS).
+
+
+A mayores, la BIOS dispone procedimientos (BIOS system calls) para leer el
+teclado, escribir en la pantalla (texto o gráficos) y realizar operaciones
+básicas de E/S como por ejemplo acceder al disco. Sin embargo, estas
+operaciones suelen ser muy lentas y los SO prefieren reimplementarlas.
+
+Otras funciones de la BIOS puede ser proveer la identificación del dispositivo
+del _Original Equipment Manufacturer_ (OEM) y realizar overclocking.
+
+Fuente: [BIOS](https://en.wikipedia.org/wiki/BIOS), Wikipedia (04-02-2024 23:00)
+
+## UEFI
+
+{{< dropdown "Cómo saber si tu sistema usa UEFI" >}}
+En Linux puede ejecutar el siguiente comando.
+```sh {linenos=false}
+[ -d /sys/firmware/efi ] && echo UEFI || echo BIOS
+```
+
+En Windows supongo que lo pondrá por algún menú de la configuración, quien sabe.
+{{< /dropdown >}}
+
+_Extensible Firmware Interface_ (EFI) es una nueva variante diseñada para
+reemplazar BIOS, que se sitúa entre el firmware y el SO. Unified EFI_ (UEFI) es
+esencialmente EFI 2.x.
+
+{{<
+    figure
+    src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Efi-simple.svg/316px-Efi-simple.svg.png"
+    height="300"
+>}}
+
+_Secure Boot_ es una característica de EFI que intenta mejorar la seguridad
+asegurándose de que todos los _boot loaders_ están firmados con una clave
+criptográfica. Para más información, puedes consultar la [página de Rod Smith]
+(tiene una [lista] de artículos sobre EFI en Linux) sobre [Dealing with Secure
+Boot] y [Controlling Secure Boot].
+
+La especificación EFI incluye una descripción de una nueva tabla de particiones:
+la **GUID Partition Table** (GPT) (más información en [Wikipedia GPT]), que
+aunque sistemas EFI puedan iniciarse usando particiones MBR, por lo general será
+mejor que se particione usando GPT directamente.
+
+Para ver qué tipo de tabla de particiones se está usando, puede usar el
+siguiente comando:
+
+```sh {linenos=false}
+sudo parted --list
+```
+
+EFI requiere una partición especial conocida como la **EFI System Partition**
+(**ESP**), que debe usar un sistema de archivos **FAT32** y tiene un ID `0xEF`
+si se usa MRB o `C12A7328-F81F-11D2-BA4B-00A0C93EC93B` (a veces representado
+como `EF00`) en GPT. Sobre el tamaño no hay un consenso, pero pueden haber
+problemas si es menor de 512 MiB.
+
+La ESP contiene los drivers EFI, aplicaciones EFI, scripts EFI y programas de
+arranque EFI, entre otros. **Cada programa de arranque tiene su propio
+subdirectorio**: `EFI/ubuntu` o `EFI/redhat`, pero hay que tener en cuenta que
+esta partición se suele montar en `/boot/efi`, por lo que son
+`/boot/efi/EFI/ubuntu` y `/boot/efi/EFI/redhat` respectivamente. En caso de que
+no exista ningún programa de arranque, **se usará el almacenado en `EFI/BOOT`**.
+
+Estos directorios contienen un **archivo de arranque EFI** de extensión `.efi`,
+otros archivos de configuración relevantes, kernels de Linux, [archivos de RAM
+iniciales]... Depende de cada programa.
+
+{{< dropdown "Programa de arranque y Gestor de arranque" >}}
+Un **programa de arranque** (_boot loader_) es aquel que carga en memoria
+principal el kernel del Sistema Operativo, mientras que el **gestor de
+arranque** (_boot manager_) presenta un menú con opciones de arranque u otras
+alternativas para controlar el proceso.
+
+GRUB2, el más popular utilizado junto con Linux es simultáneamente un boot
+loader y boot manager, por lo que algunas veces los términos se usan de forma
+indistintiva.
+{{< /dropdown >}}
+
+A la hora de arrancar, EFI ejecuta el gestor de arranque y almacena en memoria
+principal una lista ordenada de los boot loaders a utilizar. Los va probando en
+orden iterativamente hasta que uno no regrese/`return` (los anteriores pudieron
+volver por algún error). Algunos vendedores disponen de una tecla (como `F12`)
+para acceder a este menú por defecto, pero es posible que sea necesario
+activarlo desde la configuración.
+
+Este boot loader es el encargado de cargar el Sistema Operativo (en el caso de
+[bootmgr] de Windows), o a su vez, puede mostrar más menús para más opciones
+(Linux).
+
+Es decir, cuando se instala un SO, es necesario añadir el boot loader a la
+partición ESP y además añadir su correspondiente entrada en el boot manager de
+EFI.
+
+Además de todo esto, los sistemas EFI modernos incluyen un **BIOS Compatibility
+Mode** (CSM) que les permite arrancar usando la BIOS como se ha descrito
+anteriormente. Esto tiene el potencial de añadir muchas complicaciones, así que
+no se recomienda activar.
+
+[TODO]: http://www.rodsbooks.com/efi-bootloaders/principles.html
+
+[TODO]: https://en.wikipedia.org/wiki/UEFI
+[TODO]: https://en.wikipedia.org/wiki/EFI_system_partition
+
+[TODO]: https://en.wikipedia.org/wiki/Windows_Boot_Manager
+[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Windows
+[TODO]: https://en.wikipedia.org/wiki/GNU_GRUB
+[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Linux
 
 # Proceso Hardware
 
@@ -106,3 +227,17 @@ Resumiendo:
 
 Este es el funcionamiento normal del Sistema Operativo.
 
+[POST]:     https://en.wikipedia.org/wiki/Power-on_self-test
+[IBM PC]:   https://en.wikipedia.org/wiki/IBM_Personal_Computer
+[firmware]: https://en.wikipedia.org/wiki/Firmware
+[brick]:    https://en.wikipedia.org/wiki/Brick_(electronics)
+
+[página de Rod Smith]:       http://www.rodsbooks.com
+[lista]:                     http://www.rodsbooks.com/efi-bootloaders/index.html
+[Dealing with Secure Boot]:  http://www.rodsbooks.com/efi-bootloaders/secureboot.html
+[Controlling Secure Boot]:   http://www.rodsbooks.com/efi-bootloaders/controlling-sb.html
+[Wikipedia GPT]:             https://en.wikipedia.org/wiki/GUID_Partition_Table
+[archivos de RAM iniciales]: https://en.wikipedia.org/wiki/Initial_ramdisk
+[bootmgr]:                   https://en.wikipedia.org/wiki/Windows_Boot_Manager
+
+[archivos]: {{< relref "archivos#partición" >}}

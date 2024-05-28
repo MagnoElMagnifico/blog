@@ -49,18 +49,18 @@
     {{ end }}
 
     <!-- BLOG -->
-    {{ if .Site.Data.home.show_blog }}
-        <h1>git log -n {{ .Site.Data.home.pages }}</h1>
-        {{ with .Sections }}
-            <nav>
-                {{ range .ByTitle }}
+    {{ if .Site.Data.home.blog.show }}
+        <h1>git log -n {{ .Site.Data.home.blog.pages }}</h1>
+        <nav>
+            {{ range $section_path := .Site.Data.home.blog.sections }}
+                {{ with $.GetPage $section_path }}
                     <a href="{{ .Permalink }}">{{ .Title }}</a>
                 {{ end }}
-            </nav>
-        {{ end }}
+            {{ end }}
+        </nav>
         <div id="blog">
             {{ range $index, $page := .Site.RegularPages.ByDate.Reverse }}
-                {{ if lt $index .Site.Data.home.pages }}
+                {{ if lt $index .Site.Data.home.blog.pages }}
                     {{ partial "page-entry" $page }}
                 {{ end }}
             {{ end }}

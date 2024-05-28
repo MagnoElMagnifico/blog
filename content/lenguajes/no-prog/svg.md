@@ -110,7 +110,6 @@ Se pueden agrupar, darles estilo (CSS), transformarlas...
 </svg>
 ```
 
-{{< inlineHTML >}}
 <svg width="500" height="500" style="background-color:white">
     <rect     x="10"   y="10" width="200" height="150" fill="hsl(0 90% 50%)"/>
     <circle  cx="150" cy="150" r="70"                  fill="hsl(30 90% 50%)"/>
@@ -122,7 +121,6 @@ Se pueden agrupar, darles estilo (CSS), transformarlas...
         fill="hsl(270 90% 50%)"/>
     <text x="200" y="450" fill="hsl(300 90% 50%)" font-size="40">Magno Blog</text>
 </svg>
-{{< /inlineHTML >}}
 
 Nótese que los objetos se renderizan de arriba a abajo, por tanto, las figuras
 del final se colocarán por encima del las figuras definidas al principio.

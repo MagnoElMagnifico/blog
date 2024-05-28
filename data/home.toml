@@ -1,9 +1,3 @@
-# Shows the recent blog content
-show_blog = true
-
-# Number of recent pages to show
-pages = 5
-
 [start]
 description = "Mis notas, apuntes y demás sobre mis **proyectos de programación**."
 
@@ -27,10 +21,25 @@ show = true
 name = "Vision (OLC CodeJam)"
 description = """
 _Vision_ es un juego de plataformas en 2D _similar_ a Cat Mario o Trap
-Adventure. Hay muchas trampas ocultas a lo largo de los niveles y sólo puedes
+Adventure. Hay muchas trampas ocultas a lo largo de los niveles y solo puedes
 evitarlas. Sin embargo, a diferencia de esos juegos en los que necesariamente
 morirás para descubrir las trampas, **tienes la capacidad de de ver el futuro
 próximo**.
 """
 link = "https://magnoelmagnifico.itch.io/vision-olc-code-jam-2021"
 img = "projects/vision.png"
+
+[blog]
+show = true
+
+# Highlighted sections
+sections = [
+    "mates/discretas",
+    "so",
+    "poo",
+    "aed"
+]
+
+# Number of recent pages to show
+pages = 5
+

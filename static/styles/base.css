@@ -67,9 +67,6 @@ main {
     min-height: 75vh;
 }
 
-/* "Fix" big LaTeX expressions */
-span.katex-display { overflow: scroll; }
-
 /* Margin desktop */
 @media only screen and (min-width: 800px) and (min-device-width: 800px) {
     main { margin: 0 20vw; }
@@ -88,6 +85,9 @@ span.katex-display { overflow: scroll; }
     color: var(--magno-red);
     margin-top: 0;
 }
+
+/* Wrap by the spans */
+.page-stats span { white-space: nowrap; }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
@@ -125,8 +125,10 @@ li p { margin: 1rem 0 0 0; }
 li::marker { color: var(--magno-green); }
 
 hr {
-    width: 60%;
+    width: 80%;
     margin: var(--p-separation);
+    margin-left: auto;
+    margin-right: auto;
     color: var(--separator-color);
 }
 
@@ -139,7 +141,7 @@ pre, code {
 }
 
 /* Inline code: `` */
-code:not(.highlight pre code) {
+code:not(pre code) {
     background-color: var(--code-color);
     border-radius: var(--border-radius);
     padding: 0 4px;
@@ -168,15 +170,15 @@ blockquote p { margin: 0; text-align: left; }
 
 
 /**** Change background when it's already black ****/
-blockquote code,
+blockquote code:not(pre code),
 blockquote blockquote,
-.project code,
+.project code:not(pre code),
 .project blockquote,
-.block code,
+.block code:not(pre code),
 .block blockquote,
-.dropdown code,
+.dropdown code:not(pre code),
 .dropdown blockquote,
-#TableOfContents code
+#TableOfContents code:not(pre code)
 { background-color: var(--background-color) !important; }
 
 
@@ -210,17 +212,21 @@ table {
     margin-left: auto;
     margin-right: auto;
     background-color: var(--background-color);
+    overflow-x: scroll;
 }
 
 table.fill { width: 100%; }
 
-th {
+th, td.header {
     background-color: var(--table-header);
-    border-bottom: var(--table-header-border);
+    text-align: center;
 }
 
 th, td { padding: var(--block-padding); }
 tr { background-color: var(--table-color-2); }
+
+th        { border-bottom: var(--table-header-border); }
+td.header { border-right:  var(--table-header-border); }
 
 
 /**** Blocks ****/
@@ -285,6 +291,17 @@ tr { background-color: var(--table-color-2); }
 }
 
 /**** Other elements **************************************/
+
+/**** KaTeX ****/
+/* "Fix" big LaTeX expressions */
+/* span.katex-display { overflow: scroll; } */
+
+.katex-display > .katex { white-space: normal }
+/* Add space between broken lines: */
+.katex-display > .base { margin: 0.25em 0 }
+/* Compensate by reducing space around display math */
+.katex-display { margin: 0.5em 0; }
+
 
 /**** Blog entries ****/
 .blog-entry {
@@ -470,10 +487,9 @@ footer {
     color: var(--hf-font-color);
     text-align: center;
     margin-top: 2rem;
-    padding: 0.5rem 0 0 0; /* Use the margin of the title */
+    padding: 2rem 0;
     width: 100vw;
 }
 
-#author    { margin: 0; }
-#copyright { margin: 0; text-align: center; }
+footer p, footer h1, footer h2, footer h3 { margin: 0; text-align: center; }
 

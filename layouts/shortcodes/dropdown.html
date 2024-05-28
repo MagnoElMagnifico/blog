@@ -1,7 +1,7 @@
 <div class="dropdown">
     <div class="show"
          onclick="this.parentElement.querySelector('.content').toggleAttribute('hidden');">
-        {{ .Get 0 | markdownify }}
+        {{ .Get 0 | emojify | markdownify }}
     </div>
     <div class="content" hidden>{{ .Inner | markdownify }}</div>
 </div>
