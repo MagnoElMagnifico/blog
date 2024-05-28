@@ -115,7 +115,7 @@ El Sistema Operativo lleva registro de información sobre el archivo:
 - Hora del último acceso
 - Tamaño actual
 - Tamaño máximo
-- Banderas (_flags_): oculto, sistema, sólo lectura, binario, temporal, etc
+- Banderas (_flags_): oculto, sistema, solo lectura, binario, temporal, etc
 - ...
 {{< /dropdown >}}
 

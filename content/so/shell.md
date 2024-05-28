@@ -1,10 +1,11 @@
 ---
 title: Shell y Bash
 description: >
-    TODO
+    En este artículo se hará un overview del uso de la shell, más concretamente
+    Bash. Algunos temas a tratar serán comandos, expansiones, redirecciones,
+    tratamiento de caracteres especiales...
 date: 2024-02-09T13:27:43+01:00
 weight: 6
-draft: true
 ---
 
 # Shell
@@ -106,8 +107,21 @@ rutas separadas normalmente por `:`.
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/bin
 ```
 
-Tenga en cuenta que se busca de forma
-lineal, por lo que conviene que las rutas más usadas se coloquen al inicio.
+Tenga en cuenta que se busca de forma lineal, por lo que conviene que las rutas
+más usadas se coloquen al inicio.
+
+{{< dropdown "`.` en `PATH`" >}}
+Es muy mala idea poner el directorio actual (`.`) en la variable `PATH` por
+varios motivos:
+
+- **Seguridad**: puede llevar a la ejecución accidental de programas maliciosos.
+  Imagina que un directorio contiene un script llamado `ls`, por lo que al
+  intentar ejecutar `ls` se preferirá este script al comando real.
+- **Incertidumbre**: la ejecución de comandos puede ser impredecible por el
+  motivo descrito en el punto anterior.
+- **Portabilidad**: estos programas no son portables y más difíciles de
+  mantener.
+{{< /dropdown >}}
 
 Se puede comprobar rápidamente si un comando es interno o externo de la
 siguiente forma:
@@ -270,8 +284,9 @@ echo "Num lineas: $(wc -l fichero)"  # Muestra "Num lineas: 130"
 {{< /dropdown >}}
 
 {{< keyvalue title="Otras expansiones" fill=true >}}
--% `Hola{1, 2, 3}`   :% Generación de strings. Genera `Hola1`, `Hola2` y `Hola3`.
+-% `Hola{1,2,3}`     :% Generación de strings. Genera `Hola1`, `Hola2` y `Hola3` (importante que no haya espacios entre las comas).
 -% `Hola{1..3}`      :% Equivalente al anterior. Funciona con letras (según códigos ASCII).
+-% `Hola{0..50..5}`  :% Va de 0 a 50 saltando de 5 en 5.
 -% `~`               :% Expande al directorio de usuario.
 -% `~root`           :% Expande al directorio del usuario especificado.
 {{< /keyvalue >}}
@@ -369,13 +384,13 @@ dependiendo del caso. Pues el usuario **puede redirigir estos datos a otro
 archivo**.
 
 {{< keyvalue title="Operadores de redirección" fill=true >}}
--% `comando < archivo` :% El comando toma la entrada del archivo. Lo
-sobreescribe si contenía algo.
--% `comando > archivo` :% Envía la salida del comando al archivo.
+-% `comando < archivo`    :% El comando toma la entrada del archivo.
+-% `comando << etiqueta`  :% Toma la entrada para el comando hasta que vuelva a aparecer la etiqueta.
+-% `comando <<< "string"` :% Envía el string como entrada para el comando.
+
+-% `comando > archivo`  :% Envía la salida del comando al archivo. Lo sobreescribe si contenía algo.
 -% `comando >> archivo` :% Envía la salida del comando al _final_ del archivo.
--% `comando << etiqueta` :% Toma la entrada para el comando hasta que vuelva
-a aparecer la etiqueta.
--% `comando | comando` :% **Pipe**: la salida del primer comando es la entrada
+-% `comando | comando`  :% **Pipe**: la salida del primer comando es la entrada
 del segundo.
 {{< /keyvalue >}}
 
@@ -414,8 +429,22 @@ Un lugar muy común para redirigir la salida de un comando es `/dev/null`, la
 basura, lo que evita que se muestre nada en la consola.
 
 Es importante que al combinar varias redirecciones de distintos descriptores,
-`2>&1` o análogos vaya **siempre al final**. De lo contrario, el resultado podrá
-ser inesperado.
+`2>&1` o análogos vaya **siempre al final del comando a redirigir**. Es decir,
+si quieres redirigir `stderr` a `stdout` para pasarselo a `grep`, debes hacer
+esto:
+
+```bash {linenos=false}
+params2stderr prueba test prueba 2>&1 | grep "p"
+```
+
+En lugar de:
+
+```bash {linenos=false}
+params2stderr prueba test prueba | grep "p" 2>&1
+```
+
+En este último intentas redirigir la salida de `grep`, en lugar de la salida del
+primer comando.
 
 ## Caracteres especiales
 
@@ -427,11 +456,25 @@ bash:
         Redirección:            < > << >> ` |
         Terminador de comando:  & ;
 
+Por tanto, si quieren utilizar como caracteres literales (no con el significado
+que les da Bash), será necesario escaparlos.
+
 {{< keyvalue title="Tratamiento de caracteres especiales" >}}
--% `'` :% Ignora todos los caracteres especiales
+-% `'` :% Ignora todos los caracteres especiales. El texto no puede contener `'`.
 -% `"` :% Ignora todos los caracteres especiales excepto `$` `\` y `` ` ``
--% `\` :% Ignora el caracter especial que viene a continuación
+-% `\` :% Ignora el caracter especial que viene a continuación. También se puede
+usar para ignorar el salto de línea.
 {{< /keyvalue >}}
+
+{{< dropdown "Ejemplos" >}}
+```sh {linenos=false}
+$ echo '$HOME'
+$HOME
+$ echo "$HOME"
+/home/magno
+$ echo
+```
+{{< /dropdown >}}
 
 # Algunos comandos
 ## Documentación
@@ -569,13 +612,311 @@ archivo a `/tmp`. `xargs` sustituye cada línea que lee de `stdin` por `%` en el
 comando especificado.
 {{< /block >}}
 
-{{< todo >}}
 ## Procesado de texto
 
-awk
-sed
-grep
+{{< block "`awk`" "var(--magno-green)" "var(--font-color)" >}}
+El comando por excelencia para el procesamiento de texto es `awk`. En realidad
+es su propio lenguaje de programación.
 
+La idea es dividir la entrada en diferentes partes, para poder operar sobre
+ellas como si fuese una tabla:
+
+- **records**: `awk` procesa un record a la vez. Por defecto líneas de texto,
+  pero se puede cambiar el delimitador con `RS=''` (_Record Separator_).
+- **fields**: cada record se puede dividir en partes, a las que se puede acceder
+  con las variables especiales `$0, $1 ...`. Por defecto palabras de cada línea,
+  configurable con `FS=''` (_Field Separator_).
+
+Algunas variables útiles de acuerdo a esto:
+
+- `NR`: número de record actual. Cuando `RS='\n'`, equivale al número de línea.
+- `NF`: número de campos que tiene el record actual.
+
+La estructura de un comando de `awk` es la siguiente:
+
+``` {linenos=false}
+patron { accion1; accion2; }
+```
+
+Si no hay ningún patrón se interpretará como `true`, es decir, siempre se
+ejecuta. El patrón `BEGIN` hace que se ejecute antes de empezar a procesar
+records y `END` después de procesar el último. Este también puede ser un regex
+sobre el record: `/regex/`.
+
+Se pueden declarar variables sin necesidad de declarar su tipo, al igual que en
+otros lenguajes: `sum += $1`. No es necesario declararlas, tendrán por defecto
+`""`, que es implicitamente `0`.
+
+Puedes encontrar más características de `awk` con ejemplos en [esta
+página](https://linuxhandbook.com/awk-command-tutorial/).
+{{< /block >}}
+
+{{< block "`sed`" "var(--magno-green)" "var(--font-color)" >}}
+`sed` procesa un archivo línea a línea aplicando una serie de acciones,
+aplicando una serie de comandos. Hay una gran variedad de ellos, pero
+habitualmente se utiliza para reemplazar texto:
+
+```bash
+sed 's/regex/replace' < archivo.txt
+```
+El comando `s` intenta hacer match del regex de cada línea para luego
+reemplazarlo. Se pueden usar `\1` y demás para los grupos.
+
+Se recomienda el uso del parámetro `-E` para poder utilizar expresiones
+regulares extendidas.
+{{< /block >}}
+
+{{< block "`cut`" "var(--magno-green)" "var(--font-color)" >}}
+`cut` escribe partes seleccionadas de un archivo a la salida estándar, puede
+usarse para seleccionar columnas o campos de un fichero en específico:
+
+- `-b`: selecciona los bytes especificados
+- `-c`: selecciona los caracteres especificados
+- `-f`: selecciona los campos especificados. Con `-d` se puede cambiar el
+delimitador.
+{{< /block >}}
+
+{{< block "`tr`" "var(--magno-green)" "var(--font-color)" >}}
+Este comando permite reemplazar la entrada a nivel de caracteres.
+
+- `tr 'abc' 'xyz'`: sustituye todos los caracteres `a` por `x`, todos los `b`
+  por `y` y `c` por `z`.
+- `tr 'a-z' 'A-Z'`: también se puede especificar como rangos. Este comando pasa
+  de minúsculas a mayúsculas.
+- `tr -d '...'`: borrar un conjunto o rango de caracteres.
+- `tr -s ' '`: elimina espacios duplicados.
+- `tr -s ' ' '_'`: cambia los espacios duplicados por `_`.
+- `echo $PATH | tr ':' '\n'`: se interpretan los caracteres especiales.
+
+Y un largo etcétera: hay muchas más opciones, se pueden combinar entre ellas...
+{{< /block >}}
+
+Otros comandos:
+
+- `grep`: busca una expresión regular. Usar `-E` para expresiones regulares
+  extendidas y `-o` para solo mostrar el match. También se puede usar `-v` para
+  invertir el resultado (mostrar las líneas que no hacen match).
+- `diff`: muestra la diferencia entre dos archivos. Recomiendo `-u --color` para
+  hacerlo más legible.
+- `sort`: ordena alfabéticamente. Usar `-n` para ordenar numéricamente o `-u`
+  para eliminar duplicados. `-r` si quieres invertir el orden.
+- `paste`: unir línea a línea dos archivos.
+- `tac`: imprime un archivo al revés, la primera línea es ahora la última.
+- `rev`: le da la vuelta a los caracteres de cada línea.
+- `wc`: con `-l` puedes contar líneas de un archivo, con `-w` palabras, `-c` el
+  número de bytes y `-L` la longitud de la línea más larga.
+- `head`: imprime las primeras líneas de un archivo. `-n` especifica la cantidad.
+- `tail`: lo mismo que `head`, pero imprime las últimas líneas.
+
+# Scripting
+
+La [Bourne Shell], aunque se use como intérprete de comandos, también se pensó
+para que se utilizase como un **lenguaje de scripting**.
+
+La idea es básicamente tomar los comandos que estábamos ejecutando en la línea
+de comandos y guardarlos en un archivos para reutilizar luego. La extensión
+típica para los scripts de Bash es `.sh`, pero técnicamente solo son archivos de
+texto plano.
+
+Para ejecutar el archivo se puede le puede pasar a Bash directamente: `bash
+script.sh`. Otra alternativa es ejecutarlo como un programa normal, pero es
+necesario asignar permisos adecuadamente:
+
+```sh
+chmod u+x script.sh
+./script.sh
+```
+
+Como existen otros lenguajes de scripting que se pueden utilizar (Python,
+Perl...) con este método es necesario indicar el intérprete a utilizar en la
+primera línea con un **shebang**:
+
+```sh
+#!/bin/bash
+```
+
+Aquí tienes una [cheatsheet](https://devhints.io/bash) bastante útil.
+
+## Variables útiles
+
+{{< keyvalue title="Parámetros de script o función" >}}
+-% `$0`:% es el nombre del script.
+-% `$1` a `$9`:% son los primeros parámetros
+-% `${10} ${11} ...`:% si hace falta usar más
+-% `$#`:% número de todos los parámetros
+-% `$* $@`:% lista de todos los parámetros
+{{< /keyvalue >}}
+
+{{< keyvalue title="Otras" >}}
+-% `$?` :% código de retorno del comando anterior
+-% `$$` :% PID del script actual
+{{< /keyvalue >}}
+
+## Estructuras de control
+
+Para los condicionales solo se chechea el código de retorno del comando `$?`.
+
+En los bucles también se pueden usar `break` y `continue` (se les puede pasar un
+número para salir de ese número de bucles).
+
+```bash
+if cmd1
+then
+    cmd2
+elif cmd3
+then
+    cmd4
+else
+    cmd5
+fi
+```
+
+```bash
+case valor in
+    patron1)
+        cmd
+        ;;
+
+    patron2)
+        cmd
+        ;;
+
+    *)      # Caso por defecto
+        cmd;
+        ;;
+esac
+```
+
+```bash
+for variable in lista
+do
+    cmd $variable
+done
+```
+
+Lista debe ser texto, cada elemento estará separado por espacios. Por tanto, es
+posible usar las expansiones de Bash vistas anteriormente.
+
+```bash
+for ((i=0; i < 5; i++))
+do
+    cmd $i
+done
+```
+
+```bash
+while cmd
+do
+    cmd $i
+done
+```
+
+```bash
+until cmd
+do
+    cmd $i
+done
+```
+
+## Checks
+
+{{< keyvalue title="Operadores" >}}
+-% `[[ ! EXPR ]]` :% Negación
+-% `[[ EXPR && EXP ]]` :% Y lógico
+-% `[[ EXPR || EXP ]]` :% O lógico
+-% `[[ !(EXPR && (EXPR || EXP)) ]]` :% Se pueden usar paréntesis
+{{< /keyvalue >}}
+
+{{< keyvalue title="Comprobaciones de strings" >}}
+-% `[[ -z "STR" ]]` :% Vacio
+-% `[[ -n "STR" ]]` :% No vacio
+-% `[[ "STR" == "STR" ]]` :% Son iguales
+-% `[[ "STR" != "STR" ]]` :% No son iguales
+-% `[[ "STR" ~= REGEX ]]` :% Comprueba expresión regex
+{{< /keyvalue >}}
+
+{{< keyvalue title="Comprobaciones numéricas" >}}
+-% `[[ NUM -eq NUM ]]` :% Iguales
+-% `[[ NUM -ne NUM ]]` :% Diferentes
+-% `[[ NUM -lt NUM ]]` :% Menor
+-% `[[ NUM -gt NUM ]]` :% Mayor
+-% `[[ NUM -le NUM ]]` :% Menor o igual
+-% `[[ NUM -ge NUM ]]` :% Mayor o igual
+-% `(( NUM == NUM ))` :% Alternativamente se puede usar esta sintaxis para poder
+usar los símbolos matemáticos habituales.
+{{< /keyvalue >}}
+
+{{< keyvalue title="Comprobaciones de archivos" >}}
+-% `[[ -e ARCHIVO ]]` :% Existe
+-% `[[ -s ARCHIVO ]]` :% Si su tamaño es mayor que 0 bytes
+-% `[[ -d ARCHIVO ]]` :% Es directorio
+-% `[[ -f ARCHIVO ]]` :% Es archivo
+-% `[[ -r ARCHIVO ]]` :% Se puede leer
+-% `[[ -w ARCHIVO ]]` :% Se puede escribir
+-% `[[ -x ARCHIVO ]]` :% Se puede ejecutar
+{{< /keyvalue >}}
+
+## Comando `read`
+
+El comando `read` se puede utilizar para bastantes cosas. Por ejemplo, leer de
+teclado a una variable:
+
+```bash
+read -p "Introduzca un dato: " res
+printf "Ha instroducido: \"$res\""
+```
+
+Leer la primera línea de un fichero (dado que el delimitador es `\n`. Esto se
+puede cambiar con `-d`):
+
+```bash
+read linea < archivo.txt
+```
+
+También se puede iterar sobre un archivo:
+
+```bash
+i=1
+while read buff
+do
+    printf "$i: $buff\n"
+    i=$[$i+1]
+done < archivo.txt
+```
+
+
+## Funciones
+
+```bash
+nombre() {
+    cmd
+    return 0
+}
+```
+
+Para pasar parámetros se usa la misma sintaxis que con los parámetros de un
+script: `$1 ... $9 ${10} ...`, `$*` o `$@`. Para obtener el nombre de la función
+debes usar `${FUNCNAME[0]}`, dado que `$0` siempre es el nombre del script.
+
+## Rendimiento
+
+- El shell no es eficiente a la hora de ejecutar trabajos pesados
+- Es mejor **dejar que los procesos hagan todo el trabajo**: evitar `expr`, usar
+  `$[]` o `$(())`.
+- El uso de **lazos con ficheros es muy ineficiente**. Mejor usar comandos que
+  operen con ellos (internamente tienen lazos eficientes escritos en C).
+- Usar **comandos internos** cuando sea posible.
+- **Useless use of any comand** (UUC):
+  ```bash
+  cat /etc/passwd | grep root
+  # es equivalente a
+  grep root /etc/passwd
+  ```
+- **Disminuir redirecciones a fichero** de tipo `>` y `>>`. Los pipes `|` suelen
+  ser bastantes eficientes
+
+
+{{< todo >}}
 ## Editores de terminal
 
 nano
@@ -587,11 +928,6 @@ helix
 - pushd popd dirs
 - tree
 - fmt
-
-# Scripting
-
-La [Bourne Shell], aunque se use como intérprete de comandos, también se pensó
-para que se utilizase como un **lenguaje de scripting**.
 
 # Configuración
 
@@ -615,7 +951,7 @@ El prompt se controla usando variables de Bash:
   ejectuarlo.
 - `PS1`: prompt primario, por defecto `\s-\v\$`
 - `PS2`: prompt secundario, por defecto `> `
-- `PS3`: prompt para el comando `select`, ejemplo:
+- `PS3`: prompt para el comando `select`
 - `PS4`: se muestra antes de que un comando muestre _execution trace_, por
   defecto `+`.
 
@@ -631,38 +967,35 @@ done
 
 Modificando la variable `PS1`, podrás modificar tu prompt.
 
-- `\u`: nombre de usuario
-- `\H`: nombre del ordenador completo
-- `\h`: nombre del ordenador hasta el primer `.`
-- `\l`: nombre base de la terminal (?)
-- `\s`: nombre de la shell
-- `\$`: (UID == 0)? `#` : `$`. Es decir, si eres _root_, `#`, sino `$`.
------------------------------------------------------------
-- `\w`: dirección completa del directorio actual (`$HOME` = `~`)
-- `\W`: directorio actual (`$HOME` = `~`)
------------------------------------------------------------
-- `\A`: hora actual (24h HH:MM)
-- `\@`: hora actual (12h am/pm)
-- `\t`: hora actual (24h HH:MM:SS)
-- `\T`: hora actual (12h HH:MM:SS)
-- `\d`: fecha con día de la semana, nombre del mes y día (e.g.: `Tue May 26`)
-- `\D{<formato>}: fecha con el formato dado. Se formatea con `strftime`.
------------------------------------------------------------
-- `\j`: número de trabajos de la shell actual
-- `\#`: número de comando
-- `\!`: número de comando en el historial
------------------------------------------------------------
-- `\\` = `\`
-- `\a`: sonido de campana (ASCII)
-- `\n`: nueva línea
-- `\r`: retorno de carro
-- `\nnn`: carácter en formato octal
-- `\e`: carácter especial de ASCII
-- `\[`: secuencia de caracteres no imprimibles
-- `\]`: fin de secuencia de caracteres no imprimibles
------------------------------------------------------------
-- `\V`: versión de bash completa (e.g.: 2.0.0)
-- `\v`: versión de bash (e.g.: 2.0)
+{{< keyvalue >}}
+-% `\u`              :% Nombre de usuario
+-% `\H`              :% Nombre del ordenador completo
+-% `\h`              :% Nombre del ordenador hasta el primer `.`
+-% `\l`              :% Nombre base de la terminal (?)
+-% `\s`              :% Nombre de la shell
+-% `\$`              :% Si eres _root_, `#`, sino `$`.
+-% `\w`              :% Dirección completa del directorio actual (`$HOME` = `~`)
+-% `\W`              :% Directorio actual (`$HOME` = `~`)
+-% `\A`              :% Hora actual (24h HH:MM)
+-% `\@`              :% Hora actual (12h am/pm)
+-% `\t`              :% Hora actual (24h HH:MM:SS)
+-% `\T`              :% Hora actual (12h HH:MM:SS)
+-% `\d`              :% Fecha con día de la semana, nombre del mes y día (e.g.: `Tue May 26`)
+-% `\D{\<formato\>}` :% Fecha con el formato dado. Se formatea con `strftime`.
+-% `\j`              :% Número de trabajos de la shell actual
+-% `\#`              :% Número de comando
+-% `\!`              :% Número de comando en el historial
+-% `\\`              :% `\`
+-% `\a`              :% Sonido de campana (ASCII)
+-% `\n`              :% Nueva línea
+-% `\r`              :% Retorno de carro
+-% `\nnn`            :% Carácter en formato octal
+-% `\e`              :% Carácter especial de ASCII
+-% `\[`              :% Secuencia de caracteres no imprimibles
+-% `\]`              :% Fin de secuencia de caracteres no imprimibles
+-% `\V`              :% Versión de bash completa (e.g.: 2.0.0)
+-% `\v`              :% Versión de bash (e.g.: 2.0)
+{{< /keyvalue >}}
 
 Colores (uso `\e[<colornum>m...\e[m`):
 
@@ -708,7 +1041,15 @@ alias cp="cp -i"    # Pide confirmación antes de sobreescribir
 Recuerda que también es posible añadir estos alias a su propio archivo:
 `~/.bash_aliases`.
 
-> **Nota**: Si se te lía, puedes usar `unalias -a` para eliminar todos los alias
+Si quieres ejecutar el comando original en lugar del alias, hay diferentes
+formas:
+
+```sh
+# alias ls='ls --color=auto'
+command ls
+/bin/ls
+\ls
+```
 
 
 ## Shopt
