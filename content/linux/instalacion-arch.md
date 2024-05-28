@@ -196,9 +196,9 @@ usen un formato compatible. Un disco duro completamente formateado contiene en
 realidad una partición primaria ocupando todo su espacio.
 
 - **Partición secundaria o extendida**: Se utiliza para tener más de 4
-particiones, pero no sirve para almacenar SOs, solo datos. Sólo puede haber una
+particiones, pero no sirve para almacenar SOs, solo datos. Solo puede haber una
 de ellas, aunque dentro podremos hacer tantas otras particiones como queramos.
-Si utilizas esta partición, el disco sólo podrá tener tres primarias, siendo
+Si utilizas esta partición, el disco solo podrá tener tres primarias, siendo
 la extendida la que actúe como cuarta.
 
 - **Partición lógica**: "Sub-particiones" que existen dentro de una partición
