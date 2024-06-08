@@ -40,7 +40,7 @@ lineNumbersInTable = false
 
 [markup.tableOfContents]
 startLevel = 0
-endLevel = 100
+endLevel = 3
 ordered = true
 
 [minify]
