@@ -28,3 +28,54 @@ drwxr-xr-x 2 magno magno    4096 Dec 15 16:45 Desktop
 lrwxrwxrwx 1 magno magno      26 Jan 27 17:50 link -> originals/example-soft.txt
 -rw-r--r-- 1 magno magno     375 Jan 27 19:12 file.txt
 ```
+
+# Comprimidos
+
+## tar
+
+`tar` es una utilidad que permite recolectar varios archivos en uno solo,
+llamado _tarball_.
+
+```sh
+tar [OPTIONS] [file.tar] [list of files]
+```
+
+Opciones:
+
+- `-c` `--create`
+- `-v` `--verbose`
+- `-f` `--file`: especificar el nombre del archivo
+- `-r` `--append`: añadir archivos al final
+- `-x` `--extract` `--get`: obtener los contenidos
+- `-l` `--list`: listar los contenidos
+- `-a` `--auto-compress`: además comprime el archivo usando varios métodos según
+  la extensión dada:
+  - `.tar.gz` gunzip
+  - `.tar.bz2` bzip2
+  - `.tar.xz` xz
+  - `.tar.zst` Zstandard
+  - etc
+
+Ejemplos
+
+```sh
+# Crear un tar con README.md y src
+tar -cvf archivo.tar README.md src
+
+# Comprimir con gzip
+tar -cvaf archivo.tar.gz README.md src
+
+# Listar contenidos
+tar -l archivo.tar[.gz]
+
+# Extraer en la carpeta actual
+tar -xvf archivo.tar[.gz]
+```
+
+Más información: [Wikipedia](https://en.wikipedia.org/wiki/Tar_(computing))
+
+
+## gzip
+
+Software para comprimir y descomprimir basado en el algoritmo DEFLATE
+(combinación de L777 y códigos Huffman).

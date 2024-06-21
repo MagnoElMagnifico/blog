@@ -837,6 +837,23 @@ tanto locales como remotos a través de SSH, etc.
 - `R`: renombrar
 - `s`: cambiar orden (nombre, fecha, tamaño)
 
+# Reformatear un archivo
+
+```
+:set tabstop=4 shiftwidth=4 expandtab
+:retab
+```
+
+```sh
+iconv -f <in encoding> -t <out encoding> <input file> -o <output file>
+```
+
+Por tanto, se puede realizar el siguiente comando:
+
+```
+:! iconv -f <in encoding> -f <out encoding> %
+```
+
 
 # Referencias
 
