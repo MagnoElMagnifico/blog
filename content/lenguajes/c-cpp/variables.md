@@ -343,15 +343,9 @@ ver linkage
 | `delete a`, `delete[] a`          | Desasignar almacenamiento                 | <span style="color: red;">No</span> |
 | `&&a`                             | Referencia por valor derecho              | <span style="color: red;">No</span> |
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cf758f9 (Update variables.md)
 ## Orden de los operadores
 ## Expresiones
 # Conversión de tipo
-
-
 # Alcance de las variables
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
