@@ -1,7 +1,7 @@
 ---
 title: Vim y Neovim
 description: Una pequeña overview de las principales funcionalidades de Vim con sus comandos
-date: 2022-7-26
+date: 2022-07-26
 weight: 3
 ---
 

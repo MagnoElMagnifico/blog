@@ -17,10 +17,19 @@
     <h1 class="main-title">{{ .Title }}</h1>
 
     <h3 class="page-stats">
+        {{/* Format page's date, or just show TODO (just in development mode) */}}
         {{ if .Params.Date }}
-            <span>[date: {{ .Params.Date | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
-            {{ if not (.Params.LastMod.Equal .Params.Date) }}
-                <span>[last modification: {{ .Params.LastMod | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
+            {{ if eq .Params.Date "TODO" }}
+                {{ if eq hugo.Environment "development" }}
+                    <span>[date: TODO]</span>
+                {{ else }}
+                    {{ errorf "Unset date in non-draft page %s" .Name }}
+                {{ end }}
+            {{ else }}
+                <span>[date: {{ .Params.Date | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
+                {{ if not (.Params.LastMod.Equal .Params.Date) }}
+                    <span>[last modification: {{ .Params.LastMod | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
+                {{ end }}
             {{ end }}
         {{ end }}
         <br>

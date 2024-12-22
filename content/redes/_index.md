@@ -1,9 +1,8 @@
 ---
-title: Redes
-draft: true
+title: Redes y Computación Distribuida
 ---
 
-{{< dropdown "TODO" >}}
+{{< todo >}}
 **What is a cloud platform?** A cloud platform refers to the operating system
 and hardware of a server in an Internet-based data center. It allows software
 and hardware products to co-exist remotely and at scale.
@@ -51,5 +50,5 @@ Single Mode Fibre (SMF): Laser >2km caro
 Multi Mode Fibre (MMF): LED 500m barato
 
 Los conectores q usan son LC y SC
-{{< /dropdown >}}
+{{< /todo >}}
 

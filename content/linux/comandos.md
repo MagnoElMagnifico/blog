@@ -1,7 +1,7 @@
 ---
 title: Comandos útiles para Linux
 description: TODO
-date: 2023-1-1
+date: 2023-01-01
 weight: -1
 draft: true
 ---
