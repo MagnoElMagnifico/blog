@@ -1,5 +1,5 @@
 ---
-title: Red
+title: La capa de Red
 description: >
     TODO
 date: TODO

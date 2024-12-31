@@ -500,9 +500,13 @@ Los elementos de un hilo son:
 
 <!-- TODO: diagrama de varios hilos dentro de un proceso y regiones del mismo 19-10-2023 -->
 
-Hay autores que llaman a los cores hilos por su fuerte relación.
-Otros autores los llaman procesos ligeros, pero eso ya es mas inusual. Un
-proceso consiste de al menos un hilo y un espacio de direcciones.
+<div id="LWP">
+
+Hay autores que llaman a los cores hilos por su fuerte relación. Otros autores
+los llaman procesos ligeros (**Lightweight Processes**, LWP), pero eso ya es mas
+inusual. Un proceso consiste de al menos un hilo y un espacio de direcciones.
+
+</div>
 
 {{< block "Características" >}}
 - **Comparten memoria**: Están en el mismo espacio de direcciones.
