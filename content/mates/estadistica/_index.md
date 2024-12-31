@@ -1,6 +1,7 @@
 ---
 title: Estadística y Optimización
 content_title: false
+draft: true
 ---
 
 # Contenidos
