@@ -4,7 +4,6 @@ description: >
     Guía para contribuir a proyectos Open Source en GitHub
 weight: 2
 date: 2023-06-17
-draft: true
 ---
 
 {{< todo >}}
