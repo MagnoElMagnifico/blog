@@ -270,8 +270,8 @@ derecha**.
 Además, suponiendo que solo hay una CPU, **no pueden haber líneas diagonales**.
 
 {{< figure
-    src="../prevencion-interbloqueos.png"
-    link="../prevencion-interbloqueos.png"
+    src="prevencion-interbloqueos.png"
+    link="prevencion-interbloqueos.png"
     caption="Trayectoria de recursos de dos procesos"
 >}}
 
@@ -327,14 +327,14 @@ que se puede ejecutar cada proceso hasta terminarse.
 {{< /block >}}
 
 {{< figure
-    src="../estado-seguro.png"
-    link="../estado-seguro.png"
+    src="estado-seguro.png"
+    link="estado-seguro.png"
     caption="Demostración de que el estado es seguro"
 >}}
 
 {{< figure
-    src="../estado-inseguro.png"
-    link="../estado-inseguro.png"
+    src="estado-inseguro.png"
+    link="estado-inseguro.png"
     caption="Demostración de que el estado no es seguro"
 >}}
 

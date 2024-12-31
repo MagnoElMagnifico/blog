@@ -20,7 +20,8 @@ coprimos dos a dos.
 Los números enteros se pueden representar en la recta real:
 
 {{< figure
-    src="../img/recta-entera.svg"
+    src="recta-entera.svg"
+    link="recta-entera.svg"
     alt="La recta de enteros"
     height="100"
 >}}
@@ -28,7 +29,8 @@ Los números enteros se pueden representar en la recta real:
 Pero si tomamos una estructura como la siguiente:
 
 {{< figure
-    src="../img/reloj-modular.svg"
+    src="reloj-modular.svg"
+    link="reloj-modular.svg"
     alt="Reloj de aritmética modular"
     height="300"
 >}}
@@ -43,7 +45,8 @@ Por tanto, la aritmética modular consiste en encontrar el resto.
 Además, también se pueden tomar números negativos:
 
 {{< figure
-    src="../img/reloj-modular-negativos.svg"
+    src="reloj-modular-negativos.svg"
+    link="reloj-modular-negativos.svg"
     alt="Reloj de aritmética modular con números negativos"
     height="300"
 >}}

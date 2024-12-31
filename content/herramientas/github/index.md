@@ -7,7 +7,7 @@ date: 2023-06-17
 draft: true
 ---
 
-{{< dropdown "TODO" >}}
+{{< todo >}}
 Se puede editar el código desde GitHub (botón del lápiz, y guardar cambios)
 
 Para conectarte a GitHub y hacer un `git push`, debes añadir tu usuario y
@@ -20,7 +20,7 @@ Debes introducir un nombre descriptivo, su fecha máxima de validez y los
 permisos que le quieras aportar. Finalmente pulsa en `Generate token.` y úsalo
 en lugar de tu contraseña. De esta forma resulta mucho más seguro y puedes
 controlar mejor los permisos.
-{{< /dropdown >}}
+{{< /todo >}}
 
 # Contribuir a Open Source en GitHub
 
@@ -78,9 +78,10 @@ proyecto.
 
 {{<
     figure
-    src  = "../github-contribute.svg"
-    link = "../github-contribute.svg"
-    alt  = "Esquema de contribución a Github"
+    src     = "github-contribute.svg"
+    link    = "github-contribute.svg"
+    alt     = "Esquema de contribución a Github"
+    caption = "Esquema de contribución a Github"
 >}}
 
 ```sh

@@ -579,7 +579,7 @@ El proceso de traducción es el siguiente:
 
 {{<
   figure
-  src="../traduccion-direcciones.svg"
+  src="traduccion-direcciones.svg"
   caption="Proceso de traducción de una dirección virtual a física."
 >}}
 

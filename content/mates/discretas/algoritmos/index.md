@@ -93,7 +93,8 @@ $$
 {{< /block >}}
 
 {{< figure
-    src="../img/big-o-omega-theta.svg"
+    src="big-o-omega-theta.svg"
+    link="big-o-omega-theta.svg"
     caption="Gráfico representativo del orden de complejidad"
     alt="Gráfico representativo del orden de complejidad"
 >}}
@@ -199,10 +200,8 @@ Con $a > 1$.
 <svg width="600" height="280">
   <text x="90" y="165" fill="var(--magno-red)" font-size="40">P</text>
   <circle cx="100" cy="150" r="50" fill="None" stroke="var(--magno-red)" stroke-width="5"/>
-
   <text x="300" y="165" fill="var(--magno-blue)" font-size="40">NP-Completo</text>
   <rect x="280" y="120" width="280" height="65" fill="None" stroke="var(--magno-blue)" stroke-width="5"/>
-
   <text x="210" y="100" fill="var(--magno-green)" font-size="40">NP</text>
   <rect x="10" y="50" width="570" height="170" fill="None" stroke="var(--magno-green)" stroke-width="5"/>
 </svg>

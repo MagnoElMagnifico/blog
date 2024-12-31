@@ -24,8 +24,8 @@ necesita realizar algo más para que esto sea posible:
 
 {{<
     figure
-    src="../diagrama-rpc.png"
-    link="../diagrama-rpc.png"
+    src="diagrama-rpc.png"
+    link="diagrama-rpc.png"
     alt="Funcionamiento de RPC"
     caption="Funcionamiento de RPC"
 >}}
@@ -135,8 +135,8 @@ Entonces, cuando se utiliza este paradigma:
 
 {{<
     figure
-    src="../arquitectura-obj-dist.png"
-    link="../arquitectura-obj-dist.png"
+    src="arquitectura-obj-dist.png"
+    link="arquitectura-obj-dist.png"
     alt="Arquitectura común de la implementación de un objeto remoto"
     caption="Arquitectura común de la implementación de un objeto remoto"
 >}}
@@ -189,8 +189,8 @@ interfaz remota con una sintaxis idéntica a la de los métodos locales.
 
 {{<
     figure
-    src="../arquitectura-rmi.png"
-    link="../arquitectura-rmi.png"
+    src="arquitectura-rmi.png"
+    link="arquitectura-rmi.png"
     alt="Arquitectura de Java RMI"
     caption="Arquitectura de Java RMI"
     height="500"
@@ -246,8 +246,8 @@ el más sencillo, `rmiregistry`, dado por el propio Java JDK.
 
 {{<
    figure
-   src="../diagrama-registro-rmi.png"
-   link="../diagrama-registro-rmi.png"
+   src="diagrama-registro-rmi.png"
+   link="diagrama-registro-rmi.png"
    alt="Diagrama de 2 servidores de objetos y varios clientes"
    caption="Diagrama de 2 servidores de objetos y varios clientes"
 >}}
@@ -483,8 +483,8 @@ cliente lo descargue cuando tenga una versión desactualizada.
 
 {{<
     figure
-    src="../stub-downloading.png"
-    link="../stub-downloading.png"
+    src="stub-downloading.png"
+    link="stub-downloading.png"
     caption="Nueva estructura de archivos"
     alt="Nueva estructura de archivos"
 >}}
@@ -628,8 +628,8 @@ en ciertos eventos.
 
 {{<
     figure
-    src="../callback-vs-polling.png"
-    link="../callback-vs-polling.png"
+    src="callback-vs-polling.png"
+    link="callback-vs-polling.png"
     caption="Formas de implementar la notificación de un evento"
     alt="Formas de implementar la notificación de un evento"
 >}}

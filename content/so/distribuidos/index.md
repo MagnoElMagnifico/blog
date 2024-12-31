@@ -20,8 +20,8 @@ un mismo chip para poder realizar tareas en paralelo. Como es lógico, el Sistem
 Operativo debe de estar al corriente de esto.
 
 {{< figure
-    src="../multiprocesador.png"
-    link="../multiprocesador.png"
+    src="multiprocesador.png"
+    link="multiprocesador.png"
     caption="Varios tipos de arquitecturas"
 >}}
 
@@ -85,8 +85,8 @@ adaptación del principio de localidad.
 ## UMA
 
 {{< figure
-    src="../uma-bus.png"
-    link="../uma-bus.png"
+    src="uma-bus.png"
+    link="uma-bus.png"
     caption="Arquitecturas UMA basadas en bus"
 >}}
 
@@ -113,8 +113,8 @@ De lo contrario, los datos serán inconsistentes. Para ello se emplean los
 - **Directorio**
 
 {{< figure
-    src="../barras-cruzadas.png"
-    link="../barras-cruzadas.png"
+    src="barras-cruzadas.png"
+    link="barras-cruzadas.png"
     caption="Conmutador de barras cruzadas"
 >}}
 
@@ -129,8 +129,8 @@ y tampoco escala muy bien con más memorias y procesadores: cada vez será más
 grande.
 
 {{< figure
-    src="../conmutacion-omega.png"
-    link="../conmutacion-omega.png"
+    src="conmutacion-omega.png"
+    link="conmutacion-omega.png"
     caption="Red de conmutación omega de 3 etapas"
 >}}
 
@@ -160,8 +160,8 @@ El sistema puede ser NC-NUMA (_No Cache NUMA_) o CC-NUMA (_Cache Coherent NUMA).
 En este apartado nos centraremos en este último.
 
 {{< figure
-    src="../numa.png"
-    link="../numa.png"
+    src="numa.png"
+    link="numa.png"
     caption="Sistema NUMA basado en directorio con 256 nodos"
 >}}
 

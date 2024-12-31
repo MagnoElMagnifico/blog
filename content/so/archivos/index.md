@@ -212,7 +212,7 @@ Descriptors_) que se usan para hacer referencia a cada archivo.
 <!-- TODO: cambiar esta figura para hacer que se parezca a dispositiva 10 -->
 {{<
     figure
-    src = "../permisos-archivo.webp"
+    src = "permisos-archivo.webp"
     caption = "Modos de un archivo"
 >}}
 

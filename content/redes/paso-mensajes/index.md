@@ -634,8 +634,8 @@ Los routers solo implementan 2 capas del stack TCP/IP (Enlace y Red), por lo que
 
 {{<
     figure
-    src="../multicast-router.png"
-    link="../multicast-router.png"
+    src="multicast-router.png"
+    link="multicast-router.png"
     alt="Diagrama de un paquete multicast por varias redes conectados por un router"
     caption="Diagrama de un paquete multicast por varias redes conectados por un router"
 >}}
@@ -678,8 +678,9 @@ routers en modo multicast.
 
 {{<
     figure
-    src="../retransmision-video.png"
-    link="../retransmision-video.png"
+    src="retransmision-video.png"
+    link="retransmision-video.png"
+    alt="Ejemplo de uso de multicast"
     caption="Ejemplo de uso de multicast"
 >}}
 

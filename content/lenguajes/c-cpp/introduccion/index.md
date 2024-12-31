@@ -35,8 +35,8 @@ Existe una jerarquía por niveles de estos lenguajes:
 
 {{<
     figure
-    src    = "../nivel-lenguajes.svg"
-    link   = "../nivel-lenguajes.svg"
+    src    = "nivel-lenguajes.svg"
+    link   = "nivel-lenguajes.svg"
     alt    = "Esquema de la jerarquía por niveles del los lenguajes de programación"
     height = 300
 >}}

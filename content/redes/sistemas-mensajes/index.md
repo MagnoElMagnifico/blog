@@ -66,8 +66,8 @@ receptor esté disponible para leer el mensaje, consulta la cola.
 
 {{<
     figure
-    src="../arquitectura-mom.png"
-    link="../arquitectura-mom.png"
+    src="arquitectura-mom.png"
+    link="arquitectura-mom.png"
     caption="Arquitectura de un sistema MOM"
     alt="Arquitectura de un sistema MOM"
 >}}
@@ -101,8 +101,8 @@ Los elementos más comunes de AMQP son los siguientes:
 
 {{<
     figure
-    src="../rabbitmq-componentes.png"
-    link="../rabbitmq-componentes.png"
+    src="rabbitmq-componentes.png"
+    link="rabbitmq-componentes.png"
     caption="Ejemplo básico del envío de un mensaje con RabbitMQ"
     alt="Ejemplo básico del envío de un mensaje con RabbitMQ"
 >}}

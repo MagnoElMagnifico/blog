@@ -7,8 +7,6 @@ date: 2024-12-28T14:42:18+01:00
 weight: 10
 ---
 
-<!-- TODO: Write here... -->
-
 {{< block "Nota" >}}
 Conviene leer el artículo sobre [Procesos e Hilos]({{< ref "so/procesos" >}}),
 sobre todo:
@@ -98,8 +96,8 @@ Thread hilo = new Thread(() -> {
 
 {{<
     figure
-    src="../estados-hilo.png"
-    link="../estados-hilo.png"
+    src="estados-hilo.png"
+    link="estados-hilo.png"
     alt="Posibles estados de un hilo y sus transiciones"
     caption="Posibles estados de un hilo y sus transiciones"
 >}}

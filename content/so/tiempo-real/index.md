@@ -107,8 +107,8 @@ un algoritmo más complejo.
 ## Ejemplos
 
 {{< figure
-    src="../tiempo-real.png"
-    link="../tiempo-real.png"
+    src="tiempo-real.png"
+    link="tiempo-real.png"
     caption="Ejemplo de programación en tiempo real"
 >}}
 
@@ -122,8 +122,8 @@ Fíjese como en el instante 90, se cambia de contexto de B3 a A4, dado que tiene
 más prioridad. C solo se ejecutará si la CPU está libre.
 
 {{< figure
-    src="../tiempo-real-2.png"
-    link="../tiempo-real-2.png"
+    src="tiempo-real-2.png"
+    link="tiempo-real-2.png"
     caption="Otro ejemplo de programación en tiempo real"
 >}}
 

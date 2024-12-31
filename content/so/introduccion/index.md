@@ -115,7 +115,7 @@ Ordenados por tamaño:
 
 {{<
   figure
-  src="../modos.svg"
+  src="modos.svg"
   alt="Figura representando las capas de un ordenador"
   caption="Capas software de un ordenador"
 >}}

@@ -12,7 +12,7 @@ math: true
 
 {{<
   figure
-  src="../arranque-sistema.png"
+  src="arranque-sistema.png"
   alt="Figura de arranque del sistema"
 >}}
 
@@ -175,7 +175,7 @@ no se recomienda activar.
 
 {{<
   figure
-  src="../proceso-hardware.png"
+  src="proceso-hardware.png"
   alt="Figura del Proceso Hardware"
 >}}
 

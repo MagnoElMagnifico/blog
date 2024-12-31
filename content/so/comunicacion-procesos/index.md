@@ -58,8 +58,8 @@ Pongamos ahora que `entrada=7` y `salida=4`. De forma simultánea, los procesos
 $A$ y $B$ deciden imprimir un archivo.
 
 {{< figure
-    src="../carrera-critica.png"
-    link="../carrera-critica.png"
+    src="carrera-critica.png"
+    link="carrera-critica.png"
     height="400"
     caption="Diagrama mostrando cómo los procesos A y B desean imprimir un archivo"
 >}}
@@ -262,14 +262,14 @@ de la región crítica.
 {{< /block >}}
 
 {{< figure
-    src="../exclusion-mutua.png"
-    link="../exclusion-mutua.png"
+    src="exclusion-mutua.png"
+    link="exclusion-mutua.png"
     caption="Exclusión mutua mediante el uso de regiones críticas"
 >}}
 
 {{< figure
-    src="../espera-activa.svg"
-    link="../espera-activa.svg"
+    src="espera-activa.svg"
+    link="espera-activa.svg"
     caption="Diagrama mostrando el despercidio de CPU por realizar espera activa"
 >}}
 
@@ -490,8 +490,8 @@ Se puede generalizar a $n$ productores y $n$ consumidores, pero empezaremos por
 algo simple.
 
 {{< figure
-    src="../productor-consumidor.svg"
-    link="../productor-consumidor.svg"
+    src="productor-consumidor.svg"
+    link="productor-consumidor.svg"
     caption="Diagrama del problema Productor-Consumidor."
 >}}
 
@@ -897,8 +897,8 @@ completamente diferentes**. Entender eso es clave para comprender el
 funcionamiento de las variables de condición.
 
 {{< figure
-    src="../variables-condicion.svg"
-    link="../variables-condicion.svg"
+    src="variables-condicion.svg"
+    link="variables-condicion.svg"
     caption="Diagrama del funcionamiento de mutexes y variables condición."
 >}}
 
@@ -1118,8 +1118,8 @@ Problemas:
   usar un semáforo y escribir en memoria. Se ha investigado mucho acerca de esto.
 
 {{< figure
-    src="../paso-mensajes.svg" 
-    link="../paso-mensajes.svg" 
+    src="paso-mensajes.svg" 
+    link="paso-mensajes.svg" 
     caption="Funcionamiento de `send()` y `receive()`"
 >}}
 
@@ -1222,8 +1222,8 @@ En la siguiente figura:
 3. Una vez que $C$ llega a la barrera, todos pueden continuar.
 
 {{< figure
-    src="../barrera.png" 
-    link="../barrera.png" 
+    src="barrera.png" 
+    link="barrera.png" 
     caption="Ejemplo de uso de una barrera"
 >}}
 
