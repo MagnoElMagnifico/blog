@@ -23,9 +23,9 @@
                     {{ errorf "Unset date in non-draft page %s" .Name }}
                 {{ end }}
             {{ else }}
-                <span>[date: {{ .Params.Date | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
+                <span>[date: {{ .Params.Date | time.AsTime | time.Format "02-01-2006" }}]</span>
                 {{ if not (.Params.LastMod.Equal .Params.Date) }}
-                    <span>[last modification: {{ .Params.LastMod | time.AsTime | time.Format "02-01-2006 15:04" }}]</span>
+                    <span>[last modification: {{ .Params.LastMod | time.AsTime | time.Format "02-01-2006" }}]</span>
                 {{ end }}
             {{ end }}
         {{ end }}
