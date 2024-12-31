@@ -6,6 +6,7 @@ description: >-
     hacer con este lenguaje pero que quizá sea mejor hacer con otro.
 weight: 2
 content_title: true
+draft: true
 ---
 
 Mis apuntes sobre Rust.
