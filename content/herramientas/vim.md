@@ -818,19 +818,19 @@ tanto locales como remotos a través de SSH, etc.
 - `:Ex`: abrir Netwr
 - `:Lex [<size>]`: abrir Netwr a la izquierda
 - `:Tex`: abrir Netwr en una nueva pestaña
-
+---
 - `i`: cambiar display (lista, árbol, columnas, etc)
-
+---
 - `I`: esconder/mostrar la cabezera de información
 - `gh`: esconder/mostrar dotfiles
-
+---
 - `<Enter>`: abrir el archivo
 - `-`: ir a la carpeta superior
-
+---
 - `p`: previsualizar archivo
 - `<C-w>z :pc :pclose`: cerrar previsualización
 - `v`: abrir en una división vertical
-
+---
 - `%`: crear archivo en la carpeta actual (da un nombre)
 - `<Del> D`: borrar el archivo debajo del cursor
 - `d`: crear una carpeta  (da un nombre)
