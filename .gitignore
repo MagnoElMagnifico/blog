@@ -3,3 +3,6 @@
 resources/
 .hugo_build.lock
 
+# Diagram files
+content/**/*.rnote
+
