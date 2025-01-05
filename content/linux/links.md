@@ -5,6 +5,7 @@ description: >
     Los archivos link en Linux son muy útiles e interesantes: puedes tener el
     mismo archivo en distintas direcciones.
 date: TODO
+draft: true
 ---
 
 [1]: https://www.linux.com/topic/desktop/understanding-linux-links/
