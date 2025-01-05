@@ -64,17 +64,29 @@ estructura:
 # Notas sobre Markdown
 
 Hugo utiliza [goldmark], y en combinación con mi CSS personalizado, hay algunos
-matices a tener en cuenta al escribir artículos en MarkDown para magnoblog.
+matices a tener en cuenta al escribir artículos en Markdown para MagnoBlog.
 
 Combinaciones especiales que convierten caracteres ASCII a tipográficos:
 
 - `--`, `---`
 - `'`, `"`, `<<`, `>>`
 - `...`
+
+Otras combinaciones especiales son:
+
 - Entre `:` se pueden especificar emojis, por ejemplo `:warning:` ([referencia],
   [referencia oficial]).
-- Para crear un salto de línea se puede usar `<br>` o dos espacios en blanco al
-  final de la línea.
+- Se pueden añadir clases CSS añadiendo `{.class #id}` después de los bloques
+  o en la primera línea de los bloques de código y títulos.
+
+Y un recordatorio sobre sintaxis de Markdown no tan usual.
+
+- Para crear un salto de línea se puede usar `<br>`, `\` o dos espacios en
+  blanco al final de la línea.
+- Resaltar texto con `==ejemplo==`
+- Texto insertado con `++ejemplo++`
+
+## Listas
 
 Si se separa cada elemento de una lista con líneas en blanco, se considera cada
 uno un párrafo diferente, lo que implica varios `<p>`. Estos tienen un margen,
@@ -82,28 +94,28 @@ por lo que se añade un espacio entre cada uno. **Ideal para elementos con mucho
 texto**.
 
 ```md
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
-  ex, eu convallis dolor efficitur a. Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit. Sed vulputate mauris non interdum posuere. Suspendisse nisl
-  tellus, ultricies nec eleifend id, suscipit in mi.
+-   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+    ex, eu convallis dolor efficitur a. Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Sed vulputate mauris non interdum posuere. Suspendisse nisl
+    tellus, ultricies nec eleifend id, suscipit in mi.
 
-- Praesent malesuada sed arcu at eleifend. Aliquam erat volutpat. Ut et mi
-  magna. Nunc quis tortor ante. Integer vitae convallis augue. Pellentesque
-  laoreet, dolor eu molestie porttitor, orci diam bibendum quam, non lacinia
-  nisl metus nec sapien.
+-   Praesent malesuada sed arcu at eleifend. Aliquam erat volutpat. Ut et mi
+    magna. Nunc quis tortor ante. Integer vitae convallis augue. Pellentesque
+    laoreet, dolor eu molestie porttitor, orci diam bibendum quam, non lacinia
+    nisl metus nec sapien.
 
-- Aliquam erat volutpat. Maecenas pellentesque convallis libero, at convallis
-  nibh mollis non. Curabitur pretium ligula eu auctor vestibulum. 
+-   Aliquam erat volutpat. Maecenas pellentesque convallis libero, at convallis
+    nibh mollis non. Curabitur pretium ligula eu auctor vestibulum. 
 ```
 
 Si no hay espacios entre los elementos, se considera todo un párrafo y no se
 añade separación:
 
 ```md
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-- Sed vulputate mauris non interdum posuere. Suspendisse nisl tellus, ultricies
-  nec eleifend id, suscipit in mi.
-- Aliquam feugiat nibh, eu convallis dolor efficitur a.
+-   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+-   Sed vulputate mauris non interdum posuere. Suspendisse nisl tellus, ultricies
+    nec eleifend id, suscipit in mi.
+-   Aliquam feugiat nibh, eu convallis dolor efficitur a.
 ```
 
 Para separar dos listas solamente en un punto en concreto puedes usar un
@@ -121,6 +133,8 @@ tellus, ultricies nec eleifend id, suscipit in mi.
 
 [^1]: https://example.com
 ```
+
+## Código
 
 Hay 3 tipos de formas de representar código en el markdown. Todas ellas usan la
 fuente [Fira Code] con las ligaduras activadas, por lo que `->` se verá como una
@@ -150,7 +164,7 @@ tellus, ultricies nec `eleifend` id, suscipit in mi.
 ```
 
 Y el último tipo es para usar letra monoespaciada directamente, sin que se
-cambie el fondo ni se resalte nada. Simplemente identa el texto con 4 espacios
+cambie el fondo ni se resalte nada. Simplemente indenta el texto con 4 espacios
 (si se añaden más, aparecerán el en resultado):
 
 ```md
@@ -158,13 +172,63 @@ cambie el fondo ni se resalte nada. Simplemente identa el texto con 4 espacios
     Aliquam feugiat nibh ex, eu convallis dolor efficitura.
 ```
 
+# Estilo
+
+> Basado en el [formato de Google]
+
+1.  Ajusta el texto en líneas de 80 caracteres, salvo las siguientes excepciones:
+    - Links
+    - Tablas
+    - Código
+2.  Minimiza el número de errores de ortografía: tildes, letras mayúsculas,
+    puntación, etc.
+3.  Prefiere la sintaxis de Markdown siempre que sea posible. Utiliza solo HTML
+    cuando sea la única forma de representar lo que quieres.
+4.  Para el salto de línea usa `\` en lugar de 2 espacios o `<br>`.
+5.  Define las cabeceras con `#` a usar `====` o `----`.
+6.  Inserta al menos una línea en blanco entre cabecera y texto.
+7.  Usa nombres de links descriptivos y prefiere definirlos todos al final del
+    documento.
+8.  Indenta las listas 4 espacios de la siguiente forma:
+
+    ```md
+    1.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+        ex, eu convallis `dolor` efficitura. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit.
+    2.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+        ex, eu convallis `dolor` efficitura. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit.
+    ```
+
+    Lo mismo para las no ordenadas:
+
+    ```md
+    -   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+        ex, eu convallis `dolor` efficitura. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit.
+    -   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat nibh
+        ex, eu convallis `dolor` efficitura. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit.
+    ```
+
+    La única excepción es cuando **todos** los elementos de la lista ocupan
+    menos de una línea:
+
+    ```md
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    - Aliquam feugiat nibh ex, eu convallis `dolor` efficitura.
+    ```
+
+    De esta forma todo el documento se rige por identaciones de 4 espacios.
+
 
 # Diagramas
 
 Especificando `goat` como resaltado de sintaxis en un bloque de código, puedes
 dibujar diagramas usando ASCII.
 
-```
+~~~md
+```goat
 +-------------------+                           ^                      .---.
 |    A Box          |__.--.__    __.-->         |      .-.             |   |
 |                   |        '--'               v     | * |<---        |   |
@@ -190,6 +254,32 @@ dibujar diagramas usando ASCII.
  |   |           |   Not a dot  |      <---+---<--    A dash--is not a line    v        |
   '-'             '---------+--'          /           Nor/is this.            ---
 ```
+~~~
+
+Sin embargo, la forma preferida de crear diagramas es utilizando [Mermaid]. En
+su página puedes encontrar la [sintaxis de Mermaid] y un [editor visual]. Para
+poder usar esto, la opción `mermaid` debe estar a `true` en el _front matter_ de
+la página.
+
+
+El código del diagrama también se especifica en un bloque de código:
+
+~~~md
+```mermaid
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+```
+~~~
+
 
 # LaTeX
 
@@ -322,47 +412,6 @@ Holis :)
 {{< /dropdown >}}
 ```
 
-## `mermaid`
-
-Crea un diagrama [Mermaid] con el código dado. En su página puedes encontrar la
-[sintaxis de Mermaid] y un [editor visual]. Para poder usar esto, la opción
-`mermaid` debe estar a `true` en el _front matter_.
-
-- color CSS `bg-color`: color de fondo del diagrama
-- Argumento de bloque (obligatorio)
-
-```
-{{< mermaid >}}
-gitGraph
-    commit
-    commit
-    branch develop
-    checkout develop
-    commit
-    commit
-    checkout main
-    merge develop
-    commit
-    commit
-{{< /mermaid >}}
-```
-
-Alternativamente puedes usar un bloque de código:
-
-    ```mermaid
-    gitGraph
-        commit
-        commit
-        branch develop
-        checkout develop
-        commit
-        commit
-        checkout main
-        merge develop
-        commit
-        commit
-    ```
-
 [Fira Code]: https://github.com/tonsky/FiraCode
 [GoAT]: https://github.com/bep/goat
 [Katex]: https://katex.org
@@ -374,3 +423,4 @@ Alternativamente puedes usar un bloque de código:
 [sintaxis de Mermaid]: https://mermaid.js.org/intro/
 [símbolos]: https://katex.org/docs/supported.html
 [Fira Code]: https://github.com/tonsky/FiraCode
+[formato de Google]: https://google.github.io/styleguide/docguide/style.html
