@@ -108,7 +108,6 @@ h1+h2, h2+h3, h3+h4 { margin-top: 0; }
 
 
 /**** General format ****/
-/* TODO: links with code all blue */
 a       { color: var(--link-color); text-decoration: none; }
 a:hover { color: var(--link-hover-color); }
 strong  { color: var(--bold-color); }
@@ -187,9 +186,9 @@ blockquote blockquote,
 .project blockquote,
 .block code:not(pre code),
 .block blockquote,
+.header code,
 .dropdown code:not(pre code),
-.dropdown blockquote,
-#TableOfContents code:not(pre code)
+.dropdown blockquote
 {
     background-color: var(--background-color);
     color: var(--font-color);
@@ -274,7 +273,9 @@ td.header, table.header td:first-child { border-right:  var(--table-header-borde
 }
 
 /* Remove margin of the last paragraph */
-.block .block-content > p:last-child {
+.block .block-content > p:last-child,
+td > p:last-child
+{
     margin-bottom: 0;
 }
 

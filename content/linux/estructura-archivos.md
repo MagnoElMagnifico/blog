@@ -10,6 +10,7 @@ description: >-
 
 [`vmlinuz` y `initramfs`]: {{< ref "so/arranque" >}}
 [sistemas de archivos]: {{< ref "so/archivos" >}}
+[procesos]: {{< ref "so/procesos" >}}
 
 [1]: https://youtu.be/HbgzrKJvDRw
 [2]: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
@@ -674,8 +675,8 @@ Ejemplos de pseudo-dispositivos:
 
 ## `/proc`
 
-`proc` de _procedures_. Contiene información de todos los procesos que se están
-ejecutando en el momento, que principalmente son pseudo-archivos (no son
+`proc` de _procedures_. Contiene **información de todos los [procesos]** que se
+están ejecutando en el momento, que principalmente son pseudo-archivos (no son
 archivos del disco realmente, el kernel los traduce a archivos). Cada uno de
 estos procesos tendrá un sub-directorio con el nombre del identificador del
 proceso (PID):
@@ -684,7 +685,7 @@ proceso (PID):
   Descriptors_) que tiene abiertos).
 - `/proc/PID/maps`: mapa de memoria del proceso.
 
-Paralelamente puedes encontrar información sobre propio sistema:
+Paralelamente puedes encontrar **información sobre propio sistema**:
 
 - `/proc/cpuinfo`: información sobre la CPU.
 - `/proc/meminfo`: información del uso de la memoria principal.
