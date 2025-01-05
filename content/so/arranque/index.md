@@ -8,33 +8,105 @@ weight: 2
 math: true
 ---
 
+{{< todo >}}
+# Pendiente
+-   `initramfs` (_initial RAM file system_): carga un pequeño disco virtual
+    simplificado y carga un programa de inicio simplificado.
+-   Definición del disco de arranque
+-   Cargador vs Boot loader vs Boot Manager \
+    Carga el gestor de arranque, el más usado es GRUB2 (_Grand Unified Bootloader_)
+    - GRUB mostrará diferentes opciones en la pantalla dependiendo de su configuración
+    - Cargará el kernel a partir de una imagen de la memoria inicial.
+
+{{< dropdown "Programa de arranque y Gestor de arranque" >}}
+Un **programa de arranque** (_boot loader_) es aquel que carga en memoria
+principal el kernel del Sistema Operativo, mientras que el **gestor de
+arranque** (_boot manager_) presenta un menú con opciones de arranque u otras
+alternativas para controlar el proceso.
+
+GRUB2, el más popular utilizado junto con Linux es simultáneamente un boot
+loader y boot manager, por lo que algunas veces los términos se usan de forma
+indistintiva.
+{{< /dropdown >}}
+
+[TODO]: http://www.rodsbooks.com/efi-bootloaders/principles.html
+
+[TODO]: https://en.wikipedia.org/wiki/UEFI
+[TODO]: https://en.wikipedia.org/wiki/EFI_system_partition
+
+[TODO]: https://en.wikipedia.org/wiki/Windows_Boot_Manager
+[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Windows
+[TODO]: https://en.wikipedia.org/wiki/GNU_GRUB
+[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Linux
+[TODO]: https://wiki.archlinux.org/title/Arch_boot_process
+
+[TODO]: https://learn.microsoft.com/es-es/windows-hardware/manufacture/desktop/configure-uefigpt-based-hard-drive-partitions?view=windows-11
+[TODO]: https://cifpn1.com/tic/?p=1407
+{{< /todo >}}
+
 # Arranque del sistema
 
 {{<
-  figure
-  src="arranque-sistema.png"
-  alt="Figura de arranque del sistema"
+    figure
+    src="arranque-sistema.png"
+    alt="Figura de arranque del sistema"
 >}}
 
-1. Se inicia el reloj del sistema.
+1.  Se inicia el reloj del sistema.
 
-2. Como hay que estar ejecutando instrucciones continuamente, incluso desde el
-   primer tick de reloj, se debe cargar una instrucción de memoria y actualizar
-   el contador del programa.
+2.  Como hay que estar ejecutando instrucciones continuamente, incluso desde el
+    primer tick de reloj, se debe cargar una instrucción de memoria y actualizar
+    el contador del programa.
 
-3. Se lee de una memoria ROM que contiene el programa de arranque escrito desde
-   fábrica, normalmente llamado [POST] (_Power-On Self-Test_). Este programa
-   consta de chequeos e inicializaciones para verificar que todo funciona
-   correctamente.
+3.  Se lee de una memoria ROM que contiene el programa de arranque escrito desde
+    fábrica, normalmente llamado [POST] (_Power-On Self-Test_). Este programa
+    consta de chequeos del hardware (ver la memoria instalada, discos conectados...)
+    e inicializaciones para verificar que todo funciona correctamente.
 
-5. Finalmente, se carga el **programa de arranque** o _boot loader_ en la RAM
-   desde el disco duro y se ejecutan sus instrucciones.
+5.  Ya con los discos operativos, POST finalmente carga el **gestor de
+    arranque** en la RAM. Esto se hace desde el **disco de arranque** configurado
+    y se ejecutan sus instrucciones.
 
-6. Este programa de arranque es el encargado de llamar al cargador, que copia el
-   código del kernel del Sistema Operativo a memoria principal.
+6.  Este programa es el encargado de copiar el código del kernel del Sistema
+    Operativo a memoria principal y empezar a ejecutarlo. Antes de eso, algunos
+    gestores de arranque como [GRUB2] muestran un menú con diferentes opciones,
+    como seleccionar entre los varios SO instalados.
 
-7. Una vez hecho eso, será el kernel quien se encargue de todo. Mientras el
-   ordenador siga encendido, el kernel seguirá en memoria.
+7.  Ahora el kernel debe continuar: montará los sistemas de archivos raíz
+    ejecutando el [proceso inicial]. Por su complejidad, esto se suele realizar
+    en dos pasos:
+
+    1. `initramfs`. En la primera fase se carga en memoria principal el fichero
+        de imagen de un pequeño disco virtual que contiene una **<<partición
+        raíz>> virtual** y un **programa `init`**. De ahí proviene su nombre, _init
+        RAM file system_.
+
+        Este contiene el mínimo requerido por el kernel para cargar el verdadero
+        sistema de archivos raíz del disco.
+
+    2.  `init`. En la segunda fase, `initramfs` cede el control al [proceso
+        inicial], el proceso de arranque estándar.
+
+        A grandes rasgos, este incluye **módulos de controladores** (drivers)
+        desdes del disco duro sin los que el sistema no puede arrancar. Estos
+        normalmente son scripts de inicialización, montaje de RAIDs, inicio de
+        particiones cifradas, montaje de LVM, ...
+
+Con esto, el sistema queda arrancado. Mientras el ordenador siga encendido, este
+**estará siempre en memoria**.
+
+{{< block "`vmlinuz`" >}}
+`vmlinuz` es un ejecutable que contiene el kernel de Linux. Para poder usarlo
+como sistema operativo se le debe añadir una [cabecera especial], [sector boot]
+y otras rutinas de _setup_.
+
+Más información:
+[wikipedia](https://en.wikipedia.org/wiki/Vmlinux),
+[archwiki](https://wiki.archlinux.org/title/Kernel)
+
+[cabecera especial]: https://en.wikipedia.org/wiki/Multiboot_Specification
+[sector boot]: https://en.wikipedia.org/wiki/Bootsector
+{{< /block >}}
 
 ## BIOS
 
@@ -42,6 +114,7 @@ math: true
     figure
     src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Legacy_BIOS_boot_process.png"
     href="https://en.wikipedia.org/wiki/BIOS"
+    link="https://en.wikipedia.org/wiki/BIOS"
     alt="Figura del proceso de encendido con BIOS"
     caption="Proceso de encendido con BIOS (Wikipedia)"
 >}}
@@ -50,8 +123,14 @@ En sistemas compatibles con los [IBM PC]s, la BIOS (_Basic Input/Output System_)
 se trata del [firmware] encargado de ejecutar [POST]. Su función principal
 actualmente es **inicializar el hardware**, probar los componentes (POST)
 y **cargar el programa de arranque**, el encargado de ejecutar el kernel.
-Para más detalles de cómo carga este programa, puede consultar el artículo sobre
-[archivos].
+Para más detalles de cómo la BIOS encuentra este programa, consulte el artículo
+sobre [archivos].
+
+En el menú de la BIOS, accesible durante el arranque presionando alguna
+combinación de teclas (depende de la marca y modelo), se pueden fijar algunas
+opciones. Entre ellas, se puede especificar el medio del que leer el [MBR].
+También es posible configurarla para que se lea de la red, lo que hace posible
+utilizar ordenadores sin disco duro de arranque por red.
 
 Fue desarrollado por IBM para los [IBM PC]s, y alguna compañías hicieron
 ingeniería inversa con el fin de crear sistemas compatibles. La interfaz
@@ -62,7 +141,6 @@ Con el fin de poder actualizar el [firmware], ahora se suelen utilizar
 **memorias flash**. Nótese que estas actualizaciones son cruciales, dado que si
 falla dejando la memoria corrupta, no se podrá encender el sistema ([brick]). La
 configuración se guarda en una memoria no volátil (CMOS).
-
 
 A mayores, la BIOS dispone procedimientos (BIOS system calls) para leer el
 teclado, escribir en la pantalla (texto o gráficos) y realizar operaciones
@@ -130,17 +208,6 @@ Estos directorios contienen un **archivo de arranque EFI** de extensión `.efi`,
 otros archivos de configuración relevantes, kernels de Linux, [archivos de RAM
 iniciales]... Depende de cada programa.
 
-{{< dropdown "Programa de arranque y Gestor de arranque" >}}
-Un **programa de arranque** (_boot loader_) es aquel que carga en memoria
-principal el kernel del Sistema Operativo, mientras que el **gestor de
-arranque** (_boot manager_) presenta un menú con opciones de arranque u otras
-alternativas para controlar el proceso.
-
-GRUB2, el más popular utilizado junto con Linux es simultáneamente un boot
-loader y boot manager, por lo que algunas veces los términos se usan de forma
-indistintiva.
-{{< /dropdown >}}
-
 A la hora de arrancar, EFI ejecuta el gestor de arranque y almacena en memoria
 principal una lista ordenada de los boot loaders a utilizar. Los va probando en
 orden iterativamente hasta que uno no regrese/`return` (los anteriores pudieron
@@ -160,16 +227,6 @@ Además de todo esto, los sistemas EFI modernos incluyen un **BIOS Compatibility
 Mode** (CSM) que les permite arrancar usando la BIOS como se ha descrito
 anteriormente. Esto tiene el potencial de añadir muchas complicaciones, así que
 no se recomienda activar.
-
-[TODO]: http://www.rodsbooks.com/efi-bootloaders/principles.html
-
-[TODO]: https://en.wikipedia.org/wiki/UEFI
-[TODO]: https://en.wikipedia.org/wiki/EFI_system_partition
-
-[TODO]: https://en.wikipedia.org/wiki/Windows_Boot_Manager
-[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Windows
-[TODO]: https://en.wikipedia.org/wiki/GNU_GRUB
-[TODO]: https://en.wikipedia.org/wiki/Booting_process_of_Linux
 
 # Proceso Hardware
 
@@ -227,10 +284,59 @@ Resumiendo:
 
 Este es el funcionamiento normal del Sistema Operativo.
 
-[POST]:     https://en.wikipedia.org/wiki/Power-on_self-test
-[IBM PC]:   https://en.wikipedia.org/wiki/IBM_Personal_Computer
-[firmware]: https://en.wikipedia.org/wiki/Firmware
-[brick]:    https://en.wikipedia.org/wiki/Brick_(electronics)
+<!-- TODO: mover a servicios -->
+# `systemd`
+
+[`systemd`] es el sistema de inicio más utilizado en las distribuciones de Linux.
+Actúa a modo del proceso `init`.
+
+-   Se encarga de ejecutar los procesos encargados de la creación del sistema:
+    teclado, controladores, sistemas de ficheros, red, servicios, etc. \
+    {{< arrow >}} Ofrece una visión global del sistema, tanto software como
+    hardware.
+
+-   Muchos de estos procesos ofrecen servicios:
+
+    - Networking ([NetworkManager])
+    - Sistema de impresión ([CUPS])
+    - [SSH]
+    - Gestores gráficos: entorno de escritorio (_Desktop Manager_) o gestor de ventanas (_Window Environment_).
+    - Gestor de Volúmenes Lógicos (LVM)
+    - ...
+
+    El arranque de estos servicios se realiza en paralelo para que sea más
+    rápido.
+
+Proporciona varias utilidades para que los administradores controlen los
+servicios.
+
+    systemctl status   Muestra el estado del servicio
+    systemctl start    Inicia el servicio
+    systemctl stop     Detiene el servicio
+    systemctl restart  Reinicia el servicio
+    systemctl enable   Configura el servicio para que se ejecute al inicio
+    systemctl disable  El servicio no se iniciará durante el arranque
+
+Además, distingue varios _targets_. Estos son grupos de servicios que se pueden
+arrancar todos conjuntamente, para así personalizar cuáles se inician
+dependiendo de lo que quiera hacer el administrador.
+
+-   Rescate (`rescue.target`): conjunto de servicios mínimos necesarios para
+    reparar el sistema.
+-   Emergencia (`emergency.target`): abre un único shell monousuario en modo
+    administrador
+-   Multiusuario (`multi-user.target`): multiusuario no gráfico
+-   Gráfico (`graphical.target`)
+
+
+[POST]:           https://en.wikipedia.org/wiki/Power-on_self-test
+[IBM PC]:         https://en.wikipedia.org/wiki/IBM_Personal_Computer
+[firmware]:       https://en.wikipedia.org/wiki/Firmware
+[brick]:          https://en.wikipedia.org/wiki/Brick_(electronics)
+[GRUB2]:          https://en.wikipedia.org/wiki/GNU_GRUB
+[NetworkManager]: https://wiki.archlinux.org/title/NetworkManager
+[CUPS]:           https://wiki.archlinux.org/title/CUPS
+[SSH]:            https://wiki.archlinux.org/title/OpenSSH
 
 [página de Rod Smith]:       http://www.rodsbooks.com
 [lista]:                     http://www.rodsbooks.com/efi-bootloaders/index.html
@@ -239,5 +345,9 @@ Este es el funcionamiento normal del Sistema Operativo.
 [Wikipedia GPT]:             https://en.wikipedia.org/wiki/GUID_Partition_Table
 [archivos de RAM iniciales]: https://en.wikipedia.org/wiki/Initial_ramdisk
 [bootmgr]:                   https://en.wikipedia.org/wiki/Windows_Boot_Manager
+[`systemd`]:                 https://es.wikipedia.org/wiki/Systemd
 
-[archivos]: {{< relref "archivos#partición" >}}
+[archivos]:        {{< ref "so/archivos#partición" >}}
+[proceso]:         {{< ref "so/procesos" >}}
+[proceso inicial]: {{< ref "so/procesos/#block-proceso-inicial" >}}
+[MBR]:             {{< ref "so/archivos/#block-master-boot-record" >}}

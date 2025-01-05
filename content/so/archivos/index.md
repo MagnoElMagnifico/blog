@@ -616,82 +616,139 @@ bloque físico.
 - En sistemas Unix modernos, un disco lógico puede estar formado por varios
   discos físicos, lo que da soporte a sistemas de archivos grandes.
 - En lugar de contener sistemas de archivos, un disco lógico puede contener un
-  **área de intercambio** para el almacenamiento temporal de páginas de
+  [área de intercambio] para el almacenamiento temporal de páginas de
   procesos.
 
 <!-- - La jerarquía de archivos puede tener varios subárboles independientes, y cada
   uno puede contener a su vez su propio sistema de archivos. -->
+
+[área de intercambio]: {{< ref "so/memoria/#zona-de-intercambio" >}}
 {{< /block >}}
+
+Ejemplos de discos lógicos:
+
+-   En un sistema operativo como Windows, una partición funciona como un disco
+    lógico.
+-   Volumen Lógico en [Logical Volume Management]
+-   Disco lógico de un sistema operativo virtualizado: los discos que utiliza
+    una máquina virtual y que se almacenan como archivos, también cumplen esta
+    definición.
+
+| Disco físico                                         | Disco lógico                                                                     |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Corresponde al hardware real (HDD, SSD).             | Es una representación abstracta del almacenamiento.                              |
+| Está limitado por el número de discos instalados.    | Puede crearse mediante particiones, LVM, RAID o virtualización.                  |
+| Identificado como `/dev/sda`, `/dev/sdb` en Linux.   | Identificado como `/dev/sda1,` `/dev/mapper/volumen`, o letras de unidad (`C:`). |
+| Gestionado por el firmware y el sistema operativo.   | Gestionado por software de partición, RAID o LVM.                                |
 
 ## Partición
 
-{{< block "Partición" "var(--magno-blue)" >}}
-Un disco físico se divide en **particiones físicas contiguas**, cada una
-asociada a un disco lógico. Estas son divisiones independientes del disco y es
-responsabilidad del administrador del sistema decidir qué contiene cada una.
-
-Cada partición se comporta como un disco lógico; y como consecuencia, es posible
-la coexistencia varios SO en el mismo ordenador: una partición para cada uno
-(_dual boot_).
-{{< /block >}}
-
-Dentro de estas particiones se almacenan los **sistemas de archivos**. Estas
-pueden tener diversos formatos, lo que implica una organización diferente dentro
-la misma.
-
-- `fdisk`: esta herramienta permite manipular particiones.
-- `mkfs`: permite crear un sistema de archivos dentro de una partición.
-
-{{< keyvalue title="Tipos de particiones" >}}
--% Partición primaria :%
-Contiene un sistema de archivos. Este se puede identificar por su ID en la tabla
-de particiones.
-
--% Partición extendida :%
-Un disco duro puede contener una única partición extendida, pero esta se puede
-subdividir en varias particiones lógicas.
-
--% Partición de arranque (_boot partition_) :%
-Es una partición primaria que contiene el programa de arranque. Por ejemplo, en
-Linux, sus archivos (kernel, initrd y GRUB) se montan en `/boot`.
-
-- **BIOS Boot Partition** (BIOS BP): 
-- **EFI System Partition**: igual que la anterior, pero se carga por el firmware EFI.
-
--% Partición del sistema :%
-Partición primaria que contiene la carpeta del Sistema Operativo (_system
-root_). En Linux se monta sobre `/`.
-{{< /keyvalue >}}
-
-Nótese que según la definición de Microsoft, la partición del sistema es la que
-contiene el programa de arranque y la partición de arranque es la que contiene
-el SO. Puede consultar todos los [IDs de las particiones].
+{{< block "Particionado" "var(--magno-blue)" >}}
+El proceso de **particionado** consiste en la **creación de regiones** dentro de
+un disco. Estas son divisiones independientes del disco, que permite poder
+manejar las particiones por separado. Es responsabilidad del administrador del
+sistema decidir qué contiene cada una.
 
 La información sobre las particiones se almacena en la **tabla de particiones**,
 que el Sistema Operativo lee antes que cualquier otra parte del disco. Existen
 varias implementaciones dependiendo del sistema:
 
-- Master Boot Record (MRB)
-- GUID Partition Table (GPT). Parte del estándar de UEFI.
+- Master Boot Record (MRB). Utilizados por sistemas [BIOS].
+- GUID Partition Table (GPT). Parte del estándar de [UEFI].
 - Apple Partition Map (APM)
+
+[BIOS]: {{< ref "so/arranque/#bios" >}}
+[UEFI]: {{< ref "so/arranque/#uefi" >}}
+{{< /block >}}
+
+Algunos tipos de particiones pueden ser:
+
+-   **Partición de arranque** (_boot partition_): Es una partición primaria que
+    contiene el programa de arranque. Por ejemplo, en Linux, sus archivos (kernel,
+    initrd y GRUB) se montan en `/boot` (_BIOS Boot Partition_ o BIOS BP, y _EFI
+    System Partition_).
+
+-   **Partición del sistema**: contiene un [sistema de
+    archivos](#sistemas-de-archivos) con la carpeta del Sistema Operativo (_system
+    root_). En Linux se monta sobre `/`.
+
+-   **Partición de intercambio** o **swap**: Sirve de zona de almacenamiento
+    temporal para almacenar páginas de los procesos cuando no quede suficiente RAM.
+    Para más información, ver [zona de intercambio].
+
+Como cada **partición se comporta como un disco lógico**, esto permite la
+coexistencia varios SO en el mismo ordenador: una partición para cada uno (_dual
+boot_).
+
+{{< block "Tabla de particiones" "var(--magno-blue)" >}}
+La tabla de particiones es una estructura de datos **proporciona las direcciones
+de inicio y fin de cada partición**.
+{{< /block >}}
+
+La herramienta `fdisk` (entre muchas
+[otras herramientas])
+permite manipular la tabla de particiones para crear, extender y eliminar
+particiones.
+
+Más información en la [archwiki](https://wiki.archlinux.org/title/Partitioning).
+
+### Master Boot Record
+
+En los sistemas [BIOS], el primer bloque del disco (512 bytes) se conoce como el
+_**Master Boot Record**_ (MBR), fuera de cualquier tipo de partición.
+
+Contiene el **código del _bootloader_** del sistema operativo (440 bytes) y la
+**tabla de particiones** (al final del bloque). Una de ellas está marcada como
+**activa** para arrancar desde ahí.
+
+Debido a esta organización, el MBR limita el tamaño máximo del disco
+particionado a 2 TiB ($2^{32} \times 512$).
+
+Con el fin de superar esta limitación, se realizó una transición a _GUID
+Partitions Table_ (GPT).
+
+{{< keyvalue title="Tipos de particiones" key-header=true >}}
+-% Partición primaria :%
+Contiene un sistema de archivos, que se puede identificar por su ID en la tabla
+de particiones. Solo se pueden tener hasta 4 de estas particiones, que en Linux
+se nombran como `/dev/sda1`, `/dev/sda2`, `/dev/sda3` y `/dev/sda4`.
+
+-% Partición extendida <br> Partición secundaria :%
+Se trata de un **contenedor de particiones secundarias**. Un disco duro solo
+contener una **única** partición extendida, en cuyo caso solo puede haber
+
+-% Partición lógica :%
+Solo se pueden situar dentro de una partición extendida, pero puede tener un
+número ilimitado de ellas. En Linux se nombran de `/dev/sda5` para adelante.
+{{< /keyvalue >}}
+
+{{< block "Partición Extendida" "var(--magno-blue)" >}}
+Las **particiones extendidas** o **particiones secundarias** son contenedores
+para particiones lógicas.
+{{< /block >}}
+
+Puede consultar todos los [IDs de las particiones].
+
+Para llevar la cuenta de las particiones lógicas, dado que no están la tabla,
+cada una lógica tiene un **[EBR o EPBR]** (Extended Partition Boot Record) que
+ocupa su primer sector. Esta describe dos elementos:
+
+- Ubicación y tamaño
+- Puntero al siguiente EBR
+
+Este mecanismo tiene las siguientes limitaciones:
+
+-   **Eficiencia**: recorrer una lista enlazada para encontrar una partición
+    determinada.
+-   **Complejidad**: más difícil de gestionar que una tabla centralizada.
+
+Windows requiere estar instalado en una partición primaria (no lógica)
+si intentas hacer _dual boot_.
 
 <!-- TODO: figura 4-9 página 274 -->
 
-{{< block "Master Boot Record" "var(--magno-blue)" >}}
-El sector 0 del disco se conoce como el _**Master Boot Record**_ (MBR).
-
-### Tabla de particiones
-
-Al final de este sector, se almacena una **tabla de particiones** que
-proporciona las direcciones de inicio y fin de cada partición. Una de ellas
-está marcada como **activa**.
-
-Debido a la organización de la tabla de particiones, el MBR limita el tamaño
-máximo del disco particionado a 2 TiB ($2^{32} \times 512$). Con el fin de
-superar esta limitación, se realizó una transición a _GUID Partitions Table_
-(GPT).
-
-### Volume Boot Record
+{{< todo >}}
+Volume Boot Record
 
 La BIOS accede al MBR y ejecuta unas instrucciones que almacena. Estas tienen
 como objetivo localizar la partición activa y leer su primer bloque: el **bloque
@@ -703,7 +760,7 @@ y se podrán crear programas de arranque personalizados para cada sistema. Nóte
 que toda partición inicia con un bloque de arranque, aunque no contenga ningún
 Sistema Operativo.
 
-### Superbloque
+Superbloque
 
 Contiene todos los parámetros clave acerca del sistema de archivos:
 
@@ -716,17 +773,41 @@ Y a continuación de este pueden aparecer:
 - Información sobre los bloques libres
 - Lista de inodos
 - Directorio raíz y el resto de archivos
-
-### Fuentes
+<!---->
 - [Master Boot Record](https://en.wikipedia.org/wiki/Master_boot_record), Wikipedia (04-02-2024 21:00)
 - [Volume Boot Record](https://en.wikipedia.org/wiki/Volume_boot_record), Wikipedia (04-02-2024 23:00)
 - [Bootloader](https://en.wikipedia.org/wiki/Bootloader), Wikipedia (04-02-2024 23:00)
 - [System Partition](https://en.wikipedia.org/wiki/System_partition_and_boot_partition), Wikipedia (04-02-2024 21:30)
-{{< /block >}}
+{{< /todo >}}
 
-{{< block "GUID Partition Table" "var(--magno-blue)" >}}
-{{< /block >}}
+### GUID Partition Table
 
+El **GPT** (_GUI Partition Table_) es el nuevo estándar que sustituye a MBR. Es
+más fiable y está asociado a sistemas UEFI.
+
+Se almacena en una partición con un tamaño de unos 256-512 MB, pero también crea
+múltiples copias redundantes a través de todo el disco. También tiene al inicio
+un _Protective Master Boot Record_ (PMBR) con el propósito de proteger el disco
+contra sistemas que no soporten GPT y ser retrocompatible.
+
+Es posible utilizarlo en discos mayores de 2 TiB.
+
+Con UEFI se pueden crear hasta 128 particiones primarias (límite impuesto por
+los sistemas Windows). A cada una de ellas se le asocia un identificador global
+único (GUID o UUID).
+
+Nótese que las particiones extendidas pueden existir en GTP, pero no se usan
+porque no tienen mucho sentido.
+
+| Característica         | GPT (UEFI)                                                       | LVM                                                                   |
+| ---------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Propósito              | Estructura de particiones físicas                                | Gestión avanzada de almacenamiento lógico                             |
+| Flexibilidad           | Estática: no se puede redimensionar sin herramientas adicionales | Dinámica: volúmenes redimensionables fácilmente                       |
+| Compatibilidad         | Directamente compatible con el sistema operativo                 | Necesita soporte en el sistema operativo y configuración manual       |
+| Redundancia/Integridad | GPT incluye redundancia y CRC para la tabla de particiones       | Depende del sistema RAID o la configuración subyacente                |
+| Número de discos       | Diseñado para un solo disco físico                               | Diseñado para múltiples discos físicos o particiones                  |
+| Escalabilidad          | Limitada al número de particiones definidas                      | Muy escalable; soporta agrupación y redimensionamiento en tiempo real |
+{.header}
 
 ## Implementación de archivos
 
@@ -792,6 +873,26 @@ archivo a la información necesaria para localizar los datos. Muchos sistemas
 también almacenan en la entrada de directorio de un archivo sus atributos.
 
 <!-- TODO: expandir más -->
+
+## Sistemas de archivos
+
+Dentro de las particiones creadas es posible almacenar **sistemas de archivos**.
+Estas pueden tener diversos formatos, lo que implica una organización diferente
+dentro la misma.
+
+- `mkfs`: permite crear un sistema de archivos dentro de una partición.
+
+{{< block "Volumen" "var(--magno-blue)" >}}
+Cualquier dispositivo de bloque (pseudo-archivo:
+[disco](#disco-físico-y-lógico),
+[partición](#partición),
+LUKS,
+[volumen LVM]({{< ref "so/linux/instalacion/#logical-volume-management" >}}),
+RAID)
+que contiene un sistema de archivos que se pueden montar se le llama **volumen**.
+{{< /block >}}
+
+<!-- TODO: traer formatos de sistemas de archivos de so/linux/instalacion aquí -->
 
 ## Montaje de sistemas de archivos
 
@@ -921,11 +1022,16 @@ $\implies n_b = 500 \times 10^{9} / 2^{10} = 488\,281\\,250$ bloques.
 - **Mapa de bits**: $n_b$ bloques $\implies n_b$ bits
   $\implies \lceil (n_b / 8) / 2^{10} \rceil = 59\\,605$ bloques, 0.0122%
 
-[administración de memoria libre]:  {{< relref "memoria#administración-de-memoria-libre" >}}
-[espacio de direcciones virtuales]: {{< relref "memoria#espacio-de-direcciones" >}}
-[introducción]:                     {{< relref "introduccion#entradasalida" >}}
-[nociones de hardware]:             {{< relref "introduccion#disco-duro" >}}
-[procesos]:                         {{< relref "procesos#block-definición" >}}
-[tamaño del bloque]:                {{< relref "#block-bloque-de-disco" >}}
 [ArchWiki]:               https://wiki.archlinux.org/title/File_permissions_and_attributes_(Espa%C3%B1ol)
+[otras herramientas]:     https://wiki.archlinux.org/title/Partitioning#Partitioning_tools
 [IDs de las particiones]: https://en.wikipedia.org/wiki/Partition_type
+[EBR o EPBR]:             https://en.wikipedia.org/wiki/Extended_boot_record
+[tamaño del bloque]:      #block-bloque-de-disco
+[administración de memoria libre]:  {{< ref "so/memoria/#administración-de-memoria-libre" >}}
+[espacio de direcciones virtuales]: {{< ref "so/memoria/#espacio-de-direcciones" >}}
+[introducción]:                     {{< ref "so/introduccion/#entradasalida" >}}
+[nociones de hardware]:             {{< ref "so/introduccion/#disco-duro" >}}
+[procesos]:                         {{< ref "so/procesos/#block-definición" >}}
+[Logical Volume Management]:        {{< ref "so/linux/instalacion/#logical-volume-management" >}}
+[BIOS]:                             {{< ref "so/arranque/#bios" >}}
+[zona de intercambio]:              {{< ref "so/memoria/#zona-de-intercambio" >}}

@@ -837,6 +837,44 @@ promedio, solo habrá 1 nodo por entrada, por lo que se acelera considerablement
 la búsqueda. Aun así, hay que tener en cuenta que las colisiones de la tabla
 hash requieren más accesos a memoria.
 
+## Zona de intercambio
+
+Sin embargo, el Sistema Operativo debe llevar la cuenta de una buena cantidad de
+páginas de cada uno de los numerosos procesos activos. Además, debe almacenar
+también en memoria su tabla de páginas, tabla de procesos y otras estructuras
+que necesite.
+
+En conclusión, es imposible que todo eso quepa en memoria principal (o por lo
+menos para los primeros sistemas).
+
+Con la finalidad de solucionar este problema, se ideó la **zona de intercambio**
+o ***swap***.
+
+{{< block "Zona de intercambio" >}}
+Zona de almacenamiento **temporal** en el **disco duro** que se utiliza
+almacenar páginas de los procesos cuando no quede suficiente RAM.
+
+Básicamente utiliza el disco como memoria virtual.
+{{< /block >}}
+
+Esto se puede implementar mediante la creación de **archivos temporales**,
+o mediante una **partición** creada únicamente para este propósito: **la
+partición swap**. Ambas opciones tienen el mismo rendimiento, pero los archivos
+se pueden cambiar de tamaño más fácilmente, mientras que las particiones las
+pueden usar varios SO (siempre que uno no hiberne).
+
+Bueno, siendo honestos, hoy en día de hecho sí que es posible operar sin zona de
+intercambio, dado que los sistemas modernos disponen de mucha memoria y es
+barata.
+
+Sin embargo, conviene recordar que este modelo de memoria permite espacios de
+direcciones absurdamente grandes (sobre todo en sistemas de 64 bits), tantos
+como se puedan representar en una dirección virtual. Eso es potencialmente mucha
+memoria, y la zona de intercambio es un mecanismo adicional que los sistemas
+operativos de propósito general utilizan para dar un mejor soporte.
+
+Más información: [archwiki](https://wiki.archlinux.org/title/Swap)
+
 # Algoritmos de reemplazo de páginas
 
 Los algoritmos de reemplazo de páginas se ejecutan cuando se produce un [fallo
