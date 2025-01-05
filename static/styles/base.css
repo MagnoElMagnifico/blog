@@ -108,6 +108,7 @@ h1+h2, h2+h3, h3+h4 { margin-top: 0; }
 
 
 /**** General format ****/
+/* TODO: links with code all blue */
 a       { color: var(--link-color); text-decoration: none; }
 a:hover { color: var(--link-hover-color); }
 strong  { color: var(--bold-color); }
@@ -126,7 +127,13 @@ p, li, .block-content {
 
 p { margin: var(--p-separation); }
 li p { margin: 1rem 0 0 0; }
-li::marker { color: var(--magno-green); }
+li::marker {
+    color: var(--magno-green);
+    font-family: var(--code-font);
+}
+ul li::marker {
+    content: '* ';
+}
 
 hr {
     width: 80%;
@@ -183,7 +190,10 @@ blockquote blockquote,
 .dropdown code:not(pre code),
 .dropdown blockquote,
 #TableOfContents code:not(pre code)
-{ background-color: var(--background-color) !important; }
+{
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
 
 
 /**** Images ****/
@@ -221,16 +231,20 @@ table {
 
 table.fill { width: 100%; }
 
-th, td.header {
+/* Table cell */
+th, td {
+    padding: var(--block-padding);
+    background-color: var(--table-color-2);
+}
+
+/* Table headers */
+th, td.header, table.header td:first-child {
     background-color: var(--table-header);
     text-align: center;
 }
 
-th, td { padding: var(--block-padding); }
-tr { background-color: var(--table-color-2); }
-
-th        { border-bottom: var(--table-header-border); }
-td.header { border-right:  var(--table-header-border); }
+th                                     { border-bottom: var(--table-header-border); }
+td.header, table.header td:first-child { border-right:  var(--table-header-border); }
 
 
 /**** Blocks ****/
@@ -255,7 +269,13 @@ td.header { border-right:  var(--table-header-border); }
 
 .block .block-content {
     grid-row-start: 2;
+    align-content: center;
     padding: var(--block-padding);
+}
+
+/* Remove margin of the last paragraph */
+.block .block-content > p:last-child {
+    margin-bottom: 0;
 }
 
 /* Put side by side in Desktop  */
@@ -394,6 +414,10 @@ td.header { border-right:  var(--table-header-border); }
     margin: var(--p-separation);
     padding: var(--block-padding);
     word-wrap: break-word;
+}
+
+#TableOfContents li::marker {
+    content: counters(list-item, '.') ': ';
 }
 
 
