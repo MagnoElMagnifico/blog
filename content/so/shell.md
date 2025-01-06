@@ -370,6 +370,18 @@ una_variable = hola
                         `man bc`.
 {{< /keyvalue >}}
 
+{{< dropdown "Variables del entorno predefinidas" >}}
+- `HOME`: directorio base del usuario actual
+- `SHELL`: shell por defecto
+- `USER`: nombre de login del usuario actual
+- `PWD`: directorio de trabajo actual
+- `PATH`: lista de rutas donde buscar ejecutables
+- `LD_LIBRARY_PATH`: lista de rutas donde buscar librerías dinámicas
+- `MANPATH`: lista de rutas donde buscar documentación del manual
+- `LANG`: aspectos de localización geográfica e idioma
+- `PS1` y `PS2`: promtps
+{{< /dropdown >}}
+
 ## Redirecciones
 
 Recuerde que cada proceso tiene asociados 3 archivos especiales para su

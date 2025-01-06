@@ -1,6 +1,6 @@
 ---
 title: Tipos de archivos
-weight: 1
+weight: -1
 description: TODO
 date: TODO
 draft: true

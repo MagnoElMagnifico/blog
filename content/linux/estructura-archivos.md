@@ -1,6 +1,6 @@
 ---
 title: Estructura de directorios
-weight: 1
+weight: 2
 date: 2023-06-13
 description: >-
     La estructura de archivos de Linux es bastante diferente a la de Windows,
@@ -683,13 +683,27 @@ proceso (PID):
 
 - `/proc/PID/fd/*`: directorio con los descriptores de archivos (_File
   Descriptors_) que tiene abiertos).
+- `/proc/PID/cwd`: enlace al directorio de trabajo del proceso.
+- `/proc/PID/exe`: enlace al ejecutable del proceso.
+- `/proc/PID/cmdline`: línea de comandos con la que se invocó el proceso.
+- `/proc/PID/environ`: variables del entorno.
 - `/proc/PID/maps`: mapa de memoria del proceso.
+- `/proc/PID/status`: estado del proceso.
 
 Paralelamente puedes encontrar **información sobre propio sistema**:
 
 - `/proc/cpuinfo`: información sobre la CPU.
 - `/proc/meminfo`: información del uso de la memoria principal.
+- `/proc/interrupts`: interrupciones usadas por IRQ.
+- `/proc/ioports`: lista puertos de entrada/salida del sistema.
+- `/proc/filesystems`: lista de sistemas de archivos soportados.
+- `/proc/partitions`: información sobre las particiones
 - `/proc/uptime`
+
+Directorios con más información:
+
+- `/proc/net/*`
+- `/proc/bus/*`
 
 ## `/sys`
 

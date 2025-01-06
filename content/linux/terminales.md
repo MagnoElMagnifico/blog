@@ -1,6 +1,6 @@
 ---
 title: Shell, Bash y Bashrc
-weight: 1
+weight: -1
 date: 2022-08-31
 description: >-
     Guia breve sobre Bash, diferencias con Shell, terminal, consola y prompt.

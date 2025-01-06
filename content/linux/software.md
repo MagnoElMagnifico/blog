@@ -4,7 +4,7 @@ description: >
     Post sobre las diferentes formas de instalación de Software en Linux,
     incluyendo gestores de paquetes y la compilación desde el código fuente.
 date: 2025-01-04T20:11:28+01:00
-weight: 3
+weight: 4
 draft: true
 ---
 
@@ -234,7 +234,7 @@ make install
 -   Dinámicamente enlazados: necesitan de librerías instaladas en el sistema.
 
 El comando `file` indica si un ejecutable fue enlazados dinámicamente
-o estáticamente.
+o estáticamente. `gcc` por defecto utiliza enlazado dinámico.
 
 {{< keyvalue title="Uso de librerías dinámicas" key-header=true >}}
 -% Ventajas :%

@@ -1,6 +1,6 @@
 ---
 title: Archivos de link
-weight: 2
+weight: -1
 description: >
     Los archivos link en Linux son muy útiles e interesantes: puedes tener el
     mismo archivo en distintas direcciones.

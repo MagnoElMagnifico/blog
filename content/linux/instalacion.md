@@ -5,7 +5,7 @@ description: >
     y cómo obtener información del hardware para comprobar que la instalación
     fue correcta.
 date: 2024-12-31T20:00:23+01:00
-weight: 2
+weight: 1
 draft: true
 ---
 
@@ -227,6 +227,81 @@ también los soporta.
 Usado por Windows en entornos empresariales. No soportado por Linux.
 {{< /block >}}
 
+## Herramientas
+
+-   `fdisk`: permite crear y modificar particiones con unos menús interactivos.
+    Con la opción `-l` lista las particiones.
+-   `mkfs` (_Make File System_): crear los sistemas de archivos
+    - `mkfs.ext4 /dev/sda4`: formatea la partición con `ext4`
+    - `mkfs.fat /dev/sda4`: formatea la partición con `fat`
+    - Lo mismo para: `msdos`, `btrfs`, `jfs`, `xfs`, `vfat`...
+    - `mkswap /dev/sda4`: formatea la partición para usar como `swap`
+-   `fsck` (_File System Check_): chequea y reparar sistemas de archivos (`fsck.ext4`)
+-   `du` (_Disk Usage_): muestra el uso de disco de archivos y directorios.
+    -   `du -hs directorio`: muestra el tamaño del directorio en múltiplos de
+        byte. No muestra el tamaño de todos los archivos que contiene, solo el
+        total.
+
+Comandos relacionados:
+
+- `tune2fs`
+- `dumpe2fs`
+
+<!-- TODO: mover a SO -->
+## Monturas
+
+Enlaza una dirección (_path_) con un sistema de archivos.
+
+```sh
+mount partición directorio
+umount directorio
+```
+
+Si se le pasa la opción `--mkdir` creará la carpeta si no existe.
+
+Se definen las monturas a utilizar en el arranque en el archivo `/etc/fstab`:
+
+```
+# Partition Mount Point  Format  Options  Dump  Pass
+/dev/sdb2   none         swap    sw       0     0
+/dev/sdb3   /            ext4    sw       0     0
+```
+
+Si se usa `mount -a`, montará todas los sistemas de archivos especificados en el
+archivo.
+
+Opciones de montado:
+
+-   `ro`: solo lectura
+-   `rw`: lectura y escritura
+<!---->
+-   `auto`: se monta en el arranque
+-   `noauto`: previene el montado en el arranque. Útil para poder hacer `mount
+    directorio` sin especificar el dispositivo, porque lo lee de `/etc/fstab`.
+<!---->
+-   `user`: permite que usuarios no privilegiados  lo monten
+-   `nouser`: solo root
+
+La opción `-o` permite remontar con otras opciones.
+
+En el archivo `/etc/mtab` se muestran las particiones de están montadas.
+
+### UUID
+
+Los dispositivos se pueden identificar por su dispositivo (`/dev/sda`,
+`/dev/nvme0n1p6`), pero esa nomenclatura depende de cómo estén colocados en el
+hardware y pueden cambiar entre reinicios.
+
+La otra forma es usar el _Universal Unique Identifier_ del dispositivo. Se
+determina a partir de elementos hardware, etiquetas, el sistemas de archivos,
+etc. Se trata de un número muy grande, por tanto es poco probable que hayan
+colisiones.
+
+Se puede usar el comando `blkid` para obtener el UUID de un dispositivo.
+
+En el archivo `/etc/fstab` también se pueden utilizar como `UUID=XXXX` en lugar
+de `/dev/...`.
+
 <!-- TODO: expandir y mover a arranque -->
 ## GRUB
 
@@ -404,7 +479,7 @@ Muestra la memoria principal total, disponible y libre, tanto RAM como swap.
 </tr>
 
 -% `uname -a` :%
-Muentras la versión del kernel de Linux (`-a` es de _all_).
+Muestra la versión del kernel de Linux (`-a` es de _all_).
 
 -% `lsb_release -a` :%
 Muestra información sobre la distribución y su versión.
@@ -439,8 +514,8 @@ anteriores, simplemente consultan estos archivos.
 [MBR]:                 {{< ref "so/archivos/#block-master-boot-record" >}}
 [GPT]:                 {{< ref "so/archivos/#block-guid-particion-table" >}}
 [DHCP]:                {{< ref "redes/red/#protocolo-dhcp" >}}
-[`/proc`]:             {{< ref "so/linux/estructura-archivos/#proc" >}}
-[`/sys`]:              {{< ref "so/linux/estructura-archivos/#sys" >}}
+[`/proc`]:             {{< ref "linux/estructura-archivos/#proc" >}}
+[`/sys`]:              {{< ref "linux/estructura-archivos/#sys" >}}
 
 {{< todo "Notas de las prácticas" >}}
 /media/magno/magnofiles/uni/5-ASR/practica1-instalacion/practica1.pdf

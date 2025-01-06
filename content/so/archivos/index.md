@@ -605,6 +605,25 @@ en modo bloque: contiene un array de bloques de tamaño fijo, y cada uno de ello
 posee un **número de bloque físico**.
 {{< /block >}}
 
+Se diferencian de otros dispositivos como ratones y teclados que transmiten
+información de carácter a carácter.
+
+Se distinguen varios tipos:
+
+-   **SATA** (_Serial ATA_):
+    Se llaman así porque utilizan el bus SATA. En Linux se identifican como `sd`
+    (_Sata Disk_) y una letra minúscula, en función del orden en el que se
+    descubran (`/dev/sda` primero, luego `/dev/sdb`). Para cada una de las
+    particiones se le añade el número de partición.
+
+-   **NVMe** (_Non Volative Memory express_):
+    -   Nuevo protocolo de acceso a unidades no volátiles como SSD basado en el
+        bus PCI express. Se utiliza para conectar todo tipo de tarjetas y es
+        mucho más rápido que el bus SATA. NVMe suele usar un conector específico
+        llamado `M.2`.
+    -   En Linux se identifican como `/dev/nvmeXnYpZ`, donde `X` es el
+        controlador, `Y` es el dispositivo y `Z` es el número de partición.
+
 {{< block "Disco lógico" "var(--magno-blue)" >}}
 Un **disco lógico** es abstracción que el SO ve como una secuencia lineal de
 bloques accesibles aleatoriamente, cada uno identificado por un **número de
@@ -887,12 +906,12 @@ Cualquier dispositivo de bloque (pseudo-archivo:
 [disco](#disco-físico-y-lógico),
 [partición](#partición),
 LUKS,
-[volumen LVM]({{< ref "so/linux/instalacion/#logical-volume-management" >}}),
+[volumen LVM]({{< ref "linux/instalacion/#logical-volume-management" >}}),
 RAID)
 que contiene un sistema de archivos que se pueden montar se le llama **volumen**.
 {{< /block >}}
 
-<!-- TODO: traer formatos de sistemas de archivos de so/linux/instalacion aquí -->
+<!-- TODO: traer formatos de sistemas de archivos de linux/instalacion aquí -->
 
 ## Montaje de sistemas de archivos
 
@@ -1032,6 +1051,6 @@ $\implies n_b = 500 \times 10^{9} / 2^{10} = 488\,281\\,250$ bloques.
 [introducción]:                     {{< ref "so/introduccion/#entradasalida" >}}
 [nociones de hardware]:             {{< ref "so/introduccion/#disco-duro" >}}
 [procesos]:                         {{< ref "so/procesos/#block-definición" >}}
-[Logical Volume Management]:        {{< ref "so/linux/instalacion/#logical-volume-management" >}}
 [BIOS]:                             {{< ref "so/arranque/#bios" >}}
 [zona de intercambio]:              {{< ref "so/memoria/#zona-de-intercambio" >}}
+[Logical Volume Management]:        {{< ref "linux/instalacion/#logical-volume-management" >}}

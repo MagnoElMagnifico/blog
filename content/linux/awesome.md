@@ -1,7 +1,8 @@
 ---
 title: Awesome WM
 date: 2022-09-28
-weight: 5
+weight: -1
+draft: true
 description: >
     _Awesome_ es un _Tiling Window Manager_ centrado en el teclado,
     y uno de los más configurables.
