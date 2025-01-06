@@ -188,7 +188,8 @@ cambie el fondo ni se resalte nada. Simplemente indenta el texto con 4 espacios
 5.  Define las cabeceras con `#` a usar `====` o `----`.
 6.  Inserta al menos una línea en blanco entre cabecera y texto.
 7.  Usa nombres de links descriptivos y prefiere definirlos todos al final del
-    documento.
+    documento. Para links a otros posts de blog, usa el shortcode `ref`, dado
+    que dará un error si no se encuentra.
 8.  Indenta las listas 4 espacios de la siguiente forma:
 
     ```md
