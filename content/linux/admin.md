@@ -498,7 +498,7 @@ chown usuario:grupo archivos
 La opción `-R` hace que recorra recursivamente los directorios.
 
 
-<!-- TODO: mover a nuevo post y borrar linux/links.md -->
+<!-- TODO: mover a nuevo post y borrar linux/links -->
 ## Links
 
 Los archivos de link son una manera de crear un atajo a otro archivo, de tal

@@ -210,8 +210,8 @@ Más eficiente que hacer pulling constantemente
     - Pizarras virtuales que permiten leer/escribir en una pantalla compartida
 {{< /keyvalue >}}
 
-[procesos]: {{< ref "so/procesos.md" >}}
-[IPC]: {{< ref "so/comunicacion-procesos.md" >}}
+[procesos]: {{< ref "so/procesos" >}}
+[IPC]: {{< ref "so/comunicacion-procesos" >}}
 [Computer, Enhance!]: https://www.computerenhance.com/
 [Preventing the Collapse of Civilization]: https://youtu.be/ZSRHeXYDLko
 [Better Software Conference]: https://bettersoftwareconference.com/
