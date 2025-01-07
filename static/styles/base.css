@@ -315,6 +315,11 @@ td > p:last-child
   to   { opacity: 100% }
 }
 
+/**** Footnotes ****/
+.footnotes {
+    /* TODO: similar style to TOC */
+}
+
 /**** Other elements **************************************/
 
 /**** KaTeX ****/
