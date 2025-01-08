@@ -906,7 +906,7 @@ Cualquier dispositivo de bloque (pseudo-archivo:
 [disco](#disco-físico-y-lógico),
 [partición](#partición),
 LUKS,
-[volumen LVM]({{< ref "linux/instalacion/#logical-volume-management" >}}),
+[volumen LVM]({{/*< ref "linux/instalacion/#logical-volume-management" */>}}),
 RAID)
 que contiene un sistema de archivos que se pueden montar se le llama **volumen**.
 {{< /block >}}
@@ -1053,4 +1053,4 @@ $\implies n_b = 500 \times 10^{9} / 2^{10} = 488\,281\\,250$ bloques.
 [procesos]:                         {{< ref "so/procesos/#block-definición" >}}
 [BIOS]:                             {{< ref "so/arranque/#bios" >}}
 [zona de intercambio]:              {{< ref "so/memoria/#zona-de-intercambio" >}}
-[Logical Volume Management]:        {{< ref "linux/instalacion/#logical-volume-management" >}}
+[Logical Volume Management]:        {{/*< ref "linux/instalacion/#logical-volume-management" */>}}
