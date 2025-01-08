@@ -640,7 +640,7 @@ Sin embargo, para intentar eliminar coeficientes superfluos y que complican el
 problema, se puede cambiar la función de coste de forma valores de $\theta_j$
 estén ponderados por $\lambda \gt\gt$ (muy grande).
 
-$$ J(\theta) = \frac{1}{2m} \sum^m_{i=1} \left[ \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \textcolor{red}{+ \delta \sum^m_{j=1} \theta_j^2} \right] $$
+$$ J(\theta) = \frac{1}{2m} \sum^m_{i=1} \left[ \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \textcolor{red}{+ \lambda \sum^m_{j=1} \theta_j^2} \right] $$
 
 De esta forma, si los parámetros no son clave para la minimización, se reducirán
 los $\theta$ de forma significativa haciendo que tiendan a 0.
@@ -926,6 +926,405 @@ Luego, para decidir entre ellos, se selecciona el **valor máximo**.
 
 ## Retropropagación
 
+La **retropropagación** o _backpropagation_ es un algoritmo que se asocial al
+aprendizaje supervisado y computación neuronal. Hasta ahora hemos visto
+estructuras monocapa, pero este método permite redes multicapa para resolver
+muchos otros problemas.
+
+{{< dropdown "Ejemplo de una suma de dos bits" >}}
+| $x_1$ | $x_2$ | $y_{\text{acarreo}}$ | $y_{\text{suma}}$ |
+| :---: | :---: | :------------------: | :---------------: |
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 0 |
+
+{{<
+    figure
+    src="perceptron-logica.png"
+    link="perceptron-logica.png"
+>}}
+
+Puede verse que $y_{\text{acarreo}}$ se trata de una operación _AND_ lógica, que
+es linealmente tratable. Por otro lado, $y_{\text{suma}}$ es la tabla de la
+verdad de una operación XOR, que no lo es, **pero se puede resolver con una red
+de dos capas**.
+{{< /dropdown >}}
+
+Las redes neuronales utilizadas para el reconocimiento de patrones, análisis de
+textos, etc; usan la retropropagación para entrenar redes de millones de
+neuronas, parámetros y múltiples capas, lo que se conoce como **deep learning**
+o **aprendizaje profundo**.
+
+El problema de esta estrategia es que no se puede extraer el conocimiento de la
+red y ver cuál fue el factor decisivo. Este está diluido entre los pesos de cada
+una de las conexiones de las neuronas, donde cada uno, a priori, no tiene un
+significado asociado. Son modelos de **cajas negras**.
+
+### Ajuste de pesos
+
+Se sigue el mismo criterio que siempre: ajustar iterativamente los pesos de cada
+neurona (limitado por el [_learning rate_]) para minimizar una función de coste.
+
+$$ \Delta w_i = - \eta \frac{\partial\text{Error}}{\partial w_i} $$
+
+Se usa la **[regla delta]** para determinar el ajuste de cada peso en todas las
+capas. Nótese que al intentar _reducir_ el error cometido, se debe usar la
+**derivada negativa**.
+
+A continuación vamos a seguir un proceso iterativo, empezando desde el caso más
+simple hasta el más complejo, para entender bien cada paso.
+
+----
+
+Para el caso de una única [neurona simple] (sin función de activación):
+
+- La salida de la neurona con $I$ entradas: $\displaystyle y = \sum^I_{i=1} w_i x_i $
+- El error cometido: $E = (t - y)^2$, donde $t$ es la salida deseada
+
+Según estas definiciones, el error depende de $y$ e $y$ depende de
+$w_i$, por lo que podemos expandir la derivada de la siguiente forma:
+
+$$ \frac{\partial E}{\partial w_i} = \frac{\partial y}{\partial w_i} \frac{\partial E}{\partial y} $$
+
+Lo que es igual a:
+
+$$ = x_i \left( 2 (t - y) (-1) \right) = - 2 x_i (t - y) $$
+
+Por tanto, el cambio en cada parámetro es:
+
+$$ w_i^{(t+1)} = w_i^{(t)} + 2 \eta (t - y) x_i $$
+
+Curiosamente es la misma expresión que se utilizaba en el [algoritmo del
+perceptrón]. Si se sigue esta ecuación para el ajuste de los pesos de forma
+iterativa, convergirá para reproducir las salidas con bastante fidelidad a los
+datos reales.
+
+Pero esto funciona solo para un único punto: al tener un **conjunto de datos con
+$N$ puntos**, se usaría las versiones adaptadas (que se resuelven de la misma
+forma):
+
+$$ E = \frac{1}{2N} \sum^N_{n=1} \left( t^{(i)} - y^{(i)} \right)^2 $$
+
+{{< todo "Así no sale: quedan dos sumatorios separados" >}}
+$$
+\begin{align*}
+    \frac{\partial E}{\partial w_i} =& \frac{\partial y^{(i)}}{\partial w_i} \frac{\partial E}{\partial y^{(i)}} \\
+    =& \frac{\partial}{\partial w_i} \left( \sum^I_{i=1} w_i x_i \right) \frac{\partial}{\partial y^{(i)}} \left( \frac{1}{2N} \sum^N_{n=1} \left( t^{(i)} - y^{(i)} \right)^2 \right) \\
+    =& \left( \sum^I_{i=1} x_i \right) \left( \frac{1}{2N} \sum^N_{n=1} 2 \left( t^{(i)} - y^{(i)}\right) (-1) \right) \\
+    =& -\frac{1}{N} \left( \sum^I_{i=1} x_i \right) \left( \sum^N_{n=1} \left( t^{(i)} - y^{(i)}\right) \right)
+\end{align*}
+$$
+{{< /todo >}}
+
+$$
+\begin{align}
+    \frac{\partial E}{\partial w_i} =& \frac{\partial}{\partial w_i} \left( \frac{1}{2N} \sum^N_{n=1} \left( t^{(i)} - y^{(i)} \right)^2 \right) \\
+    =& \frac{1}{2N} \sum^N_{n=1} \frac{\partial y^{(n)}}{\partial w_i} \frac{\partial \left[ (t^{(n)} - y^{(n)})^2 \right]}{\partial y^{(n)}}  \\
+    =& \frac{1}{2N} \sum^N_{n=1} \frac{\partial y^{(n)}}{\partial w_i} \left[ 2 (t^{(n)} - y^{(n)}) (-1) \right] \\
+    =& -\frac{1}{N} \sum^N_{n=1} (t^{(n)} - y^{(n)}) x^{(n)}_i \\
+\end{align}
+$$
+
+$$ \implies w_i^{(n+1)} = w_i^{(n)} + \frac{\eta}{N} \sum^N_{n=1} (t^{(n)} - y^{(n)}) x^{(n)}_i $$
+
+(1) Primero se expande a la definición del error,
+(2) luego aplicamos el <<truco>> de descomponer la derivada, pero solo dentro
+del sumatorio, lo que nos ahorrará problemas luego.
+A continuación (3,4) resolvemos las derivadas de igual forma que se hizo antes
+y se simplifica un poco.
+
+---
+
+El caso anterior es para una neurona simple, pero nos falta por añadir una
+función de activación. Para este ejemplo, usaremos la función sigmoide:
+
+$$ z = \sum^I_{i=1} w_i x_i \hspace{1cm} y = \frac{1}{1 + e^{-z}} $$
+
+Sabiendo que:
+
+$$
+\frac{\partial y}{\partial w_i} = \frac{\partial y}{\partial z} \frac{\partial z}{\partial w_i} \newline
+\frac{\partial y}{\partial z} = \frac{0 - (- e^{-z})}{(1 + e^{-z})^2}
+= \frac{1}{1 + e^{-z}} \frac{e^{-z}}{1 + e^{-z}} = y (1 - y)
+$$
+
+Volvemos a realizar la derivada, usando la misma estrategia de antes en
+descomponer las derivadas en función de sus diferentes dependencias:
+
+$$
+\begin{align}
+    \Delta w_i =& - \eta \frac{\partial E}{\partial w_i} \\
+    =& - \eta \frac{1}{2N} \sum^N_{n=1} \frac{\partial y^{(n)}}{\partial w_i} \frac{\partial \left( t^{(n)} - y^{(n)} \right)^2 }{\partial y^{(n)}} \\
+    =& - \eta \frac{1}{2N} \sum^N_{n=1} \frac{\partial z^{(n)}}{\partial w_i} \frac{\partial y^{(n)}}{\partial z^{(n)}} \frac{\partial \left( t^{(n)} - y^{(n)} \right)^2 }{\partial y^{(n)}} \\
+    =& - \eta \frac{1}{2N} \sum^N_{n=1} \frac{\partial z^{(n)}}{\partial w_i} \frac{\partial y^{(n)}}{\partial z^{(n)}} (-2) \left( t^{(n)} - y^{(n)} \right) \\
+    =& - \eta \frac{1}{2N} \sum^N_{n=1} \frac{\partial z^{(n)}}{\partial w_i} \left( y^{(n)} (1 - y^{(n)})  \right) (-2) \left( t^{(n)} - y^{(n)} \right) \\
+    =& - \eta \frac{1}{2N} \sum^N_{n=1} x_i^{(n)} \left( y^{(n)} (1 - y^{(n)})  \right) (-2) \left( t^{(n)} - y^{(n)} \right) \\
+    =& \frac{2 \eta}{2N} \sum^N_{n=1} x_i^{(n)} y^{(n)} (1 - y^{(n)}) (t^{(n)} - y^{(n)}) \\
+\end{align}
+$$
+
+(5) Partiendo de la definición de lo que queremos calcular, (6) se procede de
+forma análoga que antes, (7) pero también será necesario expandir la derivada de
+$y$ a la de $z$. (8, 9, 10) Finalmente se resuelven dichas derivadas y (11) se
+simplifica.
+
+----
+
+Aún no hemos terminado, ¡nos falta cómo retropropagar el error a las capas
+anteriores! En una RNA multicapa, las neuronas de las capas ocultas (las que
+producen las salidas intermedias) también afectan a la salida de la red, y por
+lo tanto a sus errores cometidos: también es necesario ajustar sus pesos.
+
+{{<
+    figure
+    src="planteamiento-retropropagacion.png"
+    link="planteamiento-retropropagacion.png"
+    caption="Planteamiento del problema"
+    alt="Planteamiento del problema"
+>}}
+
+Esto se puede generalizar a cualquier número de capas y neuronas por capa. Vamos
+a fijarnos en una única neurona de salida, la $k$-ésima, ya que una vez hecho el
+análisis, el resto se tratará de la misma forma. Nótese que este ya es el **caso
+completo**.
+
+Definición de cada elemento:
+
+-   $x_{in}$ denota la entrada $i$ de la neurona $n$. Este valor lo calcula la
+    neurona $i$, por lo que **es lo mismo que escribir $y_i$**.
+-   $w_{in}$ denota el peso $i$ que entra en la neurona $n$, asociado a la
+    entrada $x_{in}$.
+-   $z_n$ es la función suma de la neurona $n$. Recordemos que estaba definida
+    por la siguiente expresión, con $w_{0n}$ es el _bias_ y $x_{0n}$ es siempre
+    igual 1 por conveniencia.
+    $$ z_n = \sum^N_{i=0} w_{in} x_{in}$$
+-   $f(z)$ es la función de activación genérica que se aplica sobre el resultado
+    de la suma anterior (antes usabamos la sigmoide para el ejemplo). Debe **ser
+    derivable**.
+-   $y_n$ es la salida de la neurona $n$, calculada a partir de $f(z_n)$.
+-   $t_n$ es la salida deseada de la neurona $n$. Este valor solo lo sabemos
+    para neuronas de la última capa.
+-   $\eta$ es el [_learning rate_].
+{ #inputs-retropropagacion }
+
+Y lo que queremos calcular es:
+
+$$ \Delta w_{in} = \frac{\partial E}{\partial w_{in}} \qquad \forall i,n$$
+
+Donde $\Delta_{in}$ es el cambio que hay que aplicar para entrenar la red en una
+iteración:
+
+$$ \Delta w_{in} = w_{in}^{(t+1)} - w_{in}^{t} $$
+
+**¡Vamos allá!**
+{ .center-text }
+
+En primer lugar, medimos el error cuadrático de la neurona $k$, que pertenece
+a la última capa:
+
+$$ E_k = \left( t_k - y_k \right)^2 $$
+
+El siguiente paso es obtener su derivada para saber cómo cambiar los parámetros
+por la regla delta.
+
+$$
+\begin{align*}
+    \frac{\partial E_k}{\partial w_{jk}} =& \frac{\partial y_k}{\partial w_{jk}} \frac{\partial E_k}{\partial y_k} \\
+    =& \frac{\partial y_k}{\partial w_{jk}} \left( -2(t_k - y_k) \right) \\
+\end{align*}
+$$
+
+Se calcula la derivada de $y_k$ aparte:
+
+$$
+\begin{align*}
+    \frac{\partial y_k}{\partial w_{jk}} =& \frac{\partial f(z_k)}{\partial w_{jk}} \\
+    =& f'(z_k) \frac{\partial z_k}{\partial w_{jk}} \\
+    =& f'(z_k) \frac{\partial \left( \sum_j y_j w_{jk} \right) }{\partial w_{jk}} \\
+    =& f'(z_k) y_j \\
+\end{align*}
+$$
+
+Entonces nos queda que:
+
+$$
+\frac{\partial E_k}{\partial w_{jk}} = -2(t_k - y_k) f'(z_k) y_j \\[1em]
+\quad \implies \Delta w_{jk} = \eta (t_k - y_k) f'(z_k) y_j = \eta \Delta_k y_j
+$$
+
+Se ha eliminado el 2 porque ya se considera incluido dentro de la constante
+$\eta$.
+
+$$ \Delta_k = (t_k - y_k) f'(x_k) $$
+
+También se usa la notación $\Delta_k$ dado que es un valor que usaremos más
+adelante. Se puede interpretar como **el error cometido por la neurona $k$** de
+salida.
+
+Hasta aquí nada nuevo, solo acabamos de rehacer lo de siempre.
+
+Vamos a ver ahora los cambios que hay que hacer en una neurona intermedia. El
+proceso se complica, ya que **$y_j$ contribuye con su valor al error de todas
+las salidas, no solo la $k$-ésima**. Entonces, los cambios en $w_{ij}$ dependen
+de los errores cometidos en todas las neuronas de la capa de salida:
+
+$$ \Delta w_{ij} = - \eta \sum_k \frac{\partial E_k}{\partial w_{ij}}$$
+
+Pues nada, a resolver:
+
+$$ \frac{\partial E_k}{\partial w_{ij}} = \frac{\partial y_k}{\partial w_{ij}} \frac{\partial E_k}{\partial y_k} $$
+
+Igual que antes, $\partial E_k / \partial y_k = -2(t_k - y_k)$ y
+
+$$
+\begin{align*}
+    \frac{\partial y_k}{\partial w_{ij}}
+    &= \frac{\partial f(z_k)}{\partial w_{ij}}
+    = f'(z_k) \frac{\partial z_k}{\partial w_{ij}} \\[1em]
+    %
+    &= f'(z_k) \frac{\partial \left( \sum_j w_{jk} y_j \right)}{\partial w_{ij}} \\[1em]
+    &= f'(z_k) \frac{\partial \left( w_{jk} y_j \right)}{\partial w_{ij}} \\[2.5em]
+    % Repetir para y_j
+    &= f'(z_k) w_{jk} \frac{\partial y_j}{\partial w_{ij}} \\[1em]
+    &= f'(z_k) w_{jk} \frac{\partial f(z_j)}{\partial w_{ij}} \\[1em]
+    &= f'(z_k) w_{jk} f'(z_j) \frac{\partial z_j}{\partial w_{ij}} \\[1em]
+    &= f'(z_k) w_{jk} f'(z_j) \frac{\partial \left( \sum_i w_{ij} y_i\right)}{\partial w_{ij}} \\[1em]
+    &= f'(z_k) w_{jk} f'(z_j) y_i \\[2.5em]
+    &= x_{ij} f'(z_j) w_{jk} f'(z_k) \\[1em]
+\end{align*}
+$$
+
+Aquí lo que se ha hecho es ir cambiando por la definición de cada $y$ e ir
+desenrollando las derivadas hasta llegar al final. Podemos ver que la salida de
+toda la red ($y_k$) depende de la entrada de la neurona intermedia ($x_{ij}$),
+la derivada de su cálculo ($f'(z_j)$) y del cálculo de la última capa ($w_{jk}
+f'(z_k)$). Por eso este método se llama _retropropagación del error_: el error
+de las últimas neuronas se envía a las capas anteriores.
+
+Para terminar el cálculo que estábamos haciendo:
+
+$$
+\frac{\partial E_k}{\partial w_{ij}}
+= -2(t_k - y_k) \; f'(z_k) \; w_{jk} \; f'(z_j) \; y_i
+= -2 \Delta_k w_{jk} f'(z_j) y_i
+$$
+
+Esta es la proyección del error cometido por la neurona $k$-ésima de salida
+sobre $w_{ij}$. Ahora habría que sumar todas las contribuciones a este peso del
+error que se produce en el conjunto de neuronas de salida.
+
+Finalmente, generalizando el proceso para todas las capas, desde la salida hasta
+la de entrada, tendremos las expresiones de ajuste de todos los pesos de la red:
+
+$$
+\Delta w_{ij} = - \eta \sum_k \frac{\partial E_k}{\partial w_{ij}}
+= \eta y_i f'(z_j) \sum_k w_{jk} \Delta_k = \eta y_i \Delta_j
+$$
+
+Donde el $\Delta_i$ de una neurona intermedia $i$ cualquiera se define como:
+
+$$
+\Delta_i = f'(z_i) \sum^{i+1}_{j=0} w_{ij} \Delta_{i+1} \qquad
+$$
+
+Siendo $i+1$ la capa siguiente, a la que se le proporcionan los resultados.
+
+{{<
+    figure
+    src="retropropagacion.png"
+    link="retropropagacion.png"
+    caption="Retropropagación del error"
+    alt="Retropropagación del error"
+>}}
+
+{{< block "Retropropagación" "var(--magno-blue)" >}}
+$$ \Delta w_{in} = \eta y_i \Delta_n $$
+
+$$\Delta w_{in} = w_{in}^{(t+1)} - w_{in}^{(t)}$$
+
+$$
+\Delta_n = \begin{cases}
+    f'(x_n) (t_n - y_n) & \text{si } n \text{ es de la última capa} \\
+    f'(x_n) \sum^{n+1}_{i=0} w_{ni} \Delta_{n+1} & \text{en otro caso} \\
+\end{cases}
+$$
+
+[Ver las entradas](#inputs-retropropagacion)
+{.center-text}
+{{< /block >}}
+
+
+El problema principal de este método es la **dilución del gradiente**: a medida
+que se van añadiendo más capas ocultas, los cambios en los parámetros afecta más
+a las últimas capas que a las primeras, lo que no es deseable.
+
+Por ejemplo, en función sigmoidal, cuando toma valores 0 o 1, la derivada es
+prácticamente 0 y dependemos de ellas para calcular el error.
+
+El pseudocódigo completo es el siguiente:
+
+```py
+class RedNeuronal:
+    f: Function[float] -> float # Función de activación
+    d: Function[float] -> float # Derivada de f
+    capas: [[Nodo]] # Nodos de la red ordenados en capas
+    M: # Número de capas
+    lr: float # Learning rate
+
+class Nodo:
+    # NOTA: suponer que cuando se escribe en y, también se escribe en la entrada
+    # correspondiente del nodo siguiente
+    y: float # Salida
+    x: [float] # Entradas
+    w: [float] # Pesos para cada entrada
+
+class Ejemplo:
+    X: [float] # Lista de entradas
+    T: [float] # Lista de salidas deseadas
+
+def retropropagacion(
+    ejemplos: [Ejemplo],
+    red: RedNeuronal,
+) -> RedNeuronal:
+
+    while criterio_fin():
+        # Inicializar los pesos
+        for peso in red.w:
+            peso = small_random()
+
+        for X, T in ejemplos:
+            # La capa 0 contiene las entradas a la red
+            for i, nodo in red.capa[0]:
+                # Asignar los valores de entrada a la red
+                nodo.y = X[i]
+
+            # Calcular el resultado de la entrada
+            z: [[float]]
+            for m in range(from=1, until=red.M):
+                for j, nodo in red.capa[m]:
+                    z[m][j] = sum(nodo.w[:] * nodo.x[:]) # multiplicar elemento a elemento
+                    nodo.y = red.f(z[m][j])
+
+            delta: [[float]]
+            # Calcular el error en la última capa
+            for k, nodo_k in red.capa[red.M]:
+                delta[red.M][k] = red.d(z[red.M][k]) * (T[k] - nodo.y)
+
+            # Calcular el error en el resto de capas
+            for m in range(from=red.M-1, to=1):
+                for j, nodo in red.capa[m]:
+                    delta[m][j] = red.d(z[m][j]) * sum(nodo.w[:] * delta[m+1][:])
+
+            # Actualizar los pesos de la red
+            for m in red.capas[1:]:
+                for j, nodo in red.capa[m]:
+                    for i in range(nodo.w):
+                        nodo.w[i] += red.lr * nodo.x[i] * delta[m][j]
+
+    return red
+```
+
 # Aprendizaje no supervisado
 
 En la mayoría de casos prácticos que se abordan en el aprendizaje automático
@@ -1019,8 +1418,12 @@ while num_iter >= NUM_ITER:
 
     # Recalcular la posición de los centroides
     for k=1 to K:
-        centroide[k] = posicion_media(datos_kluster(c[k]))
+        elementos_cluster = x[filtrar(c, lambda e: e == k)]
+        centroide[k] = posicion_media(elementos_cluster)
 ```
+
+Otro criterio para detener el algoritmo es calcular la distancia que se han
+movido los centroides, y cuando sea un valor pequeño, terminar.
 
 El principal problema de este método es que el resultado **depende enormemente
 de la posición inicial** de los centroides. Algunas posibilidades:
@@ -1032,7 +1435,11 @@ de la posición inicial** de los centroides. Algunas posibilidades:
 -   Si partimos de una mala distribución inicial, el algoritmo se quedará
     estancado y no realizará la correcta agrupación.
 
-<!-- TODO: diagrama? -->
+{{<
+    figure
+    src="inicializacion-kmedias.png"
+    link="inicializacion-kmedias.png"
+>}}
 
 Lo que se suele hacer el **ejecutar el problema muchas veces** y seleccionar el
 mejor de los resultados, dependiendo del coste computaciones y la cantidad de
@@ -1053,7 +1460,13 @@ codo**.
 En una gráfica mostramos el coste calculado por la función $J$ respecto al
 número de $K$ de clusters, para ver qué número es el que más nos beneficia.
 
-<!-- TODO: método del codo -->
+{{<
+    figure
+    src="codo.png"
+    link="codo.png"
+    caption="Ejemplo de una gráfica Coste-Clusters"
+    alt="Ejemplo de una gráfica Coste-Clusters"
+>}}
 
 Para unos pocos clusters el coste será alto, pero a medida que se van añadiendo, 
 coste disminuye rápidamente hasta llegar a un punto de inflexión. A partir de
@@ -1074,15 +1487,16 @@ que son puntos atípicos en el conjunto de datos debidos a errores de medida
 o otros motivos. Estos puntos distorsionarán la solución, y lo mejor es
 **descartarlos** del conjunto de entrenamiento.
 
-
-
-[_learning rate_]:        #block-learning-rate
-[error cuadrático medio]: #block-error-cuadrático-medio-ecm
-[descenso del gradiente]: #block-descenso-del-gradiente
+[_learning rate_]:          #block-learning-rate
+[error cuadrático medio]:   #block-error-cuadrático-medio-ecm
+[descenso del gradiente]:   #block-descenso-del-gradiente
+[neurona simple]:           #neurona-más-simple
+[algoritmo del perceptrón]: #block-algoritmo
 
 [neurona natural]:        https://en.wikipedia.org/wiki/Neuron
 [McCulloc & Pitts]:       https://home.csulb.edu/~cwallis/382/readings/482/mccolloch.logical.calculus.ideas.1943.pdf
 [crece exponencialmente]: https://graphtoy.com/?f1(x,t)=1/(1+E**(-x))&v1=true&f2(x,t)=-log(f1(x,t))&v2=true&f3(x,t)=-log(1-f1(x,t))&v3=true&f4(x,t)=&v4=false&f5(x,t)=&v5=false&f6(x,t)=&v6=false&grid=1&coords=0.31337065004218023,0.9013689662097597,3.4759725568402566
+[regla delta]:            https://en.wikipedia.org/wiki/Delta_rule
 
 [introducción]: {{< ref "aed/ia-introduccion/#historia" >}}
 [regresión polinómica]: #regresión-polinómica
