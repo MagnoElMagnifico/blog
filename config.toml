@@ -1,8 +1,14 @@
+#### BASE CONFIG ####
 baseURL = "https://magnoblog.netlify.app"
 languageCode = "es"
 title = "Magno Blog"
 enableEmoji = true
 enableGitInfo = true
+
+[minify]
+minifyOutput = true
+
+#### BASE CONTENT CONFIG ####
 
 [params]
 # Footer and about (home.html)
@@ -23,8 +29,29 @@ Abre un [Issue] en el [repositorio] del blog.
 [Issue]: https://github.com/MagnoElMagnifico/blog/issues
 """
 
+#### MARKDOWN CONFIG ####
+
+# Enable extensions
+[markup.goldmark]
+extensions.extras.mark.enable = true
+extensions.extras.insert.enable = true
+
+# Avoid scaping special markdown caracters
+extensions.passthrough.enable = true
+extensions.passthrough.delimiters.block = [["$$", "$$"]]
+# TODO: This may cause problems when just using
+# extensions.passthrough.delimiters.inline = [["$", "$"]]
+
+# Allow HTML in md files for more flexibility
 [markup.goldmark.renderer]
-unsafe = true # Allow HTML in md files
+unsafe = true
+
+# Allow adding classes and ids to markdown elements with {.class #id}
+[markup.goldmark.parser.attribute]
+block = true
+title = true
+
+#### HIGHLIGHT CONFIG ####
 
 [markup.highlight]
 # https://xyproto.github.io/splash/docs/all.html
@@ -40,9 +67,6 @@ lineNumbersInTable = false
 
 [markup.tableOfContents]
 startLevel = 0
-endLevel = 100
+endLevel = 3
 ordered = true
-
-[minify]
-minifyOutput = true
 

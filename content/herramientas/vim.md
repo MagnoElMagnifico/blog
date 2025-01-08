@@ -1,7 +1,7 @@
 ---
 title: Vim y Neovim
 description: Una pequeña overview de las principales funcionalidades de Vim con sus comandos
-date: 2022-7-26
+date: 2022-07-26
 weight: 3
 ---
 
@@ -818,24 +818,41 @@ tanto locales como remotos a través de SSH, etc.
 - `:Ex`: abrir Netwr
 - `:Lex [<size>]`: abrir Netwr a la izquierda
 - `:Tex`: abrir Netwr en una nueva pestaña
-
+---
 - `i`: cambiar display (lista, árbol, columnas, etc)
-
+---
 - `I`: esconder/mostrar la cabezera de información
 - `gh`: esconder/mostrar dotfiles
-
+---
 - `<Enter>`: abrir el archivo
 - `-`: ir a la carpeta superior
-
+---
 - `p`: previsualizar archivo
 - `<C-w>z :pc :pclose`: cerrar previsualización
 - `v`: abrir en una división vertical
-
+---
 - `%`: crear archivo en la carpeta actual (da un nombre)
 - `<Del> D`: borrar el archivo debajo del cursor
 - `d`: crear una carpeta  (da un nombre)
 - `R`: renombrar
 - `s`: cambiar orden (nombre, fecha, tamaño)
+
+# Reformatear un archivo
+
+```
+:set tabstop=4 shiftwidth=4 expandtab
+:retab
+```
+
+```sh
+iconv -f <in encoding> -t <out encoding> <input file> -o <output file>
+```
+
+Por tanto, se puede realizar el siguiente comando:
+
+```
+:! iconv -f <in encoding> -f <out encoding> %
+```
 
 
 # Referencias

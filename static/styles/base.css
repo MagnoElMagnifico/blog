@@ -70,7 +70,6 @@ main {
 /* Margin desktop */
 @media only screen and (min-width: 800px) and (min-device-width: 800px) {
     main { margin: 0 20vw; }
-    span.katex-display { overflow: visible; }
 }
 
 
@@ -102,6 +101,10 @@ article h1 {
 
 h1+h2, h2+h3, h3+h4 { margin-top: 0; }
 
+.header-anchor {
+    margin: 0 0 0 10px;
+}
+
 
 /**** General format ****/
 a       { color: var(--link-color); text-decoration: none; }
@@ -122,7 +125,13 @@ p, li, .block-content {
 
 p { margin: var(--p-separation); }
 li p { margin: 1rem 0 0 0; }
-li::marker { color: var(--magno-green); }
+li::marker {
+    color: var(--magno-green);
+    font-family: var(--code-font);
+}
+ul li::marker {
+    content: '* ';
+}
 
 hr {
     width: 80%;
@@ -154,7 +163,7 @@ code:not(pre code) {
     border-radius: var(--border-radius);
     margin: var(--p-separation);
     padding: var(--block-padding);
-    white-space: pre-wrap;
+    overflow-x: auto;
 }
 
 
@@ -176,14 +185,17 @@ blockquote blockquote,
 .project blockquote,
 .block code:not(pre code),
 .block blockquote,
+.header code,
 .dropdown code:not(pre code),
-.dropdown blockquote,
-#TableOfContents code:not(pre code)
-{ background-color: var(--background-color) !important; }
+.dropdown blockquote
+{
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
 
 
 /**** Images ****/
-img, svg {
+article img, article svg {
     object-fit: contain;
     /*
      * Center by adding margin to the left (minus the
@@ -191,14 +203,15 @@ img, svg {
      */
     margin: 1rem 0 1rem 50%;
     transform: translate(-50%, 0);
+    width: 100%;
+    min-width: 300px;
+    overflow-x: auto;
 }
 
 /* Make diagrams bigger */
 .goat svg { min-width: 70%; }
 
-img          { width: 85vmin; }
 figcaption p { text-align: center; }
-
 figcaption p:before {
     content: "Figura: ";
     color: var(--title-color);
@@ -212,22 +225,34 @@ table {
     margin-left: auto;
     margin-right: auto;
     background-color: var(--background-color);
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 table.fill { width: 100%; }
 
-th, td.header {
+/* Table cell */
+th, td {
+    padding: var(--block-padding);
+    background-color: var(--table-color-2);
+}
+
+/* Table headers */
+th, td.header, table.header td:first-child {
     background-color: var(--table-header);
     text-align: center;
 }
 
-th, td { padding: var(--block-padding); }
-tr { background-color: var(--table-color-2); }
+th                                     { border-bottom: var(--table-header-border); }
+td.header, table.header td:first-child { border-right:  var(--table-header-border); }
 
-th        { border-bottom: var(--table-header-border); }
-td.header { border-right:  var(--table-header-border); }
+/**** Special classes for Markdown ****/
+.center-text {
+    text-align: center;
+}
 
+.arrow-list li::marker {
+    content: '==> ';
+}
 
 /**** Blocks ****/
 .block {
@@ -251,7 +276,16 @@ td.header { border-right:  var(--table-header-border); }
 
 .block .block-content {
     grid-row-start: 2;
+    align-content: center;
     padding: var(--block-padding);
+    overflow-x: auto;
+}
+
+/* Remove margin of the last paragraph */
+.block .block-content > p:last-child,
+td > p:last-child
+{
+    margin-bottom: 0;
 }
 
 /* Put side by side in Desktop  */
@@ -290,18 +324,16 @@ td.header { border-right:  var(--table-header-border); }
   to   { opacity: 100% }
 }
 
+/**** Footnotes ****/
+.footnotes {
+    /* TODO: similar style to TOC */
+}
+
 /**** Other elements **************************************/
 
 /**** KaTeX ****/
 /* "Fix" big LaTeX expressions */
-/* span.katex-display { overflow: scroll; } */
-
-.katex-display > .katex { white-space: normal }
-/* Add space between broken lines: */
-.katex-display > .base { margin: 0.25em 0 }
-/* Compensate by reducing space around display math */
-.katex-display { margin: 0.5em 0; }
-
+.katex-display { overflow-x: scroll; }
 
 /**** Blog entries ****/
 .blog-entry {
@@ -390,6 +422,10 @@ td.header { border-right:  var(--table-header-border); }
     margin: var(--p-separation);
     padding: var(--block-padding);
     word-wrap: break-word;
+}
+
+#TableOfContents li::marker {
+    content: counters(list-item, '.') ': ';
 }
 
 

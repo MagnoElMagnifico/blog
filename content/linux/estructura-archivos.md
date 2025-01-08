@@ -1,12 +1,16 @@
 ---
-title: Estructura directorios
-weight: 3
+title: Estructura de directorios
+weight: 2
 date: 2023-06-13
 description: >-
     La estructura de archivos de Linux es bastante diferente a la de Windows,
     y quizás un poco contraintuitiva; pero en este post se explica con detalle
     qué es cada carpeta y qué se debería almacenar en ella.
 ---
+
+[`vmlinuz` y `initramfs`]: {{< ref "so/arranque" >}}
+[sistemas de archivos]: {{< ref "so/archivos" >}}
+[procesos]: {{< ref "so/procesos" >}}
 
 [1]: https://youtu.be/HbgzrKJvDRw
 [2]: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
@@ -17,7 +21,67 @@ description: >-
 [^3]: https://en.wikipedia.org/wiki/Freedesktop.org
 [^4]: https://wiki.archlinux.org/title/XDG_Base_Directory
 
-**Fuente**: vídeo de [DorianDotSlash][1] y [documentación de FHS][2].
+# Resumen
+
+    /                     Directorio raíz del sistema, todo cuelga de aquí
+    bin   -> /usr/bin     Binarios de programas
+    sbin  -> /usr/sbin    Binarios del sistema (solo root)
+    lib   -> /usr/lib     Librerías de los programas y módulos del kernel
+    libXX -> /usr/libXX   Librerías en otros formatos
+    usr
+        |-> bin, sbin, lib, libXX
+        |-> games         Archivos de videojuegos
+        |-> include       Archivos de cabecera (.h .hpp) para compilar
+        |-> src           Código de fuente por referencia (normalmente del kernel)
+        |-> share         Datos independientes de la plataforma
+        |   |-> misc      Archivos únicos de aplicaciones
+        |   |-> man       Documentos para el manual
+        |-> local         Programas compilados localmente sin el package manager
+            |-> bin       Binarios instalados localmente
+            |-> sbin      Binarios del sistema instalados localmente
+            |-> lib       Librerías locales
+            |-> etc       Configuración de programas locales
+            |-> games     Archivos de videojuegos locales
+            |-> include   Archivos de cabecera locales
+            |-> man       Documentación del programa man de programas locales
+            |-> share     Datos independientes de la plataforma
+            |-> src       Código fuente local
+    ------------------------------------------------------------------
+    etc     Configuración a nivel del sistema
+    opt     Paquetes de software autocontenidos
+    ------------------------------------------------------------------
+    root    Carpeta personal del usuario root
+    home    Carpetas personales de los usuarios (~)
+        |-> .cache      $XDG_CACHE_HOME   Datos no esenciales
+        |-> .config     $XDG_CONFIG_HOME  Configuración del usuario
+        |-> .local
+            |-> bin                           Ejecutables del usuario (en PATH)
+            |-> share   $XDG_DATA_HOME        Datos del usuario
+            |-> state   $XDG_STATE_HOME       Logs, historiales, archivos recientes...
+
+        |-> Desktop     $XDG_DESKTOP_DIR      Archivos que aparecen en el escritorio
+        |-> Downloads   $XDG_DOWNLOAD_DIR     Descargas de navegadores
+        |-> Templates   $XDG_TEMPLATES_DIR    Plantillas para crear nuevos archivos
+        |-> Public      $XDG_PUBLICSHARE_DIR  Documentos públicos
+        |-> Documents   $XDG_DOCUMENTS_DIR    Documentos personales
+        |-> Music       $XDG_MUSIC_DIR        Música
+        |-> Pictures    $XDG_PICTURES_DIR     Fotografías
+        |-> Videos      $XDG_VIDEOS_DIR       Vídeos
+    ------------------------------------------------------------------
+    srv     Datos de servicios de este sistema
+    tmp     Archivos temporales
+    var     Datos variables (logs, BD, archivos de impresión)
+    svr     Datos para servidores y servicios
+    ------------------------------------------------------------------
+    boot    Archivos del boot loader incluyendo el kernel
+    mnt     Punto de montaje para sistemas de archivos (manual)
+    media   Punto de montaje para unidades externas
+    dev     Device files: pseudo-archivos de acceso a periféricos
+    proc    Información del sistema (CPU, memoria...) y sus procesos
+    sys     Información de dispositivos (brillo de pantalla, carga de batería)
+    run     Datos relevantes de procesos en ejecución
+
+# Introducción
 
 El sistema de archivos de Linux es diferente a Windows, y seguramente este sea
 uno de los temas más fundamentales que un usuario experto debería conocer.
@@ -39,7 +103,7 @@ igual.
 
 En cambio, Linux es diferente. Por ejemplo, puedes tener múltiples archivos cuya
 única diferencia sea una letra mayúscula o minúscula:
-**
+
 - `Archivo`
 - `archivo`
 - `ARCHIVO`
@@ -49,78 +113,24 @@ Esto está permitido en Linux, pero no en Windows. De la misma forma, los
 usuarios de Apple se sentirán más cómodos con la estructura de archivos de
 Linux, ya que evolucionaron desde el mismo lugar: Unix.
 
-> Por cierto, esta estructura se encuentra recogida en el [FHS][2] (Filesystem
-> Hierarchy Standard).
+{{< block "Nota" >}}
+Por cierto, esta estructura se encuentra recogida en el [FHS][2] (_Filesystem
+Hierarchy Standard_).
 
-> Otra nota, no todas las distribuciones Linux siguen este patrón, pueden haber
-> pequeñas variaciones. Pero por lo general, esto se cumple.
+No todas las distribuciones Linux siguen el estándar (por ejemplo
+[NixOS](https://nixos.org/)), pueden haber pequeñas variaciones. Pero por lo
+general, esto se cumple.
 
-
-# Resumen
-
-    bin   -> /usr/bin     Binarios esenciales: ls, cat, uname
-    sbin  -> /usr/sbin    Binarios del sistema esenciales (solo root)
-    lib   -> /usr/lib     Librerías esenciales y módulos del kernel
-    libXX -> /usr/libXX   Otros formatos de librerías esenciales
-    usr
-        |-> bin, sbin, lib, libXX
-        |-> local         Datos no esenciales y programas compilados localmente
-        |   |             sin el package manager
-        |   |-> bin       Binarios instalados localmente
-        |   |-> sbin      Binarios del sistema instalados localmente
-        |   |-> lib       Librerías locales
-        |   |-> etc       Configuración de programas locales
-        |   |-> games     Archivos de videojuegos locales
-        |   |-> include   Archivos de cabecera locales
-        |   |-> man       Documentación del programa man
-        |   |-> share     Datos independientes de la plataforma
-        |   |-> src       Código fuente local
-        |-> share         Datos independientes de la plataforma, datos de
-        |   |             aplicaciones, etc.
-        |   |-> misc      Archivos únicos de aplicaciones
-        |-> games         Archivos de videojuegos
-        |-> include       Archivos de cabecera (.h .hpp) para compilar
-        |-> src           Código de fuente por referencia
-    ------------------------------------------------------------------
-    etc     Configuración del sistema
-    opt     Paquetes de software adicionales o instalado manualmente
-    ------------------------------------------------------------------
-    boot    Archivos estáticos del boot loader (NO TOCAR)
-    mnt     Punto de montaje para sistemas de archivos (manual)
-    media   Punto de montaje para unidades externas
-    dev     Device files
-    run     Datos relevantes de procesos en ejecución
-    srv     Datos de servicios de este sistema
-    tmp     Archivos temporales
-    var     Datos variables
-    svr     Datos para servidores
-    ------------------------------------------------------------------
-    root    Carpeta personal del usuario root
-    home    Carpetas personales de los usuarios (~)
-        |-> .cache      $XDG_CACHE_HOME   Datos no esenciales
-        |-> .config     $XDG_CONFIG_HOME  Configuración del usuario
-        |-> .local
-            |-> bin                           Ejecutables del usuario (en PATH)
-            |-> share   $XDG_DATA_HOME        Datos del usuario
-            |-> state   $XDG_STATE_HOME       Logs, historiales, archivos recientes...
-
-        |-> Desktop     $XDG_DESKTOP_DIR      Archivos que aparecen en el escritorio
-        |-> Downloads   $XDG_DOWNLOAD_DIR     Descargas de navegadores
-        |-> Templates   $XDG_TEMPLATES_DIR    Plantillas para crear nuevos archivos
-        |-> Public      $XDG_PUBLICSHARE_DIR  Documentos públicos
-        |-> Documents   $XDG_DOCUMENTS_DIR    Documentos personales
-        |-> Music       $XDG_MUSIC_DIR        Música
-        |-> Pictures    $XDG_PICTURES_DIR     Fotografías
-        |-> Videos      $XDG_VIDEOS_DIR       Vídeos
-
+[2]: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
+{{< /block >}}
 
 # El sistema de archivos
 
 Se pueden distinguir dos tipos:
 
-- **shareable** vs **unshareable**: un archivo shareable se puede guardar en un
-  ordenador y utilizar en otros[^1]. Por ejemplo, los archivos de usuario
-  y configuración son shareables, pero _device lock files_ no.
+- **shareable** vs **unshareable**: un archivo es _shareable_ cuando se puede guardar en un
+  ordenador y utilizar en otros sin problemas[^1]. Por ejemplo, los archivos de usuario
+  y configuración se pueden compartir, pero _device lock files_ no.
 
 - **variable** vs **estático**: un archivo estático son aquellos que no cambian
   sin intervención del administrador del sistema[^1], como binarios, librerías,
@@ -137,8 +147,10 @@ Se pueden distinguir dos tipos:
 
 ## `/home`
 
-> Nota: para escribir más rápido la carpeta del usuario `/home/magno` (por
-> ejemplo) usa `~`.
+{{< block "Nota" >}}
+Para escribir más rápido la carpeta del usuario `/home/magno` (por ejemplo) usa `~`.
+También se puede usar la variable `$HOME`.
+{{< /block >}}
 
 **Aquí dentro cada usuario tiene su propia carpeta**. Allí puede guardar sus
 documentos y otros, como la carpeta personal de Windows.
@@ -148,12 +160,12 @@ de disco, por si ocurre algo con el sistema principal, tus documentos
 importantes estén seguros. De la misma forma, puede ser buena idea montar un
 sistema de copias de seguridad.
 
-### `$HOME/.config`, `$HOME/.local`, etc
+## _Dotfiles_ de usuario
 
 [freedesktop.org] (antes llamados _Cross Desktop Group_, **XDG**) es un proyecto
-que trabaja en en la tecnología base que comparten los entornos de escritorio
-gratuitor para el _X Window System_ (X11) y _Wayland_ en Linux y otros sistemas
-basados en Unix[^3]. Tienen muchas [especificaciones] y [utilidades] intentando
+que trabaja en la tecnología base que comparten los entornos de escritorio
+gratuitos para el _X Window System_ (X11) y _Wayland_ en sistemas basados en
+Unix[^3]. Tienen muchas [especificaciones] y [utilidades] intentando
 estandarizar la experiencia de usuario dentro de un entorno de escritorio, en
 concreto la especificación [XDG Base Directory][3] describe la estructura de la
 carpeta del usuario.
@@ -162,45 +174,11 @@ Para ello, se crean algunas **variables de entorno** donde se espera que los
 datos del usuario se encuentren, para que las aplicaciones sepan donde están
 los documentos y donde pueden guardar la configuración específica del usuario.
 
-Conceptos básicos:
-
-- `$XDG_DATA_HOME`: Único directorio para escribir datos del usuario. Por
-  defecto es `~/.local/share`.
-
-- `$XDG_CONFIG_HOME`: Único directorio para almacenar configuración del usuario
-  (análogo a `/etc`). Por defecto es `~/.config`.
-
-- `$XDG_STATE_HOME`: Único directorio para almacenar estados del usuario como
-  logs, historiales, archivos recientes, etc. Por
-  defecto es `~/.local/state`.
-
-- `$XDG_CACHE_HOME`: Único directorio para almacenar datos no esenciales (caché)
-  del usuario (análogo a `/var/cache`). Por defecto es `~/.cache`.
-
-- `$XDG_RUNTIME_DIR`: Único directorio para almacenar archivos runtime y otro
-  tipo de objetos.
-
-------------------------------------------------------------
-
-- Hay un único directorio para almacenar ejecutables del usuario, por defecto en
-  `~/.local/bin`. La distribución se debe asegurar que estos directorios esten
-  en `PATH`. Hay que tener cuidado cuando `/home` se comparta entre varios
-  sistemas, es posible que los ejecutables no funcionen allí.
-
-------------------------------------------------------------
-
-- `$XDG_DATA_DIRS`: conjunto de directorios de datos ordenados de mayor a menor
-  preferencia en los que buscar, siendo `$XDG_DATA_HOME` la primera localización
-  donde se mire. Por defecto es `/usr/local/share/:/usr/share/`.
-
-- `$XDG_CONFIG_DIRS`: conjunto de directorios de configuración ordenados de
-  mayor a menor preferencia en los que buscar, siendo `$XDG_CONFIG_HOME` la
-  primera localización donde se mire. Por defecto es `/etc/xdg`.
-
-Por defecto, solo `XDG_RUNTIME_DIR` tiene un valor debido a `pam_systemd(8)`;
-para el resto es responsabilidad del usuario definirlas según la especificación[^4].
-Sin embargo, si no están definidas, se toma el valor por defecto; por tanto,
-solo es útil definir las variables si se decide cambiar lo predeterminado.
+Por defecto, solo `XDG_RUNTIME_DIR` tiene un valor asignado (debido
+a `pam_systemd(8)`). El resto de variables, es responsabilidad del usuario
+definirlas según la especificación[^4]. Sin embargo, si no están definidas, los
+programas compatibles deberán utilizar los valores por defecto. Por tanto, **solo
+es útil definir las variables si se decide cambiar los valores predeterminados**.
 
 {{< block "Importante" "var(--magno-red)" "black" >}}
 No todos los programas siguen la especificación, de hecho, solo unos pocos. Este
@@ -215,9 +193,37 @@ y cuáles no.
 [_dotfile madness_]: https://0x46.net/thoughts/2019/02/01/dotfile-madness/
 {{< /block >}}
 
-### `$HOME/Downloads`, `$HOME/Templates`, `$HOME/Documents`...
+Las variables más importantes son:
 
-Además de estos archivos, la gente de FreeDesktop.org provee de la utilidad
+| Variable             | Valor por defecto   | Descripción del contenido                                           |
+|----------------------|---------------------|---------------------------------------------------------------------|
+| `$XDG_DATA_HOME`     | `~/.local/share`    | Datos _shareables_                                                  |
+| `$XDG_CONFIG_HOME`   | `~/.config`         | Configuración (análogo a `/etc`).                                   |
+| `$XDG_STATE_HOME`    | `~/.local/state`    | Estado del usuario como logs, historiales, archivos recientes, etc. |
+| `$XDG_CACHE_HOME`    | `~/.cache`          | Datos no esenciales (caché) del usuario (análogo a `/var/cache`).   |
+| `$XDG_RUNTIME_DIR`   |                     | Archivos _runtime_ y otro tipo de objetos como sockets              |
+
+Estos directorios son **únicos**: no existen otras localizaciones dónde
+almacenar ese tipo de archivos.
+
+También hay otro directorio para **almacenar ejecutables del usuario**, por
+defecto en `~/.local/bin`. La distribución se debe asegurar que estos
+directorios estén en `PATH`. Hay que tener cuidado cuando `/home` se comparta
+entre varios sistemas, es posible que los ejecutables no funcionen allí.
+
+{{< dropdown "Otras variables" >}}
+- `$XDG_DATA_DIRS`: conjunto de directorios de datos ordenados de mayor a menor
+  preferencia en los que buscar, siendo `$XDG_DATA_HOME` la primera localización
+  donde se mire. Por defecto es `/usr/local/share/:/usr/share/`.
+
+- `$XDG_CONFIG_DIRS`: conjunto de directorios de configuración ordenados de
+  mayor a menor preferencia en los que buscar, siendo `$XDG_CONFIG_HOME` la
+  primera localización donde se mire. Por defecto es `/etc/xdg`.
+{{< /dropdown >}}
+
+## Carpetas estándar
+
+Además de estos archivos, la gente de [freedesktop.org] provee de la utilidad
 [`xdg-user-dirs`], que ayuda a manejar los conocidos directorios del usuario:
 
 - Desktop
@@ -297,24 +303,30 @@ Esta es la **carpeta personal del usuario _root_**. Puedes guardar archivos sin
 ningún problema, mientras seas el usuario _root_: `sudo su`.
 
 
-## `/usr`
+# `/usr`
 
-En versiones de Unix anteriores aquí se almacenaban las carpetas de los usuarios,
-al igual que ahora sucede con `home`. Pero actualmente su uso ha disminuido a
-solamente <<programas que puede usar el usuario y otros datos>>: contiene binarios
-del sistema, documentación, librerías, archivos de cabecera...
 
-Según el estándar, los tipos de archivos que contiene se catalogan como
-shareables y de solo lectura.
+Originalmente en Unix aquí se almacenaban las **carpetas de los usuarios**, al
+igual que ahora sucede con `home`. Pero actualmente su uso ha disminuido
+a solamente <<programas que puede usar el usuario y otros datos>>: contiene
+binarios del sistema, documentación, librerías, archivos de cabecera... El
+acrónimo <<oficial>> es _Unix System Resources_.
 
 En esta carpeta se almacena la mayoría del contenido, por lo tanto es una de las
 más importantes. En su interior podemos encontrar los sub-directorios
 obligatorios de los apartados siguientes.
 
+Según el estándar, los tipos de archivos que contiene se catalogan como
+**_shareables_ y de solo lectura** instalados por la distribución.
 
-### `/usr/bin`
+Son solo de lectura (salvo por instalación o actualización) porque los archivos
+de configuración van en [`/etc`](#etc).
 
-> Ver también [`/bin`](#bin-sbin-y-libxx)
+## `/usr/bin`
+
+{{< block "Nota" >}}
+Ver también [`/bin`](#bin-sbin-y-libxx) para más detalles.
+{{< /block >}}
 
 `bin` es la forma corta de _binaries_, que quiere decir archivos binarios o
 programas. **Contiene los comandos que puede usar tanto el administrador del
@@ -325,6 +337,7 @@ Además, si un programa se instala con el package manager de tu distro (`pacman`
 
 **No debe haber subdirectorios en `/usr/bin`**.
 
+{{< dropdown "Contenido obligatorio de `/usr/bin`" >}}
 Son obligatorios los siguientes comandos:
 
     cat        Contatenar archivos con stdout
@@ -361,27 +374,21 @@ Son obligatorios los siguientes comandos:
     umount     Desmontar sistemas de archivos
     uname      Mostrar información del sistema
 
-<!-- TODO: Cuando se publique el post de comandos de Linux -->
-<!-- Ver más en detalle en: [comandos de Linux]. -->
-<!-- [comandos de Linux]: relref "comandos" >}} -->
+Algunos de los paquetes que dan los comandos más básicos de Linux y que
+prácticamente están instalados en todos los sistemas son:
 
-Y entre otros muchos, los siguientes opcionales:
+- [`util-linux`](https://en.wikipedia.org/wiki/Util-linux):
+  `lsblk`, `kill`, `su`, `whereis`, `mkfs`, `mount`, `fdisk`...
+- [`coreutils`](https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands)
+  `cat`, `ls`, `rm`, `mv`, `mkdir`, `pwd`, `echo`...
+{{< /dropdown  >}}
 
-    ed        Editor ed
-    tar       Crear archivos tar
-    gzip      Comprimir archivos
-    gunzip    Descomprimir archivos
-    zcat      Descomprimir archivos
-    netstat   Mostrar estadísticas de red
-    ping      Probar ICMP
-
-
-### `/usr/sbin`
+## `/usr/sbin`
 
 Por otro lado, `sbin` también almacena programas, pero estos son mucho más
-sensibles, ya que se tratan de los ejecutables del administrador
-(_system admin_). Estos archivos están restringidos al super-usuario y no pueden
-ser utilizados por otros.
+sensibles, ya que se tratan de los **ejecutables del administrador** (_system
+admin_). Estos archivos están restringidos al super-usuario y no pueden ser
+utilizados por otros.
 
 Estos binarios son esenciales para iniciar, recuperar y/o reparar el sistema;
 como por ejemplo `shutdown`, `fdisk`, `getty`, `ifconfig` y `mkfs`. Más ejemplos
@@ -393,19 +400,20 @@ esta carpeta.
 Nótese que los programas de este tipo localmente instalados deben ir en
 `/usr/local/sbin`.
 
-> `PATH` guarda alguna de estas direcciones para saber donde buscar los
-> programas del terminal. Usa `which` para conocer su carpeta concreta de un
-> comando.
+{{< block "Nota" >}}
+`PATH` guarda alguna de estas direcciones para saber donde buscar los programas
+del terminal. Usa `which` para conocer su carpeta concreta de un comando.
+{{< /block >}}
 
 
-### `/usr/lib`
+## `/usr/lib`
 
 Finalmente; `lib`, `lib32`, `lib64` y otras variantes son directorios en los que
-se almacenan las librerías de determinados programas. Estos son otros archivos
-binarios que añaden funcionalidad a algunas aplicaciones.
+se almacenan las **librerías de determinados programas**. Estos son otros
+archivos binarios que añaden funcionalidad a algunas aplicaciones.
 
-Estas carpetas también suelen estar en la `PATH` para poder compilar de forma
-sencilla:
+También es útil para poder compilar de forma sencilla, ya que el _linker_ mirará
+por defecto en ellas:
 
 ```sh
 gcc -o exe main.c -llibreria
@@ -413,12 +421,16 @@ gcc -o exe main.c -llibreria
 
 Y la librería en cuestión está en `/usr/lib/liblibreria.so`.
 
+{{< block "Nota" >}}
+Los paquetes del kernel generalmente se instalan en `/usr/lib/modules/*`
+{{< /block >}}
 
-### `/usr/local`
+
+## `/usr/local`
 
 El motivo de hacer esta separación es el de tener otro directorio `usr` que se
 pueda montar en solo lectura en algún otro lugar. Sin embargo, hoy en día, solo
-se usa para guardar programas de terceros o autocompilados.
+se usa para guardar **programas de terceros o autocompilados**.
 
 Es utilizado por el administrador del sistema para instalar software localmente,
 de esta forma está seguro de sobreescrituras cuando los programas de sistema se
@@ -426,8 +438,8 @@ actualizan.
 
 Este incluye (y ninguno más):
 
-- `bin`, `sbin`, `lib`
-- `man` (que suele ser un enlace a `/usr/share/man`)
+- `bin`, `sbin`, `lib`: equivalentes a los vistos hasta ahora
+- `man` (que suele ser un enlace a `/usr/share/man`): páginas del manual, documentación
 - `share`
 - `etc`
 - `games`
@@ -439,9 +451,9 @@ Tienen el mismo uso que los que ya se describieron
 Tras una instalación limpia, estas carpetas deben estar vacías.
 
 
-### `/usr/share`
+## `/usr/share`
 
-Esta carpeta contiene archivos de solo lectura que se pueden compartir
+Esta carpeta contiene archivos de **solo lectura que se pueden compartir**
 y archivos independientes de la arquitectura de software: documentación, iconos,
 fuentes, imágenes de fondo... Sin embargo, no está pensada para compartir con
 otros sistemas operativos.
@@ -463,7 +475,7 @@ Y [más](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s11.html) como:
 `color`, `dict`, `locale`, `nls`...
 
 
-### Otros
+## Otros
 
 - `/usr/games`: archivos de videojuegos
 - `/usr/include`: archivos de cabecera necesarios para compilar (`.h`, `.hpp`)
@@ -473,20 +485,55 @@ Y [más](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s11.html) como:
     - `/usr/src/.config`: configuración
 
 
-# Binarios y configuración
+# `/bin`, `/sbin` y `/libXX`
 
-## `/bin`, `/sbin` y `/libXX`
+En 1970, en el sistema Unix, los discos tenían bastante poco espacio. Los
+binarios del sistema ocupaban cada vez más, tanto que se necesitaban varios
+discos para ellos.
 
-Estas carpetas se conservan por algunos programas que todavía utilizan estas
-direcciones, por eso en distribuciones actuales de Linux, son solamente enlaces
-simbólicos a `/usr/bin`, `/usr/sbin` y `/usr/libXX`; cuyo propósito es el mismo.
+Los desarrolladores tuvieron que separarlos en varias carpetas para poder
+[montarlos] por separado. Cuando `/bin` estaba lleno, se instalaba en
+`/usr/bin`, que por aquel momento **era la carpeta del usuario**.
+
+Después, se intentaron montar justificaciones arbitrarias sobre lo que debía ir
+en `/bin` frente a `/usr/bin`, pero de forma informal:
+
+- `/bin`: binarios <<esenciales>>
+- `/usr/bin`: el resto
+
+Lo mismo sucedía para `/lib`.
+
+Con el paso del tiempo, las carpetas de los usuarios se mezclaban con las del
+sistema, por lo que finalmente se movieron a la nueva carpeta de `/home`
+y mantener `/usr` para <<cosas del sistema>>.
+
+Luego apareció el estándar [FHS][2], que decidió formalizar este estándar. Por
+tanto, los nombres _Unix Source Repository_ o _Unix System Resources_ con solo
+para <<parchear>> el problema de que originalmente era de _user_.
+
+Actualmente, estas carpetas se conservan por algunos programas que todavía
+utilizan estas direcciones. Por eso en distribuciones actuales de Linux, son
+solamente enlaces simbólicos a `/usr/bin`, `/usr/sbin` y `/usr/libXX`; cuyo
+propósito es el mismo.
 
 Esto hace que el sistema sea más compatible con Unix y se simplifica la
 jerarquía de carpetas: anteriormente era necesario diferenciar los programas a
 nivel de equipo o usuario y esencial o no esencial.
 
+Fuente: [AskUbuntu](https://askubuntu.com/a/135679)
 
-## `/etc`
+[montarlos]: {{< ref "so/archivos/#montaje-de-sistemas-de-archivos" >}}
+
+# `/opt`
+
+Significa _optional_. Aquí es donde se instala software manualmente e incluso
+los programas que has hecho tú mismo, pero que sea ***self-contained***. Esto
+significa que el programa no se separa en `bin`, `lib`, `share`, etc y que le
+llega con tener una única carpeta. Suelen ser **programas comerciales**.
+
+Cada paquete debe ir en `/opt/<paquete>` o `/opt/proveedor`.
+
+# `/etc`
 
 Finalmente se ha confirmado que el nombre de esta carpeta quiere decir
 _etcétera_. Aquí es donde se guardas todas las **configuraciones de programas
@@ -504,133 +551,188 @@ Por ejemplo, allí podrás encontrar información sobre el _package manager_ `ap
 en esta carpeta se guarda la lista de los repositorios, paquetes instalados y
 sus archivos de configuración.
 
+Lista de algunos archivos de configuración más importantes:
+
+- `/etc/fstab`: _File Systems Table_. Montado y configuración de particiones durante el arranque.
+- `/etc/mtab`: _Mounted file systems Table_. Lista de sistemas de archivos actualmente montados.
+
+Usuarios y grupos:
+
+- `/etc/passwd`: información sobre usuarios: nombre, UID, GID, _login_, _shell_, directorio _home_, etc.
+- `/etc/shadow`: información de grupos de usuarios: nombre, GID y miembros.
+- `/etc/gshadow`: contraseñas encriptadas de los grupos.
+- `/etc/sudoers`: lista de usuarios con capacidad para ejecutar comandos privilegiados.
+- `/etc/skel/*`: directorio con los archivos a copiar a nuevos usuarios
+- `/etc/adduserconf`: configuración por defecto de los nuevos usuarios creados con `adduser`.
+
+Redes:
+
+- `/etc/network/interfaces`: configuración de las interfaces (manual o dinámica -- DHCP).
+- `/etc/resolv.conf`: especifica el dominio y los servidores DNS a usar.
+- `/etc/hosts`: asociación de nombres de host a direcciones IP, similar a un DNS local.
+- `/etc/hostname`: nombre de host de la máquina (debe estar asociado a `127.0.0.1` en `/etc/hosts`).
+- `/etc/dhcp/dhcp.conf`: configuración del servidor DHCP
+- `/etc/sysctl.conf`: configuración del tráfico IP como _IP forwarding_.
+- `/etc/services`: asociación de puertos y protocolos con los servicios que ofrecen.
+
+_Package managers_:
+
+- `/etc/apt/sources.list`: _mirrors_ de los que descargar software.
+- `/etc/apt.conf.d/*`: directorio del resto de configuración de `apt`.
+
+Otros:
+
+- `/etc/cron.hourly/*`, `/etc/cron.daily/*`, `/etc/cron.monthly/*`: directorios
+  con scripts de ejecución periódica.
+
 Otros ejemplos de archivos [aquí](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s07.html).
 
+Nótese que la disposición de algunos archivos pueden cambiar dependiendo de la
+propia distribución. Consulta la documentación de cada uno para obtener más
+detalles.
 
-## `/opt`
+# `/svr`
 
-Significa _opcional_. Aquí es donde se instala software manualmente e incluso
-los programas que has hecho tú mismo.
+Datos específicos que utilizados por servidores que se estén ejecutando en el
+sistema.
 
-Cada paquete debe ir en `/opt/<paquete>` o `/opt/proveedor`.
+# `/var`
 
-Los directorios
+Este es el directorio _variable_, contiene carpetas y archivos dedicados a
+guardar datos que suelen aumentar en tamaño, como _logs_ de sistema, _caché_ y
+demás.
 
-- `/opt/bin`
-- `/opt/doc`
-- `/opt/include`
-- `/opt/info`
-- `/opt/lib`
-- `/opt/man`
+# `/tmp`
 
-están reservados para el uso del administrador, dado que los programas que ejecute
-el usuario deben seguir el patrón de `/opt/<paquete>`.
+Lugar para almacenar **datos temporalmente** durante una sesión. Por ejemplo, si
+estás escribiendo un archivo en un programa de ofimática, es posible que el
+programa guarde copias de seguridad regularmente, por si ocurre un error, se va
+la luz u otros inconvenientes. Luego podrás recuperar esos datos.
 
-Tras una instalación limpia esta carpeta debería estar vacía.
+Generalmente se borra al reiniciar el sistema.
 
 
 # Sistema
 
 ## `/boot`
 
+Contiene las imágenes de [`vmlinuz` y `initramfs`], además de la configuración
+del _bootloader_ y cualquier otro tipo de información que se necesite antes de
+que el kernel ejecute programas de usuario.
+
+Solo es necesario que esté presente durante el arranque y durante la
+actualización del kernel (se necesita regenerar el `initramfs`).
+
+Normalmente se utiliza el formato FAT32 para evitar que los _bootloaders_ no
+conozcan las nuevas características de los [sistemas de archivos].
+
 Aquí se guardan los archivos que necesita el sistema operativo para encenderse
-(_boot_), en otras palabras, aquí están los ejecutables del _bootloader_. Por
-este motivo, no es recomendable toquetear los archivos de este directorio.
-Normalmente es una partición separada.
-
-
-## `/dev`
-
-Quiere decir _devices_ o dispositivos. En Linux (y también en Unix), todo es un
-archivo: desde un archivo de texto en el que guardas las contraseñas de tus
-redes sociales, USBs, teclados, discos duros, etc.
-
-Los drivers, el kernel y determinadas aplicaciones acuden a este directorio para
-saber con qué dispositivos cuenta tu ordenador. Por ejemplo, un disco sería
-`sda` y una partición `sda1`, `sda2`...
-
-<!-- TODO: Cuando se publique el post de archivos en Linux -->
-<!-- También por este motivo, es aquí donde más aparecen los diferentes tipos de
-archivos (ver [tipos de archivos]).
-
-[tipos de archivos]: {{< relref "archivos" >}} -->
+(ejecutables del _bootloader_) y **el propio kernel**. Por este motivo, no es
+recomendable toquetear los archivos de este directorio. Normalmente es una
+partición separada.
 
 
 ## `/media` y `/mnt`
 
-_Media_ y _mount_ son los directorios en donde el sistema coloca los
-dispositivos como USBs, _floppy disks_, discos duros externos, CDs y demás.
-Las distribuciones actuales de Linux los montan automáticamente en la carpeta de
-_media_.
+`/media` y `/mnt` son los directorios en donde el sistema monta los dispositivos
+como USBs, _floppy disks_, discos duros externos, CDs y demás. Las
+distribuciones actuales de Linux los montan automáticamente unidades externas
+removibles en la carpeta de `/media`.
 
 Por lo tanto, el USB que insertes estará en
-`/media/<usuario>/<nombre del dispositivo>`. Pero Si quieres montar algo
-manualmente con el comando `mount`, déjalo en `/mnt/`
+`/media/<usuario>/<nombre del dispositivo>`. Pero si quieres montar algo
+manualmente con el comando `mount`, déjalo en `/mnt`
 
 
-## `/var`
+## `/dev`
 
-Este es el directorio _variable_, contiene carpetas y archivos dedicados a
-guardar datos que suelen aumentar en tamaño, como _logs_ de sistema, _caché_ y
-demás.
+En este directorio, el kernel de Linux almacena **pseudo-archivos**, que
+representan dispositivos (de ahí el nombre _devices_) y pseudo-dispositivos.
 
+{{< todo "Pendiente de revisión y verificación" >}}
+En Linux (y también en Unix), todo es un archivo: desde un archivo de texto
+hasta los mismos USBs, teclados, discos duros, etc.
 
-## `/tmp`
+Se trata de un modelo bastante sencillo, porque los drivers consisten en los
+programas que implementan las llamadas para escribir y leer datos de estos
+archivos especiales.
 
-Este es el sitio donde las aplicaciones guardan datos temporalmente durante una
-sesión. Por ejemplo, si estás escribiendo un archivo en un programa de ofimática,
-es posible que el programa guarde copias de seguridad regularmente, por si
-ocurre un error, se va la luz u otros inconvenientes. Luego podrás recuperar
-esos datos.
+Los drivers, el kernel y determinadas aplicaciones acuden a este directorio para
+saber con qué dispositivos cuenta tu ordenador. Por ejemplo, un disco sería
+`sda` y una partición `sda1`, `sda2`...
+{{< /todo >}}
+
+Algunos ejemplos de dispositivos:
+
+- `/dev/sdX`, `/dev/hdX`: (_Sata Disk_ o _Hard Drive_) archivos de bloque que
+  representan discos duros.
+
+Ejemplos de pseudo-dispositivos:
+
+- `/dev/null`: archivo que descarta todos los datos que se le escriben.
+- `/dev/random`, `/dev/urandom`: fichero con contenidos aleatorios de mayor o menor calidad.
 
 
 ## `/proc`
 
-`proc` de _procedures_. Contiene información de todos los procesos que se están
-ejecutando en el momento, que principalmente son pseudo-archivos (no son
+`proc` de _procedures_. Contiene **información de todos los [procesos]** que se
+están ejecutando en el momento, que principalmente son pseudo-archivos (no son
 archivos del disco realmente, el kernel los traduce a archivos). Cada uno de
 estos procesos tendrá un sub-directorio con el nombre del identificador del
-proceso (ID).
+proceso (PID):
 
-Paralelamente puedes encontrar información sobre el CPU (`/proc/cpuinfo`) u
-otras utilidades (`/proc/uptime`).
+- `/proc/PID/fd/*`: directorio con los descriptores de archivos (_File
+  Descriptors_) que tiene abiertos).
+- `/proc/PID/cwd`: enlace al directorio de trabajo del proceso.
+- `/proc/PID/exe`: enlace al ejecutable del proceso.
+- `/proc/PID/cmdline`: línea de comandos con la que se invocó el proceso.
+- `/proc/PID/environ`: variables del entorno.
+- `/proc/PID/maps`: mapa de memoria del proceso.
+- `/proc/PID/status`: estado del proceso.
 
+Paralelamente puedes encontrar **información sobre propio sistema**:
+
+- `/proc/cpuinfo`: información sobre la CPU.
+- `/proc/meminfo`: información del uso de la memoria principal.
+- `/proc/interrupts`: interrupciones usadas por IRQ.
+- `/proc/ioports`: lista puertos de entrada/salida del sistema.
+- `/proc/filesystems`: lista de sistemas de archivos soportados.
+- `/proc/partitions`: información sobre las particiones
+- `/proc/uptime`
+
+Directorios con más información:
+
+- `/proc/net/*`
+- `/proc/bus/*`
+
+## `/sys`
+
+De forma similar a `/proc`, da información sobre los dispositivos conectados,
+como el nivel de la batería, el brillo de la pantalla, etc.
 
 ## `/run`
 
 Funciona en RAM, lo que significa que todo se borrará al apagar el ordenador.
 Aunque diferentes distribuciones lo utilizan de formas un poco diferentes,
 generalmente sirve para guardar datos al iniciar la máquina, usuarios
-conectados, y deamons en ejecución.
+conectados y deamons en ejecución.
 
 
-## `/sys`
-
-Es la carpeta para interactuar con el kernel, y es similar al directorio `/run`.
-
-
-## `/svr`
-
-Datos específicos que utilizados por servidores que se entén ejecutando en el
-sistema.
-
-
+{{< todo >}}
 # Comparación con Windows
 
-<!-- TODO:
 No hay información en ningún sitio sobre esto.
-Windows se da ya por hecho, que realmente nadie sabe usarlo.
+Windows se da tan por hecho, que realmente nadie sabe usarlo.
 https://en.wikipedia.org/wiki/Directory_structure
 
 Carpetas virtuales, This PC, Quick Access, Libraries
 
-libraries = lista de lugares donde el usuario guarda archivos que las
-aplicaciones pueden encontrar y mostrar los datos (... que?)
-this pc = %userprofile% ?
-%userprofile% = C:/Users/<usuario>
-%appdata% = %userprofile%/appdata
-%programdata% = C:/ProgramData
--->
+    libraries = lista de lugares donde el usuario guarda archivos que las
+    aplicaciones pueden encontrar y mostrar los datos (... que?)
+    this pc = %userprofile% ?
+    %userprofile% = C:/Users/<usuario>
+    %appdata% = %userprofile%/appdata
+    %programdata% = C:/ProgramData
 
 En Windows, cada dispositivo conectado es una unidad de ficheros diferente,
 empezando por la letra `C`, que es donde está Windows instalado.
@@ -654,4 +756,51 @@ En `C:`
     - `Local` `LocalLow`
     - `Roaming`: se utiliza para _networking based logins for roaming
       profiles_. Los datos se sincronizarán por red.
+{{< /todo >}}
+
+# Dudas frecuentes
+## ¿Dónde instalar programas?
+
+|                        | Instalado por el sistema | Instalado por el administrador/usuario |
+|------------------------|--------------------------|----------------------------------------|
+| Todo el sistema        | `/usr/bin`               | `/usr/local/bin`                       |
+| Solo un usuario        |                          | `~/.local`                             |
+| Si es _self-contained_ | `/opt`                   | `~/.local/opt`                         |
+
+Cuando digo `bin`, también me refiero a otros directorios como `lib`, `share`
+o `include`. Por este motivo, casi siempre se repite la misma estructura en
+varios sitios.
+
+Un programa _self-contained_ es aquel que no se separa entre estas carpetas
+y solamente se instala en una sola (como más o menos sucede en Windows).
+
+Cuando un usuario (o el administrador) instala un programa desde su código
+fuente, es decir:
+
+```bash
+./configure
+make
+sudo make install
+```
+
+Generalmente el valor por defecto es `/usr/local`. Solo se cambia si el usuario
+lo quiere instalar solo para sí mismo:
+
+```bash
+./configure --prefix=$HOME/.local
+```
+
+{{< block "Nota" >}}
+`flatpak` y `snap`s se colocan en directorios completamente diferentes.
+{{< /block >}}
+
+## ¿Dónde está mi configuración?
+
+Si el programa sigue el estándar de [FHS][2] y [freedesktop.org]:
+
+- `/etc` para la configuración de todo el sistema
+- `~./config` para la configuración del usuario
+
+De lo contrario, deberías consultar la documentación del programa, aunque
+podrías empezar mirando por algo como `~/.<programa>` o `~/.<vendor>`.
 

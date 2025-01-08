@@ -2,7 +2,7 @@
 title: MIPS
 description: >-
     TODO
-date: 2023-2-23
+date: 2023-02-23
 weight: -1
 draft: true
 ---

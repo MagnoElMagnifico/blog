@@ -1,11 +1,14 @@
-<div class="block">
+<div
+    class="block"
+    id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}"
+>
     <div class="block-name"
         {{ if and (.Get 1) (.Get 2) }}
             style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
         {{ else if (.Get 1) }}
             style="background-color: {{ .Get 1 | safeCSS }}; color: black"
         {{ end }}
-        id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}">
+    >
         {{ .Get 0 | emojify | markdownify }}
     </div>
 <div class="block-content">

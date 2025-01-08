@@ -32,7 +32,7 @@ for elem in &mut v { ... } // Lo mismo, pero también escribe: desreferencia con
 
 ## Strings
 
-Consultar [aquí](strings.md).
+Consultar [aquí]({{< ref "lenguajes/rust/strings" >}}).
 
 
 ## Hash map

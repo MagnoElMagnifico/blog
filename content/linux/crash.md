@@ -1,7 +1,7 @@
 ---
 title: Cuando Linux crashea
 description: Algunos consejos para cuando Linux deja de funcionar.
-date: 2023-1-1
+date: 2023-01-01
 weight: -1
 ---
 

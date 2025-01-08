@@ -6,6 +6,7 @@
         <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}
+            {{ if .Page.HasShortcode "todo" }}[todo]{{ end }}
         </h3>
     {{ end }}
 

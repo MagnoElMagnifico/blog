@@ -11,6 +11,21 @@ draft: true
 hugo server --bind <ip> --baseURL http://<ip> --port 8000
 ```
 
+Generar los drafts:
+
+```bash
+hugo server -D
+```
+
+Generar solo a memoria (necesario si quieres ejecutar dos servidores y ver dos
+versiones a la vez).
+
+```bash
+hugo -server -M
+```
+
+----
+
 [Hugo] es un _Static Site Generator_ (SSG) escrito en Go, lo que quiere decir
 que será solamente HTML, CSS y JavaScript: no incluye nada en el servidor. Para
 blogs (este, por ejemplo) resulta muy útil, ya que aporta herramientas para
@@ -285,3 +300,21 @@ https://gohugo.io/templates/shortcode-templates/
 - `youtube` `vimeo` `twitter` `instagram`
 
 https://gohugo.io/content-management/shortcodes/
+
+# resources
+
+Si una página hace uso de imágenes, se pueden organizar mejor de la siguiente
+forma:
+
+```
+content/
+|- section/
+|  |- _index.md
+|  |- pagina.md
+|  |- pagina-con-recursos/
+|  |  |- index.md
+|  |  |- foto.png
+```
+
+`pagina-con-recursos` es un _Page Bundle_. Nótese que el artículo es `index.md`
+a diferencia del de la sección `_index.md`

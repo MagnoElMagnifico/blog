@@ -346,8 +346,6 @@ ver linkage
 ## Orden de los operadores
 ## Expresiones
 # Conversión de tipo
-
-
 # Alcance de las variables
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}

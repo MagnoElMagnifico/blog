@@ -1,6 +1,19 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
+
+    {{ if eq hugo.Environment "development" }}
+        <h3 class="page-stats">
+            [Pages: {{ .RegularPages.Len }}]
+            [Subsections: {{ with .Sections }}{{ .Len }}{{ else }}0{{ end }}]
+            {{ if .Params.content_title }}[title]{{ end }}
+            {{ if .Params.draft }}[draft]{{ end }}
+        </h3>
+    {{ end }}
+
+    {{/* Go to parent button */}}
     {{ with .Parent }}<a class="link-button" href="{{ .Permalink }}">Volver a {{ .Title }}</a>{{ end }}
+
+    {{/* If there isn't any pages in the section, show subsections first */}}
     {{ if not .RegularPages }}
         {{ with .Sections }}
             <nav>
@@ -11,13 +24,16 @@
         {{ end }}
     {{ end }}
 
+    {{/* Section introduction */}}
     {{ with .Page.Content }}
         <article>{{ . }}</article>
     {{ end }}
 
+    {{/* List of section's pages */}}
     {{ if .RegularPages }}
         {{ if .Params.content_title }}<h1>Contenido</h1>{{ end }}
 
+        {{/* List subsections */}}
         {{ with .Sections }}
             <nav>
                 {{ range .ByTitle }}
@@ -26,6 +42,7 @@
             </nav>
         {{ end }}
 
+        {{/* List pages */}}
         {{ range .RegularPages.ByWeight }}
             {{ partial "page-entry" . }}
         {{ end }}

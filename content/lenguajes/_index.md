@@ -6,12 +6,6 @@ content_title: true
 En esta subcategoría se encuentran mis apuntes sobre diferentes lenguajes de
 programación.
 
-
-# Mi tier list de lenguajes de programación
-
-![](./langs-tier-list.jpg)
-
-
 # Lenguajes populares
 
 A continuación aparece una lista de las páginas más conocidas para mirar la

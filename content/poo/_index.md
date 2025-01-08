@@ -24,10 +24,11 @@ y un archivo `.java` es un clase.
   la clase (incluyendo paquetes). Esto no es demasiado práctico. Nótese que
   `java.lang` se importa automáticamente.
 
-Para compilar:
+Para compilar recomiendo añadir la flag `-Xlint:all` para que el compilador te
+de consejos sobre cómo mejorar tu código, mostrar _warnings_ varios, etc.
 
 ```sh {linenos=false}
-javac -d <build_dir> <src_dir>/**/*.java
+javac -Xlint:all -d <build_dir> <src_dir>/**/*.java
 ```
 
 Para ejecutar hay que especificar dónde está la clase principal usando

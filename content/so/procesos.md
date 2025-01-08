@@ -192,7 +192,20 @@ Las funciones de `init` son la siguientes:
 - Cuando un proceso queda huérfano (su padre termina), normalmente `init` pasa
   a ser su padrastro.
 
-[`systemd`]: https://es.wikipedia.org/wiki/Systemd
+`systemd` también arrancará los servicios y controladores necesarios, como por
+ejemplo:
+
+- Networking ([NetworkManager])
+- Sistema de impresión ([CUPS])
+- [SSH]
+- Gestores gráficos: entorno de escritorio (_Desktop Manager_) o gestor de ventanas (_Window Environment_).
+- LVM
+
+[NetworkManager]: https://wiki.archlinux.org/title/NetworkManager
+[CUPS]: https://wiki.archlinux.org/title/CUPS
+[SSH]: https://wiki.archlinux.org/title/OpenSSH
+[`systemd`]: {{< ref "so/arranque#systemd" >}}
+<!-- TODO: link LVM a Linux -->
 {{< /block >}}
 
 En Windows no existe esta jerarquía:
@@ -500,9 +513,10 @@ Los elementos de un hilo son:
 
 <!-- TODO: diagrama de varios hilos dentro de un proceso y regiones del mismo 19-10-2023 -->
 
-Hay autores que llaman a los cores hilos por su fuerte relación.
-Otros autores los llaman procesos ligeros, pero eso ya es mas inusual. Un
-proceso consiste de al menos un hilo y un espacio de direcciones.
+Hay autores que llaman a los cores hilos por su fuerte relación. Otros autores
+los llaman procesos ligeros (**Lightweight Processes**, LWP), pero eso ya es mas
+inusual. Un proceso consiste de al menos un hilo y un espacio de direcciones.
+{#LWP}
 
 {{< block "Características" >}}
 - **Comparten memoria**: Están en el mismo espacio de direcciones.

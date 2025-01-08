@@ -1,4 +1,7 @@
-<div class="dropdown">
+<div
+    class="dropdown"
+    id="dropdown-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}"
+>
     <div class="show"
          onclick="this.parentElement.querySelector('.content').toggleAttribute('hidden');">
         {{ .Get 0 | emojify | markdownify }}
