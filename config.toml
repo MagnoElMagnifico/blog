@@ -31,11 +31,18 @@ Abre un [Issue] en el [repositorio] del blog.
 
 #### MARKDOWN CONFIG ####
 
+# Enable extensions
 [markup.goldmark]
 extensions.extras.mark.enable = true
 extensions.extras.insert.enable = true
 
-# Allow HTML in md files
+# Avoid scaping special markdown caracters
+extensions.passthrough.enable = true
+extensions.passthrough.delimiters.block = [["$$", "$$"]]
+# TODO: This may cause problems when just using
+# extensions.passthrough.delimiters.inline = [["$", "$"]]
+
+# Allow HTML in md files for more flexibility
 [markup.goldmark.renderer]
 unsafe = true
 
