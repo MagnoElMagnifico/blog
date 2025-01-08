@@ -275,6 +275,16 @@ cambie el fondo ni se resalte nada. Simplemente indenta el texto con 4 espacios
 > 0f-Ji  <Esc>/^[ \t>]*-$<Enter>
 > ```
 
+## Otras normas a tener en cuenta
+
+-
+    Las definiciones de **los conceptos deben estar claros en todo momento**
+    (usa `block` en color `--magno-blue`). Los ejemplos están bien, pero para
+    aclarar la propia definición; **no al revés**: que el lector tenga que
+    inferir la definición a partir del ejemplo.
+-
+    Evitar las repeticiones lo máximo posible: cuando se defina algo y luego ese
+    concepto vuelva a aparecer, no definirlo otra vez, sino añadir un link.
 
 # Diagramas
 
