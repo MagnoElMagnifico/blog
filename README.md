@@ -1,6 +1,6 @@
 [![Netlify Status][nt-status]][nt-deploy]
 
-[nt-status]: https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status
+[nt-status]: https://api.netlify.com/api/v1/badges/f5780fca-8fa1-4eb6-a8ff-1d8ca6821311/deploy-status?branch=production
 [nt-deploy]: https://app.netlify.com/sites/magnoblog/deploys
 
 # Magno Blog
