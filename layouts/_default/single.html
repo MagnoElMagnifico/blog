@@ -38,6 +38,7 @@
         <h3 class="page-stats">
             [{{ .Page.Weight }}]
             {{ if .Page.Draft }}[draft]{{ end }}
+            {{ if .Page.HasShortcode "todo" }}[todo]{{ end }}
             {{ if .Params.math }}[math]{{ end }}
             {{ if .Params.mermaid }}[mermaid]{{ end }}
         </h3>
