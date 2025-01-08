@@ -6,7 +6,6 @@ description: >
     refuerzo.
 date: 2025-01-06T17:50:03+01:00
 weight: 13
-draft: true
 math: true
 ---
 
@@ -352,11 +351,11 @@ Al multiplicar un vector horizontal por uno vertical, esencialmente se realiza
 una suma ponderada. $\operatorname{sign}$ se define como:
 
 $$
-\operatorname{sign}(x) = \begin{cases}\begin{align*}
+\operatorname{sign}(x) = \begin{cases}
     1 \quad& \text{si } x > 0 \\
     0 \quad& \text{si } x = 0 \\
    -1 \quad& \text{si } x < 0 \\
-\end{align*}\end{cases}
+\end{cases}
 $$
 
 Entonces, si $d(n)_i=1$ quiere decir que $x(n)_i$ pertenece a la primera clase,
@@ -818,10 +817,10 @@ Tenemos el problema de que $J(\theta)$ no es convexa.
 También se pueden utilizar otras funciones, como puede ser:
 
 $$
-k_\theta(x) = \begin{cases}\begin{align*}
+k_\theta(x) = \begin{cases}
     -\log \left( h_\theta(x) \right)     \quad& \text{si } y=0 \\
     -\log \left( 1 - h_\theta(x) \right) \quad& \text{si } y=1 \\
-\end{align*}\end{cases}
+\end{cases}
 $$
 
 Que se puede poner en una única expresión como:

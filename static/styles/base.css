@@ -70,7 +70,6 @@ main {
 /* Margin desktop */
 @media only screen and (min-width: 800px) and (min-device-width: 800px) {
     main { margin: 0 20vw; }
-    span.katex-display { overflow: visible; }
 }
 
 
@@ -164,7 +163,7 @@ code:not(pre code) {
     border-radius: var(--border-radius);
     margin: var(--p-separation);
     padding: var(--block-padding);
-    white-space: pre-wrap;
+    overflow-x: auto;
 }
 
 
@@ -196,7 +195,7 @@ blockquote blockquote,
 
 
 /**** Images ****/
-img, svg {
+article img, article svg {
     object-fit: contain;
     /*
      * Center by adding margin to the left (minus the
@@ -204,14 +203,15 @@ img, svg {
      */
     margin: 1rem 0 1rem 50%;
     transform: translate(-50%, 0);
+    width: 100%;
+    min-width: 300px;
+    overflow-x: auto;
 }
 
 /* Make diagrams bigger */
 .goat svg { min-width: 70%; }
 
-img          { width: 85%; }
 figcaption p { text-align: center; }
-
 figcaption p:before {
     content: "Figura: ";
     color: var(--title-color);
@@ -225,7 +225,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     background-color: var(--background-color);
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 table.fill { width: 100%; }
@@ -278,6 +278,7 @@ td.header, table.header td:first-child { border-right:  var(--table-header-borde
     grid-row-start: 2;
     align-content: center;
     padding: var(--block-padding);
+    overflow-x: auto;
 }
 
 /* Remove margin of the last paragraph */
@@ -332,14 +333,7 @@ td > p:last-child
 
 /**** KaTeX ****/
 /* "Fix" big LaTeX expressions */
-/* span.katex-display { overflow: scroll; } */
-
-.katex-display > .katex { white-space: normal }
-/* Add space between broken lines: */
-.katex-display > .base { margin: 0.25em 0 }
-/* Compensate by reducing space around display math */
-.katex-display { margin: 0.5em 0; }
-
+.katex-display { overflow-x: scroll; }
 
 /**** Blog entries ****/
 .blog-entry {

@@ -442,18 +442,18 @@ ampliasen:
 
 $$
 \begin{array}{l}
-    p \to q \\\\
-    p       \\\\
+    p \to q \\
+    p       \\
     \hline
-    q       \\\\[0.5em]
+    q       \\[0.5em]
     \text{Modus Ponens}
 \end{array}
 \mkern30mu
 \begin{array}{l}
-    p \to q \\\\
-    \lnot q \\\\
+    p \to q \\
+    \lnot q \\
     \hline
-    \lnot p \\\\[0.5em]
+    \lnot p \\[0.5em]
     \text{Modus Tollens}
 \end{array}
 $$
