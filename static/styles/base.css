@@ -209,7 +209,7 @@ img, svg {
 /* Make diagrams bigger */
 .goat svg { min-width: 70%; }
 
-img          { width: 85vmin; }
+img          { width: 85%; }
 figcaption p { text-align: center; }
 
 figcaption p:before {
@@ -245,6 +245,14 @@ th, td.header, table.header td:first-child {
 th                                     { border-bottom: var(--table-header-border); }
 td.header, table.header td:first-child { border-right:  var(--table-header-border); }
 
+/**** Special classes for Markdown ****/
+.center-text {
+    text-align: center;
+}
+
+.arrow-list li::marker {
+    content: '==> ';
+}
 
 /**** Blocks ****/
 .block {
