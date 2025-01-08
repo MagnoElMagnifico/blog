@@ -51,15 +51,6 @@ expectativas que al final no se cumplieron.
     Justo el año antes, propuso el [Test de Turing]. Es importante decir que
     en 1980 se publicó un contraargumento, la [habitación China].
 
-{{< todo "Es esto cierto? -- No tiene mucha pinta de que lo sea" >}}
-1956
-
-:   Conjetura presentada en la Fundación Rockefeller. Se planteaba que
-    cualquier aspecto de la inteligencia o la memoria humana es susceptible de
-    ser **simulada en un computador**. A partir de esta fecha, nace el campo
-    formalmente.
-{{< /todo >}}
-
 1957
 
 :   [Frank Rosenblatt] desarrolla el **algoritmo de [perceptrones]** que permite

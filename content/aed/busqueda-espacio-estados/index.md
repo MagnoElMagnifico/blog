@@ -7,7 +7,6 @@ description: >
     problemas complejos.
 date: 2025-01-01T18:38:17+01:00
 weight: 11
-draft: true
 math: true
 mermaid: true
 ---
@@ -513,6 +512,7 @@ def algoritmo_voraz(c: Candidatos) -> solucion: Solución:
 ```
 {{< /todo >}}
 
+{{< todo "Algoritmo de la materia de AED" >}}
 ### Backtracking
 
 <!-- TODO: hacer explicación + terminar algoritmo -->
@@ -528,7 +528,6 @@ assert f(s) == 0
 assert f(i) == float('inf') # siendo i el resto de nodos
 ```
 
-{{< todo "Algoritmo de la materia de AED" >}}
 ```py
 def backtracking() -> s: Solución:
     nivel = 1
