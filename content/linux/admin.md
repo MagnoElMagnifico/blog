@@ -292,6 +292,10 @@ del proceso:
 Muestra el árbol de procesos
 {{< /block >}}
 
+{{< block "`pgrep`" >}}
+Permite buscar procesos por nombre. Equivalente a `ps | grep <nombre>`.
+{{< /block >}}
+
 {{< block "`top` y `htop`" >}}
 Muestran una lista de procesos en una TUI (_Terminal User Interface_) que se
 actualiza periódicamente. Dentro del programa se pueden cambiar las opciones de
@@ -302,7 +306,7 @@ visualización, filtrado, etc.
 ## Ejecución en segundo plano
 
 {{< block "Nota" >}}
-Ver [shell]({{< ref "so/shell/#ejecución-en-segundo-plano" >}})
+Ver [Bash]({{< ref "linux/bash/#ejecución-en-segundo-plano" >}})
 {{< /block >}}
 
 -   **Primer plano** o **foreground**: el shell espera a que termine el comando
@@ -310,7 +314,8 @@ Ver [shell]({{< ref "so/shell/#ejecución-en-segundo-plano" >}})
 -   **Segundo plano** o **background**: el shell acepta más comandos antes de
     que terminen los anteriores.
 
-Comandos:
+Lógicamente, solo sepuede ejecutar un único comando en primer plano, pero
+cualquier número en segundo plano.
 
     comando &  Lanza un comando en segundo plano
     CTRL-C     Detiene un comando en primer plano
@@ -326,19 +331,32 @@ Comandos:
 Ver [señales]({{< ref "so/procesos/#señales" >}})
 {{< /block >}}
 
-    kill -l         Lista las señales posibles
-    kill señal PID  Envía una señal al proceso
-    pkill           Envía señales al proceso por el nombre del ejecutable
-    pgrep           Similar a ps | grep
+    kill -l           Lista las señales posibles
+    kill -N PID       Envía una señal con su código numérico al proceso
+    kill -nombre PID  Envía una señal al proceso
+    -----------------------------------------------------------------------
+    pkill -N PID      Envía señales al proceso por el nombre del ejecutable
+    pkill -nombre PID Envía señales al proceso por el nombre del ejecutable
+
+{{< keyvalue title="Recordatorios de señales" key-header=true >}}
+-% `SIGTERM` :% Mata el proceso, permitiéndole terminar correctamente.
+-% `SIGKILL` :% Mata el proceso inmediatamente (no se puede ignorar).
+-% `SIGINT` :% Interrupción de teclado (`Ctrl-C`).
+-% `SIGSTOP` :% Pausa temporlamente el proceso (no se puede ignorar).
+-% `SIGTSTP` :% Stop de teclado (`Ctrl-Z`).
+-% `SIGCONT` :% Continua un proceso detenido.
+-% `SIGHUP` :% Se recibe cuando el proceso controlador (o terminal) termina.
+{{< /keyvalue >}}
 
 <!-- TODO: expandir y poner mejor -->
 ## Prioridad
 
 La prioridad de un proceso puede ir de -20 (más alta) a 19 (más baja). Por
-defecto, la prioridad es 0 y los usuarios normales solo se la pueden bajar.
+defecto, la prioridad es 0 y los usuarios normales solo se la pueden bajar
+(**solo root la puede subir**).
 
 {{< block "Nota" >}}
-`NI` p `NICE` es el valor de prioridad asignada al iniciar el proceso, mientras
+`NI` o `NICE` es el valor de prioridad asignada al iniciar el proceso, mientras
 que `PRI` es la prioridad actual que va ajustando el planificador del kernel.
 {{< /block >}}
 
@@ -358,9 +376,21 @@ El comando `ulimit` permite limitar los recursos que puede utilizar un proceso.
 <!-- TODO: expandir y poner mejor -->
 ## Análisis básico de rendimiento
 
-    uptime  Hora actual, tiempo encendido, número de usuarios y carga media (1, 5, 15 mins)
+    uptime  Tiempo encendido, número de usuarios y carga media
     w       Igual que uptime, pero más información sobre usuarios y sus procesos
     free    Muestra la cantidad de memoria libre y usada, tanto RAM como swap
+
+{{< dropdown "Ejemplo de `uptime`" >}}
+```
+22:18:28 up  2:51,  2 users,  load average: 0.59, 0.62, 0.78
+```
+
+-   `22:18:28`: hora actual
+-   `up 2:51`: tiempo encendido
+-   `2 users`: número de usuarios conectados
+-   `load average: 0.59, 0.62, 0.78`: carga media en el último minuto, últimos
+    5 minutos y últimos 15 minutos.
+{{< /dropdown >}}
 
 ## Otros
 
@@ -397,8 +427,8 @@ diferentes:
 
 {{< keyvalue title="Tipos de archivos" key-header=true >}}
 -% Archivos normales :%
-Los normales que se almacenan en disco, se crean con distintos programas y se
-eliminan con `rm`.
+Los normales que se almacenan en disco, se crean con distintos programas (por
+ejemplo `touch`) y se eliminan con `rm`.
 
 -% Directorios :%
 Se utilizan para agrupar archivos y crear estructuras lógicas: contiene
@@ -448,38 +478,58 @@ Se pueden ver los atributos de un fichero con `ls -l`.
     - `p`: tubería
     - `s`: socket
 
--   **Número de enlaces**: indica el número de nombres o enlaces duros del
-    archivo. En el caso de un directorio se corresponde con el número de
-    subdirectorios (incluyendo `.` y `..`).
+-  **Permisos**
 
--   **Tamaño** en bytes: con la opción `-h` se muestra en múltiplos del byte. El
-    valor que aparezca dependerá del sistema de archivos utilizado.
+    Permisos de usuario, permisos de grupo y permisos de otros; codificados con
+    `rwx` (_read_, _write_, _execute_). Más información sobre [permisos].
+
+-   **Número de enlaces**
+
+    Indica el número de nombres o enlaces duros del archivo. En el caso de un
+    directorio se corresponde con el número de subdirectorios (incluyendo `.`
+    y `..`).
+
+-  **Propietarios**: Usuario y grupo propietarios.
+
+-   **Tamaño** en bytes
+
+    Con la opción `-h` se muestra en múltiplos del byte. El valor que aparezca
+    dependerá del sistema de archivos utilizado.
 
 -   **Fecha**: se almacenan tres varias fechas.
-
-    - `mtime`: fecha de la última modificación. Es la que muestra `ls`.
-    - `atime`: fecha del último acceso. Se muestra con `ls -l --time=atime`
-    - `ctime`: fecha del último cambio de estado. Se muestra con `ls -l --time=ctime`
+    -   `mtime` (_modification time_): última modificación. Opción por defecto
+        (`ls`).
+    -   `atime` (_last access_): último acceso. Se muestra con `ls -l
+        --time=atime`.
+    -   `ctime` (_status change_): último cambio de estado. Se muestra
+        con `ls -l --time=ctime`.
 
 -   **Nombre**. Su longitud máxima es de 255 chars.
 
 ### Permisos
-<!-- TODO: juntar con SO -->
 
-Los permisos se pueden cambiar con el comando:
+{{< keyvalue title="Comando `chmod`" key-header=true >}}
+-% `chmod [-R] [+-=]permisos file` :%
+Añade (`+`), quita (`-`) o establece (`=`) _permisos_ en formato simbólico.
+
+-% `chmod [-R] u[+-=]permisos file` :%
+Igual que el anterior, pero solo para el usuario propietario.
+
+-% `chmod [-R] g[+-=]permisos file` :%
+Igual que el anterior, pero solo para el grupo propietario.
+
+-% `chmod [-R] o[+-=]permisos file` :%
+Igual que el anterior, pero solo para otros usuarios.
+{{< /keyvalue >}}
+
+La opción `-R` es **recursivo**, para aplicar el permiso a los archivos de
+dentro del directorio especificado
+
+También es posible especificar el valor de los 3 (o 4) octetos de los permisos.
 
 ```sh
-chmod operación archivos
+chmod 770 file # ==> -rwxrwx---
 ```
-
-La operación puede ser:
-
--   `quien operador permisos`:
-    - quien: `u` para el usuario, `g` para el grupo, `o` para otros.
-    - operador: `+` para añadir, `-` para quitar, `=` para establecer
-    - permisos: `rwx` y los especiales `st`
-
--   Valor en octal de los permisos.
 
 Los permisos por defecto los define la máscara. Se pueden cambiar con el comando
 `umask`.
@@ -497,8 +547,6 @@ chown usuario:grupo archivos
 
 La opción `-R` hace que recorra recursivamente los directorios.
 
-
-<!-- TODO: mover a nuevo post y borrar linux/links -->
 ## Links
 
 Los archivos de link son una manera de crear un atajo a otro archivo, de tal
@@ -660,26 +708,34 @@ En lugar de realizar [particiones físicas] mediante la modificación de las
 tablas en [MBR] o [GPT], los sistemas Linux modernos proporcionan el sistema
 **LVM**, que proporciona una **visión de alto nivel sobre los discos**:
 
-- Permite ver **varios discos como solo uno**
-- Permite hacer cambios **dinámicamente** sin necesidad de reiniciar el sistema
-- Permite gestionar **volúmenes en grupos** definidos por el administrador
+-   Permite ver **varios discos como solo uno**
+-   Más flexible: permite mover y cambiar de tamaño los volúmenes creados
+-   Permite hacer cambios **dinámicamente** sin necesidad de reiniciar el
+    sistema
+-   Permite gestionar **volúmenes en grupos** definidos por el administrador
 
 {{< block "Volúmen Físico (PV)" "var(--magno-red)" >}}
 Discos duros, [particiones] de los mismos (definidas en la [tabla de
-particiones]) u dispositivos similares, por ejemplo
-[RAID](https://en.wikipedia.org/wiki/RAID). Deben ser continuas en el disco.
+particiones]) u dispositivos similares, por ejemplo [RAID]: **[discos lógicos]**
+en general. Deben ser continuas en el disco.
 
-[particiones físicas]: {{< ref "so/archivos/#disco-físico-y-lógico" >}}
-{{< /block >}}
-
-{{< block "Volumen Lógico (LV)" "var(--magno-red)" >}}
-[Particiones lógicas] sobre las que se montan los sistemas de archivos.
-
-[Particiones lógicas]: {{< ref "so/archivos/#disco-físico-y-lógico" >}}
+[RAID]: https://en.wikipedia.org/wiki/RAID
+[particiones]: {{< ref "so/archivos/#partición" >}}
+[tabla de particiones]: {{< ref "so/archivos/#block-tabla-de-particiones" >}}
+[Discos lógicos]: {{< ref "so/archivos/#disco-físico-y-lógico" >}}
 {{< /block >}}
 
 {{< block "Grupo de volúmenes (VG)" "var(--magno-red)" >}}
-Agrupación de Volúmenes Lógicos (LV) que forman una unidad administrativa.
+A partir de los volúmenes físicos, se construyen **agrupaciones lógicas**
+llamadas Grupo de Volúmenes (LV) que forman una unidad administrativa.
+{{< /block >}}
+
+{{< block "Volumen Lógico (LV)" "var(--magno-red)" >}}
+Los Grupos de Volúmenes (VG) **se dividen** de forma lógica en Volúmenes Lógicos
+(LV), cada uno con una etiqueta.
+
+Estos se podrán cifrar y **contener sistemas de archivos**, para luego ser
+montadas con `mount` o en `/etc/fstab`.
 {{< /block >}}
 
 Por tanto, se genera este esquema:
@@ -724,30 +780,74 @@ Por tanto, se genera este esquema:
   <tr>
 </table>
 
+El tamaño de los volúmenes físicos y lógicos puede medirse en bytes o en
+**unidades lógicas** o bloques:
+
+-   **Extensión física** (PE): unidades básicas en las que se divide cada
+    volumen físico.
+-   **Extensión lógica** (LE): unidades básicas en las que se divide cada
+    volumen lógico. Su tamaño coincide con el de las PEs de las que está
+    formado.
+
+<!-- TODO: mapeado stripping, lineal, mirroring -->
+
 Comandos de uso:
 
-    INFORMACIÓN
-    pvs  Show Physical Volumes
-    vgs  Show Volume Groups
-    lvs  Show Logical Volumes
+    ------------------------------------------
+    pvdisplay/pvs pv   Show Physical Volumes
+    vgdisplay/vgs vg   Show Volume Groups
+    lvdisplay/lvs lv   Show Logical Volumes
+    ------------------------------------------
+    pvcreate part      Crea un volumen físico
+    ------------------------------------------
+    vgcreate vg pv...  Create Volume Group
+    vgremove vg pv     Remove Volume Group
+    vgextend vg pv     Añade volumen físico al grupo
+    vgreduce vg pv     Elimina volumen físico del grupo
+    ------------------------------------------
+    lvcreate -n lv vg  Crea un LV
+    lvremove lv        Crea un LV
+    lvextend lv -L+x   Crea un LV
+    lvreduce lv -L-x   Crea un LV
+    ------------------------------------------
+    fsadm resize lv    Formatear el espacio aumentado del file-system
 
-    CREACIÓN
-    vgcreate  Create Volume Group
-    vgremove  Remove Volume Group
-    vgextend  Añade volumen lógico al grupo
-    vgreduce  Elimina volumen lógico del grupo
+Nótese que tras ampliar el tamaño de un volumen lógico o partición, mientras que
+no se expanda el sistema de archivos, el usuario (y programas) seguirá viendo en
+mismo tamaño hasta que se realice el `fsadm resize`.
 
-    ... Lo mismo para Logical Volumes:
-        lvcreate, lvremove, lvextend, lvreduce
 
-    fsadm  Comando genérico para cambiar de tamaño un Sistema de Archivos, es
-           decir, formatear el espacio aumentado.
+```mermaid
+flowchart TB
+    d[Disco /dev/sda]
+    p[Partición /dev/sda1]
+    f[Volumen físico /dev/sda1]
+    g[Grupo de volúmenes grupo_vg]
+    l[Volumen lógico /dev/grupo_vg/root_lv]
+    s[Sistema de ficheros]
 
-{{< todo >}}
-/dev/vol_group
-/dev/mapper/...
-{{< /todo >}}
+    d -- "fdisk /dev/sda" --> p
+    p -- "pvcreate /dev/sda1" --> f
+    f -- "vgcreate grupo_vg /dev/sda1 /dev/sda2" --> g
+    g -- "lvcreate -L80GB -n root_lv grupo_vg" --> l
+    l -- "mkfs.ext4 /dev/grupo_vg/root_lv" --> s
+```
 
+Alternativamente, en lugar de usar `/dev/grupo_volumen/volumen_logico`
+directamente, **se puede usar `/dev/mapper/grupo_volumen-volumen_logico`**
+a través del mapeador de dispositivos (_device mapper_).
+
+{{< block "Device Mapper" >}}
+El mapeador de dispositivos es un entorno proporcionado por el kernel de Linux
+para el mapeo de dispositivos de bloque físicos a dispositivos virtuales de
+nivel superior.
+
+Esta forma de acceso es más cómoda cuando se trabaja con volúmenes cifrados.
+{{< /block >}}
 
 [`tar`]: {{< ref "linux/software/#tarballs" >}}
 [inodo]: {{< ref "so/archivos/#block-inodos" >}}
+[permisos]: {{< ref "so/archivos/#permisos" >}}
+[particiones físicas]: {{< ref "so/archivos/#block-particionado" >}}
+[MBR]: {{< ref "so/archivos/#block-master-boot-record" >}}
+[GPT]: {{< ref "so/archivos/#block-guid-particion-table" >}}

@@ -212,29 +212,61 @@ Usado por Windows en entornos empresariales. No soportado por Linux.
 
 ## Herramientas
 
--   `fdisk` (_Format Disk_): permite crear y modificar particiones con unos
-    menús interactivos. Con la opción `-l` lista las particiones.
+{{< keyvalue title="Manipulación de particiones" key-header=true >}}
+-% `fdisk` <br> _Fixed Disk_ :%
+Permite crear y modificar particiones con unos menús interactivos. Con la opción
+`-l` lista las particiones.
 
--   `mkfs` (_Make File System_): crea los sistemas de archivos dentro de un
-    disco lógico.
-    - `mkfs.ext4 /dev/sda4`: formatea la partición con `ext4`
-    - `mkfs.fat /dev/sda4`: formatea la partición con `fat`
-    - Lo mismo para: `msdos`, `btrfs`, `jfs`, `xfs`, `vfat`...
-    - `mkswap /dev/sda4`: formatea la partición para usar como `swap`
+-% `parted` :%
+Programa GNU que también permite crear, destruir, cambiar el tamaño, chequear
+y copiar particiones.
 
--   `fsck` (_File System Check_): chequea y reparar sistemas de archivos
-    (`fsck.ext4`)
+{{< keyvalue-sep title="Sistemas de archivos">}}
 
--   `du` (_Disk Usage_): muestra el uso de disco de archivos y directorios.
-    -   `du -hs directorio`: muestra el tamaño del directorio en múltiplos de
-        byte. No muestra el tamaño de todos los archivos que contiene, solo el
-        total.
+-% `mkfs.tipo` <br> _Make File System_ :%
+Crea los sistemas de archivos dentro de un disco lógico. `tipo` es el nombre del
+formato del sistema de archivos:
 
-Comandos relacionados:
+```bash
+mkfs.ext4 /dev/sda4
+```
 
--   `tune2fs`: permite cambiar algunos parámetros de los sistemas de archivos
-    `ext`.
--   `dumpe2fs`: muestra información sobre un sistema archivos `ext`.
+Lo mismo para:
+
+- `msdos`
+- `ntfs`
+- `btrfs`
+- `jfs`
+- `xfs`
+- `vfat`
+- ...
+
+-% `mkswap` <br> _Make Swap_ :%
+Formatea un disco lógico para crear una zona de intercambio.
+
+-% `fsck.tipo` <br> _File System Check_ :%
+Chequea y reparar sistemas de archivos (`fsck.ext4`)
+
+{{< keyvalue-sep title="Otras utilidades" >}}
+
+-% `du` <br> _Disk Usage_ :%
+Muestra el uso de disco de archivos y directorios.
+
+`du -hs directorio` muestra el tamaño del directorio en múltiplos de byte. No
+muestra el tamaño de todos los archivos que contiene, solo el total.
+
+-% `df` <br> _Disk Free_ :%
+Muestra el espacio de disco usado y disponible en todos los sistemas de archivos
+montados. `-h` es como siempre, representar los bytes con múltiplos.
+
+{{< keyvalue-sep title="Comandos relacionados" >}}
+
+-% `tune2fs` :%
+Permite cambiar algunos parámetros de los sistemas de archivos `ext`.
+
+-% `dumpe2fs` :%
+Muestra información sobre un sistema archivos `ext`.
+{{< /keyvalue >}}
 
 <!-- TODO: mover a SO -->
 ## Monturas
@@ -245,7 +277,7 @@ Enlaza una dirección (_path_) con un sistema de archivos.
 mount /dev/... ruta         # Monta la partición en directorio
 mount --mkdir /dev/... ruta # Para crear directorio si no existe
 mount -a                    # Monta los fs especificados en /etc/fstab
-mount -o ruta opciones      # Permite remontar con otras opciones
+mount -o op1,op2... ruta    # Permite remontar con otras opciones
 umount ruta                 # Desmonta el fs del directorio
 ```
 
@@ -257,7 +289,7 @@ Se definen las monturas a utilizar en el arranque en el archivo `/etc/fstab`:
 /dev/sdb3   /            ext4    sw       0     0
 ```
 
-Opciones de montado:
+Opciones de montado :
 
 -   `ro`: solo lectura
 -   `rw`: lectura y escritura
@@ -266,11 +298,37 @@ Opciones de montado:
 -   `noauto`: previene el montado en el arranque. Útil para poder hacer `mount
     directorio` sin especificar el dispositivo, porque lo lee de `/etc/fstab`.
 <!---->
--   `user`: permite que usuarios no privilegiados  lo monten
+-   `user`: permite que usuarios no privilegiados lo monten. Solo el usuario que
+    creó la montura la puede borrar.
+-   `users`: igual que el anterior, pero todos lo pueden desmontar.
 -   `nouser`: solo root
 
-En el archivo `/etc/mtab` se muestran las particiones de están montadas en el
-momento (ver [tabla de particiones]).
+`defaults` usa las opciones por defecto: `ro, auto, nouser`.
+
+File-systems específicos pueden tener opciones especiales para ellos. En el
+archivo `/etc/mtab` se muestran las particiones de están montadas en el momento
+(ver [tabla de particiones]).
+
+{{< block "Zona de intercambio" >}}
+Para activar una zona de intercambio (equivalente a montarla), se usa el
+comando:
+
+```sh
+swapon /dev/sda4
+```
+
+`swapon -s` lista todas las zonas de intercambio.
+{{< /block >}}
+
+{{< dropdown "Campos `dump` y `pass`" >}}
+
+-   `dump`: lo usa el comando `dump` (ver [copias de seguridad]) para determinar
+    qué file-systems debe hacer copia de seguridad (`1` en caso positivo).
+-   `pass`: lo usa el comando `fsck` para determinar el orden en el que se
+    chequean los file-systems al iniciar el sistema. Si es `0` no se chequea.
+
+[copias de seguridad]: {{< ref "linux/admin/#comandos-básicos" >}}
+{{< /dropdown >}}
 
 ### UUID
 
@@ -283,10 +341,11 @@ determina a partir de elementos hardware, etiquetas, el sistemas de archivos,
 etc. Se trata de un número muy grande, por tanto es poco probable que hayan
 colisiones.
 
-Se puede usar el comando `blkid` para obtener el UUID de un dispositivo.
+Se puede usar el comando `blkid` (_Block ID_) para obtener el UUID de un
+dispositivo.
 
 En el archivo `/etc/fstab` también se pueden utilizar como `UUID=XXXX` en lugar
-de `/dev/...`.
+de `/dev/...`; pero muchos otros comandos también hacen uso de UUIDs.
 
 <!-- TODO: expandir y mover a arranque -->
 ## GRUB

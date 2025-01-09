@@ -251,10 +251,22 @@ Los permisos especiales solo son aplicables a determinados tipos de archivos:
 
 Si al usar `ls` aparece una `S` mayúscula, quiere decir que hay un error:
 probablemente el archivo no es ejecutable. No tiene sentido activar el bit
-`SUID` en un archivo no ejecutable.
+`SUID` en un archivo no ejecutable. Lo mismo sucede con el _sticky bit_, `T`
+cuando el directorio no es ejecutable.
 
 El funcionamiento del usuario real y efectivo se explica en más detalle en el
 siguiente apartado.
+
+En resumen:
+
+| Permiso                     | Octal | Archivo                        | Directorio                                 |
+|-----------------------------|:-----:|--------------------------------|--------------------------------------------|
+| Ejecución (`x`)             | 1     | Ejecutar                       | Entrar                                     |
+| Escritura (`r`)             | 2     | Modificar                      | Crear/Borrar archivos                      |
+| Lectura (`r`)               | 4     | Modificar                      | Crear/Borrar archivos                      |
+| _Sticky bit_ (`T`, `x+T=t`) | 1     | -                              | Solo los dueños pueden borrar sus archivos |
+| _setuid_ (`S`, `x+S=s`)     | 2     | Establece el EUID al del dueño | Establece el EUID al del dueño             |
+| _setgid_ (`S`, `x+S=s`)     | 4     | Establece el EGID al del dueño | Establece el EGID al del dueño             |
 
 ### Identificadores de Usuario y Grupo
 
@@ -615,8 +627,17 @@ Se distinguen varios tipos:
 -   **SATA** (_Serial ATA_):
     Se llaman así porque utilizan el bus SATA. En Linux se identifican como `sd`
     (_Sata Disk_) y una letra minúscula, en función del orden en el que se
-    descubran (`/dev/sda` primero, luego `/dev/sdb`). Para cada una de las
-    particiones se le añade el número de partición.
+    descubran (`/dev/sda` primero, luego `/dev/sdb`).
+
+-   SCSI:
+    Formatos por distintos dispositivos como cintas, CD-ROMS, escáneres, etc,
+    conectados en cadena. Son usados por servidores de altas prestaciones y se
+    identifican de forma similar a los SATA.
+
+-   IDE o Parallel ATA:
+    Poco usados en la actualidad e identificados como `/dev/hda` y `/dev/hdb`
+    para el controlador primario (esclavo y maestro respectivamente);
+    `/dev/hdc` y `/dev/hdd` para el controlador secundario.
 
 -   **NVMe** (_Non Volative Memory express_):
     -   Nuevo protocolo de acceso a unidades no volátiles como SSD basado en el
@@ -681,6 +702,9 @@ varias implementaciones dependiendo del sistema:
 [BIOS]: {{< ref "so/arranque/#bios" >}}
 [UEFI]: {{< ref "so/arranque/#uefi" >}}
 {{< /block >}}
+
+Normalmente las particiones se identifican con el pseudo-archivo de su disco
+y se le añade un número de partición: `/dev/sda4`.
 
 Algunos tipos de particiones pueden ser:
 
