@@ -76,21 +76,23 @@ indistintiva.
     ejecutando el [proceso inicial]. Por su complejidad, esto se suele realizar
     en dos pasos:
 
-    1. `initramfs`. En la primera fase se carga en memoria principal el fichero
-        de imagen de un pequeño disco virtual que contiene una **<<partición
-        raíz>> virtual** y un **programa `init`**. De ahí proviene su nombre, _init
-        RAM file system_.
+    1.
+        `initramfs`. En la primera fase de preparación, se carga en memoria
+        principal el fichero de imagen de un pequeño disco virtual que contiene
+        una **<<partición raíz>> virtual**. Con esta se carga el verdadero
+        sistema de archivos raíz. De ahí proviene su nombre, _init RAM file
+        system_.
 
-        Este contiene el mínimo requerido por el kernel para cargar el verdadero
-        sistema de archivos raíz del disco.
+        Este debe contener el mínimo requerido por el kernel para cargar el
+        verdadero sistema de archivos raíz del disco.
 
     2.  `init`. En la segunda fase, `initramfs` cede el control al [proceso
-        inicial], el proceso de arranque estándar.
+        inicial] `/sbin/init`, el proceso de arranque estándar.
 
-        A grandes rasgos, este incluye **módulos de controladores** (drivers)
-        desdes del disco duro sin los que el sistema no puede arrancar. Estos
-        normalmente son scripts de inicialización, montaje de RAIDs, inicio de
-        particiones cifradas, montaje de LVM, ...
+        A grandes rasgos, este carga en _paralelo_ los **módulos de
+        controladores** (drivers) y otros servicios: normalmente scripts de
+        inicialización, montaje de RAIDs, inicio de particiones cifradas,
+        montaje de LVM, ...
 
 Con esto, el sistema queda arrancado. Mientras el ordenador siga encendido, este
 **estará siempre en memoria**.

@@ -92,10 +92,10 @@ concreto.
 ## Tipos de Procesos
 
 - **Usuario**: procesos de primer plano, creados por el usuario.
-- **Demonios** (_daemons_): procesos de segundo plano, servicios. Se pueden ver
-  desde el Administrador de tareas o con el comando `ps`.
+- **Demonios** (_daemons_): procesos de segundo plano, servicios del sistema. Se
+  pueden ver desde el Administrador de tareas o con el comando `ps`.
 - **Kernel**
-  - `Innit` / `SystemD`
+  - `init` / `systemd`
 
 # Creación de Procesos
 
