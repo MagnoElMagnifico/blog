@@ -3,7 +3,7 @@ title: Admininistración de Sistemas
 description: >
     Algunas tareas que un buen administrador de sistemas debería hacer.
 date: 2025-01-05T20:42:14+01:00
-weight: 5
+weight: 8
 draft: true
 mermaid: true
 ---
@@ -33,7 +33,7 @@ Otros comandos:
 {{< block "`batch`" >}}
 Ejecuta comandos cuando el uso de CPU sea baja.
 
-- El la tarea se iniciará cuando la carga sea menor a 1.5
+- La tarea se iniciará cuando la carga sea menor a 1.5
 - La carga se obtiene del archivo `/proc/loadavg`
 {{< /block >}}
 
@@ -469,7 +469,7 @@ Se pueden ver los atributos de un fichero con `ls -l`.
 Los permisos se pueden cambiar con el comando:
 
 ```sh
-chmod -P operación archivos
+chmod operación archivos
 ```
 
 La operación puede ser:
@@ -641,15 +641,112 @@ Más opciones:
 - `-maxdepth n`: desciende como máximo `n` directorios.
 - `-mount`: no pasa a otras particiones
 
-{{< block "Otros comandos de localización de archivos" >}}
--   `which`: encuentra un ejecutable en `PATH`
--   `whereis`: encuentra un ejecutable en los directorios estándar junto con su
-    documentación.
--   `locate`: localiza todo tipo de archivos rápidamente.
-    -   Usa una BD para acceder más rápido. Esta se almacena en
-        `/var/cache/locate/locatedb`
-    -   `updatedb` actualiza dicha BD
+{{< keyvalue title="Otros comandos de localización de archivos" key-header=true >}}
+-% `which` :% encuentra un ejecutable en `PATH`
+
+-% `whereis` :% encuentra un ejecutable en los directorios estándar junto con su
+documentación.
+
+-% `locate` :% localiza todo tipo de archivos rápidamente.
+-   Usa una BD para acceder más rápido. Esta se almacena en
+    `/var/cache/locate/locatedb`
+-   `updatedb` actualiza dicha BD
+{{< /keyvalue >}}
+
+# Gestión de discos
+## Logical Volume Management
+
+En lugar de realizar [particiones físicas] mediante la modificación de las
+tablas en [MBR] o [GPT], los sistemas Linux modernos proporcionan el sistema
+**LVM**, que proporciona una **visión de alto nivel sobre los discos**:
+
+- Permite ver **varios discos como solo uno**
+- Permite hacer cambios **dinámicamente** sin necesidad de reiniciar el sistema
+- Permite gestionar **volúmenes en grupos** definidos por el administrador
+
+{{< block "Volúmen Físico (PV)" "var(--magno-red)" >}}
+Discos duros, [particiones] de los mismos (definidas en la [tabla de
+particiones]) u dispositivos similares, por ejemplo
+[RAID](https://en.wikipedia.org/wiki/RAID). Deben ser continuas en el disco.
+
+[particiones físicas]: {{< ref "so/archivos/#disco-físico-y-lógico" >}}
 {{< /block >}}
+
+{{< block "Volumen Lógico (LV)" "var(--magno-red)" >}}
+[Particiones lógicas] sobre las que se montan los sistemas de archivos.
+
+[Particiones lógicas]: {{< ref "so/archivos/#disco-físico-y-lógico" >}}
+{{< /block >}}
+
+{{< block "Grupo de volúmenes (VG)" "var(--magno-red)" >}}
+Agrupación de Volúmenes Lógicos (LV) que forman una unidad administrativa.
+{{< /block >}}
+
+Por tanto, se genera este esquema:
+
+<table style="text-align:center">
+  <tr>
+    <td class="header">Sistemas de archivos</td>
+    <td colspan="2"><code>/home</code></td>
+    <td colspan="2"><code>/data</code></td>
+  <tr>
+  <tr>
+    <td class="header">Volumen Lógico (LV)</td>
+    <td colspan="2"><code>/dev/primary_vg/home_lv</code></td>
+    <td colspan="2"><code>/dev/primary_vg/data_lv</code></td>
+  <tr>
+  <tr>
+    <td class="header">Grupo de Volúmenes (VG)</td>
+    <td colspan="4"><code>primary_vg</code></td>
+  <tr>
+  <tr>
+    <td class="header">Volúmenes Físicos (PV)</td>
+    <td><code>/dev/sda1</code></td>
+    <td><code>/dev/sda2</code></td>
+    <td><code>/dev/sdb1</code></td>
+    <td><code>/dev/sdb2</code></td>
+  <tr>
+  <tr>
+    <!-- Truco para "separar" las dos tablas -->
+    <td colspan="5" style="padding: 0; background-color: var(--background-color);">&uarr; &uarr; &uarr; &uarr;</td>
+  </tr>
+  <tr>
+    <td class="header">Particiones Físicas</td>
+    <td><code>/dev/sda1</code></td>
+    <td><code>/dev/sda2</code></td>
+    <td><code>/dev/sdb1</code></td>
+    <td><code>/dev/sdb2</code></td>
+  </tr>
+  <tr>
+    <td class="header">Discos Físicos</td>
+    <td colspan="2"><code>/dev/sda</code></td>
+    <td colspan="2"><code>/dev/sdb</code></td>
+  <tr>
+</table>
+
+Comandos de uso:
+
+    INFORMACIÓN
+    pvs  Show Physical Volumes
+    vgs  Show Volume Groups
+    lvs  Show Logical Volumes
+
+    CREACIÓN
+    vgcreate  Create Volume Group
+    vgremove  Remove Volume Group
+    vgextend  Añade volumen lógico al grupo
+    vgreduce  Elimina volumen lógico del grupo
+
+    ... Lo mismo para Logical Volumes:
+        lvcreate, lvremove, lvextend, lvreduce
+
+    fsadm  Comando genérico para cambiar de tamaño un Sistema de Archivos, es
+           decir, formatear el espacio aumentado.
+
+{{< todo >}}
+/dev/vol_group
+/dev/mapper/...
+{{< /todo >}}
 
 
 [`tar`]: {{< ref "linux/software/#tarballs" >}}

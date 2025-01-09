@@ -100,6 +100,15 @@ y la tranforma a un rango de valores determinado, de forma que sea más comodo
 para trabajar.
 {{< /block >}}
 
+{{< block "Función de activación identidad" "var(--magno-blue)" >}}
+Una red neuronal artificial que use la función de activación identidad
+$f(x) = x$ es equivalente a una red monocapa.
+
+Esto se debe a que el propósito de la función de activación es proporcionar
+cierta linealidad, porque de lo contrario, se puede colapsar todo a una única
+transformación lineal.
+{{< /block >}}
+
 Para arreglar el problema de la derivada, solo se necesita cambiar la función de
 activación. Por ejemplo, una **neurona lineal rectificada**:
 
@@ -176,6 +185,16 @@ organización.
     caption="Ejemplo de una RNA hacia delante"
     height="300"
 >}}
+
+{{< block "Red Neuronal Recurrente" "var(--magno-blue)" >}}
+Una [red neuronal recurrente] realiza varias pasadas por la misma entrada, y su
+unidad mínima es la **unidad recurrente**, que almacena cierto estado a modo de
+memoria. Se utiliza para procesar datos secuenciales como texto. Una [red de
+Hopfield] es un subtipo de estas redes.
+
+[red neuronal recurrente]: https://en.wikipedia.org/wiki/Recurrent_neural_network
+[red de Hopfield]: https://en.wikipedia.org/wiki/Hopfield_network
+{{< /block >}}
 
 # Aprendizaje automático
 
@@ -1244,8 +1263,8 @@ $$\Delta w_{in} = w_{in}^{(t+1)} - w_{in}^{(t)}$$
 
 $$
 \Delta_n = \begin{cases}
-    f'(x_n) (t_n - y_n) & \text{si } n \text{ es de la última capa} \\
-    f'(x_n) \sum^{n+1}_{i=0} w_{ni} \Delta_{n+1} & \text{en otro caso} \\
+    f'(z_n) (t_n - y_n) & \text{si } n \text{ es de la última capa} \\
+    f'(z_n) \sum^{n+1}_{i=0} w_{ni} \Delta_{n+1} & \text{en otro caso} \\
 \end{cases}
 $$
 

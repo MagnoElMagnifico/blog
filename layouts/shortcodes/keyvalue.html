@@ -2,7 +2,7 @@
     {{/* Optional header */}}
     {{ with .Get "title" }}
         <tr>
-            <th colspan="2">{{- . | markdownify -}}</th>
+            <th colspan="2">{{ . | markdownify }}</th>
         <tr>
     {{ else }}
         {{ if and (.Get "key") (.Get "value") }}

@@ -284,59 +284,11 @@ Resumiendo:
 
 Este es el funcionamiento normal del Sistema Operativo.
 
-<!-- TODO: mover a servicios -->
-# `systemd`
-
-[`systemd`] es el sistema de inicio más utilizado en las distribuciones de Linux.
-Actúa a modo del proceso `init`.
-
--   Se encarga de ejecutar los procesos encargados de la creación del sistema:
-    teclado, controladores, sistemas de ficheros, red, servicios, etc. \
-    {{< arrow >}} Ofrece una visión global del sistema, tanto software como
-    hardware.
-
--   Muchos de estos procesos ofrecen servicios:
-
-    - Networking ([NetworkManager])
-    - Sistema de impresión ([CUPS])
-    - [SSH]
-    - Gestores gráficos: entorno de escritorio (_Desktop Manager_) o gestor de ventanas (_Window Environment_).
-    - Gestor de Volúmenes Lógicos (LVM)
-    - ...
-
-    El arranque de estos servicios se realiza en paralelo para que sea más
-    rápido.
-
-Proporciona varias utilidades para que los administradores controlen los
-servicios.
-
-    systemctl status   Muestra el estado del servicio
-    systemctl start    Inicia el servicio
-    systemctl stop     Detiene el servicio
-    systemctl restart  Reinicia el servicio
-    systemctl enable   Configura el servicio para que se ejecute al inicio
-    systemctl disable  El servicio no se iniciará durante el arranque
-
-Además, distingue varios _targets_. Estos son grupos de servicios que se pueden
-arrancar todos conjuntamente, para así personalizar cuáles se inician
-dependiendo de lo que quiera hacer el administrador.
-
--   Rescate (`rescue.target`): conjunto de servicios mínimos necesarios para
-    reparar el sistema.
--   Emergencia (`emergency.target`): abre un único shell monousuario en modo
-    administrador
--   Multiusuario (`multi-user.target`): multiusuario no gráfico
--   Gráfico (`graphical.target`)
-
-
 [POST]:           https://en.wikipedia.org/wiki/Power-on_self-test
 [IBM PC]:         https://en.wikipedia.org/wiki/IBM_Personal_Computer
 [firmware]:       https://en.wikipedia.org/wiki/Firmware
 [brick]:          https://en.wikipedia.org/wiki/Brick_(electronics)
 [GRUB2]:          https://en.wikipedia.org/wiki/GNU_GRUB
-[NetworkManager]: https://wiki.archlinux.org/title/NetworkManager
-[CUPS]:           https://wiki.archlinux.org/title/CUPS
-[SSH]:            https://wiki.archlinux.org/title/OpenSSH
 
 [página de Rod Smith]:       http://www.rodsbooks.com
 [lista]:                     http://www.rodsbooks.com/efi-bootloaders/index.html
@@ -348,6 +300,5 @@ dependiendo de lo que quiera hacer el administrador.
 [`systemd`]:                 https://es.wikipedia.org/wiki/Systemd
 
 [archivos]:        {{< ref "so/archivos#partición" >}}
-[proceso]:         {{< ref "so/procesos" >}}
 [proceso inicial]: {{< ref "so/procesos/#block-proceso-inicial" >}}
 [MBR]:             {{< ref "so/archivos/#block-master-boot-record" >}}
