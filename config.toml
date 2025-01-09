@@ -62,7 +62,7 @@ tabWidth = 4
 anchorLineNos = true # Create links for each line of code
 guessSyntax = true
 
-lineNos = true
+lineNos = false
 lineNumbersInTable = false
 
 [markup.tableOfContents]

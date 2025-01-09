@@ -36,7 +36,7 @@ Los _hard links_ solo se pueden usar con archivos (no directorios) que estén en
 tu mismo dispositivo (ni USBs, otros discos, etc). Incluso si se borra el
 original, el enlace seguirá siendo válido. En lo que a Linux le respecta, ambos
 archivos son el mismo, porque tienen los mismos [inodos]({{< ref
-"linux/estructura-archivos" >}}).
+"linux/estructura-directorios" >}}).
 
 Los _enlaces simbólicos_ sí que pueden referirse a directorios de otros
 dispositivos, pero en el caso de eliminar el original aparecerán como _rotos_.

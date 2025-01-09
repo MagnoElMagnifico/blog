@@ -40,7 +40,8 @@ Lo que no es muy satisfactorio:
 Además, ya se ha visto en la [introducción] que los dispositivos de E/S, en
 especial los discos, son bastante complejos de gestionar.
 
-# Archivo
+# Abstracción del sistema de archivos
+## Archivo
 
 Al igual que con los [procesos] y el [espacio de direcciones virtuales], el
 Sistema Operativo soluciona todos estos problemas creando una nueva abstracción:
@@ -82,17 +83,6 @@ corresponden.
 - FAT-16 MS-DOS: Win95 Win98
 - FAT-32: evolución de FAT-16
 - NTFS MS-DOS: WinNT, Win2000, WinXP
-{{< /dropdown >}}
-
-{{< dropdown "Tipos de archivos" >}}
-- **Archivos regulares**: contienen información del usuario
-    - **Texto**: se usan distintos caracteres para marcar el final de la línea
-      y diferentes formatos para codificar el texto. El más común es UTF8.
-    - **Binarios**: tienen una estructura interna que los programas utilizan. Un
-      campo muy común es el número mágico, que indica el tipo de archivo que es.
-- **Directorios**: sistemas de archivos para dar una estructura a los archivos
-- **Archivos especiales de caracteres**: se relacionan con dispositivos E/S en serie
-- **Archivos especiales de bloque**: se usan para modelar discos
 {{< /dropdown >}}
 
 {{< dropdown "Acceso a archivos" >}}
@@ -207,7 +197,19 @@ int main(int argc, char** argv) {
 Los enteros `fd_input` y `fd_output` son dos descriptores de archivos (_File
 Descriptors_) que se usan para hacer referencia a cada archivo.
 
-## Modos de un archivo
+### Tipos de archivos
+
+-   **Archivos regulares**: contienen información del usuario
+    - **Texto**: se usan distintos caracteres para marcar el final de la línea
+      y diferentes formatos para codificar el texto. El más común es UTF8.
+    - **Binarios**: tienen una estructura interna que los programas utilizan. Un
+      campo muy común es el número mágico, que indica el tipo de archivo que es.
+-   **Directorios**: sistemas de archivos para dar una estructura a los archivos
+-   **Archivos especiales de caracteres**: se relacionan con dispositivos E/S en
+    serie
+-   **Archivos especiales de bloque**: se usan para modelar discos
+
+### Permisos
 
 <!-- TODO: cambiar esta figura para hacer que se parezca a dispositiva 10 -->
 {{<
@@ -254,7 +256,7 @@ probablemente el archivo no es ejecutable. No tiene sentido activar el bit
 El funcionamiento del usuario real y efectivo se explica en más detalle en el
 siguiente apartado.
 
-## Identificadores de Usuario y Grupo
+### Identificadores de Usuario y Grupo
 
 Ya sabemos que un fichero ejecutable contiene todas las instrucciones y datos
 necesarios para el programa. Este tiene también una máscara de modo. Cuando se
@@ -308,7 +310,7 @@ Se devuelve 0 si se ha cambiado el EUID de forma exitosa o -1 si ha ocurrido
 algún error. Puede consultarlo con `perror`.
 {{< /block >}}
 
-{{< block "Ejemplo" >}}
+{{< dropdown "Ejemplo" >}}
 Considere el siguiente directorio:
 
 ```{linenos=false}
@@ -351,9 +353,9 @@ propietario del archivo ejecutable: `user1`**. Como consecuencia, **el usuario
 Además, tenga en cuenta que si `user2` ejecuta ahora `exe otro_archivo.txt`, se
 le denegará el acceso, porque el EUID (`user1`) no tiene acceso
 a `otro_archivo.txt`.
-{{< /block >}}
+{{< /dropdown >}}
 
-{{< block "Ejemplo" >}}
+{{< dropdown "Otro ejemplo" >}}
 ```{linenos=false}
 -rwsrwxrwx user1 ... exe
 -rw------- user1 ... fichero1.txt
@@ -412,9 +414,9 @@ UID=502, EUID=501   fd1=3, fd2=-1
 UID=502, EUID=502   fd1=-1, fd2=4
 UID=502, EUID=501
 ```
-{{< /block >}}
+{{< /dropdown >}}
 
-# Directorios
+## Directorios
 
 Para llevar registro de los archivos, por lo general se permiten crear
 **directorios** o **carpetas**, que en muchos sistemas **también son archivos**.
@@ -741,11 +743,6 @@ Solo se pueden situar dentro de una partición extendida, pero puede tener un
 número ilimitado de ellas. En Linux se nombran de `/dev/sda5` para adelante.
 {{< /keyvalue >}}
 
-{{< block "Partición Extendida" "var(--magno-blue)" >}}
-Las **particiones extendidas** o **particiones secundarias** son contenedores
-para particiones lógicas.
-{{< /block >}}
-
 Puede consultar todos los [IDs de las particiones].
 
 Para llevar la cuenta de las particiones lógicas, dado que no están la tabla,
@@ -893,25 +890,10 @@ también almacenan en la entrada de directorio de un archivo sus atributos.
 
 <!-- TODO: expandir más -->
 
+{{< todo >}}
 ## Sistemas de archivos
-
-Dentro de las particiones creadas es posible almacenar **sistemas de archivos**.
-Estas pueden tener diversos formatos, lo que implica una organización diferente
-dentro la misma.
-
-- `mkfs`: permite crear un sistema de archivos dentro de una partición.
-
-{{< block "Volumen" "var(--magno-blue)" >}}
-Cualquier dispositivo de bloque (pseudo-archivo:
-[disco](#disco-físico-y-lógico),
-[partición](#partición),
-LUKS,
-[volumen LVM]({{/*< ref "linux/instalacion/#logical-volume-management" */>}}),
-RAID)
-que contiene un sistema de archivos que se pueden montar se le llama **volumen**.
-{{< /block >}}
-
 <!-- TODO: traer formatos de sistemas de archivos de linux/instalacion aquí -->
+{{< /todo >}}
 
 ## Montaje de sistemas de archivos
 
@@ -946,6 +928,16 @@ mount("/dev/hda2", "/usr", 0);
 umount("/dev/hda2");
 ```
 
+Alternativamente, desde Bash, se usan los comandos siguientes:
+
+```sh
+mount /dev/... ruta         # Monta la partición en directorio
+mount --mkdir /dev/... ruta # Para crear directorio si no existe
+mount -a                    # Monta los fs especificados en /etc/fstab
+mount -o ruta opciones      # Permite remontar con otras opciones
+umount ruta                 # Desmonta el fs del directorio
+```
+
 <!-- TODO: figura de montaje, diapositiva 8 -->
 
 Esta noción de montaje, permite ocultar al usuario los detalles de la
@@ -954,40 +946,42 @@ necesario especificar ninguna unidad.
 
 {{< block "Tabla de Montaje" "var(--magno-blue)" >}}
 El kernel utiliza una **tabla de montaje** para llevar registro de los sistemas
-de archivos montados. Se suele ubicar en `/etc/mtab`, en Linux `/etc/fstab`. Un
-ejemplo de este último es el siguiente:
+de archivos montados. Se suele ubicar en `/etc/mtab` en Linux, mientras que el
+archivo `/etc/fstab` definen las monturas a utilizar en el arranque.
+
+Un ejemplo del `/etc/mtab` este último es el siguiente (`/etc/fstab` usa la
+misma sintaxis):
 
 ```{linenos=false}
-# device    directory   type    options
-/dev/hda1   /           ext2    defaults
-/dev/hda2   /usr        ext2    defaults
-/dev/hda3   none        swap    sw        # Zona de swapping
-/dev/sda1   /dosc       msdos   defaults
-/proc       /proc       proc    none
+# device    directory   type    options   dump pass
+/dev/hda1   /           ext2    defaults  0    0
+/dev/hda2   /usr        ext2    defaults  0    0
+/dev/hda3   none        swap    sw        0    0 # Zona de swapping
+/dev/sda1   /dosc       msdos   defaults  0    0
+/proc       /proc       proc    none      0    0
 ```
 
 La primera línea es un comentario:
 
-- La primera columna indica el dispositivo que se monta
-- La segunda columna es el directorio de montaje
-- La tercera columna es el tipo de sistema de archivos
-- Y la última columna contiene diferentes opciones de montaje
+- La primera columna indica el **dispositivo que se monta**
+- La segunda columna es el **directorio de montaje**
+- La tercera columna es el tipo de **sistema de archivos**
+- Y la última columna contiene diferentes **opciones de montaje**
 
-Las opciones por defecto son:
+Algunas opciones de montaje por defecto son:
 
-- Se monta con permisos de lectura/escritura
+- `rw`/`ro`: se monta con permisos de lectura/escritura (`rw`)
 - Se permite la ejecución de archivos ejecutables
 - Se interpretan los bits `S_ISUID` y `S_ISGID`
 - El sistema de archivos se considera como un dispositivo de bloque
 - Todas las operaciones E/S se hacen de forma asíncrona
-- Los usuarios normales no pueden montar el sistema de archivos
+- `user`/`nouser`: los usuarios normales no pueden montar el sistema de archivos
+- `auto`/`noauto`: se monta automáticamente en el arranque
 
-La última entrada, `proc` es una elegante interfaz con el espacio de direcciones
-de cada proceso. Permite a un usuario leer y modificar el espacio de direcciones
-de otro proceso y realizar tareas de control sobre el mismo, simplemente usando
-la interfaz del sistema de archivos. Cada proceso se representa como un
-subdirectorio nombrado con su PID. Estos no ocupan espacio en ninguna partición
-física del disco.
+Nótese que `/proc` es un sistema de archivos especial. Más información en la
+[especificación de directorios de linux].
+
+[especificación de directorios de linux]: {{< ref "linux/estructura-directorios/#proc" >}}
 {{< /block >}}
 
 # Administración y optimización de Sistemas de Archivos

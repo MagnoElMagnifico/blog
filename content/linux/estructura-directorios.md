@@ -675,11 +675,15 @@ Ejemplos de pseudo-dispositivos:
 
 ## `/proc`
 
+
+
 `proc` de _procedures_. Contiene **información de todos los [procesos]** que se
-están ejecutando en el momento, que principalmente son pseudo-archivos (no son
-archivos del disco realmente, el kernel los traduce a archivos). Cada uno de
-estos procesos tendrá un sub-directorio con el nombre del identificador del
-proceso (PID):
+están ejecutando en el momento, que principalmente son pseudo-archivos. **No son
+archivos del disco** realmente, el kernel los traduce a archivos, por lo que no
+ocupan espacio.
+
+Cada uno de estos procesos tendrá un subdirectorio con el nombre del
+identificador del proceso (PID):
 
 - `/proc/PID/fd/*`: directorio con los descriptores de archivos (_File
   Descriptors_) que tiene abiertos).
@@ -689,6 +693,11 @@ proceso (PID):
 - `/proc/PID/environ`: variables del entorno.
 - `/proc/PID/maps`: mapa de memoria del proceso.
 - `/proc/PID/status`: estado del proceso.
+
+`/proc` es una elegante interfaz con el espacio de direcciones
+de cada proceso. Permite a un usuario leer y modificar el espacio de direcciones
+de otro proceso y realizar tareas de control sobre el mismo, simplemente usando
+la interfaz del sistema de archivos.
 
 Paralelamente puedes encontrar **información sobre propio sistema**:
 

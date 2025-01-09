@@ -195,7 +195,7 @@ blockquote blockquote,
 
 
 /**** Images ****/
-article img, article svg {
+img, svg {
     object-fit: contain;
     /*
      * Center by adding margin to the left (minus the
@@ -203,6 +203,9 @@ article img, article svg {
      */
     margin: 1rem 0 1rem 50%;
     transform: translate(-50%, 0);
+}
+
+article img, article svg {
     width: 100%;
     min-width: 300px;
     overflow-x: auto;
@@ -333,7 +336,10 @@ td > p:last-child
 
 /**** KaTeX ****/
 /* "Fix" big LaTeX expressions */
-.katex-display { overflow-x: scroll; }
+.katex-display {
+    overflow-x: auto;
+    overflow-y: visible;
+}
 
 /**** Blog entries ****/
 .blog-entry {

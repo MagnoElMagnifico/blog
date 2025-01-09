@@ -1,0 +1,13 @@
+{{/* This will be evaluated later as Markdown by keyvalue, so no indentation */}}
+<tr>
+{{ if .Get "title" }}
+<th colspan="2">{{ .Get "title" | .Page.RenderString }}</th>
+{{ else }}
+{{ if and (.Get "key") (.Get "value") }}
+<th>{{ .Get "key" | .Page.RenderString }}</th>
+<th>{{ .Get "value" | .Page.RenderString }}</th>
+{{ else }}
+{{ errorf "Missing keyvalue-sep parameters: key and value, or title" }}
+{{ end }}
+{{ end }}
+</tr>

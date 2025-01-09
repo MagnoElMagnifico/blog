@@ -277,14 +277,13 @@ cambie el fondo ni se resalte nada. Simplemente indenta el texto con 4 espacios
 
 ## Otras normas a tener en cuenta
 
--
-    Las definiciones de **los conceptos deben estar claros en todo momento**
+-   Las definiciones de **los conceptos deben estar claros en todo momento**
     (usa `block` en color `--magno-blue`). Los ejemplos están bien, pero para
     aclarar la propia definición; **no al revés**: que el lector tenga que
     inferir la definición a partir del ejemplo.
--
-    Evitar las repeticiones lo máximo posible: cuando se defina algo y luego ese
+-   Evitar las repeticiones lo máximo posible: cuando se defina algo y luego ese
     concepto vuelva a aparecer, no definirlo otra vez, sino añadir un link.
+-   No usar subencabezados mayores que el 4 nivel, preferiblemente el 3 nivel.
 
 # Diagramas
 
@@ -422,6 +421,29 @@ Crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza por
 ```md
 {{< keyvalue >}}
 -% `Valor` :% Descripción
+{{< /keyvalue >}}
+```
+
+### `keyvalue-sep`
+
+Añade una file de título para separar varias secciones de un mismo `keyvalue`.
+Solo tiene sentido usarlo dentro de un bloque `keyvalue`.
+
+-   string `title`: título de la tabla
+-   string `key` `value`: título de la primera y segunda columna
+    respectivamente. No se puede combinar con `title`, en ese caso, se usará el
+    valor de `title`
+
+```md
+{{< keyvalue title="Dos valores" >}}
+-% Valor 1 :% Descripción 1
+-% Valor 2 :% Descripción 2
+
+{{< keyvalue-sep title="Tres valores más" >}}
+
+-% Valor 3 :% Descripción 3
+-% Valor 4 :% Descripción 4
+-% Valor 5 :% Descripción 5
 {{< /keyvalue >}}
 ```
 

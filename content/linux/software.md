@@ -4,7 +4,7 @@ description: >
     Post sobre las diferentes formas de instalación de Software en Linux,
     incluyendo gestores de paquetes y la compilación desde el código fuente.
 date: 2025-01-04T20:11:28+01:00
-weight: 4
+weight: 7
 draft: true
 ---
 
@@ -12,8 +12,8 @@ draft: true
 
 En Linux hay varias formas de instalar software:
 
--   Instalación de paquetes precompilados (menos optimización, más sencillo)
--   Compilación e instalación desde código fuente (optimización para nuestro
+-   Instalación de paquetes **precompilados** (menos optimización, más sencillo)
+-   **Compilación** e instalación desde código fuente (optimización para nuestro
     sistema, más complejo)
 
 # Gestores de paquetes
@@ -24,15 +24,15 @@ a la distribución).
 
 {{< keyvalue key-header=true >}}
 -% Ventajas:%
-- Fáciles de instalar
+- **Fáciles** de instalar
 - Fáciles de actualizar (más que en Windows)
 - Fácil de controlar los programas instalados (más que en Windows)
 
 -% Desventajas:%
--   Binarios menos optimizados: como no han sido compilados para nuestro
+-   Binarios **menos optimizados**: como no han sido compilados para nuestro
     hardware, es posible que no se aproveche bien. Esto se debe a que se compiló
     en otro equipo bajo otras condiciones.
--   Problemas de dependencias de paquetes.
+-   **Problemas de dependencias** de paquetes.
 -   Problemas si la base de datos de paquetes se corrompe.
 {{< /keyvalue >}}
 
@@ -47,12 +47,12 @@ a `.deb`.
 
 {{< dropdown "Convención del nombre de los paquetes" >}}
 ```
-<paquete>_<version>_<build>_<arquitectura>.deb
+<paquete>_<version>-<build>_<arquitectura>.deb
 ```
-- Paquete: nombre de la aplicación.
-- Versión: número de versión de la aplicación.
-- Build: número de <<compilación>> (subversión).
-- Arquitectura: plataforma para la que está compilado.
+- **Paquete**: nombre de la aplicación.
+- **Versión**: número de versión de la aplicación.
+- **Build**: número de <<compilación>> (subversión).
+- **Arquitectura**: plataforma para la que está compilado.
 
 Ejemplos:
 
@@ -64,10 +64,10 @@ Ejemplos:
 
 En Debian hay dos herramientas estándar para manejar los paquetes de software:
 
--   `dpkg`: herramienta de bajo nivel para gestionar directamente los paquetes
-    `.deb`
--   `apt`: herramientas APT que permiten gestionar los paquetes descargándolos
-    de varias fuentes.
+-   `dpkg` (_Debian Package_): herramienta de bajo nivel para gestionar
+    directamente los paquetes `.deb`
+-   `apt` (_Advanced Packaging Tool_): herramientas APT que permiten gestionar
+    los paquetes descargándolos de varias fuentes.
 
 También existen otras herramientas gráficas a modo de _tienda_.
 
@@ -84,8 +84,8 @@ También existen otras herramientas gráficas a modo de _tienda_.
     dpkg-reconfigure      Reconfigura un paquete
 
 `--install` es la única opción a la que se le necesita pasar el nombre del
-archivo del paquete completo (`nombre_version_arch.deb`), al resto basta con el
-nombre del paquete.
+archivo del paquete completo (`nombre_version_build_arch.deb`), al resto basta
+con el nombre del paquete.
 {{< /block >}}
 
 {{< block "Opciones de `apt`" >}}
@@ -123,7 +123,7 @@ Las opciones más habituales son:
     apt-cache depends    Lista las dependencias del paquete
     apt-cache policy     Muestra fuentes y prioridades
     ---------------------------------------------------------------------------
-    apt-get -f/--fix-broken install  Corrige errores de dependencias
+    apt-get -f install   Corrige errores de dependencias
 
 ### Bloqueo
 
@@ -199,18 +199,18 @@ Modelo similar a los _snaps_, pero desarrollado por Fedora y RedHat.
 1.  Descargar el código fuente.
 2.  Descomprimir el archivo (ver [Tarballs](#tarballs) o [Zip](#zip)).
 3.  Leer el archivo `INSTALL` por si hubiese instrucciones de instalación.
-4.  Configuración del _build system_.
 
+A continuación, el proceso más habitual (sobre todo para programas escritos en
+C para Linux) sigue con los siguientes pasos:
+
+4.  Configuración del _build system_. \
     Si se usó `autoconf`, ejecutar el script `./configure` que se encarga de:
-
     - Chequear el entorno de compilación
     - Chequear las librerías necesarias
     - Generar los `Makefiles` de compilación e instalación
-
     Se le puede especificar el directorio de instalación:
     `./configure --prefix=dir`. Por defecto, instalará localmente
     (`/usr/local`).
-
 5.  Compilación: el estándar en Linux es `make`
 6.  Instalación: se puede utilizar el mismo `Makefile`: `make install`
 7.  Opcionalmente, se pueden limpiar los archivos de compilación: `make clean`

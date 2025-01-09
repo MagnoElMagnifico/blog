@@ -1,47 +1,69 @@
 ---
-title: Servicios
-description: TODO
-date: TODO
-weight: -1
-draft: true
+title: Módulos del Kernel y Servicios
+#description: TODO
+date: 2025-01-09T21:51:49+01:00
+weight: 6
 ---
 
 {{< block "Nota" >}}
 Se recomienda leer el artículo sobre el [arranque del sistema]({{< ref "so/arranque" >}})
 {{< /block >}}
 
-# Tipos de servicios
+# Módulos del kernel
 
-Listas de servicios:
+<!-- TODO: expandir -->
+{{< block "Módulos del Kernel" "var(--magno-blue)" >}}
+Los módulos del kernel son fragmentos de código que se pueden cargar y eliminar
+del Sistema Operativo bajo demanda. Muchos de ellos funcionan como controladores
+de dispositivos (en Windows se les llaman _drivers_).
 
-- Rescate (`rescue.target`): conjunto de servicios mínimos necesarios para
-reparar el sistema.
-- Emergencia (`emergency.target`): abre un único shell monousuario en modo administrador
-- Multiusuario (`multi-user.target`): multiusuario no gráfico
-- Gráfico (`graphical.target`)
+En Linux se suelen almacenar en `/usr/lib/kernel/*` bajo la extensión `.ko`.
+{{< /block >}}
 
-A la hora de arrancar, desde el menú de GRUB, se puede seleccionar cual
-utilizar.
+# `systemd`
 
-# Uso de `systemd`
+[`systemd`] es el sistema de inicio más utilizado en las distribuciones de Linux.
+Actúa a modo del proceso `init`.
 
-Dichos servicios se pueden controlar con los comandos:
+-   Se encarga de ejecutar los procesos encargados de la creación del sistema:
+    teclado, controladores, sistemas de ficheros, red, servicios, etc. \
+    {{< arrow >}} Ofrece una visión global del sistema, tanto software como
+    hardware.
 
-```sh
-systemctl <action> <service-name>
-# o bien con el comando
-service
-```
+-   Muchos de estos procesos ofrecen servicios:
 
-Siendo acción:
+    - Networking ([NetworkManager])
+    - Sistema de impresión ([CUPS])
+    - [SSH]
+    - Gestores gráficos: entorno de escritorio (_Desktop Manager_) o gestor de ventanas (_Window Environment_).
+    - Gestor de Volúmenes Lógicos (LVM)
+    - ...
 
-- `status`
-- `start`
-- `stop`
-- `restart`
-- `enable`/`disable`: configuran el servicio para arrancarse con el sistema
+    El arranque de estos servicios se realiza en paralelo para que sea más
+    rápido.
 
+Proporciona varias utilidades para que los administradores controlen los
+servicios.
 
+    systemctl status   Muestra el estado del servicio
+    systemctl start    Inicia el servicio
+    systemctl stop     Detiene el servicio
+    systemctl restart  Reinicia el servicio
+    systemctl enable   Configura el servicio para que se ejecute al inicio
+    systemctl disable  El servicio no se iniciará durante el arranque
+
+Además, distingue varios _targets_. Estos son grupos de servicios que se pueden
+omitir al arranque, para así personalizar cuáles se inician dependiendo de lo
+que quiera hacer el administrador.
+
+-   Rescate (`rescue.target`): conjunto de servicios mínimos necesarios para
+    reparar el sistema.
+-   Emergencia (`emergency.target`): abre un único shell monousuario en modo
+    administrador
+-   Multiusuario (`multi-user.target`): multiusuario no gráfico
+-   Gráfico (`graphical.target`)
+
+{{< todo >}}
 # Creación de un nuevo servicio de `systemd`
 
 Respondiendo a la pregunta que me hicieron hoy en clase, en la siguiente página
@@ -118,6 +140,12 @@ como usuario compilamos client.c con gcc client.c -o b.out y ejecutamos ./b.out.
 El servicio nos da la respuesta:
 
 ```sh
-./b.out 
+./b.out
 Received hello server from server
 ```
+{{< /todo >}}
+
+[`systemd`]:      https://en.wikipedia.org/wiki/Systemd
+[NetworkManager]: https://wiki.archlinux.org/title/NetworkManager
+[CUPS]:           https://wiki.archlinux.org/title/CUPS
+[SSH]:            https://wiki.archlinux.org/title/OpenSSH
