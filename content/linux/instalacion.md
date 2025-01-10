@@ -433,32 +433,6 @@ Otras formas de obtener información sobre el hardware son consultar los
 directorios [`/proc`] y [`/sys`]. De hecho, la mayoría de los comandos
 anteriores, simplemente consultan estos archivos.
 
-<!-- TODO: permisos ? -->
-# Cuenta del superusuario
-
-El **superusuario** es un usuario especial que tiene todos los permisos y actúa
-a modo de administrador del sistema. Su nombre de login es `root` (aunque se
-puede cambiar).
-
-- Puede acceder a todos los archivos del sistema
-- Puede crear otros usuarios
-- Puede instalar y borrar software
-- Puede matar cualquier proceso del sistema
-- Puede apagar y reiniciar la máquina
-
-Se puede cambiar la contraseña de cualquier usuario (como root o ese mismo
-usuario usando el comando `passwd`.
-
-{{< dropdown "Recomendaciones para elegir una contraseña" >}}
-- No usar el nombre de _login_ ni variantes
-- Tampoco datos personales como DNI, nombre, teléfono, etc
-- No repetir contraseñas
-- Usar contraseñas largas: 12 o más caracteres
-- Mezclar letras mayúsculas y minúsculas, números y puntuación
-{{< /dropdown >}}
-
-<!-- TODO: recuperación de contraseñas -->
-
 [wiki]: https://wiki.archlinux.org/title/Installation_guide
 [superusuario]: #cuenta-de-superusuario
 [particiones físicas]:  {{< ref "so/archivos/#partición" >}}

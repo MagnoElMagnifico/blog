@@ -214,14 +214,14 @@ Durante la edición de comandos en Bash, permite algunos atajos de teclado de
 Emacs por defecto. Puede usar `set -o vim` para usar los atajos de Vi.
 
 {{< keyvalue title="Movimientos en Bash" >}}
--% `Ctrl-A` /  `Ctrl-E` :% Ir al inicio / final
--% `Alt-B` / `Alt-F`    :% Moverse una palabra hacia delante / atrás
+-% `Ctrl-A` /  `Ctrl-E` :% Ir al inicio (_st**a**rt_) / final (_**e**nd_)
+-% `Alt-B` / `Alt-F`    :% Moverse una palabra hacia atrás (_**b**ack_) / delante (_**f**orward_)
 -% `Ctrl-W` / `Alt-D`   :% Borrar palabra anterior / siguiente
 -% `Ctrl-U` / `Ctrl-K`  :% Borra hasta el principio / final
--% `Ctrl-N` / `Ctrl-P`  :% Comando siguiente / anterior
--% `Ctrl-L`             :% Limpia pantalla
--% `Alt-.`              :% Escribir el último argumento
+-% `Ctrl-N` / `Ctrl-P`  :% Comando siguiente / anterior. También sirven las flechas arriba y abajo.
+-% `Alt-.`              :% Escribir el último argumento (`!$`)
 -% `Ctrl-Y`             :% Deshacer
+-% `Ctrl-L`             :% Limpia pantalla
 -% `Ctrl-D`             :% Salir
 {{< /keyvalue >}}
 

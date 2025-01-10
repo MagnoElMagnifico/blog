@@ -7,6 +7,131 @@ weight: -1
 draft: true
 ---
 
+# Archivos que ejecuta Bash
+
+Consulta este [maravilloso post].
+
+Bash diferencia entre varias posibilidades cuando una instancia suya es creada.
+Se distingue entre:
+
+- **interactiva** y **no interactiva**: si el usuario tiene un prompt y envía
+  input directamente a Bash; o bien en un script, donde el usuario no tiene
+  interacción.
+- _**login**_ y _**non-login**_: cuando un usuario inicia una sesión en bash via
+  terminal, SSH, etc; o cuando desde una shell se inicia otra.
+
+Este último se puede comprobar con `echo $0`, si devuelve `-bash` será _login_,
+y `bash` si es _non-login_.
+
+{{<
+    figure
+    alt  = "Diagrama de ejecución de archivos de bash"
+    src  = "https://shreevatsa.files.wordpress.com/2008/03/bashstartupfiles1.png"
+    link = "https://shreevatsa.files.wordpress.com/2008/03/bashstartupfiles1.png"
+>}}
+
+Bash funciona de la siguiente forma. Lee las columnas hacia abajo. **Primero
+ejecuta A, luego B, entonces C, etc**. B1, B2, B3 signfica que solo ejecuta el
+primero de los que encuentre.
+
+```goat
+.----------------+-----------+-----------+------.
+|                |Interactive|Interactive|Script|
+|                |login      |non-login  |      |
++----------------+-----------+-----------+------+
+|/etc/profile    |   A       |           |      |
++----------------+-----------+-----------+------+
+|/etc/bash.bashrc|           |    A      |      |
++----------------+-----------+-----------+------+
+|~/.bashrc       |           |    B      |      |
++----------------+-----------+-----------+------+
+|~/.bash_profile |   B1      |           |      |
++----------------+-----------+-----------+------+
+|~/.bash_login   |   B2      |           |      |
++----------------+-----------+-----------+------+
+|~/.profile      |   B3      |           |      |
++----------------+-----------+-----------+------+
+|BASH_ENV        |           |           |  A   |
++----------------+-----------+-----------+------+
+|                |           |           |      |
++----------------+-----------+-----------+------+
+|                |           |           |      |
++----------------+-----------+-----------+------+
+|~/.bash_logout  |    C      |           |      |
+'----------------'-----------'-----------'------'
+```
+
+Por lo que se puede concluir con:
+
+- `bash_profile` debe ser super sencillo y solamente carga `.profile` y `.bashrc`
+  en ese orden.
+
+- `profile` configuración no específica a Bash, debe ser compatible con `sh`:
+  `bash`, `zsh`, `ksh`... Esto puede ser variables del entorno (`$PATH`),
+  variables para aplicaciones gráficas y demás.
+
+- `bashrc` tiene la configuración de la shell interactiva: _prompt_, `$EDITOR`,
+  `alias`, etc. No debe imprimir nada.
+
+Se puede evitar la ejecución de todos estos scripts con el argumento
+`--noprofile`.
+
+Al cerrar sesión (con `exit`) se ejecuta `~/.bash_logout`.
+
+**Fuente**: [GNU Manual] y el [Manual] sobre bash. Más información [en esta
+respuesta de StackOverflow].
+
+## Path
+
+También es común modificar la variable _PATH_ en esta configuración, y poder
+ejecutar programas de directorios personalizados:
+
+```bash
+export PATH=$PATH:<new/path>
+```
+
+> **Nota**: Ojo con modificar esta variable, ya que podrías eliminar todo el
+> contenido y no podrías ejecutar nada.
+
+
+## Colores de ls
+
+Puedes cambiar los colores de salida del comando `ls` editando la variable
+`LS_COLORS`. Le puedes asignar a cada posible elemento (directorio, archivo,
+enlace, etc) el color que quieras con esta clave:
+
+- Azul: `34`
+- Verde: `32`
+- Verde Claro: `1;32`
+- Cian: `36`
+- Rojo: `31`
+- Violeta: `35`
+- Marrón: `33`
+- Amarillo: `1;33`
+- Blanco: `1;37`
+- Gris Claro: `0;37`
+- Negro: `30`
+- Gris oscuro: `1;30`
+-----------------------------------------------------------
+- `di`: directorio
+- `fi`: archivo
+- `ln`: enlace simbólico
+- `pi`: archivo _fifo_
+- `so`: archivo _socket_
+- `bd`: archivo de tipo _block_ (_buffered_)
+- `cd`: archivo especial (_character unbuffered_)
+- `or`: enlace simbólico roto, es decir, dirección que no existe (huérfano)
+- `mi`: archivo que no existe, al que apunta algún enlace simbólico.
+
+<!-- TODO: enlace con @/linux/files -->
+
+Ejemplo:
+
+```bash
+LS_COLORS=$LS_COLORS:'di=0;35:' # Concatena el valor al resto de la variable
+export LS_COLORS
+```
+
 # Configuración
 
 Como ya he mencionado antes, la configuración de Bash se puede almacenar en el
@@ -175,5 +300,8 @@ También es posible cambiar los atajos de teclado, gracias al comando `bind`.
 Puedes encontrar más información en [Computer Hope].
 
 [Computer Hope]: https://www.computerhope.com/unix/bash/bind.htm
-- alias
+[Manual]: https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html
+[GNU Manual]: https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
+[en esta respuesta de StackOverflow]: https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
+[maravilloso post]: https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
 

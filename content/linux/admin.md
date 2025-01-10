@@ -3,7 +3,7 @@ title: Admininistración de Sistemas
 description: >
     Algunas tareas que un buen administrador de sistemas debería hacer.
 date: 2025-01-05T20:42:14+01:00
-weight: 8
+weight: 10
 draft: true
 mermaid: true
 ---
@@ -844,6 +844,76 @@ nivel superior.
 
 Esta forma de acceso es más cómoda cuando se trabaja con volúmenes cifrados.
 {{< /block >}}
+
+# Gestión de usuarios
+
+## Módulo de autentificación
+
+PAM (_Pluggable Authentication Module_) es una librería de autenticación
+genérica que las aplicaciones puede usar para **validar usuarios**, usando
+múltiples esquemas de autenticación (ficheros locales, claves de un solo uso,
+DNI electrónivo, LDAP...).
+
+-   Módulos de **autenticación** (`auth`): para la identificación del usuario.
+    - Contraseña
+    - Tarjeta de identificación
+    - Características biométricas
+    - ...
+
+-   Módulos de **cuentas** (`account`): controlas las condiciones para que la
+    autenticación sea permitida.
+    - Caducidad de cuentas
+    - Horas de permiso de inicio de sesión
+    - ...
+
+-   Módulos de **contraseñas** (`password`): condiciones y procedimientos para
+    el cambio de contraseñas.
+
+-   Módulos de **sesión** (`session`): configuran y administran sesiones de
+    usuarios, como tareas adicionales para permitir el acceso:
+    - Montaje de directorios
+    - Actualización del `lastlog`
+    - ...
+
+## Cuotas de usuario
+
+Editando el archivo `/etc/fstab`, el administrador puede establecer límites de
+uso del disco a los diferentes usuarios y grupos para evitar que acaparen todo
+el espacio.
+
+Se pueden establecer dos límites:
+
+-   **Límite débil**: si una cuenta supera un límite de uso, se muestra una
+    advertencia y se espera un _periodo de gracia_ en el que el usuario puede
+    reducir su ocupación. Una vez pasado el tiempo y el uso del disco aún supera
+    el límite, se bloqueará la cuenta.
+-   **Límite duro**: se deniega el intento de escribir datos una vez superado el
+    límite.
+
+Se requiere de la instalación del **paquete `quota`**.
+
+{{< keyvalue title="Comandos de cuotas de usuario" >}}
+-% `cuotacheck` :% Construye el índice y testea la integridad.
+-% `quotaon` <br> `quotaoff` :% Activa y desactiva las cuotas.
+-% `edquota` :% Ajusta las cuotas de usuarios y grupos.
+-% `repquota` :% Genera informes de uso.
+-% `quota` :% Informa al un usuario de sus cuotas.
+{{< /keyvalue >}}
+
+{{< todo >}}
+# Servicios básicos
+
+## SSH
+
+Shell seguro: los datos viajan encriptados. Es necesario instalar
+`openssh-client` y `openssh-server` (solo para la máquina a la que se accede).
+
+Incluye tres programas:
+
+- `ssh`: shell remota
+- `sftp`: subir y descargar archivos (similar a FTP)
+- `scp`: copiar archivos (similar a `cp`)
+{{< /todo >}}
 
 [`tar`]: {{< ref "linux/software/#tarballs" >}}
 [inodo]: {{< ref "so/archivos/#block-inodos" >}}
