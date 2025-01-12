@@ -1,3 +1,6 @@
+{{if not (findRE `%{3,}` .InnerDeindent) }}
+{{ errorf "Column separator not found in %s shortcode. Location: %s" .Name .Position }}
+{{ end }}
 {{ $left := replaceRE `([\W\w]*?)%{3,}[\w\W]*` "$1" .InnerDeindent }}
 {{ $right := replaceRE `[\w\W]*%{3,}([\W\w]*)` "$1" .InnerDeindent }}
 <div class="columns">

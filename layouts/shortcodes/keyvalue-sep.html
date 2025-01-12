@@ -1,4 +1,7 @@
 {{/* This will be evaluated later as Markdown by keyvalue, so no indentation */}}
+{{ if or (eq .Parent nil) (not (eq .Parent.Name "keyvalue")) }}
+{{ errorf "%s not used inside keyvalue shortcode. Location: %s" .Name .Position }}
+{{ end }}
 <tr>
 {{ if .Get "title" }}
 <th colspan="2">{{ .Get "title" | .Page.RenderString }}</th>
@@ -7,7 +10,7 @@
 <th>{{ .Get "key" | .Page.RenderString }}</th>
 <th>{{ .Get "value" | .Page.RenderString }}</th>
 {{ else }}
-{{ errorf "Missing keyvalue-sep parameters: key and value, or title" }}
+{{ errorf "Missing %s parameters: key and value, or title. Location: %s" .Name .Position }}
 {{ end }}
 {{ end }}
 </tr>
