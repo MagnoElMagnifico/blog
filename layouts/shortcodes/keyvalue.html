@@ -1,40 +1,40 @@
 <table class="keyvalue {{ if (.Get "fill") }}fill{{ end }}">
-    {{/* Optional header */}}
-    {{ with .Get "title" }}
-        <tr>
-            <th colspan="2">{{ . | markdownify }}</th>
-        <tr>
-    {{ else }}
-        {{ if and (.Get "key") (.Get "value") }}
-            <tr>
-                <th>{{ .Get "key"   | markdownify }}</th>
-                <th>{{ .Get "value" | markdownify }}</th>
-            <tr>
-        {{ end }}
-    {{ end }}
+{{/* Optional header */}}
+{{ with .Get "title" }}
+<tr>
+<th colspan="2">{{ . | markdownify }}</th>
+<tr>
+{{ else }}
+{{ if and (.Get "key") (.Get "value") }}
+<tr>
+<th>{{ .Get "key"   | markdownify }}</th>
+<th>{{ .Get "value" | markdownify }}</th>
+<tr>
+{{ end }}
+{{ end }}
 
-    {{/* Use Regex to fetch the keys and values */}}
-    {{ $keys   := findRE `(-%)[\W\w]*?(:%|\z)` .Inner }}
-    {{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
+{{/* Use Regex to fetch the keys and values */}}
+{{ $keys   := findRE `(-%)[\W\w]*?(:%|\z)` .Inner }}
+{{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
 
-    {{/* Go through all the values */}}
-    {{ range $i := seq 0 (len $values) }}
-        {{ $key   := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $keys $i) }}
-        {{ $value := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $values $i) }}
-        {{/* $key   := trim (index $keys   $i) "-:% \t\n" */}}
-        {{/* $value := trim (index $values $i) "-:% \t\n" */}}
+{{/* Go through all the values */}}
+{{ range $i := seq 0 (len $values) }}
+{{ $key   := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $keys $i) }}
+{{ $value := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $values $i) }}
+{{/* $key   := trim (index $keys   $i) "-:% \t\n" */}}
+{{/* $value := trim (index $values $i) "-:% \t\n" */}}
 
-        <tr>
-            {{ if $key }}
-                <td {{ if $.Get "key-header" }}class="header"{{ end }}>
-                    {{ $key | markdownify }}
-                </td>
-            {{ end }}
+<tr>
+{{ if $key }}
+<td {{ if $.Get "key-header" }}class="header"{{ end }}>
+{{ $key | markdownify }}
+</td>
+{{ end }}
 
-            {{ if $value }}
-                <td>{{ $value | markdownify }}</td>
-            {{ end }}
-        </tr>
-    {{ end }}
+{{ if $value }}
+<td>{{ $value | markdownify }}</td>
+{{ end }}
+</tr>
+{{ end }}
 </table>
 

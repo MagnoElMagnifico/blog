@@ -1,17 +1,18 @@
+{{/* No indent since other shortcodes might process this as markdown */}}
 <div
-    class="block"
-    id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}"
+class="block"
+id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}"
 >
-    <div class="block-name"
-        {{ if and (.Get 1) (.Get 2) }}
-            style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
-        {{ else if (.Get 1) }}
-            style="background-color: {{ .Get 1 | safeCSS }}; color: black"
-        {{ end }}
-    >
-        {{ .Get 0 | emojify | markdownify }}
-    </div>
+<div class="block-name"
+{{ if and (.Get 1) (.Get 2) }}
+style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
+{{ else if (.Get 1) }}
+style="background-color: {{ .Get 1 | safeCSS }}; color: black"
+{{ end }}
+>
+{{ .Get 0 | .Page.RenderString }}
+</div>
 <div class="block-content">
-    {{ .Inner | .Page.RenderString }}
-    </div>
+{{ .InnerDeindent | .Page.RenderString }}
+</div>
 </div>
