@@ -1,0 +1,10 @@
+{{ $left := replaceRE `([\W\w]*?)%{3,}[\w\W]*` "$1" .InnerDeindent }}
+{{ $right := replaceRE `[\w\W]*%{3,}([\W\w]*)` "$1" .InnerDeindent }}
+<div class="columns">
+<div class="column-left">
+{{ trim $left " \t\r\n" | .Page.RenderString }}
+</div>
+<div class="column-right">
+{{ trim $right " \t\r\n" | .Page.RenderString }}
+</div>
+</div>
