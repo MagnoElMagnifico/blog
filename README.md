@@ -65,7 +65,17 @@ hugo server --environment production
 Alternativamente, para generar el sitio a la carpeta `public/`:
 
 ```sh
-hugo
+hugo --baseURL http://localhost:8000
+```
+
+Para poder ver el contenido sin errores, se necesita un servidor que convierta
+las _paths_ del tipo `/styles/base.css` a la dirección actual del archivo: no
+sirve con abrir los htmls directamente (por eso es necesario configurar bien la
+URL o sino usará `https://magnoblog.netlify.app`).
+
+```sh
+cd public
+python -m http.server
 ```
 
 > [!NOTE]
