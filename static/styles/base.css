@@ -337,15 +337,11 @@ td > p:last-child
         display: grid;
         column-gap: 10px;
         text-align: justify;
+        place-items: center;
     }
 
-    .column-left {
-        grid-column-start: 1;
-    }
-
-    .column-right {
-        grid-column-start: 2;
-    }
+    .column-left  { grid-column-start: 1; }
+    .column-right { grid-column-start: 2; }
 }
 
 /**** Footnotes ****/
@@ -359,7 +355,7 @@ td > p:last-child
 /* "Fix" big LaTeX expressions */
 .katex-display {
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
 }
 
 /**** Blog entries ****/
