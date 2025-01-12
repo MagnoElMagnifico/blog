@@ -277,6 +277,10 @@ td.header, table.header td:first-child { border-right:  var(--table-header-borde
     justify-content: center;
 }
 
+.block .block-name p {
+    margin: 0;
+}
+
 .block .block-content {
     grid-row-start: 2;
     align-content: center;
@@ -325,6 +329,23 @@ td > p:last-child
 @keyframes show {
   from { opacity: 0%; }
   to   { opacity: 100% }
+}
+
+/**** Columns ****/
+@media only screen and (min-width: 1000px) and (min-device-width: 1000px) {
+    .columns {
+        display: grid;
+        column-gap: 10px;
+        text-align: justify;
+    }
+
+    .column-left {
+        grid-column-start: 1;
+    }
+
+    .column-right {
+        grid-column-start: 2;
+    }
 }
 
 /**** Footnotes ****/
