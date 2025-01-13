@@ -1,10 +1,10 @@
 ---
 title: Autómatas Finitos
 description: >
-    TODO
+    Autómata Finitos Determinitas, No Deterministas y No Deterministas de cadena
+    vacía. Equivalencia entre varios tipos y minimización de autómatas.
 date: 2025-01-11T18:56:00+01:00
 weight: 2
-draft: true
 math: true
 mermaid: true
 ---
