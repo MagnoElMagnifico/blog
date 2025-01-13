@@ -1,5 +1,5 @@
 [start]
-description = "Mis notas, apuntes y demás sobre mis **proyectos de programación**."
+description = "La biblioteca de Alejandría sobre el computador."
 
 [about]
 show = false
@@ -34,8 +34,9 @@ show = true
 
 # Highlighted sections
 sections = [
-    "mates/discretas",
     "so",
+    "compiladores",
+    "mates/discretas",
     "poo",
     "aed"
 ]

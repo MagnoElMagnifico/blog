@@ -1,7 +1,9 @@
 ---
 title: Lenguajes Regulares
 description: >
-    TODO
+    Definición de los lenguajes regulares y del álgebra expresiones regulares.
+    Cómo construir autómatas finitos que aceptan expresiones regulares y cómo
+    obtener la expresión regulare de un autómata. El lema del bombeo.
 date: 2025-01-12T22:51:34+01:00
 weight: 3
 math: true
@@ -156,7 +158,14 @@ flowchart LR
     classDef hidden display:none;
 ```
 
-$$ L = (R^* + SU^*T)^* SU^* $$
+$$ L = (R + SU^*T)^* SU^* $$
+
+Desde el estado inicial $A$ se puede recibir cualquier número de veces $R$.
+También es posible transicionar al estado $B$ mediante $S$, recibir $U$
+cualquier número de veces y regresar a $A$ recibiendo $T$. Esto se puede repetir
+cualquier número de veces, dado que se empieza en $A$ y se regresa a $A$. Sin
+embargo, para terminar, es necesario quedar en un estado final, por lo que se
+transiciona a $B$ mediante $S$ y luego puede llegar cualquier número de $U$.
 
 %%%%%%%%%%
 

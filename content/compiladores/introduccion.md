@@ -1,10 +1,12 @@
 ---
 title: Introducción
 description: >
-    TODO
+    En este artículo de introducción a la Teoría de Autómatas y Lenguajes
+    Formales, veremos los conceptos básicos y notación alfabetos, lenguajes,
+    gramáticas y autómatas. La parte más importante de este campo es comprender
+    la relación entre estos últimos tres conceptos.
 date: 2025-01-11T18:44:14+01:00
 weight: 1
-draft: true
 mermaid: true
 math: true
 ---
@@ -49,20 +51,21 @@ Estudio de máquinas o dispositivos abstractos con capacidad de computación.
 
 De los autómatas finitos:
 
--   Software para el diseño y verificación de **circuitos digitales**
--   **Analizador léxico** de un compilador
--   Software para **explorar textos**
+-   Software para el diseño y verificación de **circuitos digitales**.
+-   **Analizador léxico** de un compilador.
+-   Software para **explorar textos**.
 -   Software para comprobar el funcionamiento de un sistema con **varios estados
     diferentes**.
 
 De las gramáticas:
 
-- Descripciones de analizadores sintácticos (_parsers_)
+- Descripciones de analizadores sintácticos (_parsers_), análisis sintáctico.
+- Descripción de formatos de documentos (XML, lenguajes de programación, etc).
 
 De las expresiones regulares:
 
-- Especificación de patrones de cadenas
-- Diseño de software de verificación de un formulario web
+- Especificación de patrones de cadenas.
+- Diseño de software de verificación de un formulario web.
 
 # Definiciones
 ## Alfabetos y palabras
@@ -150,7 +153,7 @@ Ejemplos:
 -% $L_1 \cup L_2$ :% Contiene todas las palabras que pertenecen a **cualquiera** de ellos.
 -% $L_1 \cap L_2$ :% Contiene todas las palabras que pertenecen a **ambos**.
 -% $L_1 - L_2$ :% Contiene todas las palabras que **pertenecen a $L_1$ pero no a $L_2$**.
--% $L_1 . L_2$ :% Contiene todas las palabras que se pueden formar por la
+-% $L_1 \cdot L_2$ :% Contiene todas las palabras que se pueden formar por la
 **concatenación de una palabra de $L_1$ y otra de $L_2$**.
 -% $L^i$ :% La potencia $i$-ésima es la concatenación $i$ veces consigo mismo.
 -% $L^-$ :% La reflexión se forma por la aplicación de la reflexión a todas las
@@ -171,7 +174,7 @@ que se pueden combinar los símbolos del alfabeto.
 - G0 o Tipo 0: gramáticas **sin restricciones** (GSR)
 - G1 o Tipo 1: gramáticas **sensibles al contexto** (GSC)
 - G2 o Tipo 2: gramáticas **independientes del contexto** (GIC)
-- G3 o Tipo 3: gramáticas regulares
+- G3 o Tipo 3: gramáticas **regulares**
 
 $$ G3 \subseteq G2 \subseteq G1 \subseteq G0 $$
 
@@ -185,7 +188,6 @@ Dada una cadena de símbolos presentados a su entrada, produce una cadena de
 símbolos a su salida, en función de dichas entradas y los estados internos por
 los que transita la máquina.
 
-{{< todo >}}
 Por ejemplo, el autómata de un interruptor de luz:
 
 ```mermaid
@@ -200,8 +202,8 @@ stateDiagram-v2
 ```
 
 Tiene dos posibles entradas: **presionar** el botón o **no presionar** el botón;
-y produce dos posibles respuestas: **encender** la luz o **apagar** la luz.
-{{< /todo >}}
+y produce dos posibles respuestas: **encender** la luz o **apagar** la luz, en
+función de si antes estaba apagada la luz o encendida.
 
 # Relación entre máquina, lenguaje y gramática
 
@@ -223,13 +225,16 @@ flowchart TB
 Y la correspondencia entre los diferentes tipos de gramáticas y las máquinas es
 la siguiente:
 
-| Gramática                         | Lenguaje                   | Máquina                      | Complejidad |
-|-----------------------------------|----------------------------|------------------------------|-------------|
-| Tipo 0: Sin restricciones         | Recursivamente enumerable  | Máquina de Turing            | Indecibible |
-| Tipo 1: Sensible al contexto      | Sensible al contexto       | Autómata linealmente acotado | Exponencial |
-| Tipo 2: Independiente de contexto | Independiente del contexto | Autómata con pila            | Polinómica  |
-| Tipo 3: Regular                   | Regular                    | [Autómata finito]            | Lineal      |
+| Gramática                                | Lenguaje                   | Máquina                      | Complejidad |
+|------------------------------------------|----------------------------|------------------------------|-------------|
+| Tipo 0: G0 - Sin restricciones           | Recursivamente enumerable  | Máquina de Turing            | Indecibible |
+| Tipo 1: G1 - Sensible al contexto        | Sensible al contexto       | Autómata linealmente acotado | Exponencial |
+| Tipo 2: [G2 - Independiente de contexto] | Independiente del contexto | Autómata con pila            | Polinómica  |
+| Tipo 3: [G3 - Regulares]                 | [Regular]                  | [Autómata finito]            | Lineal      |
 
 [Chomsky]: https://en.wikipedia.org/wiki/Noam_Chomsky
+[G2 - Independiente de contexto]: {{< ref "compiladores/gramaticas/#gramática-independiente-de-contexto" >}}
+[G3 - Regulares]: {{< ref "compiladores/gramaticas/#gramáticas-regulares" >}}
+[Regular]: {{< ref "compiladores/lenguajes-regulares" >}}
 [Autómata finito]: {{< ref "compiladores/automatas-finitos" >}}
 
