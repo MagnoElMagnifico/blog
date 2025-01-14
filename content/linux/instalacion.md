@@ -35,11 +35,11 @@ Ofrecen **servicios** a otras máquinas.
     - [Correo electrónico]
     - Web (p.e. Apache)
 
-[FTP]:  {{< ref "redes/aplicacion/#ftp" >}}
-[DNS]:  {{< ref "redes/aplicacion/#dns" >}}
-[NAT]:  {{< ref "redes/red/#nat" >}}
-[DHCP]: {{< ref "redes/red/#protocolo-dhcp" >}}
-[Correo electrónico]: {{< ref "redes/aplicacion/#protocolos-de-correo-electrónico" >}}
+[FTP]:  {< ref "redes/aplicacion/#ftp" >}}
+[DNS]:  {< ref "redes/aplicacion/#dns" >}}
+[NAT]:  {< ref "redes/red/#nat" >}}
+[DHCP]: {< ref "redes/red/#protocolo-dhcp" >}}
+[Correo electrónico]: {< ref "redes/aplicacion/#protocolos-de-correo-electrónico" >}}
 {{< /keyvalue >}}
 
 <!-- TODO: post sobre instalación de Arch -->
@@ -439,7 +439,7 @@ anteriores, simplemente consultan estos archivos.
 [tabla de particiones]: {{< ref "so/archivos/#block-tabla-de-montaje" >}}
 [MBR]:                  {{< ref "so/archivos/#block-master-boot-record" >}}
 [GPT]:                  {{< ref "so/archivos/#block-guid-particion-table" >}}
-[DHCP]:                 {{< ref "redes/red/#protocolo-dhcp" >}}
+[DHCP]:                 {< ref "redes/red/#protocolo-dhcp" >}}
 [`/proc`]:              {{< ref "linux/estructura-directorios/#proc" >}}
 [`/sys`]:               {{< ref "linux/estructura-directorios/#sys" >}}
 

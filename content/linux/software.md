@@ -5,7 +5,6 @@ description: >
     incluyendo gestores de paquetes y la compilación desde el código fuente.
 date: 2025-01-04T20:11:28+01:00
 weight: 7
-draft: true
 ---
 
 # Formas de instalación
