@@ -229,7 +229,7 @@ la siguiente:
 |------------------------------------------|----------------------------|------------------------------|-------------|
 | Tipo 0: G0 - Sin restricciones           | Recursivamente enumerable  | Máquina de Turing            | Indecibible |
 | Tipo 1: G1 - Sensible al contexto        | Sensible al contexto       | Autómata linealmente acotado | Exponencial |
-| Tipo 2: [G2 - Independiente de contexto] | Independiente del contexto | Autómata con pila            | Polinómica  |
+| Tipo 2: [G2 - Independiente de contexto] | Independiente del contexto | [Autómata con pila]          | Polinómica  |
 | Tipo 3: [G3 - Regulares]                 | [Regular]                  | [Autómata finito]            | Lineal      |
 
 [Chomsky]: https://en.wikipedia.org/wiki/Noam_Chomsky
@@ -237,4 +237,4 @@ la siguiente:
 [G3 - Regulares]: {{< ref "compiladores/gramaticas/#gramáticas-regulares" >}}
 [Regular]: {{< ref "compiladores/lenguajes-regulares" >}}
 [Autómata finito]: {{< ref "compiladores/automatas-finitos" >}}
-
+[Autómata con pila]: {{< ref "compiladores/automatas-pila" >}}

@@ -6,7 +6,6 @@ description: >
     de una gramática.
 date: 2025-01-13T11:12:54+01:00
 weight: 4
-draft: true
 math: true
 mermaid: true
 ---
@@ -78,7 +77,7 @@ Por tanto:
 
 $$ G3 \subseteq G2 \subseteq G1 \subseteq G0 $$
 
-## Gramáticas Regulares
+## Gramáticas Regulares (GR)
 
 Los [lenguajes regulares] pueden asociarse a una gramática de **tipo 3**
 o **regular**. Por la definición del apartado anterior, tenemos que son:
@@ -103,7 +102,7 @@ siguiente forma:
 $$ A \to Bx \\ A \to x$$
 {{< /block >}}
 
-## Gramática independiente de contexto
+## Gramática independiente de contexto (GIC)
 
 En cambio, las reglas de las Gramáticas Independientes de Contexto tienen la
 siguiente forma:
@@ -136,6 +135,22 @@ $$
 \end{align*}
 $$
 {{< /dropdown >}}
+
+## Gramáticas sensibles al contexto (GSC)
+
+$$ G = (V, T, S, P) $$
+
+Un lenguaje $L$ es sensible al contexto (LSC) si existe una GSC tal que $L
+= L(G)$ o $L = L(G) \cup \set{\lambda}$.
+
+Los LSC que no contengan $\lambda$ son reconocidos por los Autómatas Linealmente
+Acotados (ALA).
+
+$$ \text{LSC} \subset \text{LREC} $$
+
+## Gramáticas sin restricciones (GSR)
+
+Las GSR generan los LRE.
 
 # Análisis de una gramática
 ## Derivaciones de una gramática
@@ -259,6 +274,9 @@ que podemos encontrar dos árboles de derivación diferentes.
 La existencia de derivaciones diferentes no supone un problema para la
 gramática, pero la **existencia de varios árboles de derivación diferentes sí**.
 
+Estas ambigüedades no están permitidas en los lenguajes formales. No entraremos
+en mucho detalle, pero es importante tenerla en cuenta.
+
 # Formas normales para GIC
 
 {{< block "Forma normal" "var(--magno-red)" >}}
@@ -273,7 +291,9 @@ Veremos las siguientes formas normales:
 
 El principal motivo para usar las formas normales es que no cambian la gramática
 y **reducen la complejidad para la obtención de sus derivaciones**, es más fácil
-de aplicar.
+de aplicar. Para comprobar determinada GIC en un computador, se tendrán que
+comprobar todas las reglas para cada símbolo, lo que es un alto coste
+computacional. Las formas normales son alternativas que intentan arreglar eso.
 
 En general, antes de obtener una gramática en forma normal, es necesario
 realizar unas transformaciones previas que no modifican el lenguaje generado:
@@ -492,6 +512,30 @@ El uso de una producción introduce un símbolo terminal en una forma sentencial
 - Una cadena de longitud $n$ tiene una derivación de $n$.
 - Una analizador sintáctico descendente parará a profundidad $n$.
 - Nunca habrá recursividad por la izquierda.
+
+{{< arrow >}} Es más eficiente que Chomsky, pero tiene la misma complejidad
+(lineal).
+
+# Jerarquía de Chomsky
+
+
+$$
+L_{\text{RE}} \subset
+L_{\text{REC}} \subset
+L_{\text{CS}} \subset
+L_{\text{CF}} \subset
+L_{\text{DCF}} \subset
+L_{\text{REG}}
+$$
+
+- $L_{\text{REG}}$: Lenguaje regular
+- $L_{\text{DCF}}$: Lenguaje Determinista Independiente de Contexto
+- $L_{\text{CF}}$:  Lenguaje Independiente de Contexto (_Context Free_)
+- $L_{\text{CS}}$:  Lenguaje Dependiente de Contexto
+- $L_{\text{REC}}$: Lenguaje Recursivo
+- $L_{\text{RE}}$:  Lenguaje Recursivamente Enumerable
+
+<!-- TODO: diagrama de Venn -->
 
 [cyk]: https://en.wikipedia.org/wiki/CYK_algorithm
 [introducción]: {{< ref "compiladores/introduccion" >}}
