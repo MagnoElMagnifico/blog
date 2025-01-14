@@ -211,7 +211,7 @@ flowchart LR
     end
 
     classDef hidden display:none;
-    classDef label background-color:#222,padding:2px;
+    classDef edgeLabel background-color:#222,padding:2px;
 ```
 
 %%%%%%%
@@ -236,7 +236,7 @@ flowchart LR
     S2 -- $$\lambda$$ --> F
 
     classDef hidden display:none;
-    classDef label background-color:#222,padding:2px;
+    classDef edgeLabel background-color:#222,padding:2px;
 ```
 $$ R + S \implies L(R) \cup L(S) $$
 
@@ -257,7 +257,7 @@ flowchart LR
     S2 -- $$\lambda$$ --> F(((B)))
 
     classDef hidden display:none;
-    classDef label background-color:#222,padding:2px;
+    classDef edgeLabel background-color:#222,padding:2px;
 ```
 
 $$ RS \implies L(R) L(S) $$
@@ -278,7 +278,7 @@ flowchart LR
 
     linkStyle 3 display:none;
     classDef hidden display:none;
-    classDef label background-color:#222,padding:2px;
+    classDef edgeLabel background-color:#222,padding:2px;
 ```
 $$ R^* \implies L(R^*) $$
 {{< /columns >}}
@@ -307,8 +307,10 @@ $$ \exists n / \quad \forall w \in L, |w| \ge n \quad w = xyz \begin{cases}
 $$
 {{< /block >}}
 
-Es decir, siempre podemos encontrar una cadena no vacía $y$ no demasiado lejos
-del comienzo de $w$ que se puede <<bombear>>.
+Es decir, para que un autómata genere lenguajes infinitos a partir de un
+conjunto finitos de estados, debe tener un ciclo en su grafo. Por tanto, siempre
+podemos encontrar una cadena no vacía $y$ no demasiado lejos del comienzo de $w$
+que se puede <<bombear>>.
 
 Si ser repite $y$ cualquier número de veces o se borra ($k = 0$), la cadena
 sigue siendo del lenguaje.
@@ -321,7 +323,7 @@ flowchart LR
     B -- $$z = a_{j+1} \ldots a_m$$ --> F((($$q_m$$)))
 
     classDef hidden display:none;
-    classDef label background-color:#222,padding:2px;
+    classDef edgeLabel background-color:#222,padding:2px;
 ```
 
 ## Aplicación del lema del bombeo
