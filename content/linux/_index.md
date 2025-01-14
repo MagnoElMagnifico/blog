@@ -1,7 +1,6 @@
 ---
 title: Linux
 content_title: true
-draft: true
 ---
 
 GNU/Linux (sí, ese es su nombre completo), es un conjunto de Sistemas Operativos

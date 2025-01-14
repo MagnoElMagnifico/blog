@@ -7,7 +7,6 @@ description: >
     y `/etc/gshadow`.
 date: 2023-09-30T14:48:28+02:00
 weight: 8
-draft: true
 ---
 
 <!-- TODO: poner permisos aquí ? -->

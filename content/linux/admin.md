@@ -4,7 +4,6 @@ description: >
     Algunas tareas que un buen administrador de sistemas debería hacer.
 date: 2025-01-05T20:42:14+01:00
 weight: 10
-draft: true
 mermaid: true
 ---
 
