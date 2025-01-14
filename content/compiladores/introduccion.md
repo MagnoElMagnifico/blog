@@ -225,16 +225,44 @@ flowchart TB
 Y la correspondencia entre los diferentes tipos de gramáticas y las máquinas es
 la siguiente:
 
-| Gramática                                | Lenguaje                   | Máquina                      | Complejidad |
-|------------------------------------------|----------------------------|------------------------------|-------------|
-| Tipo 0: G0 - Sin restricciones           | Recursivamente enumerable  | Máquina de Turing            | Indecibible |
-| Tipo 1: G1 - Sensible al contexto        | Sensible al contexto       | Autómata linealmente acotado | Exponencial |
-| Tipo 2: [G2 - Independiente de contexto] | Independiente del contexto | [Autómata con pila]          | Polinómica  |
-| Tipo 3: [G3 - Regulares]                 | [Regular]                  | [Autómata finito]            | Lineal      |
+| Gramática                                | Lenguaje                   | Máquina                        | Complejidad |
+|------------------------------------------|----------------------------|--------------------------------|-------------|
+| Tipo 0: [G0 - Sin restricciones]         | Recursivamente enumerable  | [Máquina de Turing]            | Indecibible |
+| Tipo 1: [G1 - Sensible al contexto]      | Sensible al contexto       | [Autómata linealmente acotado] | Exponencial |
+| Tipo 2: [G2 - Independiente de contexto] | Independiente del contexto | [Autómata con pila]            | Polinómica  |
+| Tipo 3: [G3 - Regulares]                 | [Regular]                  | [Autómata finito]              | Lineal      |
+
+## Jerarquía de Chomsky
+
+<!-- TODO: diagrama de Venn -->
+
+$$
+L_{\text{RE}} \subset
+L_{\text{REC}} \subset
+L_{\text{CS}} \subset
+L_{\text{CF}} \subset
+L_{\text{DCF}} \subset
+L_{\text{REG}}
+$$
+
+- [Máquina de Turing]
+    - $L_{\text{RE}}$:  Lenguaje Recursivamente Enumerable
+    - $L_{\text{REC}}$: Lenguaje Recursivo
+- [Autómata linealmente acotado]
+    - $L_{\text{CS}}$:  Lenguaje Dependiente de Contexto
+- [Autómata con pila]
+    - $L_{\text{CF}}$:  Lenguaje Independiente de Contexto (_Context Free_)
+- [Autómata finito]
+    - $L_{\text{DCF}}$: Lenguaje Determinista Independiente de Contexto
+    - $L_{\text{REGs}}$: Lenguaje regular
 
 [Chomsky]: https://en.wikipedia.org/wiki/Noam_Chomsky
-[G2 - Independiente de contexto]: {{< ref "compiladores/gramaticas/#gramática-independiente-de-contexto" >}}
-[G3 - Regulares]: {{< ref "compiladores/gramaticas/#gramáticas-regulares" >}}
-[Regular]: {{< ref "compiladores/lenguajes-regulares" >}}
-[Autómata finito]: {{< ref "compiladores/automatas-finitos" >}}
-[Autómata con pila]: {{< ref "compiladores/automatas-pila" >}}
+[G0 - Sin restricciones]:         {{< ref "compiladores/gramaticas/#gramáticas-sin-restricciones-gsr" >}}
+[G1 - Sensible al contexto]:      {{< ref "compiladores/gramaticas/#gramáticas-sensibles-al-contexto-gsc" >}}
+[G2 - Independiente de contexto]: {{< ref "compiladores/gramaticas/#gramáticas-independientes-de-contexto-gic" >}}
+[G3 - Regulares]:                 {{< ref "compiladores/gramaticas/#gramáticas-regulares-gr" >}}
+[Máquina de Turing]:              {{< ref "compiladores/maquinas-turing" >}}
+[Autómata linealmente acotado]:   {{< ref "compiladores/maquinas-turing/#autómatas-linealmente-acotados-ata" >}}
+[Autómata con pila]:              {{< ref "compiladores/automatas-pila" >}}
+[Autómata finito]:                {{< ref "compiladores/automatas-finitos" >}}
+[Regular]:                        {{< ref "compiladores/lenguajes-regulares" >}}

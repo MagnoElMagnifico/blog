@@ -102,7 +102,7 @@ siguiente forma:
 $$ A \to Bx \\ A \to x$$
 {{< /block >}}
 
-## Gramática independiente de contexto (GIC)
+## Gramáticas independientes de contexto (GIC)
 
 En cambio, las reglas de las Gramáticas Independientes de Contexto tienen la
 siguiente forma:
@@ -516,27 +516,6 @@ El uso de una producción introduce un símbolo terminal en una forma sentencial
 {{< arrow >}} Es más eficiente que Chomsky, pero tiene la misma complejidad
 (lineal).
 
-# Jerarquía de Chomsky
-
-
-$$
-L_{\text{RE}} \subset
-L_{\text{REC}} \subset
-L_{\text{CS}} \subset
-L_{\text{CF}} \subset
-L_{\text{DCF}} \subset
-L_{\text{REG}}
-$$
-
-- $L_{\text{REG}}$: Lenguaje regular
-- $L_{\text{DCF}}$: Lenguaje Determinista Independiente de Contexto
-- $L_{\text{CF}}$:  Lenguaje Independiente de Contexto (_Context Free_)
-- $L_{\text{CS}}$:  Lenguaje Dependiente de Contexto
-- $L_{\text{REC}}$: Lenguaje Recursivo
-- $L_{\text{RE}}$:  Lenguaje Recursivamente Enumerable
-
-<!-- TODO: diagrama de Venn -->
-
 [cyk]: https://en.wikipedia.org/wiki/CYK_algorithm
-[introducción]: {{< ref "compiladores/introduccion" >}}
+[introducción]:        {{< ref "compiladores/introduccion" >}}
 [lenguajes regulares]: {{< ref "compiladores/lenguajes-regulares" >}}
