@@ -344,6 +344,11 @@ td > p:last-child
     .column-right { grid-column-start: 2; }
 }
 
+/**** Youtube shortcode ****/
+div:has(> iframe) {
+    margin: var(--p-separation);
+}
+
 /**** Footnotes ****/
 .footnotes {
     /* TODO: similar style to TOC */
