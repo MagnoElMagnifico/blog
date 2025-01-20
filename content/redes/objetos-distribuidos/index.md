@@ -226,12 +226,13 @@ classDiagram
     class InterfazRemota:::userDef
     class Impl["Implementación"]:::userDef
     class ObjetoServidor:::userDef
-    classDef userDef stroke:#f00;
 
     Remote <|-- InterfazRemota
     Impl ..|> InterfazRemota
     UnicastRemoteObject <|-- Impl
     ObjetoServidor ..> Impl: Instancia
+
+    %%classDef userDef stroke:#f00;
 ```
 
 ## Registro de objetos

@@ -13,23 +13,30 @@ Patrón, ejemplo o modelo simplificado para ayudar a resolver o estudiar un
 problema: aporta una estrategia base desde la que partir.
 {{< /block >}}
 
+Nótese que, en la práctica, muy pocos sistemas siguen un único paradigma el pie
+de la letra: o realizan algunas modificaciones, o combinan varios de ellos
+dependiendo del caso.
+
 # Características
 
 Las características de una aplicación o programa distribuido son:
 
-- **Comunicación entre procesos**: participación de dos o más [procesos] y que
-  intercambien datos entre ellos ([IPC]).
-- **Sincronización de eventos**: envío y recepción de forma sincronizada.
+-   **Comunicación entre procesos**: participación de dos o más [procesos] y que
+    intercambien datos entre ellos ([IPC]).
+-   **Sincronización de eventos**: envío y recepción de forma sincronizada. Una
+    comunicación solo es efectiva cuando uno transmite y otro recibe, y en el
+    orden preciso: el receptor debe estar preparado antes de la transmisión o se
+    podrían perder datos.
 
 # Abstracciones
 
 {{< block "Abstracción" >}}
 Proceso mental que consiste en extraer las características esenciales
-e ignorar detalles superfluos, con el propósito de simplificar determinadas
-operaciones y realizar la programación más fácil.
+e ignorar detalles superfluos, con el propósito de **simplificar** determinadas
+operaciones y realizar la **programación más fácil**.
 
-Se trata de uno de los principios de la programación: esconder los detalles de
-un sistema complejo para hacerlo más accesible.
+Se trata de uno de los principios de la programación: **esconder los detalles**
+de un sistema complejo para hacerlo más accesible.
 
 Lógicamente, esto causa un peor rendimiento y dificulta las optimizaciones.
 $$ \text{Abstracción} \uparrow\uparrow \implies \text{Rendimiento} \downarrow\downarrow $$
@@ -37,7 +44,8 @@ $$ \text{Abstracción} \uparrow\uparrow \implies \text{Rendimiento} \downarrow\d
 
 {{< block "Middleware" >}}
 Software intermedio que aumenta el nivel de abstracción, normalmente en forma de
-librerías o _frameworks_.
+librerías o _frameworks_. En algunos casos puede actuar de intermediario entre
+varios procesos independientes.
 {{< /block >}}
 
 Se debería escoger el nivel más alto de abstracción que permita hacer la
@@ -47,8 +55,8 @@ final.
 Esto puede dar lugar los problemas que se discuten en [Computer, Enhance!],
 [Thirty million line problem], [Preventing the Collapse of Civilization],
 [Better Software Conference] y muchos otros seguidores de esta nueva tendencia
-de volver a software más sencillo. Sin embargo, esta es la dirección que lleva
-la industria.
+de volver a software más sencillo. Sin embargo, la abstracción es la dirección
+que lleva la industria.
 
 # Paradigmas
 

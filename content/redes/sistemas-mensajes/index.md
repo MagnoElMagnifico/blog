@@ -77,7 +77,7 @@ receptor esté disponible para leer el mensaje, consulta la cola.
 RabbitMQ es un _middleware_ de mensajería que permite la transmisión de mensajes
 mediante varios protocolos, entre ellos **AMPQP**, **STOMP** o **HTTP**.
 
-{{< block "Sistema de mensajes" "var(--magno-red)" >}}
+{{< block "AMQP" "var(--magno-red)" >}}
 AMQP (_Advanced Message Queueing Protocol_) es un protocolo **fiable
 y asíncrono** de envío de mensajes. Estos se almacenan en **colas** seguras
 hasta que el receptor se conecte o se cumpla cierto criterio.
