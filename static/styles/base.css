@@ -211,8 +211,10 @@ article img, article svg {
     overflow-x: auto;
 }
 
-/* Make diagrams bigger */
-.goat svg { min-width: 70%; }
+.goat svg {
+    max-width: 600px;
+    max-height: 200px;
+}
 
 figcaption p { text-align: center; }
 figcaption p:before {
