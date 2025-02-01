@@ -1,15 +1,6 @@
 {{/* No indent since other shortcodes might process this as markdown */}}
-<div
-class="block"
-id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}"
->
-<div class="block-name"
-{{ if and (.Get 1) (.Get 2) }}
-style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}"
-{{ else if (.Get 1) }}
-style="background-color: {{ .Get 1 | safeCSS }}; color: black"
-{{ end }}
->
+<div class="block" id="block-{{ trim (.Get 0 | lower | replaceRE `[[:punct:]]` "" | replaceRE `\s+` "-") "-" }}">
+<div class="block-name" {{ if and (.Get 1) (.Get 2) }} style="background-color: {{ .Get 1 | safeCSS }}; color: {{ .Get 2 | safeCSS }}" {{ else if (.Get 1) }} style="background-color: {{ .Get 1 | safeCSS }}; color: black" {{ end }}>
 {{ .Get 0 | .Page.RenderString }}
 </div>
 <div class="block-content">
