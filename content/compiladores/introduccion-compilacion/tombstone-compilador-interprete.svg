@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="266.0683mm"
+   height="105.00861mm"
+   viewBox="0 0 266.0683 105.00861"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(1.1880365,-425.04046)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 29.43103,461.70419 h 84.77614 v 14.11723 H 85.899945 v 14.11723 H 57.665488 V 475.82142 H 29.43103 Z"
+       id="path168" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="46.072208"
+       y="470.88126"
+       id="text169"><tspan
+         id="tspan169"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-dasharray:none"
+         x="46.072208"
+         y="470.88126">Java</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:61.0331;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="120.32532"
+       y="137.01326"
+       id="text170"
+       transform="matrix(0.44275019,0,0,0.44275019,18.416237,423.94522)"><tspan
+         x="120.32532"
+         y="137.01326"
+         id="tspan1">Mac</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="97.9664"
+       y="470.43845"
+       id="text171"><tspan
+         id="tspan171"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="97.9664"
+         y="470.43845">JVM</tspan></text>
+    <path
+       id="path171"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 15.313811,438.27651 a 15.972846,15.972846 0 0 0 -15.97268231,15.97268 15.972846,15.972846 0 0 0 1.89046801,7.455 h -0.03502 v 14.11723 H 29.43103 v -14.11723 h -0.03564 a 15.972846,15.972846 0 0 0 1.891074,-7.455 15.972846,15.972846 0 0 0 -15.972673,-15.97268 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="15.30208"
+       y="454.93188"
+       id="text172"><tspan
+         id="tspan172"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="15.30208"
+         y="454.93188">Programa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="15.184934"
+       y="470.62299"
+       id="text173"><tspan
+         id="tspan173"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="15.184934"
+         y="470.62299">Java</tspan></text>
+    <path
+       id="path173"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 128.32439,438.27651 a 15.972846,15.972846 0 0 0 -15.97267,15.97268 15.972846,15.972846 0 0 0 1.89047,7.455 h -0.035 v 14.11723 h 28.23443 v -14.11723 h -0.0356 a 15.972846,15.972846 0 0 0 1.89108,-7.455 15.972846,15.972846 0 0 0 -15.97268,-15.97268 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="128.31267"
+       y="454.93185"
+       id="text174"><tspan
+         id="tspan174"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="128.31267"
+         y="454.93185">Programa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="128.19553"
+       y="470.62296"
+       id="text175"><tspan
+         id="tspan175"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="128.19553"
+         y="470.62296">JVM</tspan></text>
+    <path
+       id="path175"
+       style="fill:none;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 57.665486,489.93865 v 14.11723 l 14.43638,8.90433 13.79808,-8.90433 v -14.11723 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="72.19558"
+       y="498.20325"
+       id="text176"><tspan
+         id="tspan176"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="72.19558"
+         y="498.20325">Mac</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 153.87797,425.56964 v 28.23446 m 28.23445,-28.23446 v 28.23446 h -28.23445 v -28.23446 z"
+       id="path176" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="168.08891"
+       y="448.64505"
+       id="text177"><tspan
+         id="tspan177"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="168.08891"
+         y="448.64505">Linux</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="167.86633"
+       y="433.83362"
+       id="text178"><tspan
+         id="tspan178"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="167.86633"
+         y="433.83362">JVM</tspan></text>
+    <path
+       id="path178"
+       style="fill:none;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 153.87797,453.8041 v 14.11723 l 14.43637,8.90433 13.79808,-8.90433 V 453.8041 Z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="168.40807"
+       y="462.06873"
+       id="text179"><tspan
+         id="tspan179"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="168.40807"
+         y="462.06873">Linux</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 191.66988,425.56964 v 28.23446 m 28.23445,-28.23446 v 28.23446 h -28.23445 v -28.23446 z"
+       id="path179" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="205.88083"
+       y="448.64505"
+       id="text180"><tspan
+         id="tspan180"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="205.88083"
+         y="448.64505">Mac</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="205.65825"
+       y="433.83362"
+       id="text181"><tspan
+         id="tspan181"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="205.65825"
+         y="433.83362">JVM</tspan></text>
+    <path
+       id="path181"
+       style="fill:none;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 191.66988,453.8041 v 14.11723 l 14.43637,8.90433 13.79808,-8.90433 V 453.8041 Z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="206.19998"
+       y="462.06873"
+       id="text182"><tspan
+         id="tspan182"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="206.19998"
+         y="462.06873">Mac</tspan></text>
+    <path
+       id="path182"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 153.87797,483.38466 v 14.11697 14.11748 l 14.43632,8.90437 13.79813,-8.90437 v -14.11748 -14.11697 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="168.08893"
+       y="506.46017"
+       id="text183"><tspan
+         id="tspan183"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="168.08893"
+         y="506.46017">Linux</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="167.86635"
+       y="491.64871"
+       id="text184"><tspan
+         id="tspan184"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="167.86635"
+         y="491.64871">JVM</tspan></text>
+    <path
+       id="path185"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 191.66988,483.38466 v 14.11697 14.11748 l 14.43632,8.90437 13.79813,-8.90437 v -14.11748 -14.11697 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="205.88065"
+       y="506.45996"
+       id="text185"><tspan
+         id="tspan185"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="205.88065"
+         y="506.45996">Mac</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="205.65807"
+       y="491.6485"
+       id="text186"><tspan
+         id="tspan186"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="205.65807"
+         y="491.6485">JVM</tspan></text>
+    <path
+       id="path186"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 248.37839,432.59574 a 15.972846,15.972846 0 0 0 -15.97268,15.97268 15.972846,15.972846 0 0 0 1.89047,7.455 h -0.035 v 14.11723 h 28.23444 v -14.11723 h -0.0356 a 15.972846,15.972846 0 0 0 1.89108,-7.455 15.972846,15.972846 0 0 0 -15.97268,-15.97268 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="248.36665"
+       y="449.25113"
+       id="text187"><tspan
+         id="tspan187"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="248.36665"
+         y="449.25113">Programa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="248.24953"
+       y="464.94223"
+       id="text188"><tspan
+         id="tspan188"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="248.24953"
+         y="464.94223">JVM</tspan></text>
+    <path
+       id="path188"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 234.26117,470.14065 v 14.11697 14.11748 l 14.43632,8.90437 13.79813,-8.90437 v -14.11748 -14.11697 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="248.47212"
+       y="493.21597"
+       id="text189"><tspan
+         id="tspan189"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="248.47212"
+         y="493.21597">Mac</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="248.24956"
+       y="478.40451"
+       id="text190"><tspan
+         id="tspan190"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="248.24956"
+         y="478.40451">JVM</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="72.10186"
+       y="528.90106"
+       id="text193"><tspan
+         id="tspan193"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="72.10186"
+         y="528.90106">Compilación</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="187.02435"
+       y="528.90106"
+       id="text194"><tspan
+         id="tspan194"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="187.02435"
+         y="528.90106">Máquinas virtuales</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="248.69748"
+       y="528.90106"
+       id="text195"><tspan
+         id="tspan195"
+         style="stroke-width:1.05833;stroke-dasharray:none"
+         x="248.69748"
+         y="528.90106">Ejecución</tspan></text>
+  </g>
+</svg>

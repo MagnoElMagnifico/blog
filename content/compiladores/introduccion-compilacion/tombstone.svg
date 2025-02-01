@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="192.83711mm"
+   height="46.560791mm"
+   viewBox="0 0 192.83711 46.560791"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-7.0866977,-5.9940565)">
+    <g
+       id="g18"
+       transform="matrix(0.44275019,0,0,0.44275019,60.661915,-21.626196)"
+       style="stroke-width:2.39036;stroke-dasharray:none">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="M -119.81034,83.935623 H 71.665894 V 115.82094 H 7.7309143 v 31.88531 H -56.039711 v -31.88531 h -63.770629 z"
+         id="path4" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="-82.224411"
+         y="104.66308"
+         id="text7"><tspan
+           id="tspan7"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-dasharray:none"
+           x="-82.224411"
+           y="104.66308">L. Fuente</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:61.0331;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="120.32532"
+         y="137.01326"
+         id="text8"
+         transform="translate(-144.68846,-1.3471622)"><tspan
+           x="120.32532"
+           y="137.01326"
+           id="tspan1">L. Impl</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="34.984348"
+         y="103.66296"
+         id="text9"><tspan
+           id="tspan9"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="34.984348"
+           y="103.66296">L. Objeto</tspan></text>
+    </g>
+    <g
+       id="g17"
+       transform="matrix(0.44275019,0,0,0.44275019,24.385013,-27.213413)"
+       style="stroke-width:2.39036;stroke-dasharray:none">
+      <path
+         id="rect2"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 275.96714,76.197901 a 36.076429,36.076429 0 0 0 -36.07606,36.076059 36.076429,36.076429 0 0 0 4.26983,16.83794 h -0.0791 v 31.88531 h 63.77062 V 129.1119 h -0.0805 a 36.076429,36.076429 0 0 0 4.2712,-16.83794 36.076429,36.076429 0 0 0 -36.07604,-36.076059 z" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="275.94064"
+         y="113.81589"
+         id="text10"><tspan
+           id="tspan10"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="275.94064"
+           y="113.81589">Programa</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="275.67606"
+         y="149.25598"
+         id="text11"><tspan
+           id="tspan11"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="275.67606"
+           y="149.25598">Lenguaje</tspan></text>
+    </g>
+    <g
+       id="g16"
+       transform="matrix(0.44275019,0,0,0.44275019,143.46652,17.316975)"
+       style="stroke-width:2.39036;stroke-dasharray:none">
+      <path
+         id="rect3"
+         style="fill:none;stroke:#000000;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="M 62.549214,6.6396104 V 38.524926 L 95.155367,58.636344 126.31985,38.524926 V 6.6396104 Z" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="95.367035"
+         y="25.306105"
+         id="text13"><tspan
+           id="tspan13"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="95.367035"
+           y="25.306105">Máquina</tspan></text>
+    </g>
+    <g
+       id="g15"
+       transform="matrix(0.44275019,0,0,0.44275019,76.952543,-69.998363)"
+       style="stroke-width:2.39036;stroke-dasharray:none">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 46.131312,193.04259 v 63.77062 m 63.770628,-63.77062 v 63.77062 H 46.131312 v -63.77062 z"
+         id="path7" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="78.228294"
+         y="245.16092"
+         id="text14"><tspan
+           id="tspan14"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="78.228294"
+           y="245.16092">Máquina</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.39036;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="77.725586"
+         y="211.7077"
+         id="text15"><tspan
+           id="tspan15"
+           style="stroke-width:2.39036;stroke-dasharray:none"
+           x="77.725586"
+           y="211.7077">Lenguaje</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1771;stroke-linejoin:round;stroke-opacity:1"
+       x="49.914902"
+       y="51.416203"
+       id="text19"><tspan
+         id="tspan19"
+         style="stroke-width:0.1771"
+         x="49.914902"
+         y="51.416203">Compilador</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1771;stroke-linejoin:round;stroke-opacity:1"
+       x="111.37727"
+       y="51.430264"
+       id="text20"><tspan
+         id="tspan20"
+         style="stroke-width:0.1771"
+         x="111.37727"
+         y="51.430264">Intérprete</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1771;stroke-linejoin:round;stroke-opacity:1"
+       x="185.26572"
+       y="51.966778"
+       id="text21"><tspan
+         id="tspan21"
+         style="stroke-width:0.1771"
+         x="185.26572"
+         y="51.966778">Plataforma</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68576px;font-family:Monospace;-inkscape-font-specification:'Monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1771;stroke-linejoin:round;stroke-opacity:1"
+       x="146.55779"
+       y="51.296711"
+       id="text22"><tspan
+         id="tspan22"
+         style="stroke-width:0.1771"
+         x="146.55779"
+         y="51.296711">Programa</tspan></text>
+  </g>
+</svg>

@@ -5,4 +5,5 @@ resources/
 
 # Diagram files
 content/**/*.rnote
+content/**/*-inkscape.svg
 

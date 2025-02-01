@@ -517,5 +517,5 @@ El uso de una producción introduce un símbolo terminal en una forma sentencial
 (lineal).
 
 [cyk]: https://en.wikipedia.org/wiki/CYK_algorithm
-[introducción]:        {{< ref "compiladores/introduccion" >}}
+[introducción]:        {{< ref "compiladores/introduccion-teoria" >}}
 [lenguajes regulares]: {{< ref "compiladores/lenguajes-regulares" >}}

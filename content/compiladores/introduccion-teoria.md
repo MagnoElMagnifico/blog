@@ -1,5 +1,5 @@
 ---
-title: Introducción
+title: Introducción a las máquinas, lenguajes y gramáticas
 description: >
     En este artículo de introducción a la Teoría de Autómatas y Lenguajes
     Formales, veremos los conceptos básicos y notación alfabetos, lenguajes,
