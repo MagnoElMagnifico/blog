@@ -416,7 +416,7 @@ cuando se renderize el blog.
 ## `keyvalue`
 
 Crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza por
-`-%` y la descripción por `:%`.
+`-%` y la descripción por `:%` (el número de `%` puede ser 1 o más):
 
 -   Argumento de bloque (obligatorio)
 -   string `title`: título de la tabla
@@ -506,6 +506,19 @@ Crea un bloque clickable que muestra un contenido previamente escondido.
 {{< dropdown "Haz click aquí" >}}
 Holis :)
 {{< /dropdown >}}
+```
+
+## `columns`
+
+Coloca el contenido lado a lado en dos columnas. Solo acepta un argumento de
+bloque.
+
+```md
+{{< columns >}}
+Esta es la columna 1.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Esta es la columna 2.
+{{< /columns >}}
 ```
 
 # Clases especiales

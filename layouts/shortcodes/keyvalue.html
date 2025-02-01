@@ -14,13 +14,13 @@
 {{ end }}
 
 {{/* Use Regex to fetch the keys and values */}}
-{{ $keys   := findRE `(-%)[\W\w]*?(:%|\z)` .Inner }}
-{{ $values := findRE `(:%)[\W\w]*?(-%|\z)` .Inner }}
+{{ $keys   := findRE `(-%+)[\W\w]*?(:%+|\z)` .Inner }}
+{{ $values := findRE `(:%+)[\W\w]*?(-%+|\z)` .Inner }}
 
 {{/* Go through all the values */}}
 {{ range $i := seq 0 (len $values) }}
-{{ $key   := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $keys $i) }}
-{{ $value := replaceRE `(\s*-%\s*|\s*:%\s*)` "" (index $values $i) }}
+{{ $key   := replaceRE `(\s*-%+\s*|\s*:%+\s*)` "" (index $keys $i) }}
+{{ $value := replaceRE `(\s*-%+\s*|\s*:%+\s*)` "" (index $values $i) }}
 {{/* $key   := trim (index $keys   $i) "-:% \t\n" */}}
 {{/* $value := trim (index $values $i) "-:% \t\n" */}}
 
