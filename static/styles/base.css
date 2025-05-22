@@ -195,7 +195,8 @@ blockquote blockquote,
 
 
 /**** Images ****/
-img, svg {
+img:not(.katex-display img, .katex img),  /* Avoid modifing katex internals */
+svg:not(.katex-display svg, .katex svg) {
     object-fit: contain;
     /*
      * Center by adding margin to the left (minus the

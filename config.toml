@@ -54,9 +54,8 @@ title = true
 #### HIGHLIGHT CONFIG ####
 
 [markup.highlight]
-# https://xyproto.github.io/splash/docs/all.html
-# "dracula", "fruity", "paraiso-dark", "rrt", "solarized-dark256", "vim"
-style = "dracula"
+# https://swapoff.org/chroma/playground/
+style = "onedark"
 
 tabWidth = 4
 anchorLineNos = true # Create links for each line of code
