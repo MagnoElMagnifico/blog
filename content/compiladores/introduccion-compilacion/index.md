@@ -7,21 +7,13 @@ weight: 10
 draft: true
 ---
 
-{{< todo >}}
 # Introducción
-
-La mayoría del software con el que interactuamos diariamente se ha escrito de un
-determinado lenguaje de programación, pero para 
 
 Para escribir un programa se emplea un lenguaje de programación para describir
 las instrucciones que se deben llevar a cabo. Sin embargo, el computador solo
 puede ejecutar código máquina, por lo que es necesario un proceso de traducción
 del lenguaje de programación al código máquina. El programa encargado de eso se
 llama compilador.
-
-El compilador es esencialmente un traductor.
-
-{{< /todo >}}
 
 # Aplicaciones
 
@@ -43,42 +35,74 @@ de nuevos lenguajes de programación, también son útiles para:
 
 # Tipos de lenguajes
 
+La principal clasificación de lenguajes de programación es la siguiente:
+
 -   **Lenguaje máquina**: utiliza códigos numéricos representados en binario
-    para describir instrucciones. Los accesos a memoria se realizan mediante su
-    dirección directamente. Específico de cada arquitectura.
+    para describir instrucciones, y son estos códigos los que lee y entiende la
+    CPU. Los accesos a memoria se realizan mediante su dirección directamente.
+    Específico de cada arquitectura.
+
 -   **Lenguaje ensamblador**: aplica una serie de mnemotécnicos o nombres
-    simbólicos a las instrucciones y direcciones de memoria. Específico de cada
-    arquitectura.
+    simbólicos a las instrucciones, direcciones de memoria y registros.
+    También es específico de cada arquitectura.
+
 -   **Lenguaje de alto nivel**: implementa primitivas de control de flujo como
     bucles y condicionales. Se describen cálculos con una sintaxis matemática
     (operadores, expresiones, procedimientos) y se utilizan variables con tipos
-    de datos y otros tipos abstractos de datos.
+    de datos y otros tipos abstractos de datos. Generalmente son independientes
+    de la plataforma. Dentro de esta categoría, también se pueden clasificar en
+    subtipos:
 
-{{< todo >}}
+    -   **Lenguajes de sistemas**: lenguajes orientados a la programación de
+        sistemas de bajo nivel, dado que ofrecen un gran control sobre la
+        memoria. Algunos ejemplos con C, C++, Rust o Zig.
+    -   **Lenguajes de _scripting_**: diseñados para programar rápidamente
+        o basados en comandos Algunos ejemplos son JavaScript, Python, Bash, R...
+
 -   **Lenguajes orientados a problemas**: lenguajes diseñados para una única
-    operación en concreto. en lugar de describir la operaciones que debe hacer el
-    computador, describen cómo debe ser el resultado.
+    operación en concreto. En lugar de describir la operaciones que debe hacer el
+    computador, generalmente describen cómo debe ser el resultado, lo que reduce
+    el tiempo de programación. Un ejemplo claro es SQL.
 
-Otros:
+Sin embargo, existen otras muchas clasificaciones:
 
-- Imperativo vs Declarativo
-- Tipado fuerte vs débil
-- Tipado estático vs dinámico
-- Lenguaje Von Neumann
-- Lenguaje orientado a objetos
-- Lenguaje funcional
-- Lenguaje de secuencia de comandos (scripting)
-{{< /todo >}}
+-   Imperativo vs Declarativo
+-   Tipado fuerte vs débil
+-   Tipado estático vs dinámico
+
+Y también clasificaciones según su paradigma:
+
+-   Lenguaje Von Neumann
+-   Lenguaje orientado a objetos
+-   Lenguaje funcional
 
 # Procesadores de lenguajes
+
+## Compiladores
 
 {{< block "Compilador" "var(--magno-blue)" >}}
 Programa **traductor** de un lenguaje de programación a código objeto
 equivalente.
 {{< /block >}}
 
+{{< block "Código objeto" "var(--magno-blue)" >}}
+Se trata del resultado de una compilación. Puede ser código máquina
+o _bytecode_, y cada archivo puede corresponderse con un archivo de código
+fuente. Para generar el ejecutable final, será necesario _enlazarlos_ entre sí
+y añadir librerías externas.
+{{< /block >}}
+
 Generalmente, el lenguaje objeto es ejecutable por la computadora, por lo que
 también es un lenguaje máquina.
+
+La ventaja principal de este método, es que el compilador **tiene todo el
+contexto del programa**, y lo analiza en su totalidad. Como consecuencia, los
+**mensajes de error pueden ser más descriptivos**.
+
+Además, permite implementar **técnicas de optimización** para hacer el código
+más eficiente. Los compiladores modernos son capaces de escribir código máquina
+muy eficiente, probablemente mucho más de lo que lo podría hacer un programador
+humano.
 
 {{<
     figure
@@ -90,6 +114,8 @@ también es un lenguaje máquina.
 
 Existen muchos ejemplos de lenguajes de programación compilados: Fortran, Cobol,
 C, C++, Pascal, Ada, Rust, Odin, Zig, ...
+
+## Intérpretes
 
 {{< block "Intérprete" "var(--magno-blue)" >}}
 Aparenta **ejecutar directamente** las instrucciones del lenguaje de
@@ -115,6 +141,8 @@ Ejemplos de lenguajes interpretados: BASIC, Lisp, Prolog, Python, PHP, Ruby, ...
 | Mejores errores (se analiza todo)               | -                                      |
 | Mejores para producción                         | Mejores para experimentación           |
 | Necesidad de _debuggers_                        | Se permite la interacción en _runtime_ |
+
+## Compilador-Intérprete
 
 {{< block "Compilador-Intérprete" "var(--magno-blue)" >}}
 Se **compila** a un **lenguaje intermedio** (o _bytecode_), un código de una
@@ -157,6 +185,8 @@ Algunos ejemplos son:
 - [Java] y la [JVM], la Máquina Virtual de Java
 - [.NET] y su runtime
 - [Erlang] y [BEAM], la Máquina Virtual de Erlang
+
+## Compilador _Just-In-Time_
 
 {{< block "Compilador _Just-In-Time_ (JIT)" "var(--magno-blue)" >}}
 A la hora de ejecutar, se realiza una rápida compilación para generar las
@@ -207,10 +237,24 @@ A partir del código fuente almacenado en un archivo de texto:
     código ensamblador equivalente.
 3.  **Ensamblado**: dicho ensamblador es transformado a código objeto mediante
     la codificación de las instrucciones en binario.
-4.  **Enlazador**: finalmente se combinan todas las _compilation units_ y se
-    añaden las librerías necesarias para generar el ejecutable final.
+4.  **Enlazador**: finalmente se combinan todas las _compilation units_ (o
+    códigos objeto) y se añaden las librerías necesarias para generar el
+    ejecutable final.
  
 ## Estructura de un compilador
+
+{{<
+    figure
+    src="fases-compilacion.png"
+    link="fases-compilacion.png"
+    caption="Fases y estructura de un compilador"
+    alt="Fases y estructura de un compilador"
+>}}
+
+Estas últimas dos fases generalmente se combinan y se mezclan: el compilador
+hace varias pasadas de generación y optimización, dependiendo de cada
+implementación.
+
 
 {{< block "Tabla de Símbolos" "var(--magno-blue)" >}}
 Estructura de datos que registra los **nombres** de los elementos del código
@@ -318,30 +362,15 @@ También en esta fase, se seleccionan los registros para cada una de las
 variables.
 {{< /keyvalue >}}
 
-{{<
-    figure
-    src="fases-compilacion.png"
-    link="fases-compilacion.png"
-    caption="Fases y estructura de un compilador"
-    alt="Fases y estructura de un compilador"
->}}
-
-Estas últimas dos fases generalmente se combinan y se mezclan: el compilador
-hace varias pasadas de generación y optimización, dependiendo de cada
-implementación.
-
 # Diagramas de Tombstone
 
-{{< todo >}}
 {{< block "Construcción de compiladores" >}}
 En la construcción de un compilador hay que especificar:
 
-- El lenguaje que se va a compilar
-- El lenguaje objeto y la plataforma de ejecución
-- El lenguaje de implementación en el que está escrito el compilador
+- El lenguaje **fuente** que se va a compilar
+- El lenguaje **objeto** y la plataforma de ejecución
+- El lenguaje de **implementación** en el que está escrito el compilador
 {{< /block >}}
-{{< /todo >}}
-
 
 {{< block "Diagrama de Tombstone" >}}
 Herramienta visual que facilita la comprensión del diseño de compiladores
