@@ -360,6 +360,8 @@ Dado el AFN $N = (Q_N, \Sigma, \delta_N, q_0, F_N)$, se quiere obtener el AFD $D
 Entonces, para cada $S \subseteq Q_N$ y cada símbolo de entrada $a$:
 $$\delta_D(S, a) = \bigcup_{p \in S} \delta_N(p, a)$$
 
+<!-- TODO: ejemplo de transformación completo -->
+
 ## Evaluación perezosa
 
 -   **Paso base**: el conjunto de un elemento que contiene el estado inicial de
@@ -407,7 +409,7 @@ flowchart LR
     classDef edgeLabel background-color:#222,padding:5px;
 ```
 
-# Eliminación de transiciones $\lambda$
+## Eliminación de transiciones $\lambda$
 
 Dado un AFN-$\lambda$ $E = (Q_E, \Sigma, \delta_E, q_0, F_E)$, encontrar un AFD
 $D = (Q_D, \Sigma, \delta_D, q_D, F_D)$ que acepte el mismo lenguaje.
@@ -436,7 +438,7 @@ Un lenguaje $L$ es aceptado por algún AFN-$\lambda$ si y solo si es aceptado po
 algún AFD.
 {{< /block >}}
 
-# Equivalencia de estados
+## Equivalencia de estados
 
 {{< block "Equivalencia de estados" "var(--magno-blue)" >}}
 Dos estados $p$ y $q$ son equivalentes si para toda cadena de entrada $w$,
@@ -533,3 +535,5 @@ número de estados** que acepte el mismo lenguaje. Dicho AFD es **único**.
 
     3.  Los estados finales de $B$ es el conjunto de bloques que contienen los
         estados de aceptación de $A$.
+
+<!-- TODO: ejemplo -->

@@ -527,7 +527,8 @@ partes de los discos. Vamos a profundizar un poco en su funcionamiento.
   interiores. Por eso se dividen en **cilindros**.
 
 {{< block "Bloque de disco" "var(--magno-blue)" >}}
-El bloque de disco, también llamado _cluster_, es un grupo de sectores.
+El bloque de disco, también llamado _cluster_ o _unidad de asignación_ (según
+Microsoft), es un grupo de sectores.
 
 Para reducir la sobrecarga de las estructuras de datos en el disco, el sistema
 de archivos no se asigna sobre los sectores directamente, sino sobre un conjunto

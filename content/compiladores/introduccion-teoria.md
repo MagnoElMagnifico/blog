@@ -149,7 +149,7 @@ Ejemplos:
 - $L = \set{a^i b^j c^k | j = i+k \quad \forall i,j,k > 0}$ \
     {{< arrow "var(--magno-green)" >}} Ejemplos de cadenas: $'aabbbc', 'abc', 'aaabbbbbcc'$
 
-{{< keyvalue title="Operaciones con lenguajes" key-header=true >}}
+{{< keyvalue title="Operaciones con lenguajes" key-header=true key-width="100px" >}}
 -% $L_1 \cup L_2$ :% Contiene todas las palabras que pertenecen a **cualquiera** de ellos.
 -% $L_1 \cap L_2$ :% Contiene todas las palabras que pertenecen a **ambos**.
 -% $L_1 - L_2$ :% Contiene todas las palabras que **pertenecen a $L_1$ pero no a $L_2$**.

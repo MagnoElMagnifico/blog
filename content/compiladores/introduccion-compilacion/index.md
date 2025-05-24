@@ -1,10 +1,13 @@
 ---
 title: Introducción a los Compiladores
 description: >
-    TODO
+    Los compiladores traducen lenguajes de programación a código máquina,
+    permitiendo que el computador los ejecute. Existen diferentes tipos de
+    compiladores e intérpretes, cada uno con sus ventajas y desventajas. Veremos
+    además los diagramas de Tombstone, herramientas visuales para comprender
+    mejor el diseño de compiladores.
 date: 2025-01-30T19:03:22+01:00
 weight: 10
-draft: true
 ---
 
 # Introducción
@@ -245,8 +248,8 @@ A partir del código fuente almacenado en un archivo de texto:
 
 {{<
     figure
-    src="fases-compilacion.png"
-    link="fases-compilacion.png"
+    src="../fases-compilacion.png"
+    link="../fases-compilacion.png"
     caption="Fases y estructura de un compilador"
     alt="Fases y estructura de un compilador"
 >}}

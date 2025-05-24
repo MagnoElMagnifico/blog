@@ -53,11 +53,11 @@ infinitos valores) con solo $k$ estados.
 
 # Operadores
 
-{{< keyvalue title="Operaciones con lenguajes" key-header=true >}}
+{{< keyvalue title="Operaciones con lenguajes" key-header=true key-width="100px" >}}
 -% $L_1 \cup L_2$ <br> $L_1 + L_2$ :% Contiene todas las palabras que pertenecen a **cualquiera** de ellos.
 -% $L_1 \cap L_2$ :% Contiene todas las palabras que pertenecen a **ambos**.
 -% $L_1 - L_2$ :% Contiene todas las palabras que **pertenecen a $L_1$ pero no a $L_2$**.
--% $L_1 . L_2$ :% Contiene todas las palabras que se pueden formar por la
+-% $L_1 . L_2$  <br> $L_1 L_2$ :% Contiene todas las palabras que se pueden formar por la
 **concatenación de una palabra de $L_1$ y otra de $L_2$**.
 -% $L^i$ :% La potencia $i$-ésima es la concatenación $i$ veces consigo mismo.
 -% $L^-$ :% La reflexión se forma por la aplicación de la reflexión a todas las cadenas.
@@ -71,6 +71,25 @@ Solo existen dos lenguajes con clausura no infinita:
 -   $L = \set{\varnothing} \implies L^* = \set{\lambda}$ ya que $\varnothing^0
     = \set{\lambda}$ y $\forall i > 0, \varnothing^i = \varnothing $.
 -   $L = \set{\lambda} \implies L^* = \set{\lambda}$.
+
+
+{{< dropdown "Operadores adicionales por comodidad" >}}
+-   **Clausura 1 o más**: $r^+ = r r^\ast$
+-   **Número exacto** $r\set{n}$ o dentro de un rango $r\set{n,m}$
+-   **Opcional**: $r? = r | \lambda$
+-   **Grupos**: $[abc] = a | b | c$.
+    -   También se permiten rangos de caracteres, ambos inclusive (según su
+        codificación ASCII): $$[a{-}z] = a | b | c | \ldots | z$$
+
+        Algunos sistemas incluyen conjuntos predefinidos
+        - $[[\text{:alpha:}]] = [a{-}zA{-}Z]$
+        - $[[\text{:digit:}]] = \text{\textbackslash}d = [0{-}9]$
+        - $[[\text{:alnum:}]] = [[\text{:digit:}][\text{:alpha:}]] = [0{-}9a{-}zA{-}Z]$
+        - $[[\text{:space:}]] = \text{\textbackslash}s = [~\text{\textbackslash}t\text{\textbackslash}n]$ (espacios, tabulaciones y saltos de línea)
+<!---->
+-   **Inicio y fin de cadena**: `^r` hace _match_ con $r$ al inicio de la línea
+    y `r$` al final.
+{{< /dropdown >}}
 
 ## Precedencia de los operadores
 
@@ -187,7 +206,7 @@ Todo lenguaje definido por una ER puede definirse mediante un AF.
 {{< /block >}}
 
 **Demostración**: sea $L = L(R)$ para la ER $R$. Se demostrará que $L = L(E)$
-para algún AFN-$\lambda$.
+para algún AFN-$\lambda$. Este método se llama la [construcción de Thompson].
 
 {{< columns >}}
 #### Paso base:
@@ -344,3 +363,5 @@ flowchart LR
         - No es necesario probar con otras descomposiciones. Termina el algoritmo.
 5.  Si en el paso anterior no se ha cumplido para ninguna descomposición, no se
     verifica el lema del bombeo y por tanto el lenguaje no es regular.
+
+[construcción de Thompson]: https://en.wikipedia.org/wiki/Thompson%27s_construction
