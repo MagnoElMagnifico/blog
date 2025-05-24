@@ -458,6 +458,20 @@ div:has(> iframe) {
     word-wrap: break-word;
 }
 
+/* Add a title */
+#TableOfContents:before {
+    content: "Índice de contenidos";
+
+    /* Heading style */
+    color: var(--title-color);
+    font-family: var(--title-font);
+    font-size: 16pt;
+
+    /* Center */
+    display: block;
+    text-align: center;
+}
+
 #TableOfContents li::marker {
     content: counters(list-item, '.') ': ';
 }
