@@ -52,7 +52,8 @@
 }
 
 
-/**** General ****/
+/**** General ****************************************************************/
+
 html, body {
     background-color: var(--background-color);
     color: var(--font-color);
@@ -186,8 +187,8 @@ blockquote blockquote,
 .block code:not(pre code),
 .block blockquote,
 .header code,
-.dropdown code:not(pre code),
-.dropdown blockquote
+details code:not(pre code),
+details blockquote
 {
     background-color: var(--background-color);
     color: var(--font-color);
@@ -251,7 +252,8 @@ th, td.header, table.header td:first-child {
 th                                     { border-bottom: var(--table-header-border); }
 td.header, table.header td:first-child { border-right:  var(--table-header-border); }
 
-/**** Special classes for Markdown ****/
+/**** Special classes for Markdown *******************************************/
+
 .center-text {
     text-align: center;
 }
@@ -259,6 +261,16 @@ td.header, table.header td:first-child { border-right:  var(--table-header-borde
 .arrow-list li::marker {
     content: '==> ';
 }
+
+/**** KaTeX ****/
+/* "Fix" big LaTeX expressions */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+/**** Shortcodes *************************************************************/
 
 /**** Blocks ****/
 .block {
@@ -307,7 +319,7 @@ td > p:last-child
 
 
 /**** Dropdowns ****/
-.dropdown {
+details {
     background-color: var(--block-color);
     padding: var(--block-padding);
     border-radius: var(--border-radius);
@@ -315,15 +327,16 @@ td > p:last-child
     transition: transform 5s;
 }
 
-.dropdown .show       { cursor: pointer; }
-.dropdown .show:hover { opacity: 0.7; }
-.dropdown .show:before {
+details summary       { cursor: pointer; }
+details summary:hover { opacity: 0.7; }
+details summary::marker {
     content: ">> ";
+    display: inline-block;
     font-family: var(--code-font);
     color: var(--title-color);
 }
 
-.dropdown .content {
+details .content {
     margin-top: 1rem;
     animation-name: show;
     animation-duration: 1s;
@@ -352,19 +365,8 @@ div:has(> iframe) {
     margin: var(--p-separation);
 }
 
-/**** Footnotes ****/
-.footnotes {
-    /* TODO: similar style to TOC */
-}
 
-/**** Other elements **************************************/
-
-/**** KaTeX ****/
-/* "Fix" big LaTeX expressions */
-.katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
+/**** Navigation elements ****************************************************/
 
 /**** Blog entries ****/
 .blog-entry {
@@ -377,7 +379,7 @@ div:has(> iframe) {
 .blog-entry h3 { margin: 0; } /* Date */
 
 
-/**** Box list ****/
+/**** Box list (social media) ****/
 .box-list {
     text-align: center;
     margin: 0.1rem;
@@ -403,6 +405,7 @@ div:has(> iframe) {
 .link-button {
     color: var(--box-list-color);
     background-color: var(--link-button-color);
+    font-family: var(--content-font);
 
     margin: 1rem auto 2rem auto;
     padding: 1rem 3rem;
@@ -460,7 +463,32 @@ div:has(> iframe) {
 }
 
 
-/**** Section navigation ****/
+/**** Footnotes ****/
+.footnotes {
+    background-color: var(--block-color);
+    border-radius: var(--border-radius);
+    padding: var(--block-padding);
+    margin: var(--p-separation);
+}
+
+/* Add a title */
+.footnotes:before {
+    content: "Notas";
+    /* Heading style */
+    color: var(--title-color);
+    font-family: var(--title-font);
+    /* Center */
+    display: block;
+    text-align: center;
+}
+
+/* Hide separator */
+.footnotes hr {
+    display: none;
+}
+
+
+/**** Other navigation sections ****/
 nav:not(#TableOfContents) {
     display: grid;
     grid-auto-columns: max-content;
@@ -480,7 +508,7 @@ nav:not(#TableOfContents) a:hover {
     background-color: var(--magno-blue);
 }
 
-/**** Header ****/
+/**** Header *****************************************************************/
 #header-trigger {
     position: fixed;
     transform: translateX(-50%);
@@ -548,7 +576,7 @@ header img:hover {
 }
 
 
-/**** Footer ****/
+/**** Footer *****************************************************************/
 footer {
     background-color: var(--hf-background-color);
     color: var(--hf-font-color);
