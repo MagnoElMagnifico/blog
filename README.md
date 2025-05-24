@@ -427,6 +427,7 @@ Crea una tabla de dos columnas: valor y descripción. Una nueva fila empieza por
     cabecera.
 -   boolean `fill`: si es `true`, la tabla rellena todo es espacio horizontal
     disponible
+-   css unit: `key-width`: especifica el tamaño de la primera columna
 
 ```md
 {{< keyvalue >}}
@@ -494,6 +495,12 @@ medida de la hipotenusa es $c$, entonces se cumple la siguiente relación:
 $$ a^2 + b^2 = c^2 $$
 {{< /block >}}
 ```
+
+La convención de colores es la siguiente:
+
+- `var(--magno-blue)`: definiciones y conceptos importantes.
+- `var(--magno-red)`: teoremas, corolarios o notas importantes.
+- `var(--magno-green)`: otros.
 
 ## `dropdown`
 

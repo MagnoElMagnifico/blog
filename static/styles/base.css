@@ -575,7 +575,7 @@ header #home-link {
     align-self: center;
 }
 
-header img {
+header #home-link img {
     max-width: 5rem;
     margin: 1rem auto;
     transform: none;
@@ -584,7 +584,7 @@ header img {
     transition: transform 0.5s;
 }
 
-header img:hover {
+header #home-link img:hover {
     transform: scale(1.05, 1.05);
     box-shadow: 0 0 10px var(--hover-color);
 }

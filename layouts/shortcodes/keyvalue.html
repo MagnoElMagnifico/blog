@@ -26,7 +26,9 @@
 
 <tr>
 {{ if $key }}
-<td {{ if $.Get "key-header" }}class="header"{{ end }}>
+<td
+{{ if $.Get "key-header" }}class="header"{{ end }}
+{{ with $.Get "key-width" }}style="width: {{ . | safeCSS }}"{{ end }}>
 {{ $key | markdownify }}
 </td>
 {{ end }}
