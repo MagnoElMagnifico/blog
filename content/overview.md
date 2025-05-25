@@ -1,6 +1,7 @@
 ---
-title: Vista de todas las páginas
+title: Overview
 layout: overview
 ---
 
-Overview of all the posts in the blog.
+Listado de todas las páginas en el blog. Puedes usar `CTRL-F` para encontrar un
+artículo en concreto rápidamente.

@@ -1,6 +1,40 @@
 {{ define "main" }}
     <h1 class="main-title">{{ .Title }}</h1>
-    <p>Número total de páginas: {{ len .Site.RegularPages }}</p>
+    {{ $count := 0 }}
+    {{ $words := 0 }}
+    {{ $time := 0 }}
+    {{ $len := 0 }}
+    {{ $draft := 0 }}
+    {{ $todo := 0 }}
+    {{ range .Site.RegularPages }}
+        {{ $words = add $words .WordCount }}
+        {{ $time = add $time .ReadingTime }}
+        {{ $len = add $len .Len }}
+        {{ if .Draft }}
+            {{ $draft = add $draft 1 }}
+        {{ else }}
+            {{ $count = add $count 1 }}
+        {{ end }}
+        {{ if .HasShortcode "todo" }}{{ $todo = add $todo 1 }}{{ end }}
+    {{ end }}
+    <div class="page-stats">
+        <h3>[total pages: {{ lang.FormatNumberCustom 0 $count "-/./ " "/" }}]</h3>
+        <h3>[total words: {{ lang.FormatNumberCustom 0 $words "-/./ " "/" }}]</h3>
+        <h3>[total reading time: {{ lang.FormatNumberCustom 0 $time "-/./ " "/" }}min]</h3>
+        <h3>[total size: {{ lang.FormatNumberCustom 0 $len "-/./ " "/" }} bytes]</h3>
+        <br>
+        <h3>[last update: {{ now.Format "02/01/2006" }}]</h3>
+        <h3>[last content update: {{ .Site.Lastmod | time.Format "02/01/2006" }}]</h3>
+        {{ if eq hugo.Environment "development" }}
+            <br>
+            <h3>[drafts: {{ lang.FormatNumberCustom 0 $draft "-/./ " "/" }} pages]</h3>
+            <h3>[TODOs: {{ lang.FormatNumberCustom 0 $todo "-/./ " "/" }} pages]</h3>
+        {{ end }}
+    </div>
+
+    {{ with .Page.Content }}
+        {{ . }}
+    {{ end }}
 
     {{ $this_page := .Page }}
     {{ range .Site.RegularPages.ByDate.Reverse }}

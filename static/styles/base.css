@@ -81,10 +81,14 @@ main {
     font-size: 3rem;
 }
 
-.page-stats {
+/* Post and Overview */
+.page-stats, .page-stats h3 {
     color: var(--magno-red);
     margin-top: 0;
 }
+
+.page-stats h3 { margin: 0; }
+div.page-stats { margin: var(--p-separation); }
 
 /* Wrap by the spans */
 .page-stats span { white-space: nowrap; }
@@ -558,6 +562,11 @@ header div {
 header a {
     padding: 1rem;
     color: white;
+}
+
+header a#header-overview {
+    background-color: var(--magno-yellow);
+    color: black;
 }
 
 header a:hover:not(#home-link) {
