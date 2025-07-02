@@ -7,12 +7,12 @@
     {{ $draft := 0 }}
     {{ $todo := 0 }}
     {{ range .Site.RegularPages }}
-        {{ $words = add $words .WordCount }}
-        {{ $time = add $time .ReadingTime }}
-        {{ $len = add $len .Len }}
         {{ if .Draft }}
             {{ $draft = add $draft 1 }}
         {{ else }}
+            {{ $words = add $words .WordCount }}
+            {{ $time = add $time .ReadingTime }}
+            {{ $len = add $len .Len }}
             {{ $count = add $count 1 }}
         {{ end }}
         {{ if .HasShortcode "todo" }}{{ $todo = add $todo 1 }}{{ end }}
