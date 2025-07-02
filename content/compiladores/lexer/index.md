@@ -387,6 +387,70 @@ siguiente carácter. Si la comprobación es positiva, se puede pasar a analizar
 qué caso es; pero en el resto, el número de comprobaciones es mucho más pequeño.
 
 # Tabla de símbolos
+
+{{< block "Tabla de símbolos" "var(--magno-blue)" >}}
+Estructura de datos usada por el compilador para gestionar los
+**identificadores** del programa fuente.
+
+Cuando se encuentra un identificador, este se inserta en la tabla de símbolos
+junto con información relevante sobre el mismo (**atributos**).
+
+Cuando el identificador se vuelve a referenciar en el programa, el compilador
+**consultará** la tabla de símbolos para obtener la información que necesite.
+Futuras fases del compilador, también tendrán acceso para realizar su trabajo
+y podrán añadir información adicional:
+
+-   **Analizador léxico**: si no existe, lo añade con su tipo de identificador
+    y lexema.
+-   **Análisis sintáctico**: añadirá información estructural, entre otros.
+-   **Análisis semántico**: durante la verificación de tipos, se realizarán
+    consultas.
+-   **Generación de código**: consultará la dirección de memoria y el tamaño.
+{{< /block >}}
+
+Se trata básicamente de una **base de datos** de los identificadores del
+programa fuente. El lexema será la **clave primaria**, dado que es el valor por
+el que queremos buscar. Debe soportar operaciones de
+
+- **Inserción**: al encontrarse un nuevo identificador
+- **Buscar**: cuando se encuentra un identificador y se quiere saber si está definido
+- **Actualizar**: añadir más datos al identificador
+- **Borrar**: cuando el identificador sale de ámbito
+
+En los lenguajes de programación, cada identificador normalmente tiene un
+**ámbito** concreto en el que se puede usar. Una vez fuera de él, se eliminará
+de la tabla dado que no se usará más. Nótese que esto es posible por el patrón
+productor-consumidor: en todo momento se están ejecutando todas las fases.
+
+Existen diferentes formas de implementar una tabla de símbolos:
+
+- **No ordenadas**: la programación es más simple, pero la eficiencia es baja.
+- **Ordenadas**: existen muchas implementaciones con distintas estructuras de datos.
+
+## Palabras reservadas
+
+```fortran
+if then then
+    then = else;
+else
+    else = then;
+end
+```
+
+Aunque este código es correcto, resulta muy lioso a la hora de leerlo.
+Lenguajes más modernos no consideran que esto sea una buena idea.
+
+El analizador sintáctico necesita saber qué palabra reservada aparece en el
+código fuente, por lo que el analizador léxico deberá poder reconocerlas de
+forma independiente. Existen varias implementaciones posibles:
+
+-   Disponer de una expresión regular para cada palabra clave: esto es poco
+    escalable.
+-   Tabla de símbolos dedicada a las palabras reservadas
+-   Insertar las palabras clave en la tabla de símbolos al inicio del programa,
+    y se dará un error cuando el programador intente crear un identificador con
+    ese nombre (porque ya existe en la tabla).
+
 # Tratamiento de errores
 
 Cuando en un momento del proceso de compilación, se detecta un error:
