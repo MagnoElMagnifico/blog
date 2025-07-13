@@ -2,7 +2,6 @@
 weight: -1
 title: Raspberry
 description: TODO
-date: TODO
 draft: true
 ---
 

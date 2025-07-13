@@ -61,7 +61,7 @@ y consiste en una relación de equivalencia llamada **congruencia**. Esta es la
 notación que utilizó Gauss:
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
-$$ m \\, | \\, (a - b) \iff a \equiv b \pmod{m} $$
+$$ m \, | \, (a - b) \iff a \equiv b \pmod{m} $$
 donde $a$, $b$ y $m$ son enteros y $m > 0$.
 {{< /block >}}
 
@@ -73,8 +73,8 @@ Otra notación puede ser $[a]_m = [b]_m$.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{align*}
-a \equiv b \pmod{m} \iff& a \text{ mod } m = b \text{ mod } m \\\\
-a \equiv b \pmod{m} \implies& \exists \\, k \in \Z \quad / \quad a = b - km \\\\
+    a \equiv b \pmod{m} \iff& a \text{ mod } m = b \text{ mod } m \\
+    a \equiv b \pmod{m} \implies& \exists \, k \in \Z \quad / \quad a = b - km \\
 \end{align*}
 $$
 {{< /block >}}
@@ -89,13 +89,13 @@ La clase de restos módulo $m$ se denota con $\Z_{/m\Z}$.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{rcases}
-    a \equiv b \\\\
-    c \equiv d \\\\
+    a \equiv b \\
+    c \equiv d \\
 \end{rcases}
 \implies
 \begin{cases}
-    a + c &\equiv b + d \\\\
-    ac    &\equiv bd    \\\\
+    a + c &\equiv b + d \\
+    ac    &\equiv bd    \\
 \end{cases} \pmod{m}
 $$
 {{< /block >}}
@@ -108,8 +108,8 @@ y multiplicación).
 {{< block "Corolario" "var(--magno-red)" "black" >}}
 $$
 \begin{align*}
-(a + b) \text{ mod } m      &= \[(a \text{ mod } m) + (b \text{ mod } m)\] \\\\
-(a \times b) \text{ mod } m &= \[(a \text{ mod } m) \times (b \text{ mod } m)\]
+    (a + b) \text{ mod } m      &= [(a \text{ mod } m) + (b \text{ mod } m)] \\
+    (a \times b) \text{ mod } m &= [(a \text{ mod } m) \times (b \text{ mod } m)]
 \end{align*}
 $$
 {{< /block >}}
@@ -129,8 +129,8 @@ resolución de ecuaciones se complica.
 Por este motivo, es importante distingir los casos donde se puede dar esta
 situación.
 
-- **Divisores de 0**: $\exists \\, b \\, / \\, ab \equiv 0 \pmod{m}$.
-- **Unidades en $\Z_{/m\Z}$**: $\exists \\, b \\, / \\, ab \equiv 1 \pmod{m}$.
+- **Divisores de 0**: $\exists \, b \, / \, ab \equiv 0 \pmod{m}$.
+- **Unidades en $\Z_{/m\Z}$**: $\exists \, b \, / \, ab \equiv 1 \pmod{m}$.
     - $a$ es una unidad si y solo si $\gcd(a, m) = 1$, es decir, **$a$ y $m$ son coprimos**.
     - Caso particular: si $m$ es primo, entonces todos son unidades.
 
@@ -139,7 +139,7 @@ Donde $a$ y $b$ son enteros no nulos.
 # Resolución de congruencias lineales
 
 En los números enteros, la ecuación lineal de una variable $ax = b$ tiene
-solución si solo si $a \\, | \\, b$.
+solución si solo si $a | b$.
 
 En $\Z_{/m\Z}$, una ecuación lineal es de la forma $ax \equiv b \pmod{m}$ y se
 puede resolver con el siguiente algoritmo:
@@ -160,17 +160,17 @@ puede resolver con el siguiente algoritmo:
 $$
 \gcd(a, m) := d \implies
 \begin{cases}
-    d \not | \\,\\, b \implies \textbf{No hay soluciones} \\\\
-    d \\, | \\, b \implies
+    d \not | \,\, b \implies \textbf{No hay soluciones} \\\\
+    d \, | \, b \implies
         \begin{cases}
             d = 1 \implies 1 \equiv sa + \xcancel{tm} \equiv sa \pmod{m}
-            \implies x \equiv bs \pmod{m} \textbf{ Solución única} \\\\
+            \implies x \equiv bs \pmod{m} \textbf{ Solución única} \\
             d \ne 1 \implies \frac{a}{d} x \equiv \frac{b}{d} \pmod{\frac{m}{d}}
             \implies \gcd(\frac{a}{d}, \frac{m}{d}) = 1 = s\frac{a}{d}
             + \xcancel{t\frac{m}{d}} \equiv s\frac{a}{d} \pmod{\frac{m}{d}}
             \implies \textbf{$d$ soluciones de la forma: } x_0 + k\frac{m}{d},
             k \in [0, d)
-        \end{cases} \\\\
+        \end{cases} \\
 \end{cases}
 $$
 
@@ -182,8 +182,8 @@ números tienen inverso multiplicativo.
 {{< block "Definición" "var(--magno-blue)" "black" >}}
 $$
 \begin{cases}
-    \Phi(p) = p - 1               \\\\
-    \Phi(p^k) = p^{k - 1} \Phi(p) \\\\
+    \Phi(p) = p - 1               \\
+    \Phi(p^k) = p^{k - 1} \Phi(p) \\
     \Phi(n) = \Phi(p_1^{k_1} \ldots p_s^{k_s}) = \Phi(p_1^{k_1}) \ldots \Phi(p_s^{k_s})
 \end{cases}
 $$
@@ -193,7 +193,7 @@ donde $p$ es un número primo, $k$ es un número entero y $n = p_1^{k_1} \ldots 
 # Pequeño teorema de Fermat
 
 {{< block "Teorema" "var(--magno-red)" "black" >}}
-Si $p$ es primo y $p \\, \not | \\, a$, entonces $a^{p-1} \equiv 1 \pmod {p}$.
+Si $p$ es primo y $p \, \not | \, a$, entonces $a^{p-1} \equiv 1 \pmod {p}$.
 {{< /block >}}
 
 {{< block "Corolario" "var(--magno-red)" "black" >}}
@@ -201,8 +201,8 @@ Para cualquier $a$, $a^p \equiv a \pmod{p}$.
 {{< /block >}}
 
 {{< dropdown "<<Demostración>> del corolario" >}}
-- Si $p \\, | \\, a \implies a \equiv 0 \pmod{p}$
-- Si $p \not | \\, a \implies a^{p-1} \equiv 1 \implies aa^{p-1} = 1 \cdot
+- Si $p \, | \, a \implies a \equiv 0 \pmod{p}$
+- Si $p \not | \, a \implies a^{p-1} \equiv 1 \implies aa^{p-1} = 1 \cdot
   a \implies a^p \equiv a \pmod{p}$
 {{< /dropdown >}}
 
@@ -223,18 +223,18 @@ Con este teorema se pueden resolver sistemas de congruencias lineales.
 
 $$
 \begin{cases}
-x \equiv a_1 \pmod{m_1} \\\\
-\vdots \\\\
-x \equiv a_k \pmod{m_k}
+    x \equiv a_1 \pmod{m_1} \\
+    \vdots \\
+    x \equiv a_k \pmod{m_k}
 \end{cases}
 $$
 
 Existe una **única solución**: $0 \le x < m = m_1 \ldots m_k$
 
 $$
-x \equiv
-a_1 \frac{m}{m_1} \bigg[\frac{m}{m_1}\bigg]^{-1}\_{m_1} + \ldots +
-a_k \frac{m}{m_k} \bigg[\frac{m}{m_k}\bigg]^{-1}\_{m_k}
+    x \equiv
+    a_1 \frac{m}{m_1} \bigg[\frac{m}{m_1}\bigg]^{-1}\_{m_1} + \ldots +
+    a_k \frac{m}{m_k} \bigg[\frac{m}{m_k}\bigg]^{-1}\_{m_k}
 $$
 
 Donde $\big[ \frac{m}{m_i} \big]^{-1}\_{m_i}$ es el inverso multiplicativo de
@@ -256,8 +256,8 @@ Y aplicando propiedades de las potencias:
 
 $$
 \begin{align*}
-    b^e &= b^e_0 \\; b^{e_1 2} \\; b^{e_2 2^2} \ldots \\; b^{e_k 2^k} = b^{2^0} \\\\
-        &= (b^{2^0})^{e_0} \\; (b^{2^1})^{e_1} \ldots \\; (b^{2^k})^{e_k}
+    b^e &= b^e_0 \; b^{e_1 2} \; b^{e_2 2^2} \ldots \; b^{e_k 2^k} = b^{2^0} \\
+        &= (b^{2^0})^{e_0} \; (b^{2^1})^{e_1} \ldots \; (b^{2^k})^{e_k}
 \end{align*}
 $$
 

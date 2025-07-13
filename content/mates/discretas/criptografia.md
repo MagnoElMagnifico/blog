@@ -119,7 +119,7 @@ En {{< color "verde" "var(--magno-green)" >}} se denotará lo que es público y 
 5. Para encriptar:
 
     $$
-    E(m) = m^e \equiv M \pmod(n)
+    E(m) = m^e \equiv M \pmod{n}
     $$
 
 6. Y para desencriptar, teniendo en cuenta que $ed \equiv 1 \pmod{\Phi(n)}

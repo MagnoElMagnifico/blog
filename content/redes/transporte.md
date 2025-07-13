@@ -2,7 +2,6 @@
 title: La capa de Transporte
 description: >
     TODO
-date: TODO
 weight: 3
 draft: true
 ---

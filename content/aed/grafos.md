@@ -81,7 +81,7 @@ conjunto de sus aristas.
 $$
 a_{ij} =
 \begin{cases}
-    1 \quad\text{ si hay un arco } (v_i, v_j) \text{ en } A \\\\
+    1 \quad\text{ si hay un arco } (v_i, v_j) \text{ en } A \\
     0 \quad\text{ si no hay un arco } (v_i, v_j) \text{ en } A
 \end{cases}
 $$
@@ -171,7 +171,7 @@ Estructura multienlazada formada por:
 {{< block "Conclusión" >}}
 Usar listas de adyacencia cuando haya muchos más vértices que ejes:
 
-$$ |E| \<\< |V|^2 $$
+$$ |E| \ll |V|^2 $$
 
 En el resto de casos, si no es necesario insertar y eliminar vértices
 constantemente, será mejor usar una matriz adyacencia.
@@ -186,7 +186,7 @@ constantemente, será mejor usar una matriz adyacencia.
     2. Añadir los vértices adyacentes que no fuesen visitados a la cola.
 {{< /dropdown >}}
 
-{{< dropdown "Recorrido en profuncidad no recursivo" >}}
+{{< dropdown "Recorrido en profundidad no recursivo" >}}
 1. Meter el vértice de partida en la **pila**
 2. Mientras la pila no esté vacía:
     1. Quitar un nodo de la pila y marcarlo como visitado
@@ -269,9 +269,9 @@ Sea $P_k \in \mathcal{M}_{n \times n}(\set{0, 1})$:
 $$
 P_k(i,j) =
 \begin{cases}
-    1 \quad\text{si hay un camino entre } v_i \text{ y } v_j \text{ que use como
-mucho los vértices intermedios } v_1 \ldots v_k \\\\
-    0 \quad\text{en otro caso} \\\\
+    1 &\text{si hay un camino entre } v_i \text{ y } v_j \text{ que use como
+mucho los vértices intermedios } v_1 \ldots v_k \\
+    0 &\text{en otro caso} \\
 \end{cases}
 $$
 
@@ -281,10 +281,10 @@ $$
 La matriz $P_k$ se puede calcular de la siguiente forma:
 
 $$
-B_k = \sum^k_{i=1} A^i = A^1 + A^2 + \ldots + A^k \\\\
+B_k = \sum^k_{i=1} A^i = A^1 + A^2 + \ldots + A^k \\
 P_k(ij) =
 \begin{cases}
-    1 \iff B_k(i,j) \ge 1 \\\\
+    1 \iff B_k(i,j) \ge 1 \\
     0 \quad\text{En otro caso}
 \end{cases}
 $$
@@ -303,19 +303,19 @@ $$
 $$
 {{< /block >}}
 
-Una aplicación útil de la matriz de caminos es comprobrar rápidametne si un
+Una aplicación útil de la matriz de caminos es comprobar rápidamente si un
 grafo es conexo.
 
 {{< block "Fuertemente conexo con la Matriz de Caminos" >}}
 Un grafo es **fuertemente conexo** si $P$ tiene **todo 1s salvo en la diagonal**:
 
 $$
-\left(\begin{matrix} \\\\
-    0 & 1 & 1 & \ldots & 1 \\\\
-    1 & 0 & 1 & \ldots & 1 \\\\
-    1 & 1 & 0 & \ldots & 1 \\\\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-    1 & 1 & 1 & \ldots & 0 \\\\
+\left(\begin{matrix}
+    0 & 1 & 1 & \ldots & 1 \\
+    1 & 0 & 1 & \ldots & 1 \\
+    1 & 1 & 0 & \ldots & 1 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & 1 & 1 & \ldots & 0 \\
 \end{matrix}\right)
 $$
 {{< /block >}}
@@ -361,9 +361,9 @@ nodo:
 
 $$
     \begin{align*}
-    \text{Bajo}(v) = \min ( & \text{Num}(v), \\\\
-               & \min(\text{Num(vértices hacia atrás)}), \\\\
-               & \min(\text{Bajo(hijos)})) \\\\
+    \text{Bajo}(v) = \min ( & \text{Num}(v), \\
+               & \min(\text{Num(vértices hacia atrás)}), \\
+               & \min(\text{Bajo(hijos)})) \\
     \end{align*}
 $$
 
@@ -420,7 +420,7 @@ En caso de no ser adyacentes, se coloca $\infty$.
    de distancias se actualiza con la distancia a cada vértice.
 2. Se toma el vértice $v_i$ de $C$ con **$D(i)$ mínimo**.
 3. Se actualiza el vector $D$:
-   $$ D(j) = \min(\textcolor{#0f5}{D(j)}, \\; \textcolor{#0ef}{D(i) + A(i, j)})$$
+   $$ D(j) = \min(\textcolor{#0f5}{D(j)}, \; \textcolor{#0ef}{D(i) + A(i, j)})$$
    $\textcolor{#0f5}{D(j)}$ es el camino actual y $\textcolor{#0ef}{D(i) + A(i, j)}$
    es el camino que pasa por $v_i$.
 4. Si el paso anterior, se actualizó $D$, también hay que actualizar $P$
@@ -465,9 +465,9 @@ Tenga en cuenta que el caso base es la propia $A$:
 $$
     D_0(i, j) =
     \begin{cases}
-        \infty \quad &\text{si no existe arco} \\\\
-        0      \quad & i = j \\\\
-        A(i,j) \quad &\text{en otro caso} \\\\
+        \infty \quad &\text{si no existe arco} \\
+        0      \quad & i = j \\
+        A(i,j) \quad &\text{en otro caso} \\
     \end{cases}
 $$
 {{< /block >}}
@@ -522,8 +522,8 @@ El procedimiento es el siguiente:
 
 Los flujos se actualizan de la siguiente forma:
 
-- **Incrementable**: sumar $\min(\set{A(i, j) - F_{ij}, \\; \forall i,j \in P})$
-- **Reducible**: restar $\min(\set{F_{ij}, \\; \forall i,j \in P})$
+- **Incrementable**: sumar $\min(\set{A(i, j) - F_{ij}, \; \forall i,j \in P})$
+- **Reducible**: restar $\min(\set{F_{ij}, \; \forall i,j \in P})$
 - **Cadenas reducibles-incrementables**: se toma el mínimo de los dos anteriores
 {{< /block >}}
 
@@ -551,7 +551,7 @@ Suponemos $V = \set{1 \ldots n}$ siendo $G=(V,E)$ un grafo conexo y no dirigido.
 
 1. Se le asigna un vértice inicial a $W$: $W=\set{1}$
 2. Se añaden vértices a $W$ en cada iteración mientras cumplan
-   $$ v \in V-W, \\; u \in W, \\; \text{el arco } (v, u) \text{ es mínimo}$$
+   $$ v \in V-W, \; u \in W, \; \text{el arco } (v, u) \text{ es mínimo}$$
    Es decir, tomar aquellos vértices que tengan un arco mínimo con el subgrafo $W$
 3. Termina cuando $V = W$
 {{< /block >}}

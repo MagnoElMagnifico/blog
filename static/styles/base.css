@@ -123,10 +123,14 @@ em {
 }
 h1 em, h2 em, h3 em, h4 em, h5 em { font-size: inherit; }
 
+/* Justify everything... */
 p, li, .block-content {
     text-align: justify;
     line-height: 2.7ch;
 }
+
+/* ... with these exceptions: */
+table li, #TableOfContents li { text-align: left; }
 
 p { margin: var(--p-separation); }
 li p { margin: 1rem 0 0 0; }
@@ -171,6 +175,11 @@ code:not(pre code) {
     overflow-x: auto;
 }
 
+/* Indented code block */
+pre:has(code) {
+    overflow-x: auto;
+}
+
 
 /**** Quotes ****/
 blockquote {
@@ -211,7 +220,8 @@ svg:not(.katex-display svg, .katex svg) {
     transform: translate(-50%, 0);
 }
 
-article img, article svg {
+article img:not(.katex-display img, .katex img),
+article svg:not(.katex-display svg, .katex svg) {
     width: 100%;
     min-width: 300px;
     overflow-x: auto;
@@ -231,15 +241,18 @@ figcaption p:before {
 
 
 /**** Table ****/
-table {
+div.table-wrapper {
+    overflow-x: auto;
     margin: var(--p-separation);
+}
+
+table {
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--background-color);
-    overflow-x: auto;
 }
-
-table.fill { width: 100%; }
 
 /* Table cell */
 th, td {
@@ -256,6 +269,15 @@ th, td.header, table.header td:first-child {
 th                                     { border-bottom: var(--table-header-border); }
 td.header, table.header td:first-child { border-right:  var(--table-header-border); }
 
+
+/**** LaTeX ****/
+/* "Fix" big LaTeX expressions */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
 /**** Special classes for Markdown *******************************************/
 
 .center-text {
@@ -266,12 +288,8 @@ td.header, table.header td:first-child { border-right:  var(--table-header-borde
     content: '==> ';
 }
 
-/**** KaTeX ****/
-/* "Fix" big LaTeX expressions */
-.katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
+.fill { width: 100%; }
+.text-left { text-align: left; }
 
 
 /**** Shortcodes *************************************************************/

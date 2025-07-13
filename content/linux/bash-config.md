@@ -2,7 +2,6 @@
 title: Configuración de Bash
 description:  >
     TODO
-date: TODO
 weight: -1
 draft: true
 ---

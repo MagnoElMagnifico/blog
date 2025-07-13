@@ -386,7 +386,7 @@ $G_1 = (V, T, P_1, S)$, donde $P_1$:
 
 1.  Se encuentran todos los pares unitarios con el algoritmo anterior.
 2.  Para cada par unitario $(A, B)$, añadimos a $P_1$ todas las producciones
-    $A \to \alpah$ donde $B \to \alpha$ es una producción no unitaria.
+    $A \to \alpha$ donde $B \to \alpha$ es una producción no unitaria.
 {{< /block >}}
 
 {{< dropdown "Ejemplo" >}}

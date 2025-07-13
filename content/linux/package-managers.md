@@ -2,7 +2,6 @@
 title: Package Managers
 description: TODO
 weight: -1
-date: TODO
 draft: true
 ---
 

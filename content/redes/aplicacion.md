@@ -2,7 +2,6 @@
 title: La capa de Aplicación
 description: >
     TODO
-date: TODO
 weight: 2
 draft: true
 ---

@@ -1,7 +1,6 @@
 ---
 title: Instalación de Arch Linux
 description: TODO
-date: TODO
 weight: -1
 draft: true
 ---

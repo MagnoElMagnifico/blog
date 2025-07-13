@@ -2,7 +2,6 @@
 title: La capa de Enlace
 description: >
     TODO
-date: TODO
 weight: 5
 draft: true
 ---

@@ -2,7 +2,6 @@
 title: La capa de Red
 description: >
     TODO
-date: TODO
 weight: 4
 draft: true
 ---

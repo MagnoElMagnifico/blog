@@ -21,7 +21,7 @@ números enteros.
 ## División Entera
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
-$$ a \\, | \\, b \iff \exists c \in \Z / ac = b \qquad a,b \in \Z$$
+$$ a \, | \, b \iff \exists c \in \Z / ac = b \qquad a,b \in \Z$$
 {{< /block >}}
 
 Se lee: _a divide a b_, _a es factor de b_, _b multiplica a a_.
@@ -29,10 +29,10 @@ Se lee: _a divide a b_, _a es factor de b_, _b multiplica a a_.
 {{< block "Teorema" "var(--magno-red)" "black" >}}
 $$
 \begin{align*}
-a | b, \\, a | c \implies& a | (b+c)     \\\\
-a | b            \implies& a | (bc)      \\\\
-a | b, \\, b | c \implies& a | c         \\\\
-a | b, \\, a | c \implies& a | (mb + nc) \\\\
+a | b, \, a | c \implies& a | (b+c)     \\
+a | b           \implies& a | (bc)      \\
+a | b, \, b | c \implies& a | c         \\
+a | b, \, a | c \implies& a | (mb + nc) \\
 \end{align*}
 $$
 {{< /block >}}
@@ -53,7 +53,7 @@ Esto permite crear la siguiente definición:
 {{< block "Definición" "var(--magno-blue)" "black" >}}
 $$
 \begin{align*}
-    a \text{ mod }{b} &:= a - bq \\\\
+    a \text{ mod }{b} &:= a - bq \\
     q &:= \bigg\lfloor \frac{a}{b} \bigg\rfloor
 \end{align*}
 $$
@@ -94,8 +94,8 @@ resto    = lambda a, b: a - cociente(a, b)*b
 ## Máximo común divisor
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
-$\gcd(a, b) = d$ es el **mayor entero** tal que $$d \\,|\\, a \\, \land \\,
-d \\,|\\, b$$ siendo $a$ y $b$ dos enteros positivos no nulos.
+$\gcd(a, b) = d$ es el **mayor entero** tal que $$d \,|\, a \, \land \,
+d \,|\, b$$ siendo $a$ y $b$ dos enteros positivos no nulos.
 {{< /block >}}
 
 Se puede calcular tomando los factores primos comunes de $a$ y $b$ elevados al
@@ -103,12 +103,12 @@ menor exponente. Pero ojo, **factorizar es NP**!. Para ello es mejor usar el
 algoritmo de Euclides.
 
 {{< block "Lema" "var(--magno-red)" "black" >}}
-$$ \gcd(a, b) = 1 \land a \\, | \\, (bc) \implies a \\, | \\, c$$
+$$ \gcd(a, b) = 1 \land a \, | \, (bc) \implies a \, | \, c$$
 siendo $a$ y $b$ enteros primos positivos no nulos.
 {{< /block >}}
 
 {{< block "Lema" "var(--magno-red)" "black" >}}
-$$ p \\, | \\, (a_1 \ldots a_n) \implies p \\, | \\, a_i \text{    (para algún i)}$$
+$$ p \, | \, (a_1 \ldots a_n) \implies p \, | \, a_i \quad\text{(para algún i)}$$
 siendo $p$ un número primo y $a_1, \ldots, a_n$ enteros.
 {{< /block >}}
 
@@ -162,8 +162,8 @@ def gcd_re(a, b):
 ## Mínimo común múltiplo
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
-$\text{lcm}(a, b) = m$ es el **menor entero** tal que $$a \\,|\\, m \\, \land \\,
-b \\,|\\, m$$ siendo $a$ y $b$ dos enteros positivos no nulos.
+$\text{lcm}(a, b) = m$ es el **menor entero** tal que $$a \,|\, m \, \land \,
+b \,|\, m$$ siendo $a$ y $b$ dos enteros positivos no nulos.
 {{< /block >}}
 
 También se puede calcular tomando los factores primos de $a$ y $b$ elevados al
@@ -179,7 +179,7 @@ lcm = lambda a, b: int(a * b / gcd(a, b))
 ## Teorema de Bézout
 
 {{< block "Teorema" "var(--magno-red)" "black" >}}
-$$ \exists \\, s,t \in \Z \quad / \quad \gcd(a, b) = sa + tb $$
+$$ \exists \, s,t \in \Z \quad / \quad \gcd(a, b) = sa + tb $$
 siendo $a$ y $b$ dos números enteros.
 {{< /block >}}
 
@@ -195,10 +195,10 @@ algoritmo de Euclides:
 
 $$
 \begin{align}
-166 =& \\, 414 - 1 \times 248 \\\\
-82  =& \\, 248 - 1 \times 166 \\\\
-2   =& \\, 166 - 2 \times 82  \\\\
-0   =& \\, 82  - 2 \times 41
+166 =& \, 414 - 1 \times 248 \\
+82  =& \, 248 - 1 \times 166 \\
+2   =& \, 166 - 2 \times 82  \\
+0   =& \, 82  - 2 \times 41
 \end{align}
 $$
 
@@ -206,9 +206,9 @@ Y ahora, simplemente se opera:
 
 $$
 \begin{align*}
-\gcd(414, 248) = 2 =& \overbrace{166 - 2 \times 82}^{(3)}\\\\
-                   =& 166 - 2 \times (\overbrace{248 - 1 \times 166}^{(2)}) = 3 \times 166 - 2 \times 248 \\\\
-                   =& 3 \times (\overbrace{414 - 1 \times 248}^{(1)}) - 2 \times 248 = 3 \times 414 - 5 \times 248 \\\\
+\gcd(414, 248) = 2 =& \overbrace{166 - 2 \times 82}^{(3)} \\
+                   =& 166 - 2 \times (\overbrace{248 - 1 \times 166}^{(2)}) = 3 \times 166 - 2 \times 248 \\
+                   =& 3 \times (\overbrace{414 - 1 \times 248}^{(1)}) - 2 \times 248 = 3 \times 414 - 5 \times 248 \\
 \end{align*}
 $$
 
@@ -256,8 +256,6 @@ Si $n \in \Z$ es compuesto $\implies \exists \\, p \in \Z \quad / \quad p < \sqr
 Por eso factorizar es un problema NP, se puede comprobar que un número es primo
 en tiempo polinómico, porque solo se tiene que iterar hasta la raiz del número.
 
-<!-- TODO: arreglar \sqrt -->
-
 ## Unidades e inversos
 
 {{< block "Definición" "var(--magno-blue)" "black" >}}
@@ -294,11 +292,11 @@ a base $b$, y $a_0, \ldots, a_k$ serán sus cifras en dicha base.
 
 $$
 \begin{align*}
-                                &    a = q_0 b + r_0 \\\\
-    \text{Si } q_0 \ne 0: \quad & q_0 =  q_1 b + r_1 \\\\
-    \text{Si } q_0 \ne 0: \quad & q_1 =  q_2 b + r_2 \\\\
-    \vdots \\\\
-    \text{Si } q_i = 0: \quad & q_{i - 1} = r_i \\\\
+                                &    a = q_0 b + r_0 \\
+    \text{Si } q_0 \ne 0: \quad & q_0 =  q_1 b + r_1 \\
+    \text{Si } q_0 \ne 0: \quad & q_1 =  q_2 b + r_2 \\
+    \vdots \\
+    \text{Si } q_i = 0: \quad & q_{i - 1} = r_i \\
 \end{align*}
 $$
 
@@ -324,10 +322,10 @@ Véanse un par de ejemplos:
 $$
 \text{Criterio para 2: }
 \begin{cases}
-    10   \equiv 0 \pmod{3} \\\\
-    10^2 \equiv 0 \pmod{3} \\\\
-    10^3 \equiv 0 \pmod{3} \\\\
-    10^4 \equiv 0 \pmod{3} \\\\
+    10   \equiv 0 \pmod{3} \\
+    10^2 \equiv 0 \pmod{3} \\
+    10^3 \equiv 0 \pmod{3} \\
+    10^4 \equiv 0 \pmod{3} \\
     \vdots
 \end{cases}
 $$
@@ -345,10 +343,10 @@ Por tanto, simplemente habría que analizar la última cifra y ver si esta es pa
 $$
 \text{Criterio para 3: }
 \begin{cases}
-    10   \equiv 1 \pmod{3} \\\\
-    10^2 \equiv 1 \pmod{3} \\\\
-    10^3 \equiv 1 \pmod{3} \\\\
-    10^4 \equiv 1 \pmod{3} \\\\
+    10   \equiv 1 \pmod{3} \\
+    10^2 \equiv 1 \pmod{3} \\
+    10^3 \equiv 1 \pmod{3} \\
+    10^4 \equiv 1 \pmod{3} \\
     \vdots
 \end{cases}
 $$
@@ -372,10 +370,10 @@ entre 2 y 3.
 $$
 \text{Criterio para 11: }
 \begin{cases}
-    10   \equiv -1 \pmod{11} \\\\
-    10^2 \equiv 1 \pmod{11} \\\\
-    10^3 \equiv -1 \pmod{11} \\\\
-    10^4 \equiv 1 \pmod{11} \\\\
+    10   \equiv -1 \pmod{11} \\
+    10^2 \equiv  1 \pmod{11} \\
+    10^3 \equiv -1 \pmod{11} \\
+    10^4 \equiv  1 \pmod{11} \\
     \vdots
 \end{cases}
 $$

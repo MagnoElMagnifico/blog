@@ -126,21 +126,21 @@ objetos de un mismo tipo son iguales entre sí y diferentes de los otros tipos:
 
 $$
 \begin{cases}
-    n_1 \text{ objetos del tipo 1} \\\\
-    n_2 \text{ objetos del tipo 2} \\\\
-    \vdots \\\\
-    n_r \text{ objetos del tipo r} \\\\
+    n_1 \text{ objetos del tipo 1} \\
+    n_2 \text{ objetos del tipo 2} \\
+    \vdots \\
+    n_r \text{ objetos del tipo r} \\
 \end{cases}
 $$
 
-$$ PR(n; \\; n_1, n2, \ldots, n_r) = \frac{n!}{n_1! \\; n_2! \\; \ldots \\; n_r!} $$
+$$ PR(n; \; n_1, n2, \ldots, n_r) = \frac{n!}{n_1! \; n_2! \; \ldots \; n_r!} $$
 
 Donde $n = n_1 + n_2 + \ldots + n_r$.
 {{< /block >}}
 
 **Caso particular**: solo dos tipos:
 
-$$ PR(n; \\; n_1, \\; n_2) = \frac{n!}{(n - n_1)! \\; n_1!} = \binom{n}{n_1} = \binom{n}{n_2} $$
+$$ PR(n; \; n_1, \; n_2) = \frac{n!}{(n - n_1)! \; n_1!} = \binom{n}{n_1} = \binom{n}{n_2} $$
 
 ## Variaciones ordenadas con repetición
 

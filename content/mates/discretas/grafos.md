@@ -88,7 +88,8 @@ El **grado** de un vértice $v$, $\delta(v)$, es el número de ejes incidentes.
 Por tanto, $$ \delta(v) = 0 \iff v \text{ es aislado.} $$
 
 Además, se puede definir la **sucesión de grados** de un grafo $G$:
-$$ {\big\\{ \delta(v) \big\\}}_{v \in V} $$
+
+$$ {\left\{ \delta(v) \right\}}_{v \in V} $$
 
 
 {{< block "Lema del Apretón de Manos" "var(--magno-red)" "black" >}}
@@ -424,10 +425,10 @@ La matriz de adyacencia del grafo anterior sería la siguiente:
 
 $$
 A_G =
-\begin{pmatrix}   \newline
-    0 & 1 & 1 & 1 \newline
-    1 & 0 & 0 & 0 \newline
-    1 & 0 & 0 & 0 \newline
+\begin{pmatrix}
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 \\
+    1 & 0 & 0 & 0 \\
     1 & 0 & 0 & 0
 \end{pmatrix}
 $$
@@ -436,11 +437,11 @@ Otro ejemplo:
 
 $$
 A_{G'} =
-\begin{pmatrix}       \newline
-    0 & 2 & 1 & 1 & 1 \newline
-    2 & 0 & 0 & 0 & 1 \newline
-    1 & 0 & 1 & 1 & 0 \newline
-    1 & 0 & 1 & 0 & 1 \newline
+\begin{pmatrix}
+    0 & 2 & 1 & 1 & 1 \\
+    2 & 0 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 1 \\
     1 & 1 & 0 & 1 & 0
 \end{pmatrix}
 $$
@@ -490,8 +491,8 @@ $C_G = (c_{i j})$ donde
 $$
 c_{i j} =
 \begin{cases}
-    1 \qquad \text{Si $v_i$ es incidente con $v_j$} \newline
-    0 \qquad \text{En otro caso} \newline
+    1 \qquad \text{Si $v_i$ es incidente con $v_j$} \\
+    0 \qquad \text{En otro caso} \\
 \end{cases}
 $$
 
@@ -501,10 +502,10 @@ $$
 La matriz de incidencia para $G$ es
 
 $$
-\begin{pmatrix} \newline
-    1 & 1 & 1   \newline
-    1 & 0 & 0   \newline
-    0 & 0 & 1   \newline
+\begin{pmatrix}
+    1 & 1 & 1   \\
+    1 & 0 & 0   \\
+    0 & 0 & 1   \\
     0 & 1 & 0
 \end{pmatrix}
 $$
@@ -518,7 +519,7 @@ Sea $G = (V, E)$ un grafo.
 Un **camino** o **trayectoria** de un vértice $v$ a otro $w$ es una secuencia de
 ejes de $G$ (no necesariamente distintos) de la forma
 
-$$ e_1 = \Set{v, v_1}, \\; e_2 = \Set{v_1, v_2}, \\; \ldots, \\; e_n = \Set{v_n, w} $$
+$$ e_1 = \Set{v, v_1}, \; e_2 = \Set{v_1, v_2}, \; \ldots, \; e_n = \Set{v_n, w} $$
 {{< /block >}}
 
 - El número de ejes ($n$) es la **longitud del camino**.
@@ -551,17 +552,17 @@ Y la matriz de incidencia:
 
 $$
 A =
-\begin{pmatrix}   \newline
-    0 & 0 & 0 & 1 \newline
-    0 & 1 & 1 & 1 \newline
-    0 & 1 & 1 & 2 \newline
-    1 & 1 & 2 & 0 \newline
+\begin{pmatrix}
+    0 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 1 & 1 & 2 \\
+    1 & 1 & 2 & 0 \\
 \end{pmatrix}
 \implies A^3 =
-\begin{pmatrix}      \newline
-    0 & 3  & 3  & 6  \newline
-    3 & 10 & 13 & 12 \newline
-    3 & 13 & 16 & 18 \newline
+\begin{pmatrix}
+    0 & 3  & 3  & 6  \\
+    3 & 10 & 13 & 12 \\
+    3 & 13 & 16 & 18 \\
     \textcolor{#f05}{6} & 12 & 18 & 9
 \end{pmatrix}
 $$

@@ -17,27 +17,27 @@ $$ (x + y)^n = \sum_{k = 0}^{n} \binom{n}{k} x^k y^{n - k} = \sum_{k = 0}^{n} \b
 
 Con esto se puede realizar la expansión de cualquier binomio:
 
-$$ (x + y) \\; \ldots \\; (x + y) $$
+$$ (x + y) \; \ldots \; (x + y) $$
 
 Y después de desarrollar el producto, quedan las combinaciones posibles de $x$s
 e $y$s.
 
 {{< block "Observación" >}}
-$$ (x - y)^n = \[x + (-y)\]^n $$
+$$ (x - y)^n = [x + (-y)]^n $$
 {{< /block >}}
 
 Ejemplos:
 
 $$
 \begin{align*}
-    (x + y)^2 &= x^2 + y^2 + 2xy \newline
-    (x + y)^3 &= x^3 + y^3 + 3x^{2}y + 3y^{2}x \newline
-    (x + y)^4 &= x^4 + y^4 + 4x^{3}y + 6x^{2}y^{2} + 4xy^2 \newline
+    (x + y)^2 &= x^2 + y^2 + 2xy \\
+    (x + y)^3 &= x^3 + y^3 + 3x^{2}y + 3y^{2}x \\
+    (x + y)^4 &= x^4 + y^4 + 4x^{3}y + 6x^{2}y^{2} + 4xy^2 \\
 \end{align*}
 $$
 
 {{< dropdown "Demostración de $|\mathcal{P}(A)| = 2^{|A|}$ con el Binomio de Newton" >}}
-$$ 2^n = (1 + 1)^n = \sum_{k = 0}^{n} \binom{n}{k} \\; 1^k \\; 1^{n - k} = \sum_{k = 0}^{n} \binom{n}{k} = \binom{n}{0} + \binom{n}{1} + \ldots + \binom{n}{n} $$
+$$ 2^n = (1 + 1)^n = \sum_{k = 0}^{n} \binom{n}{k} \; 1^k \; 1^{n - k} = \sum_{k = 0}^{n} \binom{n}{k} = \binom{n}{0} + \binom{n}{1} + \ldots + \binom{n}{n} $$
 
 Donde $\binom{n}{0}$ es el número de subconjuntos de $A$ con 0 elementos,
 $\binom{n}{1}$ es el número de subconjuntos con 1 elemento, ... y $\binom{n}{n}$
@@ -47,8 +47,8 @@ es el número de elementos de $A$: $|A| = n$.
 {{< dropdown "Hay tantos numeros pares como impares" >}}
 $$
 \begin{align*}
-    0 &= (1 + (- 1))^n = \sum_{k = 0}^{n} \binom{n}{k} \\; 1^{n-k} \\; (-1)^k = \newline
-      &= \binom{n}{0} - \binom{n}{1} + \binom{n}{2} - \ldots + (-1)^n \binom{n}{n} \newline
+    0 &= (1 + (- 1))^n = \sum_{k = 0}^{n} \binom{n}{k} \; 1^{n-k} \; (-1)^k = \\
+      &= \binom{n}{0} - \binom{n}{1} + \binom{n}{2} - \ldots + (-1)^n \binom{n}{n} \\
       &\implies \binom{n}{0} + \binom{n}{2} + \ldots = \binom{n}{1} + \binom{n}{3} \ldots
 \end{align*}
 $$
@@ -60,12 +60,12 @@ Nótese que este es una generalización del binomio de Newton, dado que se obtie
 dicha expresión si $k = 2$.
 
 {{< block "Teorema" "var(--magno-red)" "black" >}}
-$$ (x_1 + x_2 + \ldots + x_k)^n = \sum_{n = n_1 + n_2 + \ldots + n_k} \binom{n}{n_1 \ldots n_k} \\; x_1^{n_1} \\; x_2^{n_2} \\; \ldots \\; x_k^{n_k} $$
+$$ (x_1 + x_2 + \ldots + x_k)^n = \sum_{n = n_1 + n_2 + \ldots + n_k} \binom{n}{n_1 \ldots n_k} \; x_1^{n_1} \; x_2^{n_2} \; \ldots \; x_k^{n_k} $$
 {{< /block >}}
 
-Recuerda que $$ \binom{n}{n_1, \ldots, n_k} = \frac{n!}{n_1! \\; n_2! \\; \ldots \\; n_k!} $$
+Recuerda que $$ \binom{n}{n_1, \ldots, n_k} = \frac{n!}{n_1! \; n_2! \; \ldots \; n_k!} $$
 
-**Ejemplo**: $$ (x + y + z)^3 = \binom{3}{3 \\; 0 \\; 0} x^3 y^0 z^0 \\;\\; + \\;\\; \binom{3}{2 \\; 1 \\; 0} x^2 y^1 z^0 \\;\\; + \\;\\; \ldots$$
+**Ejemplo**: $$ (x + y + z)^3 = \binom{3}{3 \; 0 \; 0} x^3 y^0 z^0 \;\; + \;\; \binom{3}{2 \; 1 \; 0} x^2 y^1 z^0 \;\; + \;\; \ldots$$
 
 # Identidad de Pascal
 

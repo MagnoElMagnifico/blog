@@ -1221,11 +1221,13 @@ En la siguiente figura:
 2. Todos menos $C$ han llegado a la barrera, por lo que quedan a la espera.
 3. Una vez que $C$ llega a la barrera, todos pueden continuar.
 
+{{< todo >}}
 {{< figure
     src="barrera.png" 
     link="barrera.png" 
     caption="Ejemplo de uso de una barrera"
 >}}
+{{< /todo >}}
 
 # Problemas clásicos
 

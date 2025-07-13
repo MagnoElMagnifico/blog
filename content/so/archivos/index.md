@@ -591,21 +591,21 @@ Por tanto, el sector 0 de cada pista está desfasado de la pista anterior.
 
 #### Ejemplo de cálculo
 
-Disco de $f = 10\\,000$ rpm (**frecuencia**), $300$ sectores/pista, tiempo de cambio de pista $800
-\\; \mu s$.
+Disco de $f = 10 000$ rpm (**frecuencia**), $300$ sectores/pista, tiempo de
+cambio de pista $800 \mu s$.
 
 Tiempo de una vuelta (**periodo**):
 $$
-  \frac{1}{f} = \frac{1}{10\\,000 \text{ rpm}} =
-  \frac{1}{10\\,000 \times \frac{1 \text{ rpm}}{60 \text{ vuelta/segundo}}} =
-  \frac{60}{10\\,000} \text{ segundo/vuelta} =
+  \frac{1}{f} = \frac{1}{10\,000 \text{ rpm}} =
+  \frac{1}{10\,000 \times \frac{1 \text{ rpm}}{60 \text{ vuelta/segundo}}} =
+  \frac{60}{10\,000} \text{ segundo/vuelta} =
   6 \text{ms/vuelta}
 $$
 
 Tiempo que se tarda en recorrer un sector:
 $$
   6 \text{ ms/vuelta} \times \frac{1 \text{ vuelta}}{300 \text{ sectores}} =
-  20 \\; \mu s \text{/sector}
+  20 \; \mu s \text{/sector}
 $$
 
 Número de sectores que pasan durante el cambio de pista:
@@ -1072,4 +1072,6 @@ $\implies n_b = 500 \times 10^{9} / 2^{10} = 488\,281\\,250$ bloques.
 [procesos]:                         {{< ref "so/procesos/#block-definición" >}}
 [BIOS]:                             {{< ref "so/arranque/#bios" >}}
 [zona de intercambio]:              {{< ref "so/memoria/#zona-de-intercambio" >}}
+{{< todo >}}
 [Logical Volume Management]:        {{/*< ref "linux/instalacion/#logical-volume-management" */>}}
+{{< /todo >}}

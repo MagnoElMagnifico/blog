@@ -362,7 +362,7 @@ La expresión `(A+B)*C` genera el siguiente árbol de expresión:
 flowchart
     classDef node stroke:#f05,fill:#f05,color:black;
 
-    M(("\*")) --- S(("\+"))
+    M(("*")) --- S(("+"))
     S --- A((A))
     S --- B((B))
     M --- C((C))

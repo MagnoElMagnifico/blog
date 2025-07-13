@@ -1026,10 +1026,10 @@ Para evitar que los procesos de mayor prioridad acaparen todo:
 
 $$
 \begin{align*}
-  T_1 \\; =& \\; T_{\text{inicial}} \hspace{2cm} \text{No hay más datos} \\\\
-  T_2 \\; =& \\; \alpha T_1 + (1 - \alpha) t_1 \\\\
-  \vdots \\\\
-  T_n \\; =& \\; \alpha T_{n-1} + (1 - \alpha) t_{n-1}
+  T_1 \; =& \; T_{\text{inicial}} \hspace{2cm} \text{No hay más datos} \\
+  T_2 \; =& \; \alpha T_1 + (1 - \alpha) t_1 \\
+  \vdots \\
+  T_n \; =& \; \alpha T_{n-1} + (1 - \alpha) t_{n-1}
 \end{align*}
 $$
 
