@@ -41,6 +41,14 @@
                 {left: "$",   right: "$",   display: false}
             ]
         });
+
+        // Render math inside elements (don't require "$")
+        /* for (e of document.getElementsByClassName("math")) {
+            katex.render(e.textContent, e, {
+                throwOnError: false,
+                displayMode: e.classList.contains("display"),
+            });
+        } */
     });
 </script>
 
