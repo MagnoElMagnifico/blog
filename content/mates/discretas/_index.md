@@ -1,5 +1,7 @@
 ---
-title: Mates Discretas
+title: Matemáticas Discretas
+params:
+  small_title: Mates Discretas
 content_title: false
 ---
 

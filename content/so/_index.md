@@ -1,5 +1,7 @@
 ---
 title: Sistemas Operativos
+params:
+  small_title: SO
 content_title: true
 ---
 

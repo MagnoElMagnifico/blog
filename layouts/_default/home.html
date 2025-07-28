@@ -54,7 +54,11 @@
         <nav>
             {{ range $section_path := .Site.Data.home.blog.sections }}
                 {{ with $.GetPage $section_path }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ if .Params.small_title }}
+                        <a href="{{ .Permalink }}">{{ .Params.small_title }}</a>
+                    {{ else }}
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ end }}
                 {{ end }}
             {{ end }}
         </nav>

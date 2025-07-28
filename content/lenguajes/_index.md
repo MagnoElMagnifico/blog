@@ -1,5 +1,7 @@
 ---
 title: Lenguaje de programación
+params:
+  small_title: Lenguajes
 content_title: true
 ---
 

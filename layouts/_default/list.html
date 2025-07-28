@@ -18,7 +18,11 @@
         {{ with .Sections }}
             <nav>
                 {{ range .ByTitle }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ if .Params.small_title }}
+                        <a href="{{ .Permalink }}">{{ .Params.small_title }}</a>
+                    {{ else }}
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ end }}
                 {{ end }}
             </nav>
         {{ end }}
@@ -37,7 +41,11 @@
         {{ with .Sections }}
             <nav>
                 {{ range .ByTitle }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ if .Params.small_title }}
+                        <a href="{{ .Permalink }}">{{ .Params.small_title }}</a>
+                    {{ else }}
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ end }}
                 {{ end }}
             </nav>
         {{ end }}

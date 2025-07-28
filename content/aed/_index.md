@@ -1,5 +1,7 @@
 ---
 title: Algoritmos y Estructuras de Datos
+params:
+  small_title: AED
 content_title: true
 ---
 

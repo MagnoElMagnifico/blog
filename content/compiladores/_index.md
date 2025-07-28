@@ -1,5 +1,7 @@
 ---
 title: Compiladores e Intérpretes
+params:
+  small_title: Compiladores
 content_title: true
 ---
 
