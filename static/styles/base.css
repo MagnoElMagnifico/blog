@@ -178,6 +178,7 @@ code:not(pre code) {
 /* Indented code block */
 pre:has(code) {
     overflow-x: auto;
+    padding-left: 1cm;
 }
 
 
@@ -373,7 +374,7 @@ details .content {
 @media only screen and (min-width: 1000px) and (min-device-width: 1000px) {
     .columns {
         display: grid;
-        column-gap: 10px;
+        column-gap: 0.5cm;
         text-align: justify;
         place-items: center;
     }
@@ -532,7 +533,7 @@ nav:not(#TableOfContents) {
     align-items: center;
     justify-items: center;
     background-color: var(--hf-background-color);
-    overflow-x: scroll;
+    overflow-x: auto;
     margin: var(--p-separation);
 }
 
