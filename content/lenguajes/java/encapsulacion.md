@@ -5,7 +5,7 @@ description: >
     y Objeto. Además, se explorarán los constructores, _getters_, _setters_
     y métodos funcionales.
 date: 2024-01-13T19:07:48+01:00
-weight: 1
+weight: 2
 ---
 
 {{< block "Teorema del Programa Estructurado" >}}
@@ -30,6 +30,11 @@ En Java:
   representación en el computador.
 - **Clases**: tipos de datos abstractos (TADs) de alto nivel, no representables
   directamente en el computador.
+
+Los `struct`s de C permiten crear tipos de datos complejos, **pero no es posible
+restringir el valor que toman ni quién puede modificarlos (integridad de
+datos)**. Aunque se pueden hacer estructuras opacas, no es particularmente
+conveniente y se basa en trucos con punteros.
 
 # Encapsulación
 

@@ -1,85 +1,144 @@
 ---
 title: Compilación en Java
 description: >
-    TODO
-weight: 0
-draft: true
+    Instalación del entorno de desarrollo y el proceso de compilación de un
+    programa Java.
+date: 2024-01-10T14:22:19+02:00
+weight: 1
 ---
 
-# Java
+# Estructura de archivos de Java
+
+Java es muy específico con la estructura de archivos. Una carpeta es un paquete
+y un archivo `.java` es un clase.
+
+- No pueden haber dos clases `public` en el mismo archivo (error de compilación)
+- Si un archivo `.java` está dentro de una carpeta, la primera línea del archivo
+  debe ser `package <nombrecarpeta>` desde el subdirectorio raíz (separando cada
+  nombre con `.`.
+- No hace falta usar `import`s, también se puede escribir el nombre completo de
+  la clase (incluyendo paquetes). Esto no es demasiado práctico. Nótese que
+  `java.lang` se importa automáticamente.
+
+# Instalación
+
+Existen varias distribuciones que podemos descargar en función de lo que
+queramos:
+
+-   **Java Standard Edition** (SE): contiene la máquina virtual de Java (JVM) y
+    los archivos correspondientes del _Java Runtime Environment_ (JRE),
+    necesarios para poder ejecutar programas Java.
+-   **Java Development Kit** (JDK): contiene las clases _core_, _Java Runtime
+    Environment_ (`java`), el compilador (`javac`) y otras herramientas que se
+    puedan necesitar para crear programas Java (`jar`, ...).
+-   **Java Enterprise Edition** (JEE): contiene tecnología web, construida sobre
+    Java SE: _servlets_, JSPs, JSF, ...
+
+{{< todo >}}
 El instalador viene en la versión de `JDK`. Dirección predeterminada del
 compilador es la siguiente: (siendo `xxx` su versión):
 
 ```
 C:\Program Files\Java\jdkxxx\bin
 ```
+{{< /todo >}}
 
-Para ejecutar, nos situamos en la dirección de ese archivo en el CMD y usamos el
-siguiente comando:
+# Proceso de compilación y ejecución
 
+Para compilar, se debe llamar al compilador `javac`. Recomiendo añadir la flag
+`-Xlint:all` para que te de consejos sobre cómo mejorar tu código, mostrar
+_warnings_ varios, etc.
+
+```bash
+javac -Xlint:all -d <build_dir> <src_dir>/**/*.java
 ```
->> java NombreDelArchivo.java
+
+Con la opción `-d` se especifica dónde almacenar los archivos `.class`
+compilados. Estos equivalen a sendas clases (deben tener la misma estructura de
+directorios), y el compilador es lo suficientemente inteligente como para saber
+en qué orden compilar cada uno.
+
+Para ejecutar hay que especificar dónde está la clase principal usando
+la `classpath`:
+
+```bash
+java -cp <build_dir> <MainClass>
 ```
 
+En caso de que la clase principal esté dentro de un paquete, se especifica
+`paquete.MainClass`, no como si fueran directorios (`paquete/MainClass`).
+
+{{< block "Condiciones para la clase principal" "var(--magno-green)" >}}
 Para que funcione, como mínimo debe existir una clase pública que lleve un
-método también público y estático llamado main, que a su vez tenga de parámetro
-una matriz de Strings.
+método también público y estático llamado `main`, que a su vez tenga de
+parámetro una matriz de `String`s.
 
 ```java
+// Archivo Clase.java
 public class Clase {
-  public static void main (String[] args) {
-    //Código
+  public static void main(String[] args) {
+    // Código
   }
 }
 ```
+{{< /block >}}
+
+## Ejecutar un solo archivo
+
+Para ejecutar directamente, nos situamos en la dirección de ese archivo en el CMD y usamos el
+siguiente comando:
+
+```bash
+java NombreDelArchivo.java
+```
+
+Este comando no generará archivos, sino que lo ejecutará directamente.
 
 El problema que surge con este sistema es que no se pueden crear otras clases
-fuera de ese archivo. De lo contrario, hay que compilar. Entonces, para compilar
-el código fuente se usa el comando:
+fuera de ese archivo (no se aplica la regla de solo una clase pública por
+archivo), de lo contrario, hay que compilar con el proceso visto antes.
 
-```
->> javac NombreDelArchivo.java
-```
+## Creación de un archivo `.jar`
 
-Y para después ejecutar el archivo `.class` que se genera:
+{{< block "Ejecutables Java" "var(--magno-blue)" >}}
+Un archivo `.jar` es archivo comprimido (usa el mismo método de compresión que
+un `.zip` normal) con todo lo necesario para ejecutar: los `.class` compilados y
+otros recursos que necesite, como por ejemplo imágenes.
 
-```
->> java NombreClaseMain
-```
+La idea de este sistema es simplificar la distribución de los archivos
+compilados. También funciona para librerías.
+{{< /block >}}
 
-Si se están usando paquetes, el archivo `.class` resultante debe de estar en una
-carpeta llamada como el paquete. Además, ese archivo se debe llamar igual que la
-clase que contiene.
+Los archivos `.jar` deben llevar un archivo que incluya los metadatos necesarios
+para que la JVM sepa cómo ejecutar el programa (si no es una librería). Su
+primera línea deberá decir qué clase contiene el método `main` de la siguiente
+manera:
 
-Ejecuta todo el programa desde el paquete base, la raíz de todos los
-directorios.
-
-Y para crear un archivo `.jar` (archivo comprimido con todo lo necesario para
-ejecutar: `.class`, imágenes...) necesitamos crear otro archivo (no es necesario
-que tenga una extensión específica, mejor `.mf`) cuya primera línea ponga que
-clase contiene el método main de la siguiente manera:
-
-```
-Main-Class: NombreDeLaMainClass (salto de línea)
+```mf
+Main-Class: NombreDeLaMainClass
 ```
 
-Usamos el comando `jar` con los atributos `c` (para crear un archivo) `f` (para
-darle un nombre al jar) `m` (para incluir el MANIFEST). Escribimos después en un
-orden que se corresponda con las letras el nombre del archivo .jar (mejor con
-esta extensión), el nombre del MANIFEST y el nombre de los archivos .class (o
-*.class):
+Usamos el comando `jar` con los atributos:
+- `c`: para crear un archivo
+- `f`: para darle un nombre al jar
+- `m`: para incluir el `MANIFEST`
 
-```
->> jar -cfm NombreDelJAR.jar MANIFEST.mf *.class
-```
+Escribimos después en un orden que se corresponda con las letras dadas el nombre
+del archivo `.jar` (especificando la extensión), el nombre del _MANIFEST_ y el
+nombre de los archivos `.class`:
 
-Para ejecutar este archivo `.jar` se usa el comando:
-
-```
->> java -jar Nombre.jar
+```bash
+jar -cfm NombreDelJAR.jar MANIFEST.mf *.class
 ```
 
-Se puede hacer un archivo `.bat` que haga eso por nosotros:
+Finalmente, para ejecutar este archivo `.jar` se usa el comando:
+
+```bash
+java -jar Nombre.jar
+```
+
+Se puede hacer un archivo `.bat` que lo haga automáticamente y así que el
+usuario solo tenga que hacerle doble click:
 
 ```bat
 @echo off
@@ -87,15 +146,29 @@ java -jar Nombre.jar
 pause
 exit
 ```
+
 Como pasar a `.exe` (ejecutable de Windows que no necesita tener Java instalado)
 (se necesita un programa externo)
 
+En caso de que los `.jar` sean librerías, para que el compilador las encuentre
+se deberán agregar a la _classpath_, y lo mismo sucederá para ejecutar.
+
 ```sh
 javac -cp lib1.jar;lib2.jar Program.java
-# -cp: class path
+java -cp lib1.jar;lib2.jar Program
 ```
 
-# gradle
+# Otras herramientas del JDK
+
+Teniendo un `.class` se puede ver su contenido usando `javap`:
+
+- `javap -p <.class>`: muestra todas las clases y miembros
+- `javap -v <.class>`: mucha información, tamaño del stack, argumentos de
+  métodos, _Constant pool_, etc.
+- `javap -c <.class>`: desensambla la clase
+
+{{< todo >}}
+# _Build Systems_: Gradle
 
 ```
 mkdir gradle-tutorial
@@ -271,7 +344,7 @@ bin/
 *.bat           text eol=crlf
 ```
 
-# debug
+# Debug código Java
 
 uso de jdb, muy similar de gdb
 
@@ -297,3 +370,4 @@ print <Expression>          print values
 locals                      print all local variables
 list                        show source code
 ```
+{{< /todo >}}

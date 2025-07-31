@@ -37,7 +37,7 @@ sections = [
     "so",
     "compiladores",
     "mates/discretas",
-    "poo",
+    "lenguajes/java",
     "aed"
 ]
 

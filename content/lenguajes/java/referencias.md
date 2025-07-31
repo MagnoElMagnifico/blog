@@ -4,7 +4,7 @@ description: >
     En este artículo se trata en detalle el Aliasing otros detalles importantes
     sobre la gestión de memoria que realiza la Máquina Virtual de Java.
 date: 2024-01-13T23:06:04+01:00
-weight: 2
+weight: 3
 mermaid: true
 ---
 

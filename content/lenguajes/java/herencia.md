@@ -4,7 +4,7 @@ description: >
     En este artículo se tratan los aspectos de la Herencia y el Polimorfimo en
     Java. Se verá el concepto de Clase Abstracta e Interfaz.
 date: 2024-01-15T17:01:24+01:00
-weight: 4
+weight: 5
 mermaid: true
 ---
 

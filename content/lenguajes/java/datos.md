@@ -5,7 +5,7 @@ description: >
     algo que afecta directamente al rendimiento de un programa. En este artículo
     se da una visión general sobre las colecciones que provee Java.
 date: 2024-01-15T01:21:41+01:00
-weight: 3
+weight: 4
 mermaid: true
 math: true
 ---
