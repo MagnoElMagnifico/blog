@@ -1,5 +1,9 @@
 {{ range .ByTitle }}
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ if .Params.small_title }}
+        <a href="{{ .Permalink }}">{{ .Params.small_title }}</a>
+    {{ else }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ end }}
     {{ with .Sections }}
         <div>{{ partial "header-section" . }}</div>
     {{ end }}

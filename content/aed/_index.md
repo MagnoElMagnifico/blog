@@ -1,7 +1,6 @@
 ---
 title: Algoritmos y Estructuras de Datos
-params:
-  small_title: AED
+small_title: AED
 content_title: true
 ---
 
@@ -50,7 +49,6 @@ Por eso es muy importante seleccionar la estructura de datos correcta.
     - Árbol equilibrado (AVL)
     - Árbol B
     - Árbol B+
-- Grafos
 - Tablas hash (recolocación y encadenamiento)
 
 -% Estrategias algorítmicas :%
@@ -69,5 +67,10 @@ Por eso es muy importante seleccionar la estructura de datos correcta.
 - Método de selección (_Selection sort_)
 - Método de la inserción (_Insertion sort_)
 - Ordenación rápida (_Quick sort_)
+
+-% Inteligencia Artificial :%
+- Búsqueda en espacio de estados: _backtracking_, ramificación y poda
+- Sistemas basados en conocimiento
+- Sistemas conexionistas
 {{< /keyvalue >}}
 

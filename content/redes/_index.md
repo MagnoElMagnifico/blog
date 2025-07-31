@@ -1,5 +1,6 @@
 ---
 title: Redes y Computación Distribuida
+small_title: Redes
 ---
 
 {{< todo >}}

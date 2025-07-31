@@ -1,7 +1,6 @@
 ---
 title: Matemáticas Discretas
-params:
-  small_title: Mates Discretas
+small_title: Mates Discretas
 content_title: false
 ---
 
@@ -28,11 +27,4 @@ content_title: false
 - Técnicas avanzadas de enumeración, relaciones de recurrencia
 - Resolución de relaciones de recurrencia
 - Funciones generatrices
-
--% Teoría de grafos :%
-- Tipos de grafos
-- Representación de grafos
-- Conectividad
-- Caminos eulerianos y hamiltonianos
-- Grafos planos y árboles
 {{< /keyvalue >}}

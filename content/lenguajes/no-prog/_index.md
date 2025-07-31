@@ -1,5 +1,6 @@
 ---
-title: "!Prog"
+title: Lenguajes de marcado
+small_title: "!Prog"
 ---
 
 [1]: https://es.wikipedia.org/wiki/Extensible_Markup_Language

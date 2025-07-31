@@ -1,7 +1,6 @@
 ---
 title: Estadística y Optimización
-params:
-  small_title: Estadística
+small_title: Estadística
 content_title: false
 draft: true
 ---

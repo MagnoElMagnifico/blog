@@ -1,7 +1,6 @@
 ---
 title: Matemáticas
-params:
-  small_title: Mates
+small_title: Mates
 content_title: true
 ---
 
